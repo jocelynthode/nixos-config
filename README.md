@@ -24,10 +24,10 @@ mkdir -p /mnt
 mount -t btrfs /dev/disk/by-label/root /mnt
 cd /mnt/
 btrfs subvolume create @
-btrfs subvolume create nix
-btrfs subvolume create persist
-btrfs subvolume create log
-btrfs subvolume create swap
+btrfs subvolume create @nix
+btrfs subvolume create @persist
+btrfs subvolume create @log
+btrfs subvolume create @swap
 cd /
 umount /mnt
 mount -t btrfs -o subvol=@ /dev/disk/by-label/root /mnt
@@ -36,10 +36,10 @@ mkdir -p /mnt/persist
 mkdir -p /mnt/var/log
 mkdir -p /mnt/swap
 mkdir -p /mnt/boot/efi
-mount -t btrfs -o subvol=nix /dev/disk/by-label/root /mnt/nix
-mount -t btrfs -o subvol=persist /dev/disk/by-label/root /mnt/persist
-mount -t btrfs -o subvol=log /dev/disk/by-label/root /mnt/var/log
-mount -t btrfs -o subvol=swap /dev/disk/by-label/root /mnt/swap
+mount -t btrfs -o subvol=@nix /dev/disk/by-label/root /mnt/nix
+mount -t btrfs -o subvol=@persist /dev/disk/by-label/root /mnt/persist
+mount -t btrfs -o subvol=@log /dev/disk/by-label/root /mnt/var/log
+mount -t btrfs -o subvol=@swap /dev/disk/by-label/root /mnt/swap
 mount /dev/disk/by-label/EFI /mnt/boot/efi
 ```
 
