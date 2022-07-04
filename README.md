@@ -24,10 +24,13 @@ mkdir -p /mnt
 mount -t btrfs /dev/disk/by-label/root /mnt
 cd /mnt/
 btrfs subvolume create @
+btrfs subvolume create @blank
+btrfs property set -ts blank ro true
 btrfs subvolume create @nix
 btrfs subvolume create @persist
 btrfs subvolume create @log
 btrfs subvolume create @swap
+chattr +C /mnt/@swap
 cd /
 umount /mnt
 mount -t btrfs -o subvol=@ /dev/disk/by-label/root /mnt
