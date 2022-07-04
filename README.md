@@ -46,8 +46,16 @@ mount /dev/disk/by-label/EFI /mnt/boot/efi
 6. Install This flake
 
 ```bash
-nixos-install -no-root-password --no-channel-copy --flake https://github.com/jocelynthode/nixos-config#somehost
+nixos-install -no-root-password --no-channel-copy --flake git+https://github.com/jocelynthode/nixos-config#somehost
 
 ```
 
 7. Reboot
+
+## Rebuild
+
+To rebuild after changes have made it to the repo use:
+
+```bash
+sudo nixos-rebuild switch --flake git+https://github.com/jocelynthode/nixos-config
+```
