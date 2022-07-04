@@ -1,0 +1,6 @@
+{
+  "device": "alsa_input.usb-Hercules_Rocksmith_USB_Guitar_Adapter-00.mono-fallback",
+  "device-description": "Rocksmith Guitar Adapter Mono",
+  "device-profile": "analog-input-mic",
+  "preset-name": "Guitar"
+}
