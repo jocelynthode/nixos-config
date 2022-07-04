@@ -12,7 +12,7 @@
           btrfs subvolume delete "/mnt/$subvolume"
         done && btrfs subvolume delete /mnt/@
         echo "Restoring blank subvolume"
-        btrfs subvolume snapshot /mnt/blank /mnt/@
+        btrfs subvolume snapshot /mnt/@blank /mnt/@
         umount /mnt
       '';
       supportedFilesystems = [ "btrfs" ];
@@ -34,26 +34,26 @@
     "/var/log" = {
       device = "/dev/disk/by-label/root";
       fsType = "btrfs";
-      options = [ "defaults,noatime,compress=zstd:1,subvol=log" ];
+      options = [ "defaults,noatime,compress=zstd:1,subvol=@log" ];
     };
 
     "/nix" = {
       device = "/dev/disk/by-label/root";
       fsType = "btrfs";
-      options = [ "defaults,noatime,compress=zstd:1,subvol=nix" ];
+      options = [ "defaults,noatime,compress=zstd:1,subvol=@nix" ];
     };
 
     "/persist" = {
       device = "/dev/disk/by-label/root";
       fsType = "btrfs";
-      options = [ "defaults,noatime,compress=zstd:1,subvol=persist" ];
+      options = [ "defaults,noatime,compress=zstd:1,subvol=@persist" ];
       neededForBoot = true;
     };
 
     "/swap" = {
       device = "/dev/disk/by-label/root";
       fsType = "btrfs";
-      options = [ "defaults,noatime,compress=zstd:1,subvol=swap" ];
+      options = [ "defaults,noatime,compress=zstd:1,subvol=@swap" ];
     };
 
     "/boot/efi" = {
