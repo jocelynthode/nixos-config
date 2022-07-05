@@ -35,6 +35,7 @@
       device = "/dev/disk/by-label/root";
       fsType = "btrfs";
       options = [ "defaults,noatime,compress=zstd:1,subvol=@log" ];
+      neededForBoot = true;
     };
 
     "/nix" = {
