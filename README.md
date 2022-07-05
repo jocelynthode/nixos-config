@@ -13,8 +13,12 @@ sudo cp /path/to/iso /dev/to/disk
 4. Setup your partition
 
 ```bash
-parted /dev/sda -- mkpart primary 1MiB 100%
-mkfs.btrfs -L root /dev/sda1
+parted /dev/sda -- mklabel gpt
+parted /dev/sda -- mkpart ESP fat32 1MiB 512MiB
+parted /dev/sda -- mkpart primary 512MiB 100%
+parted /dev/sda -- set 1 esp on
+mkfs.vfat -n BOOT /dev/sda1
+mkfs.btrfs -L root /dev/sda2
 ```
 
 5. Mount your partition on /mnt
@@ -25,7 +29,7 @@ mount -t btrfs /dev/disk/by-label/root /mnt
 cd /mnt/
 btrfs subvolume create @
 btrfs subvolume create @blank
-btrfs property set -ts blank ro true
+btrfs property set -ts @blank ro true
 btrfs subvolume create @nix
 btrfs subvolume create @persist
 btrfs subvolume create @log
@@ -44,12 +48,17 @@ mount -t btrfs -o subvol=@persist /dev/disk/by-label/root /mnt/persist
 mount -t btrfs -o subvol=@log /dev/disk/by-label/root /mnt/var/log
 mount -t btrfs -o subvol=@swap /dev/disk/by-label/root /mnt/swap
 mount /dev/disk/by-label/EFI /mnt/boot/efi
+
+dd if=/dev/zero of=/mnt/swap/swapfile bs=1M count=32768 status=progress
+chmod 0600 /mnt/swap/swapfile
+mkswap -L swap /mnt/swap/swapfile
+
 ```
 
 6. Install This flake
 
 ```bash
-nixos-install -no-root-password --no-channel-copy --flake git+https://github.com/jocelynthode/nixos-config#somehost
+nixos-install --no-root-password --no-channel-copy --flake github:jocelynthode/nixos-config#somehost
 
 ```
 
@@ -60,5 +69,5 @@ nixos-install -no-root-password --no-channel-copy --flake git+https://github.com
 To rebuild after changes have made it to the repo use:
 
 ```bash
-sudo nixos-rebuild switch --flake git+https://github.com/jocelynthode/nixos-config
+sudo nixos-rebuild switch --flake github:jocelynthode/nixos-config
 ```
