@@ -8,5 +8,6 @@
   # Personal scripts
   rofi-pulse = pkgs.callPackage ./core/rofi-pulse { };
   toggle-bluetooth = pkgs.callPackage ./core/toggle-bluetooth { };
+  fs-diff = pkgs.callPackage ./core/fs-diff { };
 }
 
