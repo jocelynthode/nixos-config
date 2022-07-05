@@ -17,6 +17,7 @@
       fzf
       blueberry
       any-nix-shell
+      fs-diff
     ];
   };
 }
