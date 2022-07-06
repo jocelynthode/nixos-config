@@ -8,7 +8,7 @@ rec {
     enable = true;
     font = {
       name = config.fontProfiles.regular.family;
-      package = config.fontProfiles.regular.package; 
+      package = config.fontProfiles.regular.package;
       size = 11;
     };
     theme = {

@@ -3,7 +3,7 @@
 let
   inherit (config.colorscheme) colors;
 in
-rec {
+{
   xresources.properties = {
     "*background" = "#${colors.base00}";
     "*foreground" = "#${colors.base07}";

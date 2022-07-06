@@ -3,7 +3,7 @@
 let
   inherit (config.colorscheme) colors;
 in
-rec {
+{
 
   home.packages = with pkgs; [
     kubectl
