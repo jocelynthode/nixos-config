@@ -9,6 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    sops-nix = {
+      url = "github:mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     flake-utils.url = "github:numtide/flake-utils";
     nur.url = "github:nix-community/NUR";
     nix-colors.url = "github:misterio77/nix-colors";
@@ -23,11 +28,12 @@
       inherit (inputs.nixpkgs.lib) genAttrs systems;
       inherit (my-lib) mkSystem importAttrset;
       forAllSystems = genAttrs systems.flakeExposed;
-      system = "x86_64-linux";                             	    # System architecture
+      system = inputs.flake-utils.lib.system.x86_64-linux;
     in
     rec {
       overlays = {
         default = import ./overlay { inherit inputs; };
+        sops-nix = inputs.sops-nix.overlay;
         nur = inputs.nur.overlay;
       };
 
@@ -38,6 +44,10 @@
           config.allowUnfree = true;
         }
       );
+
+      devShells = forAllSystems (system: {
+        default = import ./shell.nix { pkgs = packages.${system}; };
+      });
 
       homeManagerModules = importAttrset ./modules/home-manager;
 

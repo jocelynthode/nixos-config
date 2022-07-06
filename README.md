@@ -1,5 +1,25 @@
 # NixOS Config
 
+# Generate sops
+
+## Generate PGP from SSH
+
+```
+nix develop
+cp $HOME/.ssh/id_rsa /tmp/id_rsa
+chmod u+w /tmp/id_rsa
+ssh-keygen -p -N "" -f /tmp/id_rsa
+nix-shell -p gnupg -p ssh-to-pgp --run "ssh-to-pgp -private-key -i /tmp/id_rsa | gpg --import --quiet"
+rm /tmp/id_rsa
+gpg --list-secret-keys
+```
+
+## Generate age key from ssh keys for new hosts
+
+```
+cat /persist/etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age
+```
+
 # Install
 
 1. Get the [NixOS](https://channels.nixos.org/nixos-22.05/latest-nixos-minimal-x86_64-linux.iso)
@@ -52,6 +72,9 @@ mount /dev/disk/by-label/EFI /mnt/boot/efi
 dd if=/dev/zero of=/mnt/swap/swapfile bs=1M count=32768 status=progress
 chmod 0600 /mnt/swap/swapfile
 mkswap -L swap /mnt/swap/swapfile
+
+mkdir -p /mnt/persist/home
+mkdir -p /mnt/persist/etc/ssh
 
 ```
 

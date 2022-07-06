@@ -5,7 +5,8 @@
       jocelyn = {
         isNormalUser = true;
         shell = pkgs.fish;
-        hashedPassword = "$6$NJJ.620jUk.rcc5K$HqgPT6id5YmxIUBttuXsZjetVcdzAQywlqlwxNfcq0ZE/igh1bYvADLOaviKdW5ly.GASPubSm1KlpSztDJFl/";
+        # hashedPassword = "$6$NJJ.620jUk.rcc5K$HqgPT6id5YmxIUBttuXsZjetVcdzAQywlqlwxNfcq0ZE/igh1bYvADLOaviKdW5ly.GASPubSm1KlpSztDJFl/";
+        passwordFile = config.sops.secrets.jocelyn-password.path;
         extraGroups = [
           "wheel"
           "video"
@@ -23,8 +24,12 @@
     };
   };
 
-  services.geoclue2.enable = true;
+  sops.secrets.jocelyn-password = {
+    sopsFile = ../secrets/passwords.yaml;
+    neededForUsers = true;
+  };
 
+  services.geoclue2.enable = true;
 
   home-manager.users = {
     jocelyn = {

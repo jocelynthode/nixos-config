@@ -55,6 +55,7 @@
         # Cache
         { directory = ".cache/rbw"; mode = "0700"; } # Store database cache
         ".cache/betterlockscreen" # Store generated lockscreen images
+        ".cache/mozilla/firefox"
 
         # Misc
         { directory = ".ssh"; mode = "0700"; }

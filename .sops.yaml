@@ -1,0 +1,15 @@
+keys:
+  # Users
+  - &users:
+    - &jocelyn 41BA126590F152714AFB1CF152FD690C26E2F653
+  # Hosts
+  - &hosts:
+    - &desktek age1cf355lw4hznu9qef2vcejls926fhvmvwjnm8s3a5ghvktvtspd5svp5qg8
+
+creation_rules:
+  - path_regex: common/secrets/.*\.ya?ml$
+    key_groups:
+      - age:
+          - *desktek
+        pgp:
+          - *jocelyn

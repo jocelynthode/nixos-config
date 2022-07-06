@@ -7,7 +7,9 @@
     ./fonts.nix
     ./locale.nix
     ./nix.nix
+    ./openssh.nix
     ./persist.nix
+    ./sops.nix
     ./systemd-boot.nix
     ./users.nix
   ];
