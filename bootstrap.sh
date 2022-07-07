@@ -1,10 +1,10 @@
 #! /usr/bin/env nix-shell
-#! nix-shell -i bash -p parted btrfs-progs ssh-to-age sops yq-go git
+#! nix-shell -i bash -p parted btrfs-progs ssh-to-age sops yq-go
 set -euo pipefail
 
-# TODO specify hostname, drive, whether to create existing boot or create swap size
+needs_arg() { if [ -z "$OPTARG" ]; then die "No arg for --$OPT option"; fi; }
 
-create_boot=""
+create_efi=""
 drive=""
 hostname=""
 swap=32
@@ -16,27 +16,54 @@ if [ $# -eq 0 ]; then
 	exit 0
 fi
 
-while getopts "he" OPTION; do
-	case $OPTION in
-
-	e) ;;
-
-	\
-		*)
+while getopts h:-: OPT; do
+	# support long options: https://stackoverflow.com/a/28466267/519360
+	if [ "$OPT" = "-" ]; then # long option: reformulate OPT and OPTARG
+		OPT="${OPTARG%%=*}"      # extract long option name
+		OPTARG="${OPTARG#$OPT}"  # extract long option argument (may be empty)
+		OPTARG="${OPTARG#=}"     # if long option argument, remove assigning `=`
+	fi
+	case "$OPT" in
+	create-efi) create_efi=true ;;
+	hostname)
+		needs_arg
+		hostname="$OPTARG"
+		;;
+	disk)
+		needs_arg
+		drive="$OPTARG"
+		;;
+	swap)
+		needs_arg
+		swap="$OPTARG"
+		;;
+	*)
 		echo "Usage:"
 		echo "bootstrap.sh -h "
 		echo ""
-		echo "   -e     to execute echo \"hello world\""
-		echo "   -h     help (this output)"
+		echo "   --create-efi         to create the EFI partition"
+		echo "   --hostname HOSTNAME  to specify the hostname to build"
+		echo "   --disk DISK_PATH          to specify the disk to use"
+		echo "   --swap SIZE_IN_GB    to specify the swap size"
 		exit 0
 		;;
-
 	esac
 done
+shift $((OPTIND - 1)) # remove parsed options and args from $@ list
+
+if [ -z "${drive}" ]; then
+	echo "the drive must be specified"
+	exit 1
+fi
+
+if [ -z "${hostname}" ]; then
+	echo "the hostname must be specified"
+	exit 1
+fi
 
 swap_size=$((1024 * swap))
 
-echo "preparing drive ${drive} for NixOS"
+echo "preparing drive ${drive} for NixOS ${hostname} with ${swap}GB of SWAP"
 echo ""
 echo "WARNING!"
 echo "this script will overwrite everything on ${drive}"
@@ -48,7 +75,7 @@ if [[ ! "${confirm}" == "${drive}" ]]; then exit 1; fi
 wipefs -a "${drive}"
 parted "${drive}" -- mklabel gpt
 
-if [ -n "${create_boot}" ]; then
+if [ -n "${create_efi}" ]; then
 	parted "${drive}" -- mkpart ESP fat32 1MiB 512MiB name EFI
 	parted "${drive}" -- mkpart primary 512MiB 100% name "${hostname}"
 	parted "${drive}" -- set 1 esp on
@@ -62,7 +89,7 @@ sleep 2
 
 mkfs.btrfs -L "${hostname}" /desk/disk/by-partlabel/"${hostname}"
 
-if [ -n "${create_boot}" ]; then
+if [ -n "${create_efi}" ]; then
 	mkfs.vfat -n EFI /dev/disk/by-partlabel/EFI
 fi
 
@@ -110,9 +137,8 @@ agekey=$(ssh-to-age -i /mnt/persist/etc/ssh/ssh_host_ed25519_key.pub)
 
 echo "Setting up sops key"
 yq -i ".keys[1].hosts += '&${hostname} ${agekey}'" .sops.yaml
-yq  ".creation_rules[0].key_groups[0].age as \$age | length as \$length | \$age[\$length - 1] alias=\"${hostname}\"| .creation_rules[0].key_groups[0].age = \$age" .sops.yaml
+yq ".creation_rules[0].key_groups[0].age as \$age | length as \$length | \$age[\$length - 1] alias=\"${hostname}\"| .creation_rules[0].key_groups[0].age = \$age" .sops.yaml
 sops updatekeys hosts/common/secrets/passwords.yaml -y
-
 
 echo "Running nixos-install"
 time nixos-install --no-root-password --no-channel-copy --flake ".#${hostname}"
