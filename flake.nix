@@ -56,6 +56,10 @@
           inherit packages system;
           hostname = "desktek";
         };
+        frametek = mkSystem {
+          inherit packages system;
+          hostname = "frametek";
+        };
       };
     };
 }
