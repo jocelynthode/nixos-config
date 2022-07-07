@@ -4,7 +4,7 @@
 
 ## Generate PGP from SSH
 
-```
+```bash
 nix develop
 cp $HOME/.ssh/id_rsa /tmp/id_rsa
 chmod u+w /tmp/id_rsa
@@ -16,14 +16,30 @@ gpg --list-secret-keys
 
 ## Generate age key from ssh keys for new hosts
 
-```
+```bash
 cat /persist/etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age
 ```
 
 ## Add secrets
 
-```
+```bash
 sops path/to/file.yaml
+
+```
+
+SOPS Example
+
+```yaml
+hello: Welcome to SOPS! Edit this file as you please!
+example_key: example_value
+# Example comment
+example_array:
+  - example_value1
+  - example_value2
+example_number: 1234.56789
+example_booleans:
+  - true
+  - false
 ```
 
 # Install
@@ -49,7 +65,7 @@ mkfs.btrfs -L root /dev/sda2
 
 5. Mount your partition on /mnt
 
-```
+```bash
 mkdir -p /mnt
 mount -t btrfs /dev/disk/by-label/root /mnt
 cd /mnt/
