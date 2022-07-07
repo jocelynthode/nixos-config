@@ -17,14 +17,15 @@ gpg --list-secret-keys
 ## Generate age key from ssh keys for new hosts
 
 ```bash
-cat /persist/etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age
+nix develop
+ssh-to-age -i /persist/etc/ssh/ssh_host_ed25519_key.pub
 ```
 
 ## Add secrets
 
 ```bash
+nix develop
 sops path/to/file.yaml
-
 ```
 
 SOPS Example
@@ -100,14 +101,17 @@ mkdir -p /mnt/persist/etc/ssh
 
 ```
 
-6. Install This flake
+6. Setup ssh host keys and `.sops.yaml` for new host
+   TODO
+
+7. Install This flake
 
 ```bash
 nixos-install --no-root-password --no-channel-copy --flake github:jocelynthode/nixos-config#somehost
 
 ```
 
-7. Reboot
+8. Reboot
 
 ## Rebuild
 

@@ -30,12 +30,11 @@
     kdeconnect.enable = true;
   };
 
-  services.dbus.packages = [ pkgs.gcr ];
-
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
+      gnome.gnome-keyring
     ];
   };
 
@@ -49,7 +48,6 @@
     useUserPackages = true;
     extraSpecialArgs = { inherit inputs; }; # Pass flake variable
   };
-
 
   system.stateVersion = "22.11";
 }
