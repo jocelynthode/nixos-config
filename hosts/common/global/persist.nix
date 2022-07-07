@@ -59,6 +59,7 @@
 
         # Misc
         { directory = ".ssh"; mode = "0700"; }
+        { directory = ".gnupg"; mode = "0700"; }
         ".mozilla/firefox"
         ".steam"
         # TODO remove
