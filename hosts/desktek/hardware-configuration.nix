@@ -1,11 +1,11 @@
-{ lib, ... }: {
+{ lib, hostname, ... }: {
   boot = {
     initrd = {
       availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
       kernelModules = [ "kvm-amd" ];
       postDeviceCommands = lib.mkBefore ''
         mkdir -p /mnt
-        mount -o subvol=/ /dev/disk/by-label/root /mnt
+        mount -o subvol=/ /dev/disk/by-label/${hostname} /mnt
         echo "Cleaning subvolume"
         btrfs subvolume list -o /mnt/@ | cut -f9 -d ' ' |
         while read subvolume; do
@@ -17,7 +17,7 @@
       '';
       supportedFilesystems = [ "btrfs" ];
     };
-    resumeDevice = "/dev/disk/by-label/root";
+    resumeDevice = "/dev/disk/by-label/${hostname}";
     kernelParams = [ "resume_offset=22150286" ];
     kernel.sysctl = {
       "vm.swappiness" = 10;
@@ -26,33 +26,33 @@
 
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-label/root";
+      device = "/dev/disk/by-label/${hostname}";
       fsType = "btrfs";
       options = [ "defaults,noatime,compress=zstd:1,subvol=@" ];
     };
 
     "/var/log" = {
-      device = "/dev/disk/by-label/root";
+      device = "/dev/disk/by-label/${hostname}";
       fsType = "btrfs";
       options = [ "defaults,noatime,compress=zstd:1,subvol=@log" ];
       neededForBoot = true;
     };
 
     "/nix" = {
-      device = "/dev/disk/by-label/root";
+      device = "/dev/disk/by-label/${hostname}";
       fsType = "btrfs";
       options = [ "defaults,noatime,compress=zstd:1,subvol=@nix" ];
     };
 
     "/persist" = {
-      device = "/dev/disk/by-label/root";
+      device = "/dev/disk/by-label/${hostname}";
       fsType = "btrfs";
       options = [ "defaults,noatime,compress=zstd:1,subvol=@persist" ];
       neededForBoot = true;
     };
 
     "/swap" = {
-      device = "/dev/disk/by-label/root";
+      device = "/dev/disk/by-label/${hostname}";
       fsType = "btrfs";
       options = [ "defaults,noatime,compress=zstd:1,subvol=@swap" ];
     };
@@ -69,3 +69,4 @@
     size = (1024 * 32);
   }];
 }
+
