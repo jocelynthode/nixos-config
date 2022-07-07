@@ -9,7 +9,7 @@ nix develop
 cp $HOME/.ssh/id_rsa /tmp/id_rsa
 chmod u+w /tmp/id_rsa
 ssh-keygen -p -N "" -f /tmp/id_rsa
-nix-shell -p gnupg -p ssh-to-pgp --run "ssh-to-pgp -private-key -i /tmp/id_rsa | gpg --import --quiet"
+ssh-to-pgp -private-key -i /tmp/id_rsa | gpg --import --quiet
 rm /tmp/id_rsa
 gpg --list-secret-keys
 ```
@@ -18,6 +18,12 @@ gpg --list-secret-keys
 
 ```
 cat /persist/etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age
+```
+
+## Add secrets
+
+```
+sops path/to/file.yaml
 ```
 
 # Install
