@@ -1,48 +1,5 @@
 # NixOS Config
 
-# Generate sops
-
-## Generate PGP from SSH
-
-```bash
-nix develop
-cp $HOME/.ssh/id_rsa /tmp/id_rsa
-chmod u+w /tmp/id_rsa
-ssh-keygen -p -N "" -f /tmp/id_rsa
-ssh-to-pgp -private-key -i /tmp/id_rsa | gpg --import --quiet
-rm /tmp/id_rsa
-gpg --list-secret-keys
-```
-
-## Generate age key from ssh keys for new hosts
-
-```bash
-nix develop
-ssh-to-age -i /persist/etc/ssh/ssh_host_ed25519_key.pub
-```
-
-## Add secrets
-
-```bash
-nix develop
-sops path/to/file.yaml
-```
-
-SOPS Example
-
-```yaml
-hello: Welcome to SOPS! Edit this file as you please!
-example_key: example_value
-# Example comment
-example_array:
-  - example_value1
-  - example_value2
-example_number: 1234.56789
-example_booleans:
-  - true
-  - false
-```
-
 # Install
 
 1. Get the [NixOS](https://channels.nixos.org/nixos-22.05/latest-nixos-minimal-x86_64-linux.iso)
@@ -67,11 +24,21 @@ nix develop
 ./bootstrap.sh [--create-efi] --hostname=<hostname>--disk=/dev/to/disk
 ```
 
-6. Setup additional secrets in `.sops.yaml` for new host
+6. Setup additional secrets in `secrets.nix` for new host
 
-7. Setup new sops files
+7. Setup new age file if needed
 
-8. Reboot
+8. Rekey your secrets
+
+9. Bootstrap system
+
+```bash
+nixos-install --no-root-password --no-channel-copy --flake ".#<hostname>"
+
+umount -R /mnt
+```
+
+10. Reboot
 
 ## Rebuild
 
@@ -79,4 +46,32 @@ To rebuild after changes have made it to the repo use:
 
 ```bash
 sudo nixos-rebuild switch --flake github:jocelynthode/nixos-config
+```
+
+# Secrets
+
+## Add new secrets
+
+```bash
+nix develop
+ragenix -e file.age
+```
+
+## Rekey files after new users and/or host
+
+```bash
+nix develop
+cd hosts/common/secrets
+ragenix --rekey
+```
+
+# Build ISO
+
+To Build the custom iso run the following commands:
+
+```bash
+nix build .#nixosConfigurations.iso.config.system.build.isoImage
+dd if=result/iso/*.iso of=/dev/sdX status=progress
+sync
+
 ```

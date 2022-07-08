@@ -2,6 +2,7 @@
 { lib, inputs, hostname, ... }:
 {
   imports = [
+    ./rage.nix
     ./environment.nix
     ./fish.nix
     ./fonts.nix
@@ -9,7 +10,6 @@
     ./nix.nix
     ./openssh.nix
     ./persist.nix
-    ./sops.nix
     ./systemd-boot.nix
     ./users.nix
   ];

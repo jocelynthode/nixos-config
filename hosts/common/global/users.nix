@@ -5,7 +5,7 @@
       jocelyn = {
         isNormalUser = true;
         shell = pkgs.fish;
-        passwordFile = config.sops.secrets.jocelyn-password.path;
+        passwordFile = config.age.secrets.jocelyn-password.path;
         extraGroups = [
           "wheel"
           "video"
@@ -26,10 +26,7 @@
     };
   };
 
-  sops.secrets.jocelyn-password = {
-    sopsFile = ../secrets/passwords.yaml;
-    neededForUsers = true;
-  };
+  age.secrets.jocelyn-password.file = ../secrets/jocelyn-password.age;
 
   services.geoclue2.enable = true;
 

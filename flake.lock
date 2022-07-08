@@ -1,5 +1,26 @@
 {
   "nodes": {
+    "agenix": {
+      "inputs": {
+        "nixpkgs": [
+          "ragenix",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1652712410,
+        "narHash": "sha256-hMJ2TqLt0DleEnQFGUHK9sV2aAzJPU8pZeiZoqRozbE=",
+        "owner": "ryantm",
+        "repo": "agenix",
+        "rev": "7e5e58b98c3dcbf497543ff6f22591552ebfe65b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ryantm",
+        "repo": "agenix",
+        "type": "github"
+      }
+    },
     "base16-schemes": {
       "flake": false,
       "locked": {
@@ -23,6 +44,21 @@
         "owner": "numtide",
         "repo": "flake-utils",
         "rev": "7e2a3b3dfd9af950a856d66b0a7d01e3c18aa249",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_2": {
+      "locked": {
+        "lastModified": 1653893745,
+        "narHash": "sha256-0jntwV3Z8//YwuOjzhV2sgJJPt+HY6KhU7VZUL0fKZQ=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "1ed9fb1935d260de5fe1c2f7ee0ebaae17ed2fa1",
         "type": "github"
       },
       "original": {
@@ -116,38 +152,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-21_11": {
-      "locked": {
-        "lastModified": 1656782578,
-        "narHash": "sha256-1eMCBEqJplPotTo/SZ/t5HU6Sf2I8qKlZi9MX7jv9fw=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "573603b7fdb9feb0eb8efc16ee18a015c667ab1b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "release-21.11",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs-22_05": {
-      "locked": {
-        "lastModified": 1656782561,
-        "narHash": "sha256-sZVLNNKIcELllTHqydsckz8HBfVqxeAt51acaaQWLCw=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "18038cee44aa0c3c99a2319c3c1c4d16d6612d81",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "release-22.05",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nur": {
       "locked": {
         "lastModified": 1657010181,
@@ -163,6 +167,29 @@
         "type": "github"
       }
     },
+    "ragenix": {
+      "inputs": {
+        "agenix": "agenix",
+        "flake-utils": "flake-utils_2",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust-overlay": "rust-overlay"
+      },
+      "locked": {
+        "lastModified": 1654412551,
+        "narHash": "sha256-hoIZKaMy2NWQJwrGQEiCuDp8yyGHH9LhW9FX78RsqQ8=",
+        "owner": "yaxitech",
+        "repo": "ragenix",
+        "rev": "e2bcfcf52480825ef90e7d23693f5e65388399f0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yaxitech",
+        "repo": "ragenix",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -172,28 +199,31 @@
         "nix-colors": "nix-colors",
         "nixpkgs": "nixpkgs",
         "nur": "nur",
-        "sops-nix": "sops-nix"
+        "ragenix": "ragenix"
       }
     },
-    "sops-nix": {
+    "rust-overlay": {
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
+        "flake-utils": [
+          "ragenix",
+          "flake-utils"
         ],
-        "nixpkgs-21_11": "nixpkgs-21_11",
-        "nixpkgs-22_05": "nixpkgs-22_05"
+        "nixpkgs": [
+          "ragenix",
+          "nixpkgs"
+        ]
       },
       "locked": {
-        "lastModified": 1656820546,
-        "narHash": "sha256-g+1URmRH75RDAzVUtVb4Ls7X8n1iocAGULtSE7JUdwU=",
-        "owner": "mic92",
-        "repo": "sops-nix",
-        "rev": "85907ae7384477e447499f6e942d822d6f2998d8",
+        "lastModified": 1654310165,
+        "narHash": "sha256-5TWkZMKnrLQVGsWrcDabJX7E502qoi0+vP1RReJp0/Y=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "e64770eac18a1983232a5bc55fa443d9f15cc489",
         "type": "github"
       },
       "original": {
-        "owner": "mic92",
-        "repo": "sops-nix",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
         "type": "github"
       }
     },

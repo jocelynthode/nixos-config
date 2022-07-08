@@ -1,5 +1,5 @@
 #! /usr/bin/env nix-shell
-#! nix-shell -i bash -p parted btrfs-progs ssh-to-age sops yq-go gptfdisk
+#! nix-shell -i bash -p parted btrfs-progs gptfdisk
 set -euo pipefail
 
 die() {
@@ -137,20 +137,9 @@ mkdir -p /mnt/persist/etc/ssh
 echo "Generating ssh host keys"
 ssh-keygen -q -t rsa -b 4096 -C "${hostname}" -N "" -f /mnt/persist/etc/ssh/ssh_host_rsa_key
 ssh-keygen -t ed25519 -f /mnt/persist/etc/ssh/ssh_host_ed25519_key -N ''
-agekey=$(ssh-to-age -i /mnt/persist/etc/ssh/ssh_host_ed25519_key.pub)
 
-echo "Setting up sops key"
-# Easier than play with yq aliases and anchor operators
-yq -i '.keys[1].hosts += "NEWHOST"' .sops.yaml
-yq -i '.creation_rules[0].key_groups[0].age += "NEWAGE"' .sops.yaml
-sed -i "s/NEWHOST/\&${hostname} ${agekey}/" .sops.yaml
-sed -i "s/NEWAGE/*${hostname}/" .sops.yaml
-sops updatekeys hosts/common/secrets/passwords.yaml -y
-
-echo "Running nixos-install"
-time nixos-install --no-root-password --no-channel-copy --flake ".#${hostname}"
-
-umount -R /mnt
+echo "Printing public host key"
+cat /mnt/persist/etc/ssh/ssh_host_ed25519_key.pub
 
 echo ""
-echo "IFF you did not see any errors, Commit your new sops files and reboot!"
+echo "IFF you did not see any errors, setup copy the public key to the correct file, rekey your secrets and install"
