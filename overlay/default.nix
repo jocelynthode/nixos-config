@@ -31,8 +31,8 @@ rec {
   };
 
   python3Packages = prev.python3Packages // {
-    taxi-zebra = prev.pkgs.callPackage ../pkgs/python3Packages/taxi { };
     taxi = prev.pkgs.callPackage ../pkgs/python3Packages/taxi { };
+    taxi-zebra = prev.pkgs.callPackage ../pkgs/python3Packages/taxi-zebra { };
   };
 
   generated-gtk-themes = mapAttrs (_: scheme: gtkThemeFromScheme { inherit scheme; }) colorSchemes;
