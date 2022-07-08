@@ -53,63 +53,23 @@ sudo cp /path/to/iso /dev/to/disk
 ```
 
 3. Boot on the ISO
-4. Setup your partition
+4. Clone this repository
 
 ```bash
-parted /dev/sda -- mklabel gpt
-parted /dev/sda -- mkpart ESP fat32 1MiB 512MiB
-parted /dev/sda -- mkpart primary 512MiB 100%
-parted /dev/sda -- set 1 esp on
-mkfs.vfat -n BOOT /dev/sda1
-mkfs.btrfs -L root /dev/sda2
+git clone https://github.com/jocelynthode/nixos-config
+cd nixos-config
 ```
 
-5. Mount your partition on /mnt
+5. Run bootstrap.sh
 
 ```bash
-mkdir -p /mnt
-mount -t btrfs /dev/disk/by-label/root /mnt
-cd /mnt/
-btrfs subvolume create @
-btrfs subvolume create @blank
-btrfs property set -ts @blank ro true
-btrfs subvolume create @nix
-btrfs subvolume create @persist
-btrfs subvolume create @log
-btrfs subvolume create @swap
-chattr +C /mnt/@swap
-cd /
-umount /mnt
-mount -t btrfs -o subvol=@ /dev/disk/by-label/root /mnt
-mkdir -p /mnt/nix
-mkdir -p /mnt/persist
-mkdir -p /mnt/var/log
-mkdir -p /mnt/swap
-mkdir -p /mnt/boot/efi
-mount -t btrfs -o subvol=@nix /dev/disk/by-label/root /mnt/nix
-mount -t btrfs -o subvol=@persist /dev/disk/by-label/root /mnt/persist
-mount -t btrfs -o subvol=@log /dev/disk/by-label/root /mnt/var/log
-mount -t btrfs -o subvol=@swap /dev/disk/by-label/root /mnt/swap
-mount /dev/disk/by-label/EFI /mnt/boot/efi
-
-dd if=/dev/zero of=/mnt/swap/swapfile bs=1M count=32768 status=progress
-chmod 0600 /mnt/swap/swapfile
-mkswap -L swap /mnt/swap/swapfile
-
-mkdir -p /mnt/persist/home
-mkdir -p /mnt/persist/etc/ssh
-
+nix develop
+./bootstrap.sh [--create-efi] --hostname=<hostname>--disk=/dev/to/disk
 ```
 
-6. Setup ssh host keys and `.sops.yaml` for new host
-   TODO
+6. Setup additional secrets in `.sops.yaml` for new host
 
-7. Install This flake
-
-```bash
-nixos-install --no-root-password --no-channel-copy --flake github:jocelynthode/nixos-config#somehost
-
-```
+7. Setup new sops files
 
 8. Reboot
 
