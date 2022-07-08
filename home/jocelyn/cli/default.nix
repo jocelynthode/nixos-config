@@ -6,6 +6,7 @@
     ./ranger.nix
     ./rbw.nix
     ./taskwarrior.nix
+    ./taxi.nix
   ];
   home.packages = with pkgs; [
     fd

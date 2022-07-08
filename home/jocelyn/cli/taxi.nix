@@ -1,4 +1,5 @@
-{
-  #TODO once pr merged with zebra install through this file
-
+{ pkgs, ... }: {
+  # home.packages = with pkgs; [
+  #   (taxi-cli.override { backends = [ python3Packages.taxi-zebra ]; })
+  # ];
 }
