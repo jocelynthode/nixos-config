@@ -1,6 +1,6 @@
 { pkgs, lib, fetchFromGitHub, ... }:
 
-pkgs.stdenv.mkDerivation rec {
+pkgs.stdenvNoCC.mkDerivation rec {
   pname = "kubectl-node-shell";
   version = "1.6.0";
 
@@ -12,11 +12,13 @@ pkgs.stdenv.mkDerivation rec {
   };
 
   installPhase = ''
+    runHook preInstall
     install -m755 ./kubectl-node_shell -D $out/bin/kubectl-node_shell
+    runHook postInstall
   '';
 
   meta = with lib; {
-    description = "Exec into node via kubectl ";
+    description = "Exec into node via kubectl";
     homepage = "https://github.com/kvaps/kubectl-node-shell";
     license = licenses.asl20;
     maintainers = with maintainers; [ ];

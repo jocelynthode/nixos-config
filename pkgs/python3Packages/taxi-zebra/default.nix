@@ -8,7 +8,7 @@ python3Packages.buildPythonPackage rec {
     owner = "liip";
     repo = "taxi-zebra";
     rev = version;
-    sha256 = "sha256-L38cLdXZRqkHVJZL1wXnJc9KsVG3i/5T8amW55hsmMI=";
+    sha256 = "sha256-aX3oiW0+qCHte0GzcNpUwPuubSexfqiGXaWoPY4JWi0=";
   };
 
   prePatch = ''
