@@ -1,13 +1,14 @@
-{ lib, python3Packages }:
+{ lib, python3Packages, fetchFromGitHub }:
 
 python3Packages.buildPythonPackage rec {
   pname = "taxi-zebra";
-  version = "2.3.2";
+  version = "3.0.0";
 
-  src = python3Packages.fetchPypi {
-    inherit version;
-    pname = "taxi_zebra";
-    sha256 = "a6035610493306b5f7f68281e03b93dc0cc607fc2428600f95e9554cb1aaa181";
+  src = fetchFromGitHub {
+    owner = "liip";
+    repo = "taxi-zebra";
+    rev = version;
+    sha256 = "sha256-L38cLdXZRqkHVJZL1wXnJc9KsVG3i/5T8amW55hsmMI=";
   };
 
   prePatch = ''
