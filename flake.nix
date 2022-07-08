@@ -9,8 +9,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    sops-nix = {
-      url = "github:mic92/sops-nix";
+    ragenix = {
+      url = "github:yaxitech/ragenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -33,8 +33,8 @@
     rec {
       overlays = {
         default = import ./overlay { inherit inputs; };
-        sops-nix = inputs.sops-nix.overlay;
         nur = inputs.nur.overlay;
+        ragenix = inputs.ragenix.overlay;
       };
 
       packages = forAllSystems (system:
@@ -52,6 +52,10 @@
       homeManagerModules = importAttrset ./modules/home-manager;
 
       nixosConfigurations = {
+        iso = mkSystem {
+          inherit packages system;
+          hostname = "iso";
+        };
         desktek = mkSystem {
           inherit packages system;
           hostname = "desktek";
