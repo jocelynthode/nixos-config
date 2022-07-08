@@ -2,7 +2,6 @@
   imports = [
     inputs.hardware.nixosModules.common-cpu-intel
     inputs.hardware.nixosModules.common-gpu-intel
-    inputs.hardware.nixosModules.common-pc-laptop-ssd
     inputs.hardware.nixosModules.common-pc-laptop
     inputs.hardware.nixosModules.framework
     inputs.home-manager.nixosModule
@@ -41,6 +40,14 @@
   hardware = {
     bluetooth.enable = true;
     logitech.wireless.enable = true;
+    video.hidpi.enable = true;
+    services.xserver.dpi = 200;
+  };
+
+  environment.variables = {
+    GDK_SCALE = "2";
+    GDK_DPI_SCALE = "0.5";
+    _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";
   };
 
   home-manager = {
