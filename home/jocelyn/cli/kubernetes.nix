@@ -4,5 +4,6 @@
     kubectx
     kubelogin-oidc
     kubernetes-helm
+    kubectl-node-shell
   ];
 }

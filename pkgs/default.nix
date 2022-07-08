@@ -4,6 +4,7 @@
 
   # Packages with an actual source
   feathers = pkgs.callPackage ./core/feathers { };
+  kubectl-node-shell = pkgs.callPackage ./core/kubectl-node-shell { };
 
   # Personal scripts
   rofi-pulse = pkgs.callPackage ./core/rofi-pulse { };
