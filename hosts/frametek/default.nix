@@ -40,7 +40,6 @@
     bluetooth.enable = true;
     logitech.wireless.enable = true;
     video.hidpi.enable = true;
-    services.xserver.dpi = 200;
   };
 
   environment.variables = {
