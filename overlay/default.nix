@@ -11,9 +11,9 @@ rec {
   });
 
   # Remove autostart on nmapplet https://gitlab.gnome.org/GNOME/network-manager-applet/-/blob/main/meson_post_install.py
-  networkmanagerapplet = prev.networkmanagerapplet.overrideAttrs (oldAttrs: rec {
-    patches = (oldAttrs.patches or [ ]) ++ [ ./nm-applet-no-autostart.patch ];
-  });
+  # networkmanagerapplet = prev.networkmanagerapplet.overrideAttrs (oldAttrs: rec {
+  #   patches = (oldAttrs.patches or [ ]) ++ [ ./nm-applet-no-autostart.patch ];
+  # });
 
   # Add notify-send to networkmanager package path
   networkmanager_dmenu = prev.networkmanager_dmenu.overrideAttrs (oldAttrs: rec {
