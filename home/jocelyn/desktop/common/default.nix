@@ -10,7 +10,6 @@
     ./gammastep.nix
     ./gnome-keyring.nix
     ./gtk.nix
-    ./kdeconnect.nix
     ./kitty
     ./mpv.nix
     ./mumble.nix
@@ -19,9 +18,7 @@
     ./qt.nix
     ./screenshot.nix
     ./signal.nix
-    ./simplescan.nix
     ./slack.nix
-    ./solaar.nix
     ./spotify.nix
   ];
 

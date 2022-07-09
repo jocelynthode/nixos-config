@@ -1,4 +1,4 @@
-{ pkgs, config, inputs, lib, home-manager, ... }: {
+{ pkgs, hostname, config, inputs, lib, home-manager, ... }: {
 
   imports = [
     ../common/rice
@@ -6,7 +6,7 @@
 
     ./cli
     ./desktop/i3
-  ];
+  ] ++ builtins.filter builtins.pathExists ([ ../desktop/${hostname} ]);
 
   systemd.user.startServices = "sd-switch";
   programs = {
