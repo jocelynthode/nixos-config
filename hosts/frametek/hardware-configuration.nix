@@ -8,6 +8,6 @@
     initrd = {
       kernelModules = [ "kvm-intel" ];
     };
-    kernelParams = [ "resume_offset=22150286" ];
+    # kernelParams = [ "resume_offset=22150286" ];
   };
 }
