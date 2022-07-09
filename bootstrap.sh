@@ -106,6 +106,7 @@ btrfs subvolume create @blank
 btrfs property set -ts @blank ro true
 btrfs subvolume create @nix
 btrfs subvolume create @persist
+btrfs subvolume create @snapshots
 btrfs subvolume create @log
 btrfs subvolume create @swap
 chattr +C /mnt/@swap
@@ -117,11 +118,13 @@ mount -t btrfs -o subvol=@ /dev/disk/by-partlabel/"${hostname}" /mnt
 mkdir -p /mnt/nix
 mkdir -p /mnt/persist
 mkdir -p /mnt/var/log
+mkdir -p /mnt/.snapshots
 mkdir -p /mnt/swap
 mkdir -p /mnt/boot/efi
 mount -t btrfs -o subvol=@nix /dev/disk/by-partlabel/"${hostname}" /mnt/nix
 mount -t btrfs -o subvol=@persist /dev/disk/by-partlabel/"${hostname}" /mnt/persist
 mount -t btrfs -o subvol=@log /dev/disk/by-partlabel/"${hostname}" /mnt/var/log
+mount -t btrfs -o subvol=@snapshots /dev/disk/by-partlabel/"${hostname}" /mnt/.snapshots
 mount -t btrfs -o subvol=@swap /dev/disk/by-partlabel/"${hostname}" /mnt/swap
 mount /dev/disk/by-partlabel/EFI /mnt/boot/efi
 
