@@ -306,6 +306,7 @@ in
         type = "internal/battery";
         full-at = 85;
         low-at = 20;
+        poll-interval = 2;
         battery = "BAT1";
         adapter = "ACAD";
         time-format = "%H:%M";
@@ -331,7 +332,10 @@ in
         };
         label = {
           charging = "%percentage%% %time%";
-          discharging = "%percentage%% %time%";
+          discharging = {
+            text = "%percentage%% %time%";
+            foreground = ''''${colors.base07}'';
+          };
           low = "%percentage%% %time%";
           full = "Full";
         };
