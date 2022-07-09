@@ -42,16 +42,10 @@
     video.hidpi.enable = true;
   };
 
-  environment.variables = {
-    GDK_SCALE = "2";
-    GDK_DPI_SCALE = "0.5";
-    _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";
-  };
-
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = { inherit inputs; }; # Pass flake variable
+    extraSpecialArgs = { inherit inputs hostname; }; # Pass flake variable
   };
 
   system.stateVersion = "22.11";
