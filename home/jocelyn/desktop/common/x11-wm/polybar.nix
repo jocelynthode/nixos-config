@@ -176,7 +176,7 @@ in
 
           empty = {
             text = ''''${bar.empty}'';
-            foreground = ''''${colors.base01}'';
+            foreground = ''''${colors.base03}'';
           };
         };
       };
@@ -252,12 +252,8 @@ in
         "inherit" = "network-base";
         interface.type = "wired";
         label.connected = {
-          text = "%{A1:${networkmanager_dmenu} &:} %{F#${colors.base0C}} %downspeed%%{F-} %{F#${colors.base0D}}祝 %upspeed%%{F-}%{A}";
+          text = "%{A1:${networkmanager_dmenu} &:}%{F#${colors.base0C}} %downspeed%%{F-} %{F#${colors.base0D}}祝 %upspeed%%{F-}%{A}";
           foreground = ''''${colors.base0B}'';
-        };
-        label.disconnected = {
-          text = "%{A1:${networkmanager_dmenu} &:} %{A}";
-          foreground = ''''${colors.base03}'';
         };
       };
 
@@ -265,12 +261,8 @@ in
         "inherit" = "network-base";
         interface.type = "wireless";
         label.connected = {
-          text = "%{A1:${networkmanager_dmenu} &:}  %essid% %{F#${colors.base0C}} %downspeed%%{F-} %{F#${colors.base0D}}祝 %upspeed%%{F-}%{A}";
+          text = "%{A1:${networkmanager_dmenu} &:}%{F#${colors.base0C}} %downspeed%%{F-} %{F#${colors.base0D}}祝 %upspeed%%{F-}%{A}";
           foreground = ''''${colors.base0B}'';
-        };
-        label.disconnected = {
-          text = "%{A1:${networkmanager_dmenu} &:}睊%{A}";
-          foreground = ''''${colors.base03}'';
         };
       };
 
@@ -313,6 +305,7 @@ in
       "module/battery" = {
         type = "internal/battery";
         full-at = 85;
+        low-at = 20;
         battery = "BAT1";
         adapter = "ACAD";
         time-format = "%H:%M";
@@ -321,24 +314,25 @@ in
         format = {
           charging = {
             text = "<animation-charging> <label-charging>";
-            prefix = {
-              foreground = ''''${colors.base0C}'';
-            };
+            foreground = ''''${colors.base0C}'';
           };
           discharging = {
             text = "<ramp-capacity> <label-discharging>";
+            foreground = ''''${colors.base0A}'';
           };
           full = {
             text = "<label-full>";
-            prefix = {
-              text = "";
-              foreground = ''''${colors.base0D}'';
-            };
+            foreground = ''''${colors.base0D}'';
+          };
+          low = {
+            text = "<label-full>";
+            foreground = ''''${colors.base08}'';
           };
         };
         label = {
-          charging = "%percentage%%";
-          discharging = "%percentage%%";
+          charging = "%percentage%% %time%";
+          discharging = "%percentage%% %time%";
+          low = "%percentage%% %time%";
           full = "Full";
         };
       };
@@ -348,8 +342,8 @@ in
         format = "<ramp> <bar>";
         label = "%percentage%%";
         ramp = {
-          text = [ "" "" "" "" "" ];
-          foreground = ''''${colors.base0C}'';
+          text = [ "" "" "" "" "" "" "" "" "" ];
+          foreground = ''''${colors.base0E}'';
         };
         bar = {
           width = 11;
