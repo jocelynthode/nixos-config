@@ -3,7 +3,8 @@ let
   users = [ jocelyn ];
 
   desktek = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICqjsqOkgdM/rWztAzFEhVb8MSnvZBuViU2z4a80p1Ku";
-  systems = [ desktek ];
+  frametek = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICW8na5GrvJpuuJzdhBPnv4FVSvKzUkAbKXZvAd405kT";
+  systems = [ desktek frametek ];
 in
 {
   "jocelyn-password.age".publicKeys = [ jocelyn ] ++ systems;
