@@ -1,5 +1,5 @@
 #! /usr/bin/env nix-shell
-#! nix-shell -i bash -p parted btrfs-progs gptfdisk
+#! nix-shell -i bash -p parted btrfs-progs gptfdisk cryptsetup
 set -euo pipefail
 
 die() {
@@ -10,6 +10,7 @@ die() {
 needs_arg() { if [ -z "$OPTARG" ]; then die "No arg for --$OPT option"; fi; }
 
 create_efi=""
+encrypt=""
 drive=""
 hostname=""
 swap=32
@@ -30,6 +31,7 @@ while getopts h:-: OPT; do
 	fi
 	case "$OPT" in
 	create-efi) create_efi=true ;;
+	encrypt-root) encrypt=true ;;
 	hostname)
 		needs_arg
 		hostname="$OPTARG"
@@ -47,8 +49,9 @@ while getopts h:-: OPT; do
 		echo "bootstrap.sh -h "
 		echo ""
 		echo "   --create-efi         to create the EFI partition"
+		echo "   --encrypt-root       to encrypt root disk"
 		echo "   --hostname HOSTNAME  to specify the hostname to build"
-		echo "   --disk DISK_PATH          to specify the disk to use"
+		echo "   --disk DISK_PATH     to specify the disk to use"
 		echo "   --swap SIZE_IN_GB    to specify the swap size"
 		exit 0
 		;;
@@ -91,15 +94,29 @@ fi
 partprobe "${drive}"
 sleep 2
 
-mkfs.btrfs -fL "${hostname}" /dev/disk/by-partlabel/"${hostname}"
+device="/dev/disk/by-partlabel/${hostname}"
+
+if [ -n "${encrypt}" ]; then
+  echo "Creating LUKS partition"
+	cryptsetup luksFormat --verbose --verify-passphrase /dev/disk/by-partlabel/"${hostname}" 
+  cryptsetup config /dev/disk/by-partlabel/"${hostname}" --label "${hostname}_crypt"
+  cryptsetup open /dev/disk/by-partlabel/"${hostname}"
+  device="/dev/disk/by-label/${hostname}_crypt"
+fi
+
+partprobe
+sleep 2
+
+mkfs.btrfs -fL "${hostname}" "${device}"
 
 if [ -n "${create_efi}" ]; then
+  echo "Creating EFI partition"
 	mkfs.vfat -n EFI /dev/disk/by-partlabel/EFI
 fi
 
 echo "Creating BTRFS subovlumes"
 mkdir -p /mnt
-mount -t btrfs /dev/disk/by-partlabel/"${hostname}" /mnt
+mount -t btrfs "${device}" /mnt
 cd /mnt/
 btrfs subvolume create @
 btrfs subvolume create @blank
@@ -114,18 +131,18 @@ cd -
 umount /mnt
 
 echo "Mounting BTRFS subvolumes"
-mount -t btrfs -o subvol=@ /dev/disk/by-partlabel/"${hostname}" /mnt
+mount -t btrfs -o subvol=@ "${device}" /mnt
 mkdir -p /mnt/nix
 mkdir -p /mnt/persist
 mkdir -p /mnt/var/log
 mkdir -p /mnt/.snapshots
 mkdir -p /mnt/swap
 mkdir -p /mnt/boot/efi
-mount -t btrfs -o subvol=@nix /dev/disk/by-partlabel/"${hostname}" /mnt/nix
-mount -t btrfs -o subvol=@persist /dev/disk/by-partlabel/"${hostname}" /mnt/persist
-mount -t btrfs -o subvol=@log /dev/disk/by-partlabel/"${hostname}" /mnt/var/log
-mount -t btrfs -o subvol=@snapshots /dev/disk/by-partlabel/"${hostname}" /mnt/.snapshots
-mount -t btrfs -o subvol=@swap /dev/disk/by-partlabel/"${hostname}" /mnt/swap
+mount -t btrfs -o subvol=@nix "${device}" /mnt/nix
+mount -t btrfs -o subvol=@persist "${device}" /mnt/persist
+mount -t btrfs -o subvol=@log "${device}" /mnt/var/log
+mount -t btrfs -o subvol=@snapshots "${device}" /mnt/.snapshots
+mount -t btrfs -o subvol=@swap "${device}" /mnt/swap
 mount /dev/disk/by-partlabel/EFI /mnt/boot/efi
 
 echo "Creating SWAP"
