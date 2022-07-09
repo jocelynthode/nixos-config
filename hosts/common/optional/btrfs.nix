@@ -62,7 +62,7 @@
       options = [ "defaults" "noatime" "compress=zstd:1" "subvol=@swap" ];
     };
 
-    "/boot/EFI" = {
+    "/boot/efi" = {
       device = "/dev/disk/by-label/EFI";
       fsType = "vfat";
       options = [ "defaults" "noatime" ];

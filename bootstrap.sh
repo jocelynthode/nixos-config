@@ -121,6 +121,7 @@ mount -t btrfs "${device}" /mnt
 cd /mnt/
 btrfs subvolume create @
 btrfs subvolume create @blank
+mkdir -p @blank/boot/efi
 btrfs property set -ts @blank ro true
 btrfs subvolume create @nix
 btrfs subvolume create @persist
