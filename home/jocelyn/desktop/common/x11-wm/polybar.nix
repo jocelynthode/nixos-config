@@ -5,6 +5,7 @@ let
 
   # Dependencies
   systemctl = "${pkgs.systemd}/bin/systemctl";
+  gamemoded = "${pkgs.gamemode}/bin/gamemoded";
   playerctl = "${pkgs.playerctl}/bin/playerctl";
   networkmanager_dmenu = "${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu";
   blueberry = "${pkgs.blueberry}/bin/blueberry";
@@ -70,7 +71,7 @@ in
         modules = {
           left = "xworkspaces sep cpu memory fs";
           center = "player date";
-          right = "eth wifi bluetooth gammastep sep mic volume brightness battery sep";
+          right = "eth wifi bluetooth sep gammastep gamemode sep mic volume brightness battery sep";
         };
         separator = "";
         dim-value = "1.0";
@@ -340,6 +341,7 @@ in
           full = "Full";
         };
       };
+
       "module/brightness" = {
         type = "internal/backlight";
         card = "intel_backlight";
@@ -365,6 +367,7 @@ in
           };
         };
       };
+
       "module/gammastep" = {
         type = "custom/script";
         interval = 4;
@@ -372,6 +375,13 @@ in
         click-left = "${systemctl} --user is-active gammastep && ${systemctl} --user stop gammastep || ${systemctl} --user start gammastep";
       };
 
+      "module/gamemode" = {
+        type = "custom/script";
+        interval = 2;
+        format.foreground = ''''${colors.base08}'';
+        exec-if = "${gamemoded} --status | ${pkgs.gnugrep}/bin/grep 'is active' -q";
+        exec = "${pkgs.coreutils-full}/bin/echo ''";
+      };
     };
     script = "polybar main &";
   };
