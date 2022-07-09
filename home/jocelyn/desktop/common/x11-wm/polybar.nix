@@ -70,7 +70,7 @@ in
         modules = {
           left = "xworkspaces sep cpu memory fs";
           center = "player date";
-          right = "eth wifi bluetooth sep mic volume brightness battery sep";
+          right = "eth wifi bluetooth gammastep sep mic volume brightness battery sep";
         };
         separator = "";
         dim-value = "1.0";
@@ -365,6 +365,13 @@ in
           };
         };
       };
+      "module/gammastep" = {
+        type = "custom/script";
+        interval = 4;
+        exec = "${home-pkgs.polybar-gammastep}/bin/polybar-gammastep";
+        click-left = "${systemctl} --user is-active gammastep && ${systemctl} --user stop gammastep || ${systemctl} --user start gammastep";
+      };
+
     };
     script = "polybar main &";
   };
