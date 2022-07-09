@@ -70,7 +70,7 @@ in
         modules = {
           left = "xworkspaces sep cpu memory fs";
           center = "player date";
-          right = "battery eth wifi bluetooth sep mic volume brightness sep";
+          right = "eth wifi bluetooth sep mic volume brightness battery sep";
         };
         separator = "";
         dim-value = "1.0";
@@ -168,17 +168,14 @@ in
           indicator = {
             text = ''''${bar.indicator}'';
             foreground = ''''${colors.base07}'';
-            font = 2;
           };
 
           fill = {
             text = ''''${bar.fill}'';
-            font = 2;
           };
 
           empty = {
             text = ''''${bar.empty}'';
-            font = 2;
             foreground = ''''${colors.base01}'';
           };
         };
@@ -311,6 +308,63 @@ in
         exec = {
           text = "${playerctl} --player spotify metadata --format '{{artist}} - {{title}}  %{F#${colors.base03}}|%{F-}'";
           "if" = ''[[ "$(${playerctl} --player spotify status)" = "Playing" ]]'';
+        };
+      };
+      "module/battery" = {
+        type = "internal/battery";
+        full-at = 85;
+        battery = "BAT1";
+        adapter = "ACAD";
+        time-format = "%H:%M";
+        ramp.capacity = [ "" "" "" "" "" "" "" "" "" "" ];
+        animation.charging = [ "" "" "" "" "" "" "" "" "" "" ];
+        format = {
+          charging = {
+            text = "<animation-charging> <label-charging>";
+            prefix = {
+              foreground = ''''${colors.base0C}'';
+            };
+          };
+          discharging = {
+            text = "<ramp-capacity> <label-discharging>";
+          };
+          full = {
+            text = "<label-full>";
+            prefix = {
+              text = "";
+              foreground = ''''${colors.base0D}'';
+            };
+          };
+        };
+        label = {
+          charging = "%percentage%%";
+          discharging = "%percentage%%";
+          full = "Full";
+        };
+      };
+      "module/brightness" = {
+        type = "internal/backlight";
+        card = "intel_backlight";
+        format = "<ramp> <bar>";
+        label = "%percentage%%";
+        ramp = {
+          text = [ "" "" "" "" "" ];
+          foreground = ''''${colors.base0C}'';
+        };
+        bar = {
+          width = 11;
+          gradient = false;
+          foreground = [ ''''${colors.base0B}'' ''''${colors.base0B}'' ''''${colors.base09}'' ''''${colors.base09}'' ''''${colors.base08}'' ];
+          indicator = {
+            text = ''''${bar.indicator}'';
+            foreground = ''''${colors.base0C}'';
+          };
+          format = "%fill%%indicator%%empty%";
+          fill = ''''${bar.fill}'';
+          empty = {
+            text = ''''${bar.empty}'';
+            foreground = ''''${colors.base03}'';
+          };
         };
       };
     };
