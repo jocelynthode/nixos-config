@@ -48,7 +48,7 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = { inherit inputs; }; # Pass flake variable
+    extraSpecialArgs = { inherit inputs hostname; }; # Pass flake variable
   };
 
   system.stateVersion = "22.11";
