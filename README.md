@@ -21,7 +21,7 @@ cd nixos-config
 
 ```bash
 nix develop
-./bootstrap.sh [--create-efi] --hostname=<hostname>--disk=/dev/to/disk
+./bootstrap.sh [--create-efi] [--encrypt-root] --hostname=<hostname>--disk=/dev/to/disk
 ```
 
 6. Setup additional secrets in `secrets.nix` for new host
@@ -36,6 +36,7 @@ nix develop
 nixos-install --no-root-password --no-channel-copy --flake ".#<hostname>"
 
 umount -R /mnt
+# if needed
 cryptsetup close <hostname>
 ```
 

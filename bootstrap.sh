@@ -80,10 +80,9 @@ sgdisk --print "${drive}"
 read -r -p "type ${drive} to confirm and overwrite partitions ~> " confirm
 if [[ ! "${confirm}" == "${drive}" ]]; then exit 1; fi
 
-wipefs -af "${drive}"
-parted "${drive}" -- mklabel gpt
-
 if [ -n "${create_efi}" ]; then
+	wipefs -af "${drive}"
+	parted "${drive}" -- mklabel gpt
 	parted "${drive}" -a optimal -- mkpart ESP fat32 1MiB 512MiB name 1 EFI
 	parted "${drive}" -a optimal -- mkpart primary 512MiB 100% name 2 "${hostname}"
 	parted "${drive}" -- set 1 esp on
