@@ -7,6 +7,7 @@
     ./hardware-configuration.nix
     ../common/global
     ../common/optional/gnome-keyring.nix
+    ../common/optional/nvidia.nix
     ../common/optional/pipewire.nix
     ../common/optional/podman.nix
     ../common/optional/scanner.nix

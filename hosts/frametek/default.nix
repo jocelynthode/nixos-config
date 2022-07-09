@@ -26,7 +26,6 @@
 
   programs = {
     dconf.enable = true;
-    kdeconnect.enable = true;
   };
 
   xdg.portal = {
