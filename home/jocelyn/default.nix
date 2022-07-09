@@ -6,7 +6,7 @@
 
     ./cli
     ./desktop/i3
-  ] ++ builtins.filter builtins.pathExists ([ ../desktop/${hostname} ]);
+  ] ++ builtins.filter builtins.pathExists ([ ./desktop/${hostname} ]);
 
   systemd.user.startServices = "sd-switch";
   programs = {
