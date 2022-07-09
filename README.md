@@ -36,6 +36,7 @@ nix develop
 nixos-install --no-root-password --no-channel-copy --flake ".#<hostname>"
 
 umount -R /mnt
+cryptsetup close <hostname>
 ```
 
 10. Reboot

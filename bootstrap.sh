@@ -1,4 +1,4 @@
-#! /usr/bin/env nix-shell
+#! /usr/bin/env bash
 #! nix-shell -i bash -p parted btrfs-progs gptfdisk cryptsetup
 set -euo pipefail
 
@@ -97,11 +97,11 @@ sleep 2
 device="/dev/disk/by-partlabel/${hostname}"
 
 if [ -n "${encrypt}" ]; then
-  echo "Creating LUKS partition"
-	cryptsetup luksFormat --verbose --verify-passphrase /dev/disk/by-partlabel/"${hostname}" 
-  cryptsetup config /dev/disk/by-partlabel/"${hostname}" --label "${hostname}_crypt"
-  cryptsetup open /dev/disk/by-partlabel/"${hostname}"
-  device="/dev/disk/by-label/${hostname}_crypt"
+	echo "Creating LUKS partition"
+	cryptsetup luksFormat --verbose --verify-passphrase /dev/disk/by-partlabel/"${hostname}"
+	cryptsetup config /dev/disk/by-partlabel/"${hostname}" --label "${hostname}_crypt"
+	cryptsetup open /dev/disk/by-partlabel/"${hostname}" "${hostname}"
+	device="/dev/mapper/${hostname}"
 fi
 
 partprobe
@@ -110,9 +110,11 @@ sleep 2
 mkfs.btrfs -fL "${hostname}" "${device}"
 
 if [ -n "${create_efi}" ]; then
-  echo "Creating EFI partition"
+	echo "Creating EFI partition"
 	mkfs.vfat -n EFI /dev/disk/by-partlabel/EFI
 fi
+
+exit 0
 
 echo "Creating BTRFS subovlumes"
 mkdir -p /mnt
