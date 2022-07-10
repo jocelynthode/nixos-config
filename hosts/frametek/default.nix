@@ -9,6 +9,7 @@
     ./hardware-configuration.nix
     ../common/global
     ../common/optional/gnome-keyring.nix
+    ../common/optional/light.nix
     ../common/optional/pipewire.nix
     ../common/optional/podman.nix
     ../common/optional/steam.nix
@@ -38,9 +39,34 @@
 
   hardware = {
     bluetooth.enable = true;
-    logitech.wireless.enable = true;
     video.hidpi.enable = true;
   };
+
+  services.thermald.enable = true;
+  services.power-profiles-daemon.enable = true;
+
+  services.upower = {
+    enable = true;
+    # Default values: 10/3/2/HybridSleep
+    percentageLow = 10;
+    percentageCritical = 5;
+    percentageAction = 3;
+    criticalPowerAction = "HybridSleep";
+  };
+
+  services.logind = {
+    lidSwitch = "suspend-then-hibernate";
+    extraConfig = ''
+      IdleAction=suspend
+      IdleActionSec=15min
+      HandlePowerKey=hibernate
+      HandlePowerKeyLongPress=poweroff
+    '';
+  };
+
+  systemd.sleep.extraConfig = ''
+    HibernateDelaySec=30min
+  '';
 
   home-manager = {
     useGlobalPkgs = true;
