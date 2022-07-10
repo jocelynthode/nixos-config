@@ -14,6 +14,7 @@
     ../common/optional/podman.nix
     ../common/optional/scanner.nix
     ../common/optional/steam.nix
+    ../common/optional/udev.nix
     ../common/optional/xserver.nix
   ];
 
