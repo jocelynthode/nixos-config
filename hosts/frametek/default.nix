@@ -3,6 +3,7 @@
     inputs.hardware.nixosModules.common-cpu-intel
     inputs.hardware.nixosModules.common-gpu-intel
     inputs.hardware.nixosModules.common-pc-laptop
+    inputs.hardware.nixosModules.common-pc-laptop-ssd
     inputs.hardware.nixosModules.framework
     inputs.home-manager.nixosModule
 
@@ -15,6 +16,7 @@
     ../common/optional/pipewire.nix
     ../common/optional/podman.nix
     ../common/optional/steam.nix
+    ../common/optional/tlp.nix
     ../common/optional/xserver.nix
   ];
 
@@ -50,9 +52,6 @@
     bluetooth.enable = true;
     video.hidpi.enable = true;
   };
-
-  services.thermald.enable = true;
-  services.power-profiles-daemon.enable = true;
 
   services.upower = {
     enable = true;

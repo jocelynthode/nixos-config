@@ -122,6 +122,9 @@ cd /mnt/
 btrfs subvolume create @
 btrfs subvolume create @blank
 mkdir -p @blank/boot/efi
+mkdir -p @blank/mnt
+mkdir -p @blank/etc
+cp /etc/machine-id @blank/etc/
 btrfs property set -ts @blank ro true
 btrfs subvolume create @nix
 btrfs subvolume create @persist

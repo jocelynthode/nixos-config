@@ -11,9 +11,6 @@
       "/var/lib/bluetooth" # Store registered bluetooth devices
       "/etc/mullvad-vpn"
     ];
-    files = [
-      "/etc/machine-id"
-    ];
     users.jocelyn = {
       directories = [
         # Base directories
