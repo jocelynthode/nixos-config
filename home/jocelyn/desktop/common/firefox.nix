@@ -27,6 +27,12 @@ in
           "dom.security.https_only_mode" = true;
           "browser.search.region" = "CH";
           "media.eme.enabled" = true;
+          "media.rdd-ffmpeg.enabled" = true;
+          "media.ffmpeg.vaapi.enabled" = true;
+          "media.navigator.mediadatadecoder_vpx_enabled" = true;
+          "media.ffvpx.enabled" = false;
+          "media.rdd-vpx.enabled" = false;
+          "media.rdd-process.enabled" = false;
           "general.useragent.locale" = "fr-CH";
           "browser.shell.checkDefaultBrowser" = true;
           "browser.shell.defaultBrowserCheckCount" = 1;
