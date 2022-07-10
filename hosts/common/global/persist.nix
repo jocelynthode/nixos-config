@@ -10,7 +10,6 @@
       "/var/lib/systemd"
       "/var/lib/bluetooth" # Store registered bluetooth devices
       "/etc/mullvad-vpn"
-      "/etc/nixos"
     ];
     files = [
       "/etc/machine-id"
@@ -32,6 +31,7 @@
         ".local/share/networkmanagement/certificates" # Store VPN certificates
         ".config/taxi"
         ".local/share/taxi"
+        ".local/share/nvim"
         ".local/share/zebra"
         { directory = ".kube"; mode = "0700"; }
 

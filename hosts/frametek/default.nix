@@ -8,6 +8,8 @@
 
     ./hardware-configuration.nix
     ../common/global
+    ../common/optional/fingerprint.nix
+    ../common/optional/plymouth.nix
     ../common/optional/gnome-keyring.nix
     ../common/optional/light.nix
     ../common/optional/pipewire.nix
@@ -15,6 +17,13 @@
     ../common/optional/steam.nix
     ../common/optional/xserver.nix
   ];
+
+  environment.persistence."/persist" = {
+    hideMounts = true;
+    directories = [
+      "/var/lib/upower"
+    ];
+  };
 
   networking = {
     networkmanager.enable = true;
