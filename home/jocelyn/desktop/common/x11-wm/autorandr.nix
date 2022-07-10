@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, config, ... }: {
 
   home.packages = with pkgs; [
     libnotify
@@ -10,7 +10,7 @@
     hooks = {
       postswitch = {
         "notify-change" = "${pkgs.libnotify}/bin/notify-send -i display 'Display profile' -t 1000 \"$AUTORANDR_CURRENT_PROFILE\"";
-        "change-background" = "${pkgs.feh}/bin/feh --bg-fill /home/jocelyn/Pictures/gruvbox/tropics.jpg";
+        "change-background" = "${pkgs.feh}/bin/feh --bg-fill  ${config.wallpaper}";
       };
     };
     profiles = {

@@ -1,4 +1,4 @@
-{ pkgs, hostname, colorscheme, inputs, config, lib, home-manager, ... }: {
+{ pkgs, hostname, colorscheme, wallpaper, inputs, config, lib, home-manager, ... }: {
   users = {
     mutableUsers = false;
     users = {
@@ -37,7 +37,9 @@
       ];
     };
     root = {
-      imports = [ ../../../home/root ];
+      imports = builtins.attrValues (import ../../../modules/home-manager) ++ [
+        ../../../home/root
+      ];
     };
   };
 }
