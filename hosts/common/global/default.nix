@@ -2,6 +2,7 @@
 { lib, inputs, hostname, ... }:
 {
   imports = [
+    ./dconf.nix
     ./rage.nix
     ./environment.nix
     ./fish.nix

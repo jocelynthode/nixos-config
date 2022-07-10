@@ -7,4 +7,10 @@
     source = ./config;
     recursive = true;
   };
+
+  dconf.settings = {
+    "com/github/wwmm/easyeffects" = {
+      use-dark-theme = true;
+    };
+  };
 }

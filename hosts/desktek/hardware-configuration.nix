@@ -1,4 +1,4 @@
-{ lib, hostname, ... }: {
+{ pkgs, lib, hostname, ... }: {
   imports = [
     ../common/optional/btrfs.nix
   ];
@@ -8,6 +8,7 @@
       availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
       kernelModules = [ "kvm-amd" ];
     };
+    kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [ "resume_offset=533760" ];
   };
 }

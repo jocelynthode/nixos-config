@@ -5,4 +5,11 @@
   };
   environment.systemPackages = [ pkgs.gnome.gnome-keyring ];
   services.dbus.packages = with pkgs; [ gnome.gnome-keyring gcr ];
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      gnome.gnome-keyring
+    ];
+  };
 }
