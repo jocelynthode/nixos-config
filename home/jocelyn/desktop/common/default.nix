@@ -39,6 +39,9 @@
       "org/blueberry" = {
         tray-enabled = false;
       };
+      "com/github/wwmm/easyeffects" = {
+        use-dark-theme = true;
+      };
     };
   };
 }
