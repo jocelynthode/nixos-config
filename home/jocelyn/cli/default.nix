@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   imports = [
+    ./direnv.nix
     ./git.nix
     ./htop.nix
     ./kubernetes.nix

@@ -1,7 +1,7 @@
 local _, configs = pcall(require, "nvim-treesitter.configs")
 
 configs.setup({
-  ensure_installed = { "bash", "go", "lua", "markdown", "javascript", "python", "rust", "toml", "yaml" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = { "bash", "go", "lua", "markdown", "markdown_inline", "javascript", "python", "rust", "toml", "yaml" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
   ignore_install = { "" }, -- List of parsers to ignore installing
   autopairs = {

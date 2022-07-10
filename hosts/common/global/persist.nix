@@ -43,6 +43,7 @@
         ".config/discord"
         ".config/Mumble"
         ".config/dconf"
+        ".config/qmk"
 
         # Local
         { directory = ".local/share/keyrings"; mode = "0700"; }
