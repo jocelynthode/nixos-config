@@ -323,11 +323,11 @@ in
             foreground = ''''${colors.base0A}'';
           };
           full = {
-            text = "<label-full>";
+            text = "<ramp-capacity> <label-full>";
             foreground = ''''${colors.base0D}'';
           };
           low = {
-            text = "<label-full>";
+            text = "<ramp-capacity> <label-low>";
             foreground = ''''${colors.base08}'';
           };
         };
