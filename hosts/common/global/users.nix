@@ -1,4 +1,4 @@
-{ pkgs, hostname, inputs, config, lib, home-manager, ... }: {
+{ pkgs, hostname, colorscheme, inputs, config, lib, home-manager, ... }: {
   users = {
     mutableUsers = false;
     users = {
