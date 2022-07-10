@@ -61,11 +61,13 @@
           inherit packages system;
           hostname = "desktek";
           colorscheme = "gruvbox-dark-hard";
+          wallpaper = "palms-tropics";
         };
         frametek = mkSystem {
           inherit packages system;
           hostname = "frametek";
           colorscheme = "gruvbox-dark-hard";
+          wallpaper = "palms-tropics";
         };
       };
     };

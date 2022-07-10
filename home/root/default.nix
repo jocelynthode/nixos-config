@@ -1,4 +1,4 @@
-{ pkgs, config, inputs, lib, home-manager, colorscheme, ... }: {
+{ pkgs, config, inputs, lib, home-manager, colorscheme, wallpaper, ... }: {
 
   imports = [
     ../common/rice
