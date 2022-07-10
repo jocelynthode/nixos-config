@@ -6,6 +6,7 @@
 
     ./hardware-configuration.nix
     ../common/global
+    ../common/optional/gamemode.nix
     ../common/optional/gnome-keyring.nix
     ../common/optional/nvidia.nix
     ../common/optional/pipewire.nix
@@ -25,9 +26,6 @@
   };
 
   programs = {
-    gamemode = {
-      enable = true;
-    };
     dconf.enable = true;
     kdeconnect.enable = true;
   };
