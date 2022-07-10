@@ -9,6 +9,7 @@ let
 
     mkSystem =
       { hostname
+      , colorscheme
       , system
       , packages
       }:
@@ -16,7 +17,7 @@ let
         inherit system;
         pkgs = packages.${system};
         specialArgs = {
-          inherit mylib inputs system hostname;
+          inherit mylib inputs system hostname colorscheme;
         };
         modules = [
           ../hosts/${hostname}

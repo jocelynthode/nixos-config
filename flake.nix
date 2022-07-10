@@ -55,14 +55,17 @@
         iso = mkSystem {
           inherit packages system;
           hostname = "iso";
+          colorscheme = "gruvbox-dark-hard";
         };
         desktek = mkSystem {
           inherit packages system;
           hostname = "desktek";
+          colorscheme = "gruvbox-dark-hard";
         };
         frametek = mkSystem {
           inherit packages system;
           hostname = "frametek";
+          colorscheme = "gruvbox-dark-hard";
         };
       };
     };
