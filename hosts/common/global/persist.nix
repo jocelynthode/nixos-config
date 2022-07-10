@@ -42,6 +42,7 @@
         ".config/pavucontrol-qt"
         ".config/discord"
         ".config/Mumble"
+        ".config/dconf"
 
         # Local
         { directory = ".local/share/keyrings"; mode = "0700"; }
