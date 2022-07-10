@@ -29,10 +29,12 @@
       "application/pdf" = "firefox.desktop";
     };
   };
+
   home.packages = with pkgs; [
     xdg-utils
     networkmanagerapplet
   ];
+
   dconf = {
     enable = true;
     settings = {

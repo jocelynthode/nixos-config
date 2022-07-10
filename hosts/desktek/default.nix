@@ -8,6 +8,7 @@
     ../common/global
     ../common/optional/gamemode.nix
     ../common/optional/gnome-keyring.nix
+    ../common/optional/kdeconnect.nix
     ../common/optional/nvidia.nix
     ../common/optional/pipewire.nix
     ../common/optional/podman.nix
@@ -21,23 +22,6 @@
     wireguard.enable = true;
   };
 
-  boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
-  };
-
-  programs = {
-    dconf.enable = true;
-    kdeconnect.enable = true;
-  };
-
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-      gnome.gnome-keyring
-    ];
-  };
-
   hardware = {
     bluetooth.enable = true;
     logitech.wireless.enable = true;
@@ -48,7 +32,5 @@
     useUserPackages = true;
     extraSpecialArgs = { inherit inputs hostname; }; # Pass flake variable
   };
-
-  system.stateVersion = "22.11";
 }
 
