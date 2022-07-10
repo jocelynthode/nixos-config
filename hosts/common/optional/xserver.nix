@@ -1,4 +1,5 @@
 { config, pkgs, inputs, ... }: {
+  hardware.opengl.enable = true;
   services.xserver = {
     enable = true;
     layout = "us";
