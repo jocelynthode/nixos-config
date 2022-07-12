@@ -12,6 +12,10 @@
     };
   };
 
+  environment.systemPackages = with pkgs; [
+    podman-compose
+  ];
+
   environment.persistence = {
     "/persist" = {
       directories = [
