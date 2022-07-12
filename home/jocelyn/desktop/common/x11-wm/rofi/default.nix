@@ -1,7 +1,6 @@
 { pkgs, config, ... }:
 {
   home.packages = with pkgs; [
-    networkmanager_dmenu
     rofi-power-menu
     rofi-rbw
   ];
@@ -31,14 +30,4 @@
     recursive = true;
   };
 
-  xdg.configFile."networkmanager-dmenu/config.ini" = {
-    text = ''
-      [dmenu]
-      dmenu_command = ${pkgs.rofi}/bin/rofi -dmenu -i -theme ~/.config/rofi/networkmenu.rasi
-      rofi_highlight = True
-
-      [dmenu_passphrase]
-      obscure = True
-    '';
-  };
 }

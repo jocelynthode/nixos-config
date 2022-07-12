@@ -7,7 +7,6 @@ let
   systemctl = "${pkgs.systemd}/bin/systemctl";
   gamemoded = "${pkgs.gamemode}/bin/gamemoded";
   playerctl = "${pkgs.playerctl}/bin/playerctl";
-  networkmanager_dmenu = "${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu";
   blueberry = "${pkgs.blueberry}/bin/blueberry";
   rofi-pulse = "${pkgs.rofi-pulse}/bin/rofi-pulse";
   home-pkgs = (import ../../../pkgs { inherit pkgs config; });
@@ -253,7 +252,7 @@ in
         "inherit" = "network-base";
         interface.type = "wired";
         label.connected = {
-          text = "%{A1:${networkmanager_dmenu} &:}%{F#${colors.base0C}} %downspeed%%{F-} %{F#${colors.base0D}}祝 %upspeed%%{F-}%{A}";
+          text = "%{F#${colors.base0C}} %downspeed%%{F-} %{F#${colors.base0D}}祝 %upspeed%%{F-}";
           foreground = ''''${colors.base0B}'';
         };
       };
@@ -262,7 +261,7 @@ in
         "inherit" = "network-base";
         interface.type = "wireless";
         label.connected = {
-          text = "%{A1:${networkmanager_dmenu} &:}%{F#${colors.base0C}} %downspeed%%{F-} %{F#${colors.base0D}}祝 %upspeed%%{F-}%{A}";
+          text = "%{F#${colors.base0C}} %downspeed%%{F-} %{F#${colors.base0D}}祝 %upspeed%%{F-}";
           foreground = ''''${colors.base0B}'';
         };
       };
