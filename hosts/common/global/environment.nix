@@ -18,6 +18,7 @@
       blueberry
       any-nix-shell
       fs-diff
+      moreutils
     ];
   };
 }
