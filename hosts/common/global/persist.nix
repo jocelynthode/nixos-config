@@ -51,6 +51,7 @@
         ".local/share/Mumble"
         ".local/state/wireplumber" # Store default sinks/sources
         ".local/share/Steam"
+        ".local/share/containers"
 
         # Cache
         { directory = ".cache/rbw"; mode = "0700"; } # Store database cache
