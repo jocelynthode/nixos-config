@@ -52,6 +52,7 @@
         ".local/state/wireplumber" # Store default sinks/sources
         ".local/share/Steam"
         ".local/share/containers"
+        ".local/share/direnv"
 
         # Cache
         { directory = ".cache/rbw"; mode = "0700"; } # Store database cache
