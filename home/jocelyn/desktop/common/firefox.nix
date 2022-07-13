@@ -15,6 +15,7 @@ in
       don-t-fuck-with-paste
       betterttv
       multi-account-containers
+      bitwarden
     ];
     profiles = {
       jocelyn = {
