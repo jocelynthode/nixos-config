@@ -7,6 +7,8 @@ pkgs.writeShellApplication {
   runtimeInputs = with pkgs; [ mpv ];
 
   text = ''
-    mpv ~/.config/dunst/sound.wav 
+    blacklist=( "Spotify" )
+
+    [[ ! " ''${blacklist[@]} " =~ " $1 " ]] && mpv ~/.config/dunst/sound.wav
   '';
 }
