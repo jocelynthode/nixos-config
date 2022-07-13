@@ -11,5 +11,6 @@
   rofi-pulse = pkgs.callPackage ./core/rofi-pulse { };
   toggle-bluetooth = pkgs.callPackage ./core/toggle-bluetooth { };
   fs-diff = pkgs.callPackage ./core/fs-diff { };
+  dunst-notification-sound = pkgs.callPackage ./core/dunst-notification-sound { };
 }
 
