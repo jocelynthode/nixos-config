@@ -2,8 +2,14 @@
 
 let
   inherit (config.colorscheme) colors;
+  sound_script = "${pkgs.dunst-notification-sound}/bin/dunst-notification-sound";
 in
 {
+  xdg.configFile."dunst" = {
+    source = ./files;
+    recursive = true;
+  };
+
   services.dunst = {
     enable = true;
     iconTheme = {
@@ -24,6 +30,12 @@ in
         frame_color = "#${colors.base0C}FF";
         separator_color = "frame";
       };
+
+      play_sound = {
+        summary = "*";
+        script = sound_script;
+      };
+
       urgency_low = {
         fullscreen = "delay";
         background = "#${colors.base01}CC";
