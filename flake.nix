@@ -2,7 +2,9 @@
   description = "NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # TODO switch back when pr on grammars is merged
+    nixpkgs.url = "github:jocelynthode/nixpkgs/update-grammars";
 
     home-manager = {
       url = "github:nix-community/home-manager";
