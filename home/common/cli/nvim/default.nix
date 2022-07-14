@@ -68,7 +68,8 @@
       nodePackages.vscode-json-languageserver
       nodePackages.vim-language-server
       nodePackages.dockerfile-language-server-nodejs
-      pyright
+      python3Packages.python-lsp-server
+      python3Packages.pyls-isort
       rnix-lsp
       rust-analyzer
       shellcheck
@@ -80,6 +81,8 @@
       nodePackages.prettier
       gitlint
       shfmt
+      black
+      python3Packages.isort
     ];
     # We must require plugin before colorscheme
     extraConfig = ''

@@ -4,7 +4,7 @@ local servers = {
   bashls = {},
   gopls = {},
   dockerls = {},
-  pyright = {},
+  pylsp = {},
   rnix = {},
   rust_analyzer = {},
   terraformls = {},
@@ -170,6 +170,10 @@ local on_attach = function(client, bufnr)
     client.resolved_capabilities.document_formatting = true
   end
 
+  if client.name == "pylsp" then
+    client.resolved_capabilities.document_formatting = false
+  end
+
   lsp_keymaps(bufnr)
   lsp_highlight_document(client)
   lsp_format_on_save(client, bufnr)
@@ -212,6 +216,9 @@ null_ls.setup({
     -- Shell
     formatting.shfmt,
     diagnostics.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
+    -- Python
+    formatting.black,
+    formatting.isort,
   },
   on_attach = lsp_format_on_save,
 })
