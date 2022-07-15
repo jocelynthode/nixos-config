@@ -103,16 +103,22 @@ cmp.setup({
         luasnip = "[Snippet]",
         buffer = "[Buffer]",
         path = "[Path]",
+        dap = "[DAP]",
       })[entry.source.name]
       return vim_item
     end,
   },
+  enabled = function()
+    return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt"
+        or require("cmp_dap").is_dap_buffer()
+  end,
   sources = {
     { name = "nvim_lsp" },
     { name = "nvim_lua" },
     { name = "luasnip" },
     { name = "buffer" },
     { name = "path" },
+    { name = 'dap' },
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,

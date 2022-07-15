@@ -8,7 +8,7 @@
     vimAlias = true;
     vimdiffAlias = true;
 
-    withPython3 = false;
+    withPython3 = true;
     withNodeJs = false;
     withRuby = false;
 
@@ -27,6 +27,7 @@
       nvim-ts-context-commentstring
       telescope-ui-select-nvim
       telescope-fzf-native-nvim
+      telescope-dap-nvim
       vim-fugitive
       cmp-nvim-lsp
       cmp-nvim-lua
@@ -34,11 +35,16 @@
       cmp-path
       cmp-cmdline
       cmp_luasnip
+      cmp-dap
       luasnip
       friendly-snippets
       null-ls-nvim
       SchemaStore-nvim
       taxi-vim
+      nvim-dap-ui
+      nvim-dap-python
+      { plugin = nvim-dap; config = builtins.readFile ./plugins/dap.lua; type = "lua"; }
+      { plugin = nvim-dap-virtual-text; config = "require('nvim-dap-virtual-text').setup()\n"; type = "lua"; }
       { plugin = nvim-lspconfig; config = builtins.readFile ./plugins/lsp.lua; type = "lua"; }
       { plugin = (nvim-treesitter.withPlugins (_: pkgs.tree-sitter.allGrammars)); config = builtins.readFile ./plugins/treesitter.lua; type = "lua"; }
       { plugin = gitsigns-nvim; config = builtins.readFile ./plugins/gitsigns.lua; type = "lua"; }
@@ -57,8 +63,8 @@
       { plugin = alpha-nvim; config = builtins.readFile ./plugins/alpha.lua; type = "lua"; }
       { plugin = which-key-nvim; config = builtins.readFile ./plugins/whichkey.lua; type = "lua"; }
       { plugin = nvim-cmp; config = builtins.readFile ./plugins/cmp.lua; type = "lua"; }
-
     ];
+
     extraPackages = with pkgs; [
       gcc
       fzf
@@ -68,8 +74,10 @@
       nodePackages.vscode-json-languageserver
       nodePackages.vim-language-server
       nodePackages.dockerfile-language-server-nodejs
+      # Needed to make binaries avalable on path
       python3Packages.python-lsp-server
-      python3Packages.pyls-isort
+      python3Packages.isort
+
       rnix-lsp
       rust-analyzer
       shellcheck
@@ -82,8 +90,15 @@
       gitlint
       shfmt
       black
-      python3Packages.isort
     ];
+
+    extraPython3Packages = (ps: with ps; [
+      python-lsp-server
+      pyls-isort
+      isort
+      debugpy
+    ]);
+
     # We must require plugin before colorscheme
     extraConfig = ''
       lua require('base16-colorscheme').with_config {telescope = false}
