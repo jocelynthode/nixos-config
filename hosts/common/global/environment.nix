@@ -14,6 +14,7 @@
       neovim
       wget
       curl
+      python3
       fzf
       blueberry
       any-nix-shell
