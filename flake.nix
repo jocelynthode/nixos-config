@@ -4,7 +4,7 @@
   inputs = {
     # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # TODO switch back when pr on grammars is merged
-    nixpkgs.url = "github:jocelynthode/nixpkgs/update-grammars";
+    nixpkgs.url = "github:jocelynthode/nixpkgs/with-fixes";
 
     home-manager = {
       url = "github:nix-community/home-manager";
