@@ -8,7 +8,7 @@
       defaultSession = "none+i3";
       lightdm = {
         enable = true;
-        background = "/home/jocelyn/Pictures/gruvbox/cascade.jpg";
+        background = pkgs.wallpapers.cascade-fisher;
         greeters.gtk = {
           enable = true;
           theme = {

@@ -9,7 +9,7 @@
     name = "cascade-fisher";
     ext = "jpeg";
     id = "QAZ5aY0";
-    sha256 = "37960043fa6d753c7e88c0b62df4bdbc3845e02006c41999a9a9580646cbecf5";
+    sha256 = "sha256-RHSZ5UaWXvHVwMVcc105XyVfvBsiX6VE51S+T+2DS/A=";
   }
   {
     name = "japan-road-anime";
