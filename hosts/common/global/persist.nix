@@ -64,8 +64,6 @@
         { directory = ".gnupg"; mode = "0700"; }
         ".mozilla/firefox"
         ".steam"
-        # TODO remove
-        ".dotfiles"
       ];
     };
     users.root = {

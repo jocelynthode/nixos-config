@@ -28,6 +28,12 @@
       mark-ovredir-focused = true;
       detect-rounded-corners = true;
       detect-client-opacity = true;
+      wintypes = {
+        popup_menu = { opacity = "0.85"; };
+        dropdown_menu = { opacity = "0.85"; };
+        dock = { shadow = false; clip-shadow-above = true; };
+        dnd = { shadow = false; };
+      };
     };
   };
 }
