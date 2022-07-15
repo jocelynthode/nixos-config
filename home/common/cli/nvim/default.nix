@@ -43,8 +43,8 @@
       taxi-vim
       nvim-dap-ui
       nvim-dap-python
+      nvim-dap-virtual-text
       { plugin = nvim-dap; config = builtins.readFile ./plugins/dap.lua; type = "lua"; }
-      { plugin = nvim-dap-virtual-text; config = "require('nvim-dap-virtual-text').setup()\n"; type = "lua"; }
       { plugin = nvim-lspconfig; config = builtins.readFile ./plugins/lsp.lua; type = "lua"; }
       { plugin = (nvim-treesitter.withPlugins (_: pkgs.tree-sitter.allGrammars)); config = builtins.readFile ./plugins/treesitter.lua; type = "lua"; }
       { plugin = gitsigns-nvim; config = builtins.readFile ./plugins/gitsigns.lua; type = "lua"; }

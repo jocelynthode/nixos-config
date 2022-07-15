@@ -1,6 +1,5 @@
 local dap, dapui = require "dap", require "dapui"
 
-
 local dap_breakpoint = {
   breakpoint = {
     text = "",
@@ -38,3 +37,4 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 end
 
 require('dap-python').setup(vim.g.python3_host_prog)
+require('nvim-dap-virtual-text').setup()
