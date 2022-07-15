@@ -74,9 +74,6 @@
       nodePackages.vscode-json-languageserver
       nodePackages.vim-language-server
       nodePackages.dockerfile-language-server-nodejs
-      # Needed to make binaries avalable on path
-      python3Packages.python-lsp-server
-      python3Packages.isort
 
       rnix-lsp
       rust-analyzer
@@ -89,13 +86,13 @@
       nodePackages.prettier
       gitlint
       shfmt
-      black
     ];
 
+    # use python3_host_prog as python path to use here
     extraPython3Packages = (ps: with ps; [
       python-lsp-server
+      python-lsp-black
       pyls-isort
-      isort
       debugpy
     ]);
 
