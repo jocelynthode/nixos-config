@@ -10,7 +10,7 @@
     };
     Service = {
       Type = "simple";
-      ExecStart = "${pkgs.solaar}/bin/solaar --restart-on-wake-up --window=hide";
+      ExecStart = "${pkgs.solaar}/bin/solaar --restart-on-wake-up --window=hide --battery-icons symbolic";
       KillMode = "process";
       Restart = "on-failure";
     };
