@@ -9,7 +9,6 @@ die() {
 
 needs_arg() { if [ -z "$OPTARG" ]; then die "No arg for --$OPT option"; fi; }
 
-create_efi=""
 encrypt=""
 drive=""
 hostname=""
@@ -30,7 +29,6 @@ while getopts h:-: OPT; do
 		OPTARG="${OPTARG#=}"     # if long option argument, remove assigning `=`
 	fi
 	case "$OPT" in
-	create-efi) create_efi=true ;;
 	encrypt-root) encrypt=true ;;
 	hostname)
 		needs_arg
@@ -48,7 +46,6 @@ while getopts h:-: OPT; do
 		echo "Usage:"
 		echo "bootstrap.sh -h "
 		echo ""
-		echo "   --create-efi         to create the EFI partition"
 		echo "   --encrypt-root       to encrypt root disk"
 		echo "   --hostname HOSTNAME  to specify the hostname to build"
 		echo "   --disk DISK_PATH     to specify the disk to use"
@@ -80,15 +77,11 @@ sgdisk --print "${drive}"
 read -r -p "type ${drive} to confirm and overwrite partitions ~> " confirm
 if [[ ! "${confirm}" == "${drive}" ]]; then exit 1; fi
 
-if [ -n "${create_efi}" ]; then
-	wipefs -af "${drive}"
-	parted "${drive}" -- mklabel gpt
-	parted "${drive}" -a optimal -- mkpart ESP fat32 1MiB 512MiB name 1 EFI
-	parted "${drive}" -a optimal -- mkpart primary 512MiB 100% name 2 "${hostname}"
-	parted "${drive}" -- set 1 esp on
-else
-	parted "${drive}" -a optimal -- mkpart primary 1MiB 100% name 1 "${hostname}"
-fi
+wipefs -af "${drive}"
+parted "${drive}" -- mklabel gpt
+parted "${drive}" -a optimal -- mkpart ESP fat32 1MiB 512MiB name 1 EFI
+parted "${drive}" -a optimal -- mkpart primary 512MiB 100% name 2 "${hostname}"
+parted "${drive}" -- set 1 esp on
 
 partprobe "${drive}"
 sleep 2
@@ -108,10 +101,8 @@ sleep 2
 
 mkfs.btrfs -fL "${hostname}" "${device}"
 
-if [ -n "${create_efi}" ]; then
-	echo "Creating EFI partition"
-	mkfs.vfat -n EFI /dev/disk/by-partlabel/EFI
-fi
+echo "Creating EFI partition"
+mkfs.vfat -n EFI /dev/disk/by-partlabel/EFI
 
 exit 0
 
@@ -167,4 +158,4 @@ echo "Printing public host key"
 cat /mnt/persist/etc/ssh/ssh_host_ed25519_key.pub
 
 echo ""
-echo "IFF you did not see any errors, setup copy the public key to the correct file, rekey your secrets and install"
+echo "IFF you did not see any errors, rekey your secrets and install"
