@@ -21,7 +21,8 @@ cd nixos-config
 
 ```bash
 nix develop
-./bootstrap.sh [--create-efi] [--encrypt-root] --hostname=<hostname>--disk=/dev/to/disk
+# This will wipe the disk and create a bootloader
+./bootstrap.sh [--encrypt-root] --hostname=<hostname> --disk=/dev/to/disk
 ```
 
 6. Setup additional secrets in `secrets.nix` for new host
@@ -33,7 +34,7 @@ nix develop
 9. Bootstrap system
 
 ```bash
-nixos-install --no-root-password --no-channel-copy --flake ".#<hostname>"
+nixos-install --no-root-password --flake ".#<hostname>"
 
 umount -R /mnt
 # if needed
