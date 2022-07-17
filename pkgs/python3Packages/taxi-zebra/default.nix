@@ -2,24 +2,16 @@
 
 python3Packages.buildPythonPackage rec {
   pname = "taxi-zebra";
-  version = "3.0.0";
+  version = "3.0.1";
 
   src = fetchFromGitHub {
     owner = "liip";
     repo = "taxi-zebra";
     rev = version;
-    sha256 = "sha256-aX3oiW0+qCHte0GzcNpUwPuubSexfqiGXaWoPY4JWi0=";
+    sha256 = "sha256-5Sy/goElwLGt2Sg05Z8G04vsEZsTKCZKsI1/wQNifTI=";
   };
 
-  prePatch = ''
-    substituteInPlace setup.py \
-        --replace "taxi~=6.0" ""
-  '';
-
-  propagatedBuildInputs = with python3Packages; [ requests click ];
-
-  # No tests
-  doCheck = false;
+  propagatedBuildInputs = with python3Packages; [ taxi requests click ];
 
   meta = with lib; {
     homepage = "https://github.com/liip/taxi-zebra";
