@@ -1,4 +1,4 @@
-{ inputs, ... }: final: prev:
+{ inputs, system, ... }: final: prev:
 let
   inherit (inputs.nix-colors.lib-contrib { pkgs = final; }) gtkThemeFromScheme;
   inherit (inputs.nix-colors) colorSchemes;
@@ -21,11 +21,10 @@ rec {
     tide = prev.pkgs.callPackage ../pkgs/fishPlugins/tide { };
   };
 
-  python3Packages = prev.python3Packages // {
-    taxi = prev.pkgs.callPackage ../pkgs/python3Packages/taxi { };
-    taxi-zebra = prev.pkgs.callPackage ../pkgs/python3Packages/taxi-zebra { };
-  };
-
-  generated-gtk-themes = mapAttrs (_: scheme: gtkThemeFromScheme { inherit scheme; }) colorSchemes;
+  generated-gtk-themes = mapAttrs
+    (_: scheme: gtkThemeFromScheme {
+      inherit scheme;
+    })
+    colorSchemes;
 
 } // import ../pkgs { pkgs = final; }

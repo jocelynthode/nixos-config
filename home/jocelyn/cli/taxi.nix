@@ -1,5 +1,9 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
-    (taxi-cli.override { backends = [ python3Packages.taxi-zebra ]; })
+    (taxi-cli.withPlugins (
+      plugins: with plugins; [
+        zebra
+      ]
+    ))
   ];
 }
