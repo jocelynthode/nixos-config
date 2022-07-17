@@ -1,4 +1,5 @@
 { lib
+, fetchFromGitHub
 , python3Packages
 , backends ? [ ]
 }:
@@ -7,14 +8,14 @@ python3Packages.buildPythonPackage rec {
   pname = "taxi";
   version = "6.1.1";
 
-  src = python3Packages.fetchPypi {
-    inherit version;
-    pname = "taxi";
-    sha256 = "b2562ed58bd6eae7896f4f8e48dbee9845cd2d452b26dd15c26f839b4864cb02";
+  src = fetchFromGitHub {
+    owner = "sephii";
+    repo = "taxi";
+    rev = version;
+    sha256 = "sha256-iIy3odDX3QzVG80AFp81m8AYKES4JjlDp49GGpuIHLI=";
   };
 
-  # No tests in pypy package
-  doCheck = false;
+  checkInputs = with python3Packages; [ pytest pytestrunner freezegun ];
 
   propagatedBuildInputs = with python3Packages; [
     appdirs
