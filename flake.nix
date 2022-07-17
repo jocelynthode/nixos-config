@@ -21,6 +21,7 @@
     nix-colors.url = "github:misterio77/nix-colors";
     hardware.url = "github:nixos/nixos-hardware";
     impermanence.url = "github:nix-community/impermanence";
+    taxi.url = "github:jocelynthode/taxi/update-flake";
   };
 
   outputs = inputs:
@@ -34,9 +35,10 @@
     in
     rec {
       overlays = {
-        default = import ./overlay { inherit inputs; };
+        default = import ./overlay { inherit inputs system; };
         nur = inputs.nur.overlay;
         ragenix = inputs.ragenix.overlay;
+        taxi-cli = inputs.taxi.overlay;
       };
 
       packages = forAllSystems (system:
