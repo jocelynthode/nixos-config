@@ -130,14 +130,14 @@ echo "Mounting BTRFS subvolumes"
 mount -t btrfs -o subvol=@ "${device}" /mnt
 mkdir -p /mnt/nix
 mkdir -p /mnt/persist
+mkdir -p /mnt/persist/.snapshots
 mkdir -p /mnt/var/log
-mkdir -p /mnt/.snapshots
 mkdir -p /mnt/swap
 mkdir -p /mnt/boot/efi
 mount -t btrfs -o subvol=@nix "${device}" /mnt/nix
 mount -t btrfs -o subvol=@persist "${device}" /mnt/persist
 mount -t btrfs -o subvol=@log "${device}" /mnt/var/log
-mount -t btrfs -o subvol=@snapshots "${device}" /mnt/.snapshots
+mount -t btrfs -o subvol=@snapshots "${device}" /mnt/persist/.snapshots
 mount -t btrfs -o subvol=@swap "${device}" /mnt/swap
 mount /dev/disk/by-partlabel/EFI /mnt/boot/efi
 
