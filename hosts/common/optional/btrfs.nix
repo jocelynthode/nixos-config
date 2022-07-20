@@ -49,7 +49,7 @@
       neededForBoot = true;
     };
 
-    "/.snapshots" = {
+    "/persist/.snapshots" = {
       device = "/dev/disk/by-label/${hostname}";
       fsType = "btrfs";
       options = [ "defaults" "noatime" "compress=zstd:1" "subvol=@snapshots" ];

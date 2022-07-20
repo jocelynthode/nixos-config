@@ -16,6 +16,7 @@
     ../common/optional/pipewire.nix
     ../common/optional/plymouth.nix
     ../common/optional/podman.nix
+    ../common/optional/snapper.nix
     ../common/optional/steam.nix
     ../common/optional/tlp.nix
     ../common/optional/xserver.nix

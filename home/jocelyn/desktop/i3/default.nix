@@ -14,6 +14,7 @@
     pulseaudio # pactl
     rofi-rbw
     ponymix
+    deluge
   ];
 
   xsession =

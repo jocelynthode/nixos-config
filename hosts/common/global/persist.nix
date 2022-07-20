@@ -44,6 +44,7 @@
         ".config/Mumble"
         ".config/dconf"
         ".config/qmk"
+        ".config/deluge"
 
         # Local
         { directory = ".local/share/keyrings"; mode = "0700"; }
