@@ -18,7 +18,7 @@ in
     };
     package = pkgs.nixUnstable;
     extraOptions = ''
-      experimental-features = nix-command flakes
+      experimental-features = nix-command flakes repl-flake
       keep-outputs = true
       keep-derivations = true
     '';
