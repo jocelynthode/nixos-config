@@ -193,6 +193,8 @@
             "XF86AudioRaiseVolume" = "exec --no-startup-id ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%";
             "XF86AudioLowerVolume" = "exec --no-startup-id ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%";
             "XF86AudioPlay" = "exec --no-startup-id ${pkgs.playerctl}/bin/playerctl --player spotify play-pause";
+            "Print" = "exec --no-startup-id ${pkgs.gnome.gnome-screenshot}/bin/gnome-screenshot -i";
+            "${alt}+Print" = "exec --no-startup-id ${pkgs.gnome.gnome-screenshot}/bin/gnome-screenshot -c -w";
           };
           assigns = {
             "3" = [
