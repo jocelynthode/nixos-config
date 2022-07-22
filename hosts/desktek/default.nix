@@ -12,6 +12,7 @@
     ../common/optional/nvidia.nix
     ../common/optional/pipewire.nix
     ../common/optional/podman.nix
+    ../common/optional/restic.nix
     ../common/optional/scanner.nix
     ../common/optional/snapper.nix
     ../common/optional/steam.nix

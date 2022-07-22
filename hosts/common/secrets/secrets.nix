@@ -8,4 +8,6 @@ let
 in
 {
   "jocelyn-password.age".publicKeys = [ jocelyn ] ++ systems;
+  "restic-password.age".publicKeys = [ jocelyn ] ++ systems;
+  "restic-env.age".publicKeys = [ jocelyn ] ++ systems;
 }
