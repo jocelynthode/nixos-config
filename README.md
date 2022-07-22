@@ -57,6 +57,10 @@ sudo nixos-rebuild switch --flake github:jocelynthode/nixos-config
 
 ```bash
 nix develop
+cd hosts/common/secrets
+# Add secret path to secrets.nixos
+nvim secrets.nix
+# Then create file
 ragenix -e file.age
 ```
 
