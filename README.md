@@ -78,3 +78,7 @@ dd if=result/iso/*.iso of=/dev/sdX status=progress
 sync
 
 ```
+
+# Showcase
+
+![fakebusy](https://i.imgur.com/wmurHSd.png)
