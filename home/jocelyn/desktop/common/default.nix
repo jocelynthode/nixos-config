@@ -2,6 +2,7 @@
 {
   imports = [
     ./bitwarden.nix
+    ./calibre.nix
     ./discord.nix
     ./dragon.nix
     ./easyeffects

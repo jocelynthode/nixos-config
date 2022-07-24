@@ -45,6 +45,7 @@
         ".config/dconf"
         ".config/qmk"
         ".config/deluge"
+        ".config/calibre"
 
         # Local
         { directory = ".local/share/keyrings"; mode = "0700"; }
