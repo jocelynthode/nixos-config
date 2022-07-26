@@ -20,6 +20,16 @@ in
     profiles = {
       jocelyn = {
         bookmarks = { };
+        userChrome = ''
+          /* Hide tab bar in FF Quantum */
+          #TabsToolbar {
+            display: none;
+          }
+
+          #sidebar-header {
+            display: none;
+          }
+        '';
         settings = {
           "browser.startup.homepage" = "about:blank";
           "browser.startup.page" = 3;
@@ -38,6 +48,7 @@ in
           "browser.shell.checkDefaultBrowser" = true;
           "browser.shell.defaultBrowserCheckCount" = 1;
           "browser.bookmarks.showMobileBookmarks" = true;
+          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         };
       };
     };
