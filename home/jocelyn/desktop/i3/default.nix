@@ -36,16 +36,16 @@
           modifier = mod;
           bars = [ ]; # use kde panels instead
           workspaceOutputAssign = [
-            { workspace = "1"; output = "DP4 eDP1 DP-2"; }
-            { workspace = "2"; output = "DP4 eDP1 DP-2"; }
-            { workspace = "3"; output = "DP4 eDP1 DP-2"; }
-            { workspace = "4"; output = "DP4 eDP1 DP-2"; }
-            { workspace = "5"; output = "DP4 eDP1 DP-2"; }
-            { workspace = "6"; output = "eDP1 DP4 HDMI-0"; }
-            { workspace = "7"; output = "eDP1 DP4 HDMI-0"; }
-            { workspace = "8"; output = "eDP1 DP4 HDMI-0"; }
-            { workspace = "9"; output = "eDP1 DP4 HDMI-0"; }
-            { workspace = "10"; output = "eDP1 DP4 HDMI-0"; }
+            { workspace = "1"; output = "DP-4 eDP-1 DP-2"; }
+            { workspace = "2"; output = "DP-4 eDP-1 DP-2"; }
+            { workspace = "3"; output = "DP-4 eDP-1 DP-2"; }
+            { workspace = "4"; output = "DP-4 eDP-1 DP-2"; }
+            { workspace = "5"; output = "DP-4 eDP-1 DP-2"; }
+            { workspace = "6"; output = "eDP-1 DP-4 HDMI-0"; }
+            { workspace = "7"; output = "eDP-1 DP-4 HDMI-0"; }
+            { workspace = "8"; output = "eDP-1 DP-4 HDMI-0"; }
+            { workspace = "9"; output = "eDP-1 DP-4 HDMI-0"; }
+            { workspace = "10"; output = "eDP-1 DP-4 HDMI-0"; }
           ];
           window = {
             titlebar = false;
