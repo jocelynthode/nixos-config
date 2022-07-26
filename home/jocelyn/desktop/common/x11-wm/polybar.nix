@@ -48,7 +48,7 @@ in
 
       "bar/main" = {
         width = "100%";
-        height = "24pt";
+        height = "2.5%";
         radius = 0;
         background = ''''${colors.transparent-base00}'';
         foreground = ''''${colors.base07}'';
