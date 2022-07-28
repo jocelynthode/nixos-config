@@ -28,7 +28,7 @@
       inherit (builtins) attrValues;
       inherit (inputs.nixpkgs.lib) genAttrs systems;
       inherit (my-lib) mkSystem importAttrset;
-      forAllSystems = genAttrs systems.flakeExposed;
+      forDefaultSystems = genAttrs inputs.flake-utils.lib.defaultSystems;
       system = inputs.flake-utils.lib.system.x86_64-linux;
     in
     rec {
@@ -39,7 +39,7 @@
         taxi-cli = inputs.taxi.overlay;
       };
 
-      packages = forAllSystems (system:
+      legacyPackages = forDefaultSystems (system:
         import inputs.nixpkgs {
           inherit system;
           overlays = attrValues overlays;
@@ -47,26 +47,27 @@
         }
       );
 
-      devShells = forAllSystems (system: {
-        default = import ./shell.nix { pkgs = packages.${system}; };
+      devShells = forDefaultSystems (system: {
+        default = import ./shell.nix { pkgs = legacyPackages.${system}; };
       });
-
-      homeManagerModules = importAttrset ./modules/home-manager;
 
       nixosConfigurations = {
         iso = mkSystem {
-          inherit packages system;
+          inherit system;
+          packages = legacyPackages;
           hostname = "iso";
           colorscheme = "gruvbox-dark-hard";
         };
         desktek = mkSystem {
-          inherit packages system;
+          inherit system;
+          packages = legacyPackages;
           hostname = "desktek";
           colorscheme = "gruvbox-dark-hard";
           wallpaper = "palms-tropics";
         };
         frametek = mkSystem {
-          inherit packages system;
+          inherit system;
+          packages = legacyPackages;
           hostname = "frametek";
           colorscheme = "gruvbox-dark-hard";
           wallpaper = "palms-tropics";
