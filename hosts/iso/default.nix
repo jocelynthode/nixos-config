@@ -1,4 +1,4 @@
-{ pkgs, inputs, config, hostname, ... }: {
+{ pkgs, inputs, config, hostname, colorscheme, wallpaper, ... }: {
   imports = [
     inputs.home-manager.nixosModule
     "${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
@@ -8,13 +8,14 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = { inherit inputs; }; # Pass flake variable
-    users.root = {
-      imports = [ ./../../home/root ];
-    };
+    users.root.imports = builtins.attrValues (import ./../../modules/home-manager) ++ [
+      ./../../home/root
+    ];
+    extraSpecialArgs = { inherit inputs hostname colorscheme wallpaper; }; # Pass flake variable
   };
 
   networking = {
+    wireless.enable = false;
     networkmanager.enable = true;
   };
 
