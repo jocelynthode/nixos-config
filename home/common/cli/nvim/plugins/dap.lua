@@ -36,5 +36,9 @@ dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
 
-require('dap-python').setup(vim.g.python3_host_prog)
+local dap_python = require "dap-python"
+
+dap_python.setup(vim.g.python3_host_prog)
+dap_python.test_runner = 'pytest'
+
 require('nvim-dap-virtual-text').setup()
