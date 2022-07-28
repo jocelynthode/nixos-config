@@ -93,6 +93,12 @@ local mappings = {
     o = { "<cmd>lua require'dap'.step_over()<cr>", "Step Over" },
     u = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
     p = { "<cmd>lua require'dap'.pause().toggle()<cr>", "Toggle Pause" },
+    P = {
+      name = "Python",
+      m = { "<cmd>lua require('dap-python').test_method()<cr>", "Debug Method" },
+      c = { "<cmd>lua require('dap-python').test_class()<cr>", "Debug Class" },
+      s = { "<cmd>lua require('dap-python').debug_selection()<cr>", "Debug Selection" },
+    },
     r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
     s = { "<cmd>lua require'dap'.continue()<cr>", "Start" },
     q = { "<cmd>lua require'dap'.close()<cr>", "Quit" },
