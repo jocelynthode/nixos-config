@@ -8,9 +8,11 @@ in
     settings = {
       substituters = [
         "https://nix-community.cachix.org"
+        "https://tekila.cachix.org"
       ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "tekila.cachix.org-1:Ujkoh3GxcP2pnxmUzMPqBasUVmnI61TUry0VaL0uD68="
       ];
 
       trusted-users = [ "root" "@wheel" ];

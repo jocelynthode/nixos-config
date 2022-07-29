@@ -10,6 +10,7 @@
     ./taxi.nix
   ];
   home.packages = with pkgs; [
+    cachix
     fd
     ripgrep
     delta
