@@ -1,0 +1,23 @@
+name: Iso
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+    paths:
+      - 'hosts/iso'
+      - 'home/root'
+      - 'flake.lock'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.4.0
+      - name: 'Install Nix'
+        uses: cachix/install-nix-action@v15
+      - name: 'Check NixOS Flake'
+        run: nix flake check
+      - name: 'Build Iso'
+        run: nix build '.#nixosConfigurations.iso.config.system.build.isoImage'
