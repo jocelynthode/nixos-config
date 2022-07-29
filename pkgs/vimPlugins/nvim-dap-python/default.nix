@@ -1,6 +1,6 @@
 { lib, vimUtils, fetchFromGitHub, ... }:
 
-vimUtils.buildVimPluginFrom2Nix {
+vimUtils.buildVimPlugin {
   pname = "nvim-dap-python";
   version = "2022-07-14";
   src = fetchFromGitHub {

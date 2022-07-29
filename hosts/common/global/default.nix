@@ -1,5 +1,5 @@
 # This file (and the global directory) holds config that i use on all hosts
-{ lib, inputs, hostname, ... }:
+{ lib, inputs, hostname, config, ... }:
 {
   imports = [
     ./dconf.nix
@@ -21,8 +21,15 @@
   systemd.targets.network-online.wantedBy = lib.mkForce [ ]; # Normally ["multi-user.target"]
   systemd.services.NetworkManager-wait-online.wantedBy = lib.mkForce [ ]; # Normally ["network-online.target"]
 
-  # Add each flake input as a registry
-  nix.registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
+  nix = {
+    # Add each flake input as a registry
+    # To make nix3 commands consistent with your flake
+    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
+
+    # Map registries to channels
+    # Very useful when using legacy commands
+    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
+  };
 
   hardware.enableRedistributableFirmware = true;
 
