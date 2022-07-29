@@ -1,0 +1,31 @@
+name: NixOS
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - 'README.md'
+      - 'LICENSE'
+      - 'shell.nix'
+      - '.gitattributes'
+      - '.gitignore'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.4.0
+      - name: 'Install Nix'
+        uses: cachix/install-nix-action@v15
+      - name: 'Install Cachix'
+        uses: cachix/cachix-action@v10
+        with:
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+      - name: 'Check NixOS Flake'
+        run: nix flake check
+      - name: 'Build systems'
+        run: nix build '.#nixosConfigurations.desktek.config.system.build.toplevel' '.#nixosConfigurations.frametek.config.system.build.toplevel'
+      - name: 'Push to cachix'
+        run: nix path-info result*/ -r | cachix push tekila
