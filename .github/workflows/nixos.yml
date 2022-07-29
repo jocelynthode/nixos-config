@@ -29,5 +29,3 @@ jobs:
         run: nix flake check
       - name: 'Build systems'
         run: nix build '.#nixosConfigurations.desktek.config.system.build.toplevel' '.#nixosConfigurations.frametek.config.system.build.toplevel'
-      - name: 'Push to cachix'
-        run: nix path-info result*/ -r | cachix push tekila
