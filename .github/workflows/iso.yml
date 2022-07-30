@@ -3,13 +3,8 @@ name: Iso
 on:
   workflow_dispatch:
   push:
-    branches:
-      - master
-    paths:
-      - 'hosts/iso'
-      - 'home/root'
-      - 'flake.lock'
-
+    tags:
+      - '*'
 jobs:
   build:
     runs-on: ubuntu-latest
