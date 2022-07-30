@@ -2,13 +2,13 @@
 
 fishPlugins.buildFishPlugin rec {
   pname = "tide";
-  version = "main";
+  version = "5.4.0";
 
   src = fetchFromGitHub {
     owner = "IlanCosman";
     repo = "tide";
-    rev = version;
-    sha256 = "sha256-6ys1SEfcWO0cRRNawrpnUU9tPJVVZ0E6RcPmrE9qG5g=";
+    rev = "v${version}";
+    sha256 = "sha256-jswV+M3cNC3QnJxvugk8VRd3cOFmhg5ejLpdo36Lw1g=";
   };
 
   meta = {
