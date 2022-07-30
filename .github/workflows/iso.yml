@@ -2,7 +2,6 @@ name: Iso
 
 on:
   workflow_dispatch:
-  pull_request:
   push:
     branches:
       - master
@@ -22,3 +21,7 @@ jobs:
         run: nix flake check
       - name: 'Build Iso'
         run: nix build '.#nixosConfigurations.iso.config.system.build.isoImage'
+      - name: Release ISO
+        uses: softprops/action-gh-release@v1
+        with:
+          files: result/iso/*
