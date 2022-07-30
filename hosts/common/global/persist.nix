@@ -22,6 +22,7 @@
         "Projects"
         "Programs"
         "go"
+        ".wine"
 
         # Work
         "Liip"
@@ -46,6 +47,8 @@
         ".config/qmk"
         ".config/deluge"
         ".config/calibre"
+        ".config/cachix"
+        ".config/lutris"
 
         # Local
         { directory = ".local/share/keyrings"; mode = "0700"; }
@@ -55,6 +58,7 @@
         ".local/share/Steam"
         ".local/share/containers"
         ".local/share/direnv"
+        ".local/share/lutris"
 
         # Cache
         { directory = ".cache/rbw"; mode = "0700"; } # Store database cache
