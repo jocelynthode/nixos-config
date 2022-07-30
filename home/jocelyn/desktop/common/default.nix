@@ -12,6 +12,7 @@
     ./gnome-keyring.nix
     ./gtk.nix
     ./kitty
+    ./lutris.nix
     ./mpv.nix
     ./mumble.nix
     ./pavucontrol.nix
