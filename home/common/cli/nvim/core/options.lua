@@ -48,3 +48,4 @@ end
 
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])
+vim.notify = require("notify")

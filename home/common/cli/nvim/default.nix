@@ -14,7 +14,7 @@
 
     plugins = with pkgs.vimPlugins; [
       # Mulst always be at the top
-      { plugin = impatient-nvim; config = (builtins.readFile ./plugins/impatient.lua) + (builtins.readFile ./core/mappings.lua) + (builtins.readFile ./core/options.lua) + (builtins.readFile ./core/autocmds.lua); type = "lua"; }
+      { plugin = impatient-nvim; config = (builtins.readFile ./plugins/impatient.lua) + (builtins.readFile ./core/mappings.lua) + (builtins.readFile ./core/options.lua) + (builtins.readFile ./core/autocmds.lua) + (builtins.readFile ./core/utils.lua); type = "lua"; }
 
       popup-nvim
       plenary-nvim
@@ -41,6 +41,7 @@
       null-ls-nvim
       SchemaStore-nvim
       taxi-vim
+      nvim-notify
       nvim-dap-ui
       nvim-dap-python
       nvim-dap-virtual-text

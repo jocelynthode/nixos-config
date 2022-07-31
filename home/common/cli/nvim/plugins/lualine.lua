@@ -40,10 +40,10 @@ lualine.setup({
     lualine_c = { "filename" },
     lualine_x = {
       lsp_name,
-      {
-        "lsp_progress",
-        timer = { progress_enddelay = 500, spinner = 1000, lsp_client_name_enddelay = 600 },
-      },
+      -- {
+      --   "lsp_progress",
+      --   timer = { progress_enddelay = 500, spinner = 1000, lsp_client_name_enddelay = 600 },
+      -- },
       "encoding",
       "fileformat",
       "filetype",
