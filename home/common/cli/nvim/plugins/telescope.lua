@@ -108,3 +108,11 @@ telescope.setup({
 telescope.load_extension("ui-select")
 telescope.load_extension("fzf")
 telescope.load_extension('dap')
+telescope.load_extension('notify')
+
+require'plenary.filetype'.add_table({
+  extension = {
+    ['py'] = 'python',
+    ['nix'] = 'nix',
+  },
+})
