@@ -70,6 +70,7 @@
       gcc
       fzf
       gopls
+      go
       nodePackages.yaml-language-server
       nodePackages.bash-language-server
       nodePackages.vscode-json-languageserver
