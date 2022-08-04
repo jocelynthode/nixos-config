@@ -14,7 +14,7 @@
     ../common/optional/hibernate.nix
     ../common/optional/light.nix
     ../common/optional/pipewire.nix
-    ../common/optional/plymouth.nix
+    # ../common/optional/plymouth.nix
     ../common/optional/podman.nix
     ../common/optional/restic.nix
     ../common/optional/snapper.nix
