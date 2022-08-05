@@ -62,7 +62,7 @@
           inherit system;
           packages = legacyPackages;
           hostname = "desktek";
-          colorscheme = "gruvbox-dark-hard";
+          colorscheme = "gruvbox-material-dark-hard";
           wallpaper = "palms-tropics";
         };
         frametek = mkSystem {
