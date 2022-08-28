@@ -1,6 +1,6 @@
 { pkgs, inputs, config, hostname, colorscheme, wallpaper, ... }: {
   imports = [
-    inputs.hardware.nixosModules.common-gpu-nvidia
+    # inputs.hardware.nixosModules.common-gpu-nvidia
     inputs.hardware.nixosModules.common-pc-laptop-hdd
     inputs.hardware.nixosModules.lenovo-thinkpad-t430
     inputs.home-manager.nixosModule
