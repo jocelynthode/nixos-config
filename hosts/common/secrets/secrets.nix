@@ -4,7 +4,8 @@ let
 
   desktek = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICqjsqOkgdM/rWztAzFEhVb8MSnvZBuViU2z4a80p1Ku";
   frametek = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICW8na5GrvJpuuJzdhBPnv4FVSvKzUkAbKXZvAd405kT";
-  systems = [ desktek frametek ];
+  servetek = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMYvE9YgSdic8n5vndgv7bYHMJxd3ZMpC2aoDzqavaOD";
+  systems = [ desktek frametek servetek ];
 in
 {
   "jocelyn-password.age".publicKeys = [ jocelyn ] ++ systems;

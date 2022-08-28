@@ -72,6 +72,13 @@
           colorscheme = "gruvbox-dark-hard";
           wallpaper = "palms-tropics";
         };
+        servetek = mkSystem {
+          inherit system;
+          packages = legacyPackages;
+          hostname = "servetek";
+          colorscheme = "gruvbox-material-dark-hard";
+          wallpaper = "palms-tropics";
+        };
       };
     };
 }

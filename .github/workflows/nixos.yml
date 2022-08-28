@@ -28,4 +28,4 @@ jobs:
       - name: 'Check NixOS Flake'
         run: nix flake check
       - name: 'Build systems'
-        run: nix build '.#nixosConfigurations.desktek.config.system.build.toplevel' '.#nixosConfigurations.frametek.config.system.build.toplevel'
+        run: nix build '.#nixosConfigurations.desktek.config.system.build.toplevel' '.#nixosConfigurations.frametek.config.system.build.toplevel' '.#nixosConfigurations.servetek.config.system.build.toplevel'
