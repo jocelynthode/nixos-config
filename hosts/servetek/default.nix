@@ -3,13 +3,14 @@
     # inputs.hardware.nixosModules.common-gpu-nvidia
     inputs.hardware.nixosModules.common-pc-laptop-hdd
     inputs.hardware.nixosModules.lenovo-thinkpad-t430
+    inputs.hardware.nixosModules.common-gpu-nvidia-disable
     inputs.home-manager.nixosModule
 
     ./hardware-configuration.nix
     ../common/global
     ../common/optional/gamemode.nix
     ../common/optional/gnome-keyring.nix
-    ../common/optional/nvidia.nix
+    # ../common/optional/nvidia.nix
     ../common/optional/pipewire.nix
     ../common/optional/podman.nix
     ../common/optional/snapper.nix
