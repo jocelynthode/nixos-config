@@ -9,7 +9,6 @@
       kernelModules = [ "kvm-intel" ];
     };
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelParams = [ "resume_offset=533760" ];
   };
 }
 

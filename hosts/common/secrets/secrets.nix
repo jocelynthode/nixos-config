@@ -6,9 +6,12 @@ let
   frametek = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICW8na5GrvJpuuJzdhBPnv4FVSvKzUkAbKXZvAd405kT";
   servetek = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMYvE9YgSdic8n5vndgv7bYHMJxd3ZMpC2aoDzqavaOD";
   systems = [ desktek frametek servetek ];
+  servers = [ servetek ];
 in
 {
   "jocelyn-password.age".publicKeys = [ jocelyn ] ++ systems;
   "restic-password.age".publicKeys = [ jocelyn ] ++ systems;
   "restic-env.age".publicKeys = [ jocelyn ] ++ systems;
+  "radicale-htpasswd.age".publicKeys = [ jocelyn ] ++ servers;
+  "ddclient-password.age".publicKeys = [ jocelyn ] ++ servers;
 }
