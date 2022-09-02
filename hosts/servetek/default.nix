@@ -92,5 +92,15 @@
     file = ../common/secrets/radicale-htpasswd.age;
   };
   age.secrets.ddclient-password.file = ../common/secrets/ddclient-password.age;
+
+  services.logind = {
+    lidSwitch = "ignore";
+    extraConfig = ''
+      IdleAction=ignore
+      HandlePowerKey=poweroff
+      HandlePowerKeyLongPress=poweroff
+    '';
+  };
+
 }
 
