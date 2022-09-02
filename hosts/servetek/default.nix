@@ -59,7 +59,7 @@
 
   security.acme = {
     acceptTerms = true;
-    defaults.email = "admin+acme@tekila.ovh";
+    defaults.email = "jocelyn.thode+acme@gmail.com";
     certs = {
       "dav.tekila.ovh" = {
         listenHTTP = ":80";
