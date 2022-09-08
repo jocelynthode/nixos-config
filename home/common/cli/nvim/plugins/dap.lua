@@ -41,6 +41,7 @@ local dap_python = require "dap-python"
 dap_python.setup(vim.g.python3_host_prog)
 dap_python.test_runner = 'pytest'
 
+require('dap-go').setup()
 require('nvim-dap-virtual-text').setup()
 
 

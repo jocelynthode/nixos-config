@@ -13,6 +13,7 @@ rec {
   vimPlugins = prev.vimPlugins // {
     taxi-vim = prev.pkgs.callPackage ../pkgs/vimPlugins/taxi-vim { };
     nvim-dap-python = prev.pkgs.callPackage ../pkgs/vimPlugins/nvim-dap-python { };
+    nvim-dap-go = prev.pkgs.callPackage ../pkgs/vimPlugins/nvim-dap-go { };
   };
 
   fishPlugins = prev.fishPlugins // {

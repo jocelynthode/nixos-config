@@ -44,6 +44,7 @@
       nvim-notify
       nvim-dap-ui
       nvim-dap-python
+      nvim-dap-go
       nvim-dap-virtual-text
       { plugin = nvim-dap; config = builtins.readFile ./plugins/dap.lua; type = "lua"; }
       { plugin = nvim-lspconfig; config = builtins.readFile ./plugins/lsp.lua; type = "lua"; }
@@ -71,6 +72,8 @@
       fzf
       gopls
       go
+      golint
+      delve
       nodePackages.yaml-language-server
       nodePackages.bash-language-server
       nodePackages.vscode-json-languageserver
