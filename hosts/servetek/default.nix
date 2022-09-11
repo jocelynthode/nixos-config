@@ -19,12 +19,14 @@
   ];
 
   services.xserver = {
-    videoDrivers = [ "nvidiaLegacy390" ];
+    videoDrivers = [ "nvidia" ];
   };
 
   hardware.opengl.extraPackages = with pkgs; [
     vaapiVdpau
   ];
+
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_390;
 
   networking = {
     networkmanager.enable = true;
