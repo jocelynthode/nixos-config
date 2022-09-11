@@ -3,7 +3,7 @@
     # inputs.hardware.nixosModules.common-gpu-nvidia
     inputs.hardware.nixosModules.common-pc-laptop-hdd
     inputs.hardware.nixosModules.lenovo-thinkpad-t430
-    inputs.hardware.nixosModules.common-gpu-nvidia-disable
+    # inputs.hardware.nixosModules.common-gpu-nvidia-disable
     inputs.home-manager.nixosModule
 
     ./hardware-configuration.nix
@@ -16,6 +16,14 @@
     ../common/optional/snapper.nix
     ../common/optional/udev.nix
     ../common/optional/xserver.nix
+  ];
+
+  services.xserver = {
+    videoDrivers = [ "nvidiaLegacy390" ];
+  };
+
+  hardware.opengl.extraPackages = with pkgs; [
+    vaapiVdpau
   ];
 
   networking = {
