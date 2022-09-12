@@ -113,5 +113,14 @@
     '';
   };
 
+  services.nginx = {
+    enable = true;
+    recommendedOptimisation = true;
+    virtualHosts."tekila.ovh" = {
+      root = "/var/www/dde";
+      listen = [{ port = 8080; addr = "0.0.0.0"; ssl = false; }];
+    };
+  };
+
 }
 
