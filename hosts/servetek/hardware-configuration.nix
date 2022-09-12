@@ -1,4 +1,4 @@
-{ pkgs, lib, hostname, ... }: {
+{ pkgs, lib, hostname, config, ... }: {
   imports = [
     ../common/optional/btrfs.nix
   ];
@@ -9,6 +9,7 @@
       kernelModules = [ "kvm-intel" ];
     };
     kernelPackages = pkgs.linuxPackages;
+    extraModulePackages = [ config.boot.kernelPackages.nvidia_x11_legacy390 ];
   };
 }
 
