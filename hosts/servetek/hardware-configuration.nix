@@ -10,12 +10,13 @@
     };
     kernelPackages = pkgs.linuxPackages;
     extraModulePackages = [ config.boot.kernelPackages.nvidia_x11_legacy390 ];
-    fileSystems = {
-      "/var/www/dde" = {
-        device = "/dev/disk/by-label/dde";
-        fsType = "ext4";
-        options = [ "defaults" "noatime" ];
-      };
+  };
+
+  fileSystems = {
+    "/var/www/dde" = {
+      device = "/dev/disk/by-label/dde";
+      fsType = "ext4";
+      options = [ "defaults" "noatime" ];
     };
   };
 }
