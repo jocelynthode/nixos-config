@@ -56,7 +56,7 @@
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 80 5232 ];
+    allowedTCPPorts = [ 80 5232 8080 ];
   };
 
   services.ddclient = {
@@ -119,6 +119,12 @@
     virtualHosts."tekila.ovh" = {
       root = "/var/www/dde";
       listen = [{ port = 8080; addr = "0.0.0.0"; ssl = false; }];
+      locations."/" = {
+        extraConfig = ''
+          autoindex on;
+          autoindex_exact_size on;
+        '';
+      };
     };
   };
 
