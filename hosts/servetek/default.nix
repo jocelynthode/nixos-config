@@ -55,8 +55,8 @@
   };
 
   networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [ 80 5232 8080 ];
+    enable = false;
+    allowedTCPPorts = [ 80 5232 8080 8112 6881 ];
   };
 
   services.ddclient = {
@@ -125,6 +125,29 @@
           autoindex_exact_size on;
         '';
       };
+    };
+  };
+
+
+  environment.etc = {
+    "deluge/auth" = {
+      text = ''
+        deluge:deluge:5
+      '';
+      mode = "0440";
+    };
+  };
+
+
+  services = {
+    deluge = {
+      enable = true;
+      dataDir = "/var/www/dde/deluge";
+    };
+    deluge.web = {
+      enable = true;
+      port = 8112;
+      openFirewall = true;
     };
   };
 
