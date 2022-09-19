@@ -19,7 +19,8 @@
     nix-colors.url = "github:misterio77/nix-colors";
     hardware.url = "github:nixos/nixos-hardware";
     impermanence.url = "github:nix-community/impermanence";
-    taxi.url = "github:jocelynthode/taxi/update-flake";
+    taxi.url = "github:sephii/taxi";
+    discord.url = "github:InternetUnexplorer/discord-overlay";
   };
 
   outputs = inputs:
@@ -37,6 +38,7 @@
         nur = inputs.nur.overlay;
         ragenix = inputs.ragenix.overlay;
         taxi-cli = inputs.taxi.overlay;
+        discord = inputs.discord.overlay;
       };
 
       legacyPackages = forDefaultSystems (system:
