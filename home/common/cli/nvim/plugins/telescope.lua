@@ -4,6 +4,23 @@ local actions = require("telescope.actions")
 
 telescope.setup({
   defaults = {
+    vimgrep_arguments = {
+      "rg",
+      "--no-heading",
+      "--with-filename",
+      "--line-number",
+      "--column",
+      "--smart-case",
+      "--hidden"
+    },
+    file_ignore_patterns = {
+      "node_modules",
+      ".work/.*",
+      ".cache/.*",
+      ".idea/.*",
+      "dist/.*",
+      ".git/.*"
+    },
     prompt_prefix = " ",
     selection_caret = "❯ ",
     path_display = { "smart" },
@@ -110,7 +127,7 @@ telescope.load_extension("fzf")
 telescope.load_extension('dap')
 telescope.load_extension('notify')
 
-require'plenary.filetype'.add_table({
+require 'plenary.filetype'.add_table({
   extension = {
     ['py'] = 'python',
     ['nix'] = 'nix',
