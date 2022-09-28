@@ -1,9 +1,4 @@
-{ pkgs, lib, ... }:
-
-let
-  kdeconnect-cli = "${pkgs.kdeconnect}/bin/kdeconnect-cli";
-in
-{
+{ pkgs, lib, ... }: {
   # Hide all .desktop, except for org.kde.kdeconnect.settings
   xdg.desktopEntries = {
     "org.kde.kdeconnect.sms" = {
@@ -23,8 +18,9 @@ in
     };
   };
 
-  services.kdeconnect = {
-    enable = true;
-    indicator = true;
-  };
+  # Fix when home manager is fixed
+  # services.kdeconnect = {
+  #   enable = true;
+  #   indicator = true;
+  # };
 }

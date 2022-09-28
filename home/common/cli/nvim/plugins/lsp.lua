@@ -223,7 +223,7 @@ local on_attach = function(client, bufnr)
 
   lsp_keymaps(bufnr)
   lsp_highlight_document(client)
-  lsp_format_on_save(client, bufnr)
+  --[[ lsp_format_on_save(client, bufnr) ]]
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -265,5 +265,5 @@ null_ls.setup({
     formatting.shfmt,
     diagnostics.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
   },
-  on_attach = lsp_format_on_save,
+  --[[ on_attach = lsp_format_on_save, ]]
 })

@@ -3,7 +3,7 @@
     login.enableGnomeKeyring = true;
     lightdm.enableGnomeKeyring = true;
   };
-  environment.systemPackages = [ pkgs.gnome.gnome-keyring ];
+  environment.systemPackages = [ pkgs.gnome.gnome-keyring pkgs.pinentry-gnome ];
   services.dbus.packages = with pkgs; [ gnome.gnome-keyring gcr ];
   xdg.portal = {
     enable = true;

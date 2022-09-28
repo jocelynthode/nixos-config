@@ -32,6 +32,13 @@
     logitech.wireless.enable = true;
   };
 
+  services.pcscd.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    pinentryFlavor = "gnome3";
+    enableSSHSupport = true;
+  };
+
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;

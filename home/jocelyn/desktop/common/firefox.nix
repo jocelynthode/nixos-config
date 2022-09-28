@@ -16,6 +16,7 @@ in
       betterttv
       multi-account-containers
       bitwarden
+      simple-tab-groups
     ];
     profiles = {
       jocelyn = {
