@@ -18,9 +18,8 @@
     };
   };
 
-  # Fix when home manager is fixed
-  # services.kdeconnect = {
-  #   enable = true;
-  #   indicator = true;
-  # };
+  services.kdeconnect = {
+    enable = true;
+    indicator = true;
+  };
 }

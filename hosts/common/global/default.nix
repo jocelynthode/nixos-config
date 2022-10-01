@@ -1,5 +1,5 @@
 # This file (and the global directory) holds config that i use on all hosts
-{ lib, inputs, hostname, config, ... }:
+{ pkgs, lib, inputs, hostname, config, ... }:
 {
   imports = [
     ./dconf.nix
@@ -37,6 +37,13 @@
     font = "Lat2-Terminus16";
     keyMap = "us";
   };
+
+  environment.systemPackages = with pkgs; [
+    ldns
+    xorg.xkill
+    gnumake
+    gettext
+  ];
 
   system.stateVersion = lib.mkDefault "22.11";
 }
