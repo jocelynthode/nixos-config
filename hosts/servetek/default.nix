@@ -101,10 +101,12 @@
     sopsFile = ./secrets.yaml;
     owner = "radicale";
     group = "radicale";
+    restartUnits = [ "radicale.service" ];
   };
 
   sops.secrets.ddclient = {
     sopsFile = ./secrets.yaml;
+    restartUnits = [ "ddclient.service" ];
   };
 
   services.logind = {
