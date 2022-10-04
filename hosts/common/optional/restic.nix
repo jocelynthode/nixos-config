@@ -6,7 +6,7 @@
       paths = [ "/persist" ];
       extraBackupArgs = [ "--exclude-file=/etc/restic/exclude.txt" ];
       initialize = true;
-      passwordFile = config.age.secrets.restic-password.path;
+      passwordFile = config.sops.secrets."restic/password".path;
       timerConfig = {
         OnCalendar = "daily";
       };
@@ -15,7 +15,7 @@
         "--keep-weekly 4"
         "--keep-monthly 3"
       ];
-      environmentFile = config.age.secrets.restic-env.path;
+      environmentFile = config.sops.secrets."restic/env".path;
     };
   };
 
@@ -34,6 +34,4 @@
     };
   };
 
-  age.secrets.restic-password.file = ../secrets/restic-password.age;
-  age.secrets.restic-env.file = ../secrets/restic-env.age;
 }

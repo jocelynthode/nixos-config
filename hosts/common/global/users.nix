@@ -5,7 +5,7 @@
       jocelyn = {
         isNormalUser = true;
         shell = pkgs.fish;
-        passwordFile = config.age.secrets.jocelyn-password.path;
+        passwordFile = config.sops.secrets."users/jocelyn/password".path;
         subUidRanges = [{ startUid = 100000; count = 65536; }]; #for podman containers
         subGidRanges = [{ startGid = 100000; count = 65536; }];
         extraGroups = [
@@ -28,8 +28,6 @@
       };
     };
   };
-
-  age.secrets.jocelyn-password.file = ../secrets/jocelyn-password.age;
 
   services.geoclue2.enable = true;
 

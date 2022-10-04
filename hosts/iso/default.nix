@@ -33,8 +33,8 @@
     btrfs-progs
     nix
     git
-    rage
-    ragenix
+    sops
+    ssh-to-age
     parted
     gptfdisk
     cryptsetup

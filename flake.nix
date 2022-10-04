@@ -9,8 +9,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ragenix = {
-      url = "github:yaxitech/ragenix";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -36,7 +36,6 @@
       overlays = {
         default = import ./overlay { inherit inputs system; };
         nur = inputs.nur.overlay;
-        ragenix = inputs.ragenix.overlay;
         taxi-cli = inputs.taxi.overlay;
         discord = inputs.discord.overlay;
       };

@@ -65,7 +65,7 @@
     ssl = true;
     username = "tekila.ovh-ident";
     domains = [ "dyn.tekila.ovh" ];
-    passwordFile = config.age.secrets.ddclient-password.path;
+    passwordFile = config.sops.secrets.ddclient.path;
   };
 
   security.acme = {
@@ -91,18 +91,21 @@
       };
       auth = {
         type = "htpasswd";
-        htpasswd_filename = config.age.secrets.radicale-htpasswd.path;
+        htpasswd_filename = config.sops.secrets.radicale.path;
         htpasswd_encryption = "bcrypt";
       };
     };
   };
 
-  age.secrets.radicale-htpasswd = {
+  sops.secrets.radicale = {
+    sopsFile = ./secrets.yaml;
     owner = "radicale";
     group = "radicale";
-    file = ../common/secrets/radicale-htpasswd.age;
   };
-  age.secrets.ddclient-password.file = ../common/secrets/ddclient-password.age;
+
+  sops.secrets.ddclient = {
+    sopsFile = ./secrets.yaml;
+  };
 
   services.logind = {
     lidSwitch = "ignore";

@@ -3,7 +3,7 @@
 {
   imports = [
     ./dconf.nix
-    ./rage.nix
+    ./sops.nix
     ./environment.nix
     ./fish.nix
     ./fonts.nix
