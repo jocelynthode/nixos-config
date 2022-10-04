@@ -9,7 +9,7 @@
     ./firefox.nix
     ./font.nix
     ./gammastep.nix
-    ./gnome-keyring.nix
+    ./gnupg.nix
     ./gtk.nix
     ./kitty
     ./lutris.nix

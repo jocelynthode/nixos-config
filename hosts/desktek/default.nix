@@ -8,7 +8,7 @@
     ../common/global
     ../common/optional/adb.nix
     ../common/optional/gamemode.nix
-    ../common/optional/gnome-keyring.nix
+    ../common/optional/pinentry.nix
     ../common/optional/kdeconnect.nix
     ../common/optional/nvidia.nix
     ../common/optional/pipewire.nix

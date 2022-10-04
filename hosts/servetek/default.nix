@@ -9,7 +9,7 @@
     ./hardware-configuration.nix
     ../common/global
     #../common/optional/gamemode.nix
-    ../common/optional/gnome-keyring.nix
+    ../common/optional/pinentry.nix
     # ../common/optional/nvidia.nix
     ../common/optional/pipewire.nix
     # ../common/optional/podman.nix

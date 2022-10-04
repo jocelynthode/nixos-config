@@ -10,7 +10,7 @@
     ./hardware-configuration.nix
     ../common/global
     ../common/optional/fingerprint.nix
-    ../common/optional/gnome-keyring.nix
+    ../common/optional/pinentry.nix
     ../common/optional/hibernate.nix
     ../common/optional/light.nix
     ../common/optional/pipewire.nix
