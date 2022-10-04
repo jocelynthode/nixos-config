@@ -2,7 +2,11 @@
   programs.git = {
     enable = true;
     userName = "Jocelyn Thode";
-    userEmail = "jocelyn.thode@gmail.com";
+    userEmail = "jocelyn@thode.email";
+    signing = {
+      key = "00E063D5E30126C1A3DF114E77B3416DE9D092BD";
+      signByDefault = true;
+    };
     extraConfig = {
       pull = {
         rebase = true;

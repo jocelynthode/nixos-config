@@ -7,6 +7,7 @@
     ./environment.nix
     ./fish.nix
     ./fonts.nix
+    ./gnupg.nix
     ./locale.nix
     ./nix.nix
     ./openssh.nix
