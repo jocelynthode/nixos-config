@@ -25,9 +25,7 @@ nix develop
 ./bootstrap.sh [--encrypt-root] --hostname=<hostname> --disk=/dev/to/disk
 ```
 
-6. Setup additional secrets in `secrets.nix` for new host
-
-7. Setup new age file if needed
+7. Setup new age key if needed
 
 8. Rekey your secrets
 
@@ -57,19 +55,16 @@ sudo nixos-rebuild switch --flake github:jocelynthode/nixos-config
 
 ```bash
 nix develop
-cd hosts/common/secrets
-# Add secret path to secrets.nixos
-nvim secrets.nix
 # Then create file
-ragenix -e file.age
+sops hosts/common/secrets.yaml
 ```
 
 ## Rekey files after new users and/or host
 
 ```bash
 nix develop
-cd hosts/common/secrets
-ragenix --rekey
+cat /persist/etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age'
+sops hosts/common/secrets.yaml
 ```
 
 # Build ISO
