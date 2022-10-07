@@ -9,6 +9,7 @@ let
   playerctl = "${pkgs.playerctl}/bin/playerctl";
   blueberry = "${pkgs.blueberry}/bin/blueberry";
   rofi-pulse = "${pkgs.rofi-pulse}/bin/rofi-pulse";
+  gpg-agent-isUnlocked = "${pkgs.procps}/bin/pgrep 'gpg-agent' &> /dev/null && ${pkgs.gnupg}/bin/gpg-connect-agent 'scd getinfo card_list' /bye | ${pkgs.gnugrep}/bin/grep SERIALNO -q";
   home-pkgs = (import ../../../pkgs { inherit pkgs config; });
 in
 {
@@ -70,7 +71,7 @@ in
         modules = {
           left = "xworkspaces sep cpu memory fs";
           center = "player date";
-          right = "eth wifi bluetooth sep gammastep gamemode sep mic volume brightness battery sep";
+          right = "eth wifi bluetooth sep gammastep gpg-agent gamemode sep mic volume brightness battery sep";
         };
         separator = "";
         dim-value = "1.0";
@@ -380,6 +381,11 @@ in
         format.foreground = ''''${colors.base08}'';
         exec-if = "${gamemoded} --status | ${pkgs.gnugrep}/bin/grep 'is active' -q";
         exec = "${pkgs.coreutils-full}/bin/echo ''";
+      };
+      "module/gpg-agent" = {
+        type = "custom/script";
+        interval = 2;
+        exec = "${gpg-agent-isUnlocked} && echo '' || echo ''";
       };
     };
     script = "polybar main &";
