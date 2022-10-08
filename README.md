@@ -81,3 +81,9 @@ sync
 # Showcase
 
 ![fakebusy](https://i.imgur.com/wmurHSd.png)
+
+# Inspiration
+
+- [chvp config](https://github.com/chvp/nixos-config)
+
+- [Misterio77 config](https://github.com/Misterio77/nix-config)
