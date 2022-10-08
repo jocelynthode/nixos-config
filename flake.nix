@@ -3,10 +3,13 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    stable.url = "github:nixos/nixpkgs/nixos-22.05";
 
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
     };
 
     sops-nix = {
@@ -21,65 +24,81 @@
     impermanence.url = "github:nix-community/impermanence";
     taxi.url = "github:sephii/taxi";
     discord.url = "github:InternetUnexplorer/discord-overlay";
+    utils = {
+      url = "github:gytis-ivaskevicius/flake-utils-plus";
+      inputs = {
+        flake-utils.follows = "flake-utils";
+      };
+    };
   };
 
-  outputs = inputs:
-    let
-      my-lib = import ./lib { inherit inputs; };
-      inherit (builtins) attrValues;
-      inherit (inputs.nixpkgs.lib) genAttrs systems;
-      inherit (my-lib) mkSystem importAttrset;
-      forDefaultSystems = genAttrs inputs.flake-utils.lib.defaultSystems;
-      system = inputs.flake-utils.lib.system.x86_64-linux;
-    in
-    rec {
-      overlays = {
-        default = import ./overlay { inherit inputs system; };
-        nur = inputs.nur.overlay;
-        taxi-cli = inputs.taxi.overlay;
-        discord = inputs.discord.overlay;
+  outputs = inputs@{ self, nixpkgs, stable, home-manager, sops-nix, flake-utils, nur, nix-colors, hardware, impermanence, taxi, discord, utils }:
+    inputs.utils.lib.mkFlake {
+      inherit self inputs;
+      channels.nixpkgs = {
+        config = {
+          allowUnfree = true;
+        };
+        input = inputs.nixpkgs;
+        overlaysBuilder = _: [
+          nur.overlay
+          taxi.overlay
+          discord.overlay
+          (import ./overlay { inherit inputs; })
+        ];
       };
-
-      legacyPackages = forDefaultSystems (system:
-        import inputs.nixpkgs {
-          inherit system;
-          overlays = attrValues overlays;
-          config.allowUnfree = true;
-        }
-      );
-
-      devShells = forDefaultSystems (system: {
-        default = import ./shell.nix { pkgs = legacyPackages.${system}; };
-      });
-
-      nixosConfigurations = {
-        iso = mkSystem {
-          inherit system;
-          packages = legacyPackages;
-          hostname = "iso";
-          colorscheme = "gruvbox-dark-hard";
+      hostDefaults = {
+        modules = [
+          { nix.generateRegistryFromInputs = true; }
+          home-manager.nixosModule
+          sops-nix.nixosModules.sops
+          impermanence.nixosModules.impermanence
+          ./modules
+        ];
+      };
+      hosts = {
+        desktek = {
+          modules = [
+            ./machines/desktek
+            hardware.nixosModules.common-cpu-amd
+            hardware.nixosModules.common-pc-ssd
+          ];
+          specialArgs = { inherit nix-colors; };
         };
-        desktek = mkSystem {
-          inherit system;
-          packages = legacyPackages;
-          hostname = "desktek";
-          colorscheme = "gruvbox-material-dark-hard";
-          wallpaper = "palms-tropics";
+        frametek = {
+          modules = [
+            ./machines/frametek
+            hardware.nixosModules.common-cpu-intel
+            hardware.nixosModules.common-gpu-intel
+            hardware.nixosModules.common-pc-laptop
+            hardware.nixosModules.common-pc-laptop-ssd
+            hardware.nixosModules.framework
+          ];
+          specialArgs = { inherit nix-colors; };
         };
-        frametek = mkSystem {
-          inherit system;
-          packages = legacyPackages;
-          hostname = "frametek";
-          colorscheme = "gruvbox-material-dark-hard";
-          wallpaper = "palms-tropics";
+        servetek = {
+          modules = [
+            ./machines/servetek
+            hardware.nixosModules.common-pc-laptop-hdd
+          ];
+          specialArgs = { inherit nix-colors; };
         };
-        servetek = mkSystem {
-          inherit system;
-          packages = legacyPackages;
-          hostname = "servetek";
-          colorscheme = "gruvbox-material-dark-hard";
-          wallpaper = "palms-tropics";
+        iso = {
+          modules = [ ./machines/iso ];
+          specialArgs = { inherit nix-colors; };
         };
       };
+      outputsBuilder = channels:
+        let pkgs = channels.nixpkgs; in
+        {
+          devShells =
+            let
+              ls = builtins.readDir ./shells;
+              files = builtins.filter (name: ls.${name} == "regular") (builtins.attrNames ls);
+              shellNames = builtins.map (filename: builtins.head (builtins.split "\\." filename)) files;
+              nameToValue = name: import (./shells + "/${name}.nix") { inherit pkgs inputs; };
+            in
+            builtins.listToAttrs (builtins.map (name: { inherit name; value = nameToValue name; }) shellNames);
+        };
     };
 }

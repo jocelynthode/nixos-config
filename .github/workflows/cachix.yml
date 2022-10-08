@@ -1,0 +1,25 @@
+name: Cachix
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: cachix/install-nix-action@v17
+      - name: Cachix
+        uses: cachix/cachix-action@v10
+        with:
+          name: tekila
+          extraPullNames: "nix-community,accentor"
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+          skipPush: true
+      - run: nix build -L --no-link .#nixosConfigurations.desktek.config.system.build.toplevel
+      - run: nix eval --json ".#nixosConfigurations.desktek.config.system.build.toplevel.outPath" | sed 's/"\(.*\)"/\1/' | cachix push tekila
+      - run: nix build -L --no-link .#nixosConfigurations.frametek.config.system.build.toplevel
+      - run: nix eval --json ".#nixosConfigurations.frametek.config.system.build.toplevel.outPath" | sed 's/"\(.*\)"/\1/' | cachix push tekila
+      - run: nix build -L --no-link .#nixosConfigurations.servetek.config.system.build.toplevel
+      - run: nix eval --json ".#nixosConfigurations.servetek.config.system.build.toplevel.outPath" | sed 's/"\(.*\)"/\1/' | cachix push tekila

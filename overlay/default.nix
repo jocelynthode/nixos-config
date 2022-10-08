@@ -1,8 +1,9 @@
-{ inputs, system, ... }: final: prev:
+{ inputs, ... }: final: prev:
 let
   inherit (inputs.nix-colors.lib-contrib { pkgs = final; }) gtkThemeFromScheme;
   inherit (inputs.nix-colors) colorSchemes;
   inherit (builtins) mapAttrs;
+  system = inputs.flake-utils.lib.system.x86_64-linux;
 in
 rec {
   # Don't launch discord when using discocss
