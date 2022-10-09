@@ -117,9 +117,10 @@
         in
         {
           enable = true;
-          # profileExtra = ''
-          #   ${pkgs.dbus}/bin/dbus-update-activation-environment --systemd --all
-          # '';
+          # make gnome-keyring/pinentry work
+          profileExtra = ''
+            ${pkgs.dbus}/bin/dbus-update-activation-environment --systemd --all
+          '';
           windowManager.i3 = {
             enable = true;
             config = {
