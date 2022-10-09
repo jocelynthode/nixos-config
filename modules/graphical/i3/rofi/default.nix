@@ -3,7 +3,6 @@
     home-manager.users.jocelyn = { config, osConfig, ... }: {
       home.packages = with pkgs; [
         rofi-power-menu
-        rofi-rbw
       ];
 
       programs.rofi = {

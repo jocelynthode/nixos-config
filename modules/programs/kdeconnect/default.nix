@@ -5,8 +5,6 @@
   };
 
   config = lib.mkIf config.aspects.programs.kdeconnect.enable {
-    programs.kdeconnect.enable = true;
-
     environment.persistence."${config.aspects.persistPrefix}".users.jocelyn.directories = [
       ".config/kdeconnect"
     ];
