@@ -73,7 +73,7 @@ dap.listeners.before['event_progressEnd']['progress-notifications'] = function(s
   notif_data.notification = vim.notify(body.message and format_message(body.message) or "Complete", "info", {
     icon = "",
     replace = notif_data.notification,
-    timeout = 3000
+    timeout = 2000
   })
   notif_data.spinner = nil
 end

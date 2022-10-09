@@ -154,7 +154,7 @@ end
 
 local function lsp_highlight_document(client)
   -- Set autocommands conditional on server_capabilities
-  if client.resolved_capabilities.document_highlight then
+  if client.server_capabilities.documentHighlightProvider then
     local lsp_document_highlight = vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
 
     vim.api.nvim_create_autocmd({ "CursorHold" }, {
@@ -213,12 +213,12 @@ end
 
 local on_attach = function(client, bufnr)
   if client.name == "tsserver" then
-    client.resolved_capabilities.document_formatting = false
+    client.server_capabilities.documentFormattingProvider = false
   end
   -- force enable yamlls formatting feature
   -- see https://github.com/redhat-developer/yaml-language-server/issues/486#issuecomment-1046792026
   if client.name == "yamlls" then
-    client.resolved_capabilities.document_formatting = true
+    client.server_capabilities.documentFormattingProvider = true
   end
 
   lsp_keymaps(bufnr)
