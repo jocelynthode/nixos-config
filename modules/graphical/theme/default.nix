@@ -32,6 +32,15 @@
         inherit (nix-colors.lib-contrib { inherit pkgs; }) gtkThemeFromScheme;
       in
       rec {
+
+        home.pointerCursor = {
+          name = "Adwaita";
+          package = pkgs.gnome.adwaita-icon-theme;
+          size = 24;
+          gtk.enable = true;
+          x11.enable = true;
+        };
+
         gtk = {
           enable = true;
           font = {
@@ -46,10 +55,6 @@
           iconTheme = {
             name = "Papirus";
             package = pkgs.papirus-icon-theme;
-          };
-          cursorTheme = {
-            name = "Adwaita";
-            package = pkgs.gnome.adwaita-icon-theme;
           };
         };
 
