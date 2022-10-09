@@ -14,6 +14,9 @@
       };
     };
 
+    networking.firewall = {
+      allowedTCPPorts = [ 8112 60000 58846 ];
+    };
     services = {
       deluge = {
         enable = true;

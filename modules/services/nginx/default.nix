@@ -5,6 +5,7 @@
   };
 
   config = lib.mkIf config.aspects.services.nginx.enable {
+    networking.firewall.allowedTCPPorts = [ 8080 ];
     services.nginx = {
       enable = true;
       recommendedOptimisation = true;
