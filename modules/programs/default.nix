@@ -12,6 +12,7 @@
     ./solaar
     ./spotify
     ./taskwarrior
+    ./yubikey
   ];
 
   options.aspects.programs.enable = lib.mkOption {
@@ -33,6 +34,7 @@
       solaar.enable = lib.mkDefault false;
       spotify.enable = lib.mkDefault true;
       taskwarrior.enable = lib.mkDefault true;
+      yubikey.enable = lib.mkDefault true;
     };
   };
 }

@@ -115,10 +115,6 @@
       ];
     };
 
-    services.udev.packages = with pkgs; [
-      yubikey-personalization
-    ];
-
     console = {
       font = "Lat2-Terminus16";
       keyMap = "us";
