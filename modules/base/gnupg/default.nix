@@ -10,10 +10,7 @@ let
     };
 in
 {
-  services.pcscd.enable = true;
-
   environment.systemPackages = with pkgs; [
-    gnupg-pkcs11-scd
     gnupg
   ];
 
