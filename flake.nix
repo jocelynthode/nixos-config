@@ -9,6 +9,7 @@
       url = "github:nix-community/home-manager";
       inputs = {
         nixpkgs.follows = "nixpkgs";
+        utils.follows = "flake-utils";
       };
     };
 
@@ -33,20 +34,16 @@
   };
 
   outputs = inputs@{ self, nixpkgs, stable, home-manager, sops-nix, flake-utils, nur, nix-colors, hardware, impermanence, taxi, discord, utils }:
-    inputs.utils.lib.mkFlake {
+    utils.lib.mkFlake {
       inherit self inputs;
-      channels.nixpkgs = {
-        config = {
-          allowUnfree = true;
-        };
-        input = inputs.nixpkgs;
-        overlaysBuilder = _: [
-          nur.overlay
-          taxi.overlay
-          discord.overlay
-          (import ./overlay { inherit inputs; })
-        ];
-      };
+
+      channelsConfig.allowUnfree = true;
+      sharedOverlays = [
+        nur.overlay
+        taxi.overlay
+        discord.overlay
+        (import ./overlay { inherit inputs; })
+      ];
       hostDefaults = {
         modules = [
           { nix.generateRegistryFromInputs = true; }
@@ -56,6 +53,10 @@
           ./modules
         ];
       };
+
+      channels.nixpkgs.input = nixpkgs;
+      channels.stable.input = stable;
+
       hosts = {
         desktek = {
           modules = [
@@ -77,6 +78,7 @@
           specialArgs = { inherit nix-colors; };
         };
         servetek = {
+          # channelName = "stable";
           modules = [
             ./machines/servetek
             hardware.nixosModules.common-pc-laptop-hdd
@@ -84,7 +86,11 @@
           specialArgs = { inherit nix-colors; };
         };
         iso = {
-          modules = [ ./machines/iso ];
+          modules = [
+            "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+            "${nixpkgs}/nixos/modules/installer/cd-dvd/channel.nix"
+            ./machines/iso
+          ];
           specialArgs = { inherit nix-colors; };
         };
       };

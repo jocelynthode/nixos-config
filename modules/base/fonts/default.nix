@@ -16,7 +16,6 @@ let
     };
   };
   base = {
-    fonts.fontconfig.enable = true;
     home.packages = [ config.aspects.base.fonts.monospace.package config.aspects.base.fonts.regular.package ];
   };
 in

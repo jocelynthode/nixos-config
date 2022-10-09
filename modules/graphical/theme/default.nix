@@ -1,8 +1,4 @@
-{ config, lib, pkgs, nix-colors, ... }:
-let
-  globalConfig = config;
-in
-{
+{ config, lib, pkgs, nix-colors, ... }: {
   options.aspects.graphical.theme.enable = lib.mkOption {
     default = false;
     example = true;
@@ -31,7 +27,7 @@ in
     };
 
     programs.dconf.enable = true;
-    home-manager.users.jocelyn = { pkgs, config, ... }:
+    home-manager.users.jocelyn = { pkgs, config, osConfig, ... }:
       let
         inherit (nix-colors.lib-contrib { inherit pkgs; }) gtkThemeFromScheme;
       in
@@ -39,8 +35,8 @@ in
         gtk = {
           enable = true;
           font = {
-            name = globalConfig.aspects.base.fonts.regular.family;
-            package = globalConfig.aspects.base.fonts.regular.package;
+            name = osConfig.aspects.base.fonts.regular.family;
+            package = osConfig.aspects.base.fonts.regular.package;
             size = 11;
           };
           theme = {

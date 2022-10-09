@@ -27,7 +27,7 @@
     };
 
     sops.secrets.radicale = {
-      sopsFile = ../../../secrets/${config.aspects.base.network.hostname}/secrets.yaml; 
+      sopsFile = ../../../secrets/${config.networking.hostName}/secrets.yaml; 
       owner = "radicale";
       group = "radicale";
       restartUnits = [ "radicale.service" ];

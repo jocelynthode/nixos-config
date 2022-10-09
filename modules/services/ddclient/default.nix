@@ -15,7 +15,7 @@
     };
 
     sops.secrets.ddclient = {
-      sopsFile = ../../../secrets/${config.aspects.base.network.hostname}/secrets.yaml;
+      sopsFile = ../../../secrets/${config.networking.hostName}/secrets.yaml;
       restartUnits = [ "ddclient.service" ];
     };
   };

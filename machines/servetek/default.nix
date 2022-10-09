@@ -6,9 +6,6 @@
     stateVersion = "22.05";
     base = {
       bluetooth.enable = true;
-      network = {
-        hostname = "servetek";
-      };
     };
     programs = {
       htop.enable = true;

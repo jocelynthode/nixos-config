@@ -5,8 +5,8 @@
       kernelModules = [ "kvm-intel" ];
       # name luks as hostname and label as hostname_crypt
       # Label btrfs partition as hostname
-      luks.devices."${config.aspects.base.network.hostname}" = {
-        device = "/dev/disk/by-label/${config.aspects.base.network.hostname}_crypt";
+      luks.devices."${config.networking.hostName}" = {
+        device = "/dev/disk/by-label/${config.networking.hostName}_crypt";
         preLVM = true;
         allowDiscards = true;
       };

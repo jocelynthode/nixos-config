@@ -7,9 +7,6 @@
     base = {
       battery.enable = true;
       bluetooth.enable = true;
-      network = {
-        hostname = "frametek";
-      };
     };
     development.enable = true;
     games.enable = true;

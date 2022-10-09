@@ -1,8 +1,12 @@
-{ config, lib, pkgs, ... }:
-let
-  globalConfig = config;
-in
-{
+{ config, lib, pkgs, ... }: {
+
+  imports = [
+    ./autorandr
+    ./dunst
+    ./picom
+    ./polybar
+    ./rofi
+  ];
 
   options.aspects.graphical.i3 = {
     enable = lib.mkEnableOption "i3";
@@ -55,14 +59,6 @@ in
     ];
 
     home-manager.users.jocelyn = { config, ... }: {
-      imports = [
-        (import ./autorandr { inherit pkgs config globalConfig; })
-        (import ./dunst { inherit pkgs config globalConfig; })
-        ./picom
-        (import ./polybar { inherit pkgs config globalConfig; })
-        (import ./rofi { inherit pkgs config globalConfig; })
-      ];
-
       # Required packages (hotkeys, etc)
       home.packages = with pkgs; [
         betterlockscreen

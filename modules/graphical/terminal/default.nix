@@ -1,22 +1,18 @@
-{ config, lib, pkgs, ... }:
-let
-  globalConfig = config;
-in
-{
+{ config, lib, pkgs, ... }: {
   options.aspects.graphical.terminal.enable = lib.mkOption {
     default = false;
     example = true;
   };
 
   config = lib.mkIf config.aspects.graphical.terminal.enable {
-    home-manager.users.jocelyn = { pkgs, config, ... }: {
+    home-manager.users.jocelyn = { pkgs, config, osConfig, ... }: {
       home.sessionVariables = {
         TERMINAL = "kitty";
       };
 
       programs.kitty = {
         enable = true;
-        font.name = globalConfig.aspects.base.fonts.monospace.family;
+        font.name = osConfig.aspects.base.fonts.monospace.family;
         settings = {
           background_opacity = "0.90";
           allow_remote_control = "yes";

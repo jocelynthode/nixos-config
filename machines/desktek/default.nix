@@ -8,9 +8,6 @@
     stateVersion = "22.05";
     base = {
       bluetooth.enable = true;
-      network = {
-        hostname = "desktek";
-      };
     };
     development.enable = true;
     games.enable = true;

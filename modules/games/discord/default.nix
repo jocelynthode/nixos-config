@@ -1,6 +1,4 @@
-{ config, lib, pkgs, ... }: let
-  globalConfig = config;
-in {
+{ config, lib, pkgs, ... }: {
   options.aspects.games.discord.enable = lib.mkOption {
     default = false;
     example = true;
@@ -13,7 +11,7 @@ in {
 
     aspects.base.nix.unfreePackages = [ pkgs.discord ];
 
-    home-manager.users.jocelyn = { config, ... }: {
+    home-manager.users.jocelyn = { config, osConfig, ... }: {
       home.packages = with pkgs; [ discord discocss ];
 
       xdg.configFile."discocss/preload.js".text = ''
@@ -87,7 +85,7 @@ in {
             --activity-card-background: var(--background-secondary);
         }
         body {
-            font-family: ${globalConfig.aspects.base.fonts.regular.family}, sans serif;
+            font-family: ${osConfig.aspects.base.fonts.regular.family}, sans serif;
         }
         .scroller-1Bvpku {
             background-color: var(--background-primary);

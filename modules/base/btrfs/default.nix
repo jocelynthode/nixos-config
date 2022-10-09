@@ -1,12 +1,17 @@
 { config, lib, ... }: {
   options.aspects.base.btrfs = {
+    enable = lib.mkOption {
+      default = false;
+      example = true;
+    };
+
     encrypted = lib.mkOption {
       default = false;
       example = true;
     };
   };
 
-  config = {
+  config = lib.mkIf config.aspects.base.btrfs.enable {
     aspects.persistPrefix = lib.mkDefault "/persist";
 
     boot = {
@@ -24,7 +29,7 @@
       initrd = {
         postDeviceCommands = lib.mkBefore ''
           mkdir -p /mnt
-          mount -o subvol=/ /dev/disk/by-label/${config.aspects.base.network.hostname} /mnt
+          mount -o subvol=/ /dev/disk/by-label/${config.networking.hostName} /mnt
           echo "Cleaning subvolume"
           btrfs subvolume list -o /mnt/@ | cut -f9 -d ' ' |
           while read subvolume; do
@@ -36,14 +41,14 @@
         '';
         supportedFilesystems = [ "btrfs" ];
         luks = lib.mkIf config.aspects.base.btrfs.encrypted {
-          devices."${config.aspects.base.network.hostname}" = {
-            device = "/dev/disk/by-label/${config.aspects.base.network.hostname}_crypt";
+          devices."${config.networking.hostName}" = {
+            device = "/dev/disk/by-label/${config.networking.hostName}_crypt";
             preLVM = true;
             allowDiscards = true;
           };
         };
       };
-      resumeDevice = "/dev/disk/by-label/${config.aspects.base.network.hostname}";
+      resumeDevice = "/dev/disk/by-label/${config.networking.hostName}";
       kernel.sysctl = {
         "vm.swappiness" = 10;
       };
@@ -51,40 +56,40 @@
 
     fileSystems = {
       "/" = {
-        device = "/dev/disk/by-label/${config.aspects.base.network.hostname}";
+        device = "/dev/disk/by-label/${config.networking.hostName}";
         fsType = "btrfs";
         options = [ "defaults" "noatime" "compress=zstd:1" "subvol=@" ];
       };
 
       "/var/log" = {
-        device = "/dev/disk/by-label/${config.aspects.base.network.hostname}";
+        device = "/dev/disk/by-label/${config.networking.hostName}";
         fsType = "btrfs";
         options = [ "defaults" "noatime" "compress=zstd:1" "subvol=@log" ];
         neededForBoot = true;
       };
 
       "/nix" = {
-        device = "/dev/disk/by-label/${config.aspects.base.network.hostname}";
+        device = "/dev/disk/by-label/${config.networking.hostName}";
         fsType = "btrfs";
         options = [ "defaults" "noatime" "compress=zstd:1" "subvol=@nix" ];
       };
 
       "${config.aspects.persistPrefix}" = {
-        device = "/dev/disk/by-label/${config.aspects.base.network.hostname}";
+        device = "/dev/disk/by-label/${config.networking.hostName}";
         fsType = "btrfs";
         options = [ "defaults" "noatime" "compress=zstd:1" "subvol=@persist" ];
         neededForBoot = true;
       };
 
       "${config.aspects.persistPrefix}/.snapshots" = {
-        device = "/dev/disk/by-label/${config.aspects.base.network.hostname}";
+        device = "/dev/disk/by-label/${config.networking.hostName}";
         fsType = "btrfs";
         options = [ "defaults" "noatime" "compress=zstd:1" "subvol=@snapshots" ];
         neededForBoot = true;
       };
 
       "/swap" = {
-        device = "/dev/disk/by-label/${config.aspects.base.network.hostname}";
+        device = "/dev/disk/by-label/${config.networking.hostName}";
         fsType = "btrfs";
         options = [ "defaults" "noatime" "compress=zstd:1" "subvol=@swap" ];
       };

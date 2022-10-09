@@ -1,6 +1,4 @@
-{ config, lib, pkgs, nix-colors, ... }:
-
-{
+{ config, lib, pkgs, nix-colors, ... }: {
   imports = [
     ./backup
     ./battery
@@ -35,6 +33,8 @@
   config = {
     home-manager.useGlobalPkgs = true;
     home-manager.sharedModules = [ nix-colors.homeManagerModule ];
+
+    aspects.base.btrfs.enable = lib.mkDefault true;
 
     aspects.base.fonts = lib.mkDefault {
       monospace = {
