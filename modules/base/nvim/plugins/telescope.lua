@@ -119,6 +119,10 @@ telescope.setup({
     live_grep = {
       theme = "ivy",
     },
+    buffers = {
+      theme = "dropdown",
+      previewer = false,
+    },
   },
   extensions = {
     ["ui-select"] = {
