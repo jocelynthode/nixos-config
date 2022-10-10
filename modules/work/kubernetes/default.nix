@@ -8,7 +8,7 @@
 
   config = lib.mkIf config.aspects.work.kubernetes.enable {
     environment.persistence."${config.aspects.persistPrefix}".users.jocelyn.directories = [
-      ".kube"
+      { directory = ".kube"; mode = "0700"; }
     ];
 
     home-manager.users.jocelyn = { ... }: {
@@ -20,6 +20,7 @@
         kubectl-node-shell
         # kubectl-get-all
         # kubectl-neat
+        openshift
       ];
     };
   };

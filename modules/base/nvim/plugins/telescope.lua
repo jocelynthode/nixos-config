@@ -15,12 +15,12 @@ telescope.setup({
       "--no-ignore-vcs",
     },
     file_ignore_patterns = {
-      "node_modules",
-      ".work/.*",
-      ".cache/.*",
-      ".idea/.*",
-      "dist/.*",
-      ".git/.*"
+      "^node_modules/",
+      "^.work/",
+      "^.cache/",
+      "^.idea/",
+      "^.git/",
+      "flake.lock",
     },
     prompt_prefix = " ",
     selection_caret = "❯ ",
