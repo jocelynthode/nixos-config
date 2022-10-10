@@ -5,10 +5,18 @@
       kernelModules = [ "kvm-intel" ];
       # name luks as hostname and label as hostname_crypt
       # Label btrfs partition as hostname
-      luks.devices."${config.networking.hostName}" = {
-        device = "/dev/disk/by-label/${config.networking.hostName}_crypt";
-        preLVM = true;
-        allowDiscards = true;
+      luks = {
+        gpgSupport = true;
+        devices."${config.networking.hostName}" = {
+          gpgCard = {
+            gracePeriod = 10; # needs some time to connect
+            encryptedPass = ./gpg/luks-passphrase.asc;
+            publicKey = ./gpg/public-keys.asc;
+          };
+          device = "/dev/disk/by-label/${config.networking.hostName}_crypt";
+          preLVM = true;
+          allowDiscards = true;
+        };
       };
     };
     kernelPackages = pkgs.linuxPackages_latest;
