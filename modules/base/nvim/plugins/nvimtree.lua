@@ -21,6 +21,7 @@ nvim_tree.setup({
       ".cache$",
       "Cargo.lock$",
       ".terraform$",
+      ".direnv$",
     },
   },
   disable_netrw = false,
@@ -54,7 +55,7 @@ nvim_tree.setup({
   },
   git = {
     enable = true,
-    ignore = true,
+    ignore = false,
   },
   actions = {
     open_file = {
