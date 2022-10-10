@@ -7,6 +7,10 @@
   };
 
   config = lib.mkIf config.aspects.work.kubernetes.enable {
+    environment.persistence."${config.aspects.persistPrefix}".users.jocelyn.directories = [
+      ".kube"
+    ];
+
     home-manager.users.jocelyn = { ... }: {
       home.packages = with pkgs; [
         kubectl
