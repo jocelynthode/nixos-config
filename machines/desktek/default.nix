@@ -47,6 +47,7 @@
     programs = {
       enable = true;
       solaar.enable = true;
+      obs-studio.enable = true;
     };
     work.enable = true;
   };

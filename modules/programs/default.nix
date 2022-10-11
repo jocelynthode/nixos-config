@@ -7,6 +7,7 @@
     ./git
     ./htop
     ./kdeconnect
+    ./obs-studio
     ./ranger
     ./signal
     ./solaar
@@ -29,6 +30,7 @@
       git.enable = lib.mkDefault true;
       htop.enable = lib.mkDefault true;
       kdeconnect.enable = lib.mkDefault true;
+      obs-studio.enable = lib.mkDefault false;
       ranger.enable = lib.mkDefault true;
       signal.enable = lib.mkDefault true;
       solaar.enable = lib.mkDefault false;
