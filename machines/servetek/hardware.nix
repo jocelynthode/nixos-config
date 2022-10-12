@@ -35,8 +35,6 @@
     vaapiVdpau
   ];
 
-  environment.enableAllTerminfo = true;
-
   services.logind = {
     lidSwitch = "ignore";
     extraConfig = ''
