@@ -8,7 +8,8 @@
       initialize = true;
       passwordFile = config.sops.secrets."restic/password".path;
       timerConfig = {
-        OnCalendar = "daily";
+        OnCalendar = "*-*-* 12:00:00";
+        Persistent = true;
       };
       pruneOpts = [
         "--keep-daily 7"
