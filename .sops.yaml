@@ -9,13 +9,13 @@ keys:
     - &servetek age1tk4xmr6ye60naj0zvxjv6l7q9zdhj05z67m98ph4qar6jczslcqqsvhqs4
 
 creation_rules:
-  - path_regex: hosts/servetek/secrets.ya?ml$
+  - path_regex: secrets/servetek/secrets.ya?ml$
     key_groups:
     - age:
       - *servetek
       pgp:
       - *jocelyn
-  - path_regex: hosts/common/secrets.ya?ml$
+  - path_regex: secrets/common/secrets.ya?ml$
     key_groups:
     - age:
       - *desktek
