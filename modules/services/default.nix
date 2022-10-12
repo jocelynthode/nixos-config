@@ -5,6 +5,7 @@
     ./deluge
     ./nginx
     ./radicale
+    ./taskserver
   ];
 
   options.aspects.services.enable = lib.mkOption {
@@ -20,6 +21,7 @@
         deluge.enable = lib.mkDefault true;
         nginx.enable = lib.mkDefault true;
         radicale.enable = lib.mkDefault true;
+        taskserver.enable = lib.mkDefault true;
       };
     };
   };
