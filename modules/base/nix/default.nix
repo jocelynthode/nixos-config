@@ -27,7 +27,8 @@ let
           PartOf = [ "nix-index.service" ];
         };
         Timer = {
-          OnCalendar = "00/2:30";
+          OnCalendar = "weekly";
+          Persistent = true;
         };
         Install = {
           WantedBy = [ "default.target" ];
