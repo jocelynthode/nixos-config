@@ -23,7 +23,7 @@ let
       };
       timers.nix-index = {
         Unit = {
-          Description = "Timer that starts nix-index every two hours";
+          Description = "Timer that starts nix-index weekly";
           PartOf = [ "nix-index.service" ];
         };
         Timer = {
