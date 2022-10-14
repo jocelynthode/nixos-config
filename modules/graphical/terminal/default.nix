@@ -1,11 +1,11 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, ... }: {
   options.aspects.graphical.terminal.enable = lib.mkOption {
     default = false;
     example = true;
   };
 
   config = lib.mkIf config.aspects.graphical.terminal.enable {
-    home-manager.users.jocelyn = { pkgs, config, osConfig, ... }: {
+    home-manager.users.jocelyn = { config, osConfig, ... }: {
       home.sessionVariables = {
         TERMINAL = "kitty";
       };

@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ ... }: {
   imports = [ ./hardware.nix ];
 
   # Machine-specific module settings

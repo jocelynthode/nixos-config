@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ config, ... }: {
   services.restic.backups = {
     persist = {
       user = "root";

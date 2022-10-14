@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, ... }: {
   environment.persistence."${config.aspects.persistPrefix}".directories = [
     "/etc/NetworkManager/system-connections"
   ];

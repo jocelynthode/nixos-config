@@ -37,7 +37,7 @@
   };
 
   config = lib.mkIf config.aspects.graphical.i3.enable {
-    home-manager.users.jocelyn = { config, osConfig, ... }: {
+    home-manager.users.jocelyn = { osConfig, ... }: {
       programs.autorandr = {
         enable = true;
         hooks = {

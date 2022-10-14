@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, ... }: {
   options.aspects.services.acme.enable = lib.mkOption {
     default = false;
     example = true;

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, ... }: {
   options.aspects.graphical.fingerprint = {
     enable = lib.mkEnableOption "fingerprint";
   };

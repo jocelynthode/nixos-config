@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, ... }: {
   options.aspects.services.deluge.enable = lib.mkOption {
     default = false;
     example = true;

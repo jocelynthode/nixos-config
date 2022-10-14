@@ -1,4 +1,4 @@
-{ lib, vimUtils, fetchFromGitHub, ... }:
+{ vimUtils, fetchFromGitHub, ... }:
 
 vimUtils.buildVimPlugin {
   pname = "nvim-dap-go";

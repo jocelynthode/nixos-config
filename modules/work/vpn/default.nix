@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, ... }: {
   options = {
     aspects.work.vpn.enable = lib.mkOption {
       default = false;

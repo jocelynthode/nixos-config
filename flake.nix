@@ -9,7 +9,6 @@
       url = "github:nix-community/home-manager";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        utils.follows = "flake-utils";
       };
     };
 
@@ -18,7 +17,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    flake-utils.url = "github:numtide/flake-utils";
     nur.url = "github:nix-community/NUR";
     nix-colors.url = "github:misterio77/nix-colors";
     hardware.url = "github:nixos/nixos-hardware";
@@ -27,13 +25,10 @@
     discord.url = "github:InternetUnexplorer/discord-overlay";
     utils = {
       url = "github:gytis-ivaskevicius/flake-utils-plus";
-      inputs = {
-        flake-utils.follows = "flake-utils";
-      };
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, stable, home-manager, sops-nix, flake-utils, nur, nix-colors, hardware, impermanence, taxi, discord, utils }:
+  outputs = inputs@{ self, nixpkgs, stable, home-manager, sops-nix, nur, nix-colors, hardware, impermanence, taxi, discord, utils }:
     utils.lib.mkFlake {
       inherit self inputs;
 
