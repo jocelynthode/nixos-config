@@ -6,7 +6,7 @@
 
   config = lib.mkIf config.aspects.services.deluge.enable {
     networking.firewall = {
-      allowedTCPPorts = [ 58846 ];
+      allowedTCPPorts = [ 60000 58846 ];
     };
 
     services = {
