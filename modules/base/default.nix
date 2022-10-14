@@ -57,7 +57,7 @@
       autoUpgrade = {
         enable = true;
         flake = "github:jocelynthode/nixos-config";
-        dates = "daily";
+        dates = "Sat *-*-* 00:00:00";
         randomizedDelaySec = "10min";
         allowReboot = config.aspects.allowReboot;
         rebootWindow = {
