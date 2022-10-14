@@ -16,6 +16,9 @@
         declarative = true;
         openFirewall = true;
         authFile = config.sops.secrets.deluge.path;
+        config = {
+          allow_remote = true;
+        };
       };
       deluge.web = {
         enable = true;
@@ -25,7 +28,7 @@
     };
 
     sops.secrets.deluge = {
-      sopsFile = ../../../secrets/${config.networking.hostName}/secrets.yaml; 
+      sopsFile = ../../../secrets/${config.networking.hostName}/secrets.yaml;
       owner = "deluge";
       group = "deluge";
       restartUnits = [ "deluged.service" "delugeweb.service" ];
