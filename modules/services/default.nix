@@ -23,7 +23,7 @@
         nginx.enable = lib.mkDefault true;
         radicale.enable = lib.mkDefault true;
         taskserver.enable = lib.mkDefault true;
-        wireguard.enable = lib.mkDefault false;
+        wireguard.enable = lib.mkDefault true;
       };
     };
   };
