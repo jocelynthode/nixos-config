@@ -1,4 +1,4 @@
-{ config, lig, ... }: {
+{ config, lib, ... }: {
   options.aspects.services.wireguard.enable = lib.mkOption {
     default = false;
     example = true;
