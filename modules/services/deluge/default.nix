@@ -9,10 +9,7 @@
       "/var/lib/deluge"
     ];
 
-    networking.firewall = {
-      allowedTCPPorts = [ 58846 53394 ];
-      allowedUDPPorts = [ 53394 ];
-    };
+    networking.firewall.allowedTCPPorts = [ 58846 ];
 
     services = {
       deluge = {
@@ -24,10 +21,10 @@
           allow_remote = true;
           download_location = "/var/www/dde/Media";
           stop_seed_at_ratio = true;
-          random_outgoing_ports = false;
+          random_outgoing_ports = true;
           random_port = false;
-          listen_ports = [ 53394 ];
-          outgoing_ports = [ 60000 ];
+          daemon_port = 58846;
+          listen_ports = [ 53394 53420 ];
           upnp = false;
           natpmp = false;
           max_download_speed = 90000;
