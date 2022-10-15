@@ -6,6 +6,7 @@
     ./nginx
     ./radicale
     ./taskserver
+    ./wireguard
   ];
 
   options.aspects.services.enable = lib.mkOption {
@@ -22,6 +23,7 @@
         nginx.enable = lib.mkDefault true;
         radicale.enable = lib.mkDefault true;
         taskserver.enable = lib.mkDefault true;
+        wireguard.enable = lib.mkDefault true;
       };
     };
   };

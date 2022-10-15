@@ -5,19 +5,36 @@
   };
 
   config = lib.mkIf config.aspects.services.deluge.enable {
+    environment.persistence."${config.aspects.persistPrefix}".directories = [
+      "/var/lib/deluge"
+    ];
+
     networking.firewall = {
-      allowedTCPPorts = [ 60000 58846 ];
+      allowedTCPPorts = [ 58846 53394 ];
+      allowedUDPPorts = [ 53394 ];
     };
 
     services = {
       deluge = {
         enable = true;
-        dataDir = "/var/www/dde/deluge";
         declarative = true;
         openFirewall = true;
         authFile = config.sops.secrets.deluge.path;
         config = {
           allow_remote = true;
+          download_location = "/var/www/dde/Media";
+          stop_seed_at_ratio = true;
+          random_outgoing_ports = false;
+          random_port = false;
+          listen_ports = [ 53394 ];
+          outgoing_ports = [ 60000 ];
+          upnp = false;
+          natpmp = false;
+          max_download_speed = 90000;
+          max_upload_speed = 50000;
+          max_active_downloading = 10;
+          max_active_limit = 20;
+          max_active_seeding = 10;
         };
       };
       deluge.web = {

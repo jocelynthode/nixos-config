@@ -8,6 +8,8 @@
     extraModulePackages = [ config.boot.kernelPackages.nvidia_x11_legacy390 ];
   };
 
+  networking.wireless.enable = false;
+
   fileSystems = {
     "/var/www/dde" = {
       device = "/dev/disk/by-label/dde";
