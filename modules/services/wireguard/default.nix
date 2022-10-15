@@ -14,10 +14,10 @@
         table = "off";
         dns = [ "10.2.0.1" ];
         privateKeyFile = config.sops.secrets.wireguard.path;
-        PreDown = [
+        preDown = [
           "${pkgs.iproute2}/bin/ip rule del from 10.2.0.2/32 table 51820"
         ];
-        PostUp = [
+        postUp = [
           "${pkgs.iproute2}/bin/ip rule add from 10.2.0.2/32 table 51820"
           "${pkgs.iproute2}/bin/ip route add default dev %i table 51820"
         ];
