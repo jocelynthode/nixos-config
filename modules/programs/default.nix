@@ -3,6 +3,7 @@
     ./bitwarden
     ./calibre
     ./deluge
+    ./element
     ./gammastep
     ./git
     ./htop
@@ -26,6 +27,7 @@
       bitwarden.enable = lib.mkDefault true; 
       calibre.enable = lib.mkDefault true;
       deluge.enable = lib.mkDefault true;
+      element.enable = lib.mkDefault true;
       gammastep.enable = lib.mkDefault true;
       git.enable = lib.mkDefault true;
       htop.enable = lib.mkDefault true;
