@@ -45,6 +45,11 @@
               "dom.security.https_only_mode" = true;
               "browser.search.region" = "CH";
               "media.eme.enabled" = true;
+              "media.getusermedia.aec_enabled" = false;
+              "media.getusermedia.agc_enabled" = false;
+              "media.getusermedia.agc2_enabled" = false;
+              "media.getusermedia.noise_enabled" = false;
+              "media.getusermedia.hpf_enabled" = false;
               "media.rdd-ffmpeg.enabled" = true;
               "media.ffmpeg.vaapi.enabled" = true;
               "media.navigator.mediadatadecoder_vpx_enabled" = true;
