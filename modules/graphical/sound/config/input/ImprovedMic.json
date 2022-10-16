@@ -8,9 +8,7 @@
             "reference": "Geometric Mean (MSI)",
             "target": -19.999999999999957
         },
-        "blocklist": [
-            "ALSA plug-in [songrec]"
-        ],
+        "blocklist": [],
         "equalizer": {
             "balance": 0.0,
             "bypass": false,
@@ -667,9 +665,9 @@
             "split-channels": false
         },
         "gate": {
-            "attack": 20.0,
+            "attack": 15.0,
             "bypass": false,
-            "curve-threshold": -27.000000000000043,
+            "curve-threshold": -32.000000000000114,
             "curve-zone": -5.0000000000000036,
             "dry": -100.0,
             "hpf-frequency": 10.0,
@@ -683,7 +681,7 @@
             "makeup": 0.0,
             "output-gain": 0.0,
             "reduction": -72.0,
-            "release": 250.0,
+            "release": 500.0,
             "sidechain": {
                 "input": "Internal",
                 "lookahead": 0.0,
@@ -708,4 +706,3 @@
         }
     }
 }
-
