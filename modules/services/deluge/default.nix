@@ -21,7 +21,6 @@
           allow_remote = true;
           listen_interface = "wg0";
           outgoing_interface = "wg0";
-          download_location = "/var/www/dde/Media";
           stop_seed_at_ratio = true;
           random_outgoing_ports = true;
           random_port = false;
