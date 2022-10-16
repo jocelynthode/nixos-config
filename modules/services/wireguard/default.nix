@@ -11,15 +11,17 @@
     networking.wg-quick.interfaces = {
       wg0 = {
         address = [ "10.2.0.2/32" ];
-        table = "off";
+        listenPort = 51820;
+        table = "51820";
         dns = [ "10.2.0.1" ];
         privateKeyFile = config.sops.secrets.wireguard.path;
         preDown = [
           "${pkgs.iproute2}/bin/ip rule del from 10.2.0.2/32 table 51820"
+          "${pkgs.iproute2}/bin/ip rule del to 10.2.0.1/32 table 51820"
         ];
         postUp = [
           "${pkgs.iproute2}/bin/ip rule add from 10.2.0.2/32 table 51820"
-          "${pkgs.iproute2}/bin/ip route add default dev %i table 51820"
+          "${pkgs.iproute2}/bin/ip rule add to 10.2.0.1/32 table 51820"
         ];
         peers = [
           {
