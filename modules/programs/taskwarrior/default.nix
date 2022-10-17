@@ -23,6 +23,11 @@
       group = "users";
     };
 
+    environment.persistence."${config.aspects.persistPrefix}".users.jocelyn.directories = [
+      ".config/task"
+      ".local/share/task"
+    ];
+
     home-manager.users.jocelyn = { ... }: {
       programs.taskwarrior = {
         enable = true;
