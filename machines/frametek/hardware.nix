@@ -2,7 +2,6 @@
   boot = {
     initrd = {
       availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
-      kernelModules = [ "kvm-intel" ];
       # name luks as hostname and label as hostname_crypt
       # Label btrfs partition as hostname
       luks = {
@@ -21,6 +20,7 @@
     };
     kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [ "resume_offset=15273662" "mitigations=off" ];
+    kernelModules = [ "kvm-intel" ];
   };
 
   swapDevices = [{
