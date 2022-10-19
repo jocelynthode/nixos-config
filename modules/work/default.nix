@@ -1,5 +1,6 @@
 { config, lib, ... }: {
   imports = [
+    ./git
     ./taxi
     ./slack
     ./kubernetes
@@ -15,6 +16,7 @@
     aspects = {
       development.enable = true;
       work = {
+        git.enable = lib.mkDefault true;
         taxi.enable = lib.mkDefault true;
         slack.enable = lib.mkDefault true;
         kubernetes.enable = lib.mkDefault true;
