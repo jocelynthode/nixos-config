@@ -8,8 +8,8 @@
     security.pam.services = {
       login.fprintAuth = false;
       lightdm.fprintAuth = false;
-      xscreensaver.fprintAuth = true;
-      i3lock.fprintAuth = true;
+      xscreensaver.fprintAuth = false;
+      i3lock.fprintAuth = false;
       sudo.fprintAuth = true;
     };
 
