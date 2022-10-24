@@ -226,9 +226,8 @@ local on_attach = function(client, bufnr)
   --[[ lsp_format_on_save(client, bufnr) ]]
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+local _, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+local capabilities = cmp_nvim_lsp.default_capabilities()
 
 for lsp, cfg in pairs(servers) do
   local config = {
@@ -244,7 +243,7 @@ for lsp, cfg in pairs(servers) do
 end
 
 
-local null_ls_status_ok, null_ls = pcall(require, "null-ls")
+local _, null_ls = pcall(require, "null-ls")
 
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
 local formatting = null_ls.builtins.formatting
