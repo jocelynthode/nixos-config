@@ -23,6 +23,9 @@
     kernelModules = [ "kvm-intel" ];
   };
 
+  hardware.video.hidpi.enable = true;
+  services.xserver.dpi = 150;
+
   swapDevices = [{
     device = "/swap/swapfile";
     size = (1024 * 32);
