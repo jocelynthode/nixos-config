@@ -19,7 +19,7 @@
       };
     };
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelParams = [ "resume_offset=15273662" "mitigations=off" ];
+    kernelParams = [ "resume_offset=533785" "mitigations=off" ];
     kernelModules = [ "kvm-intel" ];
   };
 
