@@ -5,7 +5,7 @@
     };
     kernelPackages = pkgs.linuxPackages_latest;
     extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
-    kernelParams = [ "resume_offset=533760" "mitigations=off" ];
+    kernelParams = [ "resume_offset=533881" "mitigations=off" ];
     kernelModules = [ "kvm-amd" "v4l2loopback" "snd-aloop" ];
   };
 

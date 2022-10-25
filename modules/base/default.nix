@@ -86,7 +86,6 @@
     environment.persistence."${config.aspects.persistPrefix}" = {
       users.jocelyn.directories = [
         { directory = ".ssh"; mode = "0700"; }
-        { directory = ".local/share/keyrings"; mode = "0700"; }
       ];
       directories = [
         "/var/lib/systemd"
