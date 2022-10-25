@@ -14,6 +14,12 @@ let
       description = "Package for ${kind} font profile";
       example = "pkgs.jetbrains-mono";
     };
+    size = lib.mkOption {
+      type = lib.types.int;
+      default = null;
+      description = "Size for ${kind} font profile";
+      example = 11;
+    };
   };
   base = {
     home.packages = [ config.aspects.base.fonts.monospace.package config.aspects.base.fonts.regular.package ];

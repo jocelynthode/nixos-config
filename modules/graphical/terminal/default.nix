@@ -13,6 +13,7 @@
       programs.kitty = {
         enable = true;
         font.name = osConfig.aspects.base.fonts.monospace.family;
+        font.size = osConfig.aspects.base.fonts.monospace.size;
         settings = {
           background_opacity = "0.90";
           allow_remote_control = "yes";

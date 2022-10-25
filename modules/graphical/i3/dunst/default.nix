@@ -21,7 +21,7 @@ in
           global = {
             monitor = 0;
             geometry = "0x0-50+65";
-            font = "${osConfig.aspects.base.fonts.monospace.family} 10";
+            font = "${osConfig.aspects.base.fonts.monospace.family} ${toString osConfig.aspects.base.fonts.monospace.size}";
             line_height = 4;
             frame_width = 2;
             padding = 16;

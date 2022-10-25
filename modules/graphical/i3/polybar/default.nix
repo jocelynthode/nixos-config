@@ -82,7 +82,7 @@ in
               tray = {
                 position = "right";
               };
-              font = [ "${osConfig.aspects.base.fonts.monospace.family}:size=11;4" "feather:size=12;3" ];
+              font = [ "${osConfig.aspects.base.fonts.monospace.family}:size=${toString osConfig.aspects.base.fonts.monospace.size};4" "feather:size=12;3" ];
               enable-ipc = true;
             };
 

@@ -46,7 +46,7 @@
           font = {
             name = osConfig.aspects.base.fonts.regular.family;
             package = osConfig.aspects.base.fonts.regular.package;
-            size = 11;
+            size = osConfig.aspects.base.fonts.regular.size;
           };
           theme = {
             name = "${config.colorscheme.slug}";

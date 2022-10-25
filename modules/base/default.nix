@@ -45,10 +45,12 @@
       monospace = {
         family = "JetBrains Mono Nerd Font";
         package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
+        size = 11;
       };
       regular = {
         family = "NotoSans Nerd Font";
         package = pkgs.nerdfonts.override { fonts = [ "Noto" ]; };
+        size = 11;
       };
     };
 

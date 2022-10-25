@@ -10,6 +10,10 @@
 
   options.aspects.graphical.i3 = {
     enable = lib.mkEnableOption "i3";
+    dpi = lib.mkOption {
+      default = 100;
+      example = 150;
+    };
   };
 
   config = lib.mkIf config.aspects.graphical.i3.enable {
@@ -17,6 +21,7 @@
     hardware.opengl.enable = true;
     services.xserver = {
       enable = true;
+      dpi = config.aspects.graphical.i3.dpi;
       layout = "us";
       xkbVariant = "altgr-intl";
       displayManager = {
@@ -58,7 +63,7 @@
       ".cache/betterlockscreen"
     ];
 
-    home-manager.users.jocelyn = { config, ... }: {
+    home-manager.users.jocelyn = { config, osConfig, ... }: {
       # Required packages (hotkeys, etc)
       home.packages = with pkgs; [
         betterlockscreen
@@ -106,6 +111,7 @@
         "*color19" = "#${config.colorscheme.colors.base02}";
         "*color20" = "#${config.colorscheme.colors.base04}";
         "*color21" = "#${config.colorscheme.colors.base06}";
+        "Xft.dpi" = osConfig.aspects.graphical.i3.dpi;
       };
 
       xsession =
@@ -251,7 +257,7 @@
                 "${mod}+s" = "layout stacking";
                 "${mod}+w" = "layout tabbed";
                 "${mod}+e" = "layout toggle split";
-                "${mod}+d" = "exec --no-startup-id ${pkgs.rofi}/bin/rofi -show drun -modi drun -theme launcher";
+                "${mod}+d" = "exec --no-startup-id ${pkgs.rofi}/bin/rofi -show drun -modi drun -theme launcher -dpi 1";
                 "${mod}+Shift+space" = "floating toggle";
                 "${mod}+space" = "focus mode_toggle";
                 "${mod}+a" = "focus parent";
@@ -277,7 +283,7 @@
                 "${mod}+Shift+0" = "move container to workspace number 10; workspace 10";
                 "${mod}+Shift+c" = "reload";
                 "${mod}+Shift+r" = "restart";
-                "${mod}+Shift+e" = ''exec --no-startup-id ${pkgs.rofi}/bin/rofi -show menu -modi "menu:rofi-power-menu" -theme powermenu'';
+                "${mod}+Shift+e" = ''exec --no-startup-id ${pkgs.rofi}/bin/rofi -show menu -modi "menu:rofi-power-menu" -theme powermenu -dpi 1'';
                 "${mod}+r" = "mode resize";
                 "XF86AudioMute" = "exec --no-startup-id ${pkgs.pulseaudio}/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle";
                 "XF86AudioRaiseVolume" = "exec --no-startup-id ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%";
