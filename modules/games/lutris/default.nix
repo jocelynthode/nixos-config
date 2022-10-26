@@ -12,7 +12,7 @@
     ];
 
     home-manager.users.jocelyn = { ... }: {
-      home.packages = with pkgs; [ lutris];
+      home.packages = with pkgs; [ lutris ];
     };
   };
 }

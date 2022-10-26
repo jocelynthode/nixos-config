@@ -1,6 +1,7 @@
 { config, lib, ... }: {
   imports = [
     ./discord
+    ./gamemode
     ./lutris
     ./mumble
     ./steam
@@ -14,6 +15,7 @@
   config = lib.mkIf config.aspects.games.enable {
     aspects.games = {
       discord.enable = lib.mkDefault true;
+      gamemode.enable = lib.mkDefault true;
       lutris.enable = lib.mkDefault true;
       mumble.enable = lib.mkDefault true;
       steam.enable = lib.mkDefault true;
