@@ -36,6 +36,7 @@
             dock = { shadow = false; clip-shadow-above = true; };
             dnd = { shadow = false; };
           };
+          unredir-if-possible = false;
         };
       };
     };

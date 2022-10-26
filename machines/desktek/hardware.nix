@@ -16,6 +16,8 @@
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
   hardware.enableRedistributableFirmware = true;
+  # Allow resume with nvidia
+  hardware.nvidia.powerManagement.enable = true;
 
   services.xserver = {
     videoDrivers = [ "nvidia" ];
