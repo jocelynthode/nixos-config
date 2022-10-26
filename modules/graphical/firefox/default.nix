@@ -23,6 +23,7 @@
           multi-account-containers
           bitwarden
           simple-tab-groups
+          sponsorblock
         ];
         profiles = {
           jocelyn = {
