@@ -15,6 +15,8 @@
     aspects.persistPrefix = lib.mkDefault "/persist";
 
     boot = {
+      tmpOnTmpfs = true;
+      tmpOnTmpfsSize = "10%";
       loader = {
         efi = {
           canTouchEfiVariables = true;
