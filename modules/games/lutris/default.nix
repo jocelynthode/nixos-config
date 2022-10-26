@@ -5,7 +5,7 @@
   };
 
   config = lib.mkIf config.aspects.games.lutris.enable {
-    environment.persistence."${config.aspects.persistPrefix}".users.jocelyn.directories = [
+    aspects.base.persistence.homePaths = [
       ".config/lutris"
       ".local/share/lutris"
       ".wine"

@@ -17,7 +17,7 @@
       ];
     };
 
-    environment.persistence."${config.aspects.persistPrefix}".users.jocelyn.directories = [
+    aspects.base.persistence.homePaths = [
       ".config/taxi"
       ".local/share/taxi"
       ".local/share/nvim"

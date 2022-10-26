@@ -18,8 +18,9 @@
   hardware.enableRedistributableFirmware = true;
   # Allow resume with nvidia
   hardware.nvidia.powerManagement.enable = true;
+  hardware.nvidia.modesetting.enable = true;
 
-  services.xserver = {
+  services.xserver = lib.mkIf config.aspects.graphical.i3.enable {
     videoDrivers = [ "nvidia" ];
     displayManager.setupCommands = ''
       ${pkgs.xorg.xrandr}/bin/xrandr --output HDMI-0 --off

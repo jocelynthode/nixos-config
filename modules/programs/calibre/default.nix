@@ -5,7 +5,7 @@
   };
 
   config = lib.mkIf config.aspects.programs.calibre.enable {
-    environment.persistence."${config.aspects.persistPrefix}".users.jocelyn.directories = [
+    aspects.base.persistence.homePaths = [
       ".config/calibre"
     ];
     home-manager.users.jocelyn = { ... }: {

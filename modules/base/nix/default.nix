@@ -56,11 +56,11 @@ in
 
   config = {
 
-    environment.persistence."${config.aspects.persistPrefix}" = {
-      users.jocelyn.directories = 
+    aspects.base.persistence = {
+      homePaths = 
         (lib.optional config.aspects.base.nix.enableDirenv ".local/share/direnv") ++
         (lib.optional config.aspects.base.nix.enableNixIndex ".cache/nix-index");
-      directories = (lib.optional config.aspects.base.nix.enableDirenv "/root/.local/share/direnv");
+      systemPaths = (lib.optional config.aspects.base.nix.enableDirenv "/root/.local/share/direnv");
     };
 
     nix = {
@@ -69,11 +69,13 @@ in
           "https://cache.nixos.org"
           "https://nix-community.cachix.org"
           "https://tekila.cachix.org"
+          "https://hyprland.cachix.org"
         ];
         trusted-public-keys = [
           "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
           "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
           "tekila.cachix.org-1:Ujkoh3GxcP2pnxmUzMPqBasUVmnI61TUry0VaL0uD68="
+          "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         ];
 
         trusted-users = [ "root" "@wheel" ];

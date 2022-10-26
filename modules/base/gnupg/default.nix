@@ -12,7 +12,7 @@ in
     gnupg
   ];
 
-  environment.persistence."${config.aspects.persistPrefix}".users.jocelyn.directories = [{ directory = ".gnupg"; mode = "0700"; }];
+  aspects.base.persistence.homePaths = [{ directory = ".gnupg"; mode = "0700"; }];
   services.dbus.packages = lib.optionals config.aspects.graphical.enable [ pkgs.gcr ];
 
   home-manager.users.jocelyn = { ... }: {

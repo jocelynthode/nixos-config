@@ -3,7 +3,7 @@
     persist = {
       user = "root";
       # repository is in environmentFile
-      paths = [ config.aspects.persistPrefix ];
+      paths = [ config.aspects.base.persistence.persistPrefix ];
       extraBackupArgs = [ "--exclude-file=/etc/restic/exclude.txt" ];
       initialize = true;
       passwordFile = config.sops.secrets."restic/password".path;
@@ -38,7 +38,7 @@
   services.snapper = {
     configs = {
       persist = {
-        subvolume = config.aspects.persistPrefix;
+        subvolume = config.aspects.base.persistence.persistPrefix;
         extraConfig = ''
           ALLOW_USERS="jocelyn"
           TIMELINE_CREATE="yes"

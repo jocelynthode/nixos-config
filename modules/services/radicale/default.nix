@@ -5,7 +5,7 @@
   };
 
   config = lib.mkIf config.aspects.services.radicale.enable {
-    environment.persistence."${config.aspects.persistPrefix}".directories = [
+    aspects.base.persistence.systemPaths = [
       "/var/lib/radicale/collections"
     ];
 

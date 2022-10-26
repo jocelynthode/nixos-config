@@ -5,7 +5,7 @@
   };
 
   config = lib.mkIf config.aspects.services.acme.enable {
-    environment.persistence."${config.aspects.persistPrefix}".directories = [
+    aspects.base.persistence.systemPaths = [
       "/var/lib/acme"
     ];
 

@@ -4,7 +4,7 @@
   };
 
   config = lib.mkIf config.aspects.graphical.firefox.enable {
-    environment.persistence."${config.aspects.persistPrefix}".users.jocelyn.directories = [
+    aspects.base.persistence.homePaths = [
       ".mozilla/firefox"
       ".cache/mozilla"
     ];

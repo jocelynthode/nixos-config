@@ -26,9 +26,13 @@
     utils = {
       url = "github:gytis-ivaskevicius/flake-utils-plus";
     };
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, stable, home-manager, sops-nix, nur, nix-colors, hardware, impermanence, taxi, discord, utils }:
+  outputs = inputs@{ self, nixpkgs, stable, hyprland, home-manager, sops-nix, nur, nix-colors, hardware, impermanence, taxi, discord, utils }:
     utils.lib.mkFlake {
       inherit self inputs;
 
@@ -45,6 +49,7 @@
           home-manager.nixosModule
           sops-nix.nixosModules.sops
           impermanence.nixosModules.impermanence
+          hyprland.nixosModules.default
           ./modules
         ];
       };

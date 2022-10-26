@@ -5,7 +5,7 @@
   };
 
   config = lib.mkIf config.aspects.graphical.xdg.enable {
-    environment.persistence."${config.aspects.persistPrefix}".users.jocelyn.directories = [
+    aspects.base.persistence.homePaths = [
       "Documents"
       "Downloads"
       "Music"

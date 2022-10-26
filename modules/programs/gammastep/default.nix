@@ -11,6 +11,7 @@
       services.gammastep = {
         enable = true;
         provider = "geoclue2";
+        enableVerboseLogging = true;
         temperature = {
           day = 6000;
           night = 4600;

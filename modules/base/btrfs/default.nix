@@ -12,8 +12,6 @@
   };
 
   config = lib.mkIf config.aspects.base.btrfs.enable {
-    aspects.persistPrefix = lib.mkDefault "/persist";
-
     boot = {
       tmpOnTmpfs = true;
       tmpOnTmpfsSize = "10%";
@@ -76,14 +74,14 @@
         options = [ "defaults" "noatime" "compress=zstd:1" "subvol=@nix" ];
       };
 
-      "${config.aspects.persistPrefix}" = {
+      "${config.aspects.base.persistence.persistPrefix}" = {
         device = "/dev/disk/by-label/${config.networking.hostName}";
         fsType = "btrfs";
         options = [ "defaults" "noatime" "compress=zstd:1" "subvol=@persist" ];
         neededForBoot = true;
       };
 
-      "${config.aspects.persistPrefix}/.snapshots" = {
+      "${config.aspects.base.persistence.persistPrefix}/.snapshots" = {
         device = "/dev/disk/by-label/${config.networking.hostName}";
         fsType = "btrfs";
         options = [ "defaults" "noatime" "compress=zstd:1" "subvol=@snapshots" ];
@@ -102,7 +100,5 @@
         options = [ "defaults" "noatime" ];
       };
     };
-
-    environment.persistence."${config.aspects.persistPrefix}".hideMounts = true;
   };
 }
