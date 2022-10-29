@@ -2,12 +2,9 @@
   config = lib.mkIf config.aspects.graphical.hyprland.enable {
     home-manager.users.jocelyn = { config, osConfig, ... }:
       let
-        inherit (pkgs.lib) optionals optional;
 
         # Dependencies
         jq = "${pkgs.jq}/bin/jq";
-        xml = "${pkgs.xmlstarlet}/bin/xml";
-        gamemoded = "${pkgs.gamemode}/bin/gamemoded";
         systemctl = "${pkgs.systemd}/bin/systemctl";
         journalctl = "${pkgs.systemd}/bin/journalctl";
         # Function to simplify making waybar outputs
