@@ -1,4 +1,4 @@
-{ config, lib, pkgs, nix-colors, ... }: {
+{ config, options, lib, pkgs, nix-colors, ... }: {
   imports = [
     ./backup
     ./battery
@@ -11,17 +11,14 @@
     ./network
     ./nix
     ./nvim
+    ./persistence
     ./sshd
+    ./virtualisation
   ];
 
   options.aspects = {
     stateVersion = lib.mkOption {
       example = "22.05";
-    };
-
-    persistPrefix = lib.mkOption {
-      default = "/persist";
-      example = "/persist";
     };
 
     theme = lib.mkOption {
@@ -40,6 +37,7 @@
     home-manager.sharedModules = [ nix-colors.homeManagerModule ];
 
     aspects.base.btrfs.enable = lib.mkDefault true;
+    aspects.base.persistence.enable = lib.mkDefault true;
 
     aspects.base.fonts = lib.mkDefault {
       monospace = {
@@ -83,11 +81,11 @@
       };
     };
 
-    environment.persistence."${config.aspects.persistPrefix}" = {
-      users.jocelyn.directories = [
+    aspects.base.persistence = {
+      homePaths = [
         { directory = ".ssh"; mode = "0700"; }
       ];
-      directories = [
+      systemPaths = [
         "/var/lib/systemd"
       ];
     };
@@ -166,7 +164,7 @@
         jocelyn = {
           isNormalUser = true;
           shell = pkgs.fish;
-          passwordFile = config.sops.secrets."users/jocelyn/password".path;
+          passwordFile = if !(options.virtualisation ? qemu) then config.sops.secrets."users/jocelyn/password".path else null;
           extraGroups = [
             "wheel"
           ];

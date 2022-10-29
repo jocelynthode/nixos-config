@@ -84,12 +84,12 @@ in
     };
   };
 
-  environment.persistence."${config.aspects.persistPrefix}" = {
-    users.jocelyn.directories = [
+  aspects.base.persistence = {
+    homePaths = [
       ".config/fish"
       ".local/share/fish"
     ];
-    directories = [
+    systemPaths = [
       "/root/.config/fish"
     ];
   };

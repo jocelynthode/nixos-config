@@ -7,7 +7,7 @@
   };
 
   config = lib.mkIf config.aspects.work.kubernetes.enable {
-    environment.persistence."${config.aspects.persistPrefix}".users.jocelyn.directories = [
+    aspects.base.persistence.homePaths = [
       { directory = ".kube"; mode = "0700"; }
     ];
 

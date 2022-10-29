@@ -22,6 +22,10 @@ rec {
     tide = prev.pkgs.callPackage ../pkgs/fishPlugins/tide { };
   };
 
+  waybar = prev.waybar.overrideAttrs (oldAttrs: {
+    mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+  });
+
   generated-gtk-themes = mapAttrs
     (_: scheme: gtkThemeFromScheme {
       inherit scheme;

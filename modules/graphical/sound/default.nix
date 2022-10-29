@@ -5,7 +5,7 @@
   };
 
   config = lib.mkIf config.aspects.graphical.sound.enable {
-    environment.persistence."${config.aspects.persistPrefix}".users.jocelyn.directories = [
+    aspects.base.persistence.homePaths = [
       ".local/state/wireplumber"
       ".config/pavucontrol-qt"
     ];

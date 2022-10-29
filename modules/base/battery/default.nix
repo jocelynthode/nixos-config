@@ -23,7 +23,7 @@
       criticalPowerAction = "HybridSleep";
     };
 
-    environment.persistence."${config.aspects.persistPrefix}".directories = [
+    aspects.base.persistence.systemPaths = [
       "/var/lib/upower"
     ];
 

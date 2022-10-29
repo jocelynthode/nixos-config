@@ -24,7 +24,7 @@
       };
     };
 
-    environment.persistence."${config.aspects.persistPrefix}".users.jocelyn.directories = [
+    aspects.base.persistence.homePaths = [
       "Liip"
     ];
   };

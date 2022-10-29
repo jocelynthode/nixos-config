@@ -2,9 +2,11 @@
   imports = [
     ./fingerprint
     ./firefox
+    ./hyprland
     ./i3
     ./mpv
     ./printer
+    ./rofi
     ./screenshot
     ./sound
     ./terminal
@@ -34,9 +36,11 @@
         fingerprint.enable = lib.mkDefault false;
         firefox.enable = lib.mkDefault true;
         i3.enable = lib.mkDefault true;
+        hyprland.enable = lib.mkDefault false;
         mpv.enable = lib.mkDefault true;
         printer.enable = lib.mkDefault false;
         screenshot.enable = lib.mkDefault true;
+        rofi.enable = lib.mkDefault true;
         sound.enable = lib.mkDefault true;
         terminal.enable = lib.mkDefault true;
         theme.enable = lib.mkDefault true;

@@ -5,7 +5,7 @@
   };
 
   config = lib.mkIf config.aspects.programs.bitwarden.enable {
-    environment.persistence."${config.aspects.persistPrefix}".users.jocelyn.directories = [
+    aspects.base.persistence.homePaths = [
         { directory = ".config/Bitwarden"; mode = "0700"; }
     ];
     home-manager.users.jocelyn = { ... }: {

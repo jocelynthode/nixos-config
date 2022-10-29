@@ -1,5 +1,5 @@
 { config, lib, ... }: {
-  environment.persistence."${config.aspects.persistPrefix}".directories = [
+  aspects.base.persistence.systemPaths = [
     "/etc/NetworkManager/system-connections"
   ];
 

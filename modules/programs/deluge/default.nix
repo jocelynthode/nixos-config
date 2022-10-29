@@ -5,7 +5,7 @@
   };
 
   config = lib.mkIf config.aspects.programs.deluge.enable {
-    environment.persistence."${config.aspects.persistPrefix}".users.jocelyn.directories = [
+    aspects.base.persistence.homePaths = [
       ".config/deluge"
     ];
     home-manager.users.jocelyn = { ... }: {

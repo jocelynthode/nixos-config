@@ -5,7 +5,7 @@
   };
 
   config = lib.mkIf config.aspects.games.mumble.enable {
-    environment.persistence."${config.aspects.persistPrefix}".users.jocelyn.directories = [
+    aspects.base.persistence.homePaths = [
       ".config/Mumble"
       ".local/share/Mumble"
     ];

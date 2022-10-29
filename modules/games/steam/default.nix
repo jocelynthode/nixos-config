@@ -5,7 +5,7 @@
   };
 
   config = lib.mkIf config.aspects.games.steam.enable {
-    environment.persistence."${config.aspects.persistPrefix}".users.jocelyn.directories = [
+    aspects.base.persistence.homePaths = [
       ".steam"
       ".local/share/Steam"
     ];

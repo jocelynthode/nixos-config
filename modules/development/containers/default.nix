@@ -24,7 +24,7 @@
       podman-compose
     ];
 
-    environment.persistence."${config.aspects.persistPrefix}".directories = [
+    aspects.base.persistence.systemPaths = [
       "/var/lib/containers"
     ];
 

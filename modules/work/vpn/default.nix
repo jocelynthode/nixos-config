@@ -7,7 +7,7 @@
   };
 
   config = lib.mkIf config.aspects.work.vpn.enable {
-    environment.persistence."${config.aspects.persistPrefix}".users.jocelyn.directories = [
+    aspects.base.persistence.homePaths = [
       ".local/share/networkmanagement/certificates"
     ];
   };

@@ -5,7 +5,6 @@
     ./dunst
     ./picom
     ./polybar
-    ./rofi
   ];
 
   options.aspects.graphical.i3 = {
@@ -18,6 +17,7 @@
 
   config = lib.mkIf config.aspects.graphical.i3.enable {
 
+    aspects.graphical.rofi.package = pkgs.rofi;
     hardware.opengl.enable = true;
     services.xserver = {
       enable = true;
@@ -59,7 +59,7 @@
       };
     };
 
-    environment.persistence."${config.aspects.persistPrefix}".users.jocelyn.directories = [
+    aspects.base.persistence.homePaths = [
       ".cache/betterlockscreen"
     ];
 
