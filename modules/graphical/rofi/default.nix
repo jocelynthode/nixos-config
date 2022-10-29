@@ -19,7 +19,7 @@
 
       programs.rofi = {
         enable = true;
-        package = config.aspects.graphical.rofi.package;
+        package = osConfig.aspects.graphical.rofi.package;
         font = "${osConfig.aspects.base.fonts.monospace.family} ${toString osConfig.aspects.base.fonts.monospace.size}";
         terminal = "${pkgs.kitty}/bin/kitty";
         location = "center";
