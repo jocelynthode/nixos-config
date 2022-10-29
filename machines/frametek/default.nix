@@ -14,6 +14,27 @@
       enable = true;
       wallpaper = "palms-tropics";
       fingerprint.enable = true;
+      hyprland.kanshi.profiles = {
+        laptop = {
+          outputs = [
+            {
+              criteria = "eDP-1";
+            }
+          ];
+        };
+        work = {
+          outputs = [
+            {
+              criteria = "eDP-1";
+              position = "0,2160";
+            }
+            {
+              criteria = "DP-4";
+              position = "0,0";
+            }
+          ];
+        };
+      };
       i3 = {
         dpi = 140;
         autorandr.profiles = {

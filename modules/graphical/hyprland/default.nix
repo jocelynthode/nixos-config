@@ -1,9 +1,9 @@
 { config, lib, pkgs, inputs, ... }: {
 
   imports = [
+    ./kanshi
     ./mako
-    # ./swaylock
-    # ./swayidle
+    ./swayidle
     ./waybar
   ];
 
@@ -26,6 +26,35 @@
       package = null;
     };
 
+    environment.systemPackages = with pkgs; [
+      qt5.qtwayland
+    ];
+
+    environment.etc."greetd/environments".text = "Hyprland";
+    environment.etc."greetd/gtkgreet.css".text = ''
+      window {
+         background-color: #000000; 
+         background-size: cover;
+         background-position: center;
+      }
+      box#body {
+         border-radius: 10px;
+         position: center;
+         padding: 100px;
+      }
+    '';
+
+    services.greetd = {
+      enable = true;
+      settings = rec {
+        initial_session = {
+          command = "${pkgs.cage}/bin/cage -s -- ${pkgs.greetd.gtkgreet}/bin/gtkgreet -l -s /etc/greetd/gtkgreet.css";
+          user = "jocelyn";
+        };
+        default_session = initial_session;
+      };
+    };
+
     aspects.graphical.rofi.package = pkgs.rofi-wayland;
 
     home-manager.sharedModules = [ inputs.hyprland.homeManagerModules.default ];
@@ -45,10 +74,11 @@
         MOZ_ENABLE_WAYLAND = "true";
         QT_QPA_PLATFORM = "wayland";
         LIBSEAT_BACKEND = "logind";
-        # GBM_BACKEND = "nvidia-drm";
-        # "__GLX_VENDOR_LIBRARY_NAME" = "nvidia";
-        # LIBVA_DRIVER_NAME = "nvidia";
-        # GDK_BACKEND = "wayland,x11";
+      } // {
+        GBM_BACKEND = "nvidia-drm";
+        "__GLX_VENDOR_LIBRARY_NAME" = "nvidia";
+        LIBVA_DRIVER_NAME = "nvidia";
+        GDK_BACKEND = "wayland,x11";
       };
 
       wayland.windowManager.hyprland = {
@@ -86,16 +116,18 @@
           }
           misc {
             no_vfr=false
+            mouse_move_enables_dpms=true
           }
           # Startup
           exec=${pkgs.swaybg}/bin/swaybg -i ${pkgs.wallpapers.${osConfig.aspects.graphical.wallpaper}} --mode fill
-          exec=${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
           # Mouse binding
           bindm=SUPER,mouse:272,movewindow
           bindm=SUPER,mouse:273,resizewindow
           # Program bindings
           bind=SUPER,Return,exec,${pkgs.kitty}/bin/kitty
+          bind=SUPER,f,fullscreen,0
           bind=SUPER,d,exec,${pkgs.rofi}/bin/rofi -show drun -modi drun -theme launcher -dpi 1
+          bind=SUPERSHIFT,e,exec,${pkgs.rofi}/bin/rofi -show menu -modi "menu:rofi-power-menu" -theme powermenu -dpi 1
           # Window manager controls
           bind=SUPERSHIFT,q,killactive
           bind=SUPER,1,workspace,01
@@ -108,20 +140,33 @@
           bind=SUPER,8,workspace,08
           bind=SUPER,9,workspace,09
           bind=SUPER,0,workspace,10
-          bind=SUPERSHIFT,1,movetoworkspacesilent,01
-          bind=SUPERSHIFT,2,movetoworkspacesilent,02
-          bind=SUPERSHIFT,3,movetoworkspacesilent,03
-          bind=SUPERSHIFT,4,movetoworkspacesilent,04
-          bind=SUPERSHIFT,5,movetoworkspacesilent,05
-          bind=SUPERSHIFT,6,movetoworkspacesilent,06
-          bind=SUPERSHIFT,7,movetoworkspacesilent,07
-          bind=SUPERSHIFT,8,movetoworkspacesilent,08
-          bind=SUPERSHIFT,9,movetoworkspacesilent,09
-          bind=SUPERSHIFT,0,movetoworkspacesilent,10
+          bind=SUPERSHIFT,1,movetoworkspace,01
+          bind=SUPERSHIFT,2,movetoworkspace,02
+          bind=SUPERSHIFT,3,movetoworkspace,03
+          bind=SUPERSHIFT,4,movetoworkspace,04
+          bind=SUPERSHIFT,5,movetoworkspace,05
+          bind=SUPERSHIFT,6,movetoworkspace,06
+          bind=SUPERSHIFT,7,movetoworkspace,07
+          bind=SUPERSHIFT,8,movetoworkspace,08
+          bind=SUPERSHIFT,9,movetoworkspace,09
+          bind=SUPERSHIFT,0,movetoworkspace,10
 
           blurls=waybar
           windowrule=float,Rofi
           windowrule=center,Rofi
+
+          workspace=DP-1,1
+          workspace=HDMI-A-1,6
+          wsbind=1,DP-1
+          wsbind=2,DP-1
+          wsbind=3,DP-1
+          wsbind=4,DP-1
+          wsbind=5,DP-1
+          wsbind=6,HDMI-A-1
+          wsbind=7,HDMI-A-1
+          wsbind=8,HDMI-A-1
+          wsbind=9,HDMI-A-1
+          wsbind=10,HDMI-A-1
         '';
       };
     };

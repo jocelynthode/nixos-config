@@ -47,6 +47,9 @@
         xdg.enable = lib.mkDefault true;
       };
     };
+
+    programs.nm-applet.enable = true;
+
     home-manager.users.jocelyn = { ... }: {
       home.packages = with pkgs; [
         networkmanagerapplet

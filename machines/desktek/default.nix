@@ -15,6 +15,20 @@
       enable = true;
       wallpaper = "palms-tropics";
       printer.enable = true;
+      hyprland.kanshi.profiles = {
+        default = {
+          outputs = [
+            {
+              criteria = "DP-1";
+              position = "1920,0";
+            }
+            {
+              criteria = "HDMI-A-1";
+              position = "0,0";
+            }
+          ];
+        };
+      };
       i3.autorandr.profiles = {
         "desktop" = {
           fingerprint = {

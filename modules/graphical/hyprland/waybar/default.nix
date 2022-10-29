@@ -27,7 +27,6 @@
           systemd.enable = true;
           settings = {
             primary = {
-              mode = "dock";
               layer = "top";
               height = 36;
               # width = 100;
@@ -58,6 +57,7 @@
               ];
               "wlr/workspaces" = {
                 on-click = "activate";
+                all-outputs = true;
               };
               clock = {
                 format = "{:<span color=\"#${config.colorScheme.colors.base0E}\"> </span> %a, %d %b %Y at %H:%M:%S}";
