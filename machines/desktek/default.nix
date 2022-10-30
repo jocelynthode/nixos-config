@@ -15,6 +15,8 @@
       enable = true;
       wallpaper = "palms-tropics";
       printer.enable = true;
+      # hyprland.enable = true;
+      # i3.enable = false;
       hyprland.kanshi.profiles = {
         default = {
           outputs = [

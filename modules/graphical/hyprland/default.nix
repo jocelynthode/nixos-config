@@ -71,14 +71,16 @@
       ];
 
       home.sessionVariables = {
-        MOZ_ENABLE_WAYLAND = "true";
+        MOZ_ENABLE_WAYLAND = "1";
         QT_QPA_PLATFORM = "wayland;xcb";
         LIBSEAT_BACKEND = "logind";
+        SDL_VIDEODRIVER = "wayland";
       } // lib.attrsets.optionalAttrs osConfig.hardware.nvidia.modesetting.enable {
         GBM_BACKEND = "nvidia-drm";
         "__GLX_VENDOR_LIBRARY_NAME" = "nvidia";
         LIBVA_DRIVER_NAME = "nvidia";
         GDK_BACKEND = "wayland,x11";
+        WLR_NO_HARDWARE_CURSORS = "1";
       };
 
       wayland.windowManager.hyprland = {
@@ -131,9 +133,9 @@
           bind=SUPERSHIFT,e,exec,${pkgs.rofi}/bin/rofi -show menu -modi "menu:rofi-power-menu" -theme powermenu -dpi 1
           binde=,XF86AudioRaiseVolume,exec,${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%
           binde=,XF86AudioLowerVolume,exec,${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%
-          bind=,XF86AudioMute,${pkgs.pulseaudio}/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle
-          bind=,XF86AudioPlay,${pkgs.playerctl}/bin/playerctl --player spotify play-pause
-          bind=,Print,${pkgs.gnome.gnome-screenshot}/bin/gnome-screenshot -i
+          bind=,XF86AudioMute,exec,${pkgs.pulseaudio}/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle
+          bind=,XF86AudioPlay,exec,${pkgs.playerctl}/bin/playerctl --player spotify play-pause
+          bind=,Print,exec,${pkgs.gnome.gnome-screenshot}/bin/gnome-screenshot -i
           # Window manager controls
           bind=SUPERSHIFT,q,killactive
           bind=SUPER,1,workspace,01
