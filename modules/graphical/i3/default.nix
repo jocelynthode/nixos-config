@@ -18,7 +18,6 @@
   config = lib.mkIf config.aspects.graphical.i3.enable {
 
     aspects.graphical.rofi.package = pkgs.rofi;
-    hardware.opengl.enable = true;
     services.xserver = {
       enable = true;
       dpi = config.aspects.graphical.i3.dpi;

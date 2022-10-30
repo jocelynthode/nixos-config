@@ -50,6 +50,12 @@
 
     programs.nm-applet.enable = true;
 
+    hardware.opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+    };
+
     home-manager.users.jocelyn = { ... }: {
       home.packages = with pkgs; [
         networkmanagerapplet

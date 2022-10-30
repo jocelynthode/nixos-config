@@ -50,7 +50,7 @@
         };
       };
       i3 = {
-        dpi = 140;
+        dpi = 144;
         autorandr.profiles = {
           "laptop" = {
             fingerprint = {
