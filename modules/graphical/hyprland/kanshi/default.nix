@@ -11,6 +11,9 @@
               criteria = "eDP-1";
             }
           ];
+          exec = [ 
+            ${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor "1 1"
+          ]";
         };
         docked = {
           outputs = [

@@ -72,9 +72,9 @@
 
       home.sessionVariables = {
         MOZ_ENABLE_WAYLAND = "true";
-        QT_QPA_PLATFORM = "wayland";
+        QT_QPA_PLATFORM = "wayland;xcb";
         LIBSEAT_BACKEND = "logind";
-      } // {
+      } // lib.attrsets.optionalAttrs osConfig.hardware.nvidia.modesetting.enable {
         GBM_BACKEND = "nvidia-drm";
         "__GLX_VENDOR_LIBRARY_NAME" = "nvidia";
         LIBVA_DRIVER_NAME = "nvidia";
@@ -120,6 +120,7 @@
           }
           # Startup
           exec=${pkgs.swaybg}/bin/swaybg -i ${pkgs.wallpapers.${osConfig.aspects.graphical.wallpaper}} --mode fill
+          exec-once=${pkgs.systemd}/bin/systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
           # Mouse binding
           bindm=SUPER,mouse:272,movewindow
           bindm=SUPER,mouse:273,resizewindow
@@ -128,6 +129,11 @@
           bind=SUPER,f,fullscreen,0
           bind=SUPER,d,exec,${pkgs.rofi}/bin/rofi -show drun -modi drun -theme launcher -dpi 1
           bind=SUPERSHIFT,e,exec,${pkgs.rofi}/bin/rofi -show menu -modi "menu:rofi-power-menu" -theme powermenu -dpi 1
+          binde=,XF86AudioRaiseVolume,exec,${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%
+          binde=,XF86AudioLowerVolume,exec,${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%
+          bind=,XF86AudioMute,${pkgs.pulseaudio}/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle
+          bind=,XF86AudioPlay,${pkgs.playerctl}/bin/playerctl --player spotify play-pause
+          bind=,Print,${pkgs.gnome.gnome-screenshot}/bin/gnome-screenshot -i
           # Window manager controls
           bind=SUPERSHIFT,q,killactive
           bind=SUPER,1,workspace,01
@@ -150,8 +156,23 @@
           bind=SUPERSHIFT,8,movetoworkspace,08
           bind=SUPERSHIFT,9,movetoworkspace,09
           bind=SUPERSHIFT,0,movetoworkspace,10
+          bind=SUPER,h,movefocus,l
+          bind=SUPER,j,movefocus,d
+          bind=SUPER,k,movefocus,u
+          bind=SUPER,l,movefocus,r
+          bind=SUPERSHIFT,h,movewindow,l
+          bind=SUPERSHIFT,j,movewindow,d
+          bind=SUPERSHIFT,k,movewindow,u
+          bind=SUPERSHIFT,l,movewindow,r
 
           blurls=waybar
+          windowrule=workspace 4,Steam
+          windowrule=workspace 7,Slack
+          windowrule=workspace 7,discord
+          windowrule=workspace 7,Mumble
+          windowrule=workspace 7,Signal
+          windowrule=workspace 8,Spotify
+          windowrule=workspace 9,Bitwarden
           windowrule=float,Rofi
           windowrule=center,Rofi
 

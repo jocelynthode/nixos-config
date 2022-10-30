@@ -1,4 +1,4 @@
-{ ... }: {
+{ pkgs, ... }: {
   imports = [ ./hardware.nix ];
 
   # Machine-specific module settings
@@ -21,6 +21,13 @@
               criteria = "eDP-1";
             }
           ];
+          exec = [ 
+            "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"6 eDP-1\""
+            "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"7 eDP-1\""
+            "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"8 eDP-1\""
+            "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"9 eDP-1\""
+            "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"10 eDP-1\""
+          ];
         };
         work = {
           outputs = [
@@ -32,6 +39,13 @@
               criteria = "DP-4";
               position = "0,0";
             }
+          ];
+          exec = [ 
+            "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"6 DP-4\""
+            "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"7 DP-4\""
+            "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"8 DP-4\""
+            "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"9 DP-4\""
+            "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"10 DP-4\""
           ];
         };
       };
