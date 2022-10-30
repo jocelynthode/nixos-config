@@ -7,12 +7,8 @@
         jq = "${pkgs.jq}/bin/jq";
         systemctl = "${pkgs.systemd}/bin/systemctl";
         journalctl = "${pkgs.systemd}/bin/journalctl";
-        playerctl = "${pkgs.playerctl}/bin/playerctl";
         blueberry = "${pkgs.blueberry}/bin/blueberry";
         rofi-pulse = "${pkgs.rofi-pulse}/bin/rofi-pulse";
-        polybar-bluetooth = pkgs.callPackage ../../i3/polybar/polybar-bluetooth { config = config; };
-        polybar-gammastep = pkgs.callPackage ../../i3/polybar/polybar-gammastep { config = config; };
-        polybar-mic = pkgs.callPackage ../../i3/polybar/polybar-mic { config = config; };
         # Function to simplify making waybar outputs
         jsonOutput = name: { pre ? "", text ? "", tooltip ? "", alt ? "", class ? "", percentage ? "" }: "${pkgs.writeShellScriptBin "waybar-${name}" ''
           set -euo pipefail
