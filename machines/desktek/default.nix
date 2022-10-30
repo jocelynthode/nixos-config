@@ -21,7 +21,7 @@
         default = {
           outputs = [
             {
-              criteria = "DP-1";
+              criteria = "DP-2";
               position = "1920,0";
             }
             {

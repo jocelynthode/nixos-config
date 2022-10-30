@@ -39,10 +39,21 @@
       }
       box#body {
          border-radius: 10px;
-         position: center;
-         padding: 100px;
+         padding: 15px;
       }
     '';
+    environment.sessionVariables = {
+      MOZ_ENABLE_WAYLAND = "1";
+      QT_QPA_PLATFORM = "wayland;xcb";
+      LIBSEAT_BACKEND = "logind";
+      SDL_VIDEODRIVER = "wayland;x11";
+    } // lib.attrsets.optionalAttrs config.hardware.nvidia.modesetting.enable {
+      GBM_BACKEND = "nvidia-drm";
+      "__GLX_VENDOR_LIBRARY_NAME" = "nvidia";
+      LIBVA_DRIVER_NAME = "nvidia";
+      GDK_BACKEND = "wayland,x11";
+      WLR_NO_HARDWARE_CURSORS = "1";
+    };
 
     services.greetd = {
       enable = true;
@@ -70,19 +81,6 @@
         ydotool
       ];
 
-      home.sessionVariables = {
-        MOZ_ENABLE_WAYLAND = "1";
-        QT_QPA_PLATFORM = "wayland;xcb";
-        LIBSEAT_BACKEND = "logind";
-        SDL_VIDEODRIVER = "wayland";
-      } // lib.attrsets.optionalAttrs osConfig.hardware.nvidia.modesetting.enable {
-        GBM_BACKEND = "nvidia-drm";
-        "__GLX_VENDOR_LIBRARY_NAME" = "nvidia";
-        LIBVA_DRIVER_NAME = "nvidia";
-        GDK_BACKEND = "wayland,x11";
-        WLR_NO_HARDWARE_CURSORS = "1";
-      };
-
       wayland.windowManager.hyprland = {
         enable = true;
         extraConfig = ''
@@ -93,23 +91,19 @@
             border_size=2.7
             col.active_border=0xff${config.colorScheme.colors.base0C}
             col.inactive_border=0xff${config.colorScheme.colors.base02}
-            cursor_inactive_timeout=4
+            cursor_inactive_timeout=0
           }
           decoration {
             active_opacity=1.0
             inactive_opacity=1.0
             fullscreen_opacity=1.0
-            rounding=0
+            rounding=5
             blur=true
             blur_size=6
             blur_passes=3
             blur_new_optimizations=true
-            blur_ignore_opacity=true
-            drop_shadow=true
-            shadow_range=12
-            shadow_offset=3 3
-            col.shadow=0x44000000
-            col.shadow_inactive=0x66000000
+            blur_ignore_opacity=false
+            drop_shadow=false
           }
           dwindle {
             col.group_border_active=0xff${config.colorScheme.colors.base0B}
@@ -119,6 +113,10 @@
           misc {
             no_vfr=false
             mouse_move_enables_dpms=true
+          }
+          input {
+            kb_layout=us
+            kb_variant=altgr-intl
           }
           # Startup
           exec=${pkgs.swaybg}/bin/swaybg -i ${pkgs.wallpapers.${osConfig.aspects.graphical.wallpaper}} --mode fill
@@ -177,14 +175,15 @@
           windowrule=workspace 9,Bitwarden
           windowrule=float,Rofi
           windowrule=center,Rofi
+          windowrule=opacity 0.90,kitty
 
-          workspace=DP-1,1
+          workspace=DP-2,1
           workspace=HDMI-A-1,6
-          wsbind=1,DP-1
-          wsbind=2,DP-1
-          wsbind=3,DP-1
-          wsbind=4,DP-1
-          wsbind=5,DP-1
+          wsbind=1,DP-2
+          wsbind=2,DP-2
+          wsbind=3,DP-2
+          wsbind=4,DP-2
+          wsbind=5,DP-2
           wsbind=6,HDMI-A-1
           wsbind=7,HDMI-A-1
           wsbind=8,HDMI-A-1

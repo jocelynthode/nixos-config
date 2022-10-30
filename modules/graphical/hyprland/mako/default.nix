@@ -10,7 +10,7 @@
         backgroundColor = "#${config.colorScheme.colors.base01}DD";
         borderColor = "#${config.colorScheme.colors.base0C}FF";
 
-        borderRadius = 0;
+        borderRadius = 5;
         borderSize = 2;
         font = "${osConfig.aspects.base.fonts.monospace.family} ${toString osConfig.aspects.base.fonts.monospace.size}";
         width = 512;

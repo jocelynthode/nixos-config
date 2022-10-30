@@ -7,6 +7,12 @@
         jq = "${pkgs.jq}/bin/jq";
         systemctl = "${pkgs.systemd}/bin/systemctl";
         journalctl = "${pkgs.systemd}/bin/journalctl";
+        playerctl = "${pkgs.playerctl}/bin/playerctl";
+        blueberry = "${pkgs.blueberry}/bin/blueberry";
+        rofi-pulse = "${pkgs.rofi-pulse}/bin/rofi-pulse";
+        polybar-bluetooth = pkgs.callPackage ../../i3/polybar/polybar-bluetooth { config = config; };
+        polybar-gammastep = pkgs.callPackage ../../i3/polybar/polybar-gammastep { config = config; };
+        polybar-mic = pkgs.callPackage ../../i3/polybar/polybar-mic { config = config; };
         # Function to simplify making waybar outputs
         jsonOutput = name: { pre ? "", text ? "", tooltip ? "", alt ? "", class ? "", percentage ? "" }: "${pkgs.writeShellScriptBin "waybar-${name}" ''
           set -euo pipefail
@@ -32,7 +38,7 @@
               # width = 100;
               margin = "0";
               position = "top";
-              output = [ "DP-1" "eDP-1" ];
+              output = [ "DP-2" "eDP-1" ];
               modules-left = [
                 "wlr/workspaces"
                 "custom/sep"
@@ -45,6 +51,7 @@
               ];
               modules-right = [
                 "network"
+                "bluetooth"
                 "custom/sep"
                 "custom/gammastep"
                 "custom/gpg-agent"
@@ -77,6 +84,7 @@
               };
               pulseaudio = {
                 format = "{icon}  {volume}%";
+                on-click-right = "${rofi-pulse} sink";
                 format-muted = "   0%";
                 format-icons = {
                   headphone = "";
@@ -110,6 +118,14 @@
                 glyph = "";
                 use-icon = false;
                 tooltip = false;
+              };
+              bluetooth = {
+                interval = 1;
+                format = " {status}";
+                format-connected = " {device_alias}";
+                format-connected-battery = " {device_alias} {device_battery_percentage}%";
+                on-click-left = "${pkgs.toggle-bluetooth}/bin/toggle_bluetooth";
+                on-click-right = "${blueberry} &";
               };
               "custom/sep" = {
                 format = "⏽";
@@ -170,10 +186,10 @@
                 padding: 0 8px;
               }
               .modules-right {
-                margin-right: -15;
+                margin-right: -15px;
               }
               .modules-left {
-                margin-left: -15;
+                margin-left: -15px;
               }
               window#waybar.top {
                 color: #${colors.base05};
@@ -188,6 +204,7 @@
                 padding: 0px;
                 border-radius: 0px;
                 border-bottom: 5px solid #${colors.base00};
+                color: #${colors.base07};
               }
               #workspaces button.hidden {
                 background-color: #${colors.base00};
@@ -208,9 +225,18 @@
               }
               #custom-sep {
                 color: #${colors.base03};
+                margin: 0px;
+                padding: 3px;
               }
               #custom-gammastep {
                 color: #${colors.base0A};
+                margin: 0px;
+                padding: 0px;
+              }
+              #cpu, #memory, #disk, #custom-gpg-agent,#pulseaudio, #clock {
+                color: #${colors.base07};
+                margin: 0px;
+                padding: 0px;
               }
             '';
         };
