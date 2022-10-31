@@ -9,10 +9,6 @@
         journalctl = "${pkgs.systemd}/bin/journalctl";
         playerctl = "${pkgs.playerctl}/bin/playerctl";
         blueberry = "${pkgs.blueberry}/bin/blueberry";
-        rofi-pulse = "${pkgs.rofi-pulse}/bin/rofi-pulse";
-        polybar-bluetooth = pkgs.callPackage ../../i3/polybar/polybar-bluetooth { config = config; };
-        polybar-gammastep = pkgs.callPackage ../../i3/polybar/polybar-gammastep { config = config; };
-        polybar-mic = pkgs.callPackage ../../i3/polybar/polybar-mic { config = config; };
         # Function to simplify making waybar outputs
         jsonOutput = name: { pre ? "", text ? "", tooltip ? "", alt ? "", class ? "", percentage ? "" }: "${pkgs.writeShellScriptBin "waybar-${name}" ''
           set -euo pipefail
@@ -47,6 +43,7 @@
                 "disk"
               ];
               modules-center = [
+                "custom/player"
                 "clock"
               ];
               modules-right = [
@@ -83,9 +80,11 @@
                 format = "<span color=\"#${config.colorScheme.colors.base0C}\"></span>  {free}";
               };
               pulseaudio = {
-                format = "{icon}  {volume}%";
-                on-click-right = "${rofi-pulse} sink";
-                format-muted = "   0%";
+                format = "{format_source}  {icon} {volume}%";
+                on-click-right = "${pkgs.pavucontrol}/bin/pavucontrol";
+                format-source = " {volume}%";
+                format-source-muted = "<span color=\"#${config.colorScheme.colors.base08}\"></span> 0%";
+                format-muted = "<span color=\"#${config.colorScheme.colors.base08}\"></span>   0%";
                 format-icons = {
                   headphone = "";
                   headset = "";
@@ -102,6 +101,11 @@
                 format-charging = " {capacity}% {time}";
                 format-full = "{icon} {capacity}%";
               };
+              backlight = {
+                device = "intel_backlight";
+                format-icons = [ "" "" "" "" "" "" "" "" "" ];
+                format = "{icon} {percent}%";
+              };
               network = {
                 interval = 3;
                 format = "<span color=\"#${config.colorScheme.colors.base0C}\">  {bandwidthDownBytes}</span>  <span color=\"#${config.colorScheme.colors.base0D}\">祝 {bandwidthUpBytes}</span>";
@@ -109,8 +113,8 @@
                 tooltip-format = ''
                   {ifname}
                   {ipaddr}/{cidr}
-                  Up: {bandwidthUpBits}
-                  Down: {bandwidthDownBits}'';
+                  {essid} {signalStrength}
+                '';
               };
               gamemode = {
                 format = "{glyph}";
@@ -120,12 +124,38 @@
                 tooltip = false;
               };
               bluetooth = {
-                interval = 1;
+                interval = 2;
                 format = " {status}";
-                format-connected = " {device_alias}";
-                format-connected-battery = " {device_alias} {device_battery_percentage}%";
+                format-on = "";
+                format-off = "<span color=\"#${config.colorScheme.colors.base03}\"></span>";
+                format-disabled = "<span color=\"#${config.colorScheme.colors.base03}\"></span>";
+                format-connected = "<span color=\"#${config.colorScheme.colors.base0D}\"></span> {device_alias}";
+                format-connected-battery = "<span color=\"#${config.colorScheme.colors.base0D}\"></span> {device_alias} {device_battery_percentage}%";
                 on-click-left = "${pkgs.toggle-bluetooth}/bin/toggle_bluetooth";
                 on-click-right = "${blueberry} &";
+              };
+              "custom/player" = {
+                interval = 1;
+                return-type = "json";
+                exec =
+                  jsonOutput "player" {
+                    pre = ''
+                      status=$(${playerctl} --player spotify status);
+                      if [ $status == "Playing" ]; then
+                        song=$(${playerctl} --player spotify metadata --format '{{artist}} - {{title}}')
+                      else
+                        song=""
+                      fi
+                    '';
+                    alt = "$status";
+                    text = "$song";
+                    tooltip = "Spotify is $status";
+                  };
+                # exec = " '";
+                format = "<span color=\"#${config.colorScheme.colors.base0B}\">{icon}</span> {}";
+                format-icons = {
+                  "Playing" = "阮 ";
+                };
               };
               "custom/sep" = {
                 format = "⏽";
@@ -182,7 +212,7 @@
             ''
               * {
                 font-family: ${osConfig.aspects.base.fonts.regular.family}, ${osConfig.aspects.base.fonts.monospace.family};
-                font-size: 12pt;
+                font-size: ${toString osConfig.aspects.base.fonts.regular.size}pt;
                 padding: 0 8px;
               }
               .modules-right {
@@ -233,7 +263,7 @@
                 margin: 0px;
                 padding: 0px;
               }
-              #cpu, #memory, #disk, #custom-gpg-agent,#pulseaudio, #clock {
+              #cpu, #memory, #disk, #custom-gpg-agent,#pulseaudio, #clock, #custom-player, #bluetooth, #backlight {
                 color: #${colors.base07};
                 margin: 0px;
                 padding: 0px;

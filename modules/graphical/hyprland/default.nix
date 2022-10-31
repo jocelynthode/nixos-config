@@ -5,6 +5,7 @@
     ./mako
     ./swayidle
     ./waybar
+    ./wofi
   ];
 
   options.aspects.graphical.hyprland = {
@@ -33,12 +34,12 @@
     environment.etc."greetd/environments".text = "Hyprland";
     environment.etc."greetd/gtkgreet.css".text = ''
       window {
-         background-color: #000000; 
          background-size: cover;
          background-position: center;
       }
       box#body {
          border-radius: 10px;
+         position: center;
          padding: 15px;
       }
     '';
@@ -46,7 +47,7 @@
       MOZ_ENABLE_WAYLAND = "1";
       QT_QPA_PLATFORM = "wayland;xcb";
       LIBSEAT_BACKEND = "logind";
-      SDL_VIDEODRIVER = "wayland;x11";
+      SDL_VIDEODRIVER = "wayland";
     } // lib.attrsets.optionalAttrs config.hardware.nvidia.modesetting.enable {
       GBM_BACKEND = "nvidia-drm";
       "__GLX_VENDOR_LIBRARY_NAME" = "nvidia";
@@ -65,8 +66,6 @@
         default_session = initial_session;
       };
     };
-
-    aspects.graphical.rofi.package = pkgs.rofi-wayland;
 
     home-manager.sharedModules = [ inputs.hyprland.homeManagerModules.default ];
 
@@ -127,8 +126,8 @@
           # Program bindings
           bind=SUPER,Return,exec,${pkgs.kitty}/bin/kitty
           bind=SUPER,f,fullscreen,0
-          bind=SUPER,d,exec,${pkgs.rofi}/bin/rofi -show drun -modi drun -theme launcher -dpi 1
-          bind=SUPERSHIFT,e,exec,${pkgs.rofi}/bin/rofi -show menu -modi "menu:rofi-power-menu" -theme powermenu -dpi 1
+          bind=SUPER,d,exec,${pkgs.wofi}/bin/wofi -IS drun -W 25% -H 25%
+          bind=SUPERSHIFT,e,exec,${pkgs.wofi-powermenu}/bin/wofi-powermenu
           binde=,XF86AudioRaiseVolume,exec,${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%
           binde=,XF86AudioLowerVolume,exec,${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%
           bind=,XF86AudioMute,exec,${pkgs.pulseaudio}/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle
@@ -166,6 +165,8 @@
           bind=SUPERSHIFT,l,movewindow,r
 
           blurls=waybar
+          blurls=wofi
+
           windowrule=workspace 4,Steam
           windowrule=workspace 7,Slack
           windowrule=workspace 7,discord
@@ -173,9 +174,9 @@
           windowrule=workspace 7,Signal
           windowrule=workspace 8,Spotify
           windowrule=workspace 9,Bitwarden
-          windowrule=float,Rofi
-          windowrule=center,Rofi
           windowrule=opacity 0.90,kitty
+          windowrule=opacity 0.85,Spotify
+          windowrule=tile,Spotify
 
           workspace=DP-2,1
           workspace=HDMI-A-1,6

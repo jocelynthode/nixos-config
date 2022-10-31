@@ -1,4 +1,4 @@
-{ config, options, lib, pkgs, modulesPath, ... }: {
+{ config, options, lib, ... }: {
   options.aspects.base.virtualisation.enable = lib.mkOption {
     description = "This machine is a QEMU guest";
     readOnly = true;

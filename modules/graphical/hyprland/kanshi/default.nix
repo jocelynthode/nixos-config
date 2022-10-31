@@ -31,7 +31,7 @@
   };
 
   config = lib.mkIf config.aspects.graphical.hyprland.enable {
-    home-manager.users.jocelyn = { config, osConfig, ... }: {
+    home-manager.users.jocelyn = { osConfig, ... }: {
       services.kanshi = {
         enable = true;
         systemdTarget = "hyprland-session.target";

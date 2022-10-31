@@ -7,7 +7,6 @@
   config = lib.mkIf config.aspects.graphical.sound.enable {
     aspects.base.persistence.homePaths = [
       ".local/state/wireplumber"
-      ".config/pavucontrol-qt"
     ];
 
     security.rtkit.enable = true;
@@ -34,7 +33,7 @@
 
     home-manager.users.jocelyn = { ... }: {
       home.packages = with pkgs; [
-        lxqt.pavucontrol-qt
+        pavucontrol
       ];
 
       services.easyeffects = {

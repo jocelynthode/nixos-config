@@ -10,11 +10,12 @@
         backgroundColor = "#${config.colorScheme.colors.base01}DD";
         borderColor = "#${config.colorScheme.colors.base0C}FF";
 
+        output = "DP-2";
         borderRadius = 5;
         borderSize = 2;
         font = "${osConfig.aspects.base.fonts.monospace.family} ${toString osConfig.aspects.base.fonts.monospace.size}";
-        width = 512;
-        height = 128;
+        width = 400;
+        height = 256;
 
         defaultTimeout = 4000;
         maxVisible = 8;
