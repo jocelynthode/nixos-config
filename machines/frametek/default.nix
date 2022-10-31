@@ -13,12 +13,15 @@
     graphical = {
       enable = true;
       wallpaper = "palms-tropics";
+      # i3.enable = false;
+      # hyprland.enable = true;
       fingerprint.enable = true;
       hyprland.kanshi.profiles = {
         laptop = {
           outputs = [
             {
               criteria = "eDP-1";
+              scale = 1.2;
             }
           ];
           exec = [ 
@@ -34,10 +37,12 @@
             {
               criteria = "eDP-1";
               position = "0,2160";
+              scale = 1.2;
             }
             {
               criteria = "DP-4";
               position = "0,0";
+              scale = 1.2;
             }
           ];
           exec = [ 

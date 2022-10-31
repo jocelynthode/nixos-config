@@ -72,11 +72,10 @@
     home-manager.users.jocelyn = { config, osConfig, ... }: {
       home.packages = with pkgs; [
         imv
-        # primary-xwayland
+        grim
+        slurp
         waypipe
         wl-clipboard
-        # wl-mirror
-        # wl-mirror-pick
         ydotool
       ];
 

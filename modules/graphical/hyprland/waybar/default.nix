@@ -55,6 +55,7 @@
                 "gamemode"
                 "custom/sep"
                 "pulseaudio"
+                "backlight"
                 "battery"
                 "custom/sep"
                 "tray"
@@ -97,14 +98,19 @@
                 full-at = 85;
                 interval = 10;
                 format-icons = [ "" "" "" "" "" "" "" "" "" "" ];
-                format = "{icon} {capacity}% {time}";
+                states = {
+                  warning = 30;
+                  critical = 20;
+                };
+                format = "{icon} {capacity}%";
+                format-discharging = "{icon} {capacity}%";
                 format-charging = " {capacity}% {time}";
-                format-full = "{icon} {capacity}%";
+                format-full = "{icon}";
               };
               backlight = {
                 device = "intel_backlight";
                 format-icons = [ "" "" "" "" "" "" "" "" "" ];
-                format = "{icon} {percent}%";
+                format = "<span color=\"#${config.colorScheme.colors.base0A}\">{icon}</span> {percent}%";
               };
               network = {
                 interval = 3;
@@ -131,6 +137,7 @@
                 format-disabled = "<span color=\"#${config.colorScheme.colors.base03}\"></span>";
                 format-connected = "<span color=\"#${config.colorScheme.colors.base0D}\"></span> {device_alias}";
                 format-connected-battery = "<span color=\"#${config.colorScheme.colors.base0D}\"></span> {device_alias} {device_battery_percentage}%";
+                # TODO FIX toggle bluetooth not working
                 on-click-left = "${pkgs.toggle-bluetooth}/bin/toggle_bluetooth";
                 on-click-right = "${blueberry} &";
               };
@@ -256,14 +263,34 @@
               #custom-sep {
                 color: #${colors.base03};
                 margin: 0px;
-                padding: 3px;
+                padding: 0px;
               }
               #custom-gammastep {
                 color: #${colors.base0A};
                 margin: 0px;
                 padding: 0px;
               }
-              #cpu, #memory, #disk, #custom-gpg-agent,#pulseaudio, #clock, #custom-player, #bluetooth, #backlight {
+              #battery.full {
+                color: #${colors.base0D};
+                margin: 0px;
+                padding: 0px;
+              }
+              #battery.charging {
+                color: #${colors.base0C};
+                margin: 0px;
+                padding: 0px;
+              }
+              #battery.discharging.warning {
+                color: #${colors.base0A};
+                margin: 0px;
+                padding: 0px;
+              }
+              #battery.discharging.critical {
+                color: #${colors.base08};
+                margin: 0px;
+                padding: 0px;
+              }
+              #cpu, #memory, #disk, #battery, #custom-gpg-agent,#pulseaudio, #clock, #custom-player, #bluetooth, #backlight {
                 color: #${colors.base07};
                 margin: 0px;
                 padding: 0px;
