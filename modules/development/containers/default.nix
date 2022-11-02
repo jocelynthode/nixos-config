@@ -24,9 +24,14 @@
       podman-compose
     ];
 
-    aspects.base.persistence.systemPaths = [
-      "/var/lib/containers"
-    ];
+    aspects.base.persistence = {
+      homePaths = [
+        { directory = ".local/share/containers"; mode = "0700"; }
+      ];
+      systemPaths = [
+        "/var/lib/containers"
+      ];
+    };
 
     users.users.jocelyn = {
       subUidRanges = [{ startUid = 100000; count = 65536; }];
