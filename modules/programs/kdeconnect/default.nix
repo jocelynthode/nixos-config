@@ -9,6 +9,8 @@
       ".config/kdeconnect"
     ];
 
+    programs.kdeconnect.enable = true;
+
     home-manager.users.jocelyn = { ... }: {
       # Hide all .desktop, except for org.kde.kdeconnect.settings
       xdg.desktopEntries = {
