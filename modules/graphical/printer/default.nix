@@ -7,12 +7,16 @@
   config = lib.mkIf config.aspects.graphical.printer.enable {
     hardware.sane.enable = true;
 
-    # services.printing = {
-    #   enable = true;
-    #   drivers = [ pkgs.brlaser ];
-    # };
-    services.avahi.enable = true;
-    services.avahi.nssmdns = true;
+    services = {
+      printing = {
+        enable = true;
+        drivers = [ pkgs.brlaser ];
+      };
+      avahi = {
+        enable = true;
+        nssmdns = true;
+      };
+    };
 
     environment.systemPackages = with pkgs; [
       system-config-printer
