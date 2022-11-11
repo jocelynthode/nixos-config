@@ -11,6 +11,8 @@
       enable = true;
       drivers = [ pkgs.brlaser ];
     };
+    services.avahi.enable = true;
+    services.avahi.nssmdns = true;
 
     environment.systemPackages = with pkgs; [
       system-config-printer
