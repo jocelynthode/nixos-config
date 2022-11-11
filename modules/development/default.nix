@@ -2,6 +2,7 @@
   imports = [
     ./android
     ./containers
+    ./libvirt
     ./qmk
   ];
 
@@ -16,6 +17,7 @@
         android.enable = lib.mkDefault true;
         containers.enable = lib.mkDefault true;
         qmk.enable = lib.mkDefault true;
+        libvirt.enable = lib.mkDefault true;
       };
     };
   };

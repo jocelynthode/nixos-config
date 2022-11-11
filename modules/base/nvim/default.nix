@@ -50,7 +50,7 @@ let
         nvim-dap-virtual-text
         { plugin = nvim-dap; config = builtins.readFile ./plugins/dap.lua; type = "lua"; }
         { plugin = nvim-lspconfig; config = builtins.readFile ./plugins/lsp.lua; type = "lua"; }
-        { plugin = (nvim-treesitter.withPlugins (_: pkgs.tree-sitter.allGrammars)); config = builtins.readFile ./plugins/treesitter.lua; type = "lua"; }
+        { plugin = nvim-treesitter.withAllGrammars; config = builtins.readFile ./plugins/treesitter.lua; type = "lua"; }
         { plugin = gitsigns-nvim; config = builtins.readFile ./plugins/gitsigns.lua; type = "lua"; }
         { plugin = telescope-nvim; config = builtins.readFile ./plugins/telescope.lua; type = "lua"; }
         { plugin = dressing-nvim; config = builtins.readFile ./plugins/dressing.lua; type = "lua"; }
@@ -101,6 +101,7 @@ let
         python-lsp-black
         pyls-isort
         debugpy
+        setuptools
       ]);
 
       # We must require plugin before colorscheme

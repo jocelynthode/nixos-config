@@ -304,6 +304,7 @@
                   { class = "Slack"; }
                   { class = "discord"; }
                   { class = "Mumble"; }
+                  { class = "Element"; }
                 ];
                 "9" = [
                   { class = "Bitwarden"; }
