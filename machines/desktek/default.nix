@@ -13,6 +13,7 @@
     games.enable = true;
     graphical = {
       enable = true;
+      sound.guitar.enable = true;
       wallpaper = "palms-tropics";
       printer.enable = true;
       # hyprland.enable = true;

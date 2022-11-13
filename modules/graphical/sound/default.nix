@@ -1,4 +1,9 @@
 { config, lib, pkgs, ... }: {
+
+  imports = [
+    ./guitar
+  ];
+
   options.aspects.graphical.sound.enable = lib.mkOption {
     default = false;
     example = true;
@@ -8,6 +13,7 @@
     aspects.base.persistence.homePaths = [
       ".local/state/wireplumber"
     ];
+    aspects.graphical.sound.guitar.enable = lib.mkDefault false;
 
     security.rtkit.enable = true;
     sound.enable = true;
