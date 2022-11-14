@@ -5,15 +5,11 @@ let
   inherit (builtins) mapAttrs;
 in
 rec {
-  # Don't launch discord when using discocss
-  discocss = prev.discocss.overrideAttrs (oldAttrs: rec {
-    patches = (oldAttrs.patches or [ ]) ++ [ ./discocss-no-launch.patch ];
-  });
-
   vimPlugins = prev.vimPlugins // {
     taxi-vim = prev.pkgs.callPackage ../pkgs/vimPlugins/taxi-vim { };
     nvim-dap-python = prev.pkgs.callPackage ../pkgs/vimPlugins/nvim-dap-python { };
     nvim-dap-go = prev.pkgs.callPackage ../pkgs/vimPlugins/nvim-dap-go { };
+    telescope-live-grep-args-nvim = prev.pkgs.callPackage ../pkgs/vimPlugins/telescope-live-grep-args-nvim { };
   };
 
   fishPlugins = prev.fishPlugins // {

@@ -13,6 +13,7 @@
 
   config = lib.mkIf config.aspects.base.btrfs.enable {
     boot = {
+      supportedFilesystems = [ "ntfs" ];
       tmpOnTmpfs = true;
       tmpOnTmpfsSize = "10%";
       loader = {
