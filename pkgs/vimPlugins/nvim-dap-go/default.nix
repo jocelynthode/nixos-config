@@ -1,6 +1,6 @@
 { vimUtils, fetchFromGitHub, ... }:
 
-vimUtils.buildVimPlugin {
+vimUtils.buildVimPluginFrom2Nix {
   pname = "nvim-dap-go";
   version = "2022-11-14";
   src = fetchFromGitHub {

@@ -1,6 +1,7 @@
 local _, telescope = pcall(require, "telescope")
 
 local actions = require("telescope.actions")
+local lga_actions = require("telescope-live-grep-args.actions")
 
 telescope.setup({
   defaults = {
@@ -132,6 +133,16 @@ telescope.setup({
     ["ui-select"] = {
       require("telescope.themes").get_dropdown({}),
     },
+    live_grep_args = {
+      theme = "ivy",
+      auto_quoting = true,
+      mappings = {
+        i = {
+          ["<C-k>"] = lga_actions.quote_prompt(),
+          ["<C-i>"] = lga_actions.quote_prompt({ postfix = " -t" }),
+        },
+      },
+    },
   },
 })
 
@@ -139,6 +150,7 @@ telescope.load_extension("ui-select")
 telescope.load_extension("fzf")
 telescope.load_extension('dap')
 telescope.load_extension('notify')
+telescope.load_extension('live_grep_args')
 
 require 'plenary.filetype'.add_table({
   extension = {

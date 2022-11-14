@@ -48,7 +48,7 @@ let
         nvim-dap-python
         nvim-dap-go
         nvim-dap-virtual-text
-        # telescope-live-grep-args-nvim
+        telescope-live-grep-args-nvim
         { plugin = nvim-dap; config = builtins.readFile ./plugins/dap.lua; type = "lua"; }
         { plugin = nvim-lspconfig; config = builtins.readFile ./plugins/lsp.lua; type = "lua"; }
         { plugin = nvim-treesitter.withAllGrammars; config = builtins.readFile ./plugins/treesitter.lua; type = "lua"; }

@@ -1,6 +1,7 @@
 { vimUtils, fetchFromGitHub, ... }:
 
-vimUtils.buildVimPlugin {
+# buildVimPlugin run make and buildVimPluginFrom2Nix does not 
+vimUtils.buildVimPluginFrom2Nix {
   pname = "telescope-live-grep-args-nvim";
   version = "2022-11-14";
   src = fetchFromGitHub {
