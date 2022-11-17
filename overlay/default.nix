@@ -11,8 +11,7 @@ rec {
   };
 
   fishPlugins = prev.fishPlugins // {
-    autopair = prev.pkgs.callPackage ../pkgs/fishPlugins/autopair { };
-    colored_man_pages = prev.pkgs.callPackage ../pkgs/fishPlugins/colored_man_pages { };
+    colored-man-pages = prev.pkgs.callPackage ../pkgs/fishPlugins/colored-man-pages { };
     tide = prev.pkgs.callPackage ../pkgs/fishPlugins/tide { };
   };
 

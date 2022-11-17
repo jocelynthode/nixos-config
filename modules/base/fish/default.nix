@@ -34,8 +34,8 @@ let
       plugins = [
         { name = "tide"; src = pkgs.fishPlugins.tide.src; }
         { name = "fzf-fish"; src = pkgs.fishPlugins.fzf-fish.src; }
-        { name = "colored_man_pages"; src = pkgs.fishPlugins.colored_man_pages.src; }
-        { name = "autopair"; src = pkgs.fishPlugins.autopair.src; }
+        { name = "colored-man-pages"; src = pkgs.fishPlugins.colored-man-pages.src; }
+        { name = "autopair"; src = pkgs.fishPlugins.autopair-fish.src; }
       ];
     };
 
