@@ -15,7 +15,7 @@
     boot = {
       supportedFilesystems = [ "ntfs" ];
       tmpOnTmpfs = true;
-      tmpOnTmpfsSize = "10%";
+      tmpOnTmpfsSize = "20%";
       loader = {
         efi = {
           canTouchEfiVariables = true;

@@ -8,7 +8,6 @@ rec {
   vimPlugins = prev.vimPlugins // {
     taxi-vim = prev.pkgs.callPackage ../pkgs/vimPlugins/taxi-vim { };
     nvim-dap-go = prev.pkgs.callPackage ../pkgs/vimPlugins/nvim-dap-go { };
-    telescope-live-grep-args-nvim = prev.pkgs.callPackage ../pkgs/vimPlugins/telescope-live-grep-args-nvim { };
   };
 
   fishPlugins = prev.fishPlugins // {
