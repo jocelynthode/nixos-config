@@ -7,6 +7,10 @@
 
   config = lib.mkIf config.aspects.graphical.sound.guitar.enable {
 
+    # services.udev.extraRules = ''
+    #   SUBSYSTEM=="sound", SUBSYSTEMS=="usb", ATTR{idVendor}=="1686",ATTR{idProduct}=="02df", ENV{SYSTEMD_ALIAS}="test-zoom", TAG+="systemd"
+    # '';
+
     home-manager.users.jocelyn = _: {
       home.packages = with pkgs; [
         tonelib-zoom

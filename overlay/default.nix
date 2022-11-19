@@ -19,7 +19,7 @@ rec {
     mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
   });
 
-  devenv = inputs.devenv.defaultPackage.x86_64-linux;
+  devenv = inputs.devenv.defaultPackage.${final.system};
 
   generated-gtk-themes = mapAttrs
     (_: scheme: gtkThemeFromScheme {
