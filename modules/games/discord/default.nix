@@ -11,7 +11,7 @@
 
     aspects.base.nix.unfreePackages = [ pkgs.discord ];
 
-    home-manager.users.jocelyn = { config, osConfig, ... }: {
+    home-manager.users.jocelyn = { ... }: {
       home.packages = with pkgs; [ discord ];
     };
   };

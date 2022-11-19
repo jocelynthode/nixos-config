@@ -3,13 +3,16 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    stable.url = "github:nixos/nixpkgs/nixos-22.05";
+    stable.url = "github:nixos/nixpkgs/nixos-unstable"; # switch to nixos-22.11
 
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    home-manager-stable = {
+      url = "github:nix-community/home-manager"; # switch to release-22.11
+      inputs.nixpkgs.follows = "stable";
     };
 
     sops-nix = {
@@ -22,17 +25,18 @@
     hardware.url = "github:nixos/nixos-hardware";
     impermanence.url = "github:nix-community/impermanence";
     taxi.url = "github:sephii/taxi";
-    discord.url = "github:InternetUnexplorer/discord-overlay";
-    utils = {
-      url = "github:gytis-ivaskevicius/flake-utils-plus";
+    discord = {
+      url = "github:InternetUnexplorer/discord-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
+    utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
     hyprland = {
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, stable, hyprland, home-manager, sops-nix, nur, nix-colors, hardware, impermanence, taxi, discord, utils }:
+  outputs = inputs@{ self, nixpkgs, stable, hyprland, home-manager, home-manager-stable, sops-nix, nur, nix-colors, hardware, impermanence, taxi, discord, utils }:
     utils.lib.mkFlake {
       inherit self inputs;
 
@@ -46,7 +50,6 @@
       hostDefaults = {
         modules = [
           { nix.generateRegistryFromInputs = true; }
-          home-manager.nixosModule
           sops-nix.nixosModules.sops
           impermanence.nixosModules.impermanence
           hyprland.nixosModules.default
@@ -61,6 +64,7 @@
         desktek = {
           modules = [
             ./machines/desktek
+            home-manager.nixosModule
             hardware.nixosModules.common-cpu-amd
             hardware.nixosModules.common-pc-ssd
           ];
@@ -69,6 +73,7 @@
         frametek = {
           modules = [
             ./machines/frametek
+            home-manager.nixosModule
             hardware.nixosModules.common-cpu-intel
             hardware.nixosModules.common-gpu-intel
             hardware.nixosModules.common-pc-laptop
@@ -78,9 +83,10 @@
           specialArgs = { inherit nix-colors; };
         };
         servetek = {
-          # channelName = "stable";
+          channelName = "stable";
           modules = [
             ./machines/servetek
+            home-manager-stable.nixosModule
             hardware.nixosModules.common-pc-laptop-hdd
           ];
           specialArgs = { inherit nix-colors; };

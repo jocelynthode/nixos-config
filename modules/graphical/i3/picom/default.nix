@@ -3,7 +3,6 @@
     home-manager.users.jocelyn = { ... }: {
       services.picom = {
         enable = true;
-        experimentalBackends = true;
         settings = {
           blur = {
             method = "dual_kawase";
