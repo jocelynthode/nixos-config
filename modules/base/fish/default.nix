@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let
   base = config: {
@@ -32,7 +32,7 @@ let
         };
       };
       plugins = [
-        { name = "tide"; inherit (pkgs.fishPlugins.tide) src; }
+        # { name = "tide"; inherit (pkgs.fishPlugins.tide) src; }
         { name = "fzf-fish"; inherit (pkgs.fishPlugins.fzf-fish) src; }
         { name = "colored-man-pages"; inherit (pkgs.fishPlugins.colored-man-pages) src; }
         { name = "autopair"; inherit (pkgs.fishPlugins.autopair-fish) src; }
@@ -81,6 +81,82 @@ in
       completions.enable = true;
       config.enable = true;
       functions.enable = true;
+    };
+  };
+
+  programs.starship = {
+    enable = true;
+    settings = {
+      format = lib.concatStrings [
+        "$directory"
+        "$git_branch"
+        "$git_commit"
+        "$git_state"
+        "$git_metrics"
+        "$git_status"
+        "$fill"
+        "$cmd_duration"
+        "$all"
+        "$line_break"
+        "$character"
+      ];
+      cmd_duration = {
+        format = " [祥$duration]($style) ";
+      };
+      directory = {
+        truncation_symbol = "…/";
+        read_only = " ";
+      };
+      fill = {
+        symbol = "·";
+        style = "bright-black";
+      };
+      git_branch = {
+        symbol = " ";
+        format = "[$symbol$branch(:$remote_branch)]($style) ";
+      };
+      git_status = {
+        format = "(([$conflicted](bright-red) )([$stashed](bright-green) )([$deleted](bright-red) )([$renamed](bright-yellow) )([$modified](bright-yellow) )([$staged](bright-yellow) )([$untracked](bright-blue) )[$ahead_behind](bright-green) )";
+        conflicted = "=$count";
+        ahead = "⇡$count";
+        behind = "⇣$count";
+        diverged = "⇡$ahead_count ⇣$behind_count";
+        untracked = "?$count";
+        stashed = "*$count";
+        modified = "!$count";
+        staged = "+$count";
+        renamed = "»$count";
+        deleted = "✘$count";
+      };
+      hostname = {
+        ssh_symbol = "";
+        format = "[$ssh_symbol$hostname]($style) ";
+        style = "bold yellow";
+      };
+      kubernetes = {
+        disabled = false;
+        format = "[$symbol$context(/$namespace)]($style) ";
+      };
+      nix_shell = {
+        symbol = " ";
+        format = " [$symbol$state]($style) ";
+      };
+      nodejs = {
+        format = "[$symbol($version )]($style) ";
+        disabled = true;
+      };
+      python = {
+        symbol = " ";
+        format = "[\${symbol}\${pyenv_prefix}(\${version} )(\($virtualenv\) )]($style) ";
+      };
+      time = {
+        disabled = false;
+        format = "[$time]($style) ";
+        style = "bright-black";
+      };
+      username = {
+        format = "[\${user}]($style) ";
+      };
     };
   };
 
