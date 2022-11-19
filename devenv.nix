@@ -13,4 +13,6 @@
     deadnix.enable = true;
     statix.enable = true;
   };
+
+  # pre-commit.settings.deadnix.fix = true;
 }
