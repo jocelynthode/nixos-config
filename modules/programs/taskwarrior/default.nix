@@ -28,7 +28,7 @@
       ".local/share/task"
     ];
 
-    home-manager.users.jocelyn = { ... }: {
+    home-manager.users.jocelyn = _: {
       programs.taskwarrior = {
         enable = true;
         config = {

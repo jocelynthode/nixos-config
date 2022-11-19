@@ -7,7 +7,7 @@
   };
 
   config = lib.mkIf config.aspects.work.git.enable {
-    home-manager.users.jocelyn = { ... }: {
+    home-manager.users.jocelyn = _: {
       programs.git.includes = [
         {
           condition = "gitdir:~/Liip/";

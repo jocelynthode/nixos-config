@@ -8,7 +8,7 @@
     aspects.base.persistence.homePaths = [
       ".config/deluge"
     ];
-    home-manager.users.jocelyn = { ... }: {
+    home-manager.users.jocelyn = _: {
       home.packages = [ pkgs.deluge ];
     };
   };

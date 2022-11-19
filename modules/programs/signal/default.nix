@@ -8,7 +8,7 @@
     aspects.base.persistence.homePaths = [
         { directory = ".config/Signal"; mode = "0700"; }
     ];
-    home-manager.users.jocelyn = { ... }: {
+    home-manager.users.jocelyn = _: {
       home.packages = [ pkgs.signal-desktop ];
     };
   };

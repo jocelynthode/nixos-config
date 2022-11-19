@@ -11,7 +11,7 @@
 
     programs.kdeconnect.enable = true;
 
-    home-manager.users.jocelyn = { ... }: {
+    home-manager.users.jocelyn = _: {
       # Hide all .desktop, except for org.kde.kdeconnect.settings
       xdg.desktopEntries = {
         "org.kde.kdeconnect.sms" = {

@@ -9,7 +9,7 @@
       ".config/obs-studio"
     ];
 
-    home-manager.users.jocelyn = { ... }: {
+    home-manager.users.jocelyn = _: {
       programs.obs-studio = {
         enable = true;
         plugins = with pkgs.obs-studio-plugins; [

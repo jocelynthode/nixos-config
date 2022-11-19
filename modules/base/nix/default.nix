@@ -60,7 +60,7 @@ in
       homePaths = 
         (lib.optional config.aspects.base.nix.enableDirenv ".local/share/direnv") ++
         (lib.optional config.aspects.base.nix.enableNixIndex ".cache/nix-index");
-      systemPaths = (lib.optional config.aspects.base.nix.enableDirenv "/root/.local/share/direnv");
+      systemPaths = lib.optional config.aspects.base.nix.enableDirenv "/root/.local/share/direnv";
     };
 
     nix = {
@@ -97,10 +97,10 @@ in
     };
     nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) config.aspects.base.nix.unfreePackages;
 
-    home-manager.users.jocelyn = { ... }:
+    home-manager.users.jocelyn = _:
       lib.recursiveUpdate
         (lib.optionalAttrs config.aspects.base.nix.enableDirenv baseDirenv)
         (lib.optionalAttrs config.aspects.base.nix.enableNixIndex baseNixIndex);
-    home-manager.users.root = { ... }: lib.optionalAttrs config.aspects.base.nix.enableDirenv baseDirenv;
+    home-manager.users.root = _: lib.optionalAttrs config.aspects.base.nix.enableDirenv baseDirenv;
   };
 }

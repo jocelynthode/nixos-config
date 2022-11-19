@@ -6,7 +6,7 @@
 
   config = lib.mkIf config.aspects.graphical.mpv.enable {
 
-    home-manager.users.jocelyn = { ... }: {
+    home-manager.users.jocelyn = _: {
       programs.mpv = {
         enable = true;
         config = {

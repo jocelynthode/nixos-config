@@ -47,7 +47,7 @@
             "generate-lockscreen" = "betterlockscreen -u ${pkgs.wallpapers.${osConfig.aspects.graphical.wallpaper}} &";
           };
         };
-        profiles = osConfig.aspects.graphical.i3.autorandr.profiles;
+        inherit (osConfig.aspects.graphical.i3.autorandr) profiles;
       };
     };
   };

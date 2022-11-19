@@ -7,7 +7,7 @@
   };
 
   config = lib.mkIf config.aspects.work.taxi.enable {
-    home-manager.users.jocelyn = { ... }: {
+    home-manager.users.jocelyn = _: {
       home.packages = with pkgs; [
         (taxi-cli.withPlugins (
           plugins: with plugins; [

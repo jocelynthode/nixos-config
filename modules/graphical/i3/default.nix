@@ -20,7 +20,7 @@
     aspects.graphical.rofi.package = pkgs.rofi;
     services.xserver = {
       enable = true;
-      dpi = config.aspects.graphical.i3.dpi;
+      inherit (config.aspects.graphical.i3) dpi;
       layout = "us";
       xkbVariant = "altgr-intl";
       displayManager = {

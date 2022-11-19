@@ -12,9 +12,9 @@ in
   config = lib.mkIf config.aspects.graphical.i3.enable {
     home-manager.users.jocelyn = { config, osConfig, ... }:
       let
-        polybar-bluetooth = pkgs.callPackage ./polybar-bluetooth { config = config; };
-        polybar-gammastep = pkgs.callPackage ./polybar-gammastep { config = config; };
-        polybar-mic = pkgs.callPackage ./polybar-mic { config = config; };
+        polybar-bluetooth = pkgs.callPackage ./polybar-bluetooth { inherit config; };
+        polybar-gammastep = pkgs.callPackage ./polybar-gammastep { inherit config; };
+        polybar-mic = pkgs.callPackage ./polybar-mic { inherit config; };
       in
       {
         services.polybar = {

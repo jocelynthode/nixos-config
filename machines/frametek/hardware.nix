@@ -27,7 +27,7 @@
 
   swapDevices = [{
     device = "/swap/swapfile";
-    size = (1024 * 32);
+    size = 1024 * 32;
   }];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";

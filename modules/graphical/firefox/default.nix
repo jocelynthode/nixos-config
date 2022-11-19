@@ -9,7 +9,7 @@
       ".cache/mozilla"
     ];
 
-    home-manager.users.jocelyn = { ... }: {
+    home-manager.users.jocelyn = _: {
       programs.firefox = {
         enable = true;
         extensions = with pkgs.nur.repos.rycee.firefox-addons; [

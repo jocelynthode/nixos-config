@@ -7,7 +7,7 @@
   config = lib.mkIf config.aspects.programs.gammastep.enable {
     services.geoclue2.enable = true;
 
-    home-manager.users.jocelyn = { ... }: {
+    home-manager.users.jocelyn = _: {
       services.gammastep = {
         enable = true;
         provider = "geoclue2";

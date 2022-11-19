@@ -32,7 +32,7 @@ in
   };
 
   config = {
-    home-manager.users.jocelyn = { ... }: base;
-    home-manager.users.root = { ... }: base;
+    home-manager.users.jocelyn = _: base;
+    home-manager.users.root = _: base;
   };
 }

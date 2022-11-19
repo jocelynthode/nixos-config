@@ -15,7 +15,7 @@ in
   aspects.base.persistence.homePaths = [{ directory = ".gnupg"; mode = "0700"; }];
   services.dbus.packages = lib.optionals config.aspects.graphical.enable [ pkgs.gcr ];
 
-  home-manager.users.jocelyn = { ... }: {
+  home-manager.users.jocelyn = _: {
     services.gpg-agent = {
       enable = true;
       enableFishIntegration = true;

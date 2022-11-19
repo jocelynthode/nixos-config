@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  base = (config: {
+  base = config: {
     programs.fish = {
       enable = true;
       shellAliases = {
@@ -32,10 +32,10 @@ let
         };
       };
       plugins = [
-        { name = "tide"; src = pkgs.fishPlugins.tide.src; }
-        { name = "fzf-fish"; src = pkgs.fishPlugins.fzf-fish.src; }
-        { name = "colored-man-pages"; src = pkgs.fishPlugins.colored-man-pages.src; }
-        { name = "autopair"; src = pkgs.fishPlugins.autopair-fish.src; }
+        { name = "tide"; inherit (pkgs.fishPlugins.tide) src; }
+        { name = "fzf-fish"; inherit (pkgs.fishPlugins.fzf-fish) src; }
+        { name = "colored-man-pages"; inherit (pkgs.fishPlugins.colored-man-pages) src; }
+        { name = "autopair"; inherit (pkgs.fishPlugins.autopair-fish) src; }
       ];
     };
 
@@ -72,7 +72,7 @@ let
         " --color=marker:$color0C,fg+:$color06,prompt:$color0A,hl+:$color0D"
       '';
     };
-  });
+  };
 in
 {
   programs.fish = {

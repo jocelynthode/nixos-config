@@ -1,6 +1,6 @@
 { lib, config, ... }: {
   config = lib.mkIf config.aspects.graphical.i3.enable {
-    home-manager.users.jocelyn = { ... }: {
+    home-manager.users.jocelyn = _: {
       services.picom = {
         enable = true;
         settings = {

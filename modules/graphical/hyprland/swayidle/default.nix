@@ -1,7 +1,7 @@
 { pkgs, config, lib, ... }: {
   config = lib.mkIf config.aspects.graphical.hyprland.enable {
     security.pam.services = { swaylock = { }; };
-    home-manager.users.jocelyn = { ... }: {
+    home-manager.users.jocelyn = _: {
       services.swayidle = {
         enable = true;
         systemdTarget = "hyprland-session.target";

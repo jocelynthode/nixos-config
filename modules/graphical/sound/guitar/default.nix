@@ -7,7 +7,7 @@
 
   config = lib.mkIf config.aspects.graphical.sound.guitar.enable {
 
-    home-manager.users.jocelyn = { ... }: {
+    home-manager.users.jocelyn = _: {
       home.packages = with pkgs; [
         tonelib-zoom
       ];

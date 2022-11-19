@@ -1,6 +1,6 @@
 { pkgs, ... }: 
 let
-  base = (config: {
+  base = config: {
     home = {
       sessionVariables.EDITOR = "nvim";
     };
@@ -97,13 +97,13 @@ let
       ];
 
       # use python3_host_prog as python path to use here
-      extraPython3Packages = (ps: with ps; [
+      extraPython3Packages = ps: with ps; [
         python-lsp-server
         python-lsp-black
         pyls-isort
         debugpy
         setuptools
-      ]);
+      ];
 
       # We must require plugin before colorscheme
       extraConfig = ''
@@ -113,7 +113,7 @@ let
         hi Normal ctermbg=NONE guibg=NONE
       '';
     };
-  });
+  };
 in {
   aspects.base.persistence.homePaths = [
     ".cache/nvim"

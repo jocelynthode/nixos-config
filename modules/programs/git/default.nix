@@ -6,7 +6,7 @@
   };
 
   config = lib.mkIf config.aspects.programs.git.enable {
-    home-manager.users.jocelyn = { ... }: {
+    home-manager.users.jocelyn = _: {
       programs.git = {
         enable = true;
         userName = "Jocelyn Thode";

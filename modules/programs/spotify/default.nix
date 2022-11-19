@@ -8,7 +8,7 @@
     aspects.base.persistence.homePaths = [
       ".config/spotify"
     ];
-    home-manager.users.jocelyn = { ... }: {
+    home-manager.users.jocelyn = _: {
       home.packages = [ pkgs.spotify pkgs.playerctl ];
       services.playerctld = {
         enable = true;

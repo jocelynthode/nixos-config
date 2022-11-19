@@ -8,7 +8,7 @@
     services.openssh = {
       enable = true;
       passwordAuthentication = false;
-      permitRootLogin = config.aspects.base.sshd.permitRootLogin;
+      inherit (config.aspects.base.sshd) permitRootLogin;
       extraConfig = ''
         StreamLocalBindUnlink yes
       '';

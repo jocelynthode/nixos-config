@@ -35,7 +35,7 @@
       services.kanshi = {
         enable = true;
         systemdTarget = "hyprland-session.target";
-        profiles = osConfig.aspects.graphical.hyprland.kanshi.profiles;
+        inherit (osConfig.aspects.graphical.hyprland.kanshi) profiles;
       };
     };
   };

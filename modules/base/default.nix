@@ -53,13 +53,13 @@
     };
 
     system = {
-      stateVersion = config.aspects.stateVersion;
+      inherit (config.aspects) stateVersion;
       autoUpgrade = {
         enable = true;
         flake = "github:jocelynthode/nixos-config";
         dates = "Sat *-*-* 00:00:00";
         randomizedDelaySec = "10min";
-        allowReboot = config.aspects.allowReboot;
+        inherit (config.aspects) allowReboot;
         rebootWindow = {
           lower = "00:00";
           upper = "06:00";
@@ -68,13 +68,13 @@
     };
 
     home-manager.users = {
-      jocelyn = { ... }: {
+      jocelyn = _: {
         home.stateVersion = config.aspects.stateVersion;
         systemd.user.sessionVariables = config.home-manager.users.jocelyn.home.sessionVariables;
         systemd.user.startServices = "sd-switch";
         colorScheme = nix-colors.colorSchemes."${config.aspects.theme}";
       };
-      root = { ... }: {
+      root = _: {
         home.stateVersion = config.aspects.stateVersion;
         systemd.user.startServices = "sd-switch";
         colorScheme = nix-colors.colorSchemes."${config.aspects.theme}";
