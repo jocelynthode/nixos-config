@@ -25,18 +25,15 @@
     hardware.url = "github:nixos/nixos-hardware";
     impermanence.url = "github:nix-community/impermanence";
     taxi.url = "github:sephii/taxi";
-    discord = {
-      url = "github:InternetUnexplorer/discord-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
     hyprland = {
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    devenv.url = "github:cachix/devenv/v0.3";
   };
 
-  outputs = inputs@{ self, nixpkgs, stable, hyprland, home-manager, home-manager-stable, sops-nix, nur, nix-colors, hardware, impermanence, taxi, discord, utils }:
+  outputs = inputs@{ self, nixpkgs, stable, hyprland, home-manager, home-manager-stable, sops-nix, nur, nix-colors, hardware, impermanence, taxi, utils, ... }:
     utils.lib.mkFlake {
       inherit self inputs;
 
@@ -44,7 +41,6 @@
       sharedOverlays = [
         nur.overlay
         taxi.overlay
-        discord.overlay
         (import ./overlay { inherit inputs; })
       ];
       hostDefaults = {
@@ -100,17 +96,5 @@
           specialArgs = { inherit nix-colors; };
         };
       };
-      outputsBuilder = channels:
-        let pkgs = channels.nixpkgs; in
-        {
-          devShells =
-            let
-              ls = builtins.readDir ./shells;
-              files = builtins.filter (name: ls.${name} == "regular") (builtins.attrNames ls);
-              shellNames = builtins.map (filename: builtins.head (builtins.split "\\." filename)) files;
-              nameToValue = name: import (./shells + "/${name}.nix") { inherit pkgs inputs; };
-            in
-            builtins.listToAttrs (builtins.map (name: { inherit name; value = nameToValue name; }) shellNames);
-        };
     };
 }

@@ -122,6 +122,7 @@
         ldns
         gnumake
         gettext
+        devenv
       ];
     };
 
