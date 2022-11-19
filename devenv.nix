@@ -10,7 +10,6 @@
   languages.nix.enable = true;
 
   pre-commit.hooks = {
-    shellcheck.enable = true;
     deadnix.enable = true;
     statix.enable = true;
   };
