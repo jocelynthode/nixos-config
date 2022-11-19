@@ -19,6 +19,9 @@
           pull = {
             rebase = true;
           };
+          push = {
+            autoSetupRemote = true;
+          };
           diff = {
             colorMoved = "default";
           };
