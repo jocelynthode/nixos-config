@@ -139,7 +139,7 @@ in
       };
       nix_shell = {
         symbol = " ";
-        format = " [$symbol$state]($style) ";
+        format = "[$symbol$state]($style) ";
       };
       nodejs = {
         format = "[$symbol($version )]($style) ";
