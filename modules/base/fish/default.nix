@@ -95,6 +95,7 @@ in
         "$git_metrics"
         "$git_status"
         "$fill"
+        "$status"
         "$cmd_duration"
         "$all"
         "$line_break"
@@ -126,7 +127,7 @@ in
         modified = "!$count";
         staged = "+$count";
         renamed = "»$count";
-        deleted = "✘$count";
+        deleted = "✖$count";
       };
       hostname = {
         ssh_symbol = "";
@@ -148,6 +149,11 @@ in
       python = {
         symbol = " ";
         format = "[\${symbol}\${pyenv_prefix}(\${version} )(\($virtualenv\) )]($style) ";
+      };
+      status = {
+        disabled = false;
+        symbol = "✘";
+        format = "[$symbol $status]($style) ";
       };
       time = {
         disabled = false;
