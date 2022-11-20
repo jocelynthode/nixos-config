@@ -1,5 +1,8 @@
-{ lib, fishPlugins, fetchFromGitHub }:
-
+{
+  lib,
+  fishPlugins,
+  fetchFromGitHub,
+}:
 fishPlugins.buildFishPlugin rec {
   pname = "colored-man-pages";
   version = "f885c2507128b70d6c41b043070a8f399988bc7a";

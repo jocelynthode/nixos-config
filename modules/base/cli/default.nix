@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   base = {
     home.packages = with pkgs; [
       cachix
@@ -27,8 +29,7 @@ let
       };
     };
   };
-in
-{
+in {
   home-manager.users.jocelyn = _: base;
   home-manager.users.root = _: base;
 }

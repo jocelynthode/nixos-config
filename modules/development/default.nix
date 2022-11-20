@@ -1,4 +1,8 @@
-{ config, lib, ... }: {
+{
+  config,
+  lib,
+  ...
+}: {
   imports = [
     ./android
     ./containers
@@ -22,4 +26,3 @@
     };
   };
 }
-

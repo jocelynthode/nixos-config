@@ -1,4 +1,8 @@
-{ config, lib, ... }: {
+{
+  config,
+  lib,
+  ...
+}: {
   options.aspects.services.radicale.enable = lib.mkOption {
     default = false;
     example = true;
@@ -9,12 +13,12 @@
       "/var/lib/radicale/collections"
     ];
 
-    networking.firewall.allowedTCPPorts = [ 5232 ];
+    networking.firewall.allowedTCPPorts = [5232];
     services.radicale = {
       enable = true;
       settings = {
         server = {
-          hosts = [ "0.0.0.0:5232" ];
+          hosts = ["0.0.0.0:5232"];
           ssl = true;
           certificate = "${config.security.acme.certs."dav.tekila.ovh".directory}/fullchain.pem";
           key = "${config.security.acme.certs."dav.tekila.ovh".directory}/key.pem";
@@ -28,16 +32,16 @@
     };
 
     sops.secrets.radicale = {
-      sopsFile = ../../../secrets/${config.networking.hostName}/secrets.yaml; 
+      sopsFile = ../../../secrets/${config.networking.hostName}/secrets.yaml;
       owner = "radicale";
       group = "radicale";
-      restartUnits = [ "radicale.service" ];
+      restartUnits = ["radicale.service"];
     };
 
     security.acme.certs = {
       "dav.tekila.ovh" = {
         listenHTTP = ":80";
-        reloadServices = [ "radicale.service" ];
+        reloadServices = ["radicale.service"];
         group = "radicale";
       };
     };

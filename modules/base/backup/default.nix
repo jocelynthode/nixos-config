@@ -1,10 +1,10 @@
-{ config, ... }: {
+{config, ...}: {
   services.restic.backups = {
     persist = {
       user = "root";
       # repository is in environmentFile
-      paths = [ config.aspects.base.persistence.persistPrefix ];
-      extraBackupArgs = [ "--exclude-file=/etc/restic/exclude.txt" ];
+      paths = [config.aspects.base.persistence.persistPrefix];
+      extraBackupArgs = ["--exclude-file=/etc/restic/exclude.txt"];
       initialize = true;
       passwordFile = config.sops.secrets."restic/password".path;
       timerConfig = {
@@ -52,6 +52,4 @@
       };
     };
   };
-
 }
-

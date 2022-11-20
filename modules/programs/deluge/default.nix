@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   options.aspects.programs.deluge.enable = lib.mkOption {
     default = false;
     example = true;
@@ -9,7 +14,7 @@
       ".config/deluge"
     ];
     home-manager.users.jocelyn = _: {
-      home.packages = [ pkgs.deluge ];
+      home.packages = [pkgs.deluge];
     };
   };
 }

@@ -1,10 +1,17 @@
-{ pkgs, lib, config, ... }:
-let
-  sound_script = "${pkgs.dunst-notification-sound}/bin/dunst-notification-sound";
-in
 {
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
+  sound_script = "${pkgs.dunst-notification-sound}/bin/dunst-notification-sound";
+in {
   config = lib.mkIf config.aspects.graphical.i3.enable {
-    home-manager.users.jocelyn = { config, osConfig, ... }: {
+    home-manager.users.jocelyn = {
+      config,
+      osConfig,
+      ...
+    }: {
       xdg.configFile."dunst" = {
         source = ./files;
         recursive = true;

@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   options.aspects.development.containers.enable = lib.mkOption {
     default = false;
     example = true;
@@ -16,7 +19,7 @@
       };
       containers = {
         enable = true;
-        containersConf.cniPlugins = with pkgs; [ cni-plugins ];
+        containersConf.cniPlugins = with pkgs; [cni-plugins];
       };
     };
 
@@ -26,7 +29,10 @@
 
     aspects.base.persistence = {
       homePaths = [
-        { directory = ".local/share/containers"; mode = "0700"; }
+        {
+          directory = ".local/share/containers";
+          mode = "0700";
+        }
       ];
       systemPaths = [
         "/var/lib/containers"
@@ -34,8 +40,18 @@
     };
 
     users.users.jocelyn = {
-      subUidRanges = [{ startUid = 100000; count = 65536; }];
-      subGidRanges = [{ startGid = 100000; count = 65536; }];
+      subUidRanges = [
+        {
+          startUid = 100000;
+          count = 65536;
+        }
+      ];
+      subGidRanges = [
+        {
+          startGid = 100000;
+          count = 65536;
+        }
+      ];
     };
   };
 }

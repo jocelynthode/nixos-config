@@ -1,4 +1,8 @@
-{ config, lib, ... }: {
+{
+  config,
+  lib,
+  ...
+}: {
   options.aspects.programs.kdeconnect.enable = lib.mkOption {
     default = false;
     example = true;

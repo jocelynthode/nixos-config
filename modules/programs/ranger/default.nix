@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   options.aspects.programs.ranger.enable = lib.mkOption {
     default = false;
     example = true;
@@ -38,7 +43,7 @@
             "inode/directory"
           ];
           terminal = false;
-          categories = [ "ConsoleOnly" ];
+          categories = ["ConsoleOnly"];
         };
       };
     };

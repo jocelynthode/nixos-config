@@ -1,5 +1,8 @@
-{ lib, fishPlugins, fetchFromGitHub }:
-
+{
+  lib,
+  fishPlugins,
+  fetchFromGitHub,
+}:
 fishPlugins.buildFishPlugin rec {
   pname = "tide";
   version = "5.5.1";
@@ -17,4 +20,3 @@ fishPlugins.buildFishPlugin rec {
     license = lib.licenses.mit;
   };
 }
-

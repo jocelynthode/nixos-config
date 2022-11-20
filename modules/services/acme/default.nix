@@ -1,4 +1,8 @@
-{ config, lib, ... }: {
+{
+  config,
+  lib,
+  ...
+}: {
   options.aspects.services.acme.enable = lib.mkOption {
     default = false;
     example = true;
@@ -9,14 +13,14 @@
       "/var/lib/acme"
     ];
 
-    networking.firewall.allowedTCPPorts = [ 80 443 ];
+    networking.firewall.allowedTCPPorts = [80 443];
     security.acme = {
       acceptTerms = true;
       defaults.email = "acme@thode.email";
       certs = {
         "dav.tekila.ovh" = {
           listenHTTP = ":80";
-          reloadServices = [ "radicale" ];
+          reloadServices = ["radicale"];
           group = "radicale";
         };
       };

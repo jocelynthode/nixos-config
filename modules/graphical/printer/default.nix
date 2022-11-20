@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   options.aspects.graphical.printer.enable = lib.mkOption {
     default = false;
     example = true;
@@ -10,7 +15,7 @@
     services = {
       printing = {
         enable = true;
-        drivers = [ pkgs.brlaser ];
+        drivers = [pkgs.brlaser];
       };
       avahi = {
         enable = true;
@@ -22,10 +27,10 @@
       system-config-printer
     ];
 
-    users.users.jocelyn.extraGroups = [ "scanner" ];
+    users.users.jocelyn.extraGroups = ["scanner"];
 
     home-manager.users.jocelyn = _: {
-      home.packages = with pkgs; [ simple-scan ];
+      home.packages = with pkgs; [simple-scan];
     };
   };
 }

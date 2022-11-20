@@ -1,4 +1,8 @@
-{ config, lib, ... }: {
+{
+  config,
+  lib,
+  ...
+}: {
   options.aspects.development.libvirt.enable = lib.mkOption {
     default = false;
     example = true;
@@ -8,6 +12,6 @@
     virtualisation.libvirtd = {
       enable = true;
     };
-    users.users.jocelyn.extraGroups = [ "libvirtd" ];
+    users.users.jocelyn.extraGroups = ["libvirtd"];
   };
 }

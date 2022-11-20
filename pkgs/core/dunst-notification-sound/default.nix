@@ -1,10 +1,9 @@
-{ pkgs, ... }:
-
+{pkgs, ...}:
 pkgs.writeShellApplication {
   name = "dunst-notification-sound";
   checkPhase = "";
 
-  runtimeInputs = with pkgs; [ mpv ];
+  runtimeInputs = with pkgs; [mpv];
 
   text = ''
     blacklist=( "Spotify" "NetworkManager" )

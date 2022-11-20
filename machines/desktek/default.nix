@@ -1,7 +1,5 @@
-{ ... }:
-
-{
-  imports = [ ./hardware.nix ];
+{...}: {
+  imports = [./hardware.nix];
 
   # Machine-specific module settings
   aspects = {
@@ -69,4 +67,3 @@
     work.enable = true;
   };
 }
-

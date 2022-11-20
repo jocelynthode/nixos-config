@@ -1,6 +1,8 @@
-{ vimUtils, fetchFromGitHub, ... }:
-
-
+{
+  vimUtils,
+  fetchFromGitHub,
+  ...
+}:
 vimUtils.buildVimPluginFrom2Nix {
   pname = "taxi-vim";
   version = "2022-07-01";
@@ -12,4 +14,3 @@ vimUtils.buildVimPluginFrom2Nix {
   };
   meta.homepage = "https://github.com/schtibe/taxi.vim";
 }
-

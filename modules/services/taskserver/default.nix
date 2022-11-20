@@ -1,4 +1,8 @@
-{ config, lib, ... }: {
+{
+  config,
+  lib,
+  ...
+}: {
   options.aspects.services.taskserver.enable = lib.mkOption {
     default = false;
     example = true;

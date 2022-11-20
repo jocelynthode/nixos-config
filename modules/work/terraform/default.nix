@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   options = {
     aspects.work.terraform.enable = lib.mkOption {
       default = false;

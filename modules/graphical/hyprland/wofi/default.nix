@@ -1,6 +1,11 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   config = lib.mkIf config.aspects.graphical.hyprland.enable {
-    home-manager.users.jocelyn = { osConfig, ... }: {
+    home-manager.users.jocelyn = {osConfig, ...}: {
       home.packages = with pkgs; [
         wofi
       ];

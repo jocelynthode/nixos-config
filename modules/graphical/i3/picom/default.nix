@@ -1,4 +1,8 @@
-{ lib, config, ... }: {
+{
+  lib,
+  config,
+  ...
+}: {
   config = lib.mkIf config.aspects.graphical.i3.enable {
     home-manager.users.jocelyn = _: {
       services.picom = {
@@ -30,10 +34,13 @@
           detect-rounded-corners = true;
           detect-client-opacity = true;
           wintypes = {
-            popup_menu = { opacity = "0.85"; };
-            dropdown_menu = { opacity = "0.85"; };
-            dock = { shadow = false; clip-shadow-above = true; };
-            dnd = { shadow = false; };
+            popup_menu = {opacity = "0.85";};
+            dropdown_menu = {opacity = "0.85";};
+            dock = {
+              shadow = false;
+              clip-shadow-above = true;
+            };
+            dnd = {shadow = false;};
           };
           unredir-if-possible = false;
         };

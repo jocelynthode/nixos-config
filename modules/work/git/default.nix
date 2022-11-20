@@ -1,4 +1,8 @@
-{ config, lib, ... }: {
+{
+  config,
+  lib,
+  ...
+}: {
   options = {
     aspects.work.git.enable = lib.mkOption {
       default = false;

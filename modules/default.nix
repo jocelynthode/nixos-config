@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   imports = [
     ./base
     ./development

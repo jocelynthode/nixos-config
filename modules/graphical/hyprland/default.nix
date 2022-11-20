@@ -1,5 +1,10 @@
-{ config, lib, pkgs, inputs, ... }: {
-
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./kanshi
     ./mako
@@ -19,7 +24,7 @@
   config = lib.mkIf config.aspects.graphical.hyprland.enable {
     xdg.portal = {
       wlr.enable = true;
-      extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
+      extraPortals = [pkgs.xdg-desktop-portal-wlr];
     };
 
     programs.hyprland = {
@@ -43,18 +48,20 @@
          padding: 15px;
       }
     '';
-    environment.sessionVariables = {
-      MOZ_ENABLE_WAYLAND = "1";
-      QT_QPA_PLATFORM = "wayland;xcb";
-      LIBSEAT_BACKEND = "logind";
-      SDL_VIDEODRIVER = "wayland";
-    } // lib.attrsets.optionalAttrs config.hardware.nvidia.modesetting.enable {
-      GBM_BACKEND = "nvidia-drm";
-      "__GLX_VENDOR_LIBRARY_NAME" = "nvidia";
-      LIBVA_DRIVER_NAME = "nvidia";
-      GDK_BACKEND = "wayland,x11";
-      WLR_NO_HARDWARE_CURSORS = "1";
-    };
+    environment.sessionVariables =
+      {
+        MOZ_ENABLE_WAYLAND = "1";
+        QT_QPA_PLATFORM = "wayland;xcb";
+        LIBSEAT_BACKEND = "logind";
+        SDL_VIDEODRIVER = "wayland";
+      }
+      // lib.attrsets.optionalAttrs config.hardware.nvidia.modesetting.enable {
+        GBM_BACKEND = "nvidia-drm";
+        "__GLX_VENDOR_LIBRARY_NAME" = "nvidia";
+        LIBVA_DRIVER_NAME = "nvidia";
+        GDK_BACKEND = "wayland,x11";
+        WLR_NO_HARDWARE_CURSORS = "1";
+      };
 
     services.greetd = {
       enable = true;
@@ -67,9 +74,13 @@
       };
     };
 
-    home-manager.sharedModules = [ inputs.hyprland.homeManagerModules.default ];
+    home-manager.sharedModules = [inputs.hyprland.homeManagerModules.default];
 
-    home-manager.users.jocelyn = { config, osConfig, ... }: {
+    home-manager.users.jocelyn = {
+      config,
+      osConfig,
+      ...
+    }: {
       home.packages = with pkgs; [
         imv
         grim

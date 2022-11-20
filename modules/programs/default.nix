@@ -1,4 +1,8 @@
-{ config, lib, ... }: {
+{
+  config,
+  lib,
+  ...
+}: {
   imports = [
     ./bitwarden
     ./calibre
@@ -24,7 +28,7 @@
 
   config = lib.mkIf config.aspects.programs.enable {
     aspects.programs = {
-      bitwarden.enable = lib.mkDefault true; 
+      bitwarden.enable = lib.mkDefault true;
       calibre.enable = lib.mkDefault true;
       deluge.enable = lib.mkDefault true;
       element.enable = lib.mkDefault true;

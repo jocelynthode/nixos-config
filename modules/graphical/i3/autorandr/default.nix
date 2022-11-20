@@ -1,8 +1,12 @@
-{ pkgs, lib, config, ... }: {
-
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   options.aspects.graphical.i3.autorandr.profiles = lib.mkOption {
     type = lib.types.attrs;
-    default = { };
+    default = {};
     description = "programs.autorandr.profiles setup";
     example = ''
       {
@@ -37,7 +41,7 @@
   };
 
   config = lib.mkIf config.aspects.graphical.i3.enable {
-    home-manager.users.jocelyn = { osConfig, ... }: {
+    home-manager.users.jocelyn = {osConfig, ...}: {
       programs.autorandr = {
         enable = true;
         hooks = {

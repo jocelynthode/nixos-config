@@ -1,5 +1,8 @@
-{ config, lib, ... }: {
-
+{
+  config,
+  lib,
+  ...
+}: {
   options.aspects.programs.git.enable = lib.mkOption {
     default = false;
     example = true;

@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   options.aspects.programs.obs-studio.enable = lib.mkOption {
     default = false;
     example = true;

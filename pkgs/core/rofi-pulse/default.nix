@@ -1,10 +1,9 @@
-{ pkgs, ... }:
-
+{pkgs, ...}:
 pkgs.writeShellApplication {
   name = "rofi-pulse";
   checkPhase = "";
 
-  runtimeInputs = with pkgs; [ coreutils gnugrep ponymix rofi gawk ];
+  runtimeInputs = with pkgs; [coreutils gnugrep ponymix rofi gawk];
 
   text = ''
       function usage {
@@ -53,7 +52,7 @@ pkgs.writeShellApplication {
 
           # line number of default in list (note: row starts at 0)
           default_row=$(echo "$list" | grep -nr "$default" - | cut -f1 -d: | awk '{print $0-1}')
-        
+
           if [ "$type" == "sink" ]; then
             icon=""
           else

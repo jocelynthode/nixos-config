@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   options = {
     aspects.work.slack.enable = lib.mkOption {
       default = false;
@@ -8,7 +13,7 @@
 
   config = lib.mkIf config.aspects.work.slack.enable {
     home-manager.users.jocelyn = _: {
-      home.packages = with pkgs; [ slack ];
+      home.packages = with pkgs; [slack];
     };
 
     aspects.base.persistence.homePaths = [

@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   options.aspects.graphical.xdg.enable = lib.mkOption {
     default = false;
     example = true;
@@ -24,8 +29,8 @@
       ];
     };
 
-    home-manager.users.jocelyn = { pkgs, ... }: {
-      home.packages = with pkgs; [ xdg-user-dirs xdg-utils ];
+    home-manager.users.jocelyn = {pkgs, ...}: {
+      home.packages = with pkgs; [xdg-user-dirs xdg-utils];
 
       xdg = {
         enable = true;
@@ -37,12 +42,11 @@
             "inode/directory" = "ranger.desktop";
             "application/pdf" = "firefox.desktop";
 
-            "text/html" = [ "firefox.desktop" ];
-            "x-scheme-handler/about" = [ "firefox.desktop" ];
-            "x-scheme-handler/http" = [ "firefox.desktop" ];
-            "x-scheme-handler/https" = [ "firefox.desktop" ];
-            "x-scheme-handler/unknown" = [ "firefox.desktop" ];
-
+            "text/html" = ["firefox.desktop"];
+            "x-scheme-handler/about" = ["firefox.desktop"];
+            "x-scheme-handler/http" = ["firefox.desktop"];
+            "x-scheme-handler/https" = ["firefox.desktop"];
+            "x-scheme-handler/unknown" = ["firefox.desktop"];
           };
         };
         desktopEntries = {
@@ -71,7 +75,7 @@
             ];
             terminal = true;
             type = "Application";
-            categories = [ "Utility" "TextEditor" ];
+            categories = ["Utility" "TextEditor"];
           };
         };
       };

@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   options.aspects.graphical.rofi = {
     enable = lib.mkOption {
       default = false;
@@ -12,7 +17,11 @@
   };
 
   config = lib.mkIf config.aspects.graphical.rofi.enable {
-    home-manager.users.jocelyn = { config, osConfig, ... }: {
+    home-manager.users.jocelyn = {
+      config,
+      osConfig,
+      ...
+    }: {
       home.packages = with pkgs; [
         rofi-power-menu
       ];

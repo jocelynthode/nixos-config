@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ./fingerprint
     ./firefox
@@ -30,7 +35,7 @@
   };
 
   config = lib.mkIf config.aspects.graphical.enable {
-    users.users.jocelyn.extraGroups = [ "audio" "video" "camera" ];
+    users.users.jocelyn.extraGroups = ["audio" "video" "camera"];
     aspects = {
       graphical = {
         fingerprint.enable = lib.mkDefault false;

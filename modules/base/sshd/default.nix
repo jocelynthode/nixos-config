@@ -1,4 +1,8 @@
-{ config, lib, ... }: {
+{
+  config,
+  lib,
+  ...
+}: {
   options.aspects.base.sshd.permitRootLogin = lib.mkOption {
     default = "no";
     example = "yes";

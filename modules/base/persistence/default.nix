@@ -1,4 +1,8 @@
-{ config, lib, ... }: {
+{
+  config,
+  lib,
+  ...
+}: {
   options.aspects.base.persistence = {
     enable = lib.mkOption {
       default = false;
@@ -11,17 +15,23 @@
     };
 
     homePaths = lib.mkOption {
-      default = [ ];
+      default = [];
       example = [
-        { directory = ".config/syncthing"; mode = "0700"; }
+        {
+          directory = ".config/syncthing";
+          mode = "0700";
+        }
         ".config/tasks"
       ];
     };
 
     systemPaths = lib.mkOption {
-      default = [ ];
+      default = [];
       example = [
-        { directory = "/var/lib/docker"; mode = "0700"; }
+        {
+          directory = "/var/lib/docker";
+          mode = "0700";
+        }
         "/var/lib/systemd"
       ];
     };

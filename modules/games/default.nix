@@ -1,4 +1,8 @@
-{ config, lib, ... }: {
+{
+  config,
+  lib,
+  ...
+}: {
   imports = [
     ./discord
     ./gamemode
@@ -22,4 +26,3 @@
     };
   };
 }
-

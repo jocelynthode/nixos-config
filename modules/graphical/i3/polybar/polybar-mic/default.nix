@@ -1,10 +1,12 @@
-{ pkgs, config }:
-
+{
+  pkgs,
+  config,
+}:
 pkgs.writeShellApplication {
   name = "polybar-mic";
   checkPhase = "";
 
-  runtimeInputs = with pkgs; [ pulseaudio coreutils gnugrep gawk ];
+  runtimeInputs = with pkgs; [pulseaudio coreutils gnugrep gawk];
 
   text = ''
     get_mic_default() {
@@ -50,4 +52,3 @@ pkgs.writeShellApplication {
     esac
   '';
 }
-

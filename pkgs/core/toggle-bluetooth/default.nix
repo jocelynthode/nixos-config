@@ -1,10 +1,9 @@
-{ pkgs }:
-
+{pkgs}:
 pkgs.writeShellApplication {
   name = "toggle_bluetooth";
   checkPhase = "";
 
-  runtimeInputs = with pkgs; [ bluez coreutils gnugrep ];
+  runtimeInputs = with pkgs; [bluez coreutils gnugrep];
 
   text = ''
     if [ ''$(bluetoothctl show | grep "Powered: yes" | wc -c) -eq 0 ]

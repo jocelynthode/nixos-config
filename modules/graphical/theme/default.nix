@@ -1,4 +1,10 @@
-{ config, lib, pkgs, nix-colors, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  nix-colors,
+  ...
+}: {
   options.aspects.graphical.theme.enable = lib.mkOption {
     default = false;
     example = true;
@@ -27,53 +33,55 @@
     };
 
     programs.dconf.enable = true;
-    home-manager.users.jocelyn = { pkgs, config, osConfig, ... }:
-      let
-        inherit (nix-colors.lib-contrib { inherit pkgs; }) gtkThemeFromScheme;
-      in
-      rec {
+    home-manager.users.jocelyn = {
+      pkgs,
+      config,
+      osConfig,
+      ...
+    }: let
+      inherit (nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme;
+    in rec {
+      home.pointerCursor = {
+        name = "Adwaita";
+        package = pkgs.gnome.adwaita-icon-theme;
+        size = 24;
+        gtk.enable = true;
+        x11.enable = true;
+      };
 
-        home.pointerCursor = {
-          name = "Adwaita";
-          package = pkgs.gnome.adwaita-icon-theme;
-          size = 24;
-          gtk.enable = true;
-          x11.enable = true;
+      gtk = {
+        enable = true;
+        font = {
+          name = osConfig.aspects.base.fonts.regular.family;
+          inherit (osConfig.aspects.base.fonts.regular) package;
+          inherit (osConfig.aspects.base.fonts.regular) size;
         };
-
-        gtk = {
-          enable = true;
-          font = {
-            name = osConfig.aspects.base.fonts.regular.family;
-            inherit (osConfig.aspects.base.fonts.regular) package;
-            inherit (osConfig.aspects.base.fonts.regular) size;
-          };
-          theme = {
-            name = "${config.colorscheme.slug}";
-            package = gtkThemeFromScheme { scheme = config.colorscheme; };
-          };
-          iconTheme = {
-            name = "Papirus";
-            package = pkgs.papirus-icon-theme;
-          };
+        theme = {
+          name = "${config.colorscheme.slug}";
+          package = gtkThemeFromScheme {scheme = config.colorscheme;};
         };
-
-        services.xsettingsd = {
-          enable = true;
-          settings = {
-            "Net/ThemeName" = gtk.theme.name;
-            "Net/IconThemeName" = gtk.iconTheme.name;
-          };
-        };
-
-        qt = {
-          enable = true;
-          platformTheme = "gnome";
-          style = {
-            name = "adwaita-dark";
-            package = pkgs.adwaita-qt;
-          };
+        iconTheme = {
+          name = "Papirus";
+          package = pkgs.papirus-icon-theme;
         };
       };
+
+      services.xsettingsd = {
+        enable = true;
+        settings = {
+          "Net/ThemeName" = gtk.theme.name;
+          "Net/IconThemeName" = gtk.iconTheme.name;
+        };
+      };
+
+      qt = {
+        enable = true;
+        platformTheme = "gnome";
+        style = {
+          name = "adwaita-dark";
+          package = pkgs.adwaita-qt;
+        };
+      };
+    };
   };
 }

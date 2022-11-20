@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   options.aspects.programs.spotify.enable = lib.mkOption {
     default = false;
     example = true;
@@ -9,7 +14,7 @@
       ".config/spotify"
     ];
     home-manager.users.jocelyn = _: {
-      home.packages = [ pkgs.spotify pkgs.playerctl ];
+      home.packages = [pkgs.spotify pkgs.playerctl];
       services.playerctld = {
         enable = true;
       };

@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   options.aspects.games.discord.enable = lib.mkOption {
     default = false;
     example = true;
@@ -9,11 +14,10 @@
       ".config/discord"
     ];
 
-    aspects.base.nix.unfreePackages = [ pkgs.discord ];
+    aspects.base.nix.unfreePackages = [pkgs.discord];
 
     home-manager.users.jocelyn = _: {
-      home.packages = with pkgs; [ discord ];
+      home.packages = with pkgs; [discord];
     };
   };
 }
-

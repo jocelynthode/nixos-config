@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   packages = with pkgs; [
     git
     sops
@@ -10,9 +8,10 @@
   languages.nix.enable = true;
 
   pre-commit.hooks = {
+    actionlint.enable = true;
+    alejandra.enable = true;
     deadnix.enable = true;
     statix.enable = true;
-    actionlint.enable = true;
   };
 
   pre-commit.settings.deadnix.edit = true;

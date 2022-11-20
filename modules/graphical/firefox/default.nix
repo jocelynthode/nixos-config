@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   options.aspects.graphical.firefox = {
     enable = lib.mkEnableOption "firefox";
   };
@@ -27,7 +32,7 @@
         ];
         profiles = {
           jocelyn = {
-            bookmarks = { };
+            bookmarks = {};
             userChrome = ''
               /* Hide tab bar in FF Quantum */
               #TabsToolbar {

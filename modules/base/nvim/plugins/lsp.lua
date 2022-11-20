@@ -10,7 +10,7 @@ local servers = {
   nil_ls = {
     settings = {
       ['nil'] = {
-        formatting = { command = { "nixfmt" } }
+        formatting = { command = { "alejandra" } }
       },
     },
   },

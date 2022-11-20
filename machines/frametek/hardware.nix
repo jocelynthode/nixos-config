@@ -1,7 +1,12 @@
-{ config, pkgs, lib, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   boot = {
     initrd = {
-      availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
+      availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
       # name luks as hostname and label as hostname_crypt
       # Label btrfs partition as hostname
       luks = {
@@ -19,16 +24,18 @@
       };
     };
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelParams = [ "resume_offset=533785" "mitigations=off" ];
-    kernelModules = [ "kvm-intel" ];
+    kernelParams = ["resume_offset=533785" "mitigations=off"];
+    kernelModules = ["kvm-intel"];
   };
 
   hardware.video.hidpi.enable = true;
 
-  swapDevices = [{
-    device = "/swap/swapfile";
-    size = 1024 * 32;
-  }];
+  swapDevices = [
+    {
+      device = "/swap/swapfile";
+      size = 1024 * 32;
+    }
+  ];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
   hardware.enableRedistributableFirmware = true;
@@ -37,10 +44,16 @@
   services.actkbd = {
     enable = true;
     bindings = [
-      { keys = [ 224 ]; events = [ "key" "rep" ]; command = "${pkgs.light}/bin/light -U 5"; }
-      { keys = [ 225 ]; events = [ "key" "rep" ]; command = "${pkgs.light}/bin/light -A 5"; }
+      {
+        keys = [224];
+        events = ["key" "rep"];
+        command = "${pkgs.light}/bin/light -U 5";
+      }
+      {
+        keys = [225];
+        events = ["key" "rep"];
+        command = "${pkgs.light}/bin/light -A 5";
+      }
     ];
   };
 }
-
-

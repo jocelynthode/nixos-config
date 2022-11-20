@@ -1,10 +1,12 @@
-{ pkgs, config }:
-
+{
+  pkgs,
+  config,
+}:
 pkgs.writeShellApplication {
   name = "polybar-gammastep";
   checkPhase = "";
 
-  runtimeInputs = with pkgs; [ coreutils systemd gnugrep findutils ];
+  runtimeInputs = with pkgs; [coreutils systemd gnugrep findutils];
 
   text = ''
     if unit_status="$(systemctl --user is-active gammastep)"; then

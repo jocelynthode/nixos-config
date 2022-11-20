@@ -1,5 +1,9 @@
-{ config, lib, pkgs, ... }:
-let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   baseDirenv = {
     programs.direnv = {
       enable = true;
@@ -24,28 +28,27 @@ let
       timers.nix-index = {
         Unit = {
           Description = "Timer that starts nix-index weekly";
-          PartOf = [ "nix-index.service" ];
+          PartOf = ["nix-index.service"];
         };
         Timer = {
           OnCalendar = "weekly";
           Persistent = true;
         };
         Install = {
-          WantedBy = [ "default.target" ];
+          WantedBy = ["default.target"];
         };
       };
     };
   };
-in
-{
+in {
   options.aspects.base.nix = {
     enableDirenv = lib.mkOption {
       default = true;
       example = false;
     };
     unfreePackages = lib.mkOption {
-      default = [ ];
-      example = [ pkgs.discord ];
+      default = [];
+      example = [pkgs.discord];
     };
     # Note that this is only enabled for charlotte, until https://github.com/bennofs/nix-index/issues/143 is resolved.
     enableNixIndex = lib.mkOption {
@@ -55,11 +58,10 @@ in
   };
 
   config = {
-
     aspects.base.persistence = {
-      homePaths = 
-        (lib.optional config.aspects.base.nix.enableDirenv ".local/share/direnv") ++
-        (lib.optional config.aspects.base.nix.enableNixIndex ".cache/nix-index");
+      homePaths =
+        (lib.optional config.aspects.base.nix.enableDirenv ".local/share/direnv")
+        ++ (lib.optional config.aspects.base.nix.enableNixIndex ".cache/nix-index");
       systemPaths = lib.optional config.aspects.base.nix.enableDirenv "/root/.local/share/direnv";
     };
 
@@ -80,7 +82,7 @@ in
           "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
         ];
 
-        trusted-users = [ "root" "@wheel" ];
+        trusted-users = ["root" "@wheel"];
         auto-optimise-store = true;
       };
       package = pkgs.nixStable;
@@ -99,8 +101,8 @@ in
 
     home-manager.users.jocelyn = _:
       lib.recursiveUpdate
-        (lib.optionalAttrs config.aspects.base.nix.enableDirenv baseDirenv)
-        (lib.optionalAttrs config.aspects.base.nix.enableNixIndex baseNixIndex);
+      (lib.optionalAttrs config.aspects.base.nix.enableDirenv baseDirenv)
+      (lib.optionalAttrs config.aspects.base.nix.enableNixIndex baseNixIndex);
     home-manager.users.root = _: lib.optionalAttrs config.aspects.base.nix.enableDirenv baseDirenv;
   };
 }

@@ -1,5 +1,5 @@
-{ ... }: {
-  imports = [ ./hardware.nix ];
+{...}: {
+  imports = [./hardware.nix];
 
   # Machine-specific module settings
   aspects = {
@@ -15,5 +15,3 @@
     services.enable = true;
   };
 }
-
-

@@ -1,12 +1,15 @@
-{ pkgs, lib, config, ... }: {
-
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   options.aspects.graphical.sound.guitar.enable = lib.mkOption {
     default = false;
     example = true;
   };
 
   config = lib.mkIf config.aspects.graphical.sound.guitar.enable {
-
     # services.udev.extraRules = ''
     #   SUBSYSTEM=="sound", SUBSYSTEMS=="usb", ATTR{idVendor}=="1686",ATTR{idProduct}=="02df", ENV{SYSTEMD_ALIAS}="test-zoom", TAG+="systemd"
     # '';

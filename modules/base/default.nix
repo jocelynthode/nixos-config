@@ -1,4 +1,11 @@
-{ config, options, lib, pkgs, nix-colors, ... }: {
+{
+  config,
+  options,
+  lib,
+  pkgs,
+  nix-colors,
+  ...
+}: {
   imports = [
     ./backup
     ./battery
@@ -34,7 +41,7 @@
 
   config = {
     home-manager.useGlobalPkgs = true;
-    home-manager.sharedModules = [ nix-colors.homeManagerModule ];
+    home-manager.sharedModules = [nix-colors.homeManagerModule];
 
     aspects.base.btrfs.enable = lib.mkDefault true;
     aspects.base.persistence.enable = lib.mkDefault true;
@@ -42,12 +49,12 @@
     aspects.base.fonts = lib.mkDefault {
       monospace = {
         family = "JetBrains Mono Nerd Font";
-        package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
+        package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
         size = 11;
       };
       regular = {
         family = "NotoSans Nerd Font";
-        package = pkgs.nerdfonts.override { fonts = [ "Noto" ]; };
+        package = pkgs.nerdfonts.override {fonts = ["Noto"];};
         size = 11;
       };
     };
@@ -83,7 +90,10 @@
 
     aspects.base.persistence = {
       homePaths = [
-        { directory = ".ssh"; mode = "0700"; }
+        {
+          directory = ".ssh";
+          mode = "0700";
+        }
       ];
       systemPaths = [
         "/var/lib/systemd"
@@ -93,8 +103,8 @@
     sops = {
       defaultSopsFile = ../../secrets/common/secrets.yaml;
       secrets = {
-        "restic/env" = { };
-        "restic/password" = { };
+        "restic/env" = {};
+        "restic/password" = {};
         "users/jocelyn/password" = {
           neededForUsers = true;
         };
@@ -165,7 +175,10 @@
         jocelyn = {
           isNormalUser = true;
           shell = pkgs.fish;
-          passwordFile = if !(options.virtualisation ? qemu) then config.sops.secrets."users/jocelyn/password".path else null;
+          passwordFile =
+            if !(options.virtualisation ? qemu)
+            then config.sops.secrets."users/jocelyn/password".path
+            else null;
           extraGroups = [
             "wheel"
           ];

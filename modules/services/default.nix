@@ -1,4 +1,8 @@
-{ config, lib, ... }: {
+{
+  config,
+  lib,
+  ...
+}: {
   imports = [
     ./acme
     ./ddclient
@@ -27,5 +31,4 @@
       };
     };
   };
-
 }

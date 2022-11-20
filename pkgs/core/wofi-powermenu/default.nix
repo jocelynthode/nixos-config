@@ -1,10 +1,9 @@
-{ pkgs }:
-
+{pkgs}:
 pkgs.writeShellApplication {
   name = "wofi-powermenu";
   checkPhase = "";
 
-  runtimeInputs = with pkgs; [ systemd wofi coreutils gnugrep ];
+  runtimeInputs = with pkgs; [systemd wofi coreutils gnugrep];
 
   text = ''
     entries=" Lock\n Logout\n鈴 Suspend\n Hibernate\n⭮ Reboot\n Shutdown"

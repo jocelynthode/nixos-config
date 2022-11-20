@@ -43,7 +43,22 @@
     devenv.url = "github:cachix/devenv/v0.3";
   };
 
-  outputs = inputs@{ self, nixpkgs, stable, hyprland, home-manager, home-manager-stable, sops-nix, nur, nix-colors, hardware, impermanence, taxi, utils, flake-utils, ... }:
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    stable,
+    hyprland,
+    home-manager,
+    home-manager-stable,
+    sops-nix,
+    nur,
+    nix-colors,
+    hardware,
+    impermanence,
+    taxi,
+    utils,
+    ...
+  }:
     utils.lib.mkFlake {
       inherit self inputs;
 
@@ -51,11 +66,11 @@
       sharedOverlays = [
         nur.overlay
         taxi.overlay
-        (import ./overlay { inherit inputs; })
+        (import ./overlay {inherit inputs;})
       ];
       hostDefaults = {
         modules = [
-          { nix.generateRegistryFromInputs = true; }
+          {nix.generateRegistryFromInputs = true;}
           sops-nix.nixosModules.sops
           impermanence.nixosModules.impermanence
           hyprland.nixosModules.default
@@ -66,6 +81,11 @@
       channels.nixpkgs.input = nixpkgs;
       channels.stable.input = stable;
 
+      outputsBuilder = channels:
+        with channels.nixpkgs; {
+          formatter = alejandra;
+        };
+
       hosts = {
         desktek = {
           modules = [
@@ -74,7 +94,7 @@
             hardware.nixosModules.common-cpu-amd
             hardware.nixosModules.common-pc-ssd
           ];
-          specialArgs = { inherit nix-colors; };
+          specialArgs = {inherit nix-colors;};
         };
         frametek = {
           modules = [
@@ -86,7 +106,7 @@
             hardware.nixosModules.common-pc-laptop-ssd
             hardware.nixosModules.framework
           ];
-          specialArgs = { inherit nix-colors; };
+          specialArgs = {inherit nix-colors;};
         };
         servetek = {
           channelName = "stable";
@@ -95,7 +115,7 @@
             home-manager-stable.nixosModule
             hardware.nixosModules.common-pc-laptop-hdd
           ];
-          specialArgs = { inherit nix-colors; };
+          specialArgs = {inherit nix-colors;};
         };
         iso = {
           modules = [
@@ -103,9 +123,8 @@
             "${nixpkgs}/nixos/modules/installer/cd-dvd/channel.nix"
             ./machines/iso
           ];
-          specialArgs = { inherit nix-colors; };
+          specialArgs = {inherit nix-colors;};
         };
       };
-      formatter = flake-utils.lib.eachDefaultSystem (system: nixpkgs.legacyPackages.${system}.alejandra);
     };
 }

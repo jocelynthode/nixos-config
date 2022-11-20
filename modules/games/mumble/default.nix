@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   options.aspects.games.mumble.enable = lib.mkOption {
     default = false;
     example = true;
@@ -11,7 +16,7 @@
     ];
 
     home-manager.users.jocelyn = _: {
-      home.packages = with pkgs; [ mumble ];
+      home.packages = with pkgs; [mumble];
     };
   };
 }

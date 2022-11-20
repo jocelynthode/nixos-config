@@ -1,4 +1,8 @@
-{ config, lib, ... }: {
+{
+  config,
+  lib,
+  ...
+}: {
   options.aspects.base.battery.enable = lib.mkOption {
     default = false;
     example = true;

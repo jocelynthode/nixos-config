@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   options = {
     aspects.work.kubernetes.enable = lib.mkOption {
       default = false;
@@ -8,7 +13,10 @@
 
   config = lib.mkIf config.aspects.work.kubernetes.enable {
     aspects.base.persistence.homePaths = [
-      { directory = ".kube"; mode = "0700"; }
+      {
+        directory = ".kube";
+        mode = "0700";
+      }
     ];
 
     home-manager.users.jocelyn = _: {

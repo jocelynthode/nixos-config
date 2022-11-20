@@ -1,4 +1,9 @@
-{ pkgs, config, lib, ... }: {
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: {
   options.aspects.services.wireguard.enable = lib.mkOption {
     default = false;
     example = true;
@@ -6,14 +11,14 @@
 
   config = lib.mkIf config.aspects.services.wireguard.enable {
     networking.firewall = {
-      allowedUDPPorts = [ 51820 ];
+      allowedUDPPorts = [51820];
     };
     networking.wg-quick.interfaces = {
       wg0 = {
-        address = [ "10.2.0.2/32" ];
+        address = ["10.2.0.2/32"];
         listenPort = 51820;
         table = "51820";
-        dns = [ "10.2.0.1" ];
+        dns = ["10.2.0.1"];
         privateKeyFile = config.sops.secrets.wireguard.path;
         preDown = [
           "${pkgs.iproute2}/bin/ip rule del from 10.2.0.2/32 table 51820"
@@ -26,7 +31,7 @@
         peers = [
           {
             publicKey = "VNNO5MYorFu1UerHvoXccW6TvotxbJ1GAGJKtzM9HTY=";
-            allowedIPs = [ "0.0.0.0/0" ];
+            allowedIPs = ["0.0.0.0/0"];
             endpoint = "185.159.157.23:51820";
             persistentKeepalive = 25;
           }

@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   options.aspects.programs.taskwarrior.enable = lib.mkOption {
     default = false;
     example = true;
@@ -76,11 +81,10 @@
             OnCalendar = "*:0/15";
           };
           Install = {
-            WantedBy = [ "timers.target" ];
+            WantedBy = ["timers.target"];
           };
         };
       };
     };
   };
 }
-

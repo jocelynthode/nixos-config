@@ -1,6 +1,9 @@
-{ config, pkgs, lib, ... }:
-
-let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   base = config: {
     programs.fish = {
       enable = true;
@@ -33,9 +36,18 @@ let
       };
       plugins = [
         # { name = "tide"; inherit (pkgs.fishPlugins.tide) src; }
-        { name = "fzf-fish"; inherit (pkgs.fishPlugins.fzf-fish) src; }
-        { name = "colored-man-pages"; inherit (pkgs.fishPlugins.colored-man-pages) src; }
-        { name = "autopair"; inherit (pkgs.fishPlugins.autopair-fish) src; }
+        {
+          name = "fzf-fish";
+          inherit (pkgs.fishPlugins.fzf-fish) src;
+        }
+        {
+          name = "colored-man-pages";
+          inherit (pkgs.fishPlugins.colored-man-pages) src;
+        }
+        {
+          name = "autopair";
+          inherit (pkgs.fishPlugins.autopair-fish) src;
+        }
       ];
     };
 
@@ -73,8 +85,7 @@ let
       '';
     };
   };
-in
-{
+in {
   programs.fish = {
     enable = true;
     vendor = {
@@ -176,6 +187,6 @@ in
     ];
   };
 
-  home-manager.users.jocelyn = { config, ... }: (base config);
-  home-manager.users.root = { config, ... }: (base config);
+  home-manager.users.jocelyn = {config, ...}: (base config);
+  home-manager.users.root = {config, ...}: (base config);
 }

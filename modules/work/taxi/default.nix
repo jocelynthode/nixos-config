@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   options = {
     aspects.work.taxi.enable = lib.mkOption {
       default = false;
@@ -10,9 +15,10 @@
     home-manager.users.jocelyn = _: {
       home.packages = with pkgs; [
         (taxi-cli.withPlugins (
-          plugins: with plugins; [
-            zebra
-          ]
+          plugins:
+            with plugins; [
+              zebra
+            ]
         ))
       ];
     };

@@ -1,11 +1,14 @@
-{ config, lib, ... }: {
+{
+  config,
+  lib,
+  ...
+}: {
   options.aspects.graphical.mpv.enable = lib.mkOption {
     default = false;
     example = true;
   };
 
   config = lib.mkIf config.aspects.graphical.mpv.enable {
-
     home-manager.users.jocelyn = _: {
       programs.mpv = {
         enable = true;
@@ -50,7 +53,6 @@
           video-sync = "display-resample";
           interpolation = true;
           tscale = "oversample";
-
         };
       };
     };

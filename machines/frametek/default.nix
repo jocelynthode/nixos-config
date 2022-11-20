@@ -1,5 +1,5 @@
-{ pkgs, ... }: {
-  imports = [ ./hardware.nix ];
+{pkgs, ...}: {
+  imports = [./hardware.nix];
 
   # Machine-specific module settings
   aspects = {
@@ -24,7 +24,7 @@
               scale = 1.2;
             }
           ];
-          exec = [ 
+          exec = [
             "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"6 eDP-1\""
             "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"7 eDP-1\""
             "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"8 eDP-1\""
@@ -45,7 +45,7 @@
               scale = 1.2;
             }
           ];
-          exec = [ 
+          exec = [
             "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"6 DP-4\""
             "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"7 DP-4\""
             "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"8 DP-4\""
@@ -106,5 +106,3 @@
     work.enable = true;
   };
 }
-
-

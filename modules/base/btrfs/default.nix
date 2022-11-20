@@ -1,4 +1,8 @@
-{ config, lib, ... }: {
+{
+  config,
+  lib,
+  ...
+}: {
   options.aspects.base.btrfs = {
     enable = lib.mkOption {
       default = false;
@@ -13,7 +17,7 @@
 
   config = lib.mkIf config.aspects.base.btrfs.enable {
     boot = {
-      supportedFilesystems = [ "ntfs" ];
+      supportedFilesystems = ["ntfs"];
       tmpOnTmpfs = true;
       tmpOnTmpfsSize = "20%";
       loader = {
@@ -40,7 +44,7 @@
           btrfs subvolume snapshot /mnt/@blank /mnt/@
           umount /mnt
         '';
-        supportedFilesystems = [ "btrfs" ];
+        supportedFilesystems = ["btrfs"];
         luks = lib.mkIf config.aspects.base.btrfs.encrypted {
           devices."${config.networking.hostName}" = {
             device = "/dev/disk/by-label/${config.networking.hostName}_crypt";
@@ -59,46 +63,46 @@
       "/" = {
         device = "/dev/disk/by-label/${config.networking.hostName}";
         fsType = "btrfs";
-        options = [ "defaults" "noatime" "compress=zstd:1" "subvol=@" ];
+        options = ["defaults" "noatime" "compress=zstd:1" "subvol=@"];
       };
 
       "/var/log" = {
         device = "/dev/disk/by-label/${config.networking.hostName}";
         fsType = "btrfs";
-        options = [ "defaults" "noatime" "compress=zstd:1" "subvol=@log" ];
+        options = ["defaults" "noatime" "compress=zstd:1" "subvol=@log"];
         neededForBoot = true;
       };
 
       "/nix" = {
         device = "/dev/disk/by-label/${config.networking.hostName}";
         fsType = "btrfs";
-        options = [ "defaults" "noatime" "compress=zstd:1" "subvol=@nix" ];
+        options = ["defaults" "noatime" "compress=zstd:1" "subvol=@nix"];
       };
 
       "${config.aspects.base.persistence.persistPrefix}" = {
         device = "/dev/disk/by-label/${config.networking.hostName}";
         fsType = "btrfs";
-        options = [ "defaults" "noatime" "compress=zstd:1" "subvol=@persist" ];
+        options = ["defaults" "noatime" "compress=zstd:1" "subvol=@persist"];
         neededForBoot = true;
       };
 
       "${config.aspects.base.persistence.persistPrefix}/.snapshots" = {
         device = "/dev/disk/by-label/${config.networking.hostName}";
         fsType = "btrfs";
-        options = [ "defaults" "noatime" "compress=zstd:1" "subvol=@snapshots" ];
+        options = ["defaults" "noatime" "compress=zstd:1" "subvol=@snapshots"];
         neededForBoot = true;
       };
 
       "/swap" = {
         device = "/dev/disk/by-label/${config.networking.hostName}";
         fsType = "btrfs";
-        options = [ "defaults" "noatime" "compress=zstd:1" "subvol=@swap" ];
+        options = ["defaults" "noatime" "compress=zstd:1" "subvol=@swap"];
       };
 
       "/boot/efi" = {
         device = "/dev/disk/by-label/EFI";
         fsType = "vfat";
-        options = [ "defaults" "noatime" ];
+        options = ["defaults" "noatime"];
       };
     };
   };

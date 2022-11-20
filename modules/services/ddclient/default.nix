@@ -1,4 +1,8 @@
-{ config, lib, ... }: {
+{
+  config,
+  lib,
+  ...
+}: {
   options.aspects.services.ddclient.enable = lib.mkOption {
     default = false;
     example = true;
@@ -10,14 +14,13 @@
       server = "www.ovh.com";
       ssl = true;
       username = "tekila.ovh-ident";
-      domains = [ "dyn.tekila.ovh" ];
+      domains = ["dyn.tekila.ovh"];
       passwordFile = config.sops.secrets.ddclient.path;
     };
 
     sops.secrets.ddclient = {
       sopsFile = ../../../secrets/${config.networking.hostName}/secrets.yaml;
-      restartUnits = [ "ddclient.service" ];
+      restartUnits = ["ddclient.service"];
     };
   };
 }
-

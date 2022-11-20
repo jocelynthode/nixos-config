@@ -1,4 +1,8 @@
-{ config, lib, ... }: {
+{
+  config,
+  lib,
+  ...
+}: {
   options.aspects.services.deluge.enable = lib.mkOption {
     default = false;
     example = true;
@@ -9,7 +13,7 @@
       "/var/lib/deluge"
     ];
 
-    networking.firewall.allowedTCPPorts = [ 58846 ];
+    networking.firewall.allowedTCPPorts = [58846];
 
     services = {
       deluge = {
@@ -25,7 +29,7 @@
           random_outgoing_ports = true;
           random_port = false;
           daemon_port = 58846;
-          listen_ports = [ 53394 53420 ];
+          listen_ports = [53394 53420];
           upnp = false;
           natpmp = false;
           max_download_speed = 90000;
@@ -46,7 +50,7 @@
       sopsFile = ../../../secrets/${config.networking.hostName}/secrets.yaml;
       owner = "deluge";
       group = "deluge";
-      restartUnits = [ "deluged.service" "delugeweb.service" ];
+      restartUnits = ["deluged.service" "delugeweb.service"];
     };
   };
 }
