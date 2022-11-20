@@ -21,6 +21,9 @@ jobs:
         uses: astro/deadnix-action@main
       - name: Lint code
         uses: jocelynthode/statix-action@0.1
+        with:
+          action: fix
+          create_pr: true
       - run: nix build -L --no-link .#nixosConfigurations.desktek.config.system.build.toplevel
       - run: nix eval --json ".#nixosConfigurations.desktek.config.system.build.toplevel.outPath" | sed 's/"\(.*\)"/\1/' | cachix push tekila
       - run: nix build -L --no-link .#nixosConfigurations.frametek.config.system.build.toplevel
