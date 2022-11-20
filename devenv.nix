@@ -12,6 +12,7 @@
   pre-commit.hooks = {
     deadnix.enable = true;
     statix.enable = true;
+    actionlint.enable = true;
   };
 
   pre-commit.settings.deadnix.edit = true;
