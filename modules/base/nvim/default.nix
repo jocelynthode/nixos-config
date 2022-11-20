@@ -83,7 +83,8 @@ let
         nodePackages.vim-language-server
         nodePackages.dockerfile-language-server-nodejs
 
-        rnix-lsp
+        nil
+        nixfmt
         rust-analyzer
         shellcheck
         sumneko-lua-language-server

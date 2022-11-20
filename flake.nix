@@ -7,12 +7,18 @@
 
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        utils.follows = "flake-utils";
+      };
     };
 
     home-manager-stable = {
       url = "github:nix-community/home-manager"; # switch to release-22.11
-      inputs.nixpkgs.follows = "stable";
+      inputs = {
+        nixpkgs.follows = "stable";
+        utils.follows = "flake-utils";
+      };
     };
 
     sops-nix = {
@@ -25,7 +31,11 @@
     hardware.url = "github:nixos/nixos-hardware";
     impermanence.url = "github:nix-community/impermanence";
     taxi.url = "github:sephii/taxi";
-    utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
+    utils = {
+      url = "github:gytis-ivaskevicius/flake-utils-plus";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+    flake-utils.url = "github:numtide/flake-utils";
     hyprland = {
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,7 +43,7 @@
     devenv.url = "github:cachix/devenv/v0.3";
   };
 
-  outputs = inputs@{ self, nixpkgs, stable, hyprland, home-manager, home-manager-stable, sops-nix, nur, nix-colors, hardware, impermanence, taxi, utils, ... }:
+  outputs = inputs@{ self, nixpkgs, stable, hyprland, home-manager, home-manager-stable, sops-nix, nur, nix-colors, hardware, impermanence, taxi, utils, flake-utils, ... }:
     utils.lib.mkFlake {
       inherit self inputs;
 
@@ -96,5 +106,6 @@
           specialArgs = { inherit nix-colors; };
         };
       };
+      formatter = flake-utils.lib.eachDefaultSystem (system: nixpkgs.legacyPackages.${system}.alejandra);
     };
 }

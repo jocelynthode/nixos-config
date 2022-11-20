@@ -7,7 +7,13 @@ local servers = {
   pylsp = {
     cmd = { vim.g.python3_host_prog, '-m', 'pylsp' },
   },
-  rnix = {},
+  nil_ls = {
+    settings = {
+      ['nil'] = {
+        formatting = { command = { "nixfmt" } }
+      },
+    },
+  },
   rust_analyzer = {},
   terraformls = {},
   vimls = {},
