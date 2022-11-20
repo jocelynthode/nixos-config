@@ -14,13 +14,15 @@ jobs:
         uses: cachix/cachix-action@v12
         with:
           name: tekila
-          extraPullNames: 'nix-community,hyprland,devenv,statix'
+          extraPullNames: 'nix-community,hyprland,devenv,statix,deadnix'
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
           skipPush: true
       - name: Dead code analysis
-        uses: astro/deadnix-action@main
+        uses: jocelynthode/deadnix-action@improve-deadnix
+        with:
+          create_pr: true
       - name: Lint code
-        uses: jocelynthode/statix-action@0.1
+        uses: jocelynthode/statix-action@0.2
         with:
           action: fix
           create_pr: true
