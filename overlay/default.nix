@@ -3,7 +3,7 @@
   inherit (inputs.nix-colors) colorSchemes;
   inherit (builtins) mapAttrs;
 in
-  rec {
+  {
     vimPlugins =
       prev.vimPlugins
       // {
