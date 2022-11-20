@@ -20,14 +20,10 @@ jobs:
       - name: Dead code analysis
         uses: jocelynthode/deadnix-action@improve-deadnix
         with:
-          create_pr: true
+          flags: ''
       - uses: actions/checkout@v3.1.0
       - name: Lint code
         uses: jocelynthode/statix-action@master
-        with:
-          action: fix
-          create_pr: true
-      - uses: actions/checkout@v3.1.0
       - run: nix build -L --no-link .#nixosConfigurations.desktek.config.system.build.toplevel
       - run: nix eval --json ".#nixosConfigurations.desktek.config.system.build.toplevel.outPath" | sed 's/"\(.*\)"/\1/' | cachix push tekila
       - run: nix build -L --no-link .#nixosConfigurations.frametek.config.system.build.toplevel
