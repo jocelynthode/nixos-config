@@ -68,7 +68,7 @@
     };
 
     home-manager.users = {
-      jocelyn = _: {
+      jocelyn = { ... }: {
         home.stateVersion = config.aspects.stateVersion;
         systemd.user.sessionVariables = config.home-manager.users.jocelyn.home.sessionVariables;
         systemd.user.startServices = "sd-switch";
