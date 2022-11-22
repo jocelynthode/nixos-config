@@ -10,10 +10,26 @@
 
   config = lib.mkIf config.aspects.services.media.enable {
     aspects.base.persistence.systemPaths = [
-      "/var/lib/sonarr"
-      "/var/lib/radarr"
-      "/var/lib/bazarr"
-      "/var/lib/jackett"
+      {
+        directory = "/var/lib/sonarr";
+        user = "sonarr";
+        group = "sonarr";
+      }
+      {
+        directory = "/var/lib/radarr";
+        user = "radarr";
+        group = "radarr";
+      }
+      {
+        directory = "/var/lib/jackett";
+        user = "jackett";
+        group = "jackett";
+      }
+      {
+        directory = "/var/lib/bazarr";
+        user = "bazarr";
+        group = "bazarr";
+      }
     ];
 
     services = {
