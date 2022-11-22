@@ -97,6 +97,18 @@
       ];
       systemPaths = [
         "/var/lib/systemd"
+        {
+          directory = "/var/lib/private"; # Used when services use DynamicUser and StateDirectory
+          mode = "0700";
+        }
+        {
+          directory = "/var/cache/private"; # Used when services use DynamicUser and CacheDirectory
+          mode = "0700";
+        }
+        {
+          directory = "/var/log/private"; # Used when services use DynamicUser and LogDirectory
+          mode = "0700";
+        }
       ];
     };
 

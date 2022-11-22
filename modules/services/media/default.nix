@@ -20,12 +20,6 @@
         user = "radarr";
         group = "radarr";
       }
-      "/var/lib/prowlarr"
-      {
-        directory = "/var/lib/jackett";
-        user = "jackett";
-        group = "jackett";
-      }
       {
         directory = "/var/lib/bazarr";
         user = "bazarr";
@@ -46,11 +40,8 @@
         enable = true;
         openFirewall = true;
       };
-      jackett = {
-        enable = true;
-        openFirewall = true;
-      };
       prowlarr = {
+        # DynamicUser systemd
         enable = true;
         openFirewall = true;
       };
@@ -60,6 +51,5 @@
     users.users.radarr.extraGroups = ["deluge"];
     users.users.bazarr.extraGroups = ["deluge"];
     users.users.sonarr.extraGroups = ["deluge"];
-    users.users.jackett.extraGroups = ["deluge"];
   };
 }
