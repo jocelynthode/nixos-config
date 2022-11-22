@@ -7,6 +7,7 @@
     ./acme
     ./ddclient
     ./deluge
+    ./media
     ./nginx
     ./radicale
     ./taskserver
@@ -24,6 +25,7 @@
         acme.enable = lib.mkDefault true;
         ddclient.enable = lib.mkDefault true;
         deluge.enable = lib.mkDefault true;
+        media.enable = lib.mkDefault true;
         nginx.enable = lib.mkDefault true;
         radicale.enable = lib.mkDefault true;
         taskserver.enable = lib.mkDefault true;
