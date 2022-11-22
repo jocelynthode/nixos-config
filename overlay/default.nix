@@ -10,13 +10,6 @@ in
         taxi-vim = prev.pkgs.callPackage ../pkgs/vimPlugins/taxi-vim {};
       };
 
-    fishPlugins =
-      prev.fishPlugins
-      // {
-        colored-man-pages = prev.pkgs.callPackage ../pkgs/fishPlugins/colored-man-pages {};
-        tide = prev.pkgs.callPackage ../pkgs/fishPlugins/tide {};
-      };
-
     waybar = prev.waybar.overrideAttrs (oldAttrs: {
       mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
     });
