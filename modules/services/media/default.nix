@@ -50,5 +50,11 @@
         openFirewall = true;
       };
     };
+
+    # Allow access to deluge downloads
+    users.users.radarr.extraGroups = ["deluge"];
+    users.users.bazarr.extraGroups = ["deluge"];
+    users.users.sonarr.extraGroups = ["deluge"];
+    users.users.jackett.extraGroups = ["deluge"];
   };
 }
