@@ -38,6 +38,10 @@
           max_active_downloading = 10;
           max_active_limit = 20;
           max_active_seeding = 10;
+          enabled_plugins = [
+            "Label"
+            "AutoRemovePlus"
+          ];
         };
       };
       deluge.web = {

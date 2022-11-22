@@ -21,6 +21,7 @@ jobs:
         uses: jocelynthode/deadnix-action@improve-deadnix
         with:
           flags: ''
+          create_pr: false
       - name: Lint code
         uses: jocelynthode/statix-action@master
       - run: nix build -L --no-link .#nixosConfigurations.desktek.config.system.build.toplevel
