@@ -20,6 +20,7 @@
         user = "radarr";
         group = "radarr";
       }
+      "/var/lib/prowlarr"
       {
         directory = "/var/lib/jackett";
         user = "jackett";
@@ -46,6 +47,10 @@
         openFirewall = true;
       };
       jackett = {
+        enable = true;
+        openFirewall = true;
+      };
+      prowlarr = {
         enable = true;
         openFirewall = true;
       };
