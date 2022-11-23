@@ -40,7 +40,7 @@
           max_active_seeding = 10;
           enabled_plugins = [
             "Label"
-            "AutoRemovePlus"
+            "AutoRemovePlus" # Manually build https://github.com/tote94/deluge-autoremoveplus and add .egg to /var/lib/deluge/.config/plugins
           ];
         };
       };
