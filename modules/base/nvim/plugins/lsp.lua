@@ -268,6 +268,8 @@ null_ls.setup({
     -- Shell
     formatting.shfmt,
     diagnostics.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
+    -- Docker
+    diagnostics.hadolint,
   },
   --[[ on_attach = lsp_format_on_save, ]]
 })

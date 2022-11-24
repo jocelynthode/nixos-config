@@ -174,6 +174,7 @@
         nodePackages.prettier
         gitlint
         shfmt
+        hadolint
       ];
 
       # use python3_host_prog as python path to use here
