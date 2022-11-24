@@ -16,12 +16,6 @@
       recommendedGzipSettings = true;
       recommendedProxySettings = true;
       recommendedTlsSettings = true;
-      commonHttpConfig = ''
-        add_header 'Referrer-Policy' 'origin-when-cross-origin';
-        add_header X-Frame-Options DENY;
-        add_header X-Content-Type-Options nosniff;
-        add_header X-XSS-Protection "1; mode=block";
-      '';
       virtualHosts = let
         base = locations: {
           inherit locations;
@@ -33,11 +27,13 @@
           forceSSL = true;
           enableACME = true;
         };
-        proxy = port:
+        proxy = {
+          port,
+          protect ? true,
+        }:
           base {
-            "/oauth2/auth" = {
+            "= /oauth2/auth" = {
               extraConfig = ''
-                internal;
                 proxy_pass       http://127.0.0.1:4180;
                 proxy_set_header Host             $host;
                 proxy_set_header X-Real-IP        $remote_addr;
@@ -47,27 +43,52 @@
                 proxy_pass_request_body           off;
               '';
             };
+            "/oauth2/" = {
+              extraConfig = ''
+                proxy_pass       http://127.0.0.1:4180;
+                proxy_set_header Host                    $host;
+                proxy_set_header X-Real-IP               $remote_addr;
+                proxy_set_header X-Scheme                $scheme;
+                proxy_set_header X-Auth-Request-Redirect $scheme://$host$request_uri;
+              '';
+            };
             "/" = {
               proxyPass = "http://127.0.0.1:" + toString port + "/";
-              extraConfig = ''
+              extraConfig = lib.mkIf protect ''
                 auth_request /oauth2/auth;
+                error_page 401 = https://auth.tekila.ovh/oauth2/sign_in?rd=$scheme://$host$request_uri; # Specify full url to only have one auth domain
 
+                auth_request_set $user   $upstream_http_x_auth_request_user;
                 auth_request_set $email  $upstream_http_x_auth_request_email;
-                proxy_set_header X-Email $email;
-                auth_request_set $user  $upstream_http_x_auth_request_user;
                 proxy_set_header X-User  $user;
-                auth_request_set $token  $upstream_http_x_auth_request_access_token;
-                proxy_set_header X-Access-Token $token;
+                proxy_set_header X-Email $email;
+
                 auth_request_set $auth_cookie $upstream_http_set_cookie;
                 add_header Set-Cookie $auth_cookie;
+
+                auth_request_set $auth_cookie_name_upstream_1 $upstream_cookie_auth_cookie_name_1;
+
+                if ($auth_cookie ~* "(; .*)") {
+                    set $auth_cookie_name_0 $auth_cookie;
+                    set $auth_cookie_name_1 "auth_cookie_name_1=$auth_cookie_name_upstream_1$1";
+                }
+
+                if ($auth_cookie_name_upstream_1) {
+                    add_header Set-Cookie $auth_cookie_name_0;
+                    add_header Set-Cookie $auth_cookie_name_1;
+                }
               '';
             };
           };
       in {
-        "sonarr.tekila.ovh" = proxy 8989;
-        "radarr.tekila.ovh" = proxy 7878;
-        "bazarr.tekila.ovh" = proxy 6767;
-        "prowlarr.tekila.ovh" = proxy 9696;
+        "sonarr.tekila.ovh" = proxy {port = 8989;};
+        "radarr.tekila.ovh" = proxy {port = 7878;};
+        "bazarr.tekila.ovh" = proxy {port = 6767;};
+        "prowlarr.tekila.ovh" = proxy {port = 9696;};
+        "auth.tekila.ovh" = proxy {
+          port = 4180;
+          protect = false;
+        };
         "servetek.home" = {
           root = "/var/www/dde";
           default = true;

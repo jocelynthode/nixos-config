@@ -14,8 +14,15 @@
       reverseProxy = true;
       provider = "google";
       keyFile = config.sops.secrets."oauth2/env".path;
+      cookie = {
+        domain = ".tekila.ovh";
+        refresh = "48h0m0s";
+      };
+      redirectURL = "https://auth.tekila.ovh/oauth2/callback";
       extraConfig = {
         authenticated-emails-file = config.sops.secrets."oauth2/emails".path;
+        whitelist-domain = "*.tekila.ovh";
+        skip-provider-button = true;
       };
     };
 
