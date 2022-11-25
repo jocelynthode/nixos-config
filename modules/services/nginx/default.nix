@@ -52,8 +52,11 @@
                 proxy_set_header X-Auth-Request-Redirect $scheme://$host$request_uri;
               '';
             };
+            "/api" = {
+              proxyPass = "http://127.0.0.1:" + toString port; # Do not specify / as we do not want to rewrite location path https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/
+            };
             "/" = {
-              proxyPass = "http://127.0.0.1:" + toString port + "/";
+              proxyPass = "http://127.0.0.1:" + toString port;
               extraConfig = lib.mkIf protect ''
                 auth_request /oauth2/auth;
                 error_page 401 = https://auth.tekila.ovh/oauth2/sign_in?rd=$scheme://$host$request_uri; # Specify full url to only have one auth domain
