@@ -19,6 +19,9 @@
         "--pull=always"
       ];
       volumes = [
+        "/var/lib/authentik/media:/media"
+        "/var/lib/authentik/certs:/certs"
+        "/var/lib/authentik/templates:/templates"
       ];
       environment = {
         AUTHENTIK_REDIS__HOST = "127.0.0.1";
@@ -35,6 +38,10 @@
     };
   in
     lib.mkIf config.aspects.services.authentik.enable {
+      aspects.base.persistence.systemPaths = [
+        "/var/lib/authentik"
+      ];
+
       virtualisation.oci-containers.containers = {
         authentik-server = definition "server";
         authentik-worker = definition "worker";

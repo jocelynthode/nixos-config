@@ -10,7 +10,11 @@
 
   config = lib.mkIf config.aspects.services.redis.enable {
     aspects.base.persistence.systemPaths = [
-      "/var/lib/redis"
+      {
+        directory = "/var/lib/redis";
+        user = "postgres";
+        group = "postgres";
+      }
     ];
 
     services.redis.servers."" = {

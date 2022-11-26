@@ -11,7 +11,11 @@
 
   config = lib.mkIf config.aspects.services.postgresql.enable {
     aspects.base.persistence.systemPaths = [
-      "/var/lib/postgresql"
+      {
+        directory = "/var/lib/postgresql";
+        user = "postgres";
+        group = "postgres";
+      }
     ];
 
     services.postgresql = {
