@@ -13,7 +13,7 @@
       "/var/lib/redis"
     ];
 
-    services.redis.servers = {
+    services.redis.servers."" = {
       enable = true;
     };
   };
