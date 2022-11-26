@@ -7,6 +7,7 @@
 
   # Personal scripts
   rofi-pulse = pkgs.callPackage ./core/rofi-pulse {};
+  rofi-ykman = pkgs.callPackage ./core/rofi-ykman {};
   toggle-bluetooth = pkgs.callPackage ./core/toggle-bluetooth {};
   wofi-powermenu = pkgs.callPackage ./core/wofi-powermenu {};
   fs-diff = pkgs.callPackage ./core/fs-diff {};

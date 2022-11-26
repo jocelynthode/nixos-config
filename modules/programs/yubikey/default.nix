@@ -18,8 +18,8 @@
 
     home-manager.users.jocelyn = _: {
       home.packages = with pkgs; [
-        yubioath-desktop
         yubikey-manager
+        rofi-ykman
       ];
     };
   };

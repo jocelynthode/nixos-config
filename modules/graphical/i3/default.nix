@@ -307,6 +307,7 @@
               "${mod}+w" = "layout tabbed";
               "${mod}+e" = "layout toggle split";
               "${mod}+d" = "exec --no-startup-id ${pkgs.rofi}/bin/rofi -show drun -modi drun -theme launcher -dpi 1";
+              "${mod}+o" = "exec --no-startup-id ${pkgs.rofi-ykman}/bin/rofi-ykman";
               "${mod}+Shift+space" = "floating toggle";
               "${mod}+space" = "focus mode_toggle";
               "${mod}+a" = "focus parent";

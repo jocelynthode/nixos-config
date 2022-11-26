@@ -32,6 +32,7 @@
         font = "${osConfig.aspects.base.fonts.monospace.family} ${toString osConfig.aspects.base.fonts.monospace.size}";
         terminal = "${pkgs.kitty}/bin/kitty";
         location = "center";
+        theme = "launcher";
       };
 
       xdg.configFile."rofi/colors.rasi" = {
