@@ -11,6 +11,7 @@
 
   config = lib.mkIf config.aspects.development.containers.enable {
     virtualisation = {
+      oci-containers.backend = "podman";
       podman = {
         enable = true;
         dockerCompat = true;
