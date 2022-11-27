@@ -68,11 +68,6 @@
         };
       };
 
-      networking.firewall.allowedTCPPorts = [
-        9443
-        9000
-      ];
-
       # TODO do not work with authentitk
       # users = {
       #   users.authentik = {
