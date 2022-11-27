@@ -38,5 +38,14 @@ in {
       sshKeys = ["91735B2D84D8598433447625D86582CE4993E068"];
       enableExtraSocket = true;
     };
+
+    programs.gpg = {
+      enable = true;
+      scdaemonSettings = {
+        disable-ccid = true;
+        card-timeout = "1";
+        reader-port = "Yubico YubiKey";
+      };
+    };
   };
 }
