@@ -16,7 +16,7 @@
     }: {
       inherit cmd volumes dependsOn;
       image = "ghcr.io/goauthentik/server:2022.11.1";
-      # user = "100000:100000"; # authentik:authentik
+      user = "100000:100000"; # authentik:authentik
       extraOptions = [
         "--network=host"
         "--pull=always"
@@ -28,7 +28,7 @@
         AUTHENTIK_POSTGRESQL__HOST = "127.0.0.1";
         AUTHENTIK_POSTGRESQL__USER = "authentik";
         AUTHENTIK_POSTGRESQL__NAME = "authentik";
-        AUTHENTIK_COOKIE_DOMAIN = ".tekila.ovh";
+        # AUTHENTIK_COOKIE_DOMAIN = ".tekila.ovh";
       };
       environmentFiles = [
         config.sops.secrets.authentik.path
@@ -39,8 +39,8 @@
       aspects.base.persistence.systemPaths = [
         {
           directory = "/var/lib/authentik";
-          user = "1000"; # basic authentik user
-          group = "1000";
+          user = "authentik"; # basic authentik user
+          group = "authentik";
         }
       ];
 
@@ -74,14 +74,14 @@
       ];
 
       # TODO do not work with authentitk
-      # users = {
-      #   users.authentik = {
-      #     isSystemUser = true;
-      #     group = "authentik";
-      #     uid = 100000;
-      #   };
-      #   groups.authentik.gid = 100000;
-      # };
+      users = {
+        users.authentik = {
+          isSystemUser = true;
+          group = "authentik";
+          uid = 100000;
+        };
+        groups.authentik.gid = 100000;
+      };
 
       sops.secrets.authentik = {
         sopsFile = ../../../secrets/${config.networking.hostName}/secrets.yaml;

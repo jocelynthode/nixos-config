@@ -12,8 +12,8 @@
     aspects.base.persistence.systemPaths = [
       {
         directory = "/var/lib/redis";
-        user = "postgres";
-        group = "postgres";
+        user = "redis";
+        group = "redis";
       }
     ];
 

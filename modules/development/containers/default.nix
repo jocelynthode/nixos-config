@@ -26,6 +26,7 @@
 
     environment.systemPackages = with pkgs; [
       podman-compose
+      docker-compose
     ];
 
     aspects.base.persistence = {
