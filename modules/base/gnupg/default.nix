@@ -42,6 +42,7 @@ in {
     programs.gpg = {
       enable = true;
       scdaemonSettings = {
+        # Required for ykman and gpg to play nice together
         disable-ccid = true;
         card-timeout = "1";
         reader-port = "Yubico YubiKey";
