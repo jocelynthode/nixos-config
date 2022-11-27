@@ -25,6 +25,11 @@
         user = "bazarr";
         group = "bazarr";
       }
+      {
+        directory = "/var/lib/lidarr";
+        user = "lidarr";
+        group = "lidarr";
+      }
     ];
 
     services = {
@@ -40,6 +45,10 @@
         enable = true;
         openFirewall = true;
       };
+      lidarr = {
+        enable = true;
+        openFirewall = true;
+      };
       prowlarr = {
         # DynamicUser systemd
         enable = true;
@@ -51,5 +60,6 @@
     users.users.radarr.extraGroups = ["deluge"];
     users.users.bazarr.extraGroups = ["deluge"];
     users.users.sonarr.extraGroups = ["deluge"];
+    users.users.lidarr.extraGroups = ["deluge"];
   };
 }
