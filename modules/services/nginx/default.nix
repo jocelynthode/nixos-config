@@ -32,54 +32,46 @@
           protect ? true,
         }:
           base {
-            "= /oauth2/auth" = {
+            "/outpost.goauthentik.io" = {
               extraConfig = ''
-                proxy_pass       http://127.0.0.1:4180;
-                proxy_set_header Host             $host;
-                proxy_set_header X-Real-IP        $remote_addr;
-                proxy_set_header X-Scheme         $scheme;
-                # nginx auth_request includes headers but not body
-                proxy_set_header Content-Length   "";
-                proxy_pass_request_body           off;
+                proxy_pass              http://127.0.0.1:9000;
+                proxy_set_header        Host $host;
+                proxy_set_header        X-Original-URL $scheme://$http_host$request_uri;
+                add_header              Set-Cookie $auth_cookie;
+                auth_request_set        $auth_cookie $upstream_http_set_cookie;
+                proxy_pass_request_body off;
+                proxy_set_header        Content-Length "";
               '';
             };
-            "/oauth2/" = {
+            "@goauthentik_proxy_signin" = {
               extraConfig = ''
-                proxy_pass       http://127.0.0.1:4180;
-                proxy_set_header Host                    $host;
-                proxy_set_header X-Real-IP               $remote_addr;
-                proxy_set_header X-Scheme                $scheme;
-                proxy_set_header X-Auth-Request-Redirect $scheme://$host$request_uri;
+                internal;
+                add_header Set-Cookie $auth_cookie;
+                return 302 https://auth.tekila.ovh/outpost.goauthentik.io/start?rd=$scheme://$http_host$request_uri;
               '';
             };
-            "/api" = {
-              proxyPass = "http://127.0.0.1:" + toString port; # Do not specify / as we do not want to rewrite location path https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/
-            };
+            # "/api".proxyPass = "http://127.0.0.1:" + toString port;
             "/" = {
               proxyPass = "http://127.0.0.1:" + toString port;
+              proxyWebsockets = true;
               extraConfig = lib.mkIf protect ''
-                auth_request /oauth2/auth;
-                error_page 401 = https://auth.tekila.ovh/oauth2/sign_in?rd=$scheme://$host$request_uri; # Specify full url to only have one auth domain
-
-                auth_request_set $user   $upstream_http_x_auth_request_user;
-                auth_request_set $email  $upstream_http_x_auth_request_email;
-                proxy_set_header X-User  $user;
-                proxy_set_header X-Email $email;
-
+                auth_request /outpost.goauthentik.io/auth/nginx;
+                error_page       401 = @goauthentik_proxy_signin;
                 auth_request_set $auth_cookie $upstream_http_set_cookie;
-                add_header Set-Cookie $auth_cookie;
+                add_header       Set-Cookie $auth_cookie;
 
-                auth_request_set $auth_cookie_name_upstream_1 $upstream_cookie_auth_cookie_name_1;
+                # translate headers from the outposts back to the actual upstream
+                auth_request_set $authentik_username $upstream_http_x_authentik_username;
+                auth_request_set $authentik_groups $upstream_http_x_authentik_groups;
+                auth_request_set $authentik_email $upstream_http_x_authentik_email;
+                auth_request_set $authentik_name $upstream_http_x_authentik_name;
+                auth_request_set $authentik_uid $upstream_http_x_authentik_uid;
 
-                if ($auth_cookie ~* "(; .*)") {
-                    set $auth_cookie_name_0 $auth_cookie;
-                    set $auth_cookie_name_1 "auth_cookie_name_1=$auth_cookie_name_upstream_1$1";
-                }
-
-                if ($auth_cookie_name_upstream_1) {
-                    add_header Set-Cookie $auth_cookie_name_0;
-                    add_header Set-Cookie $auth_cookie_name_1;
-                }
+                proxy_set_header X-authentik-username $authentik_username;
+                proxy_set_header X-authentik-groups $authentik_groups;
+                proxy_set_header X-authentik-email $authentik_email;
+                proxy_set_header X-authentik-name $authentik_name;
+                proxy_set_header X-authentik-uid $authentik_uid;
               '';
             };
           };
@@ -89,7 +81,7 @@
         "bazarr.tekila.ovh" = proxy {port = 6767;};
         "prowlarr.tekila.ovh" = proxy {port = 9696;};
         "auth.tekila.ovh" = proxy {
-          port = 4180;
+          port = 9000;
           protect = false;
         };
         "servetek.home" = {

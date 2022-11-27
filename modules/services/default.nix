@@ -10,7 +10,6 @@
     ./deluge
     ./media
     ./nginx
-    ./oauth2_proxy
     ./postgresql
     ./radicale
     ./redis
@@ -27,15 +26,14 @@
     aspects = {
       services = {
         acme.enable = lib.mkDefault true;
-        authentik.enable = lib.mkDefault false;
+        authentik.enable = lib.mkDefault true;
         ddclient.enable = lib.mkDefault true;
         deluge.enable = lib.mkDefault true;
         media.enable = lib.mkDefault true;
         nginx.enable = lib.mkDefault true;
-        oauth2_proxy.enable = lib.mkDefault true;
-        postgresql.enable = lib.mkDefault false;
+        postgresql.enable = lib.mkDefault true;
         radicale.enable = lib.mkDefault true;
-        redis.enable = lib.mkDefault false;
+        redis.enable = lib.mkDefault true;
         taskserver.enable = lib.mkDefault true;
         wireguard.enable = lib.mkDefault true;
       };
