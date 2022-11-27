@@ -68,6 +68,16 @@
         };
       };
 
+      systemd.services.podman-authentik-server = {
+        after = ["network-online.target"];
+        wants = ["network-online.target"];
+      };
+
+      systemd.services.podman-authentik-worker = {
+        after = ["network-online.target"];
+        wants = ["network-online.target"];
+      };
+
       # TODO do not work with authentitk
       # users = {
       #   users.authentik = {

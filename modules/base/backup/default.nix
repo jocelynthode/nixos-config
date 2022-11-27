@@ -20,6 +20,11 @@
     };
   };
 
+  systemd.services.restic-backups-persist = {
+    after = ["network-online.target"];
+    wants = ["network-online.target"];
+  };
+
   environment.etc = {
     "restic/exclude.txt" = {
       text = ''
