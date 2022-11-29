@@ -19,6 +19,7 @@
         enable = true;
         extensions = with pkgs.nur.repos.rycee.firefox-addons; [
           tree-style-tab
+          firefox-translations
           ublock-origin
           https-everywhere
           videospeed
