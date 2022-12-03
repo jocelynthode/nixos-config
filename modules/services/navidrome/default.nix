@@ -15,6 +15,8 @@
         Address = "127.0.0.1";
         Port = 4533;
         MusicFolder = "/var/www/dde/Media/Music";
+        ReverseProxyUserHeader = "X-authentik-username";
+        ReverseProxyWhitelist = "127.0.0.1/32";
       };
     };
   };
