@@ -9,6 +9,7 @@
     ./ddclient
     ./deluge
     ./media
+    ./navidrome
     ./nginx
     ./postgresql
     ./radicale
@@ -30,6 +31,7 @@
         ddclient.enable = lib.mkDefault true;
         deluge.enable = lib.mkDefault true;
         media.enable = lib.mkDefault true;
+        navidrome.enable = lib.mkDefault true;
         nginx.enable = lib.mkDefault true;
         postgresql.enable = lib.mkDefault true;
         radicale.enable = lib.mkDefault true;

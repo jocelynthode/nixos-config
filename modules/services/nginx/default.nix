@@ -81,6 +81,7 @@
         "bazarr.tekila.ovh" = proxy {port = 6767;};
         "lidarr.tekila.ovh" = proxy {port = 8686;};
         "prowlarr.tekila.ovh" = proxy {port = 9696;};
+        "navi.tekila.ovh" = proxy {port = 4533;};
         "auth.tekila.ovh" = proxy {
           port = 9000;
           protect = false;
