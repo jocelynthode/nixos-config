@@ -17,7 +17,15 @@
         MusicFolder = "/var/www/dde/Media/Music";
         ReverseProxyUserHeader = "X-authentik-username";
         ReverseProxyWhitelist = "127.0.0.1/32";
+        EnableStarRating = false;
       };
+    };
+
+    systemd.services.navidrome.serviceConfig.EnvironmentFile = config.sops.secrets.navidrome.path;
+
+    sops.secrets.navidrome = {
+      sopsFile = ../../../secrets/${config.networking.hostName}/secrets.yaml;
+      restartUnits = ["navidrome.service"];
     };
   };
 }
