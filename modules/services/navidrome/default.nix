@@ -25,6 +25,8 @@
 
     sops.secrets.navidrome = {
       sopsFile = ../../../secrets/${config.networking.hostName}/secrets.yaml;
+      owner = "navidrome";
+      group = "navidrome";
       restartUnits = ["navidrome.service"];
     };
   };
