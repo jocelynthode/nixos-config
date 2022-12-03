@@ -15,8 +15,8 @@
       volumes,
     }: {
       inherit cmd volumes dependsOn;
-      image = "ghcr.io/goauthentik/server:2022.11.1";
-      # user = "100000:100000"; # authentik:authentik
+      image = "ghcr.io/goauthentik/server:2022.11.3";
+      user = "100000:100000"; # authentik:authentik
       extraOptions = [
         "--network=host"
         "--pull=always"
@@ -39,14 +39,14 @@
       aspects.base.persistence.systemPaths = [
         {
           directory = "/var/lib/authentik";
-          user = "1000"; # basic authentik user
-          group = "1000";
+          user = "authentik"; # basic authentik user
+          group = "authentik";
         }
       ];
 
       # TODO nixify these steps
       # On first run we need to set a password for the authentik database in postgresql
-      # The various volumes must also be created and be owned by authentik:root
+      # The various volumes must also be created and be owned by authentik:authentik
       virtualisation.oci-containers.containers = {
         authentik-server = definition {
           cmd = ["server"];
@@ -78,15 +78,14 @@
         wants = ["network-online.target"];
       };
 
-      # TODO do not work with authentitk
-      # users = {
-      #   users.authentik = {
-      #     isSystemUser = true;
-      #     group = "authentik";
-      #     uid = 100000;
-      #   };
-      #   groups.authentik.gid = 100000;
-      # };
+      users = {
+        users.authentik = {
+          isSystemUser = true;
+          group = "authentik";
+          uid = 100000;
+        };
+        groups.authentik.gid = 100000;
+      };
 
       sops.secrets.authentik = {
         sopsFile = ../../../secrets/${config.networking.hostName}/secrets.yaml;
