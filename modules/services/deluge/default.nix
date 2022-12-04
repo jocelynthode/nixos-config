@@ -35,9 +35,9 @@
           natpmp = false;
           max_download_speed = 90000;
           max_upload_speed = 50000;
-          max_active_downloading = 10;
-          max_active_limit = 50;
-          max_active_seeding = 40;
+          max_active_downloading = 30;
+          max_active_limit = 250;
+          max_active_seeding = 200;
           enabled_plugins = [
             "Label"
             "AutoRemovePlus" # Manually build https://github.com/tote94/deluge-autoremoveplus and add .egg to /var/lib/deluge/.config/plugins
