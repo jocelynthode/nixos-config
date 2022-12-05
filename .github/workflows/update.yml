@@ -25,6 +25,6 @@ jobs:
       - run: nix eval --json ".#nixosConfigurations.frametek.config.system.build.toplevel.outPath" | sed 's/"\(.*\)"/\1/' | cachix push tekila
       - run: nix build -L --no-link .#nixosConfigurations.servetek.config.system.build.toplevel
       - run: nix eval --json ".#nixosConfigurations.servetek.config.system.build.toplevel.outPath" | sed 's/"\(.*\)"/\1/' | cachix push tekila
-      - uses: stefanzweifel/git-auto-commit-action@v4.15.4
+      - uses: stefanzweifel/git-auto-commit-action@v4.16.0
         with:
           commit_message: "Update dependencies"
