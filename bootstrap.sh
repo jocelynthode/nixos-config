@@ -42,14 +42,18 @@ while getopts h:-: OPT; do
 		needs_arg
 		swap="$OPTARG"
 		;;
+	efi-label)
+		efi_label="$OPTARG"
+		;;
 	*)
 		echo "Usage:"
 		echo "bootstrap.sh -h "
 		echo ""
 		echo "   --encrypt-root       to encrypt root disk"
-		echo "   --hostname HOSTNAME  to specify the hostname to build"
-		echo "   --disk DISK_PATH     to specify the disk to use"
-		echo "   --swap SIZE_IN_GB    to specify the swap size"
+		echo "   --hostname=HOSTNAME  to specify the hostname to build"
+		echo "   --disk=DISK_PATH     to specify the disk to use"
+		echo "   --swap=SIZE_IN_GB    to specify the swap size"
+		echo "   --efi-label=LABEL    to specify an optional label. Default: EFI"
 		exit 0
 		;;
 	esac
@@ -66,6 +70,11 @@ if [ -z "${hostname}" ]; then
 	exit 1
 fi
 
+if [ -z "${efi_label}" ]; then
+	echo "Setting EFI label to EFI"
+  efi_label="EFI"
+fi
+
 swap_size=$((1024 * swap))
 
 echo "preparing drive ${drive} for NixOS ${hostname} with ${swap}GB of SWAP"
@@ -79,7 +88,7 @@ if [[ ! "${confirm}" == "${drive}" ]]; then exit 1; fi
 
 wipefs -af "${drive}"
 parted "${drive}" -- mklabel gpt
-parted "${drive}" -a optimal -- mkpart ESP fat32 1MiB 512MiB name 1 EFI
+parted "${drive}" -a optimal -- mkpart ESP fat32 1MiB 512MiB name 1 "${efi_label}"
 parted "${drive}" -a optimal -- mkpart primary 512MiB 100% name 2 "${hostname}"
 parted "${drive}" -- set 1 esp on
 
@@ -102,7 +111,7 @@ sleep 2
 mkfs.btrfs -fL "${hostname}" "${device}"
 
 echo "Creating EFI partition"
-mkfs.vfat -n EFI /dev/disk/by-partlabel/EFI
+mkfs.vfat -n "${efi_label}" "/dev/disk/by-partlabel/${efi_label}"
 
 echo "Creating BTRFS subovlumes"
 mkdir -p /mnt
@@ -137,7 +146,7 @@ mount -t btrfs -o subvol=@log "${device}" /mnt/var/log
 mkdir -p /mnt/persist/.snapshots
 mount -t btrfs -o subvol=@snapshots "${device}" /mnt/persist/.snapshots
 mount -t btrfs -o subvol=@swap "${device}" /mnt/swap
-mount /dev/disk/by-partlabel/EFI /mnt/boot/efi
+mount "/dev/disk/by-partlabel/${efi_label}" /mnt/boot/efi
 
 echo "Creating SWAP"
 dd if=/dev/zero of=/mnt/swap/swapfile bs=1M count="${swap_size}" status="progress"

@@ -3,6 +3,8 @@
     git
     sops
     ssh-to-age
+    gptfdisk
+    parted
   ];
 
   languages.nix.enable = true;
