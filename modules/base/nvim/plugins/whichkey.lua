@@ -76,7 +76,6 @@ local opts = {
 }
 
 local mappings = {
-  ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
   ["b"] = {
     "<cmd>Telescope buffers<cr>",
     "Buffers",
@@ -106,49 +105,36 @@ local mappings = {
   },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["w"] = { "<cmd>w!<CR>", "Save" },
-  ["q"] = { "<cmd>q!<CR>", "Quit" },
+  ["q"] = { "<cmd>qa!<CR>", "Quit" },
   ["x"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
   ["f"] = {
     "<cmd>Telescope find_files<cr>",
     "Find files",
   },
+  ["k"] = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
   ["F"] = { "<cmd>Telescope live_grep_args<cr>", "Find Text" },
-  ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
-
-  p = {
-    name = "Packer",
-    c = { "<cmd>PackerCompile<cr>", "Compile" },
-    i = { "<cmd>PackerInstall<cr>", "Install" },
-    s = { "<cmd>PackerSync<cr>", "Sync" },
-    S = { "<cmd>PackerStatus<cr>", "Status" },
-    u = { "<cmd>PackerUpdate<cr>", "Update" },
-  },
-
+  ["p"] = { "<cmd>lua require('notify').dismiss()<cr>", "Dismiss notifications" },
   g = {
     name = "Git",
     g = { "<cmd>:Git<CR>", "Git Status" },
-    j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
-    k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
-    l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
-    p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
-    r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
-    R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
-    s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
+    j = { "<cmd>lua require('gitsigns').next_hunk()<cr>", "Next Hunk" },
+    k = { "<cmd>lua require('gitsigns').prev_hunk()<cr>", "Prev Hunk" },
+    l = { "<cmd>lua require('gitsigns').blame_line()<cr>", "Blame" },
+    p = { "<cmd>lua require('gitsigns').preview_hunk()<cr>", "Preview Hunk" },
+    r = { "<cmd>lua require('gitsigns').reset_hunk()<cr>", "Reset Hunk" },
+    R = { "<cmd>lua require('gitsigns').reset_buffer()<cr>", "Reset Buffer" },
+    s = { "<cmd>lua require('gitsigns').stage_hunk()<cr>", "Stage Hunk" },
     u = {
-      "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
+      "<cmd>lua require('gitsigns').undo_stage_hunk()<cr>",
       "Undo Stage Hunk",
     },
     o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
     c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-    d = {
-      "<cmd>:Gdiffsplit<cr>",
-      "Diff",
-    },
     f = {
       name = "Fugitive",
-      d = { ":Gdiffsplit!<CR>", "Diff" },
+      d = { ":Gvdiffsplit!<CR>", "Diff" },
       h = { ":diffget //2 <CR>", "Get Left Diff" },
       l = { ":diffget //3 <CR>", "Get Right Diff" },
     },
@@ -189,12 +175,10 @@ local mappings = {
     name = "Search",
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
     s = { "<cmd>Telescope grep_string theme=ivy<cr>", "Search Text" },
-    c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
     h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
     M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
     r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
     R = { "<cmd>Telescope registers<cr>", "Registers" },
-    k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
     C = { "<cmd>Telescope commands<cr>", "Commands" },
   },
 

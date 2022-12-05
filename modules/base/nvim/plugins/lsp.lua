@@ -31,9 +31,11 @@ local servers = {
           singleQuote = true,
         },
         schemas = {
-          kubernetes = "/*.yaml"
+          ["https://json.schemastore.org/github-workflow"] = ".github/workflows/*.{yml,yaml}",
+          ["https://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+          ["https://json.schemastore.org/chart.json"] = "/Chart.{yml,yaml}",
+          kubernetes = "/*.yaml",
         },
-        schemaDownload = { enable = true },
         validate = true,
       }
     },
@@ -224,6 +226,9 @@ local on_attach = function(client, bufnr)
   -- see https://github.com/redhat-developer/yaml-language-server/issues/486#issuecomment-1046792026
   if client.name == "yamlls" then
     client.server_capabilities.documentFormattingProvider = true
+    if vim.bo[bufnr].filetype == "helm" then
+      vim.diagnostic.disable(bufnr)
+    end
   end
 
   lsp_keymaps(bufnr)

@@ -51,6 +51,7 @@
         nvim-dap-python
         nvim-dap-go
         nvim-dap-virtual-text
+        vim-helm
         telescope-live-grep-args-nvim
         {
           plugin = nvim-dap;
