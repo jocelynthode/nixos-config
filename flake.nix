@@ -113,7 +113,7 @@
           modules = [
             ./machines/servetek
             home-manager-stable.nixosModule
-            hardware.nixosModules.common-pc-laptop-hdd
+            hardware.nixosModules.common-pc-laptop-ssd
           ];
           specialArgs = {inherit nix-colors;};
         };
