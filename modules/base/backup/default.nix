@@ -10,6 +10,7 @@
       timerConfig = {
         OnCalendar = "*-*-* 12:00:00";
         Persistent = true;
+        RandomizedDelaySec = "600";
       };
       pruneOpts = [
         "--keep-daily 7"
@@ -32,9 +33,17 @@
         /persist/var
         /persist/home/jocelyn/go
         /persist/home/jocelyn/Downloads
+        /persist/home/jocelyn/Liip
+        /persist/home/jocelyn/Pictures
+        /persist/home/jocelyn/Documents
+        /persist/home/jocelyn/Music
+        /persist/home/jocelyn/Programs
         /persist/home/jocelyn/.local/share/Steam
         /persist/home/jocelyn/.local/share/containers
+        /persist/home/jocelyn/.local/lutris
         /persist/home/jocelyn/.cache
+        /persist/home/jocelyn/.wine
+        /persist/home/jocelyn/.android
       '';
       mode = "0440";
     };
