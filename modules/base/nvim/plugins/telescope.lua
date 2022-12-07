@@ -124,6 +124,9 @@ telescope.setup({
       theme = "dropdown",
       previewer = false,
     },
+    keymaps = {
+      show_plug = false,
+    },
   },
   extensions = {
     ["ui-select"] = {
