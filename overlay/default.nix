@@ -8,6 +8,7 @@ in
       prev.vimPlugins
       // {
         taxi-vim = prev.pkgs.callPackage ../pkgs/vimPlugins/taxi-vim {};
+        glance-nvim = prev.pkgs.callPackage ../pkgs/vimPlugins/glance-nvim {};
       };
 
     waybar = prev.waybar.overrideAttrs (oldAttrs: {

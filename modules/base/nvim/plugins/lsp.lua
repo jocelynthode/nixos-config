@@ -1,4 +1,6 @@
 local _, lspconfig = pcall(require, "lspconfig")
+local _, glance = pcall(require, "glance")
+local glance_actions = glance.actions
 
 local servers = {
   bashls = {},
@@ -185,12 +187,13 @@ end
 local function lsp_keymaps(bufnr)
   local opts = { noremap = true, silent = true }
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>Telescope lsp_definitions jump_type=never<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>Glance definitions<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>Glance implementations<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "gy", "<cmd>Glance type_definitions<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
   -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>Glance references<CR>", opts)
   -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
   -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
@@ -277,4 +280,16 @@ null_ls.setup({
     diagnostics.hadolint,
   },
   --[[ on_attach = lsp_format_on_save, ]]
+})
+
+glance.setup({
+  mappings = {
+    --[[ list = {
+      ['l'] = glance_actions.open,
+    }, ]]
+    preview = {
+      ['q'] = glance_actions.close,
+      ['<Esc>'] = glance_actions.close,
+    },
+  },
 })

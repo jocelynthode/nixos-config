@@ -53,6 +53,7 @@
         nvim-dap-virtual-text
         vim-helm
         telescope-live-grep-args-nvim
+        glance-nvim
         {
           plugin = nvim-dap;
           config = builtins.readFile ./plugins/dap.lua;
