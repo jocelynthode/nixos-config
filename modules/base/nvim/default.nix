@@ -54,6 +54,7 @@
         vim-helm
         telescope-live-grep-args-nvim
         glance-nvim
+        nvim-treesitter-textobjects
         {
           plugin = nvim-dap;
           config = builtins.readFile ./plugins/dap.lua;

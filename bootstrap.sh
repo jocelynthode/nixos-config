@@ -1,5 +1,6 @@
 #! /usr/bin/env nix-shell
 #! nix-shell -i bash -p parted btrfs-progs gptfdisk cryptsetup
+# shellcheck shell=bash
 set -euo pipefail
 
 die() {
