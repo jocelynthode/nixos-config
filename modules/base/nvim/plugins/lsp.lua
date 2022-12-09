@@ -284,9 +284,9 @@ null_ls.setup({
 
 glance.setup({
   mappings = {
-    --[[ list = {
-      ['l'] = glance_actions.open,
-    }, ]]
+    list = {
+      ['l'] = glance_actions.jump,
+    },
     preview = {
       ['q'] = glance_actions.close,
       ['<Esc>'] = glance_actions.close,
