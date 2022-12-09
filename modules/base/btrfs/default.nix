@@ -16,6 +16,8 @@
   };
 
   config = lib.mkIf config.aspects.base.btrfs.enable {
+    services.btrfs.autoScrub.enable = true;
+
     boot = {
       supportedFilesystems = ["ntfs"];
       tmpOnTmpfs = true;
