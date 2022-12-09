@@ -16,7 +16,10 @@
   };
 
   config = lib.mkIf config.aspects.base.btrfs.enable {
-    services.btrfs.autoScrub.enable = true;
+    services.btrfs.autoScrub = {
+      enable = true;
+      fileSystems = ["/"]; # Scrub works on filesystem so no need to scrub all subvolumes of same fs
+    };
 
     boot = {
       supportedFilesystems = ["ntfs"];
