@@ -195,7 +195,6 @@
         lua require('base16-colorscheme').with_config {telescope = false}
 
         colorscheme base16-${config.colorScheme.slug}
-        hi Normal ctermbg=NONE guibg=NONE
       '';
     };
   };
