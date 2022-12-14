@@ -25,6 +25,13 @@
     environment.systemPackages = with pkgs; [
       gamescope
       protontricks
+      mangohud
     ];
+
+    home-manager.users.jocelyn = _: {
+      home.sessionVariables = {
+        STEAM_EXTRA_COMPAT_TOOLS_PATHS = "${pkgs.proton-ge-custom}";
+      };
+    };
   };
 }

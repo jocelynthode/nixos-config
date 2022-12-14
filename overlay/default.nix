@@ -17,6 +17,8 @@ in
 
     devenv = inputs.devenv.defaultPackage.${final.system};
 
+    proton-ge-custom = prev.pkgs.callPackage ../pkgs/core/proton-ge-custom {};
+
     generated-gtk-themes =
       mapAttrs
       (_: scheme:
