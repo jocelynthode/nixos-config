@@ -23,11 +23,12 @@
 
     systemd.services.navidrome.serviceConfig = {
       EnvironmentFile = config.sops.secrets.navidrome.path;
-      SupplementaryGroups = [config.users.groups.keys.name];
+      # SupplementaryGroups = [config.users.groups.keys.name];
     };
 
     sops.secrets.navidrome = {
       sopsFile = ../../../secrets/${config.networking.hostName}/secrets.yaml;
+      mode = "0644";
       restartUnits = ["navidrome.service"];
     };
   };
