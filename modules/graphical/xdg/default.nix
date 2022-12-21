@@ -42,6 +42,7 @@
             "inode/directory" = "ranger.desktop";
             "application/pdf" = "firefox.desktop";
 
+            "text/plain" = ["neovim.desktop"];
             "text/html" = ["firefox.desktop"];
             "x-scheme-handler/about" = ["firefox.desktop"];
             "x-scheme-handler/http" = ["firefox.desktop"];
