@@ -15,8 +15,8 @@
       volumes,
     }: {
       inherit cmd volumes dependsOn;
-      image = "ghcr.io/goauthentik/server:2022.11.4";
-      # user = "100000:100000"; # authentik:authentik
+      image = "ghcr.io/goauthentik/server:2022.12.0";
+      user = "100000:100000"; # authentik:authentik
       extraOptions = [
         "--network=host"
         "--pull=always"
@@ -39,8 +39,8 @@
       aspects.base.persistence.systemPaths = [
         {
           directory = "/var/lib/authentik";
-          user = "1000"; # basic authentik user
-          group = "1000";
+          user = "100000"; # basic authentik user
+          group = "100000";
         }
       ];
 
