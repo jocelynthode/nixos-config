@@ -10,6 +10,6 @@ stdenv.mkDerivation {
     owner = "nad0u";
     repo = "mm-server-ui";
     rev = "2ace7d3b90574896ebfe0da7b4254695aaa19df9";
-    sha256 = "sha256-/gYmm3wkVZvfFP/f9Q2OWYlPi7z5MMeTAV7yc2DyNN0=";
+    sha256 = "sha256-EwGIGZZ/9u5dacRVS5brLi0I3EONoGhjc+oWzbcGcIA=";
   };
 }
