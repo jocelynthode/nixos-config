@@ -19,6 +19,8 @@ in
 
     proton-ge-custom = prev.pkgs.callPackage ../pkgs/core/proton-ge-custom {};
 
+    mm-server-ui = prev.pkgs.callPackage ../pkgs/services/media-homepage {};
+
     generated-gtk-themes =
       mapAttrs
       (_: scheme:

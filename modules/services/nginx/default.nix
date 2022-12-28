@@ -1,4 +1,5 @@
 {
+  pkgs,
   config,
   lib,
   ...
@@ -102,6 +103,15 @@
               autoindex_exact_size on;
             '';
           };
+        };
+        "www.tekila.ovh" = {
+          root = pkgs.mm-server-ui;
+          extraConfig = ''
+            ssl_stapling on;
+            ssl_stapling_verify on;
+          '';
+          forceSSL = true;
+          enableACME = true;
         };
       };
     };
