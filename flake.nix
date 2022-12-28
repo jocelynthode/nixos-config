@@ -40,7 +40,7 @@
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    devenv.url = "github:cachix/devenv/v0.4";
+    devenv.url = "github:cachix/devenv/v0.5";
   };
 
   outputs = inputs @ {
