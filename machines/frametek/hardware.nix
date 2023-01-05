@@ -17,6 +17,7 @@
             encryptedPass = ./gpg/luks-passphrase.asc;
             publicKey = ./gpg/public-keys.asc;
           };
+          bypassWorkqueues = true; # May improve SSD performance
           device = "/dev/disk/by-label/${config.networking.hostName}_crypt";
           preLVM = true;
           allowDiscards = true;
