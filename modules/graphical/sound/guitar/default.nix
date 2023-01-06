@@ -17,6 +17,7 @@
     home-manager.users.jocelyn = _: {
       home.packages = with pkgs; [
         tonelib-zoom
+        audacity
       ];
       #
       # systemd.user = {
