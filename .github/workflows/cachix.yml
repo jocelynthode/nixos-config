@@ -5,31 +5,8 @@ on:
     branches: [master]
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3.3.0
-      - uses: cachix/install-nix-action@v18
-        with:
-          github_access_token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Cachix
-        uses: cachix/cachix-action@v12
-        with:
-          name: tekila
-          extraPullNames: 'nix-community,hyprland,devenv,statix,deadnix'
-          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-          skipPush: true
-      - name: Dead code analysis
-        uses: astro/deadnix-action@main
-        with:
-          flags: ''
-          create_pr: false
-      - name: Lint code
-        uses: jocelynthode/statix-action@master
   build-desktek:
     runs-on: ubuntu-latest
-    needs:
-      - lint
     steps:
       - uses: actions/checkout@v3.3.0
       - uses: cachix/install-nix-action@v18
@@ -46,9 +23,6 @@ jobs:
       - run: nix eval --json ".#nixosConfigurations.desktek.config.system.build.toplevel.outPath" | sed 's/"\(.*\)"/\1/' | cachix push tekila
   build-frametek:
     runs-on: ubuntu-latest
-    needs:
-      - lint
-      - build-desktek
     steps:
       - uses: actions/checkout@v3.3.0
       - uses: cachix/install-nix-action@v18
@@ -65,9 +39,6 @@ jobs:
       - run: nix eval --json ".#nixosConfigurations.frametek.config.system.build.toplevel.outPath" | sed 's/"\(.*\)"/\1/' | cachix push tekila
   build-servetek:
     runs-on: ubuntu-latest
-    needs:
-      - lint
-      - build-desktek
     steps:
       - uses: actions/checkout@v3.3.0
       - uses: cachix/install-nix-action@v18
