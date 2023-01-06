@@ -21,7 +21,6 @@
           tree-style-tab
           firefox-translations
           ublock-origin
-          https-everywhere
           videospeed
           greasemonkey
           don-t-fuck-with-paste
