@@ -97,7 +97,7 @@ local mappings = {
     f = { "<cmd>lua vim.lsp.buf.format { async = true }<cr>", "Format" },
     i = { "<cmd>LspInfo<cr>", "Info" },
     j = {
-      "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
+      "<cmd>lua vim.lsp.diagnostic.goto_next()<cr>",
       "Next Diagnostic",
     },
     k = {
@@ -111,6 +111,24 @@ local mappings = {
     S = {
       "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
       "Workspace Symbols",
+    },
+  },
+  r = {
+    name = "SearchReplaceSingleBuffer",
+    s = { "<cmd>SearchReplaceSingleBufferSelections<cr>", "SearchReplaceSingleBuffer [s]election list" },
+    o = { "<cmd>SearchReplaceSingleBufferOpen<cr>", "[o]pen" },
+    w = { "<cmd>SearchReplaceSingleBufferCWord<cr>", "[w]ord" },
+    W = { "<cmd>SearchReplaceSingleBufferCWORD<cr>", "[W]ORD" },
+    e = { "<cmd>SearchReplaceSingleBufferCExpr<cr>", "[e]xpr" },
+    f = { "<cmd>SearchReplaceSingleBufferCFile<cr>", "[f]ile" },
+    b = {
+      name = "SearchReplaceMultiBuffer",
+      s = { "<cmd>SearchReplaceMultiBufferSelections<cr>","SearchReplaceMultiBuffer [s]election list" },
+      o = { "<cmd>SearchReplaceMultiBufferOpen<cr>", "[o]pen" },
+      w = { "<cmd>SearchReplaceMultiBufferCWord<cr>", "[w]ord" },
+      W = { "<cmd>SearchReplaceMultiBufferCWORD<cr>", "[W]ORD" },
+      e = { "<cmd>SearchReplaceMultiBufferCExpr<cr>", "[e]xpr" },
+      f = { "<cmd>SearchReplaceMultiBufferCFile<cr>", "[f]ile" },
     },
   },
   s = {

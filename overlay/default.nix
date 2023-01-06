@@ -9,6 +9,8 @@ in
       // {
         taxi-vim = prev.pkgs.callPackage ../pkgs/vimPlugins/taxi-vim {};
         glance-nvim = prev.pkgs.callPackage ../pkgs/vimPlugins/glance-nvim {};
+        deferred-clipboard-nvim = prev.pkgs.callPackage ../pkgs/vimPlugins/deferred-clipboard-nvim {};
+        search-replace-nvim = prev.pkgs.callPackage ../pkgs/vimPlugins/search-replace-nvim {};
       };
 
     waybar = prev.waybar.overrideAttrs (oldAttrs: {

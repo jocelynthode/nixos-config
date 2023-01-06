@@ -96,6 +96,16 @@
           type = "lua";
         }
         {
+          plugin = search-replace-nvim;
+          config = "require('search-replace').setup()\n";
+          type = "lua";
+        }
+        {
+          plugin = deferred-clipboard-nvim;
+          config = "require('deferred-clipboard').setup()\n";
+          type = "lua";
+        }
+        {
           plugin = nvim-autopairs;
           config = builtins.readFile ./plugins/autopairs.lua;
           type = "lua";
