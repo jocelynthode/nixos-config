@@ -17,6 +17,7 @@
     security.acme = {
       acceptTerms = true;
       defaults.email = "acme@thode.email";
+      defaults.webroot = "/var/lib/acme/acme-challenge"; # port 80 already opened in media/nginx
     };
   };
 }
