@@ -40,7 +40,6 @@
 
     security.acme.certs = {
       "dav.tekila.ovh" = {
-        listenHTTP = ":80";
         reloadServices = ["radicale.service"];
         group = "radicale";
       };

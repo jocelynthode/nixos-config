@@ -17,13 +17,6 @@
     security.acme = {
       acceptTerms = true;
       defaults.email = "acme@thode.email";
-      certs = {
-        "dav.tekila.ovh" = {
-          listenHTTP = ":80";
-          reloadServices = ["radicale"];
-          group = "radicale";
-        };
-      };
     };
   };
 }
