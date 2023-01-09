@@ -8,7 +8,10 @@
       bluetooth.enable = true;
     };
     development.enable = true;
-    games.enable = true;
+    games = {
+      enable = true;
+      ryujinx.enable = true;
+    };
     graphical = {
       enable = true;
       sound.guitar.enable = true;

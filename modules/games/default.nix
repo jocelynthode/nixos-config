@@ -8,6 +8,7 @@
     ./gamemode
     ./lutris
     ./mumble
+    ./ryujinx
     ./steam
   ];
 
@@ -22,6 +23,7 @@
       gamemode.enable = lib.mkDefault true;
       lutris.enable = lib.mkDefault true;
       mumble.enable = lib.mkDefault true;
+      ryujinx.enable = lib.mkDefault false;
       steam.enable = lib.mkDefault true;
     };
   };
