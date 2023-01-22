@@ -175,30 +175,6 @@
         "type": "github"
       }
     },
-    "home-manager-stable": {
-      "inputs": {
-        "nixpkgs": [
-          "stable"
-        ],
-        "utils": [
-          "flake-utils"
-        ]
-      },
-      "locked": {
-        "lastModified": 1672244468,
-        "narHash": "sha256-xaZb8AZqoXRCSqPusCk4ouf+fUNP8UJdafmMTF1Ltlw=",
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "rev": "89a8ba0b5b43b3350ff2e3ef37b66736b2ef8706",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "ref": "release-22.11",
-        "repo": "home-manager",
-        "type": "github"
-      }
-    },
     "hyprland": {
       "inputs": {
         "hyprland-protocols": "hyprland-protocols",
@@ -476,14 +452,12 @@
         "flake-utils": "flake-utils_2",
         "hardware": "hardware",
         "home-manager": "home-manager",
-        "home-manager-stable": "home-manager-stable",
         "hyprland": "hyprland",
         "impermanence": "impermanence",
         "nix-colors": "nix-colors",
         "nixpkgs": "nixpkgs_2",
         "nur": "nur",
         "sops-nix": "sops-nix",
-        "stable": "stable",
         "taxi": "taxi",
         "utils": "utils"
       }
@@ -506,22 +480,6 @@
       "original": {
         "owner": "Mic92",
         "repo": "sops-nix",
-        "type": "github"
-      }
-    },
-    "stable": {
-      "locked": {
-        "lastModified": 1674242456,
-        "narHash": "sha256-yBy7rCH7EiBe9+CHZm9YB5ii5GRa+MOxeW0oDEBO8SE=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "cdead16a444a3e5de7bc9b0af8e198b11bb01804",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-22.11",
-        "repo": "nixpkgs",
         "type": "github"
       }
     },

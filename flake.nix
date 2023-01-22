@@ -3,20 +3,11 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    stable.url = "github:nixos/nixpkgs/nixos-22.11";
 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        utils.follows = "flake-utils";
-      };
-    };
-
-    home-manager-stable = {
-      url = "github:nix-community/home-manager/release-22.11";
-      inputs = {
-        nixpkgs.follows = "stable";
         utils.follows = "flake-utils";
       };
     };
@@ -46,10 +37,8 @@
   outputs = inputs @ {
     self,
     nixpkgs,
-    stable,
     hyprland,
     home-manager,
-    home-manager-stable,
     sops-nix,
     nur,
     nix-colors,
@@ -72,6 +61,7 @@
         modules = [
           {nix.generateRegistryFromInputs = true;}
           sops-nix.nixosModules.sops
+          home-manager.nixosModule
           impermanence.nixosModules.impermanence
           hyprland.nixosModules.default
           ./modules
@@ -79,7 +69,6 @@
       };
 
       channels.nixpkgs.input = nixpkgs;
-      channels.stable.input = stable;
 
       outputsBuilder = channels:
         with channels.nixpkgs; {
@@ -90,7 +79,6 @@
         desktek = {
           modules = [
             ./machines/desktek
-            home-manager.nixosModule
             hardware.nixosModules.common-cpu-amd
             hardware.nixosModules.common-pc-ssd
           ];
@@ -99,7 +87,6 @@
         frametek = {
           modules = [
             ./machines/frametek
-            home-manager.nixosModule
             hardware.nixosModules.common-cpu-intel
             hardware.nixosModules.common-gpu-intel
             hardware.nixosModules.common-pc-laptop
@@ -109,10 +96,8 @@
           specialArgs = {inherit nix-colors;};
         };
         servetek = {
-          channelName = "stable";
           modules = [
             ./machines/servetek
-            home-manager-stable.nixosModule
             hardware.nixosModules.common-pc-laptop-ssd
           ];
           specialArgs = {inherit nix-colors;};
