@@ -1,10 +1,26 @@
 {config, ...}: {
   services.restic.backups = {
     persist = {
+      repositoryFile = config.sops.secrets."restic/repository".path;
       user = "root";
-      # repository is in environmentFile
       paths = [config.aspects.base.persistence.persistPrefix];
-      extraBackupArgs = ["--exclude-file=/etc/restic/exclude.txt"];
+      exclude = [
+        "/persist/.snapshots"
+        "/persist/var"
+        "/persist/home/jocelyn/go"
+        "/persist/home/jocelyn/Downloads"
+        "/persist/home/jocelyn/Liip"
+        "/persist/home/jocelyn/Pictures"
+        "/persist/home/jocelyn/Documents"
+        "/persist/home/jocelyn/Music"
+        "/persist/home/jocelyn/Programs"
+        "/persist/home/jocelyn/.local/share/Steam"
+        "/persist/home/jocelyn/.local/share/containers"
+        "/persist/home/jocelyn/.local/lutris"
+        "/persist/home/jocelyn/.cache"
+        "/persist/home/jocelyn/.wine"
+        "/persist/home/jocelyn/.android"
+      ];
       initialize = true;
       passwordFile = config.sops.secrets."restic/password".path;
       timerConfig = {
@@ -24,29 +40,6 @@
   systemd.services.restic-backups-persist = {
     after = ["network-online.target"];
     wants = ["network-online.target"];
-  };
-
-  environment.etc = {
-    "restic/exclude.txt" = {
-      text = ''
-        /persist/.snapshots
-        /persist/var
-        /persist/home/jocelyn/go
-        /persist/home/jocelyn/Downloads
-        /persist/home/jocelyn/Liip
-        /persist/home/jocelyn/Pictures
-        /persist/home/jocelyn/Documents
-        /persist/home/jocelyn/Music
-        /persist/home/jocelyn/Programs
-        /persist/home/jocelyn/.local/share/Steam
-        /persist/home/jocelyn/.local/share/containers
-        /persist/home/jocelyn/.local/lutris
-        /persist/home/jocelyn/.cache
-        /persist/home/jocelyn/.wine
-        /persist/home/jocelyn/.android
-      '';
-      mode = "0440";
-    };
   };
 
   services.snapper = {

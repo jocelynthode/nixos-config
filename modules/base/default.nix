@@ -117,6 +117,7 @@
       secrets = {
         "restic/env" = {};
         "restic/password" = {};
+        "restic/repository" = {};
         "users/jocelyn/password" = {
           neededForUsers = true;
         };
