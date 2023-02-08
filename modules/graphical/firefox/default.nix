@@ -17,22 +17,22 @@
     home-manager.users.jocelyn = _: {
       programs.firefox = {
         enable = true;
-        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-          tree-style-tab
-          firefox-translations
-          ublock-origin
-          videospeed
-          greasemonkey
-          don-t-fuck-with-paste
-          betterttv
-          multi-account-containers
-          bitwarden
-          simple-tab-groups
-          sponsorblock
-        ];
         profiles = {
           jocelyn = {
             bookmarks = {};
+            extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+              tree-style-tab
+              firefox-translations
+              ublock-origin
+              videospeed
+              greasemonkey
+              don-t-fuck-with-paste
+              betterttv
+              multi-account-containers
+              bitwarden
+              simple-tab-groups
+              sponsorblock
+            ];
             userChrome = ''
               /* Hide tab bar in FF Quantum */
               #TabsToolbar {
