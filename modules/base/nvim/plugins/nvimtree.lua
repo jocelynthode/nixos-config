@@ -12,6 +12,13 @@ local g = vim.g
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
 local function open_nvim_tree(data)
+  local IGNORED_FT = {
+    "startify",
+    "dashboard",
+    "alpha",
+    "taxi",
+  }
+  local filetype = vim.bo[data.buf].ft
 
   -- buffer is a [No Name]
   local no_name = data.file == "" and vim.bo[data.buf].buftype == ""
@@ -26,6 +33,11 @@ local function open_nvim_tree(data)
   -- change to the directory
   if directory then
     vim.cmd.cd(data.file)
+  end
+
+  -- skip ignored filetypes
+  if vim.tbl_contains(IGNORED_FT, filetype) then
+    return
   end
 
   -- open the tree
@@ -50,13 +62,7 @@ nvim_tree.setup({
   },
   disable_netrw = false,
   hijack_netrw = true,
-  ignore_ft_on_setup = {
-    "startify",
-    "dashboard",
-    "alpha",
-    "taxi",
-  },
-  --[[ open_on_tab = true, ]]
+  open_on_tab = true,
   hijack_cursor = true,
   hijack_unnamed_buffer_when_opening = false,
   update_cwd = true,
@@ -72,8 +78,8 @@ nvim_tree.setup({
       custom_only = false,
       list = {
         { key = { "l", "<CR>", "o" }, cb = tree_cb("edit") },
-        { key = "h", cb = tree_cb("close_node") },
-        { key = "v", cb = tree_cb("vsplit") },
+        { key = "h",                  cb = tree_cb("close_node") },
+        { key = "v",                  cb = tree_cb("vsplit") },
       },
     },
   },
