@@ -179,7 +179,7 @@
         alejandra
         rust-analyzer
         shellcheck
-        sumneko-lua-language-server
+        lua-language-server
         terraform-ls
         terraform
 
