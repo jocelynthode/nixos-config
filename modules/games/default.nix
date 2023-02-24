@@ -4,6 +4,7 @@
   ...
 }: {
   imports = [
+    ./bottles
     ./discord
     ./gamemode
     ./lutris
@@ -19,6 +20,7 @@
 
   config = lib.mkIf config.aspects.games.enable {
     aspects.games = {
+      bottles.enable = lib.mkDefault true;
       discord.enable = lib.mkDefault true;
       gamemode.enable = lib.mkDefault true;
       lutris.enable = lib.mkDefault true;

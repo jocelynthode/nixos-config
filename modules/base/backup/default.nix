@@ -16,6 +16,7 @@
         "/persist/home/jocelyn/Programs"
         "/persist/home/jocelyn/.local/share/Steam"
         "/persist/home/jocelyn/.local/share/containers"
+        "/persist/home/jocelyn/.local/share/bottles"
         "/persist/home/jocelyn/.local/lutris"
         "/persist/home/jocelyn/.cache"
         "/persist/home/jocelyn/.wine"
