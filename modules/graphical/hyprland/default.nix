@@ -19,6 +19,7 @@
       default = 100;
       example = 150;
     };
+    useNvidia = false;
   };
 
   config = lib.mkIf config.aspects.graphical.hyprland.enable {
@@ -29,7 +30,7 @@
 
     programs.hyprland = {
       enable = true;
-      package = null;
+      nvidiaPatches = config.aspects.graphical.hyprland.useNvidia;
     };
 
     environment.systemPackages = with pkgs; [
