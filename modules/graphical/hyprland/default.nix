@@ -89,6 +89,7 @@
         waypipe
         wl-clipboard
         ydotool
+        hyprpaper
       ];
 
       wayland.windowManager.hyprland = {
