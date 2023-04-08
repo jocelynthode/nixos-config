@@ -1,0 +1,6 @@
+{
+    "device": "alsa_input.usb-ZOOM_Corporation_ZOOM_G_Series-00.analog-stereo",
+    "device-description": "ZOOM G Series Analog Stereo",
+    "device-profile": "analog-input",
+    "preset-name": "Guitar"
+}
