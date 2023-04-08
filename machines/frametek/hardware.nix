@@ -29,8 +29,6 @@
     kernelModules = ["kvm-intel"];
   };
 
-  hardware.video.hidpi.enable = true;
-
   swapDevices = [
     {
       device = "/swap/swapfile";
