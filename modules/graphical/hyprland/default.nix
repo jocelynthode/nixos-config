@@ -19,7 +19,10 @@
       default = 100;
       example = 150;
     };
-    useNvidia = false;
+    useNvidia = lib.mkOption {
+      default = false;
+      example = true;
+    };
   };
 
   config = lib.mkIf config.aspects.graphical.hyprland.enable {
@@ -62,6 +65,7 @@
         LIBVA_DRIVER_NAME = "nvidia";
         GDK_BACKEND = "wayland,x11";
         WLR_NO_HARDWARE_CURSORS = "1";
+        XDG_SESSION_TYPE = "wayland";
       };
 
     services.greetd = {
@@ -96,12 +100,13 @@
         enable = true;
         extraConfig = ''
           general {
-            main_mod=SUPER
             gaps_in=5
             gaps_out=5
             border_size=2.7
             col.active_border=0xff${config.colorScheme.colors.base0C}
             col.inactive_border=0xff${config.colorScheme.colors.base02}
+            col.group_border_active=0xff${config.colorScheme.colors.base0B}
+            col.group_border=0xff${config.colorScheme.colors.base04}
             cursor_inactive_timeout=0
           }
           decoration {
@@ -116,13 +121,7 @@
             blur_ignore_opacity=false
             drop_shadow=false
           }
-          dwindle {
-            col.group_border_active=0xff${config.colorScheme.colors.base0B}
-            col.group_border=0xff${config.colorScheme.colors.base04}
-            split_width_multiplier=1.35
-          }
           misc {
-            no_vfr=false
             mouse_move_enables_dpms=true
           }
           input {

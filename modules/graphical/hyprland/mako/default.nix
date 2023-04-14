@@ -9,7 +9,7 @@
       osConfig,
       ...
     }: {
-      programs.mako = {
+      services.mako = {
         enable = true;
 
         iconPath = "${config.gtk.iconTheme.package}/share/icons/Papirus-Dark";
