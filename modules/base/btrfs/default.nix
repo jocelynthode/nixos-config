@@ -16,15 +16,20 @@
   };
 
   config = lib.mkIf config.aspects.base.btrfs.enable {
-    services.btrfs.autoScrub = {
-      enable = true;
-      fileSystems = ["/"]; # Scrub works on filesystem so no need to scrub all subvolumes of same fs
+    services = {
+      fstrim.enable = false;
+      btrfs.autoScrub = {
+        enable = true;
+        fileSystems = ["/"]; # Scrub works on filesystem so no need to scrub all subvolumes of same fs
+      };
     };
 
     boot = {
       supportedFilesystems = ["ntfs"];
-      tmpOnTmpfs = true;
-      tmpOnTmpfsSize = "20%";
+      tmp = {
+        useTmpfs = true;
+        tmpfsSize = "20%";
+      };
       loader = {
         efi = {
           canTouchEfiVariables = true;
@@ -68,40 +73,40 @@
       "/" = {
         device = "/dev/disk/by-label/${config.networking.hostName}";
         fsType = "btrfs";
-        options = ["defaults" "noatime" "compress=zstd:1" "subvol=@"];
+        options = ["defaults" "noatime" "compress=zstd:1" "discard=async" "subvol=@"];
       };
 
       "/var/log" = {
         device = "/dev/disk/by-label/${config.networking.hostName}";
         fsType = "btrfs";
-        options = ["defaults" "noatime" "compress=zstd:1" "subvol=@log"];
+        options = ["defaults" "noatime" "compress=zstd:1" "discard=async" "subvol=@log"];
         neededForBoot = true;
       };
 
       "/nix" = {
         device = "/dev/disk/by-label/${config.networking.hostName}";
         fsType = "btrfs";
-        options = ["defaults" "noatime" "compress=zstd:1" "subvol=@nix"];
+        options = ["defaults" "noatime" "compress=zstd:1" "discard=async" "subvol=@nix"];
       };
 
       "${config.aspects.base.persistence.persistPrefix}" = {
         device = "/dev/disk/by-label/${config.networking.hostName}";
         fsType = "btrfs";
-        options = ["defaults" "noatime" "compress=zstd:1" "subvol=@persist"];
+        options = ["defaults" "noatime" "compress=zstd:1" "discard=async" "subvol=@persist"];
         neededForBoot = true;
       };
 
       "${config.aspects.base.persistence.persistPrefix}/.snapshots" = {
         device = "/dev/disk/by-label/${config.networking.hostName}";
         fsType = "btrfs";
-        options = ["defaults" "noatime" "compress=zstd:1" "subvol=@snapshots"];
+        options = ["defaults" "noatime" "compress=zstd:1" "discard=async" "subvol=@snapshots"];
         neededForBoot = true;
       };
 
       "/swap" = {
         device = "/dev/disk/by-label/${config.networking.hostName}";
         fsType = "btrfs";
-        options = ["defaults" "noatime" "compress=zstd:1" "subvol=@swap"];
+        options = ["defaults" "noatime" "compress=zstd:1" "discard=async" "subvol=@swap"];
       };
 
       "/boot/efi" = {
