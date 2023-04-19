@@ -73,7 +73,6 @@ nvim_tree.setup({
   view = {
     side = "left",
     width = 30,
-    hide_root_folder = true,
     mappings = {
       custom_only = false,
       list = {
@@ -97,6 +96,7 @@ nvim_tree.setup({
     require_confirm = true,
   },
   renderer = {
+    root_folder_label = false,
     highlight_git = true,
     highlight_opened_files = "icons",
     add_trailing = false,
