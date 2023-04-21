@@ -30,6 +30,11 @@
         user = "lidarr";
         group = "lidarr";
       }
+      {
+        directory = "/var/lib/readarr";
+        user = "readarr";
+        group = "readarr";
+      }
     ];
 
     services = {
@@ -54,6 +59,10 @@
         enable = true;
         openFirewall = true;
       };
+      readarr = {
+        enable = true;
+        openFirewall = true;
+      };
     };
 
     # Allow access to deluge downloads
@@ -61,5 +70,6 @@
     users.users.bazarr.extraGroups = ["deluge"];
     users.users.sonarr.extraGroups = ["deluge"];
     users.users.lidarr.extraGroups = ["deluge"];
+    users.users.readarr.extraGroups = ["deluge"];
   };
 }
