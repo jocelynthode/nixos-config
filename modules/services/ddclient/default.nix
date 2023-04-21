@@ -15,6 +15,7 @@
       ssl = true;
       username = "tekila.ovh-ident";
       domains = ["dyn.tekila.ovh"];
+      use = "cmd, cmd='curl -q ifconfig.io'";
       passwordFile = config.sops.secrets.ddclient.path;
     };
 
