@@ -32,6 +32,7 @@
               bitwarden
               simple-tab-groups
               sponsorblock
+              simplelogin
             ];
             userChrome = ''
               /* Hide tab bar in FF Quantum */
