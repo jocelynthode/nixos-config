@@ -349,6 +349,7 @@
               ];
               "4" = [
                 {class = "Steam";}
+                {class = "steamwebhelper";}
               ];
               "7" = [
                 {class = "Signal";}

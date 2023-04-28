@@ -179,6 +179,7 @@
           blurls=wofi
 
           windowrule=workspace 4,Steam
+          windowrule=workspace 4,steamwebhelper
           windowrule=workspace 7,Slack
           windowrule=workspace 7,discord
           windowrule=workspace 7,Mumble
