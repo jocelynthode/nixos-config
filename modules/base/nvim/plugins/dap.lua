@@ -40,6 +40,27 @@ local dap_python = require "dap-python"
 
 dap_python.setup(vim.g.python3_host_prog)
 dap_python.test_runner = 'pytest'
+table.insert(dap.configurations.python, {
+    type = "python",
+    request = "attach",
+    connect = {
+      port = 5678,
+      host = "127.0.0.1",
+    },
+    mode = "remote",
+    name = "Container Attach Debug",
+    cwd = vim.fn.getcwd(),
+    pathMappings = {
+      {
+        localRoot = function()
+          return vim.fn.input("Local code folder > ", vim.fn.getcwd(), "file")
+        end,
+        remoteRoot = function()
+          return vim.fn.input("Container code folder > ", "/", "file")
+        end,
+      },
+    },
+  })
 
 require('dap-go').setup()
 require('nvim-dap-virtual-text').setup()
