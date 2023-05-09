@@ -12,6 +12,7 @@
     home-manager.users.jocelyn = _: {
       programs.git = {
         enable = true;
+        lfs.enable = true;
         userName = "Jocelyn Thode";
         userEmail = "jocelyn@thode.email";
         signing = {

@@ -14,6 +14,7 @@
         "/persist/home/jocelyn/Documents"
         "/persist/home/jocelyn/Music"
         "/persist/home/jocelyn/Programs"
+        "/persist/home/jocelyn/Projects/ai"
         "/persist/home/jocelyn/.local/share/Steam"
         "/persist/home/jocelyn/.local/share/containers"
         "/persist/home/jocelyn/.local/share/bottles"
