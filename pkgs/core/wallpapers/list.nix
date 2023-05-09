@@ -23,4 +23,16 @@
     id = "5LJ4vsz";
     sha256 = "sha256-yKQqrguuKN4WIVxCTPFpX57+JrM5TDU7hxSxGHnm59E=";
   }
+  {
+    name = "onedark-triangles";
+    ext = "png";
+    id = "ujOHTu4";
+    sha256 = "1r243yvddx9g30lyxvszxgv1zd40y00n8zbpqpnmrbk6cbjlvyp8";
+  }
+  {
+    name = "onedark-neon";
+    ext = "png";
+    id = "yMUk6n2";
+    sha256 = "1mcd75hqf7n6473cz8r4w2m1d4gyrcca5a6w6z2pda99fpbj687q";
+  }
 ]

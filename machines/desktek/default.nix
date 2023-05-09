@@ -4,6 +4,7 @@
   # Machine-specific module settings
   aspects = {
     stateVersion = "22.05";
+    theme = "onedark";
     base = {
       bluetooth.enable = true;
     };
@@ -15,7 +16,7 @@
     graphical = {
       enable = true;
       sound.guitar.enable = true;
-      wallpaper = "palms-tropics";
+      wallpaper = "onedark-neon";
       printer.enable = true;
       hyprland = {
         enable = false;
