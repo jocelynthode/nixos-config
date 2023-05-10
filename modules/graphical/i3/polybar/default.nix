@@ -47,7 +47,7 @@ in {
             base0E = "#${config.colorScheme.colors.base0E}";
             base0F = "#${config.colorScheme.colors.base0F}";
 
-            transparent-base00 = "#DD${config.colorScheme.colors.base00}";
+            transparent-base00 = "#EE${config.colorScheme.colors.base00}";
           };
 
           bar = {
@@ -61,7 +61,7 @@ in {
             height = "2.5%";
             radius = 0;
             background = ''''${colors.transparent-base00}'';
-            foreground = ''''${colors.base07}'';
+            foreground = ''''${colors.base05}'';
             padding = 2;
             line = {
               size = 3;
