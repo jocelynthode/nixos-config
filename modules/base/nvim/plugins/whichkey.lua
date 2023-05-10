@@ -41,6 +41,11 @@ local mappings = {
       c = { "<cmd>lua require('dap-python').test_class()<cr>", "Debug Class" },
       s = { "<cmd>lua require('dap-python').debug_selection()<cr>", "Debug Selection" },
     },
+    G = {
+      name = "Go",
+      t = { "<cmd>lua require('dap-go').debug_test()<cr>", "Debug Test" },
+      l = { "<cmd>lua require('dap-go').debug_last_test()<cr>", "Debug Last Test" },
+    },
     r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
     s = { "<cmd>lua require'dap'.continue()<cr>", "Start" },
     T = {

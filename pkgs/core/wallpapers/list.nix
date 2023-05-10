@@ -35,4 +35,10 @@
     id = "yMUk6n2";
     sha256 = "1mcd75hqf7n6473cz8r4w2m1d4gyrcca5a6w6z2pda99fpbj687q";
   }
+  {
+    name = "hokusai-onepiece";
+    ext = "jpeg";
+    id = "UL3WDH9";
+    sha256 = "1igpxsx1k76mxlid5mw7lz391bx4241a4kr1hs1blra51z7kyv80";
+  }
 ]
