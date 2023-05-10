@@ -35,11 +35,11 @@
             enable = true;
             theme = {
               package = pkgs.qogir-theme;
-              name = "Qogir-Dark";
+              name = "Qogir-Light";
             };
             iconTheme = {
               package = pkgs.papirus-icon-theme;
-              name = "Papirus";
+              name = "Papirus-Light";
             };
             cursorTheme = {
               package = pkgs.gnome.adwaita-icon-theme;
@@ -94,29 +94,32 @@
 
       xresources.properties = {
         "*background" = "#${config.colorscheme.colors.base00}";
-        "*foreground" = "#${config.colorscheme.colors.base07}";
-        "*color0" = "#${config.colorscheme.colors.base00}";
+        "*foreground" = "#${config.colorscheme.colors.base05}";
+
+        "*color0" = "#5C5F77";
+        "*color8" = "#6C6F85";
+
         "*color1" = "#${config.colorscheme.colors.base08}";
-        "*color2" = "#${config.colorscheme.colors.base0B}";
-        "*color3" = "#${config.colorscheme.colors.base0A}";
-        "*color4" = "#${config.colorscheme.colors.base0D}";
-        "*color5" = "#${config.colorscheme.colors.base0E}";
-        "*color6" = "#${config.colorscheme.colors.base0C}";
-        "*color7" = "#${config.colorscheme.colors.base05}";
-        "*color8" = "#${config.colorscheme.colors.base03}";
         "*color9" = "#${config.colorscheme.colors.base08}";
+
+        "*color2" = "#${config.colorscheme.colors.base0B}";
         "*color10" = "#${config.colorscheme.colors.base0B}";
+
+        "*color3" = "#${config.colorscheme.colors.base0A}";
         "*color11" = "#${config.colorscheme.colors.base0A}";
+
+        "*color4" = "#${config.colorscheme.colors.base0D}";
         "*color12" = "#${config.colorscheme.colors.base0D}";
-        "*color13" = "#${config.colorscheme.colors.base0E}";
+
+        "*color5" = "#EA76CB";
+        "*color13" = "#EA76CB";
+
+        "*color6" = "#${config.colorscheme.colors.base0C}";
         "*color14" = "#${config.colorscheme.colors.base0C}";
-        "*color15" = "#${config.colorscheme.colors.base07}";
-        "*color16" = "#${config.colorscheme.colors.base09}";
-        "*color17" = "#${config.colorscheme.colors.base0F}";
-        "*color18" = "#${config.colorscheme.colors.base01}";
-        "*color19" = "#${config.colorscheme.colors.base02}";
-        "*color20" = "#${config.colorscheme.colors.base04}";
-        "*color21" = "#${config.colorscheme.colors.base06}";
+
+        "*color7" = "#${config.colorscheme.colors.base04}";
+        "*color15" = "#${config.colorscheme.colors.base03}";
+
         "Xft.dpi" = osConfig.aspects.graphical.i3.dpi;
       };
 

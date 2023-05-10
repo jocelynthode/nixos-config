@@ -87,7 +87,7 @@
             tray-enabled = false;
           };
           "com/github/wwmm/easyeffects" = {
-            use-dark-theme = true;
+            use-dark-theme = false;
           };
         };
       };

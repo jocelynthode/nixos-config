@@ -61,7 +61,7 @@
           package = gtkThemeFromScheme {scheme = config.colorscheme;};
         };
         iconTheme = {
-          name = "Papirus";
+          name = "Papirus-Light";
           package = pkgs.papirus-icon-theme;
         };
       };
@@ -78,7 +78,7 @@
         enable = true;
         platformTheme = "gnome";
         style = {
-          name = "adwaita-dark";
+          name = "adwaita";
           package = pkgs.adwaita-qt;
         };
       };

@@ -12,7 +12,7 @@
       services.mako = {
         enable = true;
 
-        iconPath = "${config.gtk.iconTheme.package}/share/icons/Papirus-Dark";
+        iconPath = "${config.gtk.iconTheme.package}/share/icons/Papirus-Light";
 
         anchor = "top-right";
         backgroundColor = "#${config.colorScheme.colors.base01}DD";

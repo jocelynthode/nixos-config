@@ -47,7 +47,7 @@ in {
             base0E = "#${config.colorScheme.colors.base0E}";
             base0F = "#${config.colorScheme.colors.base0F}";
 
-            transparent-base00 = "#EE${config.colorScheme.colors.base00}";
+            transparent-base00 = "#AA${config.colorScheme.colors.base00}";
           };
 
           bar = {

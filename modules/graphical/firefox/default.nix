@@ -33,6 +33,7 @@
               simple-tab-groups
               sponsorblock
               simplelogin
+              stylus
             ];
             userChrome = ''
               /* Hide tab bar in FF Quantum */

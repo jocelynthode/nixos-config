@@ -20,7 +20,7 @@ in {
       services.dunst = {
         enable = true;
         iconTheme = {
-          name = "Papirus";
+          name = "Papirus-Light";
           package = pkgs.papirus-icon-theme;
           size = "48x48";
         };
@@ -34,7 +34,7 @@ in {
             padding = 16;
             horizontal_padding = 12;
             format = ''<b>%s</b>\n%b'';
-            frame_color = "#${config.colorScheme.colors.base0C}FF";
+            frame_color = "#${config.colorScheme.colors.base0D}FF";
             separator_color = "frame";
           };
 
@@ -45,20 +45,20 @@ in {
 
           urgency_low = {
             fullscreen = "delay";
-            background = "#${config.colorScheme.colors.base01}CC";
-            foreground = "#${config.colorScheme.colors.base06}CC";
+            background = "#${config.colorScheme.colors.base00}CC";
+            foreground = "#${config.colorScheme.colors.base05}CC";
           };
 
           urgency_normal = {
             fullscreen = "delay";
-            background = "#${config.colorScheme.colors.base01}CC";
-            foreground = "#${config.colorScheme.colors.base06}CC";
+            background = "#${config.colorScheme.colors.base00}CC";
+            foreground = "#${config.colorScheme.colors.base05}CC";
           };
 
           urgency_critical = {
             fullscreen = "show";
-            background = "#${config.colorScheme.colors.base01}DD";
-            foreground = "#${config.colorScheme.colors.base06}DD";
+            background = "#${config.colorScheme.colors.base00}DD";
+            foreground = "#${config.colorScheme.colors.base05}DD";
           };
         };
       };

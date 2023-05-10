@@ -15,20 +15,6 @@ def calc_draw_spaces(*args) -> int:
         length += len(i)
     return length
 
-
-def _draw_icon(screen: Screen, index: int, symbol: str = "") -> int:
-    if index != 1:
-        return 0
-
-    fg, bg = screen.cursor.fg, screen.cursor.bg
-    screen.cursor.fg = as_rgb(color_as_int(Color(255, 250, 205)))
-    screen.cursor.bg = as_rgb(color_as_int(Color(60, 71, 77)))
-    screen.draw(symbol)
-    screen.cursor.fg, screen.cursor.bg = fg, bg
-    screen.cursor.x = len(symbol)
-    return screen.cursor.x
-
-
 def _draw_left_status(
     draw_data: DrawData,
     screen: Screen,
@@ -76,7 +62,6 @@ def draw_tab(
     is_last: bool,
     extra_data: ExtraData,
 ) -> int:
-    _draw_icon(screen, index, symbol=" \uf120 ")
     _draw_left_status(
         draw_data,
         screen,
