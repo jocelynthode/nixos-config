@@ -27,7 +27,7 @@
         vim-bbye
         lualine-lsp-progress
         FixCursorHold-nvim
-        nvim-base16
+        # nvim-base16
         better-escape-nvim
         nvim-ts-context-commentstring
         telescope-ui-select-nvim
@@ -55,6 +55,11 @@
         telescope-live-grep-args-nvim
         glance-nvim
         nvim-treesitter-textobjects
+        {
+          plugin = catppuccin-nvim;
+          config = builtins.readFile ./plugins/theme.lua;
+          type = "lua";
+        }
         {
           plugin = nvim-dap;
           config = builtins.readFile ./plugins/dap.lua;
@@ -201,11 +206,11 @@
         ];
 
       # We must require plugin before colorscheme
-      extraConfig = ''
-        lua require('base16-colorscheme').with_config {telescope = false}
-
-        colorscheme base16-${config.colorScheme.slug}
-      '';
+      # extraConfig = ''
+      #   lua require('base16-colorscheme').with_config {telescope = false}
+      #
+      #   colorscheme base16-${config.colorScheme.slug}
+      # '';
     };
   };
 in {

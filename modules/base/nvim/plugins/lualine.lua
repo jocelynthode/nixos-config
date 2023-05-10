@@ -22,7 +22,7 @@ end
 
 lualine.setup({
   options = {
-    theme = "auto",
+    theme = "catppuccin",
     globalstatus = true,
   },
   extensions = {

@@ -4,7 +4,7 @@
   # Machine-specific module settings
   aspects = {
     stateVersion = "22.05";
-    theme = "kanagawa";
+    theme = "catppuccin-mocha";
     base = {
       bluetooth.enable = true;
     };
