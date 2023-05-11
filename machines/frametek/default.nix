@@ -4,6 +4,7 @@
   # Machine-specific module settings
   aspects = {
     stateVersion = "22.05";
+    theme = "catppuccin-latte";
     base = {
       battery.enable = true;
       bluetooth.enable = true;
@@ -12,7 +13,7 @@
     games.enable = true;
     graphical = {
       enable = true;
-      wallpaper = "palms-tropics";
+      wallpaper = "lavenders";
       # i3.enable = false;
       # hyprland.enable = true;
       fingerprint.enable = true;

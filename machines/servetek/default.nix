@@ -4,6 +4,7 @@
   # Machine-specific module settings
   aspects = {
     stateVersion = "22.05";
+    theme = "catppuccin-latte";
     allowReboot = true;
     base = {
       bluetooth.enable = true;
