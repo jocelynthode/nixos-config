@@ -41,4 +41,10 @@
     id = "UL3WDH9";
     sha256 = "1igpxsx1k76mxlid5mw7lz391bx4241a4kr1hs1blra51z7kyv80";
   }
+  {
+    name = "lavenders";
+    ext = "jpeg";
+    id = "mHVpyt7";
+    sha256 = "0xkzpsp2pnk9808zb79rgj7pxlkyc7y11ps30wvb62bngci1j4f7";
+  }
 ]

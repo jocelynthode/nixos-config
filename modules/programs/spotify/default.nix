@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  spicetify-nix,
   ...
 }: {
   options.aspects.programs.spotify.enable = lib.mkOption {
@@ -13,10 +14,17 @@
     aspects.base.persistence.homePaths = [
       ".config/spotify"
     ];
+
+    home-manager.sharedModules = [spicetify-nix.homeManagerModule];
     home-manager.users.jocelyn = _: {
-      home.packages = [pkgs.spotify pkgs.playerctl];
+      home.packages = [pkgs.playerctl];
       services.playerctld = {
         enable = true;
+      };
+      programs.spicetify = {
+        enable = true;
+        theme = spicetify-nix.packages.${pkgs.system}.default.themes.catppuccin-latte;
+        colorScheme = "blue";
       };
     };
   };

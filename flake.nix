@@ -31,6 +31,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     devenv.url = "github:cachix/devenv/latest";
+    spicetify-nix.url = "github:the-argus/spicetify-nix";
   };
 
   outputs = inputs @ {
@@ -45,6 +46,7 @@
     impermanence,
     taxi,
     utils,
+    spicetify-nix,
     ...
   }:
     utils.lib.mkFlake {
@@ -81,7 +83,7 @@
             hardware.nixosModules.common-cpu-amd
             hardware.nixosModules.common-pc-ssd
           ];
-          specialArgs = {inherit nix-colors;};
+          specialArgs = {inherit nix-colors spicetify-nix;};
         };
         frametek = {
           modules = [
@@ -92,14 +94,14 @@
             hardware.nixosModules.common-pc-laptop-ssd
             hardware.nixosModules.framework
           ];
-          specialArgs = {inherit nix-colors;};
+          specialArgs = {inherit nix-colors spicetify-nix;};
         };
         servetek = {
           modules = [
             ./machines/servetek
             hardware.nixosModules.common-pc-laptop-ssd
           ];
-          specialArgs = {inherit nix-colors;};
+          specialArgs = {inherit nix-colors spicetify-nix;};
         };
         iso = {
           modules = [
@@ -107,7 +109,7 @@
             "${nixpkgs}/nixos/modules/installer/cd-dvd/channel.nix"
             ./machines/iso
           ];
-          specialArgs = {inherit nix-colors;};
+          specialArgs = {inherit nix-colors spicetify-nix;};
         };
       };
     };

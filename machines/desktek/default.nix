@@ -16,7 +16,7 @@
     graphical = {
       enable = true;
       sound.guitar.enable = true;
-      wallpaper = "hokusai-onepiece";
+      wallpaper = "lavenders";
       printer.enable = true;
       hyprland = {
         enable = false;
