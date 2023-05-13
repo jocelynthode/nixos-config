@@ -34,8 +34,13 @@
           greeters.gtk = {
             enable = true;
             theme = {
-              package = pkgs.qogir-theme;
-              name = "Qogir-Light";
+              name = "Catppuccin-Latte-Standard-Pink-Light";
+              package = pkgs.catppuccin-gtk.override {
+                accents = ["pink"];
+                size = "standard";
+                tweaks = ["normal"];
+                variant = "latte";
+              };
             };
             iconTheme = {
               package = pkgs.papirus-icon-theme;
@@ -54,7 +59,6 @@
 
       windowManager.i3 = {
         enable = true;
-        package = pkgs.i3-gaps;
         extraPackages = with pkgs; [
           dex
         ];
@@ -93,32 +97,32 @@
       };
 
       xresources.properties = {
-        "*background" = "#${config.colorscheme.colors.base00}";
-        "*foreground" = "#${config.colorscheme.colors.base05}";
+        "*background" = "#${config.colorscheme.colors.background}";
+        "*foreground" = "#${config.colorscheme.colors.foreground}";
 
         "*color0" = "#5C5F77";
         "*color8" = "#6C6F85";
 
-        "*color1" = "#${config.colorscheme.colors.base08}";
-        "*color9" = "#${config.colorscheme.colors.base08}";
+        "*color1" = "#${config.colorscheme.colors.red}";
+        "*color9" = "#${config.colorscheme.colors.red}";
 
-        "*color2" = "#${config.colorscheme.colors.base0B}";
-        "*color10" = "#${config.colorscheme.colors.base0B}";
+        "*color2" = "#${config.colorscheme.colors.green}";
+        "*color10" = "#${config.colorscheme.colors.green}";
 
-        "*color3" = "#${config.colorscheme.colors.base0A}";
-        "*color11" = "#${config.colorscheme.colors.base0A}";
+        "*color3" = "#${config.colorscheme.colors.yellow}";
+        "*color11" = "#${config.colorscheme.colors.yellow}";
 
-        "*color4" = "#${config.colorscheme.colors.base0D}";
-        "*color12" = "#${config.colorscheme.colors.base0D}";
+        "*color4" = "#${config.colorscheme.colors.blue}";
+        "*color12" = "#${config.colorscheme.colors.blue}";
 
-        "*color5" = "#EA76CB";
-        "*color13" = "#EA76CB";
+        "*color5" = "#${config.colorScheme.colors.pink}";
+        "*color13" = "#${config.colorScheme.colors.pink}";
 
-        "*color6" = "#${config.colorscheme.colors.base0C}";
-        "*color14" = "#${config.colorscheme.colors.base0C}";
+        "*color6" = "#${config.colorscheme.colors.teal}";
+        "*color14" = "#${config.colorscheme.colors.teal}";
 
-        "*color7" = "#${config.colorscheme.colors.base04}";
-        "*color15" = "#${config.colorscheme.colors.base03}";
+        "*color7" = "#${config.colorscheme.colors.foreground01}";
+        "*color15" = "#${config.colorscheme.colors.background03}";
 
         "Xft.dpi" = osConfig.aspects.graphical.i3.dpi;
       };
@@ -201,41 +205,41 @@
             };
             colors = {
               focused = {
-                border = "#${colors.base05}";
-                background = "#${colors.base0D}";
-                text = "#${colors.base00}";
-                indicator = "#${colors.base0D}";
-                childBorder = "#${colors.base0C}";
+                border = "#${colors.pink}";
+                background = "#${colors.background01}";
+                text = "#${colors.foreground}";
+                indicator = "#${colors.background01}";
+                childBorder = "#${colors.pink}";
               };
               focusedInactive = {
-                border = "#${colors.base01}";
-                background = "#${colors.base01}";
-                text = "#${colors.base05}";
-                indicator = "#${colors.base03}";
-                childBorder = "#${colors.base01}";
+                border = "#${colors.background01}";
+                background = "#${colors.background01}";
+                text = "#${colors.foreground}";
+                indicator = "#${colors.background03}";
+                childBorder = "#${colors.background01}";
               };
               unfocused = {
-                border = "#${colors.base01}";
-                background = "#${colors.base00}";
-                text = "#${colors.base05}";
-                indicator = "#${colors.base01}";
-                childBorder = "#${colors.base01}";
+                border = "#${colors.background01}";
+                background = "#${colors.background}";
+                text = "#${colors.foreground}";
+                indicator = "#${colors.background01}";
+                childBorder = "#${colors.background01}";
               };
               urgent = {
-                border = "#${colors.base08}";
-                background = "#${colors.base08}";
-                text = "#${colors.base00}";
-                indicator = "#${colors.base08}";
-                childBorder = "#${colors.base08}";
+                border = "#${colors.red}";
+                background = "#${colors.red}";
+                text = "#${colors.foreground}";
+                indicator = "#${colors.red}";
+                childBorder = "#${colors.red}";
               };
               placeholder = {
-                border = "#${colors.base00}";
-                background = "#${colors.base00}";
-                text = "#${colors.base05}";
-                indicator = "#${colors.base00}";
-                childBorder = "#${colors.base00}";
+                border = "#${colors.background}";
+                background = "#${colors.background}";
+                text = "#${colors.foreground}";
+                indicator = "#${colors.background}";
+                childBorder = "#${colors.background}";
               };
-              background = "#${colors.base07}";
+              background = "#${colors.foreground03}";
             };
 
             floating = {

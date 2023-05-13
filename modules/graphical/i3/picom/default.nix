@@ -13,7 +13,6 @@
             strength = 5;
             kern = "3x3box";
           };
-          vsync = true;
           active-opacity = "1.0";
           inactive-opacity = "1.0";
           backend = "glx";
@@ -34,13 +33,24 @@
           detect-rounded-corners = true;
           detect-client-opacity = true;
           wintypes = {
-            popup_menu = {opacity = "0.85";};
-            dropdown_menu = {opacity = "0.85";};
+            popup_menu = {
+              opacity = "0.85";
+              shadow = false;
+            };
+            dropdown_menu = {
+              opacity = "0.85";
+              shadow = false;
+            };
+            utility = {
+              shadow = false;
+            };
             dock = {
               shadow = false;
               clip-shadow-above = true;
             };
-            dnd = {shadow = false;};
+            dnd = {
+              shadow = false;
+            };
           };
           unredir-if-possible = false;
         };

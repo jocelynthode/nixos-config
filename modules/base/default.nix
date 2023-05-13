@@ -28,18 +28,38 @@
       example = "22.05";
     };
 
-    theme = lib.mkOption {
-      default = "gruvbox-material-dark-hard";
-      example = "gruvbox-material-dark-hard";
-    };
-
     allowReboot = lib.mkOption {
       default = false;
       example = true;
     };
   };
 
-  config = {
+  config = let
+    colorscheme = {
+      slug = "catppuccin-latte";
+      name = "Catppuccin Latte";
+      author = "Unknown";
+      colors = {
+        background = "#eff1f5";
+        background01 = "#e6e9ef";
+        background02 = "#ccd0da";
+        background03 = "#bcc0cc";
+        foreground01 = "#acb0be";
+        foreground = "#4c4f69";
+        foreground02 = "#dc8a78";
+        foreground03 = "#7287fd";
+        red = "#d20f39";
+        orange = "#fe640b";
+        yellow = "#df8e1d";
+        green = "#40a02b";
+        teal = "#179299";
+        blue = "#1e66f5";
+        purple = "#8839ef";
+        brown = "#dd7878";
+        pink = "#ea76cb";
+      };
+    };
+  in {
     home-manager.useGlobalPkgs = true;
     home-manager.sharedModules = [nix-colors.homeManagerModule];
 
@@ -79,12 +99,12 @@
         home.stateVersion = config.aspects.stateVersion;
         systemd.user.sessionVariables = config.home-manager.users.jocelyn.home.sessionVariables;
         systemd.user.startServices = "sd-switch";
-        colorScheme = nix-colors.colorSchemes."${config.aspects.theme}";
+        colorScheme = colorscheme;
       };
       root = _: {
         home.stateVersion = config.aspects.stateVersion;
         systemd.user.startServices = "sd-switch";
-        colorScheme = nix-colors.colorSchemes."${config.aspects.theme}";
+        colorScheme = colorscheme;
       };
     };
 

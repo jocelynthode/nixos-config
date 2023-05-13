@@ -34,7 +34,7 @@ in {
             padding = 16;
             horizontal_padding = 12;
             format = ''<b>%s</b>\n%b'';
-            frame_color = "#${config.colorScheme.colors.base0D}FF";
+            frame_color = "#${config.colorScheme.colors.pink}FF";
             separator_color = "frame";
           };
 
@@ -45,20 +45,20 @@ in {
 
           urgency_low = {
             fullscreen = "delay";
-            background = "#${config.colorScheme.colors.base00}CC";
-            foreground = "#${config.colorScheme.colors.base05}CC";
+            background = "#${config.colorScheme.colors.background}CC";
+            foreground = "#${config.colorScheme.colors.foreground}CC";
           };
 
           urgency_normal = {
             fullscreen = "delay";
-            background = "#${config.colorScheme.colors.base00}CC";
-            foreground = "#${config.colorScheme.colors.base05}CC";
+            background = "#${config.colorScheme.colors.background}CC";
+            foreground = "#${config.colorScheme.colors.foreground}CC";
           };
 
           urgency_critical = {
             fullscreen = "show";
-            background = "#${config.colorScheme.colors.base00}DD";
-            foreground = "#${config.colorScheme.colors.base05}DD";
+            background = "#${config.colorScheme.colors.background}DD";
+            foreground = "#${config.colorScheme.colors.foreground}DD";
           };
         };
       };

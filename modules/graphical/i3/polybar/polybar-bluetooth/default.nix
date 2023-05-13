@@ -11,13 +11,13 @@ pkgs.writeShellApplication {
   text = ''
     if [ ''$(bluetoothctl show | grep "Powered: yes" | wc -c) -eq 0 ]
     then
-      echo "%{F#${config.colorScheme.colors.base03}}"
+      echo "%{F#${config.colorScheme.colors.background03}}"
     else
       if [ ''$(echo info | bluetoothctl | grep 'Device' | wc -c) -eq 0 ]
       then
         echo ""
       fi
-      echo "%{F#${config.colorScheme.colors.base0D}}"
+      echo "%{F#${config.colorScheme.colors.blue}}"
     fi
   '';
 }

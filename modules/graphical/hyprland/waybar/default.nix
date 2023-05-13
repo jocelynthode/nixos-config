@@ -78,27 +78,27 @@
               all-outputs = true;
             };
             clock = {
-              format = "{:<span color=\"#${config.colorScheme.colors.base0E}\"> </span> %a, %d %b %Y at %H:%M:%S}";
+              format = "{:<span color=\"#${config.colorScheme.colors.purple}\"> </span> %a, %d %b %Y at %H:%M:%S}";
               interval = 1;
             };
             cpu = {
-              format = "<span color=\"#${config.colorScheme.colors.base0A}\"></span>  {usage}%";
+              format = "<span color=\"#${config.colorScheme.colors.yellow}\"></span>  {usage}%";
             };
             memory = {
-              format = "<span color=\"#${config.colorScheme.colors.base0D}\"></span> {}%";
+              format = "<span color=\"#${config.colorScheme.colors.blue}\"></span> {}%";
               interval = 5;
             };
             disk = {
               interval = 30;
               path = "/";
-              format = "<span color=\"#${config.colorScheme.colors.base0C}\"></span>  {free}";
+              format = "<span color=\"#${config.colorScheme.colors.teal}\"></span>  {free}";
             };
             pulseaudio = {
               format = "{format_source}  {icon} {volume}%";
               on-click-right = "${pkgs.pavucontrol}/bin/pavucontrol";
               format-source = " {volume}%";
-              format-source-muted = "<span color=\"#${config.colorScheme.colors.base08}\"></span> 0%";
-              format-muted = "<span color=\"#${config.colorScheme.colors.base08}\"></span>   0%";
+              format-source-muted = "<span color=\"#${config.colorScheme.colors.red}\"></span> 0%";
+              format-muted = "<span color=\"#${config.colorScheme.colors.red}\"></span>   0%";
               format-icons = {
                 headphone = "";
                 headset = "";
@@ -123,11 +123,11 @@
             backlight = {
               device = "intel_backlight";
               format-icons = ["" "" "" "" "" "" "" "" ""];
-              format = "<span color=\"#${config.colorScheme.colors.base0A}\">{icon}</span> {percent}%";
+              format = "<span color=\"#${config.colorScheme.colors.orange}\">{icon}</span> {percent}%";
             };
             network = {
               interval = 3;
-              format = "<span color=\"#${config.colorScheme.colors.base0C}\">  {bandwidthDownBytes}</span>  <span color=\"#${config.colorScheme.colors.base0D}\">祝 {bandwidthUpBytes}</span>";
+              format = "<span color=\"#${config.colorScheme.colors.teal}\">  {bandwidthDownBytes}</span>  <span color=\"#${config.colorScheme.colors.blue}\">祝 {bandwidthUpBytes}</span>";
               format-disconnected = "";
               tooltip-format = ''
                 {ifname}
@@ -146,10 +146,10 @@
               interval = 2;
               format = " {status}";
               format-on = "";
-              format-off = "<span color=\"#${config.colorScheme.colors.base03}\"></span>";
-              format-disabled = "<span color=\"#${config.colorScheme.colors.base03}\"></span>";
-              format-connected = "<span color=\"#${config.colorScheme.colors.base0D}\"></span> {device_alias}";
-              format-connected-battery = "<span color=\"#${config.colorScheme.colors.base0D}\"></span> {device_alias} {device_battery_percentage}%";
+              format-off = "<span color=\"#${config.colorScheme.colors.background03}\"></span>";
+              format-disabled = "<span color=\"#${config.colorScheme.colors.background03}\"></span>";
+              format-connected = "<span color=\"#${config.colorScheme.colors.blue}\"></span> {device_alias}";
+              format-connected-battery = "<span color=\"#${config.colorScheme.colors.blue}\"></span> {device_alias} {device_battery_percentage}%";
               # TODO FIX toggle bluetooth not working
               on-click-left = "${pkgs.toggle-bluetooth}/bin/toggle_bluetooth";
               on-click-right = "${blueberry} &";
@@ -171,7 +171,7 @@
                 tooltip = "Spotify is $status";
               };
               # exec = " '";
-              format = "<span color=\"#${config.colorScheme.colors.base0B}\">{icon}</span> {}";
+              format = "<span color=\"#${config.colorScheme.colors.green}\">{icon}</span> {}";
               format-icons = {
                 "Playing" = "阮 ";
               };
@@ -240,9 +240,9 @@
             margin-left: -15px;
           }
           window#waybar.top {
-            color: #${colors.base05};
+            color: #${colors.foreground};
             opacity: 0.85;
-            background-color: #${colors.base00};
+            background-color: #${colors.background};
             border: 0px;
             padding: 0px;
             border-radius: 0px;
@@ -251,58 +251,58 @@
             margin: 0px;
             padding: 0px;
             border-radius: 0px;
-            border-bottom: 5px solid #${colors.base00};
-            color: #${colors.base07};
+            border-bottom: 5px solid #${colors.background};
+            color: #${colors.foreground03};
           }
           #workspaces button.hidden {
-            background-color: #${colors.base00};
-            color: #${colors.base04};
+            background-color: #${colors.background};
+            color: #${colors.foreground01};
           }
           #workspaces button.focused,
           #workspaces button.active {
-            background-color: #${colors.base01};
-            border-bottom: 5px solid #${colors.base0C};
+            background-color: #${colors.background01};
+            border-bottom: 5px solid #${colors.pink};
           }
           #workspaces button.urgent {
-            border-bottom: 5px solid #${colors.base08};
+            border-bottom: 5px solid #${colors.red};
           }
           #gamemode {
-            color: #${colors.base08};
+            color: #${colors.red};
             margin: 0px;
             padding: 0px;
           }
           #custom-sep {
-            color: #${colors.base03};
+            color: #${colors.background03};
             margin: 0px;
             padding: 0px;
           }
           #custom-gammastep {
-            color: #${colors.base0A};
+            color: #${colors.yellow};
             margin: 0px;
             padding: 0px;
           }
           #battery.full {
-            color: #${colors.base0D};
+            color: #${colors.blue};
             margin: 0px;
             padding: 0px;
           }
           #battery.charging {
-            color: #${colors.base0C};
+            color: #${colors.teal};
             margin: 0px;
             padding: 0px;
           }
           #battery.discharging.warning {
-            color: #${colors.base0A};
+            color: #${colors.yellow};
             margin: 0px;
             padding: 0px;
           }
           #battery.discharging.critical {
-            color: #${colors.base08};
+            color: #${colors.red};
             margin: 0px;
             padding: 0px;
           }
           #cpu, #memory, #disk, #battery, #custom-gpg-agent,#pulseaudio, #clock, #custom-player, #bluetooth, #backlight {
-            color: #${colors.base07};
+            color: #${colors.foreground03};
             margin: 0px;
             padding: 0px;
           }

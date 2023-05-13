@@ -103,10 +103,10 @@
             gaps_in=5
             gaps_out=5
             border_size=2.7
-            col.active_border=0xff${config.colorScheme.colors.base0C}
-            col.inactive_border=0xff${config.colorScheme.colors.base02}
-            col.group_border_active=0xff${config.colorScheme.colors.base0B}
-            col.group_border=0xff${config.colorScheme.colors.base04}
+            col.active_border=0xff${config.colorScheme.colors.pink}
+            col.inactive_border=0xff${config.colorScheme.colors.background02}
+            col.group_border_active=0xff${config.colorScheme.colors.green}
+            col.group_border=0xff${config.colorScheme.colors.foreground01}
             cursor_inactive_timeout=0
           }
           decoration {

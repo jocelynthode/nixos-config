@@ -30,24 +30,25 @@ in {
         };
         settings = {
           colors = {
-            base00 = "#${config.colorScheme.colors.base00}";
-            base01 = "#${config.colorScheme.colors.base01}";
-            base02 = "#${config.colorScheme.colors.base02}";
-            base03 = "#${config.colorScheme.colors.base03}";
-            base04 = "#${config.colorScheme.colors.base04}";
-            base05 = "#${config.colorScheme.colors.base05}";
-            base06 = "#${config.colorScheme.colors.base06}";
-            base07 = "#${config.colorScheme.colors.base07}";
-            base08 = "#${config.colorScheme.colors.base08}";
-            base09 = "#${config.colorScheme.colors.base09}";
-            base0A = "#${config.colorScheme.colors.base0A}";
-            base0B = "#${config.colorScheme.colors.base0B}";
-            base0C = "#${config.colorScheme.colors.base0C}";
-            base0D = "#${config.colorScheme.colors.base0D}";
-            base0E = "#${config.colorScheme.colors.base0E}";
-            base0F = "#${config.colorScheme.colors.base0F}";
+            background = "#${config.colorScheme.colors.background}";
+            background01 = "#${config.colorScheme.colors.background01}";
+            background02 = "#${config.colorScheme.colors.background02}";
+            background03 = "#${config.colorScheme.colors.background03}";
+            foreground01 = "#${config.colorScheme.colors.foreground01}";
+            foreground = "#${config.colorScheme.colors.foreground}";
+            foreground02 = "#${config.colorScheme.colors.foreground02}";
+            foreground03 = "#${config.colorScheme.colors.foreground03}";
+            red = "#${config.colorScheme.colors.red}";
+            orange = "#${config.colorScheme.colors.orange}";
+            yellow = "#${config.colorScheme.colors.yellow}";
+            green = "#${config.colorScheme.colors.green}";
+            teal = "#${config.colorScheme.colors.teal}";
+            blue = "#${config.colorScheme.colors.blue}";
+            purple = "#${config.colorScheme.colors.purple}";
+            brown = "#${config.colorScheme.colors.brown}";
+            pink = "#${config.colorScheme.colors.pink}";
 
-            transparent-base00 = "#CC${config.colorScheme.colors.base00}";
+            transparent-background = "#CC${config.colorScheme.colors.background}";
           };
 
           bar = {
@@ -60,16 +61,16 @@ in {
             width = "100%";
             height = "2.5%";
             radius = 0;
-            background = ''''${colors.transparent-base00}'';
-            foreground = ''''${colors.base05}'';
+            background = ''''${colors.transparent-background}'';
+            foreground = ''''${colors.foreground}'';
             padding = 2;
             line = {
               size = 3;
-              color = ''''${colors.base00}'';
+              color = ''''${colors.background}'';
             };
             border.bottom = {
               size = 0;
-              color = ''''${colors.base07}'';
+              color = ''''${colors.foreground03}'';
             };
 
             module.margin = {
@@ -106,7 +107,7 @@ in {
               text = "<label>";
               prefix = {
                 text = " ";
-                foreground = ''''${colors.base0E}'';
+                foreground = ''''${colors.purple}'';
               };
             };
           };
@@ -117,8 +118,8 @@ in {
             label = {
               active = {
                 text = "%name%";
-                background = ''''${colors.base01}'';
-                underline = ''''${colors.base0C}'';
+                background = ''''${colors.background01}'';
+                underline = ''''${colors.pink}'';
                 padding = 1;
               };
               occupied = {
@@ -127,8 +128,8 @@ in {
               };
               urgent = {
                 text = "%name%";
-                background = ''''${colors.base00}'';
-                underline = ''''${colors.base08}'';
+                background = ''''${colors.background}'';
+                underline = ''''${colors.red}'';
                 padding = 1;
               };
               empty = {
@@ -148,7 +149,7 @@ in {
                 text = "<label-muted>";
                 prefix = {
                   text = "";
-                  foreground = ''''${colors.base08}'';
+                  foreground = ''''${colors.red}'';
                 };
               };
             };
@@ -157,14 +158,14 @@ in {
               volume = "%percentage%%";
               muted = {
                 text = " Muted";
-                foreground = ''''${colors.base03}'';
+                foreground = ''''${colors.background03}'';
               };
             };
 
             ramp = {
               volume = {
                 text = ["" "" ""];
-                foreground = ''''${colors.base0D}'';
+                foreground = ''''${colors.blue}'';
               };
               headphones = [""];
             };
@@ -173,11 +174,11 @@ in {
               format = "%fill%%indicator%%empty%";
               width = 11;
               gradient = false;
-              foreground = [''''${colors.base0B}'' ''''${colors.base0B}'' ''''${colors.base09}'' ''''${colors.base09}'' ''''${colors.base08}''];
+              foreground = [''''${colors.green}'' ''''${colors.green}'' ''''${colors.orange}'' ''''${colors.orange}'' ''''${colors.red}''];
 
               indicator = {
                 text = ''''${bar.indicator}'';
-                foreground = ''''${colors.base07}'';
+                foreground = ''''${colors.foreground03}'';
               };
 
               fill = {
@@ -186,7 +187,7 @@ in {
 
               empty = {
                 text = ''''${bar.empty}'';
-                foreground = ''''${colors.base03}'';
+                foreground = ''''${colors.background03}'';
               };
             };
           };
@@ -202,7 +203,7 @@ in {
                 text = "<label-mounted>";
                 prefix = {
                   text = "";
-                  foreground = ''''${colors.base0C}'';
+                  foreground = ''''${colors.teal}'';
                 };
               };
 
@@ -210,7 +211,7 @@ in {
                 text = "<label-unmounted>";
                 prefix = {
                   text = "";
-                  foreground = ''''${colors.base08}'';
+                  foreground = ''''${colors.red}'';
                 };
               };
             };
@@ -227,7 +228,7 @@ in {
               text = "<label>";
               prefix = {
                 text = "";
-                foreground = ''''${colors.base0D}'';
+                foreground = ''''${colors.blue}'';
               };
             };
             label = "%percentage_used:2%%";
@@ -241,7 +242,7 @@ in {
               text = "<label>";
               prefix = {
                 text = "";
-                foreground = ''''${colors.base0A}'';
+                foreground = ''''${colors.yellow}'';
               };
             };
 
@@ -262,8 +263,8 @@ in {
             "inherit" = "network-base";
             interface.type = "wired";
             label.connected = {
-              text = "%{F#${config.colorScheme.colors.base0C}} %downspeed%%{F-} %{F#${config.colorScheme.colors.base0D}}祝 %upspeed%%{F-}";
-              foreground = ''''${colors.base0B}'';
+              text = "%{F#${config.colorScheme.colors.teal}} %downspeed%%{F-} %{F#${config.colorScheme.colors.blue}}祝 %upspeed%%{F-}";
+              foreground = ''''${colors.green}'';
             };
           };
 
@@ -271,8 +272,8 @@ in {
             "inherit" = "network-base";
             interface.type = "wireless";
             label.connected = {
-              text = "%{F#${config.colorScheme.colors.base0C}} %downspeed%%{F-} %{F#${config.colorScheme.colors.base0D}}祝 %upspeed%%{F-}";
-              foreground = ''''${colors.base0B}'';
+              text = "%{F#${config.colorScheme.colors.teal}} %downspeed%%{F-} %{F#${config.colorScheme.colors.blue}}祝 %upspeed%%{F-}";
+              foreground = ''''${colors.green}'';
             };
           };
 
@@ -288,7 +289,7 @@ in {
             type = "custom/text";
             content = {
               text = "|";
-              foreground = ''''${colors.base03}'';
+              foreground = ''''${colors.background03}'';
             };
           };
 
@@ -305,10 +306,10 @@ in {
             interval = 1;
             format.prefix = {
               text = "阮 ";
-              foreground = ''''${colors.base0B}'';
+              foreground = ''''${colors.green}'';
             };
             exec = {
-              text = "${playerctl} --player spotify metadata --format '{{artist}} - {{title}}  %{F#${config.colorScheme.colors.base03}}|%{F-}'";
+              text = "${playerctl} --player spotify metadata --format '{{artist}} - {{title}}  %{F#${config.colorScheme.colors.background03}}|%{F-}'";
               "if" = ''[[ "$(${playerctl} --player spotify status)" = "Playing" ]]'';
             };
           };
@@ -325,26 +326,26 @@ in {
             format = {
               charging = {
                 text = "<animation-charging> <label-charging>";
-                foreground = ''''${colors.base0C}'';
+                foreground = ''''${colors.teal}'';
               };
               discharging = {
                 text = "<ramp-capacity> <label-discharging>";
-                foreground = ''''${colors.base0A}'';
+                foreground = ''''${colors.yellow}'';
               };
               full = {
                 text = "<ramp-capacity> <label-full>";
-                foreground = ''''${colors.base0D}'';
+                foreground = ''''${colors.blue}'';
               };
               low = {
                 text = "<ramp-capacity> <label-low>";
-                foreground = ''''${colors.base08}'';
+                foreground = ''''${colors.red}'';
               };
             };
             label = {
               charging = "%percentage%% %time%";
               discharging = {
                 text = "%percentage%% %time%";
-                foreground = ''''${colors.base07}'';
+                foreground = ''''${colors.foreground03}'';
               };
               low = "%percentage%% %time%";
               full = "Full";
@@ -358,21 +359,21 @@ in {
             label = "%percentage%%";
             ramp = {
               text = ["" "" "" "" "" "" "" "" ""];
-              foreground = ''''${colors.base0E}'';
+              foreground = ''''${colors.orange}'';
             };
             bar = {
               width = 11;
               gradient = false;
-              foreground = [''''${colors.base0B}'' ''''${colors.base0B}'' ''''${colors.base09}'' ''''${colors.base09}'' ''''${colors.base08}''];
+              foreground = [''''${colors.green}'' ''''${colors.green}'' ''''${colors.orange}'' ''''${colors.orange}'' ''''${colors.red}''];
               indicator = {
                 text = ''''${bar.indicator}'';
-                foreground = ''''${colors.base0C}'';
+                foreground = ''''${colors.teal}'';
               };
               format = "%fill%%indicator%%empty%";
               fill = ''''${bar.fill}'';
               empty = {
                 text = ''''${bar.empty}'';
-                foreground = ''''${colors.base03}'';
+                foreground = ''''${colors.background03}'';
               };
             };
           };
@@ -387,7 +388,7 @@ in {
           "module/gamemode" = {
             type = "custom/script";
             interval = 2;
-            format.foreground = ''''${colors.base08}'';
+            format.foreground = ''''${colors.red}'';
             exec-if = "${gamemoded} --status | ${pkgs.gnugrep}/bin/grep 'is active' -q";
             exec = "${pkgs.coreutils-full}/bin/echo ''";
           };

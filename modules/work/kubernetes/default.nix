@@ -37,107 +37,107 @@
         skin = {
           k9s = {
             body = {
-              fgColor = "#${config.colorScheme.colors.base05}";
+              fgColor = "#${config.colorScheme.colors.foreground}";
               bgColor = "default";
-              logoColor = "#${config.colorScheme.colors.base0C}";
+              logoColor = "#${config.colorScheme.colors.teal}";
             };
             prompt = {
-              fgColor = "#${config.colorScheme.colors.base05}";
-              bgColor = "#${config.colorScheme.colors.base00}";
-              suggestColor = "#${config.colorScheme.colors.base0A}";
+              fgColor = "#${config.colorScheme.colors.foreground}";
+              bgColor = "#${config.colorScheme.colors.background}";
+              suggestColor = "#${config.colorScheme.colors.yellow}";
             };
             info = {
-              fgColor = "#${config.colorScheme.colors.base0B}";
-              sectionColor = "#${config.colorScheme.colors.base05}";
+              fgColor = "#${config.colorScheme.colors.green}";
+              sectionColor = "#${config.colorScheme.colors.foreground}";
             };
             dialog = {
-              fgColor = "#${config.colorScheme.colors.base05}";
+              fgColor = "#${config.colorScheme.colors.foreground}";
               bgColor = "default";
-              buttonFgColor = "#${config.colorScheme.colors.base05}";
-              buttonBgColor = "#${config.colorScheme.colors.base0C}";
-              buttonFocusFgColor = "#${config.colorScheme.colors.base0E}";
-              buttonFocusBgColor = "#${config.colorScheme.colors.base0B}";
-              labelFgColor = "#${config.colorScheme.colors.base0A}";
-              fieldFgColor = "#${config.colorScheme.colors.base05}";
+              buttonFgColor = "#${config.colorScheme.colors.foreground}";
+              buttonBgColor = "#${config.colorScheme.colors.teal}";
+              buttonFocusFgColor = "#${config.colorScheme.colors.purple}";
+              buttonFocusBgColor = "#${config.colorScheme.colors.green}";
+              labelFgColor = "#${config.colorScheme.colors.yellow}";
+              fieldFgColor = "#${config.colorScheme.colors.foreground}";
             };
             frame = {
               border = {
-                fgColor = "#${config.colorScheme.colors.base02}";
-                focusColor = "#${config.colorScheme.colors.base01}";
+                fgColor = "#${config.colorScheme.colors.background02}";
+                focusColor = "#${config.colorScheme.colors.background01}";
               };
               menu = {
-                fgColor = "#${config.colorScheme.colors.base05}";
-                keyColor = "#${config.colorScheme.colors.base0B}";
-                numKeyColor = "#${config.colorScheme.colors.base0B}";
+                fgColor = "#${config.colorScheme.colors.foreground}";
+                keyColor = "#${config.colorScheme.colors.green}";
+                numKeyColor = "#${config.colorScheme.colors.green}";
               };
               crumbs = {
-                fgColor = "#${config.colorScheme.colors.base05}";
-                bgColor = "#${config.colorScheme.colors.base01}";
-                activeColor = "#${config.colorScheme.colors.base01}";
+                fgColor = "#${config.colorScheme.colors.foreground}";
+                bgColor = "#${config.colorScheme.colors.background01}";
+                activeColor = "#${config.colorScheme.colors.background01}";
               };
               status = {
-                newColor = "#${config.colorScheme.colors.base05}";
-                modifyColor = "#${config.colorScheme.colors.base0C}";
-                addColor = "#${config.colorScheme.colors.base09}";
-                errorColor = "#${config.colorScheme.colors.base0D}";
-                highlightcolor = "#${config.colorScheme.colors.base0A}";
-                killColor = "#${config.colorScheme.colors.base03}";
-                completedColor = "#${config.colorScheme.colors.base03}";
+                newColor = "#${config.colorScheme.colors.foreground}";
+                modifyColor = "#${config.colorScheme.colors.teal}";
+                addColor = "#${config.colorScheme.colors.orange}";
+                errorColor = "#${config.colorScheme.colors.blue}";
+                highlightcolor = "#${config.colorScheme.colors.yellow}";
+                killColor = "#${config.colorScheme.colors.background03}";
+                completedColor = "#${config.colorScheme.colors.background03}";
               };
               title = {
-                fgColor = "#${config.colorScheme.colors.base05}";
-                bgColor = "#${config.colorScheme.colors.base01}";
-                highlightColor = "#${config.colorScheme.colors.base0A}";
-                counterColor = "#${config.colorScheme.colors.base0C}";
-                filterColor = "#${config.colorScheme.colors.base0B}";
+                fgColor = "#${config.colorScheme.colors.foreground}";
+                bgColor = "#${config.colorScheme.colors.background01}";
+                highlightColor = "#${config.colorScheme.colors.yellow}";
+                counterColor = "#${config.colorScheme.colors.teal}";
+                filterColor = "#${config.colorScheme.colors.green}";
               };
             };
             views = {
               charts = {
                 bgColor = "default";
                 defaultDialColors = [
-                  "#${config.colorScheme.colors.base0C}"
-                  "#${config.colorScheme.colors.base0D}"
+                  "#${config.colorScheme.colors.teal}"
+                  "#${config.colorScheme.colors.blue}"
                 ];
                 defaultChartColors = [
-                  "#${config.colorScheme.colors.base0C}"
-                  "#${config.colorScheme.colors.base0D}"
+                  "#${config.colorScheme.colors.teal}"
+                  "#${config.colorScheme.colors.blue}"
                 ];
               };
               table = {
-                fgColor = "#${config.colorScheme.colors.base05}";
+                fgColor = "#${config.colorScheme.colors.foreground}";
                 bgColor = "default";
                 header = {
-                  fgColor = "#${config.colorScheme.colors.base05}";
+                  fgColor = "#${config.colorScheme.colors.foreground}";
                   bgColor = "default";
-                  sorterColor = "#${config.colorScheme.colors.base08}";
+                  sorterColor = "#${config.colorScheme.colors.red}";
                 };
               };
               xray = {
-                fgColor = "#${config.colorScheme.colors.base05}";
+                fgColor = "#${config.colorScheme.colors.foreground}";
                 bgColor = "default";
-                cursorColor = "#${config.colorScheme.colors.base01}";
-                graphicColor = "#${config.colorScheme.colors.base0C}";
+                cursorColor = "#${config.colorScheme.colors.background01}";
+                graphicColor = "#${config.colorScheme.colors.teal}";
                 showIcons = false;
               };
               yaml = {
-                keyColor = "#${config.colorScheme.colors.base0B}";
-                colonColor = "#${config.colorScheme.colors.base0C}";
-                valueColor = "#${config.colorScheme.colors.base05}";
+                keyColor = "#${config.colorScheme.colors.green}";
+                colonColor = "#${config.colorScheme.colors.teal}";
+                valueColor = "#${config.colorScheme.colors.foreground}";
               };
               logs = {
-                fgColor = "#${config.colorScheme.colors.base05}";
+                fgColor = "#${config.colorScheme.colors.foreground}";
                 bgColor = "default";
                 indicator = {
-                  fgColor = "#${config.colorScheme.colors.base05}";
-                  bgColor = "#${config.colorScheme.colors.base0C}";
+                  fgColor = "#${config.colorScheme.colors.foreground}";
+                  bgColor = "#${config.colorScheme.colors.teal}";
                 };
               };
               help = {
-                fgColor = "#${config.colorScheme.colors.base05}";
-                bgColor = "#${config.colorScheme.colors.base00}";
+                fgColor = "#${config.colorScheme.colors.foreground}";
+                bgColor = "#${config.colorScheme.colors.background}";
                 indicator = {
-                  fgColor = "#${config.colorScheme.colors.base0D}";
+                  fgColor = "#${config.colorScheme.colors.blue}";
                 };
               };
             };

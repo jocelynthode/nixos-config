@@ -39,49 +39,49 @@
           tab_bar_min_tabs = "2";
 
           window_padding_width = 15;
-          foreground = "#${config.colorScheme.colors.base05}";
-          background = "#${config.colorScheme.colors.base00}";
-          selection_background = "#${config.colorScheme.colors.base06}";
-          selection_foreground = "#${config.colorScheme.colors.base00}";
-          url_color = "#${config.colorScheme.colors.base06}";
-          cursor = "#${config.colorScheme.colors.base06}";
-          cursor_text_color = "#${config.colorScheme.colors.base00}";
-          active_border_color = "#${config.colorScheme.colors.base07}";
-          inactive_border_color = "#${config.colorScheme.colors.base01}";
-          active_tab_background = "#${config.colorScheme.colors.base0E}";
-          active_tab_foreground = "#${config.colorScheme.colors.base00}";
-          inactive_tab_background = "#${config.colorScheme.colors.base01}";
-          inactive_tab_foreground = "#${config.colorScheme.colors.base05}";
-          tab_bar_background = "#${config.colorScheme.colors.base03}";
-          bell_border_color = "#${config.colorScheme.colors.base0A}";
-          mark1_foreground = "#${config.colorScheme.colors.base00}";
-          mark1_background = "#${config.colorScheme.colors.base07}";
-          mark2_foreground = "#${config.colorScheme.colors.base00}";
-          mark2_background = "#${config.colorScheme.colors.base0E}";
+          foreground = "#${config.colorScheme.colors.foreground}";
+          background = "#${config.colorScheme.colors.background}";
+          selection_background = "#${config.colorScheme.colors.foreground02}";
+          selection_foreground = "#${config.colorScheme.colors.background}";
+          url_color = "#${config.colorScheme.colors.foreground02}";
+          cursor = "#${config.colorScheme.colors.foreground02}";
+          cursor_text_color = "#${config.colorScheme.colors.background}";
+          active_border_color = "#${config.colorScheme.colors.foreground03}";
+          inactive_border_color = "#${config.colorScheme.colors.background01}";
+          active_tab_background = "#${config.colorScheme.colors.purple}";
+          active_tab_foreground = "#${config.colorScheme.colors.background}";
+          inactive_tab_background = "#${config.colorScheme.colors.background01}";
+          inactive_tab_foreground = "#${config.colorScheme.colors.foreground}";
+          tab_bar_background = "#${config.colorScheme.colors.background03}";
+          bell_border_color = "#${config.colorScheme.colors.yellow}";
+          mark1_foreground = "#${config.colorScheme.colors.background}";
+          mark1_background = "#${config.colorScheme.colors.foreground03}";
+          mark2_foreground = "#${config.colorScheme.colors.background}";
+          mark2_background = "#${config.colorScheme.colors.purple}";
 
           color0 = "#5C5F77";
           color8 = "#6C6F85";
 
-          color1 = "#${config.colorScheme.colors.base08}";
-          color9 = "#${config.colorScheme.colors.base08}";
+          color1 = "#${config.colorScheme.colors.red}";
+          color9 = "#${config.colorScheme.colors.red}";
 
-          color2 = "#${config.colorScheme.colors.base0B}";
-          color10 = "#${config.colorScheme.colors.base0B}";
+          color2 = "#${config.colorScheme.colors.green}";
+          color10 = "#${config.colorScheme.colors.green}";
 
-          color3 = "#${config.colorScheme.colors.base0A}";
-          color11 = "#${config.colorScheme.colors.base0A}";
+          color3 = "#${config.colorScheme.colors.yellow}";
+          color11 = "#${config.colorScheme.colors.yellow}";
 
-          color4 = "#${config.colorScheme.colors.base0D}";
-          color12 = "#${config.colorScheme.colors.base0D}";
+          color4 = "#${config.colorScheme.colors.blue}";
+          color12 = "#${config.colorScheme.colors.blue}";
 
-          color5 = "#EA76CB";
-          color13 = "#EA76CB";
+          color5 = "#${config.colorScheme.colors.pink}";
+          color13 = "#${config.colorScheme.colors.pink}";
 
-          color6 = "#${config.colorScheme.colors.base0C}";
-          color14 = "#${config.colorScheme.colors.base0C}";
+          color6 = "#${config.colorScheme.colors.teal}";
+          color14 = "#${config.colorScheme.colors.teal}";
 
-          color7 = "#${config.colorScheme.colors.base04}";
-          color15 = "#${config.colorScheme.colors.base03}";
+          color7 = "#${config.colorScheme.colors.foreground01}";
+          color15 = "#${config.colorScheme.colors.background03}";
         };
       };
 

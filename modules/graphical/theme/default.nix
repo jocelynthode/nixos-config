@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  nix-colors,
   ...
 }: {
   options.aspects.graphical.theme.enable = lib.mkOption {
@@ -35,12 +34,9 @@
     programs.dconf.enable = true;
     home-manager.users.jocelyn = {
       pkgs,
-      config,
       osConfig,
       ...
-    }: let
-      inherit (nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme;
-    in rec {
+    }: rec {
       home.pointerCursor = {
         name = "Adwaita";
         package = pkgs.gnome.adwaita-icon-theme;
@@ -57,8 +53,13 @@
           inherit (osConfig.aspects.base.fonts.regular) size;
         };
         theme = {
-          name = "${config.colorscheme.slug}";
-          package = gtkThemeFromScheme {scheme = config.colorscheme;};
+          name = "Catppuccin-Latte-Standard-Pink-Light";
+          package = pkgs.catppuccin-gtk.override {
+            accents = ["pink"];
+            size = "standard";
+            tweaks = ["normal"];
+            variant = "latte";
+          };
         };
         iconTheme = {
           name = "Papirus-Light";

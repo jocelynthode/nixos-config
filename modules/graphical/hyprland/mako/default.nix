@@ -15,8 +15,8 @@
         iconPath = "${config.gtk.iconTheme.package}/share/icons/Papirus-Light";
 
         anchor = "top-right";
-        backgroundColor = "#${config.colorScheme.colors.base01}DD";
-        borderColor = "#${config.colorScheme.colors.base0C}FF";
+        backgroundColor = "#${config.colorScheme.colors.background01}DD";
+        borderColor = "#${config.colorScheme.colors.teal}FF";
 
         output = "DP-2";
         borderRadius = 5;
