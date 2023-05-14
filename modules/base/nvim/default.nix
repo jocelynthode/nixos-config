@@ -53,7 +53,7 @@
         nvim-dap-virtual-text
         vim-helm
         telescope-live-grep-args-nvim
-        glance-nvim
+        lspsaga-nvim-original
         nvim-treesitter-textobjects
         {
           plugin = catppuccin-nvim;
@@ -163,6 +163,23 @@
         {
           plugin = nvim-cmp;
           config = builtins.readFile ./plugins/cmp.lua;
+          type = "lua";
+        }
+        {
+          plugin = rust-tools-nvim;
+          config = ''
+            local extension_path = '${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/'
+            local codelldb_path = extension_path .. 'adapter/codelldb'
+            local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
+
+            local opts = {
+                dap = {
+                    adapter = require('rust-tools.dap').get_codelldb_adapter(
+                        codelldb_path, liblldb_path)
+                }
+            }
+            require('rust-tools').setup(opts)
+          '';
           type = "lua";
         }
       ];

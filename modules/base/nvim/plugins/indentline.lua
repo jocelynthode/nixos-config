@@ -2,6 +2,7 @@ local _, indent_blankline = pcall(require, "indent_blankline")
 
 vim.g.indent_blankline_buftype_exclude = { "terminal", "nofile" }
 vim.g.indent_blankline_filetype_exclude = {
+  "alpha",
   "help",
   "startify",
   "dashboard",

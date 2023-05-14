@@ -66,3 +66,22 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   command = "set filetype=json",
   group = _custom_ft,
 })
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    require("lspsaga").setup({})
+    local opts = { buffer = ev.buf }
+    vim.keymap.set('n', 'gh', "<cmd>Lspsaga lsp_finder<CR>", opts)
+    vim.keymap.set('n', 'gp', "<cmd>Lspsaga peek_definition<CR>", opts)
+    vim.keymap.set('n', 'K', "<cmd>Lspsaga hover_doc<CR>", opts)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', 'gy', "<cmd>Lspsaga peek_type_definition<CR>", opts)
+    vim.keymap.set("n", "[E", function()
+      require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
+    end)
+    vim.keymap.set("n", "]E", function()
+      require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+    end)
+  end,
+})

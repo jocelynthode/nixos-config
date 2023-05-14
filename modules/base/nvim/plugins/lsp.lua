@@ -1,6 +1,4 @@
 local _, lspconfig = pcall(require, "lspconfig")
-local _, glance = pcall(require, "glance")
-local glance_actions = glance.actions
 
 local servers = {
   bashls = {},
@@ -76,9 +74,9 @@ local servers = {
 
 local signs = {
   { name = "DiagnosticSignError", text = "" },
-  { name = "DiagnosticSignWarn", text = "" },
-  { name = "DiagnosticSignHint", text = "" },
-  { name = "DiagnosticSignInfo", text = "" },
+  { name = "DiagnosticSignWarn",  text = "" },
+  { name = "DiagnosticSignHint",  text = "" },
+  { name = "DiagnosticSignInfo",  text = "" },
 }
 
 for _, sign in ipairs(signs) do
@@ -184,43 +182,6 @@ local function lsp_highlight_document(client)
   end
 end
 
-local function lsp_keymaps(bufnr)
-  local opts = { noremap = true, silent = true }
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>Glance definitions<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>Glance implementations<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "gy", "<cmd>Glance type_definitions<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-  -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>Glance references<CR>", opts)
-  -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-  -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
-  vim.api.nvim_buf_set_keymap(
-    bufnr,
-    "n",
-    "gl",
-    '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" })<CR>',
-    opts
-  )
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-  vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format { async = true }' ]])
-end
-
-local function lsp_format_on_save(client, bufnr)
-  if client.supports_method("textDocument/formatting") then
-    local LspFormatting = vim.api.nvim_create_augroup("LspFormatting", { clear = true })
-    vim.api.nvim_clear_autocmds({ group = LspFormatting, buffer = bufnr })
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      group = LspFormatting,
-      buffer = bufnr,
-      callback = vim.lsp.buf.formatting_sync,
-    })
-  end
-end
-
 local on_attach = function(client, bufnr)
   if client.name == "tsserver" then
     client.server_capabilities.documentFormattingProvider = false
@@ -233,10 +194,7 @@ local on_attach = function(client, bufnr)
       vim.diagnostic.disable(bufnr)
     end
   end
-
-  lsp_keymaps(bufnr)
   lsp_highlight_document(client)
-  --[[ lsp_format_on_save(client, bufnr) ]]
 end
 
 local _, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
@@ -258,9 +216,7 @@ end
 
 local _, null_ls = pcall(require, "null-ls")
 
--- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
 local formatting = null_ls.builtins.formatting
--- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
 local diagnostics = null_ls.builtins.diagnostics
 local code_actions = null_ls.builtins.code_actions
 
@@ -278,18 +234,5 @@ null_ls.setup({
     diagnostics.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
     -- Docker
     diagnostics.hadolint,
-  },
-  --[[ on_attach = lsp_format_on_save, ]]
-})
-
-glance.setup({
-  mappings = {
-    list = {
-      ['l'] = glance_actions.jump,
-    },
-    preview = {
-      ['q'] = glance_actions.close,
-      ['<Esc>'] = glance_actions.close,
-    },
   },
 })
