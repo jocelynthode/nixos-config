@@ -105,11 +105,11 @@ in {
         "$character"
       ];
       cmd_duration = {
-        format = " [祥$duration]($style) ";
+        format = " [⏱ $duration]($style) ";
       };
       directory = {
         truncation_symbol = "…/";
-        read_only = " ";
+        read_only = " 󰌾";
       };
       fill = {
         symbol = "·";

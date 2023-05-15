@@ -22,9 +22,9 @@ pkgs.writeShellApplication {
         is_muted="''$(is_mic_muted)"
 
         if [ "''${is_muted}" = "yes" ]; then
-            printf "%s\n" "%{F#${config.colorScheme.colors.red}}%{F-}"
+            printf "%s\n" "%{F#${config.colorScheme.colors.red}}%{F-}"
         else
-            printf "%s\n" ""
+            printf "%s\n" ""
         fi
     }
 

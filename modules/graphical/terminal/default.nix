@@ -29,8 +29,8 @@
           tab_bar_style = "custom";
           tab_separator = "\" ▎\"";
           tab_fade = "0 0 0 0";
-          tab_title_template = "\"{fmt.fg._415c6d}{fmt.bg.default} ○ {index}:{f'{title[:6]}…{title[-6:]}' if title.rindex(title[-1]) + 1 > 13 else title}{' []' if layout_name == 'stack' else ''} \"";
-          active_tab_title_template = "\"{fmt.fg._83b6af}{fmt.bg.default} 綠{index}:{f'{title[:6]}…{title[-6:]}' if title.rindex(title[-1]) + 1 > 13 else title}{' []' if layout_name == 'stack' else ''} \"";
+          tab_title_template = "\"{fmt.fg._415c6d}{fmt.bg.default}  {index}:{f'{title[:6]}…{title[-6:]}' if title.rindex(title[-1]) + 1 > 13 else title}{' []' if layout_name == 'stack' else ''} \"";
+          active_tab_title_template = "\"{fmt.fg._83b6af}{fmt.bg.default} 󰪥 {index}:{f'{title[:6]}…{title[-6:]}' if title.rindex(title[-1]) + 1 > 13 else title}{' []' if layout_name == 'stack' else ''} \"";
           tab_activity_symbol = "none";
           tab_bar_edge = "top";
           tab_bar_margin_height = "0.0 0.0";

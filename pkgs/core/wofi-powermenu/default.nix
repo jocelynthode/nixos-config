@@ -6,7 +6,7 @@ pkgs.writeShellApplication {
   runtimeInputs = with pkgs; [systemd wofi coreutils gnugrep];
 
   text = ''
-    entries=" Lock\n Logout\n鈴 Suspend\n Hibernate\n⭮ Reboot\n Shutdown"
+    entries=" Lock\n󰍃 Logout\n󰒲 Suspend\n󰋊 Hibernate\n⭮ Reboot\n Shutdown"
 
     selected=$(echo -e $entries|wofi --insensitive -W 10% -H 20% --dmenu --cache-file /dev/null | awk '{print tolower($2)}')
 

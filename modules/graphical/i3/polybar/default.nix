@@ -263,7 +263,7 @@ in {
             "inherit" = "network-base";
             interface.type = "wired";
             label.connected = {
-              text = "%{F#${config.colorScheme.colors.teal}} %downspeed%%{F-} %{F#${config.colorScheme.colors.blue}}祝 %upspeed%%{F-}";
+              text = "%{F#${config.colorScheme.colors.teal}}󰇚 %downspeed%%{F-} %{F#${config.colorScheme.colors.blue}}󰕒 %upspeed%%{F-}";
               foreground = ''''${colors.green}'';
             };
           };
@@ -272,7 +272,7 @@ in {
             "inherit" = "network-base";
             interface.type = "wireless";
             label.connected = {
-              text = "%{F#${config.colorScheme.colors.teal}} %downspeed%%{F-} %{F#${config.colorScheme.colors.blue}}祝 %upspeed%%{F-}";
+              text = "%{F#${config.colorScheme.colors.teal}}󰇚 %downspeed%%{F-} %{F#${config.colorScheme.colors.blue}}󰕒 %upspeed%%{F-}";
               foreground = ''''${colors.green}'';
             };
           };
@@ -305,7 +305,7 @@ in {
             type = "custom/script";
             interval = 1;
             format.prefix = {
-              text = "阮 ";
+              text = "󰓇 ";
               foreground = ''''${colors.green}'';
             };
             exec = {
@@ -321,8 +321,8 @@ in {
             battery = "BAT1";
             adapter = "ACAD";
             time-format = "%H:%M";
-            ramp.capacity = ["" "" "" "" "" "" "" "" "" ""];
-            animation.charging = ["" "" "" "" "" "" "" "" "" ""];
+            ramp.capacity = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+            animation.charging = ["󰢜" "󰂆" "󰂇" "󰂈" "󰢝" "󰂉" "󰢞" "󰂊" "󰂋" "󰂅"];
             format = {
               charging = {
                 text = "<animation-charging> <label-charging>";
@@ -358,7 +358,7 @@ in {
             format = "<ramp> <bar>";
             label = "%percentage%%";
             ramp = {
-              text = ["" "" "" "" "" "" "" "" ""];
+              text = ["󰃚" "󰃛" "󰃜" "󰃝" "󰃞" "󰃟" "󰃠"];
               foreground = ''''${colors.orange}'';
             };
             bar = {

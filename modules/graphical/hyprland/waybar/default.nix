@@ -101,7 +101,7 @@
               format-muted = "<span color=\"#${config.colorScheme.colors.red}\"></span>   0%";
               format-icons = {
                 headphone = "";
-                headset = "";
+                headset = "󰋎";
                 portable = "";
                 default = ["" "" ""];
               };
@@ -110,24 +110,24 @@
               bat = "BAT1";
               full-at = 85;
               interval = 10;
-              format-icons = ["" "" "" "" "" "" "" "" "" ""];
+              format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
               states = {
                 warning = 30;
                 critical = 20;
               };
               format = "{icon} {capacity}%";
               format-discharging = "{icon} {capacity}%";
-              format-charging = " {capacity}% {time}";
+              format-charging = "󰂅 {capacity}% {time}";
               format-full = "{icon}";
             };
             backlight = {
               device = "intel_backlight";
-              format-icons = ["" "" "" "" "" "" "" "" ""];
+              format-icons = ["󰃚" "󰃛" "󰃜" "󰃝" "󰃞" "󰃟" "󰃠"];
               format = "<span color=\"#${config.colorScheme.colors.orange}\">{icon}</span> {percent}%";
             };
             network = {
               interval = 3;
-              format = "<span color=\"#${config.colorScheme.colors.teal}\">  {bandwidthDownBytes}</span>  <span color=\"#${config.colorScheme.colors.blue}\">祝 {bandwidthUpBytes}</span>";
+              format = "<span color=\"#${config.colorScheme.colors.teal}\">󰇚  {bandwidthDownBytes}</span>  <span color=\"#${config.colorScheme.colors.blue}\">󰕒 {bandwidthUpBytes}</span>";
               format-disconnected = "";
               tooltip-format = ''
                 {ifname}
@@ -138,7 +138,7 @@
             gamemode = {
               format = "{glyph}";
               format-alt = "{glyph}";
-              glyph = "";
+              glyph = "";
               use-icon = false;
               tooltip = false;
             };
@@ -146,10 +146,10 @@
               interval = 2;
               format = " {status}";
               format-on = "";
-              format-off = "<span color=\"#${config.colorScheme.colors.background03}\"></span>";
-              format-disabled = "<span color=\"#${config.colorScheme.colors.background03}\"></span>";
-              format-connected = "<span color=\"#${config.colorScheme.colors.blue}\"></span> {device_alias}";
-              format-connected-battery = "<span color=\"#${config.colorScheme.colors.blue}\"></span> {device_alias} {device_battery_percentage}%";
+              format-off = "<span color=\"#${config.colorScheme.colors.background03}\">󰂲</span>";
+              format-disabled = "<span color=\"#${config.colorScheme.colors.background03}\">󰂲</span>";
+              format-connected = "<span color=\"#${config.colorScheme.colors.blue}\"></span> {device_alias}";
+              format-connected-battery = "<span color=\"#${config.colorScheme.colors.blue}\"></span> {device_alias} {device_battery_percentage}%";
               # TODO FIX toggle bluetooth not working
               on-click-left = "${pkgs.toggle-bluetooth}/bin/toggle_bluetooth";
               on-click-right = "${blueberry} &";
@@ -173,7 +173,7 @@
               # exec = " '";
               format = "<span color=\"#${config.colorScheme.colors.green}\">{icon}</span> {}";
               format-icons = {
-                "Playing" = "阮 ";
+                "Playing" = "󰓇 ";
               };
             };
             "custom/sep" = {
@@ -209,17 +209,17 @@
               };
               format = "{icon}";
               format-icons = {
-                "activating" = " ";
-                "deactivating" = " ";
-                "inactive" = " ";
-                "active (Night)" = " ";
-                "active (Nighttime)" = " ";
-                "active (Transition (Night)" = " ";
-                "active (Transition (Nighttime)" = " ";
-                "active (Day)" = " ";
-                "active (Daytime)" = " ";
-                "active (Transition (Day)" = " ";
-                "active (Transition (Daytime)" = " ";
+                "activating" = "󱧢 ";
+                "deactivating" = "󱧡 ";
+                "inactive" = "󱠃 ";
+                "active (Night)" = "󱠂 ";
+                "active (Nighttime)" = "󱠂 ";
+                "active (Transition (Night)" = "󱠂 ";
+                "active (Transition (Nighttime)" = "󱠂 ";
+                "active (Day)" = "󱠂 ";
+                "active (Daytime)" = "󱠂 ";
+                "active (Transition (Day)" = "󱠂 ";
+                "active (Transition (Daytime)" = "󱠂 ";
               };
               on-click = "${systemctl} --user is-active gammastep && ${systemctl} --user stop gammastep || ${systemctl} --user start gammastep";
             };
