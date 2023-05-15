@@ -5,47 +5,19 @@ if not config_status_ok then
   return
 end
 
--- globals must be set prior to requiring nvim-tree to function
-local g = vim.g
-
-
-local tree_cb = nvim_tree_config.nvim_tree_callback
-
 local function open_nvim_tree(data)
-  local IGNORED_FT = {
-    "startify",
-    "dashboard",
-    "alpha",
-    "taxi",
-  }
-  local filetype = vim.bo[data.buf].ft
-
-  -- buffer is a [No Name]
-  local no_name = data.file == "" and vim.bo[data.buf].buftype == ""
-
   -- buffer is a directory
   local directory = vim.fn.isdirectory(data.file) == 1
 
-  if not no_name and not directory then
+  if not directory then
     return
   end
 
-  -- change to the directory
-  if directory then
-    vim.cmd.cd(data.file)
-  end
-
-  -- skip ignored filetypes
-  if vim.tbl_contains(IGNORED_FT, filetype) then
-    return
-  end
-
-  -- open the tree
+  vim.cmd.cd(data.file)
   require("nvim-tree.api").tree.open()
 end
 
 vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
-
 local function on_attach(bufnr)
   local api = require('nvim-tree.api')
 
@@ -132,11 +104,10 @@ nvim_tree.setup({
       "^\\.direnv$",
     },
   },
-  disable_netrw = false,
-  hijack_netrw = true,
+  disable_netrw = true,
+  hijack_netrw = false,
   open_on_tab = true,
   hijack_cursor = true,
-  hijack_unnamed_buffer_when_opening = false,
   update_cwd = true,
   update_focused_file = {
     enable = true,

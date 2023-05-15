@@ -5,12 +5,12 @@
 }:
 vimUtils.buildVimPluginFrom2Nix {
   pname = "search-replace-nvim";
-  version = "2023-01-05";
+  version = "unstable-2023-01-08";
   src = fetchFromGitHub {
     owner = "roobert";
     repo = "search-replace.nvim";
-    rev = "582981f2795fff2a79d3a60844552047a397bffa";
-    sha256 = "sha256-k5FgWYr7rSe9TxQTnng+BDf/FUmqOvkF4giPwtMlFFk=";
+    rev = "b3485c9cd14319c5320bbdd74af0b3c67733490d";
+    hash = "sha256-iPtviRmPOVncVSa7mySS7nS07Sh6Ma7NUVUZbpVXToU=";
   };
   meta.homepage = "https://github.com/roobert/search-replace.nvim";
 }

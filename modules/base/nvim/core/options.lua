@@ -54,3 +54,7 @@ notify.setup({
   background_colour = "#000000",
 })
 vim.notify = notify
+
+-- For NvimTree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1

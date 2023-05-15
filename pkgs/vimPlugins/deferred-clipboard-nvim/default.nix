@@ -3,14 +3,15 @@
   fetchFromGitHub,
   ...
 }:
-vimUtils.buildVimPluginFrom2Nix {
+vimUtils.buildVimPluginFrom2Nix rec {
   pname = "deferred-clipboard-nvim";
-  version = "2023-01-05";
+  version = "0.8.0";
+
   src = fetchFromGitHub {
     owner = "EtiamNullam";
     repo = "deferred-clipboard.nvim";
-    rev = "f5022be07dea085c2b56fd26e86718f1ee19cf21";
-    sha256 = "sha256-PxeggFnwzqGfvb7ZjUT1ixksnpaT9rZYPK//O5f2TXk=";
+    rev = "v${version}";
+    hash = "sha256-nanNQEtpjv0YKEkkrPmq/5FPxq+Yj/19cs0Gf7YgKjU=";
   };
   meta.homepage = "https://github.com/EtiamNullam/deferred-clipboard.nvim";
 }

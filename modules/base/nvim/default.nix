@@ -14,20 +14,10 @@
       withRuby = false;
 
       plugins = with pkgs.vimPlugins; [
-        # Mulst always be at the top
-        {
-          plugin = impatient-nvim;
-          config = (builtins.readFile ./plugins/impatient.lua) + (builtins.readFile ./core/mappings.lua) + (builtins.readFile ./core/options.lua) + (builtins.readFile ./core/autocmds.lua) + (builtins.readFile ./core/utils.lua);
-          type = "lua";
-        }
-
-        popup-nvim
         plenary-nvim
         nvim-web-devicons
         vim-bbye
         lualine-lsp-progress
-        FixCursorHold-nvim
-        # nvim-base16
         better-escape-nvim
         nvim-ts-context-commentstring
         telescope-ui-select-nvim
@@ -55,6 +45,12 @@
         telescope-live-grep-args-nvim
         lspsaga-nvim-original
         nvim-treesitter-textobjects
+        nvim-lsp-notify
+        {
+          plugin = alpha-nvim;
+          config = builtins.readFile ./plugins/alpha.lua;
+          type = "lua";
+        }
         {
           plugin = catppuccin-nvim;
           config = builtins.readFile ./plugins/theme.lua;
@@ -151,11 +147,6 @@
           type = "lua";
         }
         {
-          plugin = alpha-nvim;
-          config = builtins.readFile ./plugins/alpha.lua;
-          type = "lua";
-        }
-        {
           plugin = which-key-nvim;
           config = builtins.readFile ./plugins/whichkey.lua;
           type = "lua";
@@ -221,6 +212,15 @@
           debugpy
           setuptools
         ];
+
+      extraLuaConfig =
+        ''
+          vim.loader.enable()
+        ''
+        + (builtins.readFile ./core/mappings.lua)
+        + (builtins.readFile ./core/options.lua)
+        + (builtins.readFile ./core/autocmds.lua)
+        + (builtins.readFile ./core/utils.lua);
 
       # We must require plugin before colorscheme
       # extraConfig = ''
