@@ -38,6 +38,7 @@ local options = {
   sidescrolloff = 8,
   guifont = "JetBrainsMono Nerd Font Mono:h11", -- the font used in graphical neovim applications
   laststatus = 3,
+  inccommand = 'split',
 }
 
 vim.opt.shortmess:append("c")
