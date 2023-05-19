@@ -47,17 +47,15 @@
   services.snapper = {
     configs = {
       persist = {
-        subvolume = config.aspects.base.persistence.persistPrefix;
-        extraConfig = ''
-          ALLOW_USERS="jocelyn"
-          TIMELINE_CREATE="yes"
-          TIMELINE_CLEANUP="yes"
-          TIMELINE_LIMIT_HOURLY="10"
-          TIMELINE_LIMIT_DAILY="3"
-          TIMELINE_LIMIT_WEEKLY="0"
-          TIMELINE_LIMIT_MONTHLY="0"
-          TIMELINE_LIMIT_YEARLY="0"
-        '';
+        SUBVOLUME = config.aspects.base.persistence.persistPrefix;
+        ALLOW_USERS = ["jocelyn"];
+        TIMELINE_CREATE = true;
+        TIMELINE_CLEANUP = true;
+        TIMELINE_LIMIT_HOURLY = 10;
+        TIMELINE_LIMIT_DAILY = 3;
+        TIMELINE_LIMIT_WEEKLY = 0;
+        TIMELINE_LIMIT_MONTHLY = 0;
+        TIMELINE_LIMIT_YEARLY = 0;
       };
     };
   };

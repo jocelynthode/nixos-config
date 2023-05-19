@@ -41,11 +41,13 @@
         nvim-dap-python
         nvim-dap-go
         nvim-dap-virtual-text
+        nvim-dap-repl-highlights
         vim-helm
         telescope-live-grep-args-nvim
         lspsaga-nvim-original
         nvim-treesitter-textobjects
         nvim-lsp-notify
+        crates-nvim
         {
           plugin = alpha-nvim;
           config = builtins.readFile ./plugins/alpha.lua;
@@ -103,7 +105,7 @@
         }
         {
           plugin = deferred-clipboard-nvim;
-          config = "require('deferred-clipboard').setup()\n";
+          config = "require('deferred-clipboard').setup({fallback = 'unnamedplus'})\n";
           type = "lua";
         }
         {
@@ -170,6 +172,12 @@
                 }
             }
             require('rust-tools').setup(opts)
+            require('crates').setup({
+              null_ls = {
+                  enabled = true,
+                  name = "crates.nvim",
+              },
+            })
           '';
           type = "lua";
         }
@@ -187,6 +195,7 @@
         nodePackages.vscode-json-languageserver
         nodePackages.vim-language-server
         nodePackages.dockerfile-language-server-nodejs
+        nodePackages.pyright
 
         nil
         alejandra
@@ -201,14 +210,13 @@
         gitlint
         shfmt
         hadolint
+        python3Packages.black
+        python3Packages.flake8
       ];
 
       # use python3_host_prog as python path to use here
       extraPython3Packages = ps:
         with ps; [
-          python-lsp-server
-          python-lsp-black
-          pyls-isort
           debugpy
           setuptools
         ];

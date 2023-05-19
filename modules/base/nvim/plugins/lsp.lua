@@ -4,9 +4,7 @@ local servers = {
   bashls = {},
   gopls = {},
   dockerls = {},
-  pylsp = {
-    cmd = { vim.g.python3_host_prog, '-m', 'pylsp' },
-  },
+  pyright = {},
   nil_ls = {
     settings = {
       ['nil'] = {
@@ -195,6 +193,9 @@ null_ls.setup({
     diagnostics.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
     -- Docker
     diagnostics.hadolint,
+    -- Python
+    formatting.black,
+    diagnostics.flake8,
   },
 })
 

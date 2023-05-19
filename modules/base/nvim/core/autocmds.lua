@@ -70,7 +70,11 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
-    require("lspsaga").setup({})
+    require("lspsaga").setup({
+      finder = {
+        expand_or_jump = { 'o', 'l' },
+      },
+    })
     local opts = { buffer = ev.buf }
     vim.keymap.set('n', 'gh', "<cmd>Lspsaga lsp_finder<CR>", opts)
     vim.keymap.set('n', 'gp', "<cmd>Lspsaga peek_definition<CR>", opts)

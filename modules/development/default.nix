@@ -8,6 +8,7 @@
     ./containers
     ./libvirt
     ./qmk
+    ./rust
   ];
 
   options.aspects.development.enable = lib.mkOption {
@@ -20,8 +21,9 @@
       development = {
         android.enable = lib.mkDefault true;
         containers.enable = lib.mkDefault true;
-        qmk.enable = lib.mkDefault true;
         libvirt.enable = lib.mkDefault true;
+        qmk.enable = lib.mkDefault true;
+        rust.enable = lib.mkDefault true;
       };
     };
   };
