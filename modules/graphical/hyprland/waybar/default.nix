@@ -241,7 +241,7 @@
           .modules-left {
             margin-left: -15px;
           }
-          window#waybar.top {
+          window#waybar.primary {
             color: #${colors.foreground};
             opacity: 0.85;
             background-color: #${colors.background};
