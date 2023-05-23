@@ -4,6 +4,7 @@
   lib,
   ...
 }: {
+  # TODO: Have bar on one screen and variabilize output
   config = lib.mkIf config.aspects.graphical.hyprland.enable {
     home-manager.users.jocelyn = {
       config,
@@ -76,6 +77,7 @@
             "wlr/workspaces" = {
               on-click = "activate";
               all-outputs = true;
+              sort-by-number = true;
             };
             clock = {
               format = "{:<span color=\"#${config.colorScheme.colors.purple}\"> </span> %a, %d %b %Y at %H:%M:%S}";

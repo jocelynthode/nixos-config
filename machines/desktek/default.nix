@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   imports = [./hardware.nix];
 
   # Machine-specific module settings
@@ -31,6 +31,29 @@
                 criteria = "HDMI-A-1";
                 position = "0,0";
               }
+            ];
+            exec = [
+              "${pkgs.hyprland}/bin/hyprctl keyword workspace 1,monitor:DP-2,default:true"
+              "${pkgs.hyprland}/bin/hyprctl keyword workspace 2,monitor:DP-2"
+              "${pkgs.hyprland}/bin/hyprctl keyword workspace 3,monitor:DP-2"
+              "${pkgs.hyprland}/bin/hyprctl keyword workspace 4,monitor:DP-2"
+              "${pkgs.hyprland}/bin/hyprctl keyword workspace 5,monitor:DP-2"
+              "${pkgs.hyprland}/bin/hyprctl keyword workspace 6,monitor:HDMI-A-1,default:true"
+              "${pkgs.hyprland}/bin/hyprctl keyword workspace 7,monitor:HDMI-A-1"
+              "${pkgs.hyprland}/bin/hyprctl keyword workspace 8,monitor:HDMI-A-1"
+              "${pkgs.hyprland}/bin/hyprctl keyword workspace 9,monitor:HDMI-A-1"
+              "${pkgs.hyprland}/bin/hyprctl keyword workspace 10,monitor:HDMI-A-1"
+
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"1 DP-2\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"2 DP-2\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"3 DP-2\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"4 DP-2\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"5 DP-2\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"6 HDMI-A-1\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"7 HDMI-A-1\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"8 HDMI-A-1\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"9 HDMI-A-1\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"10 HDMI-A-1\""
             ];
           };
         };

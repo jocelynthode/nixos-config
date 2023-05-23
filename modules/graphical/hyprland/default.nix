@@ -94,6 +94,7 @@
         wl-clipboard
         ydotool
         hyprpaper
+        hyprprop
       ];
 
       wayland.windowManager.hyprland = {
@@ -188,17 +189,6 @@
           windowrule=workspace 9,Bitwarden
           windowrule=opacity 0.85,Spotify
           windowrule=tile,Spotify
-
-          workspace=1,monitor:DP-4,default:true
-          workspace=2,monitor:DP-4
-          workspace=3,monitor:DP-4
-          workspace=4,monitor:DP-4
-          workspace=5,monitor:DP-4
-          workspace=6,monitor:eDP-1,default:true
-          workspace=7,monitor:eDP-1
-          workspace=8,monitor:eDP-1
-          workspace=9,monitor:eDP-1
-          workspace=10,monitor:eDP-1
         '';
       };
     };
