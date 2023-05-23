@@ -14,6 +14,8 @@
       lightdm.fprintAuth = false;
       xscreensaver.fprintAuth = false;
       i3lock.fprintAuth = false;
+      swaylock.fprintAuth = false;
+      greetd.fprintAuth = false;
       sudo.fprintAuth = true;
     };
 

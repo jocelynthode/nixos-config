@@ -13,48 +13,61 @@
     graphical = {
       enable = true;
       wallpaper = "lavenders";
-      # i3.enable = false;
-      # hyprland.enable = true;
       fingerprint.enable = true;
-      hyprland.kanshi.profiles = {
-        laptop = {
-          outputs = [
-            {
-              criteria = "eDP-1";
-              scale = 1.2;
-            }
-          ];
-          exec = [
-            "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"6 eDP-1\""
-            "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"7 eDP-1\""
-            "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"8 eDP-1\""
-            "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"9 eDP-1\""
-            "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"10 eDP-1\""
-          ];
-        };
-        work = {
-          outputs = [
-            {
-              criteria = "eDP-1";
-              position = "0,2160";
-              scale = 1.2;
-            }
-            {
-              criteria = "DP-4";
-              position = "0,0";
-              scale = 1.2;
-            }
-          ];
-          exec = [
-            "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"6 DP-4\""
-            "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"7 DP-4\""
-            "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"8 DP-4\""
-            "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"9 DP-4\""
-            "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"10 DP-4\""
-          ];
+      hyprland = {
+        enable = true;
+        dpi = 144;
+        kanshi.profiles = {
+          laptop = {
+            outputs = [
+              {
+                criteria = "eDP-1";
+                scale = 1.5;
+              }
+            ];
+            exec = [
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"1 eDP-1\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"2 eDP-1\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"3 eDP-1\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"4 eDP-1\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"5 eDP-1\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"6 eDP-1\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"7 eDP-1\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"8 eDP-1\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"9 eDP-1\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"10 eDP-1\""
+            ];
+          };
+          work = {
+            outputs = [
+              {
+                criteria = "eDP-1";
+                position = "0,0";
+                scale = 1.5;
+              }
+              {
+                criteria = "DP-4";
+                position = "0,1504";
+                scale = 1.5;
+              }
+            ];
+            exec = [
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"1 DP-4\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"2 DP-4\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"3 DP-4\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"4 DP-4\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"5 DP-4\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"6 eDP-1\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"7 eDP-1\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"8 eDP-1\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"9 eDP-1\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"10 eDP-1\""
+            ];
+          };
         };
       };
       i3 = {
+        enable = false;
         dpi = 144;
         autorandr.profiles = {
           "laptop" = {

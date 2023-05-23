@@ -186,22 +186,19 @@
           windowrule=workspace 7,Signal
           windowrule=workspace 8,Spotify
           windowrule=workspace 9,Bitwarden
-          windowrule=opacity 0.90,kitty
           windowrule=opacity 0.85,Spotify
           windowrule=tile,Spotify
 
-          workspace=DP-2,1
-          workspace=HDMI-A-1,6
-          wsbind=1,DP-2
-          wsbind=2,DP-2
-          wsbind=3,DP-2
-          wsbind=4,DP-2
-          wsbind=5,DP-2
-          wsbind=6,HDMI-A-1
-          wsbind=7,HDMI-A-1
-          wsbind=8,HDMI-A-1
-          wsbind=9,HDMI-A-1
-          wsbind=10,HDMI-A-1
+          workspace=1,monitor:DP-4,default:true
+          workspace=2,monitor:DP-4
+          workspace=3,monitor:DP-4
+          workspace=4,monitor:DP-4
+          workspace=5,monitor:DP-4
+          workspace=6,monitor:eDP-1,default:true
+          workspace=7,monitor:eDP-1
+          workspace=8,monitor:eDP-1
+          workspace=9,monitor:eDP-1
+          workspace=10,monitor:eDP-1
         '';
       };
     };

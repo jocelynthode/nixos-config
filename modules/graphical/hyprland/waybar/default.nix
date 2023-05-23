@@ -47,7 +47,7 @@
             # width = 100;
             margin = "0";
             position = "top";
-            output = ["DP-2" "eDP-1"];
+            output = ["DP-4" "eDP-1"];
             modules-left = [
               "wlr/workspaces"
               "custom/sep"
@@ -82,23 +82,23 @@
               interval = 1;
             };
             cpu = {
-              format = "<span color=\"#${config.colorScheme.colors.yellow}\"></span>  {usage}%";
+              format = "<span color=\"#${config.colorScheme.colors.yellow}\"></span>  {usage}% ";
             };
             memory = {
-              format = "<span color=\"#${config.colorScheme.colors.blue}\"></span> {}%";
+              format = "<span color=\"#${config.colorScheme.colors.blue}\"></span> {}% ";
               interval = 5;
             };
             disk = {
               interval = 30;
               path = "/";
-              format = "<span color=\"#${config.colorScheme.colors.teal}\"></span>  {free}";
+              format = "<span color=\"#${config.colorScheme.colors.teal}\"></span>  {free} ";
             };
             pulseaudio = {
-              format = "{format_source}  {icon} {volume}%";
+              format = "{format_source}  {icon} {volume}% ";
               on-click-right = "${pkgs.pavucontrol}/bin/pavucontrol";
-              format-source = " {volume}%";
-              format-source-muted = "<span color=\"#${config.colorScheme.colors.red}\"></span> 0%";
-              format-muted = "<span color=\"#${config.colorScheme.colors.red}\"></span>   0%";
+              format-source = " {volume}% ";
+              format-source-muted = "<span color=\"#${config.colorScheme.colors.red}\"></span> 0% ";
+              format-muted = "<span color=\"#${config.colorScheme.colors.red}\"></span>   0% ";
               format-icons = {
                 headphone = "";
                 headset = "󰋎";
@@ -123,7 +123,7 @@
             backlight = {
               device = "intel_backlight";
               format-icons = ["󰃚" "󰃛" "󰃜" "󰃝" "󰃞" "󰃟" "󰃠"];
-              format = "<span color=\"#${config.colorScheme.colors.orange}\">{icon}</span> {percent}%";
+              format = "<span color=\"#${config.colorScheme.colors.orange}\">{icon}</span> {percent}% ";
             };
             network = {
               interval = 3;
@@ -171,7 +171,7 @@
                 tooltip = "Spotify is $status";
               };
               # exec = " '";
-              format = "<span color=\"#${config.colorScheme.colors.green}\">{icon}</span> {}";
+              format = "<span color=\"#${config.colorScheme.colors.green}\">{icon}</span> {} | ";
               format-icons = {
                 "Playing" = "󰓇 ";
               };
