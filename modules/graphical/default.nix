@@ -10,6 +10,7 @@
     ./hyprland
     ./i3
     ./mpv
+    ./notification
     ./printer
     ./rofi
     ./screenshot
@@ -43,6 +44,7 @@
         i3.enable = lib.mkDefault true;
         hyprland.enable = lib.mkDefault false;
         mpv.enable = lib.mkDefault true;
+        notification.enable = lib.mkDefault true;
         printer.enable = lib.mkDefault false;
         screenshot.enable = lib.mkDefault true;
         rofi.enable = lib.mkDefault true;

@@ -6,7 +6,6 @@
 }: {
   imports = [
     ./autorandr
-    ./dunst
     ./picom
     ./polybar
   ];

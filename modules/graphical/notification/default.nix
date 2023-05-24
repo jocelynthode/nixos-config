@@ -6,6 +6,10 @@
 }: let
   sound_script = "${pkgs.dunst-notification-sound}/bin/dunst-notification-sound";
 in {
+  options.aspects.graphical.notification = {
+    enable = lib.mkEnableOption "notification";
+  };
+
   config = lib.mkIf config.aspects.graphical.i3.enable {
     home-manager.users.jocelyn = {
       config,

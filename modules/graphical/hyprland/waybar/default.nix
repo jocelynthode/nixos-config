@@ -51,7 +51,6 @@
             output = ["DP-4" "eDP-1"];
             modules-left = [
               "wlr/workspaces"
-              "custom/sep"
               "cpu"
               "memory"
               "disk"
@@ -63,15 +62,12 @@
             modules-right = [
               "network"
               "bluetooth"
-              "custom/sep"
               "custom/gammastep"
               "custom/gpg-agent"
               "gamemode"
-              "custom/sep"
               "pulseaudio"
               "backlight"
               "battery"
-              "custom/sep"
               "tray"
             ];
             "wlr/workspaces" = {
@@ -93,14 +89,14 @@
             disk = {
               interval = 30;
               path = "/";
-              format = "<span color=\"#${config.colorScheme.colors.teal}\"></span>  {free} ";
+              format = "<span color=\"#${config.colorScheme.colors.teal}\"></span> {free} ";
             };
             pulseaudio = {
-              format = "{format_source}  {icon} {volume}% ";
+              format = "{format_source} {icon} {volume}% ";
               on-click-right = "${pkgs.pavucontrol}/bin/pavucontrol";
-              format-source = " {volume}% ";
-              format-source-muted = "<span color=\"#${config.colorScheme.colors.red}\"></span> 0% ";
-              format-muted = "<span color=\"#${config.colorScheme.colors.red}\"></span>   0% ";
+              format-source = " {volume}%";
+              format-source-muted = "<span color=\"#${config.colorScheme.colors.red}\"></span> 0%";
+              format-muted = "<span color=\"#${config.colorScheme.colors.red}\"></span>   0%";
               format-icons = {
                 headphone = "";
                 headset = "󰋎";
@@ -117,10 +113,10 @@
                 warning = 30;
                 critical = 20;
               };
-              format = "{icon} {capacity}%";
-              format-discharging = "{icon} {capacity}%";
-              format-charging = "󰂅 {capacity}% {time}";
-              format-full = "{icon}";
+              format = "{icon} {capacity}% ";
+              format-discharging = "{icon} {capacity}% ";
+              format-charging = "󰂅 {capacity}% {time} ";
+              format-full = "{icon} ";
             };
             backlight = {
               device = "intel_backlight";
@@ -129,7 +125,7 @@
             };
             network = {
               interval = 3;
-              format = "<span color=\"#${config.colorScheme.colors.teal}\">󰇚  {bandwidthDownBytes}</span>  <span color=\"#${config.colorScheme.colors.blue}\">󰕒 {bandwidthUpBytes}</span>";
+              format = "<span color=\"#${config.colorScheme.colors.teal}\">󰇚 {bandwidthDownBytes}</span>  <span color=\"#${config.colorScheme.colors.blue}\">󰕒 {bandwidthUpBytes}</span> ";
               format-disconnected = "";
               tooltip-format = ''
                 {ifname}
@@ -138,7 +134,7 @@
               '';
             };
             gamemode = {
-              format = "{glyph}";
+              format = "{glyph} ";
               format-alt = "{glyph}";
               glyph = "";
               use-icon = false;
@@ -146,12 +142,12 @@
             };
             bluetooth = {
               interval = 2;
-              format = " {status}";
-              format-on = "";
-              format-off = "<span color=\"#${config.colorScheme.colors.background03}\">󰂲</span>";
-              format-disabled = "<span color=\"#${config.colorScheme.colors.background03}\">󰂲</span>";
-              format-connected = "<span color=\"#${config.colorScheme.colors.blue}\"></span> {device_alias}";
-              format-connected-battery = "<span color=\"#${config.colorScheme.colors.blue}\"></span> {device_alias} {device_battery_percentage}%";
+              format = " {status} ";
+              format-on = " ";
+              format-off = "<span color=\"#${config.colorScheme.colors.background03}\">󰂲</span> ";
+              format-disabled = "<span color=\"#${config.colorScheme.colors.background03}\">󰂲</span> ";
+              format-connected = "<span color=\"#${config.colorScheme.colors.blue}\"></span> {device_alias} ";
+              format-connected-battery = "<span color=\"#${config.colorScheme.colors.blue}\"></span> {device_alias} {device_battery_percentage}% ";
               # TODO FIX toggle bluetooth not working
               on-click-left = "${pkgs.toggle-bluetooth}/bin/toggle_bluetooth";
               on-click-right = "${blueberry} &";
@@ -173,7 +169,7 @@
                 tooltip = "Spotify is $status";
               };
               # exec = " '";
-              format = "<span color=\"#${config.colorScheme.colors.green}\">{icon}</span> {} | ";
+              format = "<span color=\"#${config.colorScheme.colors.green}\">{icon}</span> {}  ";
               format-icons = {
                 "Playing" = "󰓇 ";
               };
@@ -191,8 +187,8 @@
               };
               format = "{icon}";
               format-icons = {
-                "locked" = "";
-                "unlocked" = "";
+                "locked" = " ";
+                "unlocked" = " ";
               };
             };
             "custom/gammastep" = {
@@ -209,7 +205,7 @@
                 alt = "\${status:-inactive}";
                 tooltip = "Gammastep is $status";
               };
-              format = "{icon}";
+              format = "{icon} ";
               format-icons = {
                 "activating" = "󱧢 ";
                 "deactivating" = "󱧡 ";
@@ -231,8 +227,8 @@
           inherit (config.colorscheme) colors;
         in ''
           * {
-            font-family: ${osConfig.aspects.base.fonts.regular.family}, ${osConfig.aspects.base.fonts.monospace.family};
-            font-size: ${toString osConfig.aspects.base.fonts.regular.size}pt;
+            font-family: ${osConfig.aspects.base.fonts.monospace.family}, ${osConfig.aspects.base.fonts.regular.family};
+            font-size: ${toString osConfig.aspects.base.fonts.monospace.size}pt;
             padding: 0 8px;
           }
           .modules-right {

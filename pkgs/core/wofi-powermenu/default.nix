@@ -8,7 +8,7 @@ pkgs.writeShellApplication {
   text = ''
     entries=" Lock\n󰍃 Logout\n󰒲 Suspend\n󰋊 Hibernate\n⭮ Reboot\n Shutdown"
 
-    selected=$(echo -e $entries|wofi --insensitive -W 10% -H 20% --dmenu --cache-file /dev/null | awk '{print tolower($2)}')
+    selected=$(echo -e $entries|wofi --insensitive -W 20% -H 30% --dmenu --cache-file /dev/null | awk '{print tolower($2)}')
 
     case $selected in
       lock)
