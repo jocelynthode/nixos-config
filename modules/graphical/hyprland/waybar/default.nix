@@ -46,6 +46,7 @@
             layer = "top";
             height = 36;
             # width = 100;
+            spacing = 3;
             margin = "0";
             position = "top";
             output = ["DP-4" "eDP-1"];
@@ -80,19 +81,19 @@
               interval = 1;
             };
             cpu = {
-              format = "<span color=\"#${config.colorScheme.colors.yellow}\"></span>  {usage}% ";
+              format = "<span color=\"#${config.colorScheme.colors.yellow}\"></span> {usage}%";
             };
             memory = {
-              format = "<span color=\"#${config.colorScheme.colors.blue}\"></span> {}% ";
+              format = "<span color=\"#${config.colorScheme.colors.blue}\"></span> {}%";
               interval = 5;
             };
             disk = {
               interval = 30;
               path = "/";
-              format = "<span color=\"#${config.colorScheme.colors.teal}\"></span> {free} ";
+              format = "<span color=\"#${config.colorScheme.colors.teal}\"></span> {free}";
             };
             pulseaudio = {
-              format = "{format_source} {icon} {volume}% ";
+              format = "{format_source} {icon} {volume}%";
               on-click-right = "${pkgs.pavucontrol}/bin/pavucontrol";
               format-source = " {volume}%";
               format-source-muted = "<span color=\"#${config.colorScheme.colors.red}\"></span> 0%";
@@ -113,19 +114,19 @@
                 warning = 30;
                 critical = 20;
               };
-              format = "{icon} {capacity}% ";
-              format-discharging = "{icon} {capacity}% ";
-              format-charging = "󰂅 {capacity}% {time} ";
+              format = "{icon} {capacity}%";
+              format-discharging = "{icon} {capacity}%";
+              format-charging = "{icon} {capacity}% {time}";
               format-full = "{icon} ";
             };
             backlight = {
               device = "intel_backlight";
               format-icons = ["󰃚" "󰃛" "󰃜" "󰃝" "󰃞" "󰃟" "󰃠"];
-              format = "<span color=\"#${config.colorScheme.colors.orange}\">{icon}</span> {percent}% ";
+              format = "<span color=\"#${config.colorScheme.colors.orange}\">{icon}</span> {percent}%";
             };
             network = {
               interval = 3;
-              format = "<span color=\"#${config.colorScheme.colors.teal}\">󰇚 {bandwidthDownBytes}</span>  <span color=\"#${config.colorScheme.colors.blue}\">󰕒 {bandwidthUpBytes}</span> ";
+              format = "<span color=\"#${config.colorScheme.colors.teal}\">󰇚 {bandwidthDownBytes}</span>  <span color=\"#${config.colorScheme.colors.blue}\">󰕒 {bandwidthUpBytes}</span>";
               format-disconnected = "";
               tooltip-format = ''
                 {ifname}
@@ -169,7 +170,7 @@
                 tooltip = "Spotify is $status";
               };
               # exec = " '";
-              format = "<span color=\"#${config.colorScheme.colors.green}\">{icon}</span> {}  ";
+              format = "<span color=\"#${config.colorScheme.colors.green}\">{icon}</span> {}";
               format-icons = {
                 "Playing" = "󰓇 ";
               };
@@ -187,8 +188,8 @@
               };
               format = "{icon}";
               format-icons = {
-                "locked" = " ";
-                "unlocked" = " ";
+                "locked" = "";
+                "unlocked" = "";
               };
             };
             "custom/gammastep" = {
@@ -207,17 +208,17 @@
               };
               format = "{icon} ";
               format-icons = {
-                "activating" = "󱧢 ";
-                "deactivating" = "󱧡 ";
-                "inactive" = "󱠃 ";
-                "active (Night)" = "󱠂 ";
-                "active (Nighttime)" = "󱠂 ";
-                "active (Transition (Night)" = "󱠂 ";
-                "active (Transition (Nighttime)" = "󱠂 ";
-                "active (Day)" = "󱠂 ";
-                "active (Daytime)" = "󱠂 ";
-                "active (Transition (Day)" = "󱠂 ";
-                "active (Transition (Daytime)" = "󱠂 ";
+                "activating" = "󱧢";
+                "deactivating" = "󱧡";
+                "inactive" = "󱠃";
+                "active (Night)" = "󱠂";
+                "active (Nighttime)" = "󱠂";
+                "active (Transition (Night)" = "󱠂";
+                "active (Transition (Nighttime)" = "󱠂";
+                "active (Day)" = "󱠂";
+                "active (Daytime)" = "󱠂";
+                "active (Transition (Day)" = "󱠂";
+                "active (Transition (Daytime)" = "󱠂";
               };
               on-click = "${systemctl} --user is-active gammastep && ${systemctl} --user stop gammastep || ${systemctl} --user start gammastep";
             };
@@ -230,6 +231,7 @@
             font-family: ${osConfig.aspects.base.fonts.monospace.family}, ${osConfig.aspects.base.fonts.regular.family};
             font-size: ${toString osConfig.aspects.base.fonts.monospace.size}pt;
             padding: 0 8px;
+            margin: 3px;
           }
           .modules-right {
             margin-right: -15px;
@@ -266,43 +268,27 @@
           }
           #gamemode {
             color: #${colors.red};
-            margin: 0px;
-            padding: 0px;
           }
           #custom-sep {
             color: #${colors.background03};
-            margin: 0px;
-            padding: 0px;
           }
           #custom-gammastep {
             color: #${colors.yellow};
-            margin: 0px;
-            padding: 0px;
           }
           #battery.full {
             color: #${colors.blue};
-            margin: 0px;
-            padding: 0px;
           }
           #battery.charging {
-            color: #${colors.teal};
-            margin: 0px;
-            padding: 0px;
+            color: #${colors.green};
           }
           #battery.discharging.warning {
             color: #${colors.yellow};
-            margin: 0px;
-            padding: 0px;
           }
           #battery.discharging.critical {
             color: #${colors.red};
-            margin: 0px;
-            padding: 0px;
           }
           #cpu, #memory, #disk, #battery, #custom-gpg-agent,#pulseaudio, #clock, #custom-player, #bluetooth, #backlight {
-            color: #${colors.foreground03};
-            margin: 0px;
-            padding: 0px;
+            color: #${colors.foreground};
           }
         '';
       };
