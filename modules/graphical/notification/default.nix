@@ -10,7 +10,7 @@ in {
     enable = lib.mkEnableOption "notification";
   };
 
-  config = lib.mkIf config.aspects.graphical.i3.enable {
+  config = lib.mkIf config.aspects.graphical.notification.enable {
     home-manager.users.jocelyn = {
       config,
       osConfig,
@@ -37,6 +37,7 @@ in {
             frame_width = 2;
             padding = 16;
             horizontal_padding = 12;
+            corner_radius = 7;
             format = ''<b>%s</b>\n%b'';
             frame_color = "#${config.colorScheme.colors.pink}FF";
             separator_color = "frame";
@@ -49,20 +50,20 @@ in {
 
           urgency_low = {
             fullscreen = "delay";
-            background = "#${config.colorScheme.colors.background}CC";
-            foreground = "#${config.colorScheme.colors.foreground}CC";
+            background = "#${config.colorScheme.colors.background}FF";
+            foreground = "#${config.colorScheme.colors.foreground}FF";
           };
 
           urgency_normal = {
             fullscreen = "delay";
-            background = "#${config.colorScheme.colors.background}CC";
-            foreground = "#${config.colorScheme.colors.foreground}CC";
+            background = "#${config.colorScheme.colors.background}FF";
+            foreground = "#${config.colorScheme.colors.foreground}FF";
           };
 
           urgency_critical = {
             fullscreen = "show";
-            background = "#${config.colorScheme.colors.background}DD";
-            foreground = "#${config.colorScheme.colors.foreground}DD";
+            background = "#${config.colorScheme.colors.background}FF";
+            foreground = "#${config.colorScheme.colors.foreground}FF";
           };
         };
       };
