@@ -48,7 +48,7 @@ in {
             brown = "#${config.colorScheme.colors.brown}";
             accent = "#${config.colorScheme.colors.accent}";
 
-            transparent-background = "#CC${config.colorScheme.colors.background}";
+            transparent-background = "#DD${config.colorScheme.colors.background}";
           };
 
           bar = {
@@ -60,7 +60,7 @@ in {
           "bar/main" = {
             width = "100%";
             height = "2.5%";
-            radius = 0;
+            radius = 10;
             background = ''''${colors.transparent-background}'';
             foreground = ''''${colors.foreground}'';
             padding = 2;
@@ -68,9 +68,13 @@ in {
               size = 3;
               color = ''''${colors.background}'';
             };
-            border.bottom = {
+            border-size = 10;
+            border-color = "#00000000";
+            border.right = {
               size = 0;
-              color = ''''${colors.foreground03}'';
+            };
+            border.bottom = {
+              size = 5;
             };
 
             module.margin = {
@@ -87,6 +91,7 @@ in {
             dim-value = "1.0";
             tray = {
               position = "right";
+              offset-x = "-10";
             };
             font = ["${osConfig.aspects.base.fonts.monospace.family}:size=${toString osConfig.aspects.base.fonts.monospace.size};4" "feather:size=12;3"];
             enable-ipc = true;

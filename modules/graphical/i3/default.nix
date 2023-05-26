@@ -22,30 +22,9 @@
       layout = "us";
       xkbVariant = "altgr-intl";
       displayManager = {
-        defaultSession = "none+i3";
-        lightdm = {
+        gdm = {
           enable = true;
-          background = pkgs.wallpapers.cascade-fisher;
-          greeters.gtk = {
-            enable = true;
-            theme = {
-              name = "Catppuccin-Latte-Standard-Pink-Light";
-              package = pkgs.catppuccin-gtk.override {
-                accents = ["pink"];
-                size = "standard";
-                tweaks = ["normal"];
-                variant = "latte";
-              };
-            };
-            iconTheme = {
-              package = pkgs.papirus-icon-theme;
-              name = "Papirus-Light";
-            };
-            cursorTheme = {
-              package = pkgs.gnome.adwaita-icon-theme;
-              name = "Adwaita";
-            };
-          };
+          wayland = true;
         };
       };
       desktopManager = {
@@ -182,7 +161,7 @@
             ];
             window = {
               titlebar = false;
-              border = 2;
+              border = 3;
               commands = [
                 {
                   command = "move to workspace 8";
@@ -203,22 +182,22 @@
                 border = "#${colors.accent}";
                 background = "#${colors.background01}";
                 text = "#${colors.foreground}";
-                indicator = "#${colors.background01}";
+                indicator = "#${colors.accent}";
                 childBorder = "#${colors.accent}";
               };
               focusedInactive = {
                 border = "#${colors.background01}";
                 background = "#${colors.background01}";
                 text = "#${colors.foreground}";
-                indicator = "#${colors.background03}";
+                indicator = "#${colors.background01}";
                 childBorder = "#${colors.background01}";
               };
               unfocused = {
-                border = "#${colors.background01}";
+                border = "#${colors.background02}";
                 background = "#${colors.background}";
                 text = "#${colors.foreground}";
-                indicator = "#${colors.background01}";
-                childBorder = "#${colors.background01}";
+                indicator = "#${colors.background02}";
+                childBorder = "#${colors.background02}";
               };
               urgent = {
                 border = "#${colors.red}";
