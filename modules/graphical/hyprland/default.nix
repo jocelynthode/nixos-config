@@ -66,12 +66,11 @@
 
     services.greetd = {
       enable = true;
-      settings = rec {
-        initial_session = {
-          command = "${pkgs.cage}/bin/cage -s -- ${pkgs.greetd.gtkgreet}/bin/gtkgreet -l -s /etc/greetd/gtkgreet.css";
-          user = "jocelyn";
+      settings = {
+        default_session = {
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd Hyprland";
+          user = "greeter";
         };
-        default_session = initial_session;
       };
     };
 
