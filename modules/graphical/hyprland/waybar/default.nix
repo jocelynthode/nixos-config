@@ -2,8 +2,11 @@
   pkgs,
   config,
   lib,
+  nix-colors,
   ...
-}: {
+}: let
+  toRGB = nix-colors.lib.conversions.hexToRGBString ",";
+in {
   # TODO: Have bar on one screen and variabilize output
   config = lib.mkIf config.aspects.graphical.hyprland.enable {
     home-manager.users.jocelyn = {
@@ -44,14 +47,12 @@
         settings = {
           primary = {
             layer = "top";
-            height = 36;
-            # width = 100;
-            spacing = 3;
-            margin = "0";
+            spacing = 10;
             position = "top";
             output = ["DP-4" "eDP-1"];
             modules-left = [
               "wlr/workspaces"
+              "custom/sep"
               "cpu"
               "memory"
               "disk"
@@ -62,13 +63,16 @@
             ];
             modules-right = [
               "network"
+              "custom/sep"
               "bluetooth"
               "custom/gammastep"
               "custom/gpg-agent"
               "gamemode"
               "pulseaudio"
               "backlight"
+              "custom/sep"
               "battery"
+              "custom/sep"
               "tray"
             ];
             "wlr/workspaces" = {
@@ -77,7 +81,7 @@
               sort-by-number = true;
             };
             clock = {
-              format = "{:<span color=\"#${config.colorScheme.colors.purple}\"> </span> %a, %d %b %Y at %H:%M:%S}";
+              format = "{:<span color=\"#${config.colorScheme.colors.purple}\"> </span>%a, %d %b %Y at %H:%M:%S}";
               interval = 1;
             };
             cpu = {
@@ -114,10 +118,8 @@
                 warning = 30;
                 critical = 20;
               };
+              format-time = "{H} h {m} min";
               format = "{icon} {capacity}%";
-              format-discharging = "{icon} {capacity}%";
-              format-charging = "{icon} {capacity}% {time}";
-              format-full = "{icon} ";
             };
             backlight = {
               device = "intel_backlight";
@@ -126,7 +128,7 @@
             };
             network = {
               interval = 3;
-              format = "<span color=\"#${config.colorScheme.colors.teal}\">󰇚 {bandwidthDownBytes}</span>  <span color=\"#${config.colorScheme.colors.blue}\">󰕒 {bandwidthUpBytes}</span>";
+              format = "<span color=\"#${config.colorScheme.colors.teal}\">󰇚 {bandwidthDownBytes}</span> <span color=\"#${config.colorScheme.colors.blue}\">󰕒 {bandwidthUpBytes}</span>";
               format-disconnected = "";
               tooltip-format = ''
                 {ifname}
@@ -143,14 +145,13 @@
             };
             bluetooth = {
               interval = 2;
-              format = " {status} ";
-              format-on = " ";
-              format-off = "<span color=\"#${config.colorScheme.colors.background03}\">󰂲</span> ";
-              format-disabled = "<span color=\"#${config.colorScheme.colors.background03}\">󰂲</span> ";
-              format-connected = "<span color=\"#${config.colorScheme.colors.blue}\"></span> {device_alias} ";
-              format-connected-battery = "<span color=\"#${config.colorScheme.colors.blue}\"></span> {device_alias} {device_battery_percentage}% ";
-              # TODO FIX toggle bluetooth not working
-              on-click-left = "${pkgs.toggle-bluetooth}/bin/toggle_bluetooth";
+              format = "{status}";
+              format-on = "";
+              format-off = "<span color=\"#${config.colorScheme.colors.background03}\">󰂲</span>";
+              format-disabled = "<span color=\"#${config.colorScheme.colors.background03}\">󰂲</span>";
+              format-connected = "<span color=\"#${config.colorScheme.colors.blue}\"></span> {device_alias}";
+              format-connected-battery = "<span color=\"#${config.colorScheme.colors.blue}\"></span> {device_alias} {device_battery_percentage}%";
+              on-click = "${pkgs.toggle-bluetooth}/bin/toggle_bluetooth";
               on-click-right = "${blueberry} &";
             };
             "custom/player" = {
@@ -189,7 +190,7 @@
               format = "{icon}";
               format-icons = {
                 "locked" = "";
-                "unlocked" = "";
+                "unlocked" = "";
               };
             };
             "custom/gammastep" = {
@@ -206,7 +207,7 @@
                 alt = "\${status:-inactive}";
                 tooltip = "Gammastep is $status";
               };
-              format = "{icon} ";
+              format = "{icon}";
               format-icons = {
                 "activating" = "󱧢";
                 "deactivating" = "󱧡";
@@ -229,30 +230,31 @@
         in ''
           * {
             font-family: ${osConfig.aspects.base.fonts.monospace.family}, ${osConfig.aspects.base.fonts.regular.family};
-            font-size: ${toString osConfig.aspects.base.fonts.monospace.size}pt;
-            padding: 0 8px;
-            margin: 3px;
+            font-size: 10pt;
+            border: 0;
+          }
+          window#waybar {
+            color: #${colors.foreground};
+            background: transparent;
+          }
+          window#waybar:first-child > box {
+            margin: 5px 5px 0px 5px;
+            padding: 3px;
+            background-color: rgba(${toRGB colors.background},0.6);
+            border-radius: 12px;
+            border: 2px solid #${colors.accent};
           }
           .modules-right {
-            margin-right: -15px;
+            margin-right: 5px;
           }
           .modules-left {
-            margin-left: -15px;
-          }
-          window#waybar.primary {
-            color: #${colors.foreground};
-            opacity: 0.85;
-            background-color: #${colors.background};
-            border: 0px;
-            padding: 0px;
-            border-radius: 0px;
+            margin-left: 5px;
           }
           #workspaces button {
-            margin: 0px;
-            padding: 0px;
-            border-radius: 0px;
-            border-bottom: 5px solid #${colors.background};
-            color: #${colors.foreground03};
+            padding: 4px;
+            border-radius: 3px;
+            border: 5px;
+            border-color: #${colors.background};
           }
           #workspaces button.hidden {
             background-color: #${colors.background};
@@ -261,16 +263,17 @@
           #workspaces button.focused,
           #workspaces button.active {
             background-color: #${colors.background01};
-            border-bottom: 5px solid #${colors.pink};
+            border-bottom: 3px solid #${colors.accent};
           }
           #workspaces button.urgent {
-            border-bottom: 5px solid #${colors.red};
+            border-bottom: 3px solid #${colors.red};
           }
           #gamemode {
             color: #${colors.red};
           }
           #custom-sep {
             color: #${colors.background03};
+            margin: 0px;
           }
           #custom-gammastep {
             color: #${colors.yellow};
@@ -280,15 +283,13 @@
           }
           #battery.charging {
             color: #${colors.green};
+
           }
           #battery.discharging.warning {
             color: #${colors.yellow};
           }
           #battery.discharging.critical {
             color: #${colors.red};
-          }
-          #cpu, #memory, #disk, #battery, #custom-gpg-agent,#pulseaudio, #clock, #custom-player, #bluetooth, #backlight {
-            color: #${colors.foreground};
           }
         '';
       };

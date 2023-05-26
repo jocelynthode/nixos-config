@@ -26,6 +26,11 @@
       example = true;
     };
 
+    dpi = lib.mkOption {
+      default = 100;
+      example = 150;
+    };
+
     wallpaper = lib.mkOption {
       type = lib.types.str;
       default = "";

@@ -12,17 +12,17 @@
     games.enable = true;
     graphical = {
       enable = true;
+      dpi = 120;
       wallpaper = "lavenders";
       fingerprint.enable = true;
       hyprland = {
         enable = true;
-        dpi = 144;
         kanshi.profiles = {
           laptop = {
             outputs = [
               {
                 criteria = "eDP-1";
-                scale = 1.5;
+                scale = 1.3;
               }
             ];
             exec = [
@@ -54,11 +54,12 @@
               {
                 criteria = "eDP-1";
                 position = "0,0";
-                scale = 1.5;
+                scale = 1.3;
               }
               {
                 criteria = "DP-4";
                 position = "0,1504";
+                scale = 1.5;
               }
             ];
             exec = [
@@ -89,7 +90,6 @@
       };
       i3 = {
         enable = false;
-        dpi = 144;
         autorandr.profiles = {
           "laptop" = {
             fingerprint = {

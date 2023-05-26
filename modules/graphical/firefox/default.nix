@@ -70,7 +70,7 @@
               "browser.bookmarks.showMobileBookmarks" = true;
               "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
               "layout.css.devPixelsPerPx" = -1;
-              "ui.textScaleFactor" = config.aspects.graphical.i3.dpi;
+              # "ui.textScaleFactor" = config.aspects.graphical.dpi;
             };
           };
         };

@@ -43,7 +43,7 @@
             bga:  #${config.colorScheme.colors.background01}cc;
             fg:   #${config.colorScheme.colors.foreground03}ff;
             ac:   #${config.colorScheme.colors.red}ff;
-            se:   #${config.colorScheme.colors.pink}ff;
+            se:   #${config.colorScheme.colors.accent}ff;
           }
         '';
       };

@@ -46,7 +46,7 @@ in {
             blue = "#${config.colorScheme.colors.blue}";
             purple = "#${config.colorScheme.colors.purple}";
             brown = "#${config.colorScheme.colors.brown}";
-            pink = "#${config.colorScheme.colors.pink}";
+            accent = "#${config.colorScheme.colors.accent}";
 
             transparent-background = "#CC${config.colorScheme.colors.background}";
           };
@@ -119,7 +119,7 @@ in {
               active = {
                 text = "%name%";
                 background = ''''${colors.background01}'';
-                underline = ''''${colors.pink}'';
+                underline = ''''${colors.accent}'';
                 padding = 1;
               };
               occupied = {

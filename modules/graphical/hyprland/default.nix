@@ -14,10 +14,7 @@
 
   options.aspects.graphical.hyprland = {
     enable = lib.mkEnableOption "hyprland";
-    dpi = lib.mkOption {
-      default = 100;
-      example = 150;
-    };
+
     useNvidia = lib.mkOption {
       default = false;
       example = true;
@@ -101,10 +98,10 @@
           general {
             gaps_in=5
             gaps_out=5
-            border_size=2.7
-            col.active_border=0xff${config.colorScheme.colors.pink}
+            border_size=3.5
+            col.active_border=0xff${config.colorScheme.colors.accent}
             col.inactive_border=0xff${config.colorScheme.colors.background02}
-            col.group_border_active=0xff${config.colorScheme.colors.pink}
+            col.group_border_active=0xff${config.colorScheme.colors.accent}
             col.group_border=0xff${config.colorScheme.colors.foreground01}
             cursor_inactive_timeout=0
             layout=dwindle
@@ -189,7 +186,6 @@
           bind=$mainMod SHIFT,k,movewindow,u
           bind=$mainMod SHIFT,l,movewindow,r
 
-          blurls=waybar
           blurls=wofi
 
           windowrule=workspace 4,Steam
@@ -200,11 +196,12 @@
           windowrule=workspace 7,Signal
           windowrule=workspace 8,title:^(Spotify)$
           windowrule=workspace 9,Bitwarden
-          windowrule=opacity 0.85,title:^(Spotify)$
+          windowrule=opacity 0.85 0.85,title:^(Spotify)$
+          windowrule=opacity 0.85 0.85,kitty
           windowrule=tile,title:^(Spotify)$
 
 
-          monitor=,highres,auto,1.5
+          monitor=,highres,auto,1.3
         '';
       };
     };

@@ -2,8 +2,11 @@
   pkgs,
   lib,
   config,
+  nix-colors,
   ...
-}: {
+}: let
+  toRGB = nix-colors.lib.conversions.hexToRGBString ",";
+in {
   config = lib.mkIf config.aspects.graphical.hyprland.enable {
     home-manager.users.jocelyn = {
       config,
@@ -16,10 +19,11 @@
 
       xdg.configFile."wofi/style.css" = {
         text = ''
-          @define-color accent #${config.colorScheme.colors.pink};
+          @define-color accent #${config.colorScheme.colors.accent};
           @define-color txt #${config.colorScheme.colors.foreground};
-          @define-color bg #${config.colorScheme.colors.background};
-          @define-color bg2 #${config.colorScheme.colors.background03};
+          @define-color bg rgba(${toRGB config.colorScheme.colors.background},0.2);
+          @define-color bg-solid #${toRGB config.colorScheme.colors.background};
+          @define-color bg2 rgba(${toRGB config.colorScheme.colors.background03},0.2);
 
           * {
               font-family: ${osConfig.aspects.base.fonts.regular.family};
@@ -32,7 +36,7 @@
               padding: 10px;
               border: 3px solid @accent;
               border-radius: 7px;
-              background-color: @bg;
+              background: transparent;
               animation: slideIn 0.2s ease-in-out both;
            }
 
@@ -52,7 +56,7 @@
               margin: 5px;
               padding: 10px;
               border: none;
-              background-color: @bg;
+              background: transparent;
               animation: fadeIn 0.2s ease-in-out both;
            }
 
@@ -107,7 +111,7 @@
            }
 
            #entry:selected #text {
-              color: @bg;
+              color: @bg-solid;
            }
         '';
       };

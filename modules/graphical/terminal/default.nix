@@ -23,22 +23,19 @@
         font.name = osConfig.aspects.base.fonts.monospace.family;
         font.size = osConfig.aspects.base.fonts.monospace.size;
         settings = {
-          background_opacity = "0.85";
           allow_remote_control = "yes";
 
-          tab_bar_style = "custom";
-          tab_separator = "\" ▎\"";
-          tab_fade = "0 0 0 0";
-          tab_title_template = "\"{fmt.fg._415c6d}{fmt.bg.default}  {index}:{f'{title[:6]}…{title[-6:]}' if title.rindex(title[-1]) + 1 > 13 else title}{' []' if layout_name == 'stack' else ''} \"";
-          active_tab_title_template = "\"{fmt.fg._83b6af}{fmt.bg.default} 󰪥 {index}:{f'{title[:6]}…{title[-6:]}' if title.rindex(title[-1]) + 1 > 13 else title}{' []' if layout_name == 'stack' else ''} \"";
-          tab_activity_symbol = "none";
+          tab_bar_style = "powerline";
+          tab_powerline_style = "slanted";
+          tab_separator = "";
+          tab_title_template = " {index} {title} ";
           tab_bar_edge = "top";
           tab_bar_margin_height = "0.0 0.0";
           active_tab_font_style = "bold-italic";
           inactive_tab_font_style = "normal";
           tab_bar_min_tabs = "2";
 
-          window_padding_width = 15;
+          window_padding_width = 10;
           foreground = "#${config.colorScheme.colors.foreground}";
           background = "#${config.colorScheme.colors.background}";
           selection_background = "#${config.colorScheme.colors.foreground02}";
@@ -48,11 +45,11 @@
           cursor_text_color = "#${config.colorScheme.colors.background}";
           active_border_color = "#${config.colorScheme.colors.foreground03}";
           inactive_border_color = "#${config.colorScheme.colors.background01}";
-          active_tab_background = "#${config.colorScheme.colors.purple}";
+          active_tab_background = "#${config.colorScheme.colors.accent}";
           active_tab_foreground = "#${config.colorScheme.colors.background}";
-          inactive_tab_background = "#${config.colorScheme.colors.background01}";
+          inactive_tab_background = "#${config.colorScheme.colors.background}";
           inactive_tab_foreground = "#${config.colorScheme.colors.foreground}";
-          tab_bar_background = "#${config.colorScheme.colors.background03}";
+          tab_bar_background = "#${config.colorScheme.colors.background}";
           bell_border_color = "#${config.colorScheme.colors.yellow}";
           mark1_foreground = "#${config.colorScheme.colors.background}";
           mark1_background = "#${config.colorScheme.colors.foreground03}";
@@ -74,8 +71,8 @@
           color4 = "#${config.colorScheme.colors.blue}";
           color12 = "#${config.colorScheme.colors.blue}";
 
-          color5 = "#${config.colorScheme.colors.pink}";
-          color13 = "#${config.colorScheme.colors.pink}";
+          color5 = "#${config.colorScheme.colors.accent}";
+          color13 = "#${config.colorScheme.colors.accent}";
 
           color6 = "#${config.colorScheme.colors.teal}";
           color14 = "#${config.colorScheme.colors.teal}";
@@ -84,8 +81,6 @@
           color15 = "#${config.colorScheme.colors.background03}";
         };
       };
-
-      xdg.configFile."kitty/tab_bar.py".source = ./tab_bar.py;
     };
   };
 }

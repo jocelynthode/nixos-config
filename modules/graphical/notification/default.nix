@@ -39,7 +39,7 @@ in {
             horizontal_padding = 12;
             corner_radius = 7;
             format = ''<b>%s</b>\n%b'';
-            frame_color = "#${config.colorScheme.colors.pink}FF";
+            frame_color = "#${config.colorScheme.colors.accent}FF";
             separator_color = "frame";
           };
 

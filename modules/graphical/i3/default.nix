@@ -12,17 +12,13 @@
 
   options.aspects.graphical.i3 = {
     enable = lib.mkEnableOption "i3";
-    dpi = lib.mkOption {
-      default = 100;
-      example = 150;
-    };
   };
 
   config = lib.mkIf config.aspects.graphical.i3.enable {
     aspects.graphical.rofi.package = pkgs.rofi;
     services.xserver = {
       enable = true;
-      inherit (config.aspects.graphical.i3) dpi;
+      inherit (config.aspects.graphical) dpi;
       layout = "us";
       xkbVariant = "altgr-intl";
       displayManager = {
@@ -114,8 +110,8 @@
         "*color4" = "#${config.colorscheme.colors.blue}";
         "*color12" = "#${config.colorscheme.colors.blue}";
 
-        "*color5" = "#${config.colorScheme.colors.pink}";
-        "*color13" = "#${config.colorScheme.colors.pink}";
+        "*color5" = "#${config.colorScheme.colors.accent}";
+        "*color13" = "#${config.colorScheme.colors.accent}";
 
         "*color6" = "#${config.colorscheme.colors.teal}";
         "*color14" = "#${config.colorscheme.colors.teal}";
@@ -123,7 +119,7 @@
         "*color7" = "#${config.colorscheme.colors.foreground01}";
         "*color15" = "#${config.colorscheme.colors.background03}";
 
-        "Xft.dpi" = osConfig.aspects.graphical.i3.dpi;
+        "Xft.dpi" = osConfig.aspects.graphical.dpi;
       };
 
       xsession = let
@@ -204,11 +200,11 @@
             };
             colors = {
               focused = {
-                border = "#${colors.pink}";
+                border = "#${colors.accent}";
                 background = "#${colors.background01}";
                 text = "#${colors.foreground}";
                 indicator = "#${colors.background01}";
-                childBorder = "#${colors.pink}";
+                childBorder = "#${colors.accent}";
               };
               focusedInactive = {
                 border = "#${colors.background01}";

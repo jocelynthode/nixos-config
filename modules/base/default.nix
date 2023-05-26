@@ -56,7 +56,7 @@
         blue = "#1e66f5";
         purple = "#8839ef";
         brown = "#dd7878";
-        pink = "#ea76cb";
+        accent = "#ea76cb";
       };
     };
   in {
