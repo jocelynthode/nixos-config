@@ -51,12 +51,6 @@ in {
             transparent-background = "#DD${config.colorScheme.colors.background}";
           };
 
-          bar = {
-            fill = "⏽";
-            empty = "⏽";
-            indicator = "";
-          };
-
           "bar/main" = {
             width = "100%";
             height = "2.5%";
@@ -149,7 +143,7 @@ in {
             interval = 1;
             click-right = "${rofi-pulse} sink";
             format = {
-              volume = "<ramp-volume> <bar-volume>";
+              volume = "<ramp-volume> <label-volume>";
               muted = {
                 text = "<label-muted>";
                 prefix = {
@@ -173,27 +167,6 @@ in {
                 foreground = ''''${colors.blue}'';
               };
               headphones = [""];
-            };
-
-            bar.volume = {
-              format = "%fill%%indicator%%empty%";
-              width = 11;
-              gradient = false;
-              foreground = [''''${colors.green}'' ''''${colors.green}'' ''''${colors.orange}'' ''''${colors.orange}'' ''''${colors.red}''];
-
-              indicator = {
-                text = ''''${bar.indicator}'';
-                foreground = ''''${colors.foreground03}'';
-              };
-
-              fill = {
-                text = ''''${bar.fill}'';
-              };
-
-              empty = {
-                text = ''''${bar.empty}'';
-                foreground = ''''${colors.background03}'';
-              };
             };
           };
 
@@ -360,26 +333,11 @@ in {
           "module/brightness" = {
             type = "internal/backlight";
             card = "intel_backlight";
-            format = "<ramp> <bar>";
+            format = "<ramp> <label>";
             label = "%percentage%%";
             ramp = {
               text = ["󰃚" "󰃛" "󰃜" "󰃝" "󰃞" "󰃟" "󰃠"];
               foreground = ''''${colors.orange}'';
-            };
-            bar = {
-              width = 11;
-              gradient = false;
-              foreground = [''''${colors.green}'' ''''${colors.green}'' ''''${colors.orange}'' ''''${colors.orange}'' ''''${colors.red}''];
-              indicator = {
-                text = ''''${bar.indicator}'';
-                foreground = ''''${colors.teal}'';
-              };
-              format = "%fill%%indicator%%empty%";
-              fill = ''''${bar.fill}'';
-              empty = {
-                text = ''''${bar.empty}'';
-                foreground = ''''${colors.background03}'';
-              };
             };
           };
 

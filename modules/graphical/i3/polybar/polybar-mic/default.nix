@@ -9,46 +9,45 @@ pkgs.writeShellApplication {
   runtimeInputs = with pkgs; [pulseaudio coreutils gnugrep gawk];
 
   text = ''
-    get_mic_default() {
-        pactl get-default-source
+    is_mic_muted() {
+      pactl get-source-mute @DEFAULT_SOURCE@  | awk '{print ''$2}'
     }
 
-    is_mic_muted() {
-        mic_name="''$(get_mic_default)"
-        pactl get-source-mute @DEFAULT_SOURCE@  | awk '{print ''$2}'
+    get_mic_volume() {
+      pactl get-source-volume @DEFAULT_SOURCE@  | awk '{print ''$5}'
     }
 
     get_mic_status() {
-        is_muted="''$(is_mic_muted)"
+      is_muted="''$(is_mic_muted)"
 
-        if [ "''${is_muted}" = "yes" ]; then
-            printf "%s\n" "%{F#${config.colorScheme.colors.red}}%{F-}"
-        else
-            printf "%s\n" ""
-        fi
+      if [ "''${is_muted}" = "yes" ]; then
+        printf "%s\n" "%{F#${config.colorScheme.colors.red}}%{F-} 0%"
+      else
+        printf "%s %s\n" "" "''$(get_mic_volume)"
+      fi
     }
 
     listen() {
-        get_mic_status
+      get_mic_status
 
-        LANG=EN; pactl subscribe | while read -r event; do
-            if printf "%s\n" "''${event}" | grep --quiet "source" || printf "%s\n" "''${event}" | grep --quiet "server"; then
-                get_mic_status
-            fi
-        done
+      LANG=EN; pactl subscribe | while read -r event; do
+        if printf "%s\n" "''${event}" | grep --quiet "source" || printf "%s\n" "''${event}" | grep --quiet "server"; then
+          get_mic_status
+        fi
+      done
     }
 
     toggle() {
-        pactl set-source-mute @DEFAULT_SOURCE@ toggle
+      pactl set-source-mute @DEFAULT_SOURCE@ toggle
     }
 
     case "''$1" in
-        --toggle)
-            toggle
-            ;;
-        *)
-            listen
-            ;;
+      --toggle)
+        toggle
+        ;;
+      *)
+        listen
+        ;;
     esac
   '';
 }
