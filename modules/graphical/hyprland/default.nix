@@ -36,18 +36,6 @@
       qt5.qtwayland
     ];
 
-    environment.etc."greetd/environments".text = "Hyprland";
-    environment.etc."greetd/gtkgreet.css".text = ''
-      window {
-         background-size: cover;
-         background-position: center;
-      }
-      box#body {
-         border-radius: 10px;
-         position: center;
-         padding: 15px;
-      }
-    '';
     environment.sessionVariables =
       {
         MOZ_ENABLE_WAYLAND = "1";
