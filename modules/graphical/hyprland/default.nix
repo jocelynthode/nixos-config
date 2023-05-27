@@ -22,18 +22,18 @@
   };
 
   config = lib.mkIf config.aspects.graphical.hyprland.enable {
-    xdg.portal = {
-      wlr.enable = true;
-      extraPortals = [pkgs.xdg-desktop-portal-wlr];
-    };
-
     programs.hyprland = {
       enable = true;
       nvidiaPatches = config.aspects.graphical.hyprland.useNvidia;
+      xwayland = {
+        enable = true;
+        hidpi = true;
+      };
     };
 
     environment.systemPackages = with pkgs; [
       qt5.qtwayland
+      qt6.qtwayland
     ];
 
     environment.sessionVariables =
@@ -42,6 +42,7 @@
         QT_QPA_PLATFORM = "wayland;xcb";
         LIBSEAT_BACKEND = "logind";
         SDL_VIDEODRIVER = "wayland";
+        NIXOS_OZONE_WL = "1";
       }
       // lib.attrsets.optionalAttrs config.hardware.nvidia.modesetting.enable {
         GBM_BACKEND = "nvidia-drm";
@@ -175,7 +176,7 @@
 
           blurls=wofi
 
-          windowrule=workspace 4,Steam
+          windowrule=workspace 4,steam
           windowrule=workspace 4,steamwebhelper
           windowrule=workspace 7,Slack
           windowrule=workspace 7,discord
@@ -187,8 +188,20 @@
           windowrule=opacity 0.85 0.85,kitty
           windowrule=tile,title:^(Spotify)$
 
+          workspace=1,monitor:DP-2,default:true
+          workspace=2,monitor:DP-2
+          workspace=3,monitor:DP-2
+          workspace=4,monitor:DP-2
+          workspace=5,monitor:DP-2
+          workspace=6,monitor:HDMI-A-1,default:true
+          workspace=7,monitor:HDMI-A-1
+          workspace=8,monitor:HDMI-A-1
+          workspace=9,monitor:HDMI-A-1
+          workspace=10,monitor:HDMI-A-1
 
-          monitor=,highres,auto,1.3
+          monitor=,highres,auto,auto
+          monitor=eDP-1,highres,auto,1.3
+          monitor=DP-4,highres,0x1956,2.0
         '';
       };
     };

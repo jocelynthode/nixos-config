@@ -58,8 +58,8 @@
               }
               {
                 criteria = "DP-4";
-                position = "0,1504";
-                scale = 1.5;
+                position = "0,1955";
+                scale = 2.0;
               }
             ];
             exec = [

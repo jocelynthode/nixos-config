@@ -183,23 +183,6 @@
       };
     };
     time.timeZone = "Europe/Zurich";
-
-    # security = {
-    #   sudo.enable = false;
-    #   doas = {
-    #     enable = true;
-    #     extraRules = [
-    #       {
-    #         users = [ "charlotte" ];
-    #         noPass = true;
-    #         cmd = "nix-collect-garbage";
-    #         runAs = "root";
-    #       }
-    #     ];
-    #   };
-    #   polkit.enable = true;
-    # };
-
     services.fwupd.enable = true;
 
     users = {

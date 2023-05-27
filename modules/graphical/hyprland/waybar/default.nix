@@ -49,7 +49,7 @@ in {
             layer = "top";
             spacing = 10;
             position = "top";
-            output = ["DP-4" "eDP-1"];
+            output = ["DP-2" "DP-4" "eDP-1"];
             modules-left = [
               "wlr/workspaces"
               "custom/sep"
