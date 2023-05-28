@@ -22,9 +22,29 @@
       layout = "us";
       xkbVariant = "altgr-intl";
       displayManager = {
-        gdm = {
+        lightdm = {
           enable = true;
-          wayland = true;
+          background = pkgs.wallpapers.cascade-fisher;
+          greeters.gtk = {
+            enable = true;
+            theme = {
+              name = "Catppuccin-Latte-Standard-Pink-Light";
+              package = pkgs.catppuccin-gtk.override {
+                accents = ["pink"];
+                size = "standard";
+                tweaks = ["normal"];
+                variant = "latte";
+              };
+            };
+            iconTheme = {
+              package = pkgs.papirus-icon-theme;
+              name = "Papirus-Light";
+            };
+            cursorTheme = {
+              package = pkgs.gnome.adwaita-icon-theme;
+              name = "Adwaita";
+            };
+          };
         };
       };
       desktopManager = {
