@@ -82,6 +82,13 @@
 
       wayland.windowManager.hyprland = {
         enable = true;
+        nvidiaPatches = osConfig.aspects.graphical.hyprland.useNvidia;
+        xwayland = {
+          enable = true;
+          hidpi = true;
+        };
+        recommendedEnvironment = true;
+        systemdIntegration = true;
         extraConfig = ''
           general {
             gaps_in=5
@@ -122,7 +129,7 @@
           $mainMod = SUPER
           # Startup
           exec=${pkgs.swaybg}/bin/swaybg -i ${pkgs.wallpapers.${osConfig.aspects.graphical.wallpaper}} --mode fill
-          exec-once=${pkgs.systemd}/bin/systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+          exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
           # Mouse binding
           bindm=$mainMod,mouse:272,movewindow
           bindm=$mainMod,mouse:273,resizewindow
@@ -176,17 +183,19 @@
 
           blurls=wofi
 
-          windowrule=workspace 4,steam
-          windowrule=workspace 4,steamwebhelper
-          windowrule=workspace 7,Slack
-          windowrule=workspace 7,discord
-          windowrule=workspace 7,Mumble
-          windowrule=workspace 7,Signal
-          windowrule=workspace 8,title:^(Spotify)$
-          windowrule=workspace 9,Bitwarden
+          windowrule=workspace 4 silent,steam
+          windowrule=workspace 4 silent,steamwebhelper
+          windowrule=workspace 7 silent,Slack
+          windowrule=workspace 7 silent,discord
+          windowrule=workspace 7 silent,Mumble
+          windowrule=workspace 7 silent,Signal
+          windowrule=workspace 8 silent,title:^(Spotify)$
+          windowrule=workspace 9 silent,Bitwarden
           windowrule=opacity 0.85 0.85,title:^(Spotify)$
           windowrule=opacity 0.85 0.85,kitty
           windowrule=tile,title:^(Spotify)$
+          windowrule=float,title:^(Firefox — Sharing Indicator)$
+          windowrule=pin,title:^(Firefox — Sharing Indicator)$
 
           workspace=1,monitor:DP-2,default:true
           workspace=2,monitor:DP-2

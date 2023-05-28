@@ -21,9 +21,9 @@ in {
         text = ''
           @define-color accent #${config.colorScheme.colors.accent};
           @define-color txt #${config.colorScheme.colors.foreground};
-          @define-color bg rgba(${toRGB config.colorScheme.colors.background},0.2);
+          @define-color bg rgba(${toRGB config.colorScheme.colors.background},0.5);
           @define-color bg-solid #${toRGB config.colorScheme.colors.background};
-          @define-color bg2 rgba(${toRGB config.colorScheme.colors.background03},0.2);
+          @define-color bg2 rgba(${toRGB config.colorScheme.colors.background03},0.5);
 
           * {
               font-family: ${osConfig.aspects.base.fonts.regular.family};

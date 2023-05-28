@@ -18,7 +18,7 @@
       wallpaper = "lavenders";
       printer.enable = true;
       hyprland = {
-        enable = false;
+        enable = true;
         useNvidia = true;
         kanshi.profiles = {
           default = {
@@ -59,7 +59,7 @@
         };
       };
       i3 = {
-        enable = true;
+        enable = false;
         autorandr.profiles = {
           "desktop" = {
             fingerprint = {

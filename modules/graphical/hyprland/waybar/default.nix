@@ -70,7 +70,6 @@ in {
               "gamemode"
               "pulseaudio"
               "backlight"
-              "custom/sep"
               "battery"
               "custom/sep"
               "tray"
@@ -157,6 +156,7 @@ in {
             "custom/player" = {
               interval = 1;
               return-type = "json";
+              exec-if = "${pkgs.procps}/bin/pgrep spotify";
               exec = jsonOutput "player" {
                 pre = ''
                   status=$(${playerctl} --player spotify status);
@@ -223,6 +223,9 @@ in {
               };
               on-click = "${systemctl} --user is-active gammastep && ${systemctl} --user stop gammastep || ${systemctl} --user start gammastep";
             };
+            tray = {
+              spacing = 10;
+            };
           };
         };
         style = let
@@ -232,6 +235,7 @@ in {
             font-family: ${osConfig.aspects.base.fonts.monospace.family}, ${osConfig.aspects.base.fonts.regular.family};
             font-size: 10pt;
             border: 0;
+            min-height: 0;
           }
           window#waybar {
             color: #${colors.foreground};
