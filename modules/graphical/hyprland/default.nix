@@ -34,6 +34,7 @@
     environment.systemPackages = with pkgs; [
       qt5.qtwayland
       qt6.qtwayland
+      xwaylandvideobridge
     ];
 
     environment.sessionVariables =
@@ -196,6 +197,10 @@
           windowrule=tile,title:^(Spotify)$
           windowrule=float,title:^(Firefox — Sharing Indicator)$
           windowrule=pin,title:^(Firefox — Sharing Indicator)$
+          windowrulev2 = opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$
+          windowrulev2 = noanim,class:^(xwaylandvideobridge)$
+          windowrulev2 = nofocus,class:^(xwaylandvideobridge)$
+          windowrulev2 = noinitialfocus,class:^(xwaylandvideobridge)$
 
           workspace=1,monitor:DP-2,default:true
           workspace=2,monitor:DP-2

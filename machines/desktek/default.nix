@@ -54,6 +54,9 @@
               "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"8 HDMI-A-1\""
               "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"9 HDMI-A-1\""
               "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"10 HDMI-A-1\""
+
+              # Set xwayland primary display for games
+              "${pkgs.xorg.xrandr}/bin/xrandr --output DP-2 --primary --mode 2560x1440 --pos 1920x0 --right-of HDMI-A-1"
             ];
           };
         };
