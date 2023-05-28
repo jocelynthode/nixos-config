@@ -91,7 +91,7 @@ in {
               margin: 5px;
               padding: 10px;
               border: none;
-              color: @accent;
+              color: @txt;
               background-color: @bg2;
               animation: fadeIn 0.2s ease-in-out both;
            }
