@@ -19,6 +19,8 @@
           effect-vignette = "0.5:0.5";
           screenshots = true;
           clock = true;
+          daemonize = true;
+          show-failed-attempts = true;
 
           font = osConfig.aspects.base.fonts.monospace.family;
 
@@ -66,7 +68,7 @@
         timeouts = [
           {
             timeout = 600;
-            command = "${config.programs.swaylock.package}/bin/swaylock -fF";
+            command = "${config.programs.swaylock.package}/bin/swaylock";
           }
           {
             timeout = 610;
