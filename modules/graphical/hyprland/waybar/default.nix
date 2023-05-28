@@ -159,7 +159,7 @@ in {
                   if [ $status == "Playing" ]; then
                     song=$(${playerctl} --player spotify metadata --format '{{artist}} - {{title}}')
                   else
-                    song=""
+                    song="Paused"
                   fi
                 '';
                 alt = "$status";
@@ -167,10 +167,7 @@ in {
                 tooltip = "Spotify is $status";
               };
               # exec = " '";
-              format = "<span color=\"#${config.colorScheme.colors.green}\">{icon}</span> {}";
-              format-icons = {
-                "Playing" = "󰓇 ";
-              };
+              format = "<span color=\"#${config.colorScheme.colors.green}\">󰓇</span> {}";
             };
             "custom/gpg-agent" = {
               interval = 2;
