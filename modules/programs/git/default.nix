@@ -36,6 +36,8 @@
             navigate = true;
             line-numbers = true;
             side-by-side = true;
+            syntax-theme = "Catppuccin-latte";
+            light = true;
           };
           core = {
             pager = "delta";
