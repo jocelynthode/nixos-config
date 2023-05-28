@@ -47,23 +47,20 @@ in {
         settings = {
           primary = {
             layer = "top";
-            spacing = 10;
             position = "top";
             output = ["DP-2" "DP-4" "eDP-1"];
             modules-left = [
               "wlr/workspaces"
-              "custom/sep"
               "cpu"
               "memory"
               "disk"
+              "custom/player"
             ];
             modules-center = [
-              "custom/player"
               "clock"
             ];
             modules-right = [
               "network"
-              "custom/sep"
               "bluetooth"
               "custom/gammastep"
               "custom/gpg-agent"
@@ -71,7 +68,6 @@ in {
               "pulseaudio"
               "backlight"
               "battery"
-              "custom/sep"
               "tray"
             ];
             "wlr/workspaces" = {
@@ -176,9 +172,6 @@ in {
                 "Playing" = "󰓇 ";
               };
             };
-            "custom/sep" = {
-              format = "⏽";
-            };
             "custom/gpg-agent" = {
               interval = 2;
               return-type = "json";
@@ -233,51 +226,83 @@ in {
         in ''
           * {
             font-family: ${osConfig.aspects.base.fonts.monospace.family}, ${osConfig.aspects.base.fonts.regular.family};
-            font-size: 10pt;
+            font-size: 11pt;
             border: 0;
             min-height: 0;
           }
           window#waybar {
-            color: #${colors.foreground};
             background: transparent;
           }
           window#waybar:first-child > box {
-            margin: 5px 5px 0px 5px;
-            padding: 3px;
-            background-color: rgba(${toRGB colors.background},0.6);
-            border-radius: 12px;
-            border: 2px solid #${colors.accent};
+            margin: 8px 8px 0px 8px;
           }
-          .modules-right {
-            margin-right: 5px;
+          #workspaces {
+              margin-right: 8px;
+              padding: 5px 10px 5px 10px;
+              border-radius: 10px;
+              transition: none;
+              background: rgba(${toRGB colors.background01},0.7);
           }
-          .modules-left {
-            margin-left: 5px;
+          #workspaces button#workspaces {
+              margin-right: 8px;
+              border-radius: 10px;
+              transition: none;
+              color: #${colors.foreground};
+              background: rgba(${toRGB colors.background01},0.7);
           }
-          #workspaces button {
-            padding: 4px;
-            border-radius: 3px;
-            border: 5px;
-            border-color: #${colors.background};
-          }
-          #workspaces button.hidden {
-            background-color: #${colors.background};
-            color: #${colors.foreground01};
-          }
+
           #workspaces button.focused,
           #workspaces button.active {
-            background-color: #${colors.background01};
-            border-bottom: 3px solid #${colors.accent};
+            border-radius: 10px;
+            background-color: #${colors.accent};
+            color: #${colors.background};
           }
-          #workspaces button.urgent {
-            border-bottom: 3px solid #${colors.red};
+
+          #workspaces button:hover {
+              transition: none;
+              box-shadow: inherit;
+              text-shadow: inherit;
+              border-radius: inherit;
+              color: #${colors.background};
+              background: #${colors.foreground03};
           }
+
+          #cpu, #memory, #disk {
+            border-radius: 0px;
+            padding: 5px 10px 5px 10px;
+            background: rgba(${toRGB colors.background01},0.7);
+          }
+
+          #cpu {
+            padding: 5px 10px 5px 10px;
+            border-radius: 10px 0px 0px 10px;
+          }
+          #disk {
+            padding: 5px 10px 5px 10px;
+            margin-right: 8px;
+            border-radius: 0px 10px 10px 0px;
+          }
+
+          #custom-player, #clock {
+            border-radius: 10px;
+            padding: 5px 10px 5px 10px;
+            background: rgba(${toRGB colors.background01},0.7);
+          }
+
+          #network, #bluetooth, #custom-gammastep, #custom-gpg-agent, #gamemode, #pulseaudio, #backlight, #battery, #tray {
+            border-radius: 0px;
+            padding: 5px 10px 5px 10px;
+            background: rgba(${toRGB colors.background01},0.7);
+          }
+          #network {
+            border-radius: 10px 0px 0px 10px;
+          }
+          #tray {
+            border-radius: 0px 10px 10px 0px;
+          }
+
           #gamemode {
             color: #${colors.red};
-          }
-          #custom-sep {
-            color: #${colors.background03};
-            margin: 0px;
           }
           #custom-gammastep {
             color: #${colors.yellow};
@@ -287,13 +312,17 @@ in {
           }
           #battery.charging {
             color: #${colors.green};
-
           }
           #battery.discharging.warning {
             color: #${colors.yellow};
           }
           #battery.discharging.critical {
             color: #${colors.red};
+            animation-name: blink;
+            animation-duration: 0.5s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
           }
         '';
       };
