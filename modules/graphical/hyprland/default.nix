@@ -122,6 +122,9 @@
           }
           misc {
             mouse_move_enables_dpms=true
+            groupbar_gradients=false
+            # TODO enable when available
+            # groupbar_text_color=0xff${config.colorScheme.colors.foreground}
           }
           input {
             kb_layout=us
