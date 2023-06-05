@@ -11,6 +11,9 @@
     kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = ["resume_offset=533881" "mitigations=off"];
     kernelModules = ["kvm-amd"];
+    kernel.sysctl = {
+      "vm.max_map_count" = 2147483642;
+    };
   };
 
   swapDevices = [

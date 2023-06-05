@@ -187,19 +187,19 @@
 
           blurls=wofi
 
-          windowrule=workspace 4 silent,steam
-          windowrule=workspace 4 silent,steamwebhelper
-          windowrule=workspace 7 silent,Slack
-          windowrule=workspace 7 silent,discord
-          windowrule=workspace 7 silent,Mumble
-          windowrule=workspace 7 silent,Signal
-          windowrule=workspace 8 silent,title:^(Spotify)$
-          windowrule=workspace 9 silent,Bitwarden
-          windowrule=opacity 0.85 0.85,title:^(Spotify)$
-          windowrule=opacity 0.85 0.85,kitty
-          windowrule=tile,title:^(Spotify)$
-          windowrule=float,title:^(Firefox — Sharing Indicator)$
-          windowrule=pin,title:^(Firefox — Sharing Indicator)$
+          windowrulev2=workspace 4 silent,class:steam
+          windowrulev2=workspace 4 silent,class:steamwebhelper
+          windowrulev2=workspace 7 silent,class:Slack
+          windowrulev2=workspace 7 silent,class:discord
+          windowrulev2=workspace 7 silent,class:Mumble
+          windowrulev2=workspace 7 silent,class:Signal
+          windowrulev2=workspace 8 silent,title:^(Spotify)$
+          windowrulev2=workspace 9 silent,class:Bitwarden
+          windowrulev2=opacity 0.85 0.85,title:^(Spotify)$
+          windowrulev2=opacity 0.85 0.85,class:kitty
+          windowrulev2=tile,title:^(Spotify)$
+          windowrulev2=float,title:^(Firefox — Sharing Indicator)$
+          windowrulev2=pin,title:^(Firefox — Sharing Indicator)$
           windowrulev2 = opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$
           windowrulev2 = noanim,class:^(xwaylandvideobridge)$
           windowrulev2 = nofocus,class:^(xwaylandvideobridge)$

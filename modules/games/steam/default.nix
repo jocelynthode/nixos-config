@@ -18,12 +18,25 @@
     programs.steam = {
       enable = true;
       remotePlay.openFirewall = true;
+      gamescopeSession = {
+        enable = true;
+        args = [
+          "--rt"
+        ];
+      };
+    };
+
+    programs.gamescope = {
+      enable = true;
+      capSysNice = true;
+      args = [
+        "--rt"
+      ];
     };
 
     hardware.steam-hardware.enable = true;
 
     environment.systemPackages = with pkgs; [
-      gamescope
       protontricks
       mangohud
     ];

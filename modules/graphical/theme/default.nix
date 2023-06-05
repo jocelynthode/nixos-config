@@ -31,6 +31,12 @@
       ];
     };
 
+    qt = {
+      enable = true;
+      platformTheme = "gnome";
+      style = "adwaita";
+    };
+
     programs.dconf.enable = true;
     home-manager.users.jocelyn = {
       pkgs,
@@ -72,15 +78,6 @@
         settings = {
           "Net/ThemeName" = gtk.theme.name;
           "Net/IconThemeName" = gtk.iconTheme.name;
-        };
-      };
-
-      qt = {
-        enable = true;
-        platformTheme = "gnome";
-        style = {
-          name = "adwaita";
-          package = pkgs.adwaita-qt;
         };
       };
     };

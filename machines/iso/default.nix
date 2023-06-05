@@ -4,7 +4,7 @@
     stateVersion = "22.05";
     base = {
       btrfs.enable = false;
-      sshd.permitRootLogin = "yes";
+      sshd.PermitRootLogin = "yes";
     };
     programs = {
       git.enable = true;

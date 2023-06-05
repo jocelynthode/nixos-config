@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  options.aspects.base.sshd.permitRootLogin = lib.mkOption {
+  options.aspects.base.sshd.PermitRootLogin = lib.mkOption {
     default = "no";
     example = "yes";
   };
@@ -12,8 +12,8 @@
     services.openssh = {
       enable = true;
       settings = {
-        inherit (config.aspects.base.sshd) permitRootLogin;
-        passwordAuthentication = false;
+        inherit (config.aspects.base.sshd) PermitRootLogin;
+        PasswordAuthentication = false;
       };
       extraConfig = ''
         StreamLocalBindUnlink yes

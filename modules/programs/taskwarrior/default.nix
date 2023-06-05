@@ -36,6 +36,7 @@
     home-manager.users.jocelyn = _: {
       programs.taskwarrior = {
         enable = true;
+        colorTheme = "light-256";
         config = {
           context.work.read = "+work";
           context.work.write = "+work";
