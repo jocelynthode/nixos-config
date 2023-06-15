@@ -27,6 +27,7 @@
         kubelogin-oidc
         kubernetes-helm
         kubectl-node-shell
+        kubectl-view-secret
         # kubectl-get-all
         # kubectl-neat
         openshift

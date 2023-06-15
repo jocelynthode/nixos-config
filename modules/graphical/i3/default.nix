@@ -22,6 +22,7 @@
       layout = "us";
       xkbVariant = "altgr-intl";
       displayManager = {
+        defaultSession = "none+i3";
         lightdm = {
           enable = true;
           background = pkgs.wallpapers.cascade-fisher;

@@ -29,7 +29,7 @@
   hardware.nvidia.powerManagement.enable = true;
   hardware.nvidia.modesetting.enable = true;
 
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = lib.mkIf config.aspects.graphical.i3.enable ["nvidia"];
   services.xserver.displayManager = lib.mkIf config.aspects.graphical.i3.enable {
     setupCommands = ''
       ${pkgs.xorg.xrandr}/bin/xrandr --output HDMI-0 --off
