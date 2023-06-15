@@ -39,17 +39,18 @@
 
     environment.sessionVariables =
       {
-        MOZ_ENABLE_WAYLAND = "1";
+        GDK_BACKEND = "wayland,x11";
         QT_QPA_PLATFORM = "wayland;xcb";
-        LIBSEAT_BACKEND = "logind";
         SDL_VIDEODRIVER = "wayland";
+        CLUTTER_BACKEND = "wayland";
+        MOZ_ENABLE_WAYLAND = "1";
+        LIBSEAT_BACKEND = "logind";
         NIXOS_OZONE_WL = "1";
       }
       // lib.attrsets.optionalAttrs config.aspects.graphical.hyprland.useNvidia {
         GBM_BACKEND = "nvidia-drm";
         "__GLX_VENDOR_LIBRARY_NAME" = "nvidia";
         LIBVA_DRIVER_NAME = "nvidia";
-        GDK_BACKEND = "wayland,x11";
         WLR_NO_HARDWARE_CURSORS = "1";
         XDG_SESSION_TYPE = "wayland";
       };
@@ -198,6 +199,7 @@
           windowrulev2=opacity 0.85 0.85,title:^(Spotify)$
           windowrulev2=opacity 0.85 0.85,class:kitty
           windowrulev2=tile,title:^(Spotify)$
+          windowrulev2=tile,class:^(battle.net.exe)$
           windowrulev2=float,title:^(Firefox — Sharing Indicator)$
           windowrulev2=pin,title:^(Firefox — Sharing Indicator)$
           windowrulev2 = opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$

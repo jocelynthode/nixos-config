@@ -18,7 +18,7 @@
       wallpaper = "lavenders";
       printer.enable = true;
       hyprland = {
-        enable = false;
+        enable = true;
         kanshi.profiles = {
           default = {
             outputs = [
@@ -55,13 +55,13 @@
               "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"10 HDMI-A-1\""
 
               # Set xwayland primary display for games
-              "${pkgs.xorg.xrandr}/bin/xrandr --output DP-2 --primary --mode 2560x1440 --pos 1920x0 --right-of HDMI-A-1"
+              "${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --primary --mode 2560x1440 --pos 1920x0 --right-of HDMI-A-1"
             ];
           };
         };
       };
       i3 = {
-        enable = true;
+        enable = false;
         autorandr.profiles = {
           "desktop" = {
             fingerprint = {
