@@ -1,6 +1,5 @@
 {
   pkgs,
-  config,
   lib,
   ...
 }: {
@@ -25,18 +24,4 @@
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
   hardware.enableRedistributableFirmware = true;
-  # Allow resume with nvidia
-  hardware.nvidia.powerManagement.enable = true;
-  hardware.nvidia.modesetting.enable = true;
-
-  services.xserver.videoDrivers = lib.mkIf config.aspects.graphical.i3.enable ["nvidia"];
-  services.xserver.displayManager = lib.mkIf config.aspects.graphical.i3.enable {
-    setupCommands = ''
-      ${pkgs.xorg.xrandr}/bin/xrandr --output HDMI-0 --off
-      ${pkgs.xorg.xrandr}/bin/xrandr --output DP-2 --primary --mode 2560x1440 --pos 1920x0 --right-of HDMI-0
-    '';
-  };
-  hardware.opengl.extraPackages = with pkgs; [
-    vaapiVdpau
-  ];
 }

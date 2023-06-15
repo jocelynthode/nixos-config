@@ -82,6 +82,7 @@
             ./machines/desktek
             hardware.nixosModules.common-cpu-amd
             hardware.nixosModules.common-pc-ssd
+            hardware.nixosModules.common-gpu-amd
           ];
           specialArgs = {inherit nix-colors spicetify-nix;};
         };
