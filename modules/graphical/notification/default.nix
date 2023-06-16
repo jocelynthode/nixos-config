@@ -30,8 +30,8 @@ in {
         };
         settings = {
           global = {
-            monitor = 1;
-            geometry = "0x0-50+65";
+            monitor = 0;
+            offset = "10x10";
             font = "${osConfig.aspects.base.fonts.monospace.family} ${toString osConfig.aspects.base.fonts.monospace.size}";
             line_height = 4;
             frame_width = 2;
