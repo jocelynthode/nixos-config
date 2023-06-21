@@ -20,7 +20,10 @@
     nix-colors.url = "github:misterio77/nix-colors";
     hardware.url = "github:nixos/nixos-hardware";
     impermanence.url = "github:nix-community/impermanence";
-    taxi.url = "github:sephii/taxi";
+    taxi = {
+      url = "github:sephii/taxi";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     utils = {
       url = "github:gytis-ivaskevicius/flake-utils-plus";
       inputs.flake-utils.follows = "flake-utils";
@@ -30,7 +33,10 @@
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    devenv.url = "github:cachix/devenv/latest";
+    devenv = {
+      url = "github:cachix/devenv/latest";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     spicetify-nix.url = "github:the-argus/spicetify-nix";
   };
 
