@@ -27,7 +27,7 @@ in
         ];
     });
 
-    devenv = inputs.devenv.defaultPackage.${final.system};
+    devenv = inputs.devenv.packages.${final.system}.default;
 
     proton-ge-custom = prev.pkgs.callPackage ../pkgs/core/proton-ge-custom {};
 
