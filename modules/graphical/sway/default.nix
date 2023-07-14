@@ -92,6 +92,12 @@
           ];
           menu = "${pkgs.wofi}/bin/wofi -IS drun -W 40% -H 50%";
           bars = [];
+          input = {
+            "*" = {
+              xkb_layout = "us";
+              xkb_variant = "altgr-intl";
+            };
+          };
           workspaceAutoBackAndForth = false;
           focus = {
             followMouse = true;
