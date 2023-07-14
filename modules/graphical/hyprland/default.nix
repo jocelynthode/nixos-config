@@ -6,10 +6,7 @@
   ...
 }: {
   imports = [
-    ./kanshi
-    ./swayidle
-    ./waybar
-    ./wofi
+    ../wayland
   ];
 
   options.aspects.graphical.hyprland = {
@@ -22,6 +19,8 @@
   };
 
   config = lib.mkIf config.aspects.graphical.hyprland.enable {
+    aspects.graphical.wayland.enable = true;
+
     programs.hyprland = {
       enable = true;
       nvidiaPatches = config.aspects.graphical.hyprland.useNvidia;
@@ -135,13 +134,11 @@
           # Startup
           exec=${pkgs.swaybg}/bin/swaybg -i ${pkgs.wallpapers.${osConfig.aspects.graphical.wallpaper}} --mode fill
           exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-          # Mouse binding
-          bindm=$mainMod,mouse:272,movewindow
-          bindm=$mainMod,mouse:273,resizewindow
           # Program bindings
           bind=$mainMod,Return,exec,${pkgs.kitty}/bin/kitty
           bind=$mainMod,f,fullscreen,0
           bind=$mainMod,d,exec,${pkgs.wofi}/bin/wofi -IS drun -W 40% -H 50%
+          bind=$mainMod,o,exec,${pkgs.rofi-ykman}/bin/rofi-ykman
           bind=$mainMod SHIFT,e,exec,${pkgs.wofi-powermenu}/bin/wofi-powermenu
           binde=,XF86AudioRaiseVolume,exec,${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%
           binde=,XF86AudioLowerVolume,exec,${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%

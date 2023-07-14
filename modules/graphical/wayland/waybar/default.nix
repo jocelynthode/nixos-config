@@ -8,7 +8,7 @@
   toRGB = nix-colors.lib.conversions.hexToRGBString ",";
 in {
   # TODO: Have bar on one screen and variabilize output
-  config = lib.mkIf config.aspects.graphical.hyprland.enable {
+  config = lib.mkIf config.aspects.graphical.wayland.enable {
     home-manager.users.jocelyn = {
       config,
       osConfig,
@@ -50,7 +50,7 @@ in {
             position = "top";
             output = ["DP-1" "DP-4" "eDP-1"];
             modules-left = [
-              "wlr/workspaces"
+              "sway/workspaces"
               "cpu"
               "memory"
               "disk"
@@ -70,7 +70,7 @@ in {
               "battery"
               "tray"
             ];
-            "wlr/workspaces" = {
+            "sway/workspaces" = {
               on-click = "activate";
               all-outputs = true;
               sort-by-number = true;
@@ -236,13 +236,13 @@ in {
           #workspaces {
               margin-right: 8px;
               padding: 5px 10px 5px 10px;
-              border-radius: 10px;
+              border-radius: 0px;
               transition: none;
               background: rgba(${toRGB colors.background01},0.7);
           }
           #workspaces button#workspaces {
               margin-right: 8px;
-              border-radius: 10px;
+              border-radius: 0px;
               transition: none;
               color: #${colors.foreground};
               background: rgba(${toRGB colors.background01},0.7);
@@ -250,7 +250,7 @@ in {
 
           #workspaces button.focused,
           #workspaces button.active {
-            border-radius: 10px;
+            border-radius: 0px;
             background-color: #${colors.accent};
             color: #${colors.background};
           }
@@ -272,16 +272,16 @@ in {
 
           #cpu {
             padding: 5px 10px 5px 10px;
-            border-radius: 10px 0px 0px 10px;
+            border-radius: 0px 0px 0px 0px;
           }
           #disk {
             padding: 5px 10px 5px 10px;
             margin-right: 8px;
-            border-radius: 0px 10px 10px 0px;
+            border-radius: 0px 0px 0px 0px;
           }
 
           #custom-player, #clock {
-            border-radius: 10px;
+            border-radius: 0px;
             padding: 5px 10px 5px 10px;
             background: rgba(${toRGB colors.background01},0.7);
           }
@@ -292,10 +292,10 @@ in {
             background: rgba(${toRGB colors.background01},0.7);
           }
           #network {
-            border-radius: 10px 0px 0px 10px;
+            border-radius: 0px 0px 0px 0px;
           }
           #tray {
-            border-radius: 0px 10px 10px 0px;
+            border-radius: 0px 0px 0px 0px;
           }
 
           #gamemode {

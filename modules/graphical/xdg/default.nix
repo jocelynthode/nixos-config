@@ -24,6 +24,7 @@
 
     xdg.portal = {
       enable = true;
+      wlr.enable = config.aspects.graphical.sway.enable;
       extraPortals = with pkgs; [
         xdg-desktop-portal-gtk
       ];

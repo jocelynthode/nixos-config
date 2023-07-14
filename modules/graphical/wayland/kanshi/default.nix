@@ -4,7 +4,7 @@
   lib,
   ...
 }: {
-  options.aspects.graphical.hyprland.kanshi.profiles = lib.mkOption {
+  options.aspects.graphical.wayland.kanshi.profiles = lib.mkOption {
     type = lib.types.attrs;
     default = {};
     description = "services.kanshi.profiles setup";
@@ -35,12 +35,15 @@
     '';
   };
 
-  config = lib.mkIf config.aspects.graphical.hyprland.enable {
+  config = lib.mkIf config.aspects.graphical.wayland.enable {
     home-manager.users.jocelyn = {osConfig, ...}: {
       services.kanshi = {
         enable = true;
-        systemdTarget = "hyprland-session.target";
-        inherit (osConfig.aspects.graphical.hyprland.kanshi) profiles;
+        systemdTarget =
+          if osConfig.aspects.graphical.hyprland.enable
+          then "hyprland-session.target"
+          else "sway-session.target";
+        inherit (osConfig.aspects.graphical.wayland.kanshi) profiles;
       };
     };
   };

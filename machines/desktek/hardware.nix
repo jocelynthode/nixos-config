@@ -24,4 +24,7 @@
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
   hardware.enableRedistributableFirmware = true;
+  # hardware.amdgpu.amdvlk = true;
+  programs.corectrl.enable = true;
+  hardware.amdgpu.opencl = false;
 }

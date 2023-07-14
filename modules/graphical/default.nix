@@ -15,8 +15,10 @@
     ./rofi
     ./screenshot
     ./sound
+    ./sway
     ./terminal
     ./theme
+    ./wayland
     ./xdg
   ];
 
@@ -41,12 +43,12 @@
   };
 
   config = lib.mkIf config.aspects.graphical.enable {
-    users.users.jocelyn.extraGroups = ["audio" "video" "camera"];
+    users.users.jocelyn.extraGroups = ["audio" "video" "camera" "corectrl"];
     aspects = {
       graphical = {
         fingerprint.enable = lib.mkDefault false;
         firefox.enable = lib.mkDefault true;
-        i3.enable = lib.mkDefault true;
+        i3.enable = lib.mkDefault false;
         hyprland.enable = lib.mkDefault false;
         mpv.enable = lib.mkDefault true;
         notification.enable = lib.mkDefault true;
@@ -54,6 +56,7 @@
         screenshot.enable = lib.mkDefault true;
         rofi.enable = lib.mkDefault true;
         sound.enable = lib.mkDefault true;
+        sway.enable = lib.mkDefault false;
         terminal.enable = lib.mkDefault true;
         theme.enable = lib.mkDefault true;
         xdg.enable = lib.mkDefault true;

@@ -4,7 +4,7 @@
   lib,
   ...
 }: {
-  config = lib.mkIf config.aspects.graphical.hyprland.enable {
+  config = lib.mkIf config.aspects.graphical.wayland.enable {
     security.pam.services = {swaylock = {};};
     home-manager.users.jocelyn = {
       config,
@@ -54,7 +54,10 @@
 
       services.swayidle = {
         enable = true;
-        systemdTarget = "hyprland-session.target";
+        systemdTarget =
+          if osConfig.aspects.graphical.hyprland.enable
+          then "hyprland-session.target"
+          else "sway-session.target";
         events = [
           {
             event = "before-sleep";
@@ -76,8 +79,14 @@
           }
           {
             timeout = 660;
-            command = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
-            resumeCommand = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
+            command =
+              if osConfig.aspects.graphical.hyprland.enable
+              then "${pkgs.hyprland}/bin/hyprctl dispatch dpms off"
+              else "${pkgs.sway}/bin/swaymsg \"output * dpms off\"";
+            resumeCommand =
+              if osConfig.aspects.graphical.hyprland.enable
+              then "${pkgs.hyprland}/bin/hyprctl dispatch dpms on"
+              else "${pkgs.sway}/bin/swaymsg \"output * dpms on\"";
           }
         ];
       };

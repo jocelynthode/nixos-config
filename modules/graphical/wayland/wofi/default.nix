@@ -7,7 +7,7 @@
 }: let
   toRGB = nix-colors.lib.conversions.hexToRGBString ",";
 in {
-  config = lib.mkIf config.aspects.graphical.hyprland.enable {
+  config = lib.mkIf config.aspects.graphical.wayland.enable {
     home-manager.users.jocelyn = {
       config,
       osConfig,
@@ -21,9 +21,9 @@ in {
         text = ''
           @define-color accent #${config.colorScheme.colors.accent};
           @define-color txt #${config.colorScheme.colors.foreground};
-          @define-color bg rgba(${toRGB config.colorScheme.colors.background},0.5);
+          @define-color bg rgba(${toRGB config.colorScheme.colors.background},0.9);
           @define-color bg-solid #${config.colorScheme.colors.background};
-          @define-color bg2 rgba(${toRGB config.colorScheme.colors.background03},0.5);
+          @define-color bg2 rgba(${toRGB config.colorScheme.colors.background03},0.9);
 
           * {
               font-family: ${osConfig.aspects.base.fonts.regular.family};
