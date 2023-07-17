@@ -30,9 +30,9 @@
         ];
         peers = [
           {
-            publicKey = "VNNO5MYorFu1UerHvoXccW6TvotxbJ1GAGJKtzM9HTY=";
+            publicKey = "CgC9o9MUl4n/r4pueamp9JFw2cneCqSnHJD088Zm+Bg=";
             allowedIPs = ["0.0.0.0/0"];
-            endpoint = "185.159.157.23:51820";
+            endpoint = "185.159.157.12:51820";
             persistentKeepalive = 25;
           }
         ];
