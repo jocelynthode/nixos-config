@@ -28,7 +28,7 @@
       services = {
         acme.enable = lib.mkDefault true;
         authentik.enable = lib.mkDefault true;
-        ddclient.enable = lib.mkDefault true;
+        ddclient.enable = lib.mkDefault false;
         deluge.enable = lib.mkDefault true;
         media.enable = lib.mkDefault true;
         navidrome.enable = lib.mkDefault true;
