@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  base = config: {
+  base = config: osConfig: {
     programs.fish = {
       enable = true;
       shellAliases = {
@@ -23,9 +23,11 @@
         set -U fish_greeting
         set -gx fish_key_bindings fish_user_key_bindings
       '';
-      interactiveShellInit = ''
-        any-nix-shell fish | source
-      '';
+      interactiveShellInit =
+        ''
+          any-nix-shell fish | source
+        ''
+        + lib.optionalString osConfig.aspects.work.kubernetes.enable ''set -gx PATH $PATH $HOME/.krew/bin'';
       functions = {
         fish_user_key_bindings = {
           body = ''
@@ -179,6 +181,14 @@ in {
     ];
   };
 
-  home-manager.users.jocelyn = {config, ...}: (base config);
-  home-manager.users.root = {config, ...}: (base config);
+  home-manager.users.jocelyn = {
+    config,
+    osConfig,
+    ...
+  }: (base config osConfig);
+  home-manager.users.root = {
+    config,
+    osConfig,
+    ...
+  }: (base config osConfig);
 }

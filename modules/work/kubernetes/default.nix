@@ -17,6 +17,9 @@
         directory = ".kube";
         mode = "0700";
       }
+      {
+        directory = ".krew";
+      }
     ];
 
     home-manager.users.jocelyn = {config, ...}
@@ -31,6 +34,7 @@
         # kubectl-get-all
         # kubectl-neat
         openshift
+        krew
       ];
 
       programs.k9s = {
