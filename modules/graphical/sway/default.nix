@@ -252,8 +252,9 @@
             "XF86AudioRaiseVolume" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%";
             "XF86AudioLowerVolume" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%";
             "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl --player spotify play-pause";
-            "Print" = "exec ${pkgs.gnome.gnome-screenshot}/bin/gnome-screenshot -i";
-            "${alt}+Print" = "exec ${pkgs.gnome.gnome-screenshot}/bin/gnome-screenshot -c -w";
+            "Print" = ''exec ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp -d)" - | wl-copy'';
+            "${alt}+Print" = ''exec ${pkgs.sway}/bin/swaymsg -t get_tree | ${pkgs.jq}/bin/jq -r '.. | (.nodes? // empty)[] | select(.focused) | "\(.rect.x),\(.rect.y) \(.rect.width)x\(.rect.height)"' | ${pkgs.grim}/bin/grim -g - - | wl-copy'';
+            "Ctrl+Shift+period" = "${pkgs.dunst}/bin/dunstctl context";
           };
           assigns = {
             "4" = [

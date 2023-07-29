@@ -41,6 +41,7 @@ in {
             format = ''<b>%s</b>\n%b'';
             frame_color = "#${config.colorScheme.colors.accent}FF";
             separator_color = "frame";
+            dmenu = "${pkgs.wofi}/bin/wofi -d";
           };
 
           play_sound = {
