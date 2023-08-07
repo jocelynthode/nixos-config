@@ -13,10 +13,11 @@
     fonts = {
       fontconfig.enable = true;
       fontDir.enable = true;
-      fonts = with pkgs; [
-        carlito
-        vegur
+      packages = with pkgs; [
         noto-fonts
+        noto-fonts-emoji
+        noto-fonts-cjk-sans
+        noto-fonts-cjk-serif
         font-awesome
         corefonts
         material-design-icons

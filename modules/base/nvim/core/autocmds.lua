@@ -72,12 +72,16 @@ vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(ev)
     require("lspsaga").setup({
       finder = {
-        expand_or_jump = { 'o', 'l' },
+        default = 'def+ref+imp',
+        keys = {
+          toggle_or_open = { 'o', 'l' },
+        }
       },
     })
     local opts = { buffer = ev.buf }
-    vim.keymap.set('n', 'gh', "<cmd>Lspsaga lsp_finder<CR>", opts)
-    vim.keymap.set('n', 'gp', "<cmd>Lspsaga peek_definition<CR>", opts)
+    vim.keymap.set('n', 'gh', "<cmd>Lspsaga finder<CR>", opts)
+    vim.keymap.set('n', 'gd', "<cmd>Lspsaga finder def<CR>", opts)
+    vim.keymap.set('n', 'gr', "<cmd>Lspsaga finder ref<CR>", opts)
     vim.keymap.set('n', 'K', "<cmd>Lspsaga hover_doc<CR>", opts)
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
     vim.keymap.set('n', 'gy', "<cmd>Lspsaga peek_type_definition<CR>", opts)
