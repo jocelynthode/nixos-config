@@ -44,7 +44,7 @@
         nvim-dap-repl-highlights
         vim-helm
         telescope-live-grep-args-nvim
-        lspsaga-nvim-original
+        lspsaga-nvim
         nvim-treesitter-textobjects
         nvim-lsp-notify
         crates-nvim
