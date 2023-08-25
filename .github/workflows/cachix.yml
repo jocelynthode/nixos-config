@@ -8,7 +8,7 @@ jobs:
   build-desktek:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.5.2
+      - uses: actions/checkout@v3.6.0
       - uses: cachix/install-nix-action@v21
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
@@ -24,7 +24,7 @@ jobs:
   build-frametek:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.5.2
+      - uses: actions/checkout@v3.6.0
       - uses: cachix/install-nix-action@v21
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
@@ -40,7 +40,7 @@ jobs:
   build-servetek:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.5.2
+      - uses: actions/checkout@v3.6.0
       - uses: cachix/install-nix-action@v21
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
