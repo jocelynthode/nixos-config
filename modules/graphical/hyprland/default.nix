@@ -11,11 +11,6 @@
 
   options.aspects.graphical.hyprland = {
     enable = lib.mkEnableOption "hyprland";
-
-    useNvidia = lib.mkOption {
-      default = false;
-      example = true;
-    };
   };
 
   config = lib.mkIf config.aspects.graphical.hyprland.enable {
@@ -23,10 +18,8 @@
 
     programs.hyprland = {
       enable = true;
-      nvidiaPatches = config.aspects.graphical.hyprland.useNvidia;
       xwayland = {
         enable = true;
-        hidpi = true;
       };
     };
 
@@ -36,23 +29,15 @@
       xwaylandvideobridge
     ];
 
-    environment.sessionVariables =
-      {
-        GDK_BACKEND = "wayland,x11";
-        QT_QPA_PLATFORM = "wayland;xcb";
-        SDL_VIDEODRIVER = "wayland";
-        CLUTTER_BACKEND = "wayland";
-        MOZ_ENABLE_WAYLAND = "1";
-        LIBSEAT_BACKEND = "logind";
-        NIXOS_OZONE_WL = "1";
-      }
-      // lib.attrsets.optionalAttrs config.aspects.graphical.hyprland.useNvidia {
-        GBM_BACKEND = "nvidia-drm";
-        "__GLX_VENDOR_LIBRARY_NAME" = "nvidia";
-        LIBVA_DRIVER_NAME = "nvidia";
-        WLR_NO_HARDWARE_CURSORS = "1";
-        XDG_SESSION_TYPE = "wayland";
-      };
+    environment.sessionVariables = {
+      GDK_BACKEND = "wayland,x11";
+      QT_QPA_PLATFORM = "wayland;xcb";
+      SDL_VIDEODRIVER = "wayland";
+      CLUTTER_BACKEND = "wayland";
+      MOZ_ENABLE_WAYLAND = "1";
+      LIBSEAT_BACKEND = "logind";
+      NIXOS_OZONE_WL = "1";
+    };
 
     services.greetd = {
       enable = true;
@@ -83,10 +68,8 @@
 
       wayland.windowManager.hyprland = {
         enable = true;
-        nvidiaPatches = osConfig.aspects.graphical.hyprland.useNvidia;
         xwayland = {
           enable = true;
-          hidpi = true;
         };
         recommendedEnvironment = true;
         systemdIntegration = true;

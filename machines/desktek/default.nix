@@ -10,7 +10,7 @@
     development.enable = true;
     games = {
       enable = true;
-      ryujinx.enable = true;
+      ryujinx.enable = false;
     };
     graphical = {
       enable = true;

@@ -9,7 +9,7 @@
     example = true;
   };
 
-  config = lib.mkIf config.aspects.games.discord.enable {
+  config = lib.mkIf config.aspects.games.ryujinx.enable {
     aspects.base.persistence.homePaths = [
       ".config/Ryujinx"
     ];

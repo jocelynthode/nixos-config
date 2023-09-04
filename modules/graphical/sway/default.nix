@@ -221,6 +221,7 @@
             "${mod}+e" = "layout toggle split";
             "${mod}+d" = "exec ${menu}";
             "${mod}+o" = "exec ${pkgs.rofi-ykman}/bin/rofi-ykman";
+            "${mod}+Shift+a" = "exec ${pkgs.dunst}/bin/dunstctl context";
             "${mod}+Shift+space" = "floating toggle";
             "${mod}+space" = "focus mode_toggle";
             "${mod}+a" = "focus parent";

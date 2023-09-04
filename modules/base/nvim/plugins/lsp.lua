@@ -192,7 +192,7 @@ null_ls.setup({
     formatting.shfmt,
     diagnostics.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
     -- Docker
-    diagnostics.hadolint,
+    -- diagnostics.hadolint,
     -- Python
     formatting.black,
     diagnostics.flake8,

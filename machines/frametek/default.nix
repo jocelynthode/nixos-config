@@ -15,8 +15,8 @@
       dpi = 120;
       wallpaper = "lavenders";
       fingerprint.enable = true;
-      hyprland = {
-        enable = true;
+      hyprland.enable = true;
+      wayland = {
         kanshi.profiles = {
           laptop = {
             outputs = [
