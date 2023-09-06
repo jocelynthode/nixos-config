@@ -16,10 +16,6 @@
       };
     };
 
-    aspects.base.persistence.systemPaths = [
-      "/var/lib/AdGuardHome"
-    ];
-
     services.adguardhome = {
       enable = true;
       # openFirewall = true;
