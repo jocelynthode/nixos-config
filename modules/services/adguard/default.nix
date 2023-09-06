@@ -9,9 +9,20 @@
   };
 
   config = lib.mkIf config.aspects.services.adguard.enable {
+    networking = {
+      firewall = {
+        allowedTCPPorts = [3000];
+        allowedUDPPorts = [53];
+      };
+    };
+
+    aspects.base.persistence.systemPaths = [
+      "/var/lib/AdGuardHome"
+    ];
+
     services.adguardhome = {
       enable = true;
-      openFirewall = true;
+      # openFirewall = true;
     };
   };
 }
