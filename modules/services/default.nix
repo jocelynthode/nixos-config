@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./acme
+    ./adguard
     ./authentik
     ./ddclient
     ./deluge
@@ -27,6 +28,7 @@
     aspects = {
       services = {
         acme.enable = lib.mkDefault true;
+        adguard.enable = lib.mkDefault true;
         authentik.enable = lib.mkDefault true;
         ddclient.enable = lib.mkDefault false;
         deluge.enable = lib.mkDefault true;
