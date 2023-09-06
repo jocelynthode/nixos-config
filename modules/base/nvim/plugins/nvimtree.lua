@@ -1,10 +1,5 @@
 local _, nvim_tree = pcall(require, "nvim-tree")
 
-local config_status_ok, nvim_tree_config = pcall(require, "nvim-tree.config")
-if not config_status_ok then
-  return
-end
-
 local function open_nvim_tree(data)
   -- buffer is a directory
   local directory = vim.fn.isdirectory(data.file) == 1
