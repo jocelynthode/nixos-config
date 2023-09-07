@@ -16,8 +16,12 @@
     networking.firewall.allowedTCPPorts = [80 443];
     security.acme = {
       acceptTerms = true;
-      defaults.email = "acme@thode.email";
-      defaults.webroot = "/var/lib/acme/acme-challenge"; # port 80 already opened in media/nginx
+      defaults = {
+        email = "acme@thode.email";
+        webroot = "/var/lib/acme/acme-challenge"; # port 80 already opened in media/nginx
+        extraLegoRunFlags = ["--preferred-chain=\"ISRG Root X1\""];
+        extraLegoRenewFlags = ["--preferred-chain=\"ISRG Root X1\""];
+      };
     };
   };
 }
