@@ -19,8 +19,8 @@
       defaults = {
         email = "acme@thode.email";
         webroot = "/var/lib/acme/acme-challenge"; # port 80 already opened in media/nginx
-        extraLegoRunFlags = ["--preferred-chain=\"ISRG Root X1\""];
-        extraLegoRenewFlags = ["--preferred-chain=\"ISRG Root X1\""];
+        # extraLegoRunFlags = ["--preferred-chain=\"ISRG Root X1\""];
+        # extraLegoRenewFlags = ["--preferred-chain=\"ISRG Root X1\""];
       };
     };
   };
