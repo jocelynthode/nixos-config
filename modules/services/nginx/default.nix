@@ -163,8 +163,8 @@
           onlySSL = true;
           enableACME = true;
           locations = {
-            "/" = {
-              proxyPass = "https://127.0.0.1:4443";
+            "/dns-query" = {
+              proxyPass = "https://127.0.0.1:4443/dns-query";
             };
           };
         };

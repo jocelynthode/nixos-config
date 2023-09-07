@@ -30,7 +30,7 @@
           "https://dns.google/dns-query"
         ];
         # For initially solving DoH/DoT Requests when no system Resolver is available.
-        bootstrap.Dns = {
+        bootstrapDns = {
           upstream = "https://dns.quad9.net/dns-query";
           ips = ["9.9.9.9" "149.112.112.112"];
         };
