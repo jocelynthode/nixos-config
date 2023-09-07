@@ -7,6 +7,7 @@
     ./acme
     ./adguard
     ./authentik
+    ./blocky
     ./ddclient
     ./deluge
     ./media
@@ -28,8 +29,9 @@
     aspects = {
       services = {
         acme.enable = lib.mkDefault true;
-        adguard.enable = lib.mkDefault true;
+        adguard.enable = lib.mkDefault false;
         authentik.enable = lib.mkDefault true;
+        blocky.enable = lib.mkDefault true;
         ddclient.enable = lib.mkDefault false;
         deluge.enable = lib.mkDefault true;
         media.enable = lib.mkDefault true;

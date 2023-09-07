@@ -155,6 +155,19 @@
             };
           };
         };
+        "dns.tekila.ovh" = {
+          extraConfig = ''
+            ssl_stapling on;
+            ssl_stapling_verify on;
+          '';
+          onlySSL = true;
+          enableACME = true;
+          locations = {
+            "/" = {
+              proxyPass = "https://127.0.0.1:4443";
+            };
+          };
+        };
       };
     };
   };
