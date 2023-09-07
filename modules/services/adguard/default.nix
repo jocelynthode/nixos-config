@@ -14,6 +14,7 @@
         allowedTCPPorts = [3000];
         allowedUDPPorts = [53];
       };
+      nameservers = ["127.0.0.1"];
     };
 
     services.adguardhome = {
