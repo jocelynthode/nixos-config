@@ -11,7 +11,7 @@
   config = lib.mkIf config.aspects.services.blocky.enable {
     networking = {
       firewall = {
-        allowedTCPPorts = [53];
+        allowedTCPPorts = [53 853];
         allowedUDPPorts = [53];
       };
     };
@@ -22,6 +22,7 @@
         ports = {
           dns = 53;
           https = 4443;
+          tls = 853;
         };
         upstreams.groups = {
           default = [

@@ -20,11 +20,6 @@
       virtualHosts = let
         base = locations: {
           inherit locations;
-
-          extraConfig = ''
-            ssl_stapling on;
-            ssl_stapling_verify on;
-          '';
           forceSSL = true;
           enableACME = true;
         };
@@ -107,10 +102,6 @@
         };
         "www.tekila.ovh" = {
           root = pkgs.mm-server-ui;
-          extraConfig = ''
-            ssl_stapling on;
-            ssl_stapling_verify on;
-          '';
           forceSSL = true;
           enableACME = true;
           locations = {
@@ -156,10 +147,6 @@
           };
         };
         "dns.tekila.ovh" = {
-          extraConfig = ''
-            ssl_stapling on;
-            ssl_stapling_verify on;
-          '';
           onlySSL = true;
           enableACME = true;
           locations = {
@@ -169,6 +156,17 @@
           };
         };
       };
+      appendConfig = ''
+        server {
+            listen 0.0.0.0:853 ssl;
+            listen [::0]:853 ssl;
+            proxy_ssl on;
+            proxy_pass 127.0.0.1:853;
+            ssl_certificate /var/lib/acme/dns.tekila.ovh/fullchain.pem;
+            ssl_certificate_key /var/lib/acme/dns.tekila.ovh/key.pem;
+            ssl_trusted_certificate /var/lib/acme/dns.tekila.ovh/chain.pem;
+        }
+      '';
     };
   };
 }
