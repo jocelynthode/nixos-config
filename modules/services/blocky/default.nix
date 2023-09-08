@@ -43,6 +43,7 @@
           };
         };
         log = {
+          level = "warn";
           privacy = true;
         };
         caching = {
