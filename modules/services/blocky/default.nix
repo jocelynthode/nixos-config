@@ -23,7 +23,7 @@
           dns = 53;
           https = 4443;
         };
-        upstream.groups = {
+        upstreams.groups = {
           default = [
             "https://dns10.quad9.net/dns-query"
             "https://dns.mullvad.net/dns-query"
