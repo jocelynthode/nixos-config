@@ -156,12 +156,12 @@
           };
         };
       };
-      appendConfig = ''
+      streamConfig = ''
         server {
             listen 0.0.0.0:853 ssl;
             listen [::0]:853 ssl;
             proxy_ssl on;
-            proxy_pass 127.0.0.1:853;
+            proxy_pass 127.0.0.1:8853;
             ssl_certificate /var/lib/acme/dns.tekila.ovh/fullchain.pem;
             ssl_certificate_key /var/lib/acme/dns.tekila.ovh/key.pem;
             ssl_trusted_certificate /var/lib/acme/dns.tekila.ovh/chain.pem;
