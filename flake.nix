@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -43,6 +44,7 @@
   outputs = inputs @ {
     self,
     nixpkgs,
+    nixpkgs-master,
     hyprland,
     home-manager,
     sops-nix,
@@ -90,7 +92,13 @@
             hardware.nixosModules.common-pc-ssd
             hardware.nixosModules.common-gpu-amd
           ];
-          specialArgs = {inherit nix-colors spicetify-nix;};
+          specialArgs = {
+            inherit nix-colors spicetify-nix;
+            pkgs-master = import nixpkgs-master {
+              system = "x86_64-linux";
+              config.allowUnfree = true;
+            };
+          };
         };
         frametek = {
           modules = [
@@ -101,7 +109,13 @@
             hardware.nixosModules.common-pc-laptop-ssd
             hardware.nixosModules.framework
           ];
-          specialArgs = {inherit nix-colors spicetify-nix;};
+          specialArgs = {
+            inherit nix-colors spicetify-nix;
+            pkgs-master = import nixpkgs-master {
+              system = "x86_64-linux";
+              config.allowUnfree = true;
+            };
+          };
         };
         servetek = {
           modules = [
