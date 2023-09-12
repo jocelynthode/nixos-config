@@ -39,6 +39,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     spicetify-nix.url = "github:the-argus/spicetify-nix";
+    nix-index-database = {
+      url = "github:Mic92/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -55,6 +59,7 @@
     taxi,
     utils,
     spicetify-nix,
+    nix-index-database,
     ...
   }:
     utils.lib.mkFlake {
@@ -73,6 +78,7 @@
           home-manager.nixosModule
           impermanence.nixosModules.impermanence
           hyprland.nixosModules.default
+          nix-index-database.nixosModules.nix-index
           ./modules
         ];
       };

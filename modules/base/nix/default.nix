@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   lib,
   pkgs,
@@ -11,34 +12,8 @@
     };
   };
   baseNixIndex = {
-    programs.nix-index = {
-      enable = true;
-      enableFishIntegration = true;
-    };
-    systemd.user = {
-      services.nix-index = {
-        Unit = {
-          Description = "Service to run nix-index";
-        };
-        Service = {
-          Type = "oneshot";
-          ExecStart = "${pkgs.nix-index}/bin/nix-index";
-        };
-      };
-      timers.nix-index = {
-        Unit = {
-          Description = "Timer that starts nix-index weekly";
-          PartOf = ["nix-index.service"];
-        };
-        Timer = {
-          OnCalendar = "weekly";
-          Persistent = true;
-        };
-        Install = {
-          WantedBy = ["default.target"];
-        };
-      };
-    };
+    programs.command-not-found.enable = false;
+    programs.nix-index-database.comma.enable = true;
   };
 in {
   options.aspects.base.nix = {
@@ -50,20 +25,16 @@ in {
       default = [];
       example = [pkgs.discord];
     };
-    # Note that this is only enabled for charlotte, until https://github.com/bennofs/nix-index/issues/143 is resolved.
-    enableNixIndex = lib.mkOption {
-      default = true;
-      example = false;
-    };
   };
 
   config = {
     aspects.base.persistence = {
-      homePaths =
-        (lib.optional config.aspects.base.nix.enableDirenv ".local/share/direnv")
-        ++ (lib.optional config.aspects.base.nix.enableNixIndex ".cache/nix-index");
+      homePaths = lib.optional config.aspects.base.nix.enableDirenv ".local/share/direnv";
       systemPaths = lib.optional config.aspects.base.nix.enableDirenv "/root/.local/share/direnv";
     };
+
+    programs.command-not-found.enable = false;
+    programs.nix-index-database.comma.enable = true;
 
     nix = {
       settings = {
@@ -99,10 +70,11 @@ in {
     };
     nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) config.aspects.base.nix.unfreePackages;
 
+    home-manager.sharedModules = [inputs.nix-index-database.hmModules.nix-index];
     home-manager.users.jocelyn = _:
       lib.recursiveUpdate
       (lib.optionalAttrs config.aspects.base.nix.enableDirenv baseDirenv)
-      (lib.optionalAttrs config.aspects.base.nix.enableNixIndex baseNixIndex);
-    home-manager.users.root = _: lib.optionalAttrs config.aspects.base.nix.enableDirenv baseDirenv;
+      baseNixIndex;
+    home-manager.users.root = _: baseNixIndex;
   };
 }
