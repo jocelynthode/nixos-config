@@ -3,7 +3,7 @@
 
   # Machine-specific module settings
   aspects = {
-    stateVersion = "22.05";
+    stateVersion = "23.11";
     base = {
       bluetooth.enable = true;
     };
