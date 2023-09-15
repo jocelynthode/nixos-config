@@ -70,11 +70,13 @@ in {
     };
     nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) config.aspects.base.nix.unfreePackages;
 
-    home-manager.sharedModules = [inputs.nix-index-database.hmModules.nix-index];
-    home-manager.users.jocelyn = _:
-      lib.recursiveUpdate
-      (lib.optionalAttrs config.aspects.base.nix.enableDirenv baseDirenv)
-      baseNixIndex;
-    home-manager.users.root = _: baseNixIndex;
+    home-manager = {
+      sharedModules = [inputs.nix-index-database.hmModules.nix-index];
+      users.jocelyn = _:
+        lib.recursiveUpdate
+        (lib.optionalAttrs config.aspects.base.nix.enableDirenv baseDirenv)
+        baseNixIndex;
+      users.root = _: baseNixIndex;
+    };
   };
 }

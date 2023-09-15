@@ -14,9 +14,12 @@
     if !(options.virtualisation ? qemu)
     then {}
     else {
-      aspects.base.virtualisation.enable = true;
-      aspects.base.btrfs.enable = false;
-      aspects.base.persistence.enable = false;
+      aspects.base = {
+        virtualisation.enable = true;
+        btrfs.enable = false;
+        persistence.enable = false;
+      };
+
       users.users.jocelyn.password = "foo";
 
       virtualisation.qemu.options = lib.mkIf config.aspects.graphical.hyprland.enable ["-device virtio-vga-gl" "-display gtk,gl=on"];

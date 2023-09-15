@@ -10,22 +10,22 @@
   };
 
   config = lib.mkIf config.aspects.programs.taskwarrior.enable {
-    sops.secrets."taskwarrior/certificate" = {
-      sopsFile = ../../../secrets/common/secrets.yaml;
-      owner = "jocelyn";
-      group = "users";
-    };
-
-    sops.secrets."taskwarrior/key" = {
-      sopsFile = ../../../secrets/common/secrets.yaml;
-      owner = "jocelyn";
-      group = "users";
-    };
-
-    sops.secrets."taskwarrior/ca" = {
-      sopsFile = ../../../secrets/common/secrets.yaml;
-      owner = "jocelyn";
-      group = "users";
+    sops.secrets = {
+      "taskwarrior/certificate" = {
+        sopsFile = ../../../secrets/common/secrets.yaml;
+        owner = "jocelyn";
+        group = "users";
+      };
+      "taskwarrior/key" = {
+        sopsFile = ../../../secrets/common/secrets.yaml;
+        owner = "jocelyn";
+        group = "users";
+      };
+      "taskwarrior/ca" = {
+        sopsFile = ../../../secrets/common/secrets.yaml;
+        owner = "jocelyn";
+        group = "users";
+      };
     };
 
     aspects.base.persistence.homePaths = [
@@ -38,15 +38,23 @@
         enable = true;
         colorTheme = "light-256";
         config = {
-          context.work.read = "+work";
-          context.work.write = "+work";
-          context.home.read = "+home";
-          context.home.write = "+home";
-          taskd.certificate = config.sops.secrets."taskwarrior/certificate".path;
-          taskd.key = config.sops.secrets."taskwarrior/key".path;
-          taskd.ca = config.sops.secrets."taskwarrior/ca".path;
-          taskd.credentials = "public/jocelyn/98c8e2b7-67e1-4680-a89d-4d562efc9f66";
-          taskd.server = "tasks.tekila.ovh:53589";
+          context = {
+            work = {
+              read = "+work";
+              write = "+work";
+            };
+            home = {
+              read = "+home";
+              write = "+home";
+            };
+          };
+          taskd = {
+            certificate = config.sops.secrets."taskwarrior/certificate".path;
+            key = config.sops.secrets."taskwarrior/key".path;
+            ca = config.sops.secrets."taskwarrior/ca".path;
+            credentials = "public/jocelyn/98c8e2b7-67e1-4680-a89d-4d562efc9f66";
+            server = "tasks.tekila.ovh:53589";
+          };
         };
       };
 

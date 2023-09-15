@@ -60,22 +60,25 @@
       };
     };
   in {
-    home-manager.useGlobalPkgs = true;
-    home-manager.sharedModules = [nix-colors.homeManagerModule];
+    home-manager = {
+      useGlobalPkgs = true;
+      sharedModules = [nix-colors.homeManagerModule];
+    };
 
-    aspects.base.btrfs.enable = lib.mkDefault true;
-    aspects.base.persistence.enable = lib.mkDefault true;
-
-    aspects.base.fonts = lib.mkDefault {
-      monospace = {
-        family = "JetBrains Mono Nerd Font";
-        package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
-        size = 11;
-      };
-      regular = {
-        family = "NotoSans Nerd Font";
-        package = pkgs.nerdfonts.override {fonts = ["Noto"];};
-        size = 11;
+    aspects.base = {
+      btrfs.enable = lib.mkDefault true;
+      persistence.enable = lib.mkDefault true;
+      fonts = lib.mkDefault {
+        monospace = {
+          family = "JetBrains Mono Nerd Font";
+          package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
+          size = 11;
+        };
+        regular = {
+          family = "NotoSans Nerd Font";
+          package = pkgs.nerdfonts.override {fonts = ["Noto"];};
+          size = 11;
+        };
       };
     };
 
@@ -191,7 +194,7 @@
         jocelyn = {
           isNormalUser = true;
           shell = pkgs.fish;
-          passwordFile =
+          hashedPasswordFile =
             if !(options.virtualisation ? qemu)
             then config.sops.secrets."users/jocelyn/password".path
             else null;

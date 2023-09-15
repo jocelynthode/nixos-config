@@ -31,18 +31,19 @@
   ];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
-  hardware.enableRedistributableFirmware = true;
+
+  hardware = {
+    enableRedistributableFirmware = true;
+    nvidia.modesetting.enable = true;
+    nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_390;
+    opengl.extraPackages = with pkgs; [
+      vaapiVdpau
+    ];
+  };
 
   services.xserver = {
     videoDrivers = ["nvidia"];
   };
-
-  hardware.nvidia.modesetting.enable = true;
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_390;
-
-  hardware.opengl.extraPackages = with pkgs; [
-    vaapiVdpau
-  ];
 
   services.logind = {
     lidSwitch = "ignore";

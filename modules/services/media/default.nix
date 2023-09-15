@@ -66,10 +66,12 @@
     };
 
     # Allow access to deluge downloads
-    users.users.radarr.extraGroups = ["deluge"];
-    users.users.bazarr.extraGroups = ["deluge"];
-    users.users.sonarr.extraGroups = ["deluge"];
-    users.users.lidarr.extraGroups = ["deluge"];
-    users.users.readarr.extraGroups = ["deluge"];
+    users.users = {
+      radarr.extraGroups = ["deluge"];
+      bazarr.extraGroups = ["deluge"];
+      sonarr.extraGroups = ["deluge"];
+      lidarr.extraGroups = ["deluge"];
+      readarr.extraGroups = ["deluge"];
+    };
   };
 }

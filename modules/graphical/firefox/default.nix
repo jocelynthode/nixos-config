@@ -15,6 +15,7 @@
     ];
 
     home-manager.users.jocelyn = _: {
+      programs.librewolf.enable = true;
       programs.firefox = {
         enable = true;
         profiles = {
