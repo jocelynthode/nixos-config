@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  pkgs-master,
+  pkgs,
   ...
 }: {
   options = {
@@ -13,7 +13,7 @@
 
   config = lib.mkIf config.aspects.work.slack.enable {
     home-manager.users.jocelyn = _: {
-      home.packages = [pkgs-master.slack];
+      home.packages = [pkgs.slack];
     };
 
     aspects.base.persistence.homePaths = [
