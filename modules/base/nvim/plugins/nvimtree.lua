@@ -129,7 +129,7 @@ nvim_tree.setup({
   renderer = {
     root_folder_label = false,
     highlight_git = true,
-    highlight_opened_files = "icons",
+    highlight_opened_files = "icon",
     add_trailing = false,
     indent_markers = {
       enable = false,
