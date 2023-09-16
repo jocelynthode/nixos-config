@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  config,
   ...
 }: {
   boot = {
@@ -10,7 +9,6 @@
     };
     kernelPackages = pkgs.linuxPackages;
     kernelModules = ["kvm-intel"];
-    extraModulePackages = [config.boot.kernelPackages.nvidia_x11_legacy390];
   };
 
   networking.wireless.enable = false;
@@ -34,9 +32,6 @@
 
   hardware = {
     enableRedistributableFirmware = true;
-    opengl.extraPackages = with pkgs; [
-      vaapiVdpau
-    ];
   };
 
   services.logind = {
