@@ -34,15 +34,9 @@
 
   hardware = {
     enableRedistributableFirmware = true;
-    nvidia.modesetting.enable = true;
-    nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_390;
     opengl.extraPackages = with pkgs; [
       vaapiVdpau
     ];
-  };
-
-  services.xserver = {
-    videoDrivers = ["nvidia"];
   };
 
   services.logind = {

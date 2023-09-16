@@ -6,7 +6,7 @@
     stateVersion = "23.11";
     allowReboot = true;
     base = {
-      bluetooth.enable = true;
+      bluetooth.enable = false;
     };
     development.containers.enable = true;
     programs = {
