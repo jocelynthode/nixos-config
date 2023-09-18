@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: {
   options.aspects.services.blocky.enable = lib.mkOption {
@@ -8,13 +9,19 @@
     example = true;
   };
 
-  config = lib.mkIf config.aspects.services.blocky.enable {
+  config = lib.mkIf config.aspects.services.blocky.enable rec {
     networking = {
       firewall = {
         allowedTCPPorts = [53 853];
         allowedUDPPorts = [53];
       };
     };
+
+    whitelist =
+      pkgs.writeText "whitelist.txt"
+      ''
+        s.youtube.com
+      '';
 
     services.blocky = {
       enable = true;
@@ -40,6 +47,9 @@
         blocking = {
           blackLists = {
             ads = ["https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"];
+          };
+          whitelists = {
+            ads = ["${whitelist}"];
           };
           clientGroupsBlock = {
             default = ["ads"];
