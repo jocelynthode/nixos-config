@@ -26,7 +26,7 @@
       };
     };
 
-    hardware.xone.enable = false;
+    hardware.xone.enable = true;
 
     programs.gamescope = {
       enable = true;
