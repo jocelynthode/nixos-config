@@ -15,8 +15,15 @@
       ''
         s.youtube.com
       '';
+    blacklist =
+      pkgs.writeText "blacklist.txt"
+      ''
+        # Remove Microsoft VSCode tunnel access
+        /^(.+[_.-])?tunnels\.api\.visualstudio\.com/
+        /^(.+[_.-])?devtunnels\.ms/
+      '';
   in
-    lib.mkIf config.aspects.services.blocky.enable rec {
+    lib.mkIf config.aspects.services.blocky.enable {
       networking = {
         firewall = {
           allowedTCPPorts = [53 853];
@@ -47,7 +54,10 @@
           };
           blocking = {
             blackLists = {
-              ads = ["https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"];
+              ads = [
+                "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
+                "${blacklist}"
+              ];
             };
             whiteLists = {
               ads = ["${whitelist}"];
