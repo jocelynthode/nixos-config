@@ -31,5 +31,12 @@
   hardware.enableRedistributableFirmware = true;
   # hardware.amdgpu.amdvlk = true;
   programs.corectrl.enable = true;
+
+  aspects.base.persistence.homePaths = [
+    {
+      directory = ".config/corectrl";
+    }
+  ];
+
   hardware.amdgpu.opencl = false;
 }
