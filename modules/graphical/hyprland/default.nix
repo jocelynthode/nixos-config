@@ -96,11 +96,11 @@
             inactive_opacity=1.0
             fullscreen_opacity=1.0
             rounding=5
-            blur=true
-            blur_size=6
-            blur_passes=3
-            blur_new_optimizations=true
-            blur_ignore_opacity=false
+            blur {
+              enabled = true
+              size = 6
+              passes = 3
+            }
             drop_shadow=false
           }
           misc {
