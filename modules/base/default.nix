@@ -186,7 +186,15 @@
       };
     };
     time.timeZone = "Europe/Zurich";
-    services.fwupd.enable = true;
+    services.fwupd = {
+      enable = true;
+      extraRemotes = [
+        "lvfs-testing"
+      ];
+      # daemonSettings.DisabledPlugins = [
+      #   "upower"
+      # ];
+    };
 
     users = {
       mutableUsers = false;
