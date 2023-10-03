@@ -3,7 +3,7 @@
   fetchFromGitHub,
   ...
 }:
-vimUtils.buildVimPluginFrom2Nix {
+vimUtils.buildVimPlugin {
   pname = "search-replace-nvim";
   version = "unstable-2023-01-08";
   src = fetchFromGitHub {

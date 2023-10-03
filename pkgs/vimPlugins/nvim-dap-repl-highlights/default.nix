@@ -3,7 +3,7 @@
   fetchFromGitHub,
   ...
 }:
-vimUtils.buildVimPluginFrom2Nix {
+vimUtils.buildVimPlugin {
   pname = "nvim-dap-repl-highlights";
   version = "unstable-2023-05-09";
 

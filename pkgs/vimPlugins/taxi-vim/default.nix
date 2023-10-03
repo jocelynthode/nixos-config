@@ -3,7 +3,7 @@
   fetchFromGitHub,
   ...
 }:
-vimUtils.buildVimPluginFrom2Nix {
+vimUtils.buildVimPlugin {
   pname = "taxi-vim";
   version = "2022-07-01";
   src = fetchFromGitHub {

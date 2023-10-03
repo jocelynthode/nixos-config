@@ -3,7 +3,7 @@
   fetchFromGitHub,
   ...
 }:
-vimUtils.buildVimPluginFrom2Nix rec {
+vimUtils.buildVimPlugin rec {
   pname = "deferred-clipboard-nvim";
   version = "0.8.0";
 
