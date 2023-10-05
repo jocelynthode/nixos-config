@@ -22,19 +22,19 @@
           jocelyn = {
             bookmarks = {};
             extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+              betterttv
+              bitwarden
+              don-t-fuck-with-paste
+              multi-account-containers
+              greasemonkey
+              kagi-search
+              simple-tab-groups
+              simplelogin
+              sponsorblock
+              stylus
               tree-style-tab
-              firefox-translations
               ublock-origin
               videospeed
-              greasemonkey
-              don-t-fuck-with-paste
-              betterttv
-              multi-account-containers
-              bitwarden
-              simple-tab-groups
-              sponsorblock
-              simplelogin
-              stylus
             ];
             userChrome = ''
               /* Hide tab bar in FF Quantum */
