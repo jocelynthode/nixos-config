@@ -24,6 +24,7 @@
             extensions = with pkgs.nur.repos.rycee.firefox-addons; [
               betterttv
               bitwarden
+              consent-o-matic
               don-t-fuck-with-paste
               multi-account-containers
               greasemonkey

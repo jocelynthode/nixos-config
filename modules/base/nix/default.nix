@@ -21,10 +21,6 @@ in {
       default = true;
       example = false;
     };
-    unfreePackages = lib.mkOption {
-      default = [];
-      example = [pkgs.discord];
-    };
   };
 
   config = {
@@ -68,7 +64,6 @@ in {
         options = "--delete-older-than 7d";
       };
     };
-    nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) config.aspects.base.nix.unfreePackages;
 
     home-manager = {
       sharedModules = [inputs.nix-index-database.hmModules.nix-index];

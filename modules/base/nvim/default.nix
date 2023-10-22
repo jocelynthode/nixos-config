@@ -94,6 +94,11 @@
           type = "lua";
         }
         {
+          plugin = rainbow-delimiters-nvim;
+          config = "require('rainbow-delimiters.setup').setup()\n";
+          type = "lua";
+        }
+        {
           plugin = nvim-lastplace;
           config = "require('nvim-lastplace').setup()\n";
           type = "lua";
