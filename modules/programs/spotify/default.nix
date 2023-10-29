@@ -23,8 +23,8 @@
       };
       programs.spicetify = {
         enable = true;
-        theme = spicetify-nix.packages.${pkgs.system}.default.themes.catppuccin-latte;
-        colorScheme = "blue";
+        theme = spicetify-nix.packages.${pkgs.system}.default.themes.catppuccin;
+        colorScheme = "latte";
       };
     };
   };
