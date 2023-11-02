@@ -80,8 +80,6 @@
             border_size=3.5
             col.active_border=0xff${config.colorScheme.colors.accent}
             col.inactive_border=0xff${config.colorScheme.colors.background02}
-            col.group_border_active=0xff${config.colorScheme.colors.accent}
-            col.group_border=0xff${config.colorScheme.colors.foreground01}
             cursor_inactive_timeout=0
             layout=dwindle
           }
@@ -105,9 +103,14 @@
           }
           misc {
             mouse_move_enables_dpms=true
-            groupbar_gradients=false
-            # TODO enable when available
-            # groupbar_text_color=0xff${config.colorScheme.colors.foreground}
+          }
+          group {
+            col.border_active=0xff${config.colorScheme.colors.accent}
+            col.border_inactive=0xff${config.colorScheme.colors.background02}
+            groupbar {
+              gradients=true
+              text_color=0xff${config.colorScheme.colors.foreground}
+            }
           }
           input {
             kb_layout=us
