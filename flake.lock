@@ -605,15 +605,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1684143378,
-        "narHash": "sha256-Hbp7E1NDCgw+TqWIw8djr5aCyLTlDc2aEalDrKnt+nk=",
-        "owner": "sephii",
+        "lastModified": 1698909975,
+        "narHash": "sha256-A6VnPw1txG5ZN027/tpCHCbbxWlJ3UzvCYl5lhOSVIA=",
+        "owner": "jocelynthode",
         "repo": "taxi",
-        "rev": "1ba294b9965e6a579bee5fd40521ca859f5bb1a5",
+        "rev": "927680650ed810d4d6aa67555e955f0b81769201",
         "type": "github"
       },
       "original": {
-        "owner": "sephii",
+        "owner": "jocelynthode",
+        "ref": "update-zebra",
         "repo": "taxi",
         "type": "github"
       }
