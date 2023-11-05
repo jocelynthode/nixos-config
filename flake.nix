@@ -22,7 +22,7 @@
     hardware.url = "github:nixos/nixos-hardware";
     impermanence.url = "github:nix-community/impermanence";
     taxi = {
-      url = "github:jocelynthode/taxi/update-zebra";
+      url = "github:sephii/taxi";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     utils = {
