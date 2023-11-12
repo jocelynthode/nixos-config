@@ -1,6 +1,7 @@
 {
   vimUtils,
   fetchFromGitHub,
+  unstableGitUpdater,
   ...
 }:
 vimUtils.buildVimPlugin {
@@ -12,5 +13,6 @@ vimUtils.buildVimPlugin {
     rev = "4b3f3ad59074071ea60cd7521811070ee758f0aa";
     sha256 = "sha256-Q+K40Gadiihfg1r4q1GQrikHyFckGzfL7KCZt6F6aec=";
   };
+  passthru.updateScript = unstableGitUpdater {};
   meta.homepage = "https://github.com/schtibe/taxi.vim";
 }

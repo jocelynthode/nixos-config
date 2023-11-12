@@ -88,6 +88,11 @@
       outputsBuilder = channels:
         with channels.nixpkgs; {
           formatter = alejandra;
+          packages = {
+            inherit
+              proton-ge-custom
+              ;
+          };
         };
 
       hosts = {

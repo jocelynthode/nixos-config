@@ -1,6 +1,7 @@
 {
   vimUtils,
   fetchFromGitHub,
+  unstableGitUpdater,
   ...
 }:
 vimUtils.buildVimPlugin rec {
@@ -13,5 +14,8 @@ vimUtils.buildVimPlugin rec {
     rev = "v${version}";
     hash = "sha256-nanNQEtpjv0YKEkkrPmq/5FPxq+Yj/19cs0Gf7YgKjU=";
   };
+
+  passthru.updateScript = unstableGitUpdater {};
+
   meta.homepage = "https://github.com/EtiamNullam/deferred-clipboard.nvim";
 }

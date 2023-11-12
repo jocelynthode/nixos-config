@@ -1,6 +1,7 @@
 {
   vimUtils,
   fetchFromGitHub,
+  unstableGitUpdater,
   ...
 }:
 vimUtils.buildVimPlugin {
@@ -13,6 +14,8 @@ vimUtils.buildVimPlugin {
     rev = "0e14c948ad39c483ffc24a03238fcf41ae3c8b39";
     hash = "sha256-PEMZxBBhL546bT2RKiW8uAtN85Yw0diEx5a32BSl5As=";
   };
+
+  passthru.updateScript = unstableGitUpdater {};
 
   meta = {
     description = "Add syntax highlighting to the nvim-dap REPL";
