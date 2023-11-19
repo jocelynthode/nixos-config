@@ -103,6 +103,7 @@
           }
           misc {
             mouse_move_enables_dpms=true
+            force_default_wallpaper=0
           }
           group {
             col.border_active=0xff${config.colorScheme.colors.accent}
