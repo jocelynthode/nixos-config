@@ -303,6 +303,14 @@
                 command = "move scratchpad";
                 criteria = {title = "Firefox — Sharing Indicator";};
               }
+              {
+                command = "inhibit_idle fullscreen";
+                criteria = {class = ".*";};
+              }
+              {
+                command = "inhibit_idle fullscreen";
+                criteria = {app_id = ".*";};
+              }
             ];
           };
         };

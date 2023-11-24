@@ -17,6 +17,11 @@
 
     programs.steam = {
       enable = true;
+      # package = pkgs.steam.override {
+      #   extraLibraries = p:
+      #     with p; [
+      #     ];
+      # };
       remotePlay.openFirewall = true;
     };
 

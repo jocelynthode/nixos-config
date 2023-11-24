@@ -24,6 +24,25 @@
 
     xdg.portal = {
       enable = true;
+      config = {
+        common = {
+          default = [
+            "gtk"
+          ];
+        };
+        sway = {
+          default = [
+            "wlr"
+            "gtk"
+          ];
+        };
+        hyprland = {
+          default = [
+            "hyprland"
+            "gtk"
+          ];
+        };
+      };
       wlr.enable = config.aspects.graphical.sway.enable;
       extraPortals = with pkgs; [
         xdg-desktop-portal-gtk
