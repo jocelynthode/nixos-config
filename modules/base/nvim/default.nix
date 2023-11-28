@@ -214,7 +214,7 @@
         nodePackages.prettier
         gitlint
         shfmt
-        # hadolint
+        hadolint
         python3Packages.black
         python3Packages.flake8
       ];
