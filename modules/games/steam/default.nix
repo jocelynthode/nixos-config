@@ -13,6 +13,7 @@
     aspects.base.persistence.homePaths = [
       ".steam"
       ".local/share/Steam"
+      "Astral Ascent"
     ];
 
     programs.steam = {
