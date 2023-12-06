@@ -17,7 +17,6 @@
         group = "postgres";
       }
     ];
-
     services.postgresql = {
       enable = true;
       package = pkgs.postgresql;
@@ -27,9 +26,7 @@
       ensureUsers = [
         {
           name = "authentik";
-          ensurePermissions = {
-            "DATABASE authentik" = "ALL PRIVILEGES";
-          };
+          ensureDBOwnership = true;
         }
       ];
     };
