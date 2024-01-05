@@ -74,6 +74,10 @@
           set $ws9 9
           set $ws10 10
         '';
+        extraConfig = ''
+          bindsym --whole-window --no-repeat button9 exec ${pkgs.dbus}/bin/dbus-send --session --type=method_call --dest=net.sourceforge.mumble.mumble / net.sourceforge.mumble.Mumble.startTalking
+          bindsym --whole-window --release button9 exec ${pkgs.dbus}/bin/dbus-send --session --type=method_call --dest=net.sourceforge.mumble.mumble / net.sourceforge.mumble.Mumble.stopTalking
+        '';
         systemd.enable = true;
         xwayland = true;
         wrapperFeatures.gtk = true;

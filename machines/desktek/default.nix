@@ -95,6 +95,7 @@
     };
     programs = {
       enable = true;
+      logseq.enable = true;
       solaar.enable = true;
       obs-studio.enable = true;
     };

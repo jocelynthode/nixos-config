@@ -12,6 +12,7 @@
     ./git
     ./htop
     ./kdeconnect
+    ./logseq
     ./obs-studio
     ./ranger
     ./signal
@@ -36,6 +37,7 @@
       git.enable = lib.mkDefault true;
       htop.enable = lib.mkDefault true;
       kdeconnect.enable = lib.mkDefault true;
+      logseq.enable = lib.mkDefault false;
       obs-studio.enable = lib.mkDefault false;
       ranger.enable = lib.mkDefault true;
       signal.enable = lib.mkDefault true;

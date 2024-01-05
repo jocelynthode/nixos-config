@@ -32,8 +32,8 @@
         };
         sway = {
           default = [
-            "wlr"
             "gtk"
+            "wlr"
           ];
         };
         hyprland = {
