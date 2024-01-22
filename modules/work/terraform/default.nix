@@ -14,7 +14,7 @@
   config = lib.mkIf config.aspects.work.terraform.enable {
     home-manager.users.jocelyn = _: {
       home.packages = with pkgs; [
-        terraform
+        opentofu
       ];
     };
   };
