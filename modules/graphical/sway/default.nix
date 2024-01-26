@@ -26,7 +26,6 @@
     environment.sessionVariables = {
       GDK_BACKEND = "wayland,x11";
       QT_QPA_PLATFORM = "wayland;xcb";
-      SDL_VIDEODRIVER = "wayland";
       CLUTTER_BACKEND = "wayland";
       LIBSEAT_BACKEND = "logind";
       NIXOS_OZONE_WL = "1";
@@ -83,9 +82,7 @@
         extraSessionCommands = ''
           export GDK_BACKEND="wayland,x11"
           export QT_QPA_PLATFORM=wayland
-          export SDL_VIDEODRIVE =wayland
           export CLUTTER_BACKEND=wayland
-          export MOZ_ENABLE_WAYLAND=1
           export LIBSEAT_BACKEND=logind
           export NIXOS_OZONE_WL=1
         '';
