@@ -118,7 +118,7 @@
             hardware.nixosModules.common-gpu-intel
             hardware.nixosModules.common-pc-laptop
             hardware.nixosModules.common-pc-laptop-ssd
-            hardware.nixosModules.framework
+            hardware.nixosModules.framework-11th-gen-intel
           ];
           specialArgs = {
             inherit nix-colors spicetify-nix;

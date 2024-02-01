@@ -22,7 +22,7 @@
             outputs = [
               {
                 criteria = "eDP-1";
-                scale = 1.3;
+                scale = 1.33333;
               }
             ];
             exec = [

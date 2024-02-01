@@ -69,8 +69,9 @@
         xwayland = {
           enable = true;
         };
-        recommendedEnvironment = true;
-        systemdIntegration = true;
+        systemd = {
+          enable = true;
+        };
         extraConfig = ''
           general {
             gaps_in=5
@@ -201,7 +202,7 @@
           workspace=10,monitor:HDMI-A-1
 
           monitor=,highres,auto,auto
-          monitor=eDP-1,highres,auto,1.3
+          monitor=eDP-1,highres,auto,1.33333
           monitor=DP-4,highres,0x1956,1.5
         '';
       };
