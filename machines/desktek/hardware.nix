@@ -38,6 +38,10 @@
     }
   ];
 
+  environment.systemPackages = with pkgs; [
+    lact
+  ];
+
   hardware.amdgpu.opencl = false;
   services.system76-scheduler.enable = true;
 }

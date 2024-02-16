@@ -26,6 +26,15 @@ in
         ];
     });
 
+    slack = prev.slack.overrideAttrs (previousAttrs: {
+      installPhase =
+        previousAttrs.installPhase
+        + ''
+          sed -i'.backup' -e 's/,"WebRTCPipeWireCapturer"/,"LebRTCPipeWireCapturer"/' $out/lib/slack/resources/app.asar
+
+        '';
+    });
+
     devenv = inputs.devenv.packages.${final.system}.default;
 
     proton-ge-custom = prev.pkgs.callPackage ../pkgs/core/proton-ge-custom {};
