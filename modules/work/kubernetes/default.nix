@@ -39,110 +39,112 @@
 
       programs.k9s = {
         enable = true;
-        skin = {
-          k9s = {
-            body = {
-              fgColor = "#${config.colorScheme.colors.foreground}";
-              bgColor = "default";
-              logoColor = "#${config.colorScheme.colors.teal}";
-            };
-            prompt = {
-              fgColor = "#${config.colorScheme.colors.foreground}";
-              bgColor = "#${config.colorScheme.colors.background}";
-              suggestColor = "#${config.colorScheme.colors.yellow}";
-            };
-            info = {
-              fgColor = "#${config.colorScheme.colors.green}";
-              sectionColor = "#${config.colorScheme.colors.foreground}";
-            };
-            dialog = {
-              fgColor = "#${config.colorScheme.colors.foreground}";
-              bgColor = "default";
-              buttonFgColor = "#${config.colorScheme.colors.foreground}";
-              buttonBgColor = "#${config.colorScheme.colors.teal}";
-              buttonFocusFgColor = "#${config.colorScheme.colors.purple}";
-              buttonFocusBgColor = "#${config.colorScheme.colors.green}";
-              labelFgColor = "#${config.colorScheme.colors.yellow}";
-              fieldFgColor = "#${config.colorScheme.colors.foreground}";
-            };
-            frame = {
-              border = {
-                fgColor = "#${config.colorScheme.colors.background02}";
-                focusColor = "#${config.colorScheme.colors.background01}";
-              };
-              menu = {
-                fgColor = "#${config.colorScheme.colors.foreground}";
-                keyColor = "#${config.colorScheme.colors.green}";
-                numKeyColor = "#${config.colorScheme.colors.green}";
-              };
-              crumbs = {
-                fgColor = "#${config.colorScheme.colors.foreground}";
-                bgColor = "#${config.colorScheme.colors.background01}";
-                activeColor = "#${config.colorScheme.colors.background01}";
-              };
-              status = {
-                newColor = "#${config.colorScheme.colors.foreground}";
-                modifyColor = "#${config.colorScheme.colors.teal}";
-                addColor = "#${config.colorScheme.colors.orange}";
-                errorColor = "#${config.colorScheme.colors.blue}";
-                highlightcolor = "#${config.colorScheme.colors.yellow}";
-                killColor = "#${config.colorScheme.colors.background03}";
-                completedColor = "#${config.colorScheme.colors.background03}";
-              };
-              title = {
-                fgColor = "#${config.colorScheme.colors.foreground}";
-                bgColor = "#${config.colorScheme.colors.background01}";
-                highlightColor = "#${config.colorScheme.colors.yellow}";
-                counterColor = "#${config.colorScheme.colors.teal}";
-                filterColor = "#${config.colorScheme.colors.green}";
-              };
-            };
-            views = {
-              charts = {
+        skins = {
+          skins = {
+            k9s = {
+              body = {
+                fgColor = "#${config.colorScheme.palette.foreground}";
                 bgColor = "default";
-                defaultDialColors = [
-                  "#${config.colorScheme.colors.teal}"
-                  "#${config.colorScheme.colors.blue}"
-                ];
-                defaultChartColors = [
-                  "#${config.colorScheme.colors.teal}"
-                  "#${config.colorScheme.colors.blue}"
-                ];
+                logoColor = "#${config.colorScheme.palette.teal}";
               };
-              table = {
-                fgColor = "#${config.colorScheme.colors.foreground}";
+              prompt = {
+                fgColor = "#${config.colorScheme.palette.foreground}";
+                bgColor = "#${config.colorScheme.palette.background}";
+                suggestColor = "#${config.colorScheme.palette.yellow}";
+              };
+              info = {
+                fgColor = "#${config.colorScheme.palette.green}";
+                sectionColor = "#${config.colorScheme.palette.foreground}";
+              };
+              dialog = {
+                fgColor = "#${config.colorScheme.palette.foreground}";
                 bgColor = "default";
-                header = {
-                  fgColor = "#${config.colorScheme.colors.foreground}";
+                buttonFgColor = "#${config.colorScheme.palette.foreground}";
+                buttonBgColor = "#${config.colorScheme.palette.teal}";
+                buttonFocusFgColor = "#${config.colorScheme.palette.purple}";
+                buttonFocusBgColor = "#${config.colorScheme.palette.green}";
+                labelFgColor = "#${config.colorScheme.palette.yellow}";
+                fieldFgColor = "#${config.colorScheme.palette.foreground}";
+              };
+              frame = {
+                border = {
+                  fgColor = "#${config.colorScheme.palette.background02}";
+                  focusColor = "#${config.colorScheme.palette.background01}";
+                };
+                menu = {
+                  fgColor = "#${config.colorScheme.palette.foreground}";
+                  keyColor = "#${config.colorScheme.palette.green}";
+                  numKeyColor = "#${config.colorScheme.palette.green}";
+                };
+                crumbs = {
+                  fgColor = "#${config.colorScheme.palette.foreground}";
+                  bgColor = "#${config.colorScheme.palette.background01}";
+                  activeColor = "#${config.colorScheme.palette.background01}";
+                };
+                status = {
+                  newColor = "#${config.colorScheme.palette.foreground}";
+                  modifyColor = "#${config.colorScheme.palette.teal}";
+                  addColor = "#${config.colorScheme.palette.orange}";
+                  errorColor = "#${config.colorScheme.palette.blue}";
+                  highlightcolor = "#${config.colorScheme.palette.yellow}";
+                  killColor = "#${config.colorScheme.palette.background03}";
+                  completedColor = "#${config.colorScheme.palette.background03}";
+                };
+                title = {
+                  fgColor = "#${config.colorScheme.palette.foreground}";
+                  bgColor = "#${config.colorScheme.palette.background01}";
+                  highlightColor = "#${config.colorScheme.palette.yellow}";
+                  counterColor = "#${config.colorScheme.palette.teal}";
+                  filterColor = "#${config.colorScheme.palette.green}";
+                };
+              };
+              views = {
+                charts = {
                   bgColor = "default";
-                  sorterColor = "#${config.colorScheme.colors.red}";
+                  defaultDialColors = [
+                    "#${config.colorScheme.palette.teal}"
+                    "#${config.colorScheme.palette.blue}"
+                  ];
+                  defaultChartColors = [
+                    "#${config.colorScheme.palette.teal}"
+                    "#${config.colorScheme.palette.blue}"
+                  ];
                 };
-              };
-              xray = {
-                fgColor = "#${config.colorScheme.colors.foreground}";
-                bgColor = "default";
-                cursorColor = "#${config.colorScheme.colors.background01}";
-                graphicColor = "#${config.colorScheme.colors.teal}";
-                showIcons = false;
-              };
-              yaml = {
-                keyColor = "#${config.colorScheme.colors.green}";
-                colonColor = "#${config.colorScheme.colors.teal}";
-                valueColor = "#${config.colorScheme.colors.foreground}";
-              };
-              logs = {
-                fgColor = "#${config.colorScheme.colors.foreground}";
-                bgColor = "default";
-                indicator = {
-                  fgColor = "#${config.colorScheme.colors.foreground}";
-                  bgColor = "#${config.colorScheme.colors.teal}";
+                table = {
+                  fgColor = "#${config.colorScheme.palette.foreground}";
+                  bgColor = "default";
+                  header = {
+                    fgColor = "#${config.colorScheme.palette.foreground}";
+                    bgColor = "default";
+                    sorterColor = "#${config.colorScheme.palette.red}";
+                  };
                 };
-              };
-              help = {
-                fgColor = "#${config.colorScheme.colors.foreground}";
-                bgColor = "#${config.colorScheme.colors.background}";
-                indicator = {
-                  fgColor = "#${config.colorScheme.colors.blue}";
+                xray = {
+                  fgColor = "#${config.colorScheme.palette.foreground}";
+                  bgColor = "default";
+                  cursorColor = "#${config.colorScheme.palette.background01}";
+                  graphicColor = "#${config.colorScheme.palette.teal}";
+                  showIcons = false;
+                };
+                yaml = {
+                  keyColor = "#${config.colorScheme.palette.green}";
+                  colonColor = "#${config.colorScheme.palette.teal}";
+                  valueColor = "#${config.colorScheme.palette.foreground}";
+                };
+                logs = {
+                  fgColor = "#${config.colorScheme.palette.foreground}";
+                  bgColor = "default";
+                  indicator = {
+                    fgColor = "#${config.colorScheme.palette.foreground}";
+                    bgColor = "#${config.colorScheme.palette.teal}";
+                  };
+                };
+                help = {
+                  fgColor = "#${config.colorScheme.palette.foreground}";
+                  bgColor = "#${config.colorScheme.palette.background}";
+                  indicator = {
+                    fgColor = "#${config.colorScheme.palette.blue}";
+                  };
                 };
               };
             };

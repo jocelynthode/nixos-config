@@ -30,25 +30,25 @@ in {
         };
         settings = {
           colors = {
-            background = "#${config.colorScheme.colors.background}";
-            background01 = "#${config.colorScheme.colors.background01}";
-            background02 = "#${config.colorScheme.colors.background02}";
-            background03 = "#${config.colorScheme.colors.background03}";
-            foreground01 = "#${config.colorScheme.colors.foreground01}";
-            foreground = "#${config.colorScheme.colors.foreground}";
-            foreground02 = "#${config.colorScheme.colors.foreground02}";
-            foreground03 = "#${config.colorScheme.colors.foreground03}";
-            red = "#${config.colorScheme.colors.red}";
-            orange = "#${config.colorScheme.colors.orange}";
-            yellow = "#${config.colorScheme.colors.yellow}";
-            green = "#${config.colorScheme.colors.green}";
-            teal = "#${config.colorScheme.colors.teal}";
-            blue = "#${config.colorScheme.colors.blue}";
-            purple = "#${config.colorScheme.colors.purple}";
-            brown = "#${config.colorScheme.colors.brown}";
-            accent = "#${config.colorScheme.colors.accent}";
+            background = "#${config.colorScheme.palette.background}";
+            background01 = "#${config.colorScheme.palette.background01}";
+            background02 = "#${config.colorScheme.palette.background02}";
+            background03 = "#${config.colorScheme.palette.background03}";
+            foreground01 = "#${config.colorScheme.palette.foreground01}";
+            foreground = "#${config.colorScheme.palette.foreground}";
+            foreground02 = "#${config.colorScheme.palette.foreground02}";
+            foreground03 = "#${config.colorScheme.palette.foreground03}";
+            red = "#${config.colorScheme.palette.red}";
+            orange = "#${config.colorScheme.palette.orange}";
+            yellow = "#${config.colorScheme.palette.yellow}";
+            green = "#${config.colorScheme.palette.green}";
+            teal = "#${config.colorScheme.palette.teal}";
+            blue = "#${config.colorScheme.palette.blue}";
+            purple = "#${config.colorScheme.palette.purple}";
+            brown = "#${config.colorScheme.palette.brown}";
+            accent = "#${config.colorScheme.palette.accent}";
 
-            transparent-background = "#DD${config.colorScheme.colors.background}";
+            transparent-background = "#DD${config.colorScheme.palette.background}";
           };
 
           "bar/main" = {
@@ -241,7 +241,7 @@ in {
             "inherit" = "network-base";
             interface.type = "wired";
             label.connected = {
-              text = "%{F#${config.colorScheme.colors.teal}}󰇚 %downspeed%%{F-} %{F#${config.colorScheme.colors.blue}}󰕒 %upspeed%%{F-}";
+              text = "%{F#${config.colorScheme.palette.teal}}󰇚 %downspeed%%{F-} %{F#${config.colorScheme.palette.blue}}󰕒 %upspeed%%{F-}";
               foreground = ''''${colors.green}'';
             };
           };
@@ -250,7 +250,7 @@ in {
             "inherit" = "network-base";
             interface.type = "wireless";
             label.connected = {
-              text = "%{F#${config.colorScheme.colors.teal}}󰇚 %downspeed%%{F-} %{F#${config.colorScheme.colors.blue}}󰕒 %upspeed%%{F-}";
+              text = "%{F#${config.colorScheme.palette.teal}}󰇚 %downspeed%%{F-} %{F#${config.colorScheme.palette.blue}}󰕒 %upspeed%%{F-}";
               foreground = ''''${colors.green}'';
             };
           };
@@ -287,7 +287,7 @@ in {
               foreground = ''''${colors.green}'';
             };
             exec = {
-              text = "${playerctl} --player spotify metadata --format '{{artist}} - {{title}}  %{F#${config.colorScheme.colors.background03}}|%{F-}'";
+              text = "${playerctl} --player spotify metadata --format '{{artist}} - {{title}}  %{F#${config.colorScheme.palette.background03}}|%{F-}'";
               "if" = ''[[ "$(${playerctl} --player spotify status)" = "Playing" ]]'';
             };
           };

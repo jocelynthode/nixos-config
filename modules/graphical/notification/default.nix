@@ -39,7 +39,7 @@ in {
             horizontal_padding = 12;
             corner_radius = 7;
             format = ''<b>%s</b>\n%b'';
-            frame_color = "#${config.colorScheme.colors.accent}FF";
+            frame_color = "#${config.colorScheme.palette.accent}FF";
             separator_color = "frame";
             dmenu = "${pkgs.wofi}/bin/wofi -d";
           };
@@ -51,20 +51,20 @@ in {
 
           urgency_low = {
             fullscreen = "delay";
-            background = "#${config.colorScheme.colors.background}FF";
-            foreground = "#${config.colorScheme.colors.foreground}FF";
+            background = "#${config.colorScheme.palette.background}FF";
+            foreground = "#${config.colorScheme.palette.foreground}FF";
           };
 
           urgency_normal = {
             fullscreen = "delay";
-            background = "#${config.colorScheme.colors.background}FF";
-            foreground = "#${config.colorScheme.colors.foreground}FF";
+            background = "#${config.colorScheme.palette.background}FF";
+            foreground = "#${config.colorScheme.palette.foreground}FF";
           };
 
           urgency_critical = {
             fullscreen = "show";
-            background = "#${config.colorScheme.colors.background}FF";
-            foreground = "#${config.colorScheme.colors.foreground}FF";
+            background = "#${config.colorScheme.palette.background}FF";
+            foreground = "#${config.colorScheme.palette.foreground}FF";
           };
         };
       };

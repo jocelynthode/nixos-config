@@ -36,49 +36,49 @@
           tab_bar_min_tabs = "2";
 
           window_padding_width = 10;
-          foreground = "#${config.colorScheme.colors.foreground}";
-          background = "#${config.colorScheme.colors.background}";
-          selection_background = "#${config.colorScheme.colors.foreground02}";
-          selection_foreground = "#${config.colorScheme.colors.background}";
-          url_color = "#${config.colorScheme.colors.foreground02}";
-          cursor = "#${config.colorScheme.colors.foreground02}";
-          cursor_text_color = "#${config.colorScheme.colors.background}";
-          active_border_color = "#${config.colorScheme.colors.foreground03}";
-          inactive_border_color = "#${config.colorScheme.colors.background01}";
-          active_tab_background = "#${config.colorScheme.colors.accent}";
-          active_tab_foreground = "#${config.colorScheme.colors.background}";
-          inactive_tab_background = "#${config.colorScheme.colors.background}";
-          inactive_tab_foreground = "#${config.colorScheme.colors.foreground}";
-          tab_bar_background = "#${config.colorScheme.colors.background}";
-          bell_border_color = "#${config.colorScheme.colors.yellow}";
-          mark1_foreground = "#${config.colorScheme.colors.background}";
-          mark1_background = "#${config.colorScheme.colors.foreground03}";
-          mark2_foreground = "#${config.colorScheme.colors.background}";
-          mark2_background = "#${config.colorScheme.colors.purple}";
+          foreground = "#${config.colorScheme.palette.foreground}";
+          background = "#${config.colorScheme.palette.background}";
+          selection_background = "#${config.colorScheme.palette.foreground02}";
+          selection_foreground = "#${config.colorScheme.palette.background}";
+          url_color = "#${config.colorScheme.palette.foreground02}";
+          cursor = "#${config.colorScheme.palette.foreground02}";
+          cursor_text_color = "#${config.colorScheme.palette.background}";
+          active_border_color = "#${config.colorScheme.palette.foreground03}";
+          inactive_border_color = "#${config.colorScheme.palette.background01}";
+          active_tab_background = "#${config.colorScheme.palette.accent}";
+          active_tab_foreground = "#${config.colorScheme.palette.background}";
+          inactive_tab_background = "#${config.colorScheme.palette.background}";
+          inactive_tab_foreground = "#${config.colorScheme.palette.foreground}";
+          tab_bar_background = "#${config.colorScheme.palette.background}";
+          bell_border_color = "#${config.colorScheme.palette.yellow}";
+          mark1_foreground = "#${config.colorScheme.palette.background}";
+          mark1_background = "#${config.colorScheme.palette.foreground03}";
+          mark2_foreground = "#${config.colorScheme.palette.background}";
+          mark2_background = "#${config.colorScheme.palette.purple}";
 
           color0 = "#5C5F77";
           color8 = "#6C6F85";
 
-          color1 = "#${config.colorScheme.colors.red}";
-          color9 = "#${config.colorScheme.colors.red}";
+          color1 = "#${config.colorScheme.palette.red}";
+          color9 = "#${config.colorScheme.palette.red}";
 
-          color2 = "#${config.colorScheme.colors.green}";
-          color10 = "#${config.colorScheme.colors.green}";
+          color2 = "#${config.colorScheme.palette.green}";
+          color10 = "#${config.colorScheme.palette.green}";
 
-          color3 = "#${config.colorScheme.colors.yellow}";
-          color11 = "#${config.colorScheme.colors.yellow}";
+          color3 = "#${config.colorScheme.palette.yellow}";
+          color11 = "#${config.colorScheme.palette.yellow}";
 
-          color4 = "#${config.colorScheme.colors.blue}";
-          color12 = "#${config.colorScheme.colors.blue}";
+          color4 = "#${config.colorScheme.palette.blue}";
+          color12 = "#${config.colorScheme.palette.blue}";
 
-          color5 = "#${config.colorScheme.colors.accent}";
-          color13 = "#${config.colorScheme.colors.accent}";
+          color5 = "#${config.colorScheme.palette.accent}";
+          color13 = "#${config.colorScheme.palette.accent}";
 
-          color6 = "#${config.colorScheme.colors.teal}";
-          color14 = "#${config.colorScheme.colors.teal}";
+          color6 = "#${config.colorScheme.palette.teal}";
+          color14 = "#${config.colorScheme.palette.teal}";
 
-          color7 = "#${config.colorScheme.colors.foreground01}";
-          color15 = "#${config.colorScheme.colors.background03}";
+          color7 = "#${config.colorScheme.palette.foreground01}";
+          color15 = "#${config.colorScheme.palette.background03}";
         };
       };
     };

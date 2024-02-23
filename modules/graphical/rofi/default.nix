@@ -39,11 +39,11 @@
         text = ''
           * {
             al:   #00000000;
-            bg:   #${config.colorScheme.colors.background}cc;
-            bga:  #${config.colorScheme.colors.background01}cc;
-            fg:   #${config.colorScheme.colors.foreground03}ff;
-            ac:   #${config.colorScheme.colors.red}ff;
-            se:   #${config.colorScheme.colors.accent}ff;
+            bg:   #${config.colorScheme.palette.background}cc;
+            bga:  #${config.colorScheme.palette.background01}cc;
+            fg:   #${config.colorScheme.palette.foreground03}ff;
+            ac:   #${config.colorScheme.palette.red}ff;
+            se:   #${config.colorScheme.palette.accent}ff;
           }
         '';
       };

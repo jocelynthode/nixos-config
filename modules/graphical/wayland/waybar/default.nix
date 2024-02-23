@@ -76,27 +76,27 @@ in {
               sort-by-number = true;
             };
             clock = {
-              format = "{:<span color=\"#${config.colorScheme.colors.purple}\"> </span>%a, %d %b %Y at %H:%M:%S}";
+              format = "{:<span color=\"#${config.colorScheme.palette.purple}\"> </span>%a, %d %b %Y at %H:%M:%S}";
               interval = 1;
             };
             cpu = {
-              format = "<span color=\"#${config.colorScheme.colors.yellow}\"></span> {usage}%";
+              format = "<span color=\"#${config.colorScheme.palette.yellow}\"></span> {usage}%";
             };
             memory = {
-              format = "<span color=\"#${config.colorScheme.colors.blue}\"></span> {}%";
+              format = "<span color=\"#${config.colorScheme.palette.blue}\"></span> {}%";
               interval = 5;
             };
             disk = {
               interval = 30;
               path = "/";
-              format = "<span color=\"#${config.colorScheme.colors.teal}\"></span> {free}";
+              format = "<span color=\"#${config.colorScheme.palette.teal}\"></span> {free}";
             };
             pulseaudio = {
               format = "{format_source} {icon} {volume}%";
               on-click-right = "${pkgs.pavucontrol}/bin/pavucontrol";
               format-source = " {volume}%";
-              format-source-muted = "<span color=\"#${config.colorScheme.colors.red}\"></span> 0%";
-              format-muted = "<span color=\"#${config.colorScheme.colors.red}\"></span>   0%";
+              format-source-muted = "<span color=\"#${config.colorScheme.palette.red}\"></span> 0%";
+              format-muted = "<span color=\"#${config.colorScheme.palette.red}\"></span>   0%";
               format-icons = {
                 headphone = "";
                 headset = "󰋎";
@@ -119,11 +119,11 @@ in {
             backlight = {
               device = "intel_backlight";
               format-icons = ["󰃚" "󰃛" "󰃜" "󰃝" "󰃞" "󰃟" "󰃠"];
-              format = "<span color=\"#${config.colorScheme.colors.orange}\">{icon}</span> {percent}%";
+              format = "<span color=\"#${config.colorScheme.palette.orange}\">{icon}</span> {percent}%";
             };
             network = {
               interval = 3;
-              format = "<span color=\"#${config.colorScheme.colors.teal}\">󰇚 {bandwidthDownBytes}</span> <span color=\"#${config.colorScheme.colors.blue}\">󰕒 {bandwidthUpBytes}</span>";
+              format = "<span color=\"#${config.colorScheme.palette.teal}\">󰇚 {bandwidthDownBytes}</span> <span color=\"#${config.colorScheme.palette.blue}\">󰕒 {bandwidthUpBytes}</span>";
               format-disconnected = "";
               tooltip-format = ''
                 {ifname}
@@ -142,10 +142,10 @@ in {
               interval = 2;
               format = "{status}";
               format-on = "";
-              format-off = "<span color=\"#${config.colorScheme.colors.background03}\">󰂲</span>";
-              format-disabled = "<span color=\"#${config.colorScheme.colors.background03}\">󰂲</span>";
-              format-connected = "<span color=\"#${config.colorScheme.colors.blue}\"></span> {device_alias}";
-              format-connected-battery = "<span color=\"#${config.colorScheme.colors.blue}\"></span> {device_alias} {device_battery_percentage}%";
+              format-off = "<span color=\"#${config.colorScheme.palette.background03}\">󰂲</span>";
+              format-disabled = "<span color=\"#${config.colorScheme.palette.background03}\">󰂲</span>";
+              format-connected = "<span color=\"#${config.colorScheme.palette.blue}\"></span> {device_alias}";
+              format-connected-battery = "<span color=\"#${config.colorScheme.palette.blue}\"></span> {device_alias} {device_battery_percentage}%";
               on-click = "${pkgs.toggle-bluetooth}/bin/toggle_bluetooth";
               on-click-right = "${blueberry} &";
             };
@@ -167,7 +167,7 @@ in {
                 tooltip = "Spotify is $status";
               };
               # exec = " '";
-              format = "<span color=\"#${config.colorScheme.colors.green}\">󰓇</span> {}";
+              format = "<span color=\"#${config.colorScheme.palette.green}\">󰓇</span> {}";
             };
             "custom/gpg-agent" = {
               interval = 2;
@@ -219,7 +219,7 @@ in {
           };
         };
         style = let
-          inherit (config.colorscheme) colors;
+          inherit (config.colorscheme) palette;
         in ''
           * {
             font-family: ${osConfig.aspects.base.fonts.monospace.family}, ${osConfig.aspects.base.fonts.regular.family};
@@ -238,21 +238,21 @@ in {
               padding: 5px 10px 5px 10px;
               border-radius: 0px;
               transition: none;
-              background: rgba(${toRGB colors.background01},0.7);
+              background: rgba(${toRGB palette.background01},0.7);
           }
           #workspaces button#workspaces {
               margin-right: 8px;
               border-radius: 0px;
               transition: none;
-              color: #${colors.foreground};
-              background: rgba(${toRGB colors.background01},0.7);
+              color: #${palette.foreground};
+              background: rgba(${toRGB palette.background01},0.7);
           }
 
           #workspaces button.focused,
           #workspaces button.active {
             border-radius: 0px;
-            background-color: #${colors.accent};
-            color: #${colors.background};
+            background-color: #${palette.accent};
+            color: #${palette.background};
           }
 
           #workspaces button:hover {
@@ -260,14 +260,14 @@ in {
               box-shadow: inherit;
               text-shadow: inherit;
               border-radius: inherit;
-              color: #${colors.background};
-              background: #${colors.foreground03};
+              color: #${palette.background};
+              background: #${palette.foreground03};
           }
 
           #cpu, #memory, #disk {
             border-radius: 0px;
             padding: 5px 10px 5px 10px;
-            background: rgba(${toRGB colors.background01},0.7);
+            background: rgba(${toRGB palette.background01},0.7);
           }
 
           #cpu {
@@ -283,13 +283,13 @@ in {
           #custom-player, #clock {
             border-radius: 0px;
             padding: 5px 10px 5px 10px;
-            background: rgba(${toRGB colors.background01},0.7);
+            background: rgba(${toRGB palette.background01},0.7);
           }
 
           #network, #bluetooth, #custom-gammastep, #custom-gpg-agent, #gamemode, #pulseaudio, #backlight, #battery, #tray {
             border-radius: 0px;
             padding: 5px 10px 5px 10px;
-            background: rgba(${toRGB colors.background01},0.7);
+            background: rgba(${toRGB palette.background01},0.7);
           }
           #network {
             border-radius: 0px 0px 0px 0px;
@@ -299,22 +299,22 @@ in {
           }
 
           #gamemode {
-            color: #${colors.red};
+            color: #${palette.red};
           }
           #custom-gammastep {
-            color: #${colors.yellow};
+            color: #${palette.yellow};
           }
           #battery.full {
-            color: #${colors.blue};
+            color: #${palette.blue};
           }
           #battery.charging {
-            color: #${colors.green};
+            color: #${palette.green};
           }
           #battery.discharging.warning {
-            color: #${colors.yellow};
+            color: #${palette.yellow};
           }
           #battery.discharging.critical {
-            color: #${colors.red};
+            color: #${palette.red};
             animation-name: blink;
             animation-duration: 0.5s;
             animation-timing-function: linear;

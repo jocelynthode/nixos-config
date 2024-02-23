@@ -37,6 +37,10 @@
           };
         };
       };
+      zoxide = {
+        enable = true;
+        options = ["--cmd cd"];
+      };
     };
 
     xdg.configFile."lsd/themes/base16.yaml" = {

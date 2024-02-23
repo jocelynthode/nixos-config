@@ -110,8 +110,8 @@
         "*color4" = "#${config.colorscheme.colors.blue}";
         "*color12" = "#${config.colorscheme.colors.blue}";
 
-        "*color5" = "#${config.colorScheme.colors.accent}";
-        "*color13" = "#${config.colorScheme.colors.accent}";
+        "*color5" = "#${config.colorScheme.palette.accent}";
+        "*color13" = "#${config.colorScheme.palette.accent}";
 
         "*color6" = "#${config.colorscheme.colors.teal}";
         "*color14" = "#${config.colorscheme.colors.teal}";

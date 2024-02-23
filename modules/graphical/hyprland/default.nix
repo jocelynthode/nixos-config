@@ -77,8 +77,8 @@
             gaps_in=5
             gaps_out=5
             border_size=3.5
-            col.active_border=0xff${config.colorScheme.colors.accent}
-            col.inactive_border=0xff${config.colorScheme.colors.background02}
+            col.active_border=0xff${config.colorScheme.palette.accent}
+            col.inactive_border=0xff${config.colorScheme.palette.background02}
             cursor_inactive_timeout=0
             layout=dwindle
           }
@@ -105,11 +105,11 @@
             force_default_wallpaper=0
           }
           group {
-            col.border_active=0xff${config.colorScheme.colors.accent}
-            col.border_inactive=0xff${config.colorScheme.colors.background02}
+            col.border_active=0xff${config.colorScheme.palette.accent}
+            col.border_inactive=0xff${config.colorScheme.palette.background02}
             groupbar {
               gradients=true
-              text_color=0xff${config.colorScheme.colors.foreground}
+              text_color=0xff${config.colorScheme.palette.foreground}
             }
           }
           input {

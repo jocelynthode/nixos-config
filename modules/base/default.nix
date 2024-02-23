@@ -39,7 +39,7 @@
       slug = "catppuccin-latte";
       name = "Catppuccin Latte";
       author = "Unknown";
-      colors = {
+      palette = {
         background = "#eff1f5";
         background01 = "#e6e9ef";
         background02 = "#ccd0da";

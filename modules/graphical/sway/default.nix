@@ -74,13 +74,7 @@
         '';
         extraConfig = ''
           bindsym --whole-window --no-repeat button9 exec ${pkgs.dbus}/bin/dbus-send --session --type=method_call --dest=net.sourceforge.mumble.mumble / net.sourceforge.mumble.Mumble.startTalking
-          bindsym --whole-window --no-repeat Ctrl+button9 exec ${pkgs.dbus}/bin/dbus-send --session --type=method_call --dest=net.sourceforge.mumble.mumble / net.sourceforge.mumble.Mumble.startTalking
-          bindsym --whole-window --no-repeat Shift+button9 exec ${pkgs.dbus}/bin/dbus-send --session --type=method_call --dest=net.sourceforge.mumble.mumble / net.sourceforge.mumble.Mumble.startTalking
-          bindsym --whole-window --no-repeat Ctrl+Shift+button9 exec ${pkgs.dbus}/bin/dbus-send --session --type=method_call --dest=net.sourceforge.mumble.mumble / net.sourceforge.mumble.Mumble.startTalking
           bindsym --whole-window --release button9 exec ${pkgs.dbus}/bin/dbus-send --session --type=method_call --dest=net.sourceforge.mumble.mumble / net.sourceforge.mumble.Mumble.stopTalking
-          bindsym --whole-window --release Ctrl+button9 exec ${pkgs.dbus}/bin/dbus-send --session --type=method_call --dest=net.sourceforge.mumble.mumble / net.sourceforge.mumble.Mumble.stopTalking
-          bindsym --whole-window --release Shift+button9 exec ${pkgs.dbus}/bin/dbus-send --session --type=method_call --dest=net.sourceforge.mumble.mumble / net.sourceforge.mumble.Mumble.stopTalking
-          bindsym --whole-window --release Ctrl+Shift+button9 exec ${pkgs.dbus}/bin/dbus-send --session --type=method_call --dest=net.sourceforge.mumble.mumble / net.sourceforge.mumble.Mumble.stopTalking
         '';
         systemd.enable = true;
         xwayland = true;
@@ -123,41 +117,41 @@
           };
           colors = {
             focused = {
-              border = "#${config.colorscheme.colors.accent}";
-              background = "#${config.colorscheme.colors.background01}";
-              text = "#${config.colorscheme.colors.foreground}";
-              indicator = "#${config.colorscheme.colors.accent}";
-              childBorder = "#${config.colorscheme.colors.accent}";
+              border = "#${config.colorScheme.palette.accent}";
+              background = "#${config.colorScheme.palette.background01}";
+              text = "#${config.colorScheme.palette.foreground}";
+              indicator = "#${config.colorScheme.palette.accent}";
+              childBorder = "#${config.colorScheme.palette.accent}";
             };
             focusedInactive = {
-              border = "#${config.colorscheme.colors.background01}";
-              background = "#${config.colorscheme.colors.background01}";
-              text = "#${config.colorscheme.colors.foreground}";
-              indicator = "#${config.colorscheme.colors.background01}";
-              childBorder = "#${config.colorscheme.colors.background01}";
+              border = "#${config.colorScheme.palette.background01}";
+              background = "#${config.colorScheme.palette.background01}";
+              text = "#${config.colorScheme.palette.foreground}";
+              indicator = "#${config.colorScheme.palette.background01}";
+              childBorder = "#${config.colorScheme.palette.background01}";
             };
             unfocused = {
-              border = "#${config.colorscheme.colors.background02}";
-              background = "#${config.colorscheme.colors.background}";
-              text = "#${config.colorscheme.colors.foreground}";
-              indicator = "#${config.colorscheme.colors.background02}";
-              childBorder = "#${config.colorscheme.colors.background02}";
+              border = "#${config.colorScheme.palette.background02}";
+              background = "#${config.colorScheme.palette.background}";
+              text = "#${config.colorScheme.palette.foreground}";
+              indicator = "#${config.colorScheme.palette.background02}";
+              childBorder = "#${config.colorScheme.palette.background02}";
             };
             urgent = {
-              border = "#${config.colorscheme.colors.red}";
-              background = "#${config.colorscheme.colors.red}";
-              text = "#${config.colorscheme.colors.foreground}";
-              indicator = "#${config.colorscheme.colors.red}";
-              childBorder = "#${config.colorscheme.colors.red}";
+              border = "#${config.colorScheme.palette.red}";
+              background = "#${config.colorScheme.palette.red}";
+              text = "#${config.colorScheme.palette.foreground}";
+              indicator = "#${config.colorScheme.palette.red}";
+              childBorder = "#${config.colorScheme.palette.red}";
             };
             placeholder = {
-              border = "#${config.colorscheme.colors.background}";
-              background = "#${config.colorscheme.colors.background}";
-              text = "#${config.colorscheme.colors.foreground}";
-              indicator = "#${config.colorscheme.colors.background}";
-              childBorder = "#${config.colorscheme.colors.background}";
+              border = "#${config.colorScheme.palette.background}";
+              background = "#${config.colorScheme.palette.background}";
+              text = "#${config.colorScheme.palette.foreground}";
+              indicator = "#${config.colorScheme.palette.background}";
+              childBorder = "#${config.colorScheme.palette.background}";
             };
-            background = "#${config.colorscheme.colors.foreground03}";
+            background = "#${config.colorScheme.palette.foreground03}";
           };
           workspaceOutputAssign = [
             {

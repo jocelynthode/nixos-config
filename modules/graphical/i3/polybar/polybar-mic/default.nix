@@ -21,7 +21,7 @@ pkgs.writeShellApplication {
       is_muted="''$(is_mic_muted)"
 
       if [ "''${is_muted}" = "yes" ]; then
-        printf "%s\n" "%{F#${config.colorScheme.colors.red}}%{F-} 0%"
+        printf "%s\n" "%{F#${config.colorScheme.palette.red}}%{F-} 0%"
       else
         printf "%s %s\n" "" "''$(get_mic_volume)"
       fi

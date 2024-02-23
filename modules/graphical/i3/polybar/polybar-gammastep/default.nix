@@ -11,10 +11,10 @@ pkgs.writeShellApplication {
   text = ''
     if unit_status="$(systemctl --user is-active gammastep)"; then
       status="$unit_status ($(journalctl --user -u gammastep.service | grep 'Period: ' | cut -d ':' -f6 | tail -1 | xargs))"
-      echo "%{F#${config.colorScheme.colors.yellow}}󱠂"
+      echo "%{F#${config.colorScheme.palette.yellow}}󱠂"
     else
       status="$unit_status"
-      echo "%{F#${config.colorScheme.colors.yellow}}󱠃"
+      echo "%{F#${config.colorScheme.palette.yellow}}󱠃"
     fi
   '';
 }
