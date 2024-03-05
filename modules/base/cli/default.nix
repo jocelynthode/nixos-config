@@ -51,6 +51,7 @@
           auto_sync = true;
           sync_frequency = "5m";
           sync_address = "https://atuin.tekila.ovh";
+          keymap_mode = "auto";
           search_mode = "fuzzy";
           key_path = config.sops.secrets."atuin/key".path;
         };
