@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  config,
+  ...
+}: let
   base = {
     home.packages = with pkgs; [
       cachix
@@ -41,6 +45,16 @@
         enable = true;
         options = ["--cmd cd"];
       };
+      atuin = {
+        enable = true;
+        settings = {
+          auto_sync = true;
+          sync_frequency = "5m";
+          sync_address = "https://atuin.tekila.ovh";
+          search_mode = "fuzzy";
+          key_path = config.sops.secrets."atuin/key".path;
+        };
+      };
     };
 
     xdg.configFile."lsd/themes/base16.yaml" = {
@@ -76,6 +90,14 @@
     };
   };
 in {
+  sops.secrets."atuin/key" = {
+    sopsFile = ../../../secrets/common/secrets.yaml;
+    owner = "jocelyn";
+    group = "users";
+  };
+  aspects.base.persistence.homePaths = [
+    ".local/share/atuin"
+  ];
   home-manager.users.jocelyn = _: base;
   home-manager.users.root = _: base;
 }
