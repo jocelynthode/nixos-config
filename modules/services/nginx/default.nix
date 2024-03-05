@@ -155,6 +155,16 @@
             };
           };
         };
+        "atuin.tekila.ovh" = {
+          onlySSL = true;
+          enableACME = true;
+          locations = {
+            "/" = {
+              proxyPass = "http://127.0.0.1:8888/";
+              recommendedProxyConfig = true;
+            };
+          };
+        };
       };
       streamConfig = ''
         server {

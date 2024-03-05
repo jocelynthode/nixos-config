@@ -6,6 +6,7 @@
   imports = [
     ./acme
     ./adguard
+    ./atuin
     ./authentik
     ./blocky
     ./ddclient
@@ -30,6 +31,7 @@
       services = {
         acme.enable = lib.mkDefault true;
         adguard.enable = lib.mkDefault false;
+        atuin.enable = lib.mkDefault true;
         authentik.enable = lib.mkDefault true;
         blocky.enable = lib.mkDefault true;
         ddclient.enable = lib.mkDefault false;

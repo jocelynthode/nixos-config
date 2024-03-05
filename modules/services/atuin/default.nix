@@ -1,0 +1,19 @@
+{
+  config,
+  lib,
+  ...
+}: {
+  options.aspects.services.atuin.enable = lib.mkOption {
+    default = false;
+    example = true;
+  };
+
+  config = lib.mkIf config.aspects.services.atuin.enable {
+    services.atuin = {
+      enable = true;
+      openRegistration = false;
+      host = "127.0.0.1";
+      database.uri = "postgresql:///atuin?host=/run/postgresql";
+    };
+  };
+}
