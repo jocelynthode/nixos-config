@@ -204,6 +204,7 @@
           monitor=,highres,auto,auto
           monitor=eDP-1,highres,auto,1.33333
           monitor=DP-4,highres,0x1956,1.5
+          monitor=DP-3,highres,0x1440,1.5
         '';
       };
     };

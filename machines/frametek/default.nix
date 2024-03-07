@@ -86,6 +86,43 @@
               "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"10 eDP-1\""
             ];
           };
+          work2 = {
+            outputs = [
+              {
+                criteria = "eDP-1";
+                position = "0,0";
+                scale = 1.3;
+              }
+              {
+                criteria = "DP-3";
+                position = "0,1440";
+                scale = 1.5;
+              }
+            ];
+            exec = [
+              "${pkgs.hyprland}/bin/hyprctl keyword workspace 1,monitor:DP-3,default:true"
+              "${pkgs.hyprland}/bin/hyprctl keyword workspace 2,monitor:DP-3"
+              "${pkgs.hyprland}/bin/hyprctl keyword workspace 3,monitor:DP-3"
+              "${pkgs.hyprland}/bin/hyprctl keyword workspace 4,monitor:DP-3"
+              "${pkgs.hyprland}/bin/hyprctl keyword workspace 5,monitor:DP-3"
+              "${pkgs.hyprland}/bin/hyprctl keyword workspace 6,monitor:eDP-1,default:true"
+              "${pkgs.hyprland}/bin/hyprctl keyword workspace 7,monitor:eDP-1"
+              "${pkgs.hyprland}/bin/hyprctl keyword workspace 8,monitor:eDP-1"
+              "${pkgs.hyprland}/bin/hyprctl keyword workspace 9,monitor:eDP-1"
+              "${pkgs.hyprland}/bin/hyprctl keyword workspace 10,monitor:eDP-1"
+
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"1 DP-3\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"2 DP-3\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"3 DP-3\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"4 DP-3\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"5 DP-3\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"6 eDP-1\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"7 eDP-1\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"8 eDP-1\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"9 eDP-1\""
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor \"10 eDP-1\""
+            ];
+          };
         };
       };
       i3 = {

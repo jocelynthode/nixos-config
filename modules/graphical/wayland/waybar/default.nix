@@ -48,7 +48,7 @@ in {
           primary = {
             layer = "top";
             position = "top";
-            output = ["DP-1" "DP-4" "eDP-1"];
+            output = ["DP-1" "DP-4" "DP-3" "eDP-1"];
             modules-left = [
               "sway/workspaces"
               "cpu"
