@@ -76,7 +76,7 @@
           general {
             gaps_in=5
             gaps_out=5
-            border_size=3.5
+            border_size=3
             col.active_border=0xff${config.colorScheme.palette.accent}
             col.inactive_border=0xff${config.colorScheme.palette.background02}
             cursor_inactive_timeout=0

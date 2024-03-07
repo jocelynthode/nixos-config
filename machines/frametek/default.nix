@@ -9,7 +9,7 @@
       bluetooth.enable = true;
     };
     development.enable = true;
-    games.enable = true;
+    games.enable = false;
     graphical = {
       enable = true;
       dpi = 120;
