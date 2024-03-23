@@ -76,7 +76,7 @@ in {
               sort-by-number = true;
             };
             clock = {
-              format = "{:<span color=\"#${config.colorScheme.palette.purple}\"> </span>%a, %d %b %Y at %H:%M:%S}";
+              format = "<span color=\"#${config.colorScheme.palette.purple}\"> </span>{:%a, %d %b %Y at %H:%M:%S}";
               interval = 1;
             };
             cpu = {
