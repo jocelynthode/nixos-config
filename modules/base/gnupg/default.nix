@@ -7,10 +7,10 @@
   pinentry =
     if config.aspects.graphical.enable
     then {
-      name = "gnome3";
+      package = pkgs.pinentry-gnome3;
     }
     else {
-      name = "curses";
+      package = pkgs.pinnentry-curses;
     };
 in {
   environment.systemPackages = with pkgs; [
@@ -29,7 +29,7 @@ in {
     services.gpg-agent = {
       enable = true;
       enableFishIntegration = true;
-      pinentryFlavor = pinentry.name;
+      pinentryPackage = pinentry.package;
       enableSshSupport = true;
       defaultCacheTtlSsh = 3600;
       defaultCacheTtl = 3600;

@@ -14,5 +14,5 @@
     statix.enable = true;
   };
 
-  pre-commit.settings.deadnix.edit = true;
+  pre-commit.hooks.deadnix.settings.edit = true;
 }

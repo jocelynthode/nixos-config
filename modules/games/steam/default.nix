@@ -18,12 +18,20 @@
 
     programs.steam = {
       enable = true;
+      package = pkgs.steam.override {
+        extraPkgs = pkgs:
+          with pkgs; [
+            gamescope
+            mangohud
+          ];
+      };
       # package = pkgs.steam.override {
       #   extraLibraries = p:
       #     with p; [
       #     ];
       # };
       remotePlay.openFirewall = true;
+      gamescopeSession.enable = true;
     };
 
     hardware.xone.enable = true;
