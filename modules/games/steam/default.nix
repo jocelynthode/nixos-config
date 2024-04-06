@@ -21,8 +21,8 @@
       package = pkgs.steam.override {
         extraPkgs = pkgs:
           with pkgs; [
-            gamescope
-            mangohud
+            libkrb5
+            keyutils
           ];
       };
       # package = pkgs.steam.override {
@@ -31,7 +31,16 @@
       #     ];
       # };
       remotePlay.openFirewall = true;
-      gamescopeSession.enable = true;
+      gamescopeSession = {
+        enable = true;
+        args = [
+          "--output-width 1920"
+          "--output-height 1440"
+          "--nested-refresh 144"
+          "--fullscreen"
+          "-S stretch"
+        ];
+      };
     };
 
     hardware.xone.enable = true;
@@ -40,7 +49,7 @@
       enable = true;
       capSysNice = true;
       args = [
-        "--rt"
+        "-r 144"
       ];
     };
 
