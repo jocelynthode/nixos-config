@@ -11,7 +11,7 @@
     development.containers.enable = true;
     programs = {
       htop.enable = true;
-      ranger.enable = true;
+      yazi.enable = true;
     };
     services.enable = true;
   };

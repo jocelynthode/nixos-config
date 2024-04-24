@@ -59,7 +59,7 @@
         mimeApps = {
           enable = true;
           defaultApplications = {
-            "inode/directory" = "ranger.desktop";
+            "inode/directory" = "yazi.desktop";
             "application/pdf" = "firefox.desktop";
 
             "text/plain" = ["neovim.desktop"];

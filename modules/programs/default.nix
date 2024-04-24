@@ -14,7 +14,7 @@
     ./kdeconnect
     ./logseq
     ./obs-studio
-    ./ranger
+    ./yazi
     ./signal
     ./solaar
     ./spotify
@@ -39,7 +39,7 @@
       kdeconnect.enable = lib.mkDefault true;
       logseq.enable = lib.mkDefault false;
       obs-studio.enable = lib.mkDefault false;
-      ranger.enable = lib.mkDefault true;
+      yazi.enable = lib.mkDefault true;
       signal.enable = lib.mkDefault true;
       solaar.enable = lib.mkDefault false;
       spotify.enable = lib.mkDefault true;
