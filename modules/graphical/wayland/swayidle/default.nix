@@ -81,11 +81,11 @@
             timeout = 660;
             command =
               if osConfig.aspects.graphical.hyprland.enable
-              then "${pkgs.hyprland}/bin/hyprctl dispatch dpms off"
+              then "hyprctl dispatch dpms off"
               else "${pkgs.sway}/bin/swaymsg \"output * dpms off\"";
             resumeCommand =
               if osConfig.aspects.graphical.hyprland.enable
-              then "${pkgs.hyprland}/bin/hyprctl dispatch dpms on"
+              then "hyprctl dispatch dpms on"
               else "${pkgs.sway}/bin/swaymsg \"output * dpms on\"";
           }
         ];
