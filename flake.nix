@@ -115,7 +115,6 @@
           modules = [
             ./machines/frametek
             hardware.nixosModules.common-cpu-intel
-            hardware.nixosModules.common-gpu-intel
             hardware.nixosModules.common-pc-laptop
             hardware.nixosModules.common-pc-laptop-ssd
             hardware.nixosModules.framework-11th-gen-intel
