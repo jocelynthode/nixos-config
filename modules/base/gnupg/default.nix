@@ -10,7 +10,7 @@
       package = pkgs.pinentry-gnome3;
     }
     else {
-      package = pkgs.pinnentry-curses;
+      package = pkgs.pinentry-curses;
     };
 in {
   environment.systemPackages = with pkgs; [
