@@ -4,12 +4,12 @@
   lib,
   ...
 }: {
-  options.aspects.graphical.wayland.kanshi.profiles = lib.mkOption {
-    type = lib.types.attrs;
+  options.aspects.graphical.wayland.kanshi.settings = lib.mkOption {
+    type = lib.types.listOf lib.types.attrs;
     default = {};
-    description = "services.kanshi.profiles setup";
+    description = "services.kanshi.settings setup";
     example = ''
-      {
+      [
         undocked = {
           outputs = [
             {
@@ -31,7 +31,7 @@
             }
           ];
         };
-      }
+      ]
     '';
   };
 
@@ -43,7 +43,7 @@
           if osConfig.aspects.graphical.hyprland.enable
           then "hyprland-session.target"
           else "sway-session.target";
-        inherit (osConfig.aspects.graphical.wayland.kanshi) profiles;
+        inherit (osConfig.aspects.graphical.wayland.kanshi) settings;
       };
     };
   };

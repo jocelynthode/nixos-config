@@ -186,6 +186,20 @@
           '';
           type = "lua";
         }
+        {
+          plugin = llm-nvim;
+          config = ''
+            require('llm').setup({
+              backend = "ollama",
+              model = "deepseek-coder:6.7b",
+              url = "http://localhost:11434/api/generate",
+              lsp = {
+                bin_path = "${pkgs.llm-ls}/bin/llm-ls",
+              },
+            })
+          '';
+          type = "lua";
+        }
       ];
 
       extraPackages = with pkgs; [
