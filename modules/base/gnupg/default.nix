@@ -35,7 +35,7 @@ in {
       defaultCacheTtl = 3600;
       maxCacheTtl = 7200;
       maxCacheTtlSsh = 7200;
-      sshKeys = ["91735B2D84D8598433447625D86582CE4993E068"];
+      sshKeys = ["8A147B30F448F560783CFDD9982AA1BB30017286"];
       enableExtraSocket = true;
     };
 

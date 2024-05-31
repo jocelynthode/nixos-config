@@ -5,6 +5,7 @@ local servers = {
   gopls = {},
   dockerls = {},
   pyright = {},
+  ruff = {},
   nil_ls = {
     settings = {
       ['nil'] = {
@@ -150,7 +151,7 @@ local on_attach = function(client, bufnr)
   if client.name == "yamlls" then
     client.server_capabilities.documentFormattingProvider = true
     if vim.bo[bufnr].filetype == "helm" then
-      vim.diagnostic.disable(bufnr)
+      vim.diagnostic.enable(false, bufnr)
     end
   end
   lsp_highlight_document(client)
@@ -173,13 +174,13 @@ for lsp, cfg in pairs(servers) do
 end
 
 
-local _, null_ls = pcall(require, "null-ls")
+local _, none_ls = pcall(require, "null-ls")
 
-local formatting = null_ls.builtins.formatting
-local diagnostics = null_ls.builtins.diagnostics
-local code_actions = null_ls.builtins.code_actions
+local formatting = none_ls.builtins.formatting
+local diagnostics = none_ls.builtins.diagnostics
+local code_actions = none_ls.builtins.code_actions
 
-null_ls.setup({
+none_ls.setup({
   debug = false,
   sources = {
     formatting.prettier.with({
@@ -190,14 +191,39 @@ null_ls.setup({
     diagnostics.gitlint,
     -- Shell
     formatting.shfmt,
-    diagnostics.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
     -- Docker
     diagnostics.hadolint,
-    -- Python
-    formatting.black,
-    diagnostics.flake8,
   },
 })
+
+---@diagnostic disable-next-line: undefined-global
+local extension_path = rust_vscode_extension_path -- defined in extraConfigLua
+local codelldb_path = extension_path .. 'adapter/codelldb'
+local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
+
+local opts = {
+    dap = {
+        adapter = require('rust-tools.dap').get_codelldb_adapter(
+            codelldb_path, liblldb_path)
+    }
+}
+require('rust-tools').setup(opts)
+require('crates').setup({
+  null_ls = {
+      enabled = true,
+      name = "crates.nvim",
+  },
+})
+
+-- require('llm').setup({
+--   backend = "ollama",
+--   model = "deepseek-coder:6.7b-instruct",
+--   url = "http://localhost:11434/api/generate",
+--   lsp = {
+-- ---@diagnostic disable-next-line: undefined-global
+--     bin_path = llm_ls_bin_path, -- defined in extraConfigLua
+--   },
+-- })
 
 
 -- require('lsp-notify').setup({})

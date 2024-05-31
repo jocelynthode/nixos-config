@@ -33,7 +33,7 @@
         cmp-dap
         luasnip
         friendly-snippets
-        null-ls-nvim
+        none-ls-nvim
         SchemaStore-nvim
         taxi-vim
         nvim-notify
@@ -48,6 +48,8 @@
         nvim-treesitter-textobjects
         nvim-lsp-notify
         crates-nvim
+        rust-tools-nvim
+        # llm-nvim
         {
           plugin = alpha-nvim;
           config = builtins.readFile ./plugins/alpha.lua;
@@ -163,43 +165,6 @@
           config = builtins.readFile ./plugins/cmp.lua;
           type = "lua";
         }
-        {
-          plugin = rust-tools-nvim;
-          config = ''
-            local extension_path = '${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/'
-            local codelldb_path = extension_path .. 'adapter/codelldb'
-            local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
-
-            local opts = {
-                dap = {
-                    adapter = require('rust-tools.dap').get_codelldb_adapter(
-                        codelldb_path, liblldb_path)
-                }
-            }
-            require('rust-tools').setup(opts)
-            require('crates').setup({
-              null_ls = {
-                  enabled = true,
-                  name = "crates.nvim",
-              },
-            })
-          '';
-          type = "lua";
-        }
-        {
-          plugin = llm-nvim;
-          config = ''
-            require('llm').setup({
-              backend = "ollama",
-              model = "deepseek-coder:6.7b",
-              url = "http://localhost:11434/api/generate",
-              lsp = {
-                bin_path = "${pkgs.llm-ls}/bin/llm-ls",
-              },
-            })
-          '';
-          type = "lua";
-        }
       ];
 
       extraPackages = with pkgs; [
@@ -209,6 +174,7 @@
         go
         golint
         delve
+        ruff
         nodePackages.yaml-language-server
         nodePackages.bash-language-server
         nodePackages.vscode-json-languageserver
@@ -219,12 +185,11 @@
         nil
         alejandra
         rust-analyzer
-        shellcheck
         lua-language-server
         terraform-ls
         terraform
 
-        # null-ls
+        # none-ls
         nodePackages.prettier
         gitlint
         shfmt
@@ -243,6 +208,8 @@
       extraLuaConfig =
         ''
           vim.loader.enable()
+          -- local llm_ls_bin_path = '${pkgs.llm-ls}/bin/llm-ls'
+          local rust_vscode_extension_path = '${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/'
         ''
         + (builtins.readFile ./core/mappings.lua)
         + (builtins.readFile ./core/options.lua)

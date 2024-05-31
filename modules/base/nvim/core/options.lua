@@ -39,6 +39,7 @@ local options = {
   guifont = "JetBrainsMono Nerd Font Mono:h11", -- the font used in graphical neovim applications
   laststatus = 3,
   inccommand = 'split',
+  synmaxcol = 250, -- prevent slowdown on big oneliner files
 }
 
 vim.opt.shortmess:append("c")
