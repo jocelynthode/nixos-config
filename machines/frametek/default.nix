@@ -19,6 +19,18 @@
       sway.enable = true;
       wayland = {
         kanshi.settings = [
+          {
+            profile = {
+              name = "default";
+              outputs = [
+                {
+                  criteria = "eDP-1";
+                  position = "0,0";
+                  scale = 1.3;
+                }
+              ];
+            };
+          }
         ];
       };
 
