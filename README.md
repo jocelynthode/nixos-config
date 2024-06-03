@@ -29,6 +29,11 @@ nix develop
 
 8. Rekey your secrets
 
+```bash
+sops updatekeys secrets/common/secrets.yaml
+sops updatekeys secrets/servetek/secrets.yaml
+```
+
 9. Bootstrap system
 
 ```bash
