@@ -5,7 +5,7 @@ keys:
   # Hosts
   - &hosts:
     - &desktek age1cf355lw4hznu9qef2vcejls926fhvmvwjnm8s3a5ghvktvtspd5svp5qg8
-    - &frametek age1tsgsllypatl2303talc094gjq9achlwzms0ky2q24fu647sq6aqqyv8s7s
+    - &frametek age1sgcdrv8mjlt705dteks9ke4jmlq6fqn244hakfcv5zwjmpc7xu5q893kna
     - &servetek age1tk4xmr6ye60naj0zvxjv6l7q9zdhj05z67m98ph4qar6jczslcqqsvhqs4
 
 creation_rules:
