@@ -13,6 +13,7 @@ needs_arg() { if [ -z "$OPTARG" ]; then die "No arg for --$OPT option"; fi; }
 encrypt=""
 drive=""
 hostname=""
+efi_label="EFI"
 swap=32
 
 if [ $# -eq 0 ]; then
