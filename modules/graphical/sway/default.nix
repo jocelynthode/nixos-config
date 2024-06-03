@@ -105,6 +105,9 @@
           menu = "${pkgs.wofi}/bin/wofi -IS drun -W 40% -H 50%";
           bars = [];
           input = {
+            "type:touchpad" = {
+              tap = "enabled";
+            };
             "*" = {
               xkb_layout = "us";
               xkb_variant = "altgr-intl";
