@@ -49,7 +49,7 @@
         nvim-lsp-notify
         crates-nvim
         rust-tools-nvim
-        llm-nvim
+        # llm-nvim
         {
           plugin = alpha-nvim;
           config = builtins.readFile ./plugins/alpha.lua;
