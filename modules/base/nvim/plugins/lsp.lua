@@ -215,15 +215,15 @@ require('crates').setup({
   },
 })
 
--- require('llm').setup({
---   backend = "ollama",
---   model = "deepseek-coder:6.7b-instruct",
---   url = "http://localhost:11434/api/generate",
---   lsp = {
--- ---@diagnostic disable-next-line: undefined-global
---     bin_path = llm_ls_bin_path, -- defined in extraConfigLua
---   },
--- })
+require('llm').setup({
+  backend = "ollama",
+  model = "starcoder2:15b-instruct",
+  url = "http://localhost:11434/api/generate",
+  lsp = {
+---@diagnostic disable-next-line: undefined-global
+    bin_path = llm_ls_bin_path, -- defined in extraConfigLua
+  },
+})
 
 
 -- require('lsp-notify').setup({})

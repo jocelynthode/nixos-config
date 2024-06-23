@@ -12,5 +12,4 @@
   wofi-powermenu = pkgs.callPackage ./core/wofi-powermenu {};
   fs-diff = pkgs.callPackage ./core/fs-diff {};
   dunst-notification-sound = pkgs.callPackage ./core/dunst-notification-sound {};
-  logseq = pkgs.callPackage ./core/logseq {};
 }

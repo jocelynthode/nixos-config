@@ -30,10 +30,10 @@
       inputs.flake-utils.follows = "flake-utils";
     };
     flake-utils.url = "github:numtide/flake-utils";
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # hyprland = {
+    #   url = "github:hyprwm/Hyprland";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     devenv = {
       url = "github:cachix/devenv/latest";
       # inputs.nixpkgs.follows = "nixpkgs";
@@ -49,7 +49,7 @@
     self,
     nixpkgs,
     nixpkgs-master,
-    hyprland,
+    # hyprland,
     home-manager,
     sops-nix,
     nur,
@@ -77,7 +77,7 @@
           sops-nix.nixosModules.sops
           home-manager.nixosModule
           impermanence.nixosModules.impermanence
-          hyprland.nixosModules.default
+          # hyprland.nixosModules.default
           nix-index-database.nixosModules.nix-index
           ./modules
         ];

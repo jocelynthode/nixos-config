@@ -49,7 +49,7 @@
         nvim-lsp-notify
         crates-nvim
         rust-tools-nvim
-        # llm-nvim
+        llm-nvim
         {
           plugin = alpha-nvim;
           config = builtins.readFile ./plugins/alpha.lua;
@@ -176,11 +176,11 @@
         delve
         ruff
         nodePackages.yaml-language-server
-        nodePackages.bash-language-server
         nodePackages.vscode-json-languageserver
         nodePackages.vim-language-server
         nodePackages.dockerfile-language-server-nodejs
-        nodePackages.pyright
+        pyright
+        bash-language-server
 
         nil
         alejandra
@@ -208,7 +208,7 @@
       extraLuaConfig =
         ''
           vim.loader.enable()
-          -- local llm_ls_bin_path = '${pkgs.llm-ls}/bin/llm-ls'
+          local llm_ls_bin_path = '${pkgs.llm-ls}/bin/llm-ls'
           local rust_vscode_extension_path = '${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/'
         ''
         + (builtins.readFile ./core/mappings.lua)

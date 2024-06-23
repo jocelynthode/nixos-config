@@ -13,6 +13,14 @@
       programs.yazi = {
         enable = true;
         enableFishIntegration = true;
+        keymap = {
+          manager.prepend_keymap = [
+            {
+              run = ''shell 'dragon -x -i -T "$1"' --confirm"'';
+              on = ["<C-d>"];
+            }
+          ];
+        };
         settings = {
           manager = {
             show_hidden = true;

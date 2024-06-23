@@ -68,8 +68,6 @@
 
     hardware.opengl = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
     };
 
     home-manager.users.jocelyn = _: {

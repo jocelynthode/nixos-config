@@ -42,6 +42,6 @@
     lact
   ];
 
-  hardware.amdgpu.opencl = false;
+  hardware.amdgpu.opencl.enable = false;
   services.system76-scheduler.enable = true;
 }
