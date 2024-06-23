@@ -29,8 +29,15 @@ in {
       systemPaths = lib.optional config.aspects.base.nix.enableDirenv "/root/.local/share/direnv";
     };
 
-    programs.command-not-found.enable = false;
-    programs.nix-index-database.comma.enable = true;
+    programs = {
+      command-not-found.enable = false;
+      nix-index-database.comma.enable = true;
+      nh = {
+        enable = true;
+        clean.enable = true;
+        clean.extraArgs = "--keep-since 4d --keep 3";
+      };
+    };
 
     nix = {
       settings = {
@@ -58,11 +65,6 @@ in {
         keep-outputs = true
         keep-derivations = true
       '';
-      gc = {
-        automatic = true;
-        dates = "hourly";
-        options = "--delete-older-than 7d";
-      };
     };
 
     home-manager = {
