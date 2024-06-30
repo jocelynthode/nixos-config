@@ -280,9 +280,7 @@
             ];
             "7" = [
               {app_id = "Slack";}
-              {class = "ArmCord";}
               {app_id = "info.mumble.Mumble";}
-              {class = "Element";}
             ];
             "8" = [
               {con_mark = "Spotify";}
@@ -291,7 +289,7 @@
               {app_id = "Bitwarden";}
             ];
             "10" = [
-              {class = "Signal";}
+              {app_id = "signal";}
             ];
           };
           window = {

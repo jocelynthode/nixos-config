@@ -11,11 +11,11 @@
 
   config = lib.mkIf config.aspects.games.discord.enable {
     aspects.base.persistence.homePaths = [
-      ".config/ArmCord"
+      ".config/vesktop"
     ];
 
     home-manager.users.jocelyn = _: {
-      home.packages = with pkgs; [armcord];
+      home.packages = with pkgs; [vesktop];
     };
   };
 }
