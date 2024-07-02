@@ -39,6 +39,10 @@
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
   hardware.enableRedistributableFirmware = true;
 
+  environment.sessionVariables = {
+    GDK_SCALE = "2";
+  };
+
   programs.light.enable = true;
   services.actkbd = {
     enable = true;

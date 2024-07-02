@@ -26,7 +26,7 @@
                 {
                   criteria = "eDP-1";
                   position = "0,0";
-                  scale = 1.3;
+                  scale = 1.5;
                 }
               ];
             };
