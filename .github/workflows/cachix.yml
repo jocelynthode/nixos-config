@@ -8,12 +8,12 @@ jobs:
   build-desktek:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.5.2
-      - uses: cachix/install-nix-action@v21
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v25
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Cachix
-        uses: cachix/cachix-action@v12
+        uses: cachix/cachix-action@v14
         with:
           name: tekila
           extraPullNames: 'nix-community,hyprland,devenv,statix,deadnix'
@@ -24,12 +24,12 @@ jobs:
   build-frametek:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.5.2
-      - uses: cachix/install-nix-action@v21
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v25
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Cachix
-        uses: cachix/cachix-action@v12
+        uses: cachix/cachix-action@v14
         with:
           name: tekila
           extraPullNames: 'nix-community,hyprland,devenv,statix,deadnix'
@@ -40,12 +40,12 @@ jobs:
   build-servetek:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.5.2
-      - uses: cachix/install-nix-action@v21
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v25
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Cachix
-        uses: cachix/cachix-action@v12
+        uses: cachix/cachix-action@v14
         with:
           name: tekila
           extraPullNames: 'nix-community,hyprland,devenv,statix,deadnix'

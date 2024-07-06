@@ -11,7 +11,7 @@
 
   config = lib.mkIf config.aspects.graphical.screenshot.enable {
     home-manager.users.jocelyn = _: {
-      home.packages = with pkgs; [gnome.gnome-screenshot];
+      home.packages = with pkgs; [gnome-screenshot];
     };
   };
 }

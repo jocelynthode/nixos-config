@@ -130,7 +130,7 @@
           binde=,XF86AudioLowerVolume,exec,${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%
           bind=,XF86AudioMute,exec,${pkgs.pulseaudio}/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle
           bind=,XF86AudioPlay,exec,${pkgs.playerctl}/bin/playerctl --player spotify play-pause
-          bind=,Print,exec,${pkgs.gnome.gnome-screenshot}/bin/gnome-screenshot -i
+          bind=,Print,exec,${pkgs.gnome-screenshot}/bin/gnome-screenshot -i
           # Window manager controls
           bind=$mainMod CONTROL, h, moveintogroup,l
           bind=$mainMod CONTROL, j, moveintogroup,d
