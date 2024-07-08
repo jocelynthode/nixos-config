@@ -10,12 +10,12 @@
   };
 
   config = let
-    whitelist =
+    allowlist =
       pkgs.writeText "whitelist.txt"
       ''
         s.youtube.com
       '';
-    blacklist =
+    denylist =
       pkgs.writeText "blacklist.txt"
       ''
         # Remove Microsoft VSCode tunnel access
@@ -54,14 +54,14 @@
             ips = ["9.9.9.9" "149.112.112.112"];
           };
           blocking = {
-            blackLists = {
+            denylists = {
               ads = [
                 "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
-                "${blacklist}"
+                "${denylist}"
               ];
             };
-            whiteLists = {
-              ads = ["${whitelist}"];
+            allowlists = {
+              ads = ["${allowlist}"];
             };
             clientGroupsBlock = {
               default = ["ads"];
