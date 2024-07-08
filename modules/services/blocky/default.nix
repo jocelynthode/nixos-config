@@ -41,10 +41,11 @@
           };
           upstreams.groups = {
             default = [
-              "https://dns10.quad9.net/dns-query"
               "https://dns.mullvad.net/dns-query"
-              "https://one.one.one.one/dns-query"
-              "https://dns.google/dns-query"
+              "https://ns0.fdn.fr/dns-query"
+              "https://ns1.fdn.fr/dns-query"
+              "https://doh.dns4all.eu/dns-query"
+              "https://doh.libredns.gr/dns-query"
             ];
           };
           # For initially solving DoH/DoT Requests when no system Resolver is available.
