@@ -15,7 +15,7 @@
       ".config/spotify"
     ];
 
-    home-manager.sharedModules = [spicetify-nix.homeManagerModule];
+    home-manager.sharedModules = [spicetify-nix.homeManagerModules.default];
     home-manager.users.jocelyn = _: {
       home.packages = [pkgs.playerctl];
       services.playerctld = {
@@ -23,7 +23,7 @@
       };
       programs.spicetify = {
         enable = true;
-        theme = spicetify-nix.packages.${pkgs.system}.default.themes.catppuccin;
+        theme = spicetify-nix.legacyPackages.${pkgs.system}.themes.catppuccin;
         colorScheme = "latte";
       };
     };

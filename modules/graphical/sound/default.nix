@@ -20,7 +20,6 @@
     aspects.graphical.sound.guitar.enable = lib.mkDefault false;
 
     security.rtkit.enable = true;
-    sound.enable = true;
     services.pipewire = {
       enable = true;
       alsa.enable = true;
