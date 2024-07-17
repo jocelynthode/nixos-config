@@ -35,11 +35,15 @@
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd ${pkgs.sway}/bin/sway";
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd sway";
           user = "greeter";
         };
       };
     };
+
+    systemd.user.extraConfig = ''
+      DefaultEnvironment="PATH=/run/wrappers/bin:/etc/profiles/per-user/%u/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
+    '';
 
     home-manager.users.jocelyn = {
       config,
