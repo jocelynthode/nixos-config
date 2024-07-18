@@ -39,6 +39,18 @@
           doInstallCheck = false;
         });
       config.recorder.db_url = "postgresql://@/hass";
+      extraComponents = [
+        # Components required to complete the onboarding
+        "esphome"
+        "met"
+        "map"
+      ];
+      config = {
+        # Includes dependencies for a basic setup
+        # https://www.home-assistant.io/integrations/default_config/
+        default_config = {};
+        api = {};
+      };
     };
   };
 }
