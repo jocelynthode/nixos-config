@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: {
   options.aspects.services.jellyfin.enable = lib.mkOption {
@@ -20,5 +21,11 @@
       enable = true;
       openFirewall = true;
     };
+
+    environment.systemPackages = [
+      pkgs.jellyfin
+      pkgs.jellyfin-web
+      pkgs.jellyfin-ffmpeg
+    ];
   };
 }

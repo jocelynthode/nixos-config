@@ -131,6 +131,7 @@
           modules = [
             ./machines/servetek
             hardware.nixosModules.common-pc-laptop-ssd
+            hardware.nixosModules.common-cpu-intel
           ];
           specialArgs = {inherit nix-colors spicetify-nix;};
         };

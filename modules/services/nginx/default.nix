@@ -37,6 +37,10 @@
                 auth_request_set        $auth_cookie $upstream_http_set_cookie;
                 proxy_pass_request_body off;
                 proxy_set_header        Content-Length "";
+
+                proxy_send_timeout 600s;
+                proxy_read_timeout 600s;
+                keepalive_timeout 21600;
               '';
             };
             "@goauthentik_proxy_signin" = {
@@ -68,6 +72,10 @@
                 proxy_set_header X-authentik-email $authentik_email;
                 proxy_set_header X-authentik-name $authentik_name;
                 proxy_set_header X-authentik-uid $authentik_uid;
+
+                proxy_send_timeout 600s;
+                proxy_read_timeout 600s;
+                keepalive_timeout 21600;
               '';
             };
           };
