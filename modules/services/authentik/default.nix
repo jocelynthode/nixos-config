@@ -94,5 +94,17 @@
           "podman-authentik-worker.service"
         ];
       };
+
+      services.postgresql = {
+        ensureDatabases = [
+          "authentik"
+        ];
+        ensureUsers = [
+          {
+            name = "authentik";
+            ensureDBOwnership = true;
+          }
+        ];
+      };
     };
 }

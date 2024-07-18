@@ -11,6 +11,7 @@
     ./blocky
     ./ddclient
     ./deluge
+    ./home-assistant
     ./jellyfin
     ./media
     ./navidrome
@@ -37,6 +38,7 @@
         blocky.enable = lib.mkDefault true;
         ddclient.enable = lib.mkDefault false;
         deluge.enable = lib.mkDefault true;
+        home-assistant.enable = lib.mkDefault true;
         jellyfin.enable = lib.mkDefault true;
         media.enable = lib.mkDefault true;
         navidrome.enable = lib.mkDefault true;

@@ -20,20 +20,6 @@
     services.postgresql = {
       enable = true;
       package = pkgs.postgresql;
-      ensureDatabases = [
-        "authentik"
-        "atuin"
-      ];
-      ensureUsers = [
-        {
-          name = "authentik";
-          ensureDBOwnership = true;
-        }
-        {
-          name = "atuin";
-          ensureDBOwnership = true;
-        }
-      ];
     };
   };
 }
