@@ -39,6 +39,31 @@
           doInstallCheck = false;
         });
       config.recorder.db_url = "postgresql://@/hass";
+      defaultComponents = [
+        "application_credentials"
+        "frontend"
+        "hardware"
+        "logger"
+        "network"
+        "system_health"
+        "automation"
+        "person"
+        "scene"
+        "script"
+        "tag"
+        "zone"
+        "counter"
+        "input_boolean"
+        "input_button"
+        "input_datetime"
+        "input_number"
+        "input_select"
+        "input_text"
+        "schedule"
+        "timer"
+        "backup"
+        "esphome"
+      ];
       extraComponents = [
         # Components required to complete the onboarding
         "esphome"
