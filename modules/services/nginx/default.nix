@@ -87,7 +87,17 @@
         "prowlarr.tekila.ovh" = proxy {port = 9696;};
         "readarr.tekila.ovh" = proxy {port = 8787;};
         "navi.tekila.ovh" = proxy {port = 4533;};
-        "hass.tekila.ovh" = proxy {port = 8123;};
+        "hass.tekila.ovh" =
+          proxy {
+            port = 8123;
+            homeOnly = true;
+          }
+          // {
+            extraConfig = ''
+              allow  144.2.64.196/32;
+              deny   all;
+            '';
+          };
         "auth.tekila.ovh" = proxy {
           port = 9000;
           protect = false;
