@@ -32,17 +32,29 @@
       enable = true;
       openFirewall = true;
       package = pkgs.home-assistant.override {extraPackages = ps: [ps.psycopg2];};
-      config.recorder.db_url = "postgresql://@/hass";
       extraComponents = [
         # Components required to complete the onboarding
         "esphome"
       ];
+      customComponents = with pkgs.home-assistant-custom-components; [
+        auth-header
+      ];
       config = {
-        # Includes dependencies for a basic setup
+        recorder.db_url = "postgresql://@/hass";
         # https://www.home-assistant.io/integrations/default_config/
         default_config = {};
         api = {};
         "automation ui" = "!include automations.yaml";
+        http = {
+          use_x_forwarded_for = true;
+          trusted_proxies = [
+            "127.0.0.1"
+            "::1"
+          ];
+        };
+        auth_header = {
+          username_header = "X-authentik-username";
+        };
       };
     };
   };
