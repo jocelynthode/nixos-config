@@ -26,7 +26,6 @@
         proxy = {
           port,
           protect ? true,
-          extraLocations ? {},
         }:
           base {
             "/outpost.goauthentik.io" = {
@@ -79,8 +78,7 @@
                 keepalive_timeout 21600;
               '';
             };
-          }
-          // extraLocations;
+          };
       in {
         "sonarr.tekila.ovh" = proxy {port = 8989;};
         "radarr.tekila.ovh" = proxy {port = 7878;};
@@ -89,37 +87,7 @@
         "prowlarr.tekila.ovh" = proxy {port = 9696;};
         "readarr.tekila.ovh" = proxy {port = 8787;};
         "navi.tekila.ovh" = proxy {port = 4533;};
-        "hass.tekila.ovh" = proxy {
-          port = 8123;
-          protect = false;
-          extraLocations = {
-            "~* /auth/(?!token)(.*)" = {
-              extraConfig = ''
-                auth_request /outpost.goauthentik.io/auth/nginx;
-                error_page       401 = @goauthentik_proxy_signin;
-                auth_request_set $auth_cookie $upstream_http_set_cookie;
-                add_header       Set-Cookie $auth_cookie;
-
-                # translate headers from the outposts back to the actual upstream
-                auth_request_set $authentik_username $upstream_http_x_authentik_username;
-                auth_request_set $authentik_groups $upstream_http_x_authentik_groups;
-                auth_request_set $authentik_email $upstream_http_x_authentik_email;
-                auth_request_set $authentik_name $upstream_http_x_authentik_name;
-                auth_request_set $authentik_uid $upstream_http_x_authentik_uid;
-
-                proxy_set_header X-authentik-username $authentik_username;
-                proxy_set_header X-authentik-groups $authentik_groups;
-                proxy_set_header X-authentik-email $authentik_email;
-                proxy_set_header X-authentik-name $authentik_name;
-                proxy_set_header X-authentik-uid $authentik_uid;
-
-                proxy_send_timeout 600s;
-                proxy_read_timeout 600s;
-                keepalive_timeout 21600;
-              '';
-            };
-          };
-        };
+        "hass.tekila.ovh" = proxy {port = 8123;};
         "auth.tekila.ovh" = proxy {
           port = 9000;
           protect = false;
