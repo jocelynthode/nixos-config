@@ -88,10 +88,7 @@
         "readarr.tekila.ovh" = proxy {port = 8787;};
         "navi.tekila.ovh" = proxy {port = 4533;};
         "hass.tekila.ovh" =
-          proxy {
-            port = 8123;
-            homeOnly = true;
-          }
+          proxy {port = 8123;}
           // {
             extraConfig = ''
               allow  144.2.64.196/32;
