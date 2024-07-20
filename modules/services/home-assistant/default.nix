@@ -35,6 +35,7 @@
       extraComponents = [
         # Components required to complete the onboarding
         "esphome"
+        "utility_meter"
       ];
       customComponents = with pkgs.home-assistant-custom-components; [
         auth-header
