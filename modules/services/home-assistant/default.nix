@@ -36,9 +36,9 @@
         # Components required to complete the onboarding
         "esphome"
         "co2signal"
+        "twinkly"
         "utility_meter"
         "zha"
-        "twinkly"
       ];
       customComponents = with pkgs.home-assistant-custom-components; [
         auth-header
@@ -63,6 +63,13 @@
           username_header = "X-authentik-username";
         };
       };
+    };
+
+    sops.secrets.home-assistant = {
+      sopsFile = ../../../secrets/${config.networking.hostName}/secrets.yaml;
+      owner = "hass";
+      path = "/var/lib/hass/secrets.yaml";
+      restartUnits = ["home-assistant.service"];
     };
   };
 }
