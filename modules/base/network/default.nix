@@ -24,6 +24,17 @@
     wireguard.enable = true;
   };
 
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+    publish = {
+      enable = true;
+      addresses = true;
+      domain = true;
+    };
+  };
+
   # See https://github.com/NixOS/nixpkgs/commit/15d761a525a025de0680b62e8ab79a9d183f313d
   systemd.targets.network-online.wantedBy = lib.mkForce []; # Normally ["multi-user.target"]
   systemd.services.NetworkManager-wait-online.wantedBy = lib.mkForce []; # Normally ["network-online.target"]
