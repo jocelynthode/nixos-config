@@ -6,7 +6,15 @@
       paths = [config.aspects.base.persistence.persistPrefix];
       exclude = [
         "/persist/.snapshots"
-        "/persist/var"
+        "/persist/var/*"
+        "!/persist/var/backups"
+        "!/persist/var/lib/authentik"
+        "!/persist/var/lib/hass"
+        "!/persist/var/lib/radicale"
+        "!/persist/var/lib/taskserver"
+        "!/persist/var/lib/acme"
+        "!/persist/var/lib/jellyfin"
+        "/persist/var/lib/jellyfin/metadata"
         "/persist/home/jocelyn/go"
         "/persist/home/jocelyn/Downloads"
         "/persist/home/jocelyn/Liip"

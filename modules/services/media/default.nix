@@ -16,7 +16,17 @@
         group = "sonarr";
       }
       {
+        directory = "/var/backups/sonarr";
+        user = "sonarr";
+        group = "sonarr";
+      }
+      {
         directory = "/var/lib/radarr";
+        user = "radarr";
+        group = "radarr";
+      }
+      {
+        directory = "/var/backups/radarr";
         user = "radarr";
         group = "radarr";
       }
@@ -26,7 +36,17 @@
         group = "bazarr";
       }
       {
+        directory = "/var/backups/bazarr";
+        user = "bazarr";
+        group = "bazarr";
+      }
+      {
         directory = "/var/lib/lidarr";
+        user = "lidarr";
+        group = "lidarr";
+      }
+      {
+        directory = "/var/backups/lidarr";
         user = "lidarr";
         group = "lidarr";
       }
@@ -34,6 +54,16 @@
         directory = "/var/lib/readarr";
         user = "readarr";
         group = "readarr";
+      }
+      {
+        directory = "/var/backups/readarr";
+        user = "readarr";
+        group = "readarr";
+      }
+      {
+        directory = "/var/backups/prowlarr";
+        user = "prowlarr";
+        group = "prowlarr";
       }
     ];
 
