@@ -16,7 +16,7 @@
         group = "sonarr";
       }
       {
-        directory = "/var/backups/sonarr";
+        directory = "/var/backup/sonarr";
         user = "sonarr";
         group = "sonarr";
       }
@@ -26,7 +26,7 @@
         group = "radarr";
       }
       {
-        directory = "/var/backups/radarr";
+        directory = "/var/backup/radarr";
         user = "radarr";
         group = "radarr";
       }
@@ -36,7 +36,7 @@
         group = "bazarr";
       }
       {
-        directory = "/var/backups/bazarr";
+        directory = "/var/backup/bazarr";
         user = "bazarr";
         group = "bazarr";
       }
@@ -46,7 +46,7 @@
         group = "lidarr";
       }
       {
-        directory = "/var/backups/lidarr";
+        directory = "/var/backup/lidarr";
         user = "lidarr";
         group = "lidarr";
       }
@@ -56,12 +56,12 @@
         group = "readarr";
       }
       {
-        directory = "/var/backups/readarr";
+        directory = "/var/backup/readarr";
         user = "readarr";
         group = "readarr";
       }
       {
-        directory = "/var/backups/prowlarr";
+        directory = "/var/backup/prowlarr";
         user = "prowlarr";
         group = "prowlarr";
       }

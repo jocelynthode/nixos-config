@@ -7,7 +7,7 @@
       exclude = [
         "/persist/.snapshots"
         "/persist/var/*"
-        "!/persist/var/backups"
+        "!/persist/var/backup"
         "!/persist/var/lib/authentik"
         "!/persist/var/lib/hass"
         "!/persist/var/lib/radicale"
