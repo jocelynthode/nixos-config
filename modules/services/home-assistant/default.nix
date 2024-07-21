@@ -41,7 +41,10 @@
         auth-header
       ];
       config = {
-        recorder.db_url = "postgresql://@/hass";
+        recorder = {
+          db_url = "postgresql://@/hass";
+          purge_keep_days = 30;
+        };
         # https://www.home-assistant.io/integrations/default_config/
         default_config = {};
         api = {};
