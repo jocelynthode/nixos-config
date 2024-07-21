@@ -35,6 +35,7 @@
       extraComponents = [
         # Components required to complete the onboarding
         "esphome"
+        "co2signal"
         "utility_meter"
         "zha"
         "twinkly"
