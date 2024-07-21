@@ -9,6 +9,18 @@
   };
 
   config = lib.mkIf config.aspects.services.atuin.enable {
+    services.postgresql = {
+      ensureDatabases = [
+        "atuin"
+      ];
+      ensureUsers = [
+        {
+          name = "atuin";
+          ensureDBOwnership = true;
+        }
+      ];
+    };
+
     services.atuin = {
       enable = true;
       openRegistration = false;
