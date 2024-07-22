@@ -10,6 +10,7 @@
         "!/persist/var/backup"
         "!/persist/var/lib/authentik"
         "!/persist/var/lib/hass"
+        "!/persist/var/lib/esphome/*.yaml"
         "!/persist/var/lib/radicale"
         "!/persist/var/lib/taskserver"
         "!/persist/var/lib/acme"
