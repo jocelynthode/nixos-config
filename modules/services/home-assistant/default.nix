@@ -16,11 +16,6 @@
         user = "hass";
         group = "hass";
       }
-      {
-        directory = "/var/lib/esphome";
-        user = "esphome";
-        group = "esphome";
-      }
     ];
 
     services = {
