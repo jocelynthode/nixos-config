@@ -47,7 +47,7 @@
         radicale.enable = lib.mkDefault true;
         redis.enable = lib.mkDefault true;
         taskserver.enable = lib.mkDefault true;
-        wireguard.enable = lib.mkDefault true;
+        wireguard.enable = lib.mkDefault false;
       };
     };
   };
