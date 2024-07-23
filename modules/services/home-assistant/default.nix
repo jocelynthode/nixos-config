@@ -47,6 +47,7 @@
           "utility_meter"
           "zha"
           "kodi"
+          "met"
           "brother"
           "dlna_dmr"
           "upnp"
