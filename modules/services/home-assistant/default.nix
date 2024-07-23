@@ -46,6 +46,8 @@
           "twinkly"
           "utility_meter"
           "zha"
+          "kodi"
+          "brother"
         ];
         customComponents = with pkgs.home-assistant-custom-components; [
           auth-header
