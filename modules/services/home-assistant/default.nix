@@ -48,6 +48,10 @@
           "zha"
           "kodi"
           "brother"
+          "dlna_dmr"
+          "upnp"
+          "ipp"
+          "jellyfin"
         ];
         customComponents = with pkgs.home-assistant-custom-components; [
           auth-header
