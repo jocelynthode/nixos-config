@@ -64,6 +64,15 @@
           homeassistant = config.services.home-assistant.enable;
           permit_join = false;
           frontend = true;
+          advanced = {
+            log_level = "info";
+            log_namespaced_levels = {
+              "z2m:mqtt" = "warning";
+            };
+          };
+          device_options = {
+            retain = true;
+          };
           mqtt = {
             base_topic = "zigbee2mqtt";
             server = "mqtt://localhost:1883";
