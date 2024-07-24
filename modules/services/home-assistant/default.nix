@@ -24,6 +24,8 @@
       }
     ];
 
+    networking.firewall.allowedTCPPorts = [8080];
+
     services = {
       esphome = {
         enable = true;
@@ -32,26 +34,26 @@
       };
       mosquitto = {
         enable = true;
-        settings = {
-          allow_anonymous = false;
-        };
         listeners = [
           {
             address = "127.0.0.1";
             acl = ["topic readwrite #"];
-
-            users.hass = {
-              acl = [
-                "readwrite #"
-              ];
-              passwordFile = config.sops.secrets."mqtt/hass".path;
+            settings = {
+              allow_anonymous = false;
             };
-
-            users."${config.services.zigbee2mqtt.settings.mqtt.user}" = {
-              acl = [
-                "readwrite #"
-              ];
-              passwordFile = config.sops.secrets."mqtt/zigbee2mqtt".path;
+            users = {
+              hass = {
+                acl = [
+                  "readwrite #"
+                ];
+                passwordFile = config.sops.secrets."mqtt/hass".path;
+              };
+              "${config.services.zigbee2mqtt.settings.mqtt.user}" = {
+                acl = [
+                  "readwrite #"
+                ];
+                passwordFile = config.sops.secrets."mqtt/zigbee2mqtt".path;
+              };
             };
           }
         ];
@@ -61,6 +63,7 @@
         settings = {
           homeassistant = config.services.home-assistant.enable;
           permit_join = false;
+          frontend = true;
           mqtt = {
             base_topic = "zigbee2mqtt";
             server = "mqtt://localhost:1883";
@@ -140,7 +143,7 @@
         owner = "mosquitto";
         restartUnits = ["mosquitto.service"];
       };
-      "zigbee2mqtt/password" = {
+      "zigbee2mqtt" = {
         sopsFile = ../../../secrets/${config.networking.hostName}/secrets.yaml;
         path = "/var/lib/zigbee2mqtt/secret.yaml";
         owner = "${config.systemd.services.zigbee2mqtt.serviceConfig.User}";
