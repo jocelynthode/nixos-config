@@ -97,6 +97,7 @@
           "co2signal"
           "dlna_dmr"
           "esphome"
+          "homeassistant_sky_connect"
           "ipp"
           "jellyfin"
           "kodi"
@@ -143,7 +144,7 @@
         owner = "mosquitto";
         restartUnits = ["mosquitto.service"];
       };
-      "zigbee2mqtt" = {
+      zigbee2mqtt = {
         sopsFile = ../../../secrets/${config.networking.hostName}/secrets.yaml;
         path = "/var/lib/zigbee2mqtt/secret.yaml";
         owner = "${config.systemd.services.zigbee2mqtt.serviceConfig.User}";
