@@ -82,7 +82,7 @@
           serial = {
             port = "/dev/serial/by-id/usb-Nabu_Casa_SkyConnect_v1.0_0222f2dc9bb3ed11977243aca7669f5d-if00-port0";
             adapter = "ember";
-            rtscts = true;
+            rtscts = false;
           };
         };
       };
