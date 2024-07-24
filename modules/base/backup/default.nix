@@ -14,6 +14,7 @@
         "!/persist/var/lib/radicale"
         "!/persist/var/lib/taskserver"
         "!/persist/var/lib/acme"
+        "!/persist/var/lib/zigbee2mqtt"
         "!/persist/var/lib/jellyfin"
         "/persist/var/lib/jellyfin/metadata"
         "/persist/home/jocelyn/go"
