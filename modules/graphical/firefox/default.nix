@@ -50,9 +50,12 @@
             settings = {
               "browser.startup.homepage" = "about:blank";
               "browser.startup.page" = 3;
+              "browser.aboutwelcome.enabled" = false;
+              "browser.privatebrowsing.preserveClipboard" = false;
               "extensions.pocket.enabled" = false;
               "privacy.trackingprotection.enabled" = true;
               "dom.security.https_only_mode" = true;
+              "dom.private-attribution.submission.enabled" = false;
               "browser.search.region" = "CH";
               "media.eme.enabled" = true;
               "media.getusermedia.aec_enabled" = false;
@@ -72,6 +75,7 @@
               "browser.bookmarks.showMobileBookmarks" = true;
               "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
               "layout.css.devPixelsPerPx" = -1;
+              "security.ssl.require_safe_negotiation" = true;
               # "ui.textScaleFactor" = config.aspects.graphical.dpi;
             };
           };
