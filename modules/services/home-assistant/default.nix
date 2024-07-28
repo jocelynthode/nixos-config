@@ -120,6 +120,10 @@
         customComponents = with pkgs.home-assistant-custom-components; [
           auth-header
         ];
+        customLovelaceModules = with pkgs.home-assistant-custom-lovelace-modules; [
+          mini-graph-card
+          mushroom
+        ];
         config = {
           recorder = {
             db_url = "postgresql://@/hass";
