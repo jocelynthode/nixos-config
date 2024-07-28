@@ -102,6 +102,7 @@
         openFirewall = true;
         package = pkgs.home-assistant.override {extraPackages = ps: [ps.psycopg2];};
         extraComponents = [
+          "airvisual"
           "brother"
           "co2signal"
           "dlna_dmr"
