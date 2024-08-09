@@ -15,7 +15,7 @@
       volumes,
     }: {
       inherit cmd volumes dependsOn;
-      image = "ghcr.io/goauthentik/server:2024.6.1";
+      image = "ghcr.io/goauthentik/server:2024.6.2";
       user = "100000:100000"; # authentik:authentik
       extraOptions = [
         "--network=host"
