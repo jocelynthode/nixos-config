@@ -112,7 +112,7 @@
             "type:touchpad" = {
               tap = "enabled";
             };
-            "*" = {
+            "type:keyboard" = {
               xkb_layout = "us";
               xkb_variant = "altgr-intl";
             };
