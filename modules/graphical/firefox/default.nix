@@ -36,6 +36,7 @@
               tree-style-tab
               ublock-origin
               videospeed
+              vimium
             ];
             userChrome = ''
               /* Hide tab bar in FF Quantum */

@@ -113,8 +113,8 @@
               tap = "enabled";
             };
             "type:keyboard" = {
-              xkb_layout = "us";
-              xkb_variant = "altgr-intl";
+              xkb_layout = "fr";
+              xkb_variant = "ergol";
             };
           };
           workspaceAutoBackAndForth = false;
