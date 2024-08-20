@@ -78,7 +78,7 @@ local mappings = {
   { "<leader>ls",  "<cmd>Telescope lsp_document_symbols<cr>",                             desc = "Document Symbols",                           nowait = true, remap = false },
   { "<leader>lw",  "<cmd>Lspsaga show_workspace_diagnostics<cr>",                         desc = "Workspace Diagnostics",                      nowait = true, remap = false },
 
-  { "<leader>p",   "<cmd>lua require('notify').dismiss()<cr>",                            desc = "Dismiss notifications",                      nowait = true, remap = false },
+  { "<leader>p",   "<cmd>\"_dP<cr>",                                                      desc = "Replace without buffer",                     nowait = true, remap = false },
   { "<leader>q",   "<cmd>qa!<CR>",                                                        desc = "Quit",                                       nowait = true, remap = false },
 
   { "<leader>r",   group = "SearchReplaceSingleBuffer",                                   nowait = true,                                       remap = false },
@@ -114,6 +114,7 @@ local mappings = {
   { "<leader>tv",  "<cmd>ToggleTerm size=80 direction=vertical<cr>",                      desc = "Vertical",                                   nowait = true, remap = false },
 
   { "<leader>w",   "<cmd>w!<CR>",                                                         desc = "Save",                                       nowait = true, remap = false },
+  { "<leader>wq",  "<cmd>wqa!<CR>",                                                       desc = "Save and quit",                                       nowait = true, remap = false },
   { "<leader>x",   "<cmd>Bdelete!<CR>",                                                   desc = "Close Buffer",                               nowait = true, remap = false },
 }
 
