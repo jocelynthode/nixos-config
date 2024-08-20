@@ -1,0 +1,40 @@
+" This wipes all existing settings. This means that if a setting in this file
+" is removed, then it will return to default. In other words, this file serves
+" as an enforced single point of truth for Tridactyl's configuration.
+sanitize tridactyllocal tridactylsync
+
+" General Settings
+colourscheme --url https://raw.githubusercontent.com/jocelynthode/catppuccin-tridactyl/main/catppuccin.css catppuccin
+set theme catppuccin
+set smoothscroll true
+set hintchars nertsaiupmvhod
+
+" Use ctrl+i to edit text in neovim, moving cursor as appropriate
+set editorcmd $TERMINAL --title tridactyl $EDITOR %f '+normal!%lGzv%c|'
+
+" Search engine
+set searchurls.no https://search.nixos.org/options?channel=unstable&query=%s
+set searchurls.np https://search.nixos.org/packages?channel=unstable&query=%s
+set searchurls.yt youtube
+set searchurls.wp wikipedia
+setnull searchurls.google
+setnull searchurls.googlelucky
+setnull searchurls.googleuk
+setnull searchurls.amazon
+setnull searchurls.amazonuk
+setnull searchurls.bing
+setnull searchurls.twitter
+setnull searchurls.yahoo
+setnull searchurls.qwant
+setnull searchurls.startpage
+
+" Binds
+unbind d
+bind x tabclose
+" bind / fillcmdline find
+" bind ? fillcmdline find --reverse
+" bind n findnext --search-from-view
+" bind N findnext --search-from-view --reverse
+
+" vim: commentstring="\ %s
+" vim: set filetype=tridactyl

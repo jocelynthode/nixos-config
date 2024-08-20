@@ -12,12 +12,19 @@
     aspects.base.persistence.homePaths = [
       ".mozilla/firefox"
       ".cache/mozilla"
+      ".congig/tridactyl"
     ];
 
     home-manager.users.jocelyn = _: {
-      programs.librewolf.enable = true;
+      xdg.configFile."tridactyl" = {
+        source = ./tridactyl;
+      };
+
       programs.firefox = {
         enable = true;
+        nativeMessagingHosts = [
+          pkgs.pkgs.tridactyl-native
+        ];
         profiles = {
           jocelyn = {
             bookmarks = {};
@@ -36,7 +43,7 @@
               tree-style-tab
               ublock-origin
               videospeed
-              vimium
+              tridactyl
             ];
             userChrome = ''
               /* Hide tab bar in FF Quantum */
