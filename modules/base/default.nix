@@ -120,6 +120,7 @@
       ];
       systemPaths = [
         "/var/lib/systemd"
+        "/var/lib/nixos"
         {
           directory = "/var/lib/private"; # Used when services use DynamicUser and StateDirectory
           mode = "0700";
@@ -172,8 +173,18 @@
       ];
     };
 
+    nixpkgs.config.permittedInsecurePackages = [
+      "electron-27.3.11"
+      "jitsi-meet-1.0.8043"
+    ];
+
+    services.xserver.xkb = {
+      layout = "fr";
+      variant = "ergol";
+    };
+
     console = {
-      keyMap = "us";
+      useXkbConfig = true;
     };
 
     i18n = {

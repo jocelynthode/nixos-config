@@ -205,10 +205,10 @@
           setuptools
         ];
 
+      # local llm_ls_bin_path = '${pkgs.llm-ls}/bin/llm-ls'
       extraLuaConfig =
         ''
           vim.loader.enable()
-          local llm_ls_bin_path = '${pkgs.llm-ls}/bin/llm-ls'
           local rust_vscode_extension_path = '${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/'
         ''
         + (builtins.readFile ./core/mappings.lua)

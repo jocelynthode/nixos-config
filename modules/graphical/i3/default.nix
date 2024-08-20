@@ -20,7 +20,7 @@
       enable = true;
       inherit (config.aspects.graphical) dpi;
       layout = "us";
-      xkbVariant = "altgr-intl";
+      xkbVariant = "fr-ergol";
       displayManager = {
         defaultSession = "none+i3";
         lightdm = {
