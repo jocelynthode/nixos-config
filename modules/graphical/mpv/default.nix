@@ -27,7 +27,7 @@
           demuxer-max-back-bytes = "1200M";
 
           alang = "ja,jp,jpn,en,eng,fr,fra";
-          slang = "fr,fra,en,eng";
+          slang = "fr,fra,en,eng,enUS,en-US";
 
           volume = 60;
           af-add = "dynaudnorm=g=5:f=250:r=0.9:p=0.5";
@@ -42,6 +42,8 @@
 
           blend-subtitles = true;
 
+          sub-auto = "fuzzy";
+          ytdl-raw-options = "ignore-config=,sub-lang=\"en,eng,enUS,en-US,fr,fra\",write-sub=,write-auto-sub=";
           sub-color = "#FFFF00";
           sub-shadow-color = "#000000";
           sub-font = config.aspects.base.fonts.regular.family;
@@ -53,6 +55,7 @@
           video-sync = "display-resample";
           interpolation = true;
           tscale = "oversample";
+          stream-buffer-size = "3MiB";
         };
       };
     };
