@@ -37,6 +37,17 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   command = "set nobuflisted",
   group = _general_settings,
 })
+
+vim.api.nvim_create_autocmd({ "TermOpen" }, {
+  pattern = { "term://*" },
+  callback = vim.schedule_wrap(function(data)
+    -- Try to start terminal mode only if target terminal is current
+    if not (vim.api.nvim_get_current_buf() == data.buf and vim.bo.buftype == 'terminal') then return end
+    vim.cmd('startinsert')
+  end),
+  group = _general_settings,
+  desc = 'Start builtin terminal in Insert mode'
+})
 -------------------
 
 local _auto_resize = vim.api.nvim_create_augroup("_auto_resize", { clear = true })

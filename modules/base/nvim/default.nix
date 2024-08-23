@@ -16,13 +16,13 @@
       plugins = with pkgs.vimPlugins; [
         plenary-nvim
         nvim-web-devicons
-        vim-bbye
         lualine-lsp-progress
         better-escape-nvim
         nvim-ts-context-commentstring
         telescope-ui-select-nvim
         telescope-fzf-native-nvim
         telescope-dap-nvim
+        telescope-live-grep-args-nvim
         vim-fugitive
         cmp-nvim-lsp
         cmp-nvim-lua
@@ -42,17 +42,20 @@
         nvim-dap-go
         nvim-dap-virtual-text
         nvim-dap-repl-highlights
+
         vim-helm
-        telescope-live-grep-args-nvim
         lspsaga-nvim
-        nvim-treesitter-textobjects
         nvim-lsp-notify
         crates-nvim
         rust-tools-nvim
-        # llm-nvim
         {
-          plugin = alpha-nvim;
-          config = builtins.readFile ./plugins/alpha.lua;
+          plugin = indent-blankline-nvim;
+          config = builtins.readFile ./plugins/indentline.lua;
+          type = "lua";
+        }
+        {
+          plugin = mini-nvim;
+          config = builtins.readFile ./plugins/mini.lua;
           type = "lua";
         }
         {
@@ -91,11 +94,6 @@
           type = "lua";
         }
         {
-          plugin = nvim-colorizer-lua;
-          config = "require('colorizer').setup()\n";
-          type = "lua";
-        }
-        {
           plugin = rainbow-delimiters-nvim;
           config = "require('rainbow-delimiters.setup').setup()\n";
           type = "lua";
@@ -116,28 +114,8 @@
           type = "lua";
         }
         {
-          plugin = nvim-autopairs;
-          config = builtins.readFile ./plugins/autopairs.lua;
-          type = "lua";
-        }
-        {
-          plugin = comment-nvim;
-          config = builtins.readFile ./plugins/comment.lua;
-          type = "lua";
-        }
-        {
-          plugin = indent-blankline-nvim;
-          config = builtins.readFile ./plugins/indentline.lua;
-          type = "lua";
-        }
-        {
-          plugin = surround-nvim;
-          config = builtins.readFile ./plugins/surround.lua;
-          type = "lua";
-        }
-        {
           plugin = nvim-tree-lua;
-          config = builtins.readFile ./plugins/nvimtree.lua;
+          config = builtins.readFile ./plugins/tree.lua;
           type = "lua";
         }
         {
@@ -158,11 +136,6 @@
         {
           plugin = which-key-nvim;
           config = builtins.readFile ./plugins/whichkey.lua;
-          type = "lua";
-        }
-        {
-          plugin = nvim-cmp;
-          config = builtins.readFile ./plugins/cmp.lua;
           type = "lua";
         }
       ];

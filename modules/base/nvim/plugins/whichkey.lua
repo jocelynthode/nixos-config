@@ -114,8 +114,8 @@ local mappings = {
   { "<leader>tv",  "<cmd>ToggleTerm size=80 direction=vertical<cr>",                      desc = "Vertical",                                   nowait = true, remap = false },
 
   { "<leader>w",   "<cmd>w!<CR>",                                                         desc = "Save",                                       nowait = true, remap = false },
-  { "<leader>wq",  "<cmd>wqa!<CR>",                                                       desc = "Save and quit",                                       nowait = true, remap = false },
-  { "<leader>x",   "<cmd>Bdelete!<CR>",                                                   desc = "Close Buffer",                               nowait = true, remap = false },
+  { "<leader>wq",  "<cmd>wqa!<CR>",                                                       desc = "Save and quit",                              nowait = true, remap = false },
+  { "<leader>x",   "<cmd>bdelete!<CR>",                                                   desc = "Close Buffer",                               nowait = true, remap = false },
 }
 
 which_key.setup(setup)

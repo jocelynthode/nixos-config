@@ -119,28 +119,6 @@ vim.lsp.handlers["window/showMessage"] = function(err, method, params, client_id
   vim.notify(method.message, severity[params.type])
 end
 
-local function lsp_highlight_document(client)
-  -- Set autocommands conditional on server_capabilities
-  if client.server_capabilities.documentHighlightProvider then
-    local lsp_document_highlight = vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
-
-    vim.api.nvim_create_autocmd({ "CursorHold" }, {
-      buffer = 0, -- Current Buffer
-      callback = function()
-        vim.lsp.buf.document_highlight()
-      end,
-      group = lsp_document_highlight,
-    })
-
-    vim.api.nvim_create_autocmd({ "CursorMoved" }, {
-      buffer = 0, -- Current Buffer
-      callback = function()
-        vim.lsp.buf.clear_references()
-      end,
-      group = lsp_document_highlight,
-    })
-  end
-end
 
 local on_attach = function(client, bufnr)
   if client.name == "tsserver" then
@@ -154,7 +132,6 @@ local on_attach = function(client, bufnr)
       vim.diagnostic.enable(false, bufnr)
     end
   end
-  lsp_highlight_document(client)
 end
 
 local _, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")

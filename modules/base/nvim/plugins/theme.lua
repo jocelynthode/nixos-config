@@ -13,7 +13,12 @@ require("catppuccin").setup({
     percentage = 0.15,
   },
   color_overrides = {},
-  custom_highlights = {},
+  custom_highlights = function(colors)
+    return {
+      CursorLineNr = { fg = colors.pink },
+      CursorLine = { bg = colors.none },
+    }
+  end,
   integrations = {
     alpha = false,
     cmp = true,
@@ -25,6 +30,9 @@ require("catppuccin").setup({
     indent_blankline = {
       enabled = true,
       colored_indent_levels = false,
+    },
+    mini = {
+      enabled = true,
     },
     notify = true,
     nvimtree = true,

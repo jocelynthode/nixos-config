@@ -8,7 +8,16 @@ local function open_nvim_tree(data)
     return
   end
 
+  -- create a new, empty buffer
+  vim.cmd.enew()
+
+  -- wipe the directory buffer
+  vim.cmd.bw(data.buf)
+
+  -- change to the directory
   vim.cmd.cd(data.file)
+
+  -- open the tree
   require("nvim-tree.api").tree.open()
 end
 
@@ -84,10 +93,13 @@ local function on_attach(bufnr)
   vim.keymap.set('n', 'v', api.node.open.vertical, opts('Open: Vertical Split'))
 end
 
+local HEIGHT_RATIO = 0.8 -- You can change this
+local WIDTH_RATIO = 0.7  -- You can change this too
 
 nvim_tree.setup({
   filters = {
     dotfiles = false,
+    git_ignored = false,
     custom = {
       "\\.git$",
       "^target$",
@@ -99,32 +111,58 @@ nvim_tree.setup({
       "^\\.direnv$",
     },
   },
+  tab = {
+    sync = {
+      open = false,
+    },
+  },
   disable_netrw = true,
   hijack_netrw = false,
-  open_on_tab = true,
   hijack_cursor = true,
-  update_cwd = true,
+  sync_root_with_cwd = true,
   update_focused_file = {
     enable = true,
-    update_cwd = false,
+    update_root = false,
   },
   on_attach = on_attach,
   view = {
-    side = "left",
-    width = 30,
+    float = {
+      enable = true,
+      quit_on_focus_loss = false,
+      open_win_config = function()
+        local screen_w = vim.opt.columns:get()
+        local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
+        local window_w = screen_w * WIDTH_RATIO
+        local window_h = screen_h * HEIGHT_RATIO
+        local window_w_int = math.floor(window_w)
+        local window_h_int = math.floor(window_h)
+        local center_x = (screen_w - window_w) / 2
+        local center_y = ((vim.opt.lines:get() - window_h) / 2 - vim.opt.cmdheight:get())
+        return {
+          border = 'rounded',
+          relative = 'editor',
+          row = center_y,
+          col = center_x,
+          width = window_w_int,
+          height = window_h_int,
+        }
+      end,
+    },
+    width = function()
+      return math.floor(vim.opt.columns:get() * WIDTH_RATIO)
+    end,
   },
   git = {
     enable = true,
-    ignore = false,
   },
   actions = {
     open_file = {
       resize_window = true,
+      quit_on_open = true,
     },
   },
   trash = {
     cmd = "trash",
-    require_confirm = true,
   },
   renderer = {
     root_folder_label = false,
@@ -135,7 +173,6 @@ nvim_tree.setup({
       enable = false,
     },
     icons = {
-      webdev_colors = true,
       show = {
         folder = true,
         file = true,
@@ -165,6 +202,16 @@ nvim_tree.setup({
           arrow_closed = "",
         },
       },
+      web_devicons = {
+        file = {
+          color = true,
+        },
+      },
+    },
+  },
+  ui = {
+    confirm = {
+      trash = true,
     },
   },
 })

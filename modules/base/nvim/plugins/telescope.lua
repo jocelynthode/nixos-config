@@ -111,7 +111,7 @@ telescope.setup({
         "f",
         "--exclude",
         ".git",
-        "--unrestricted",
+        "--hidden",
       },
     },
     live_grep = {
@@ -135,7 +135,8 @@ telescope.setup({
       mappings = {
         i = {
           ["<C-k>"] = lga_actions.quote_prompt(),
-          ["<C-i>"] = lga_actions.quote_prompt({ postfix = " -t" }),
+          ["<C-t>"] = lga_actions.quote_prompt({ postfix = " -t" }),
+          ["<C-i>"] = lga_actions.quote_prompt({ prefix = "--no-ignore " }),
         },
       },
     },
