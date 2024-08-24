@@ -31,12 +31,39 @@
       NIXOS_OZONE_WL = "1";
     };
 
+    programs.regreet = {
+      enable = true;
+      settings = {
+        background = {
+          path = pkgs.wallpapers.${config.aspects.graphical.wallpaper};
+        };
+      };
+      theme = {
+        name = "Catppuccin-Latte-Standard-Pink-Light";
+        package = pkgs.catppuccin-gtk.override {
+          accents = ["pink"];
+          size = "standard";
+          tweaks = ["normal"];
+          variant = "latte";
+        };
+      };
+      iconTheme = {
+        name = "Papirus-Light";
+        package = pkgs.papirus-icon-theme;
+      };
+      cursorTheme = {
+        package = pkgs.adwaita-icon-theme;
+        name = "Adwaita";
+      };
+    };
+
+    # TODO Fix keymap in console
     services.greetd = {
       enable = true;
       settings = {
-        default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd sway";
-          user = "greeter";
+        initial_session = {
+          command = "${pkgs.sway}/bin/sway";
+          user = "jocelyn";
         };
       };
     };

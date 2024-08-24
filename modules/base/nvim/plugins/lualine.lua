@@ -17,7 +17,7 @@ local function lsp_name(msg)
     end
   end
 
-  return " " .. table.concat(buf_client_names, ", ")
+  return "  " .. table.concat(buf_client_names, ", ")
 end
 
 lualine.setup({
@@ -38,7 +38,7 @@ lualine.setup({
       "diff",
       "diagnostics",
     },
-    lualine_c = { "filename" },
+    lualine_c = { {"filename", path = 1} },
     lualine_x = {
       lsp_name,
       {

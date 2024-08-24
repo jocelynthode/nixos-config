@@ -40,6 +40,10 @@
     services.greetd = {
       enable = true;
       settings = {
+        initial_session = {
+          command = "${pkgs.hyprland}/bin/Hyprland";
+          user = "jocelyn";
+        };
         default_session = {
           command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd Hyprland";
           user = "greeter";
@@ -113,8 +117,8 @@
             }
           }
           input {
-            kb_layout=us
-            kb_variant=altgr-intl
+            kb_layout=fr
+            kb_variant=ergol
           }
           $mainMod = SUPER
           # Startup
@@ -122,52 +126,52 @@
           exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
           # Program bindings
           bind=$mainMod,Return,exec,${pkgs.kitty}/bin/kitty
-          bind=$mainMod,f,fullscreen,0
-          bind=$mainMod,d,exec,${pkgs.wofi}/bin/wofi -IS drun -W 40% -H 50%
-          bind=$mainMod,o,exec,${pkgs.rofi-ykman}/bin/rofi-ykman
-          bind=$mainMod SHIFT,e,exec,${pkgs.wofi-powermenu}/bin/wofi-powermenu
+          bind=$mainMod,r,fullscreen,0
+          bind=$mainMod,n,exec,${pkgs.wofi}/bin/wofi -IS drun -W 40% -H 50%
+          bind=$mainMod,a,exec,${pkgs.rofi-ykman}/bin/rofi-ykman
+          bind=$mainMod,e,exec,${pkgs.wofi-powermenu}/bin/wofi-powermenu
           binde=,XF86AudioRaiseVolume,exec,${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%
           binde=,XF86AudioLowerVolume,exec,${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%
           bind=,XF86AudioMute,exec,${pkgs.pulseaudio}/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle
           bind=,XF86AudioPlay,exec,${pkgs.playerctl}/bin/playerctl --player spotify play-pause
           bind=,Print,exec,${pkgs.gnome-screenshot}/bin/gnome-screenshot -i
           # Window manager controls
-          bind=$mainMod CONTROL, h, moveintogroup,l
-          bind=$mainMod CONTROL, j, moveintogroup,d
-          bind=$mainMod CONTROL, k, moveintogroup,u
-          bind=$mainMod CONTROL, l, moveintogroup,r
+          bind=$mainMod CONTROL, left, moveintogroup,l
+          bind=$mainMod CONTROL, down, moveintogroup,d
+          bind=$mainMod CONTROL, up, moveintogroup,u
+          bind=$mainMod CONTROL, right, moveintogroup,r
           bind=$mainMod, Tab, changegroupactive,f
           bind=$mainMod SHIFT, Tab, changegroupactive,b
-          bind=$mainMod, w, togglegroup,
+          bind=$mainMod, t, togglegroup,
           bind=$mainMod SHIFT,q,killactive
-          bind=$mainMod,1,workspace,01
-          bind=$mainMod,2,workspace,02
-          bind=$mainMod,3,workspace,03
-          bind=$mainMod,4,workspace,04
-          bind=$mainMod,5,workspace,05
-          bind=$mainMod,6,workspace,06
-          bind=$mainMod,7,workspace,07
-          bind=$mainMod,8,workspace,08
+          bind=$mainMod,q,workspace,01
+          bind=$mainMod,c,workspace,02
+          bind=$mainMod,o,workspace,03
+          bind=$mainMod,p,workspace,04
+          bind=$mainMod,w,workspace,05
+          bind=$mainMod,j,workspace,06
+          bind=$mainMod,m,workspace,07
+          bind=$mainMod,d,workspace,08
           bind=$mainMod,9,workspace,09
-          bind=$mainMod,0,workspace,10
-          bind=$mainMod SHIFT,1,movetoworkspace,01
-          bind=$mainMod SHIFT,2,movetoworkspace,02
-          bind=$mainMod SHIFT,3,movetoworkspace,03
-          bind=$mainMod SHIFT,4,movetoworkspace,04
-          bind=$mainMod SHIFT,5,movetoworkspace,05
-          bind=$mainMod SHIFT,6,movetoworkspace,06
-          bind=$mainMod SHIFT,7,movetoworkspace,07
-          bind=$mainMod SHIFT,8,movetoworkspace,08
+          bind=$mainMod,y,workspace,10
+          bind=$mainMod SHIFT,q,movetoworkspace,01
+          bind=$mainMod SHIFT,c,movetoworkspace,02
+          bind=$mainMod SHIFT,o,movetoworkspace,03
+          bind=$mainMod SHIFT,p,movetoworkspace,04
+          bind=$mainMod SHIFT,w,movetoworkspace,05
+          bind=$mainMod SHIFT,j,movetoworkspace,06
+          bind=$mainMod SHIFT,m,movetoworkspace,07
+          bind=$mainMod SHIFT,d,movetoworkspace,08
           bind=$mainMod SHIFT,9,movetoworkspace,09
-          bind=$mainMod SHIFT,0,movetoworkspace,10
-          bind=$mainMod,h,movefocus,l
-          bind=$mainMod,j,movefocus,d
-          bind=$mainMod,k,movefocus,u
-          bind=$mainMod,l,movefocus,r
-          bind=$mainMod SHIFT,h,movewindow,l
-          bind=$mainMod SHIFT,j,movewindow,d
-          bind=$mainMod SHIFT,k,movewindow,u
-          bind=$mainMod SHIFT,l,movewindow,r
+          bind=$mainMod SHIFT,y,movetoworkspace,10
+          bind=$mainMod,left,movefocus,l
+          bind=$mainMod,down,movefocus,d
+          bind=$mainMod,up,movefocus,u
+          bind=$mainMod,right,movefocus,r
+          bind=$mainMod SHIFT,left,movewindow,l
+          bind=$mainMod SHIFT,down,movewindow,d
+          bind=$mainMod SHIFT,up,movewindow,u
+          bind=$mainMod SHIFT,right,movewindow,r
 
           blurls=wofi
 

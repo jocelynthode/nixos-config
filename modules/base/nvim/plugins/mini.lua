@@ -39,13 +39,35 @@ hipatterns.setup({
   },
 })
 require('mini.pairs').setup()
-require('mini.comment').setup()
 require('mini.surround').setup()
 require('mini.ai').setup()
+require('mini.move').setup({
+  -- Module mappings. Use `''` (empty string) to disable one.
+  mappings = {
+    -- Move visual selection in Visual mode.
+    left = '<A-Left>',
+    right = '<A-Right>',
+    down = '<A-Down>',
+    up = '<A-Up>',
+
+    -- Move current line in Normal mode
+    line_left = '<A-Left>',
+    line_right = '<A-Right>',
+    line_down = '<A-Down>',
+    line_up = '<A-Up>',
+  },
+
+  -- Options which control moving behavior
+  options = {
+    -- Automatically reindent selection during linewise vertical move
+    reindent_linewise = true,
+  },
+})
 
 
-local f = function(args) 
+local f = function(args)
   vim.b[args.buf].miniindentscope_disable = true
   vim.b[args.buf].minicursorword_disable = true
 end
-vim.api.nvim_create_autocmd('Filetype', { pattern = {'NvimTree', }, callback = f, desc = 'Disable indentscope in NvimTree' })
+vim.api.nvim_create_autocmd('Filetype',
+  { pattern = { 'NvimTree', }, callback = f, desc = 'Disable indentscope in NvimTree' })
