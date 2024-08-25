@@ -98,6 +98,7 @@ in {
   };
   aspects.base.persistence.homePaths = [
     ".local/share/atuin"
+    ".local/share/zoxide"
   ];
   home-manager.users.jocelyn = _: base;
   home-manager.users.root = _: base;

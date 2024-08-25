@@ -140,7 +140,7 @@
               tap = "enabled";
             };
             "type:keyboard" = {
-              xkb_layout = "fr(ergol),us";
+              xkb_layout = "us,fr(ergol)";
             };
           };
           workspaceAutoBackAndForth = false;
