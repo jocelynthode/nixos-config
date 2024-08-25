@@ -140,8 +140,7 @@
               tap = "enabled";
             };
             "type:keyboard" = {
-              xkb_layout = "fr";
-              xkb_variant = "ergol";
+              xkb_layout = "fr(ergol),us";
             };
           };
           workspaceAutoBackAndForth = false;
@@ -280,13 +279,13 @@
             "${mod}+Shift+d" = "move container to workspace number 8; workspace $ws8";
             "${mod}+Shift+y" = "move container to workspace number 10; workspace $ws10";
             "${mod}+Shift+r" = "restart";
-            "${mod}+space" = "mode resize";
             "XF86AudioMute" = "exec ${pkgs.pulseaudio}/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle";
             "XF86AudioRaiseVolume" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%";
             "XF86AudioLowerVolume" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%";
             "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl --player spotify play-pause";
             "Print" = ''exec ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp -d)" - | wl-copy'';
             "${alt}+Print" = ''exec ${pkgs.sway}/bin/swaymsg -t get_tree | ${pkgs.jq}/bin/jq -r '.. | (.nodes? // empty)[] | select(.focused) | "\(.rect.x),\(.rect.y) \(.rect.width)x\(.rect.height)"' | ${pkgs.grim}/bin/grim -g - - | wl-copy'';
+            "${mod}+space" = "input type:keyboard xkb_switch_layout next";
           };
           assigns = {
             "4" = [

@@ -178,9 +178,12 @@
       "jitsi-meet-1.0.8043"
     ];
 
-    services.xserver.xkb = {
-      layout = "fr";
-      variant = "ergol";
+    services.xserver = {
+      xkb = {
+        layout = "fr";
+        variant = "ergol";
+      };
+      exportConfiguration = true;
     };
 
     console = {
