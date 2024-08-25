@@ -132,6 +132,10 @@
               command = "${pkgs.systemd}/bin/systemctl --user restart kanshi";
               always = true;
             }
+            {
+              command = "${pkgs.sway}/bin/swaymsg 'input type:keyboard xkb_switch_layout 1'";
+              always = true;
+            }
           ];
           menu = "${pkgs.wofi}/bin/wofi -IS drun -W 40% -H 50%";
           bars = [];
