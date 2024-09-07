@@ -82,6 +82,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
     require("lspsaga").setup({
+      ui = {
+        kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
+      },
       finder = {
         default = 'def+ref+imp',
         keys = {

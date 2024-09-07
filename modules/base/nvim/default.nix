@@ -24,6 +24,7 @@
         telescope-dap-nvim
         telescope-live-grep-args-nvim
         vim-fugitive
+        lspkind-nvim
         cmp-nvim-lsp
         cmp-nvim-lua
         cmp-buffer
@@ -43,6 +44,7 @@
         nvim-dap-virtual-text
         nvim-dap-repl-highlights
 
+        nui-nvim
         vim-helm
         lspsaga-nvim
         nvim-lsp-notify
@@ -51,6 +53,11 @@
         {
           plugin = indent-blankline-nvim;
           config = builtins.readFile ./plugins/indentline.lua;
+          type = "lua";
+        }
+        {
+          plugin = noice-nvim;
+          config = builtins.readFile ./plugins/noice.lua;
           type = "lua";
         }
         {
@@ -66,6 +73,11 @@
         {
           plugin = nvim-dap;
           config = builtins.readFile ./plugins/dap.lua;
+          type = "lua";
+        }
+        {
+          plugin = nvim-cmp;
+          config = builtins.readFile ./plugins/cmp.lua;
           type = "lua";
         }
         {

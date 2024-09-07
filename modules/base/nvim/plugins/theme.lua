@@ -17,6 +17,18 @@ require("catppuccin").setup({
     return {
       CursorLineNr = { fg = colors.pink },
       CursorLine = { bg = colors.none },
+
+      CmpItemAbbrDeprecated = { bg = colors.none, strikethrough = true, fg = colors.overay1 },
+      CmpItemAbbrMatch = { bg = colors.none, fg = colors.text },
+      CmpItemAbbrMatchFuzzy = { link = 'CmpItemAbbrMatch' },
+      CmpItemKindVariable = { bg = colors.none, fg = colors.pink },
+      CmpItemKindInterface = { link = 'CmpItemKindVariable' },
+      CmpItemKindText = { link = 'CmpItemKindVariable' },
+      CmpItemKindFunction = { bg = colors.none, fg = colors.blue },
+      CmpItemKindMethod = { link = 'CmpItemKindFunction' },
+      CmpItemKindKeyword = { bg = colors.none, fg = colors.mauve },
+      CmpItemKindProperty = { link = 'CmpItemKindKeyword' },
+      CmpItemKindUnit = { link = 'CmpItemKindKeyword' },
     }
   end,
   integrations = {
@@ -31,9 +43,11 @@ require("catppuccin").setup({
       enabled = true,
       colored_indent_levels = false,
     },
+    lsp_saga = true,
     mini = {
       enabled = true,
     },
+    noice = true,
     notify = true,
     nvimtree = true,
     telescope = true,
