@@ -18,6 +18,7 @@
         k = "kubectl";
         t = "terraform";
         n = "nvim";
+        gst = "git status";
       };
       shellInit = ''
         set -U fish_greeting
