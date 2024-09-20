@@ -164,7 +164,7 @@
         nodePackages.vscode-json-languageserver
         nodePackages.vim-language-server
         nodePackages.dockerfile-language-server-nodejs
-        pyright
+        basedpyright
         bash-language-server
 
         nil
