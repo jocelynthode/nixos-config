@@ -1,6 +1,9 @@
 local _, which_key = pcall(require, "which-key")
 
 local setup = {
+  disable = {
+    ft = { 'grug-far' },
+  },
   plugins = {
     spelling = {
       enabled = true,  -- enabling this will show WhichKey when pressing z= to select spelling suggestions

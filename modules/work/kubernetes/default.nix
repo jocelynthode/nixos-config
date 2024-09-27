@@ -32,7 +32,7 @@
         kubectl-node-shell
         kubectl-view-secret
         # kubectl-get-all
-        # kubectl-neat
+        kubectl-neat
         openshift
         krew
       ];

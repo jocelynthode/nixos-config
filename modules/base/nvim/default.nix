@@ -51,6 +51,11 @@
         crates-nvim
         rust-tools-nvim
         {
+          plugin = grug-far-nvim;
+          config = "require('grug-far').setup()\n";
+          type = "lua";
+        }
+        {
           plugin = indent-blankline-nvim;
           config = builtins.readFile ./plugins/indentline.lua;
           type = "lua";
