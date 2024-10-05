@@ -9,6 +9,7 @@
     ./atuin
     ./authentik
     ./blocky
+    ./calibre
     ./ddclient
     ./deluge
     ./home-assistant
@@ -36,6 +37,7 @@
         atuin.enable = lib.mkDefault true;
         authentik.enable = lib.mkDefault true;
         blocky.enable = lib.mkDefault true;
+        calibre-web.enable = lib.mkDefault true;
         ddclient.enable = lib.mkDefault false;
         deluge.enable = lib.mkDefault true;
         home-assistant.enable = lib.mkDefault true;
