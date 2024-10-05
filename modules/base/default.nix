@@ -117,6 +117,7 @@
           directory = ".ssh";
           mode = "0700";
         }
+        ".local/share/keyrings"
       ];
       systemPaths = [
         "/var/lib/systemd"

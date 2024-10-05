@@ -20,7 +20,11 @@
     services.calibre-web = {
       enable = true;
       openFirewall = true;
-      options.calibreLibrary = "/var/www/dde/Media/Ebooks";
+      options = {
+        calibreLibrary = "/var/www/dde/Media/Ebooks";
+        enableBookUploading = true;
+      };
+      listen.ip = "0.0.0.0";
     };
   };
 }
