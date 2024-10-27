@@ -22,6 +22,7 @@
     ./redis
     ./taskserver
     ./wireguard
+    ./your_spotify
   ];
 
   options.aspects.services.enable = lib.mkOption {
@@ -50,6 +51,7 @@
         redis.enable = lib.mkDefault true;
         taskserver.enable = lib.mkDefault true;
         wireguard.enable = lib.mkDefault false;
+        your_spotify.enable = lib.mkDefault true;
       };
     };
   };

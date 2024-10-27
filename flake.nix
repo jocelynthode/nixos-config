@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-master.url = "github:nixos/nixpkgs/master";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -30,13 +30,8 @@
       inputs.flake-utils.follows = "flake-utils";
     };
     flake-utils.url = "github:numtide/flake-utils";
-    # hyprland = {
-    #   url = "github:hyprwm/Hyprland";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
     devenv = {
       url = "github:cachix/devenv/latest";
-      # inputs.nixpkgs.follows = "nixpkgs";
     };
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     nix-index-database = {
@@ -48,7 +43,7 @@
   outputs = inputs @ {
     self,
     nixpkgs,
-    nixpkgs-master,
+    nixpkgs-stable,
     # hyprland,
     home-manager,
     sops-nix,
@@ -105,7 +100,7 @@
           ];
           specialArgs = {
             inherit nix-colors spicetify-nix;
-            pkgs-master = import nixpkgs-master {
+            pkgs-stable = import nixpkgs-stable {
               system = "x86_64-linux";
               config.allowUnfree = true;
             };
@@ -121,7 +116,7 @@
           ];
           specialArgs = {
             inherit nix-colors spicetify-nix;
-            pkgs-master = import nixpkgs-master {
+            pkgs-stable = import nixpkgs-stable {
               system = "x86_64-linux";
               config.allowUnfree = true;
             };

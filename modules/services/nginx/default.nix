@@ -180,6 +180,20 @@
             };
           };
         };
+        "spotify.tekila.ovh" = {
+          onlySSL = true;
+          enableACME = true;
+          extraConfig = ''
+            client_max_body_size 500M;
+          '';
+          locations."/api/" = {
+            proxyPass = "http://127.0.0.1:${toString config.services.your_spotify.settings.PORT}/";
+            extraConfig = ''
+              proxy_set_header X-Script-Name /api;
+              proxy_pass_header Authorization;
+            '';
+          };
+        };
       };
       streamConfig = ''
         server {
