@@ -4,4 +4,4 @@ builds:
     - nixosConfigurations.frametek
     - nixosConfigurations.servetek
   exclude: []
-  branch: main
+  branch: master
