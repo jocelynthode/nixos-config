@@ -1,0 +1,15 @@
+name: Update
+on:
+  schedule:
+    - cron: '0 0 * * 5'
+  workflow_dispatch:
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v25
+      - run: nix flake update
+      - uses: stefanzweifel/git-auto-commit-action@v4.16.0
+        with:
+          commit_message: "Update dependencies"
