@@ -25,7 +25,7 @@
         defaultSession = "none+i3";
         lightdm = {
           enable = true;
-          background = pkgs.wallpapers.cascade-fisher;
+          background = pkgs.wallpapers.lavenders;
           greeters.gtk = {
             enable = true;
             theme = {

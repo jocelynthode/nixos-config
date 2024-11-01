@@ -5,10 +5,10 @@
   wallpaper,
 }:
 stdenv.mkDerivation rec {
-  name = "wallpaper-${wallpaper.name}.${wallpaper.ext}";
+  name = "wallpaper-${wallpaper.name}";
   src = fetchurl {
     inherit (wallpaper) sha256;
-    url = "https://i.imgur.com/${wallpaper.id}.${wallpaper.ext}";
+    url = "https://kdrive.infomaniak.com/2/app/323582/share/${wallpaper.id}/files/${wallpaper.file}/download";
   };
   dontUnpack = true;
   dontBuild = true;
