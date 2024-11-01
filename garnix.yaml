@@ -1,0 +1,7 @@
+builds:
+  include:
+    - nixosConfigurations.desktek
+    - nixosConfigurations.frametek
+    - nixosConfigurations.servetek
+  exclude: []
+  branch: main
