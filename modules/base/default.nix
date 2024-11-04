@@ -4,6 +4,7 @@
   lib,
   pkgs,
   nix-colors,
+  catppuccin,
   ...
 }: {
   imports = [
@@ -62,7 +63,10 @@
   in {
     home-manager = {
       useGlobalPkgs = true;
-      sharedModules = [nix-colors.homeManagerModule];
+      sharedModules = [
+        nix-colors.homeManagerModule
+        catppuccin.homeManagerModules.catppuccin
+      ];
     };
 
     aspects.base = {
@@ -178,6 +182,12 @@
       "electron-27.3.11"
       "jitsi-meet-1.0.8043"
     ];
+
+    catppuccin = {
+      enable = true;
+      flavor = "latte";
+      accent = "pink";
+    };
 
     services.xserver = {
       xkb = {

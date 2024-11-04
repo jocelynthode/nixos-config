@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  base = config: osConfig: {
+  base = _config: osConfig: {
     programs.fish = {
       enable = true;
       shellAliases = {
@@ -52,32 +52,6 @@
           inherit (pkgs.fishPlugins.autopair-fish) src;
         }
       ];
-    };
-
-    xdg.configFile."fish/conf.d/fzf-theme.fish" = {
-      text = ''
-        set -l color00 '#${config.colorScheme.palette.background}'
-        set -l color01 '#${config.colorScheme.palette.background01}'
-        set -l color02 '#${config.colorScheme.palette.background02}'
-        set -l color03 '#${config.colorScheme.palette.background03}'
-        set -l color04 '#${config.colorScheme.palette.foreground01}'
-        set -l color05 '#${config.colorScheme.palette.foreground}'
-        set -l color06 '#${config.colorScheme.palette.foreground02}'
-        set -l color07 '#${config.colorScheme.palette.foreground03}'
-        set -l color08 '#${config.colorScheme.palette.red}'
-        set -l color09 '#${config.colorScheme.palette.orange}'
-        set -l color0A '#${config.colorScheme.palette.yellow}'
-        set -l color0B '#${config.colorScheme.palette.green}'
-        set -l color0C '#${config.colorScheme.palette.teal}'
-        set -l color0D '#${config.colorScheme.palette.blue}'
-        set -l color0E '#${config.colorScheme.palette.purple}'
-        set -l color0F '#${config.colorScheme.palette.brown}'
-
-        set -Ux FZF_DEFAULT_OPTS "\
-        --color=bg+:$color02,bg:$color00,spinner:$color06,hl:$color08 \
-        --color=fg:$color05,header:$color08,info:$color0E,pointer:$color06 \
-        --color=marker:$color06,fg+:$color05,prompt:$color0E,hl+:$color08"
-      '';
     };
   };
 in {

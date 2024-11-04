@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
-
+    catppuccin.url = "github:catppuccin/nix";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs = {
@@ -44,6 +44,7 @@
     self,
     nixpkgs,
     nixpkgs-stable,
+    catppuccin,
     # hyprland,
     home-manager,
     sops-nix,
@@ -73,6 +74,7 @@
           home-manager.nixosModule
           impermanence.nixosModules.impermanence
           # hyprland.nixosModules.default
+          catppuccin.nixosModules.catppuccin
           nix-index-database.nixosModules.nix-index
           ./modules
         ];
@@ -99,7 +101,7 @@
             hardware.nixosModules.common-gpu-amd
           ];
           specialArgs = {
-            inherit nix-colors spicetify-nix;
+            inherit nix-colors spicetify-nix catppuccin;
             pkgs-stable = import nixpkgs-stable {
               system = "x86_64-linux";
               config.allowUnfree = true;
@@ -115,7 +117,7 @@
             hardware.nixosModules.framework-11th-gen-intel
           ];
           specialArgs = {
-            inherit nix-colors spicetify-nix;
+            inherit nix-colors spicetify-nix catppuccin;
             pkgs-stable = import nixpkgs-stable {
               system = "x86_64-linux";
               config.allowUnfree = true;
@@ -128,7 +130,7 @@
             hardware.nixosModules.common-pc-laptop-ssd
             hardware.nixosModules.common-cpu-intel
           ];
-          specialArgs = {inherit nix-colors spicetify-nix;};
+          specialArgs = {inherit nix-colors spicetify-nix catppuccin;};
         };
         iso = {
           modules = [
@@ -136,7 +138,7 @@
             "${nixpkgs}/nixos/modules/installer/cd-dvd/channel.nix"
             ./machines/iso
           ];
-          specialArgs = {inherit nix-colors spicetify-nix;};
+          specialArgs = {inherit nix-colors spicetify-nix catppuccin;};
         };
       };
     };

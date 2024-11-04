@@ -19,6 +19,14 @@
           key = "00E063D5E30126C1A3DF114E77B3416DE9D092BD";
           signByDefault = true;
         };
+        delta = {
+          catppuccin.enable = true;
+          options = {
+            navigate = true;
+            line-numbers = true;
+            side-by-side = true;
+          };
+        };
         extraConfig = {
           pull = {
             rebase = true;
@@ -31,13 +39,6 @@
           };
           merge = {
             conflictstyle = "diff3";
-          };
-          delta = {
-            navigate = true;
-            line-numbers = true;
-            side-by-side = true;
-            syntax-theme = "Catppuccin-latte";
-            light = true;
           };
           core = {
             pager = "delta";

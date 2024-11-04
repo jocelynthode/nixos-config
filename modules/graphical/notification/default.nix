@@ -11,11 +11,7 @@ in {
   };
 
   config = lib.mkIf config.aspects.graphical.notification.enable {
-    home-manager.users.jocelyn = {
-      config,
-      osConfig,
-      ...
-    }: {
+    home-manager.users.jocelyn = {osConfig, ...}: {
       xdg.configFile."dunst" = {
         source = ./files;
         recursive = true;
@@ -39,32 +35,12 @@ in {
             horizontal_padding = 12;
             corner_radius = 7;
             format = ''<b>%s</b>\n%b'';
-            frame_color = "#${config.colorScheme.palette.accent}FF";
-            separator_color = "frame";
             dmenu = "${pkgs.wofi}/bin/wofi -d";
           };
 
           play_sound = {
             summary = "*";
             script = sound_script;
-          };
-
-          urgency_low = {
-            fullscreen = "delay";
-            background = "#${config.colorScheme.palette.background}FF";
-            foreground = "#${config.colorScheme.palette.foreground}FF";
-          };
-
-          urgency_normal = {
-            fullscreen = "delay";
-            background = "#${config.colorScheme.palette.background}FF";
-            foreground = "#${config.colorScheme.palette.foreground}FF";
-          };
-
-          urgency_critical = {
-            fullscreen = "show";
-            background = "#${config.colorScheme.palette.background}FF";
-            foreground = "#${config.colorScheme.palette.foreground}FF";
           };
         };
       };

@@ -39,7 +39,7 @@
         };
       };
       theme = {
-        name = "Catppuccin-Latte-Standard-Pink-Light";
+        name = "catppuccin-latte-pink-standard+normal";
         package = pkgs.catppuccin-gtk.override {
           accents = ["pink"];
           size = "standard";

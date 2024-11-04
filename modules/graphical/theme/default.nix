@@ -42,8 +42,14 @@
     home-manager.users.jocelyn = {
       pkgs,
       osConfig,
+      catppuccin,
       ...
-    }: rec {
+    }: {
+      catppuccin = {
+        flavor = "latte";
+        accent = "pink";
+      };
+
       home.pointerCursor = {
         name = "Adwaita";
         package = pkgs.adwaita-icon-theme;
@@ -60,7 +66,7 @@
           inherit (osConfig.aspects.base.fonts.regular) size;
         };
         theme = {
-          name = "Catppuccin-Latte-Standard-Pink-Light";
+          name = "catppuccin-latte-pink-standard+normal";
           package = pkgs.catppuccin-gtk.override {
             accents = ["pink"];
             size = "standard";
@@ -76,10 +82,6 @@
 
       services.xsettingsd = {
         enable = true;
-        settings = {
-          "Net/ThemeName" = gtk.theme.name;
-          "Net/IconThemeName" = gtk.iconTheme.name;
-        };
       };
     };
   };

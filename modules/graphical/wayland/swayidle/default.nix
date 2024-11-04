@@ -30,25 +30,6 @@
           indicator-radius = 100;
           indicator-thickness = 7;
           indicator-idle-visible = true;
-
-          ring-color = "#${config.colorScheme.palette.foreground}";
-          inside-wrong-color = "#${config.colorScheme.palette.red}";
-          ring-wrong-color = "#${config.colorScheme.palette.red}";
-          key-hl-color = "#${config.colorScheme.palette.teal}";
-          bs-hl-color = "#${config.colorScheme.palette.red}";
-          ring-ver-color = "#${config.colorScheme.palette.orange}";
-          inside-ver-color = "#${config.colorScheme.palette.orange}";
-          inside-color = "#${config.colorScheme.palette.background01}";
-          text-color = "#${config.colorScheme.palette.foreground03}";
-          text-clear-color = "#${config.colorScheme.palette.background01}";
-          text-ver-color = "#${config.colorScheme.palette.background01}";
-          text-wrong-color = "#${config.colorScheme.palette.background01}";
-          text-caps-lock-color = "#${config.colorScheme.palette.foreground03}";
-          inside-clear-color = "#${config.colorScheme.palette.blue}";
-          ring-clear-color = "#${config.colorScheme.palette.blue}";
-          inside-caps-lock-color = "#${config.colorScheme.palette.orange}";
-          ring-caps-lock-color = "#${config.colorScheme.palette.background02}";
-          separator-color = "#${config.colorScheme.palette.background02}";
         };
       };
 

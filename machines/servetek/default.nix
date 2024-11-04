@@ -11,7 +11,10 @@
     development.containers.enable = true;
     programs = {
       htop.enable = true;
-      yazi.enable = true;
+      yazi = {
+        enable = true;
+        catppuccin.enable = true;
+      };
     };
     services.enable = true;
   };
