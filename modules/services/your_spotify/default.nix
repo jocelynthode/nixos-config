@@ -29,11 +29,6 @@
 
     aspects.base.persistence.systemPaths = [
       {
-        directory = "/var/lib/your_spotify";
-        user = "your_spotify";
-        group = "your_spotify";
-      }
-      {
         directory = "/var/db/mongodb";
         user = "mongodb";
         group = "mongodb";
