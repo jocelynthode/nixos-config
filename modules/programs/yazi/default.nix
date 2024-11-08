@@ -12,6 +12,7 @@
     home-manager.users.jocelyn = _: {
       programs.yazi = {
         enable = true;
+        catppuccin.enable = true;
         enableFishIntegration = true;
         /*
            keymap = {

@@ -13,7 +13,6 @@
       htop.enable = true;
       yazi = {
         enable = true;
-        catppuccin.enable = true;
       };
     };
     services.enable = true;
