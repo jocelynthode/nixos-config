@@ -34,11 +34,10 @@
       gamescopeSession = {
         enable = true;
         args = [
-          "--output-width 1920"
+          "--output-width 2560"
           "--output-height 1440"
           "--nested-refresh 144"
           "--fullscreen"
-          "-S stretch"
         ];
       };
     };

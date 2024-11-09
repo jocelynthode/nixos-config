@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  pkgs-stable,
+  pkgs,
   ...
 }: {
   options.aspects.programs.obs-studio.enable = lib.mkOption {
@@ -17,8 +17,7 @@
     home-manager.users.jocelyn = _: {
       programs.obs-studio = {
         enable = true;
-        package = pkgs-stable.obs-studio;
-        plugins = with pkgs-stable.obs-studio-plugins; [
+        plugins = with pkgs.obs-studio-plugins; [
           # obs-backgroundremoval
           obs-pipewire-audio-capture
           wlrobs
