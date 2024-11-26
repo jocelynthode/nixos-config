@@ -193,23 +193,23 @@
           workspaceOutputAssign = [
             {
               workspace = "$ws1";
-              output = ["DP-1" "DP-4" "eDP-1"];
+              output = ["DP-1" "DP-3" "eDP-1"];
             }
             {
               workspace = "$ws2";
-              output = ["DP-1" "DP-4" "eDP-1"];
+              output = ["DP-1" "DP-3" "eDP-1"];
             }
             {
               workspace = "$ws3";
-              output = ["DP-1" "DP-4" "eDP-1"];
+              output = ["DP-1" "DP-3" "eDP-1"];
             }
             {
               workspace = "$ws4";
-              output = ["DP-1" "DP-4" "eDP-1"];
+              output = ["DP-1" "DP-3" "eDP-1"];
             }
             {
               workspace = "$ws5";
-              output = ["DP-1" "DP-4" "eDP-1"];
+              output = ["DP-1" "DP-3" "eDP-1"];
             }
             {
               workspace = "$ws6";

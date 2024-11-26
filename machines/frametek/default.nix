@@ -31,6 +31,23 @@
               ];
             };
           }
+          {
+            profile = {
+              name = "work";
+              outputs = [
+                {
+                  criteria = "eDP-1";
+                  position = "0,0";
+                  scale = 1.5;
+                }
+                {
+                  criteria = "DP-3";
+                  position = "0,1504";
+                  scale = 1.5;
+                }
+              ];
+            };
+          }
         ];
       };
 
