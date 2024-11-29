@@ -9,6 +9,10 @@
   };
 
   config = lib.mkIf config.aspects.graphical.mpv.enable {
+    aspects.base.persistence.homePaths = [
+      ".local/state/mpv"
+    ];
+
     home-manager.users.jocelyn = _: {
       programs.mpv = {
         enable = true;
@@ -51,7 +55,7 @@
           sub-font-size = 60;
           sub-bold = true;
 
-          override-display-fps = 60;
+          display-fps-override = 60;
           video-sync = "display-resample";
           interpolation = true;
           tscale = "oversample";
