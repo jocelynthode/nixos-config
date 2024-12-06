@@ -74,13 +74,13 @@
       persistence.enable = lib.mkDefault true;
       fonts = lib.mkDefault {
         monospace = {
-          family = "JetBrains Mono Nerd Font";
-          package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
+          family = "JetBrainsMono NFM";
+          package = pkgs.nerd-fonts.jetbrains-mono;
           size = 11;
         };
         regular = {
           family = "NotoSans Nerd Font";
-          package = pkgs.nerdfonts.override {fonts = ["Noto"];};
+          package = pkgs.nerd-fonts.noto;
           size = 11;
         };
       };

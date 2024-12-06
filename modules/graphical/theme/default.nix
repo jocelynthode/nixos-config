@@ -23,12 +23,8 @@
         material-design-icons
         material-icons
         feathers
-        (nerdfonts.override {
-          fonts = [
-            "JetBrainsMono"
-            "Noto"
-          ];
-        })
+        nerd-fonts.jetbrains-mono
+        nerd-fonts.noto
       ];
     };
 
