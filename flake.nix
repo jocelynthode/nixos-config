@@ -63,7 +63,7 @@
 
       channelsConfig.allowUnfree = true;
       sharedOverlays = [
-        nur.overlay
+        nur.overlays.default
         taxi.overlay
         (import ./overlay {inherit inputs;})
       ];
