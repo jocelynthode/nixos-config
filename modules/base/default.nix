@@ -181,6 +181,10 @@
     nixpkgs.config.permittedInsecurePackages = [
       "electron-27.3.11"
       "jitsi-meet-1.0.8043"
+      "aspnetcore-runtime-6.0.36"
+      "aspnetcore-runtime-wrapped-6.0.36"
+      "dotnet-sdk-6.0.428"
+      "dotnet-sdk-wrapped-6.0.428"
     ];
 
     catppuccin = {
