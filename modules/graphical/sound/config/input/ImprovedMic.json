@@ -13,7 +13,7 @@
             "knee": -6.0,
             "lpf-frequency": 20000.0,
             "lpf-mode": "off",
-            "makeup": 0.0,
+            "makeup": 2.0,
             "mode": "Downward",
             "output-gain": 0.0,
             "ratio": 4.0,
@@ -177,13 +177,13 @@
         "gate#0": {
             "attack": 1.0,
             "bypass": false,
-            "curve-threshold": -35.0,
+            "curve-threshold": -15.0,
             "curve-zone": -2.0,
             "dry": -100.0,
             "hpf-frequency": 10.0,
             "hpf-mode": "off",
             "hysteresis": true,
-            "hysteresis-threshold": -3.0,
+            "hysteresis-threshold": -13.0,
             "hysteresis-zone": -1.0,
             "input-gain": 0.0,
             "lpf-frequency": 20000.0,
@@ -205,7 +205,7 @@
             "wet": -1.0
         },
         "limiter#0": {
-            "alr": false,
+            "alr": true,
             "alr-attack": 5.0,
             "alr-knee": 0.0,
             "alr-release": 50.0,
@@ -230,7 +230,6 @@
             "deesser#0",
             "compressor#0",
             "equalizer#0",
-            "speex#0",
             "limiter#0"
         ],
         "rnnoise#0": {
@@ -242,20 +241,6 @@
             "release": 20.0,
             "vad-thres": 50.0,
             "wet": 0.0
-        },
-        "speex#0": {
-            "bypass": false,
-            "enable-agc": false,
-            "enable-denoise": false,
-            "enable-dereverb": false,
-            "input-gain": 0.0,
-            "noise-suppression": -70,
-            "output-gain": 0.0,
-            "vad": {
-                "enable": true,
-                "probability-continue": 90,
-                "probability-start": 95
-            }
         }
     }
 }
