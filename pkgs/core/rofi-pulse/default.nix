@@ -60,7 +60,7 @@ pkgs.writeShellApplication {
           fi
 
           echo "$list" \
-              | rofi -dmenu -theme launcher -p "$icon" -theme-str 'window {width: 800px;}' -selected-row "$default_row" \
+              | rofi -dmenu -p "$icon" -theme-str 'window {width: 800px;}' -selected-row "$default_row" \
               | grep -Po '[0-9]+(?=:)'
       }
 

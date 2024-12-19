@@ -11,12 +11,12 @@
 }:
 stdenv.mkDerivation {
   pname = "rofi-ykman";
-  version = "2022-09-01";
+  version = "2024-12-17";
   src = fetchFromGitHub {
     owner = "nukeop";
     repo = "rofi-ykman";
-    rev = "5275382d6378c9aa34066a29b5c7969d22937cd4";
-    sha256 = "sha256-RjwVJl0X9Q7OLMtIN/tHySctFsDIEkCDO+zn4Gms8B8=";
+    rev = "9666a4a5291d3045b614d9861241193d1368aea2";
+    sha256 = "sha256-58Z+BJUN81zi6IoZIaVgA6H3yN682/u7iCPGrjQ5nCI=";
   };
   buildInputs = [bash rofi xclip wl-clipboard libnotify];
   nativeBuildInputs = [makeWrapper];

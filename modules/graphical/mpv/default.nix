@@ -1,4 +1,5 @@
 {
+  pkgs,
   config,
   lib,
   ...
@@ -16,14 +17,19 @@
     home-manager.users.jocelyn = _: {
       programs.mpv = {
         enable = true;
+        scripts = with pkgs.mpvScripts; [
+          sponsorblock
+          thumbfast
+          uosc
+        ];
         config = {
           vo = "gpu";
           profile = "gpu-hq";
           gpu-api = "vulkan";
-          hwdec = "auto";
+          hwdec = "auto-safe";
           border = false;
           msg-color = true;
-          term-osd-bar = true;
+          osd-bar = false;
           cursor-autohide = 1000;
           save-position-on-quit = true;
           cache = true;
@@ -59,7 +65,7 @@
           video-sync = "display-resample";
           interpolation = true;
           tscale = "oversample";
-          stream-buffer-size = "3MiB";
+          stream-buffer-size = "15MiB";
         };
       };
     };

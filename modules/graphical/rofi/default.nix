@@ -20,6 +20,7 @@
     home-manager.users.jocelyn = {osConfig, ...}: {
       home.packages = with pkgs; [
         rofi-power-menu
+        rofi-sound-chooser
       ];
 
       programs.rofi = {
@@ -28,6 +29,7 @@
         font = "${osConfig.aspects.base.fonts.monospace.family} ${toString osConfig.aspects.base.fonts.monospace.size}";
         terminal = "${pkgs.kitty}/bin/kitty";
         location = "center";
+        catppuccin.enable = true;
       };
 
       xdg.configFile."rofi" = {

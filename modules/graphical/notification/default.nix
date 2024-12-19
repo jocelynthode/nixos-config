@@ -19,6 +19,7 @@ in {
 
       services.dunst = {
         enable = true;
+        catppuccin.enable = true;
         iconTheme = {
           name = "Papirus-Light";
           package = pkgs.papirus-icon-theme;
@@ -26,7 +27,7 @@ in {
         };
         settings = {
           global = {
-            monitor = 0;
+            monitor = 1;
             offset = "10x10";
             font = "${osConfig.aspects.base.fonts.monospace.family} ${toString osConfig.aspects.base.fonts.monospace.size}";
             line_height = 4;
