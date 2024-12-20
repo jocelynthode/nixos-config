@@ -30,17 +30,6 @@
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
   hardware.enableRedistributableFirmware = true;
   # hardware.amdgpu.amdvlk = true;
-  programs.corectrl.enable = true;
-
-  aspects.base.persistence.homePaths = [
-    {
-      directory = ".config/corectrl";
-    }
-  ];
-
-  environment.systemPackages = with pkgs; [
-    lact
-  ];
 
   hardware.amdgpu.opencl.enable = false;
   services.system76-scheduler.enable = true;

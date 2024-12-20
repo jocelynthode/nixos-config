@@ -12,6 +12,7 @@
     ./git
     ./htop
     ./kdeconnect
+    ./lact
     ./logseq
     ./obs-studio
     ./yazi
@@ -37,6 +38,7 @@
       git.enable = lib.mkDefault true;
       htop.enable = lib.mkDefault true;
       kdeconnect.enable = lib.mkDefault true;
+      lact.enable = lib.mkDefault false;
       logseq.enable = lib.mkDefault false;
       obs-studio.enable = lib.mkDefault false;
       yazi.enable = lib.mkDefault true;
