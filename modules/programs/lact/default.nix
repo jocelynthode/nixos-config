@@ -10,6 +10,11 @@
   };
 
   config = lib.mkIf config.aspects.programs.lact.enable {
+    aspects.base.persistence.systemPaths = [
+      {
+        directory = "/etc/lact";
+      }
+    ];
     environment.systemPackages = with pkgs; [
       lact
     ];
