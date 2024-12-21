@@ -16,8 +16,6 @@ in {
     }: let
       # Dependencies
       jq = "${pkgs.jq}/bin/jq";
-      systemctl = "${pkgs.systemd}/bin/systemctl";
-      journalctl = "${pkgs.systemd}/bin/journalctl";
       playerctl = "${pkgs.playerctl}/bin/playerctl";
       blueberry = "${pkgs.blueberry}/bin/blueberry";
       # Function to simplify making waybar outputs
@@ -43,14 +41,17 @@ in {
     in {
       programs.waybar = {
         enable = true;
-        systemd.enable = true;
+        systemd = {
+          enable = true;
+          target = "tray.target";
+        };
         settings = {
           primary = {
             layer = "top";
             position = "top";
             output = ["DP-1" "DP-4" "DP-3" "eDP-1"];
             modules-left = [
-              "sway/workspaces"
+              "hyprland/workspaces"
               "cpu"
               "memory"
               "disk"
@@ -70,7 +71,7 @@ in {
               "battery"
               "tray"
             ];
-            "sway/workspaces" = {
+            "hyprland/workspaces" = {
               on-click = "activate";
               all-outputs = true;
               sort-by-number = true;
@@ -182,36 +183,6 @@ in {
                 "locked" = "";
                 "unlocked" = "";
               };
-            };
-            "custom/gammastep" = {
-              interval = 5;
-              return-type = "json";
-              exec = jsonOutput "gammastep" {
-                pre = ''
-                  if unit_status="$(${systemctl} --user is-active gammastep)"; then
-                    status="$unit_status ($(${journalctl} --user -u gammastep.service -g 'Period: ' | ${pkgs.coreutils}/bin/tail -1 | ${pkgs.coreutils}/bin/cut -d ':' -f6 | ${pkgs.findutils}/bin/xargs))"
-                  else
-                    status="$unit_status"
-                  fi
-                '';
-                alt = "\${status:-inactive}";
-                tooltip = "Gammastep is $status";
-              };
-              format = "{icon}";
-              format-icons = {
-                "activating" = "󱧢";
-                "deactivating" = "󱧡";
-                "inactive" = "󱠃";
-                "active (Night)" = "󱠂";
-                "active (Nighttime)" = "󱠂";
-                "active (Transition (Night)" = "󱠂";
-                "active (Transition (Nighttime)" = "󱠂";
-                "active (Day)" = "󱠂";
-                "active (Daytime)" = "󱠂";
-                "active (Transition (Day)" = "󱠂";
-                "active (Transition (Daytime)" = "󱠂";
-              };
-              on-click = "${systemctl} --user is-active gammastep && ${systemctl} --user stop gammastep || ${systemctl} --user start gammastep";
             };
             tray = {
               spacing = 10;

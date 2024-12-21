@@ -17,9 +17,9 @@ in {
         recursive = true;
       };
 
+      catppuccin.dunst.enable = true;
       services.dunst = {
         enable = true;
-        catppuccin.enable = true;
         iconTheme = {
           name = "Papirus-Light";
           package = pkgs.papirus-icon-theme;

@@ -45,7 +45,6 @@
     nixpkgs,
     nixpkgs-stable,
     catppuccin,
-    # hyprland,
     home-manager,
     sops-nix,
     nur,
@@ -73,7 +72,6 @@
           sops-nix.nixosModules.sops
           home-manager.nixosModule
           impermanence.nixosModules.impermanence
-          # hyprland.nixosModules.default
           catppuccin.nixosModules.catppuccin
           nix-index-database.nixosModules.nix-index
           ./modules

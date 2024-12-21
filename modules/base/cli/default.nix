@@ -13,10 +13,10 @@
       unzip
     ];
 
+    catppuccin.bat.enable = true;
     programs = {
       bat = {
         enable = true;
-        catppuccin.enable = true;
       };
       fzf = {
         enable = true;

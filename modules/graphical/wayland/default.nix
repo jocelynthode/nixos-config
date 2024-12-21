@@ -1,7 +1,6 @@
 {lib, ...}: {
   imports = [
     ./kanshi
-    ./swayidle
     ./waybar
     ./wofi
   ];

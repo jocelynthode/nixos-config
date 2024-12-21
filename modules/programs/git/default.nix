@@ -10,6 +10,7 @@
 
   config = lib.mkIf config.aspects.programs.git.enable {
     home-manager.users.jocelyn = _: {
+      catppuccin.delta.enable = true;
       programs.git = {
         enable = true;
         lfs.enable = true;
@@ -20,7 +21,6 @@
           signByDefault = true;
         };
         delta = {
-          catppuccin.enable = true;
           options = {
             navigate = true;
             line-numbers = true;

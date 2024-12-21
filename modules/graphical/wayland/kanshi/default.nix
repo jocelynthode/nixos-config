@@ -39,10 +39,7 @@
     home-manager.users.jocelyn = {osConfig, ...}: {
       services.kanshi = {
         enable = true;
-        systemdTarget =
-          if osConfig.aspects.graphical.hyprland.enable
-          then "hyprland-session.target"
-          else "sway-session.target";
+        systemdTarget = "graphical-session.target";
         inherit (osConfig.aspects.graphical.wayland.kanshi) settings;
       };
     };

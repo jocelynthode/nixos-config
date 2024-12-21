@@ -10,9 +10,9 @@
 
   config = lib.mkIf config.aspects.programs.yazi.enable {
     home-manager.users.jocelyn = _: {
+      catppuccin.yazi.enable = true;
       programs.yazi = {
         enable = true;
-        catppuccin.enable = true;
         enableFishIntegration = true;
         /*
            keymap = {

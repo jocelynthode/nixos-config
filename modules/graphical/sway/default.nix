@@ -256,6 +256,7 @@
             "${mod}+Shift+Right" = "move right";
             "${mod}+${alt}+h" = "split h";
             "${mod}+${alt}+v" = "split v";
+            "${mod}+l" = "mode resize";
             "${mod}+r" = "fullscreen toggle";
             "${mod}+t" = "layout tabbed";
             "${mod}+i" = "layout stacking";

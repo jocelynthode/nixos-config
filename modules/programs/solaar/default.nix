@@ -18,9 +18,9 @@
       systemd.user.services.solaar = {
         Unit = {
           Description = "Solaar Logitech status applet";
-          After = ["graphical-session-pre.target" "tray.target"];
+          After = ["graphical-session.target" "tray.target"];
           PartOf = ["graphical-session.target"];
-          Requires = ["tray.target"];
+          Requires = ["tray.target" "waybar.service"];
         };
         Service = {
           Type = "simple";

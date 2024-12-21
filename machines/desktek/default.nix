@@ -20,8 +20,8 @@
       sound.guitar.enable = true;
       wallpaper = "lavenders";
       printer.enable = true;
-      sway.enable = true;
-      hyprland.enable = false;
+      sway.enable = false;
+      hyprland.enable = true;
       wayland = {
         kanshi.settings = [
           {
