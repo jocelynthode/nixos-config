@@ -245,10 +245,10 @@
             "hyprctl switchxkblayout current 1"
           ];
           exec-once = [
-            "firefox"
-            "signal"
-            "spotify"
-            "steam"
+            "uwsm app -- firefox"
+            "uwsm app -- signal"
+            "uwsm app -- spotify"
+            "uwsm app -- steam"
           ];
           group = {
             "col.border_active" = "$accent";
