@@ -65,7 +65,7 @@
           video-sync = "display-resample";
           interpolation = true;
           tscale = "oversample";
-          stream-buffer-size = "15MiB";
+          stream-buffer-size = "3MiB";
         };
       };
     };
