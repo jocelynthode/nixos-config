@@ -241,6 +241,15 @@
               enabled = false;
             };
           };
+          exec = [
+            "hyprctl switchxkblayout current 1"
+          ];
+          exec-once = [
+            "firefox"
+            "signal"
+            "spotify"
+            "steam"
+          ];
           group = {
             "col.border_active" = "$accent";
             "col.border_inactive" = "$base";
@@ -254,8 +263,9 @@
             force_default_wallpaper = 0;
           };
           input = {
-            kb_layout = "fr";
-            kb_variant = "ergol";
+            kb_layout = "us,fr";
+            kb_variant = ",ergol";
+            resolve_binds_by_sym = true;
           };
           "$mod" = "SUPER";
           bind = [
@@ -304,6 +314,7 @@
             "$mod SHIFT,down,movewindow,d"
             "$mod SHIFT,up,movewindow,u"
             "$mod SHIFT,right,movewindow,r"
+            "$mod,space,exec,hyprctl switchxkblayout current next"
           ];
           binde = [
             ",XF86AudioRaiseVolume,exec,${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%"
