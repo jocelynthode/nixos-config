@@ -71,12 +71,11 @@
               "media.getusermedia.agc2_enabled" = false;
               "media.getusermedia.noise_enabled" = false;
               "media.getusermedia.hpf_enabled" = false;
-              # "media.rdd-ffmpeg.enabled" = true;
-              # "media.ffmpeg.vaapi.enabled" = true;
-              # "media.navigator.mediadatadecoder_vpx_enabled" = true;
-              # "media.ffvpx.enabled" = false;
-              # "media.rdd-vpx.enabled" = false;
-              # "media.rdd-process.enabled" = false;
+              "media.rdd-ffmpeg.enabled" = true;
+              "media.ffmpeg.vaapi.enabled" = true;
+              "media.navigator.mediadatadecoder_vpx_enabled" = true;
+              "gfx.webrender.all" = true;
+              "gfx.webrender.software" = false;
               "general.useragent.locale" = "fr-CH";
               "browser.shell.checkDefaultBrowser" = true;
               "browser.shell.defaultBrowserCheckCount" = 1;
