@@ -107,3 +107,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end)
   end,
 })
+
+---------------
+-- https://github.com/nix-community/nixvim/issues/989#issuecomment-2333864377
+local _hacks = vim.api.nvim_create_augroup("_hacks", { clear = true })
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "helm" },
+  command = "LspRestart",
+  group = _hacks,
+})

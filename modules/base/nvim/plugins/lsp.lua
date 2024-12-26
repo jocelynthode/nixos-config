@@ -1,5 +1,33 @@
 local _, lspconfig = pcall(require, "lspconfig")
 
+
+local yamlls_config = {
+  filetypes_exclude = { "helm" },
+  settings = {
+    redhat = {
+      telemetry = {
+        enabled = false,
+      },
+    },
+    yaml = {
+      format = {
+        enable = true,
+        bracketSpacing = false,
+        singleQuote = true,
+      },
+      schemas = {
+        ["https://json.schemastore.org/github-workflow"] = ".github/workflows/*.{yml,yaml}",
+        ["https://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+        ["https://json.schemastore.org/chart.json"] = "/Chart.{yml,yaml}",
+        kubernetes = "templates/**",
+      },
+      completion = true,
+      hover = true,
+      validate = true,
+    }
+  },
+}
+
 local servers = {
   bashls = {},
   gopls = {},
@@ -16,29 +44,14 @@ local servers = {
   rust_analyzer = {},
   terraformls = {},
   vimls = {},
-  yamlls = {
+  helm_ls = {
     settings = {
-      redhat = {
-        telemetry = {
-          enabled = false,
-        },
-      },
-      yaml = {
-        format = {
-          enable = true,
-          bracketSpacing = false,
-          singleQuote = true,
-        },
-        schemas = {
-          ["https://json.schemastore.org/github-workflow"] = ".github/workflows/*.{yml,yaml}",
-          ["https://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
-          ["https://json.schemastore.org/chart.json"] = "/Chart.{yml,yaml}",
-          kubernetes = "/*.yaml",
-        },
-        validate = true,
+      ['helm-ls'] = {
+        yamlls = yamlls_config,
       }
-    },
+    }
   },
+  yamlls = yamlls_config,
   jsonls = {
     cmd = { "vscode-json-languageserver", "--stdio" },
     settings = {
@@ -73,9 +86,9 @@ local servers = {
 
 local signs = {
   { name = "DiagnosticSignError", text = "" },
-  { name = "DiagnosticSignWarn",  text = "" },
-  { name = "DiagnosticSignHint",  text = "" },
-  { name = "DiagnosticSignInfo",  text = "" },
+  { name = "DiagnosticSignWarn", text = "" },
+  { name = "DiagnosticSignHint", text = "" },
+  { name = "DiagnosticSignInfo", text = "" },
 }
 
 for _, sign in ipairs(signs) do
@@ -179,16 +192,16 @@ local codelldb_path = extension_path .. 'adapter/codelldb'
 local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
 
 local opts = {
-    dap = {
-        adapter = require('rust-tools.dap').get_codelldb_adapter(
-            codelldb_path, liblldb_path)
-    }
+  dap = {
+    adapter = require('rust-tools.dap').get_codelldb_adapter(
+      codelldb_path, liblldb_path)
+  }
 }
 require('rust-tools').setup(opts)
 require('crates').setup({
   null_ls = {
-      enabled = true,
-      name = "crates.nvim",
+    enabled = true,
+    name = "crates.nvim",
   },
 })
 

@@ -178,6 +178,7 @@
         lua-language-server
         terraform-ls
         terraform
+        helm-ls
 
         # none-ls
         nodePackages.prettier
