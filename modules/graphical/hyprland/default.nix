@@ -175,10 +175,10 @@
           enable = true;
           settings = {
             general = {
-              before_sleep_cmd = "hyprlock";
+              lock_cmd = "pidof hyprlock || hyprlock -q";
+              before_sleep_cmd = "loginctl lock-session";
               after_sleep_cmd = "hyprctl dispatch dpms on";
               ignore_dbus_inhibit = false;
-              lock_cmd = "hyprlock";
             };
 
             listener = [
