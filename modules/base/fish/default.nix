@@ -5,6 +5,8 @@
   ...
 }: let
   base = _config: osConfig: {
+    catppuccin.fish.enable = true;
+    catppuccin.starship.enable = true;
     programs.fish = {
       enable = true;
       shellAliases = {

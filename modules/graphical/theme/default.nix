@@ -54,25 +54,14 @@
         x11.enable = true;
       };
 
+      catppuccin.gtk.enable = true;
+      catppuccin.gtk.icon.enable = true;
       gtk = {
         enable = true;
         font = {
           name = osConfig.aspects.base.fonts.regular.family;
           inherit (osConfig.aspects.base.fonts.regular) package;
           inherit (osConfig.aspects.base.fonts.regular) size;
-        };
-        theme = {
-          name = "catppuccin-latte-pink-standard+normal";
-          package = pkgs.catppuccin-gtk.override {
-            accents = ["pink"];
-            size = "standard";
-            tweaks = ["normal"];
-            variant = "latte";
-          };
-        };
-        iconTheme = {
-          name = "Papirus-Light";
-          package = pkgs.papirus-icon-theme;
         };
       };
 

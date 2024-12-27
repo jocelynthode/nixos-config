@@ -14,6 +14,7 @@
     ];
 
     catppuccin.bat.enable = true;
+    catppuccin.fzf.enable = true;
     programs = {
       bat = {
         enable = true;
