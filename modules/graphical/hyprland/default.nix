@@ -27,6 +27,7 @@
       qt5.qtwayland
       qt6.qtwayland
       xwaylandvideobridge
+      hyprland-qtutils
     ];
 
     environment.sessionVariables = {
