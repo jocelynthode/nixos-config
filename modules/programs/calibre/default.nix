@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  pkgs-stable,
+  pkgs,
   ...
 }: {
   options.aspects.programs.calibre.enable = lib.mkOption {
@@ -14,7 +14,7 @@
       ".config/calibre"
     ];
     home-manager.users.jocelyn = _: {
-      home.packages = [pkgs-stable.calibre];
+      home.packages = [pkgs.calibre];
     };
   };
 }
