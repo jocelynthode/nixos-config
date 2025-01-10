@@ -341,6 +341,9 @@
             "noanim,class:^(xwaylandvideobridge)$"
             "nofocus,class:^(xwaylandvideobridge)$"
             "noinitialfocus,class:^(xwaylandvideobridge)$"
+            "idleinhibit fullscreen, class:^(*)$"
+            "idleinhibit fullscreen, title:^(*)$"
+            "idleinhibit fullscreen, fullscreen:1"
           ];
           workspace = [
             "1,monitor:DP-1,default:true"
