@@ -26,7 +26,6 @@
     environment.systemPackages = with pkgs; [
       qt5.qtwayland
       qt6.qtwayland
-      xwaylandvideobridge
       hyprland-qtutils
     ];
 
