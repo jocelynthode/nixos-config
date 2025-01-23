@@ -15,8 +15,8 @@
       dpi = 120;
       wallpaper = "lavenders";
       fingerprint.enable = true;
-      hyprland.enable = false;
-      sway.enable = true;
+      hyprland.enable = true;
+      sway.enable = false;
       wayland = {
         kanshi.settings = [
           {
@@ -26,7 +26,7 @@
                 {
                   criteria = "eDP-1";
                   position = "0,0";
-                  scale = 1.5;
+                  scale = 1.175;
                 }
               ];
             };
@@ -38,7 +38,7 @@
                 {
                   criteria = "eDP-1";
                   position = "0,0";
-                  scale = 1.5;
+                  scale = 1.0;
                 }
                 {
                   criteria = "DP-3";
