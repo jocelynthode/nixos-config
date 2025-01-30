@@ -26,11 +26,11 @@
       };
       thermald.enable = true;
       logind = {
-        lidSwitch = "suspend-then-hibernate";
+        lidSwitch = "suspend";
         extraConfig = ''
           IdleAction=suspend
           IdleActionSec=15min
-          HandlePowerKey=hibernate
+          HandlePowerKey=suspend
           HandlePowerKeyLongPress=poweroff
         '';
       };
