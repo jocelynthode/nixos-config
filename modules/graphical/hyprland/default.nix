@@ -335,6 +335,7 @@
             "opacity 0.85 0.85,class:kitty"
             "tile,title:^(Spotify)$"
             "float,title:^(Firefox — Sharing Indicator)$"
+            "float,title:^(Proton VPN)$"
             "pin,title:^(Firefox — Sharing Indicator)$"
             "opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$"
             "noanim,class:^(xwaylandvideobridge)$"
