@@ -36,14 +36,13 @@
               multi-account-containers
               greasemonkey
               kagi-search
-              simple-tab-groups
               simplelogin
               sponsorblock
               stylus
-              tree-style-tab
               ublock-origin
               videospeed
               tridactyl
+              sidebery
             ];
             userChrome = ''
               /* Hide tab bar in FF Quantum */

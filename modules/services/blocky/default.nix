@@ -56,7 +56,8 @@
           blocking = {
             denylists = {
               ads = [
-                "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
+                "https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt"
+                "https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&mimetype=plaintext&useip=0.0.0.0"
                 "${denylist}"
               ];
             };
