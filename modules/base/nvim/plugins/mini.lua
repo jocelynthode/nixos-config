@@ -24,6 +24,7 @@ indentscope.setup({
   },
 })
 require('mini.cursorword').setup()
+require('mini.diff').setup()
 require('mini.trailspace').setup()
 local hipatterns = require('mini.hipatterns')
 hipatterns.setup({

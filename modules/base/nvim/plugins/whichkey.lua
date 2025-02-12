@@ -12,9 +12,22 @@ local setup = {
   },
 }
 
+local vmappings = {
+  mode = { "v" },
+  { "<leader>a",  group = "Code Companion",               nowait = true,          remap = false },
+  { "<leader>aa", ":'<,'>CodeCompanionActions<cr>",       desc = "Open Actions",  nowait = true, remap = false },
+  { "<leader>ac", ":'<,'>:CodeCompanionChat Add<cr>",     desc = "Open Chat",     nowait = true, remap = false },
+  { "<leader>af", ":'<,'>CodeCompanion /editor /fix<cr>", desc = "Fix selection", nowait = true, remap = false },
+}
+
 local mappings = {
   { "<leader>F",   "<cmd>Telescope live_grep_args<cr>",                                   desc = "Find Text",                                  nowait = true, remap = false },
   { "<leader>b",   "<cmd>Telescope buffers<cr>",                                          desc = "Buffers",                                    nowait = true, remap = false },
+
+  { "<leader>a",   group = "Code Companion",                                              nowait = true,                                       remap = false },
+  { "<leader>aa",  ":CodeCompanionActions<cr>",                                           desc = "Open Actions",                               nowait = true, remap = false },
+  { "<leader>ac",  ":CodeCompanionChat Toggle<cr>",                                       desc = "Open Chat",                                  nowait = true, remap = false },
+  { "<leader>ap",  ":CodeCompanion<cr>",                                                  desc = "Open Prompt",                                nowait = true, remap = false },
 
   { "<leader>d",   group = "Debug",                                                       nowait = true,                                       remap = false },
   { "<leader>dC",  "<cmd>lua require'dap'.run_to_cursor()<cr>",                           desc = "Run To Cursor",                              nowait = true, remap = false },
@@ -122,3 +135,4 @@ local mappings = {
 
 which_key.setup(setup)
 which_key.add(mappings)
+which_key.add(vmappings)

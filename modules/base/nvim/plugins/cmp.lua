@@ -78,6 +78,7 @@ cmp.setup({
     { name = "path" },
     { name = 'dap' },
     { name = 'crates' },
+    { name = 'render-markdown' },
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,

@@ -51,6 +51,11 @@
         crates-nvim
         rust-tools-nvim
         {
+          plugin = render-markdown-nvim;
+          config = builtins.readFile ./plugins/markdown.lua;
+          type = "lua";
+        }
+        {
           plugin = grug-far-nvim;
           config = "require('grug-far').setup()\n";
           type = "lua";
@@ -108,6 +113,11 @@
         {
           plugin = dressing-nvim;
           config = builtins.readFile ./plugins/dressing.lua;
+          type = "lua";
+        }
+        {
+          plugin = codecompanion-nvim;
+          config = builtins.readFile ./plugins/ai.lua;
           type = "lua";
         }
         {
