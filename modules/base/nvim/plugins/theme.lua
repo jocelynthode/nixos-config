@@ -34,11 +34,14 @@ require("catppuccin").setup({
   integrations = {
     alpha = false,
     cmp = true,
+    blink_cmp = true,
     dap = {
       enabled = true,
       enable_ui = true,
     },
+    fzf = true,
     gitsigns = true,
+    grug_far = true,
     indent_blankline = {
       enabled = true,
       colored_indent_levels = false,
@@ -50,6 +53,8 @@ require("catppuccin").setup({
     noice = true,
     notify = true,
     nvimtree = true,
+    rainbow_delimiters = true,
+    render_markdown = true,
     telescope = true,
     treesitter_context = true,
     which_key = true,
