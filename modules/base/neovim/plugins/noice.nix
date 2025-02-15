@@ -4,9 +4,8 @@ _: {
     settings = {
       lsp = {
         override = {
-          # ["vim.lsp.util.convert_input_to_markdown_lines"] = true;
-          # ["vim.lsp.util.stylize_markdown"] = true;
-          # ["cmp.entry.get_documentation"] = true;
+          "__rawKey__vim.lsp.util.convert_input_to_markdown_lines" = true;
+          "__rawKey__vim.lsp.util.stylize_markdown" = true;
         };
       };
       routes = [

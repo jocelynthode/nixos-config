@@ -11,6 +11,7 @@ _: {
       };
       formatting = {
         shfmt.enable = true;
+        alejandra.enable = true;
         prettier = {
           enable = true;
           settings = {
