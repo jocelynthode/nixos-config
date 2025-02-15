@@ -49,7 +49,6 @@ _: {
               end
             '';
           }
-          "lsp_progress"
           "encoding"
           "fileformat"
           "filetype"

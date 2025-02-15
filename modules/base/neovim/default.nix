@@ -103,7 +103,6 @@
         lastplace.enable = true;
       };
       extraPlugins = with pkgs.vimPlugins; [
-        lualine-lsp-progress
         telescope-dap-nvim
         taxi-vim
         nvim-dap-repl-highlights
