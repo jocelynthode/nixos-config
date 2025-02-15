@@ -38,6 +38,10 @@
       url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -55,6 +59,7 @@
     utils,
     spicetify-nix,
     nix-index-database,
+    nixvim,
     ...
   }:
     utils.lib.mkFlake {
@@ -74,6 +79,7 @@
           impermanence.nixosModules.impermanence
           catppuccin.nixosModules.catppuccin
           nix-index-database.nixosModules.nix-index
+          nixvim.nixosModules.nixvim
           ./modules
         ];
       };
@@ -99,7 +105,7 @@
             hardware.nixosModules.common-gpu-amd
           ];
           specialArgs = {
-            inherit nix-colors spicetify-nix catppuccin;
+            inherit nix-colors spicetify-nix catppuccin nixvim;
             pkgs-stable = import nixpkgs-stable {
               system = "x86_64-linux";
               config.allowUnfree = true;
@@ -115,7 +121,7 @@
             hardware.nixosModules.framework-11th-gen-intel
           ];
           specialArgs = {
-            inherit nix-colors spicetify-nix catppuccin;
+            inherit nix-colors spicetify-nix catppuccin nixvim;
             pkgs-stable = import nixpkgs-stable {
               system = "x86_64-linux";
               config.allowUnfree = true;
@@ -128,7 +134,7 @@
             hardware.nixosModules.common-pc-laptop-ssd
             hardware.nixosModules.common-cpu-intel
           ];
-          specialArgs = {inherit nix-colors spicetify-nix catppuccin;};
+          specialArgs = {inherit nix-colors spicetify-nix catppuccin nixvim;};
         };
         iso = {
           modules = [
@@ -136,7 +142,7 @@
             "${nixpkgs}/nixos/modules/installer/cd-dvd/channel.nix"
             ./machines/iso
           ];
-          specialArgs = {inherit nix-colors spicetify-nix catppuccin;};
+          specialArgs = {inherit nix-colors spicetify-nix catppuccin nixvim;};
         };
       };
     };

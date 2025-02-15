@@ -18,7 +18,7 @@
     ./gnupg
     ./network
     ./nix
-    ./nvim
+    ./neovim
     ./persistence
     ./sshd
     ./virtualisation
