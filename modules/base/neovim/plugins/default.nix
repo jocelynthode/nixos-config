@@ -6,6 +6,7 @@ _: {
     ./dap
     ./dressing
     ./gitsigns
+    ./grug-far
     ./indent-blankline
     ./lsp
     ./lualine

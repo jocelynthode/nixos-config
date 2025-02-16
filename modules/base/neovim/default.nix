@@ -81,7 +81,6 @@
         helm.enable = true;
         crates.enable = true;
         rustaceanvim.enable = true;
-        grug-far.enable = true;
         rainbow-delimiters.enable = true;
         lastplace.enable = true;
       };

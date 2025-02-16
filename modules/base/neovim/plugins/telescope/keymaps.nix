@@ -93,20 +93,10 @@ _: {
     }
     {
       action = "<cmd>Telescope oldfiles<cr>";
-      key = "<leader>sr";
+      key = "<leader>so";
       mode = "n";
       options = {
         desc = "Open Recent File";
-        nowait = true;
-        remap = false;
-      };
-    }
-    {
-      action = "<cmd>Telescope grep_string theme=ivy<cr>";
-      key = "<leader>ss";
-      mode = "n";
-      options = {
-        desc = "Search Text";
         nowait = true;
         remap = false;
       };
