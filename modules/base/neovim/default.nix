@@ -3,7 +3,7 @@
   nixvim,
   ...
 }: let
-  base = _config: {
+  base = _config: _osConfig: {
     imports = [
       ./core/autocmds.nix
       ./core/keymaps.nix
@@ -42,6 +42,11 @@
       globals = {
         mapleader = " ";
         maplocalleader = " ";
+      };
+
+      clipboard = {
+        register = "unnamedplus";
+        providers.wl-copy.enable = true;
       };
 
       opts = {
@@ -98,7 +103,6 @@
         crates.enable = true;
         rustaceanvim.enable = true;
         grug-far.enable = true;
-        codecompanion.enable = true;
         rainbow-delimiters.enable = true;
         lastplace.enable = true;
       };
@@ -135,7 +139,15 @@ in {
 
   home-manager = {
     sharedModules = [nixvim.homeManagerModules.nixvim];
-    users.jocelyn = {config, ...}: (base config);
-    users.root = {config, ...}: (base config);
+    users.jocelyn = {
+      config,
+      osConfig,
+      ...
+    }: (base config osConfig);
+    users.root = {
+      config,
+      osConfig,
+      ...
+    }: (base config osConfig);
   };
 }

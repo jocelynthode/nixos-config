@@ -62,7 +62,6 @@ _: {
           documentation = {
             auto_show = true;
           };
-          list.selection.preselect = false;
         };
         keymap = {
           preset = "enter";
