@@ -1,9 +1,9 @@
 {
-  osConfig,
+  config,
   lib,
   ...
 }: {
-  config = lib.mkIf osConfig.aspects.development.ollama.enable {
+  config = lib.mkIf config.aspects.development.ollama.enable {
     programs.nixvim.keymaps = [
       {
         action = ":CodeCompanionActions<cr>";

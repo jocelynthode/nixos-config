@@ -1,18 +1,15 @@
-{
-  pkgs,
-  nixvim,
-  ...
-}: let
-  base = _config: _osConfig: {
-    imports = [
-      ./core
-      ./plugins
-      ./themes
-    ];
+{pkgs, ...}: {
+  imports = [
+    ./core
+    ./plugins
+    ./themes
+  ];
 
-    home = {
-      sessionVariables.EDITOR = "nvim";
-    };
+  config = {
+    aspects.base.persistence.homePaths = [
+      ".cache/nvim"
+      ".local/state/nvim"
+    ];
 
     programs.nixvim = {
       enable = true;
@@ -112,24 +109,5 @@
           setuptools
         ];
     };
-  };
-in {
-  aspects.base.persistence.homePaths = [
-    ".cache/nvim"
-    ".local/state/nvim"
-  ];
-
-  home-manager = {
-    sharedModules = [nixvim.homeManagerModules.nixvim];
-    users.jocelyn = {
-      config,
-      osConfig,
-      ...
-    }: (base config osConfig);
-    users.root = {
-      config,
-      osConfig,
-      ...
-    }: (base config osConfig);
   };
 }
