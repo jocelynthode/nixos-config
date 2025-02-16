@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  pkgs-stable,
+  pkgs,
   ...
 }: {
   options.aspects.games.bottles.enable = lib.mkOption {
@@ -15,7 +15,7 @@
     ];
 
     home-manager.users.jocelyn = _: {
-      home.packages = with pkgs-stable; [bottles];
+      home.packages = with pkgs; [bottles];
     };
   };
 }
