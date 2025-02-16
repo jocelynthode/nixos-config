@@ -28,15 +28,6 @@
           background = pkgs.wallpapers.lavenders;
           greeters.gtk = {
             enable = true;
-            theme = {
-              name = "catppuccin-latte-pink-standard+normal";
-              package = pkgs.catppuccin-gtk.override {
-                accents = ["pink"];
-                size = "standard";
-                tweaks = ["normal"];
-                variant = "latte";
-              };
-            };
             iconTheme = {
               package = pkgs.papirus-icon-theme;
               name = "Papirus-Light";

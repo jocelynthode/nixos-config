@@ -48,7 +48,7 @@
           };
           Service = {
             Type = "oneshot";
-            ExecStart = "${pkgs.taskwarrior}/bin/task sync";
+            ExecStart = "${pkgs.taskwarrior3}/bin/task sync";
           };
         };
         timers.taskwarrior-sync = {

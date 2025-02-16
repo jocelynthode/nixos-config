@@ -38,15 +38,6 @@
           path = pkgs.wallpapers.${config.aspects.graphical.wallpaper};
         };
       };
-      theme = {
-        name = "catppuccin-latte-pink-standard+normal";
-        package = pkgs.catppuccin-gtk.override {
-          accents = ["pink"];
-          size = "standard";
-          tweaks = ["normal"];
-          variant = "latte";
-        };
-      };
       iconTheme = {
         name = "Papirus-Light";
         package = pkgs.papirus-icon-theme;
