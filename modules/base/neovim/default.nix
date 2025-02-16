@@ -89,17 +89,11 @@
         telescope-dap-nvim
         taxi-vim
         nvim-dap-repl-highlights
-        nvim-lsp-notify
-        search-replace-nvim
-        deferred-clipboard-nvim
       ];
 
       extraConfigLua = ''
         vim.opt.whichwrap:append("<>[]hl")
         vim.opt.iskeyword:append("-")
-
-        require('search-replace').setup()
-        require('deferred-clipboard').setup({fallback = 'unnamedplus'})
       '';
 
       # use python3_host_prog as python path to use here

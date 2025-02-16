@@ -53,16 +53,6 @@ _: {
           icon = "󰌌 ";
         }
         {
-          __unkeyed-1 = "<leader>r";
-          group = "Search and Replace";
-          icon = " ";
-        }
-        {
-          __unkeyed-1 = "<leader>rb";
-          group = "Multi Buffer";
-          icon = " ";
-        }
-        {
           __unkeyed-1 = "<leader>s";
           group = "Search";
           icon = " ";
