@@ -1,22 +1,5 @@
 _: {
   programs.nixvim = {
-    autoCmd = [
-      {
-        event = "TermOpen";
-        pattern = [
-          "term://*"
-        ];
-        callback.__raw = ''
-          vim.schedule_wrap(function(data)
-              -- Try to start terminal mode only if target terminal is current
-              if not (vim.api.nvim_get_current_buf() == data.buf and vim.bo.buftype == 'terminal') then return end
-              vim.cmd('startinsert')
-          end)
-        '';
-        group = "_general_settings";
-        desc = "Start builtin terminal in Insert mode";
-      }
-    ];
     keymaps = [
       {
         action = "<cmd>ToggleTerm direction=float<cr>";
@@ -77,30 +60,6 @@ _: {
           mode = "t";
         }
       ];
-    };
-    plugins.toggleterm = {
-      enable = true;
-      settings = {
-        size = 20;
-        open_mapping.__raw = ''[[<c-\>]]'';
-        hide_numbers = true;
-        shade_terminals = true;
-        shading_factor = 2;
-        start_in_insert = true;
-        insert_mappings = true;
-        persist_size = true;
-        direction = "float";
-        close_on_exit = true;
-        shell.__raw = "vim.o.shell";
-        float_opts = {
-          border = "curved";
-          winblend = 0;
-          highlights = {
-            border = "Normal";
-            background = "Normal";
-          };
-        };
-      };
     };
   };
 }

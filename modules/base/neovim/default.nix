@@ -5,27 +5,9 @@
 }: let
   base = _config: _osConfig: {
     imports = [
-      ./core/autocmds.nix
-      ./core/keymaps.nix
-      ./themes/catppuccin.nix
-      ./plugins/blink-cmp.nix
-      ./plugins/bufferline.nix
-      ./plugins/codecompanion.nix
-      ./plugins/dap.nix
-      ./plugins/dressing.nix
-      ./plugins/gitsigns.nix
-      ./plugins/indent-blankline.nix
-      ./plugins/lsp.nix
-      ./plugins/lualine.nix
-      ./plugins/mini.nix
-      ./plugins/noice.nix
-      ./plugins/none-ls.nix
-      ./plugins/nvim-tree.nix
-      ./plugins/render-mardown.nix
-      ./plugins/telescope.nix
-      ./plugins/toggleterm.nix
-      ./plugins/treesitter.nix
-      ./plugins/which-key.nix
+      ./core
+      ./plugins
+      ./themes
     ];
 
     home = {
