@@ -4,6 +4,7 @@ _: {
     ./bufferline
     ./codecompanion
     ./dap
+    ./flash
     ./gitsigns
     ./grug-far
     ./indent-blankline

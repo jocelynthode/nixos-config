@@ -44,6 +44,7 @@ _: {
           enabled = true;
           enable_ui = true;
         };
+        flash = true;
         fzf = true;
         gitsigns = true;
         grug_far = true;
