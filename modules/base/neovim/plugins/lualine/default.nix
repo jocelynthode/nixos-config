@@ -8,7 +8,6 @@ _: {
         disabled_filetypes = ["alpha"];
       };
       extensions = [
-        "fugitive"
         "nvim-tree"
         "toggleterm"
       ];

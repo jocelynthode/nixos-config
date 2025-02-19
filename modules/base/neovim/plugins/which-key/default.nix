@@ -43,11 +43,6 @@ _: {
           icon = " ";
         }
         {
-          __unkeyed-1 = "<leader>gf";
-          group = "Fugitive";
-          icon = " ";
-        }
-        {
           __unkeyed-1 = "<leader>l";
           group = "LSP";
           icon = "󰌌 ";

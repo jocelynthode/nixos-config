@@ -73,7 +73,7 @@
       plugins = {
         web-devicons.enable = true;
         better-escape.enable = true;
-        fugitive.enable = true;
+        lazygit.enable = true;
         luasnip.enable = true;
         friendly-snippets.enable = true;
         notify.enable = true;

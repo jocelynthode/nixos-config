@@ -32,37 +32,7 @@ _: {
     }
 
     {
-      action = ":Gvdiffsplit!<CR>";
-      key = "<leader>gfd";
-      mode = "n";
-      options = {
-        desc = "Diff";
-        nowait = true;
-        remap = false;
-      };
-    }
-    {
-      action = ":diffget //2 <CR>";
-      key = "<leader>gfh";
-      mode = "n";
-      options = {
-        desc = "Get Left Diff";
-        nowait = true;
-        remap = false;
-      };
-    }
-    {
-      action = ":diffget //3 <CR>";
-      key = "<leader>gfl";
-      mode = "n";
-      options = {
-        desc = "Get Right Diff";
-        nowait = true;
-        remap = false;
-      };
-    }
-    {
-      action = "<cmd>:Git<CR>";
+      action = "<cmd>:LazyGit<CR>";
       key = "<leader>gg";
       mode = "n";
       options = {

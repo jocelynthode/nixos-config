@@ -35,7 +35,6 @@ _: {
           "help"
           "man"
           "lspinfo"
-          "fugitive"
         ];
         command = "nnoremap <silent> <buffer> q :close<CR>";
         group = "_general_settings";
