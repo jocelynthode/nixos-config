@@ -20,6 +20,7 @@ _: {
             };
           };
           menu = {
+            # auto_show.__raw = ''function(ctx) return ctx.mode ~= 'cmdline' end'';
             draw = {
               components = {
                 kind_icon = {
@@ -61,6 +62,12 @@ _: {
           };
           documentation = {
             auto_show = true;
+          };
+          list = {
+            selection = {
+              preselect.__raw = ''function(ctx) return ctx.mode ~= 'cmdline' end'';
+              auto_insert.__raw = ''function(ctx) return ctx.mode ~= 'cmdline' end'';
+            };
           };
         };
         keymap = {

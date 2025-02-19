@@ -4,7 +4,6 @@ _: {
     ./bufferline
     ./codecompanion
     ./dap
-    ./dressing
     ./gitsigns
     ./grug-far
     ./indent-blankline
@@ -15,6 +14,7 @@ _: {
     ./none-ls
     ./nvim-tree
     ./render-mardown
+    ./snacks
     ./telescope
     ./toggleterm
     ./treesitter

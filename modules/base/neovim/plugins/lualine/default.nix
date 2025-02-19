@@ -45,7 +45,7 @@ _: {
                   end
                 end
 
-                return "  " .. table.concat(buf_client_names, ", ")
+                return " " .. table.concat(buf_client_names, ", ")
               end
             '';
           }

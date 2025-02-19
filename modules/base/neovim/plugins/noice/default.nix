@@ -16,6 +16,7 @@ _: {
               {find = "%d+L; %d+B";}
               {find = "; after #%d+";}
               {find = "; before #%d+";}
+              {find = "written";}
             ];
           };
           view = "mini";
@@ -23,7 +24,7 @@ _: {
       ];
       presets = {
         bottom_search = false;
-        command_palette = true;
+        command_palette = false;
         long_message_to_split = true;
         inc_rename = false;
         lsp_doc_border = false;
