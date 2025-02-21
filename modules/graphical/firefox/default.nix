@@ -28,22 +28,24 @@
         profiles = {
           jocelyn = {
             bookmarks = {};
-            extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-              betterttv
-              bitwarden
-              consent-o-matic
-              don-t-fuck-with-paste
-              multi-account-containers
-              greasemonkey
-              kagi-search
-              simplelogin
-              sponsorblock
-              stylus
-              ublock-origin
-              videospeed
-              tridactyl
-              sidebery
-            ];
+            extensions = {
+              packages = with pkgs.nur.repos.rycee.firefox-addons; [
+                betterttv
+                bitwarden
+                consent-o-matic
+                don-t-fuck-with-paste
+                multi-account-containers
+                greasemonkey
+                kagi-search
+                simplelogin
+                sponsorblock
+                stylus
+                ublock-origin
+                videospeed
+                tridactyl
+                sidebery
+              ];
+            };
             userChrome = ''
               /* Hide tab bar in FF Quantum */
               #TabsToolbar {

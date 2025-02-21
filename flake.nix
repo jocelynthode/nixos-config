@@ -75,7 +75,7 @@
         modules = [
           {nix.generateRegistryFromInputs = true;}
           sops-nix.nixosModules.sops
-          home-manager.nixosModule
+          home-manager.nixosModules.home-manager
           impermanence.nixosModules.impermanence
           catppuccin.nixosModules.catppuccin
           nix-index-database.nixosModules.nix-index
