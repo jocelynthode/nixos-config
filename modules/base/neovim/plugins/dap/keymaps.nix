@@ -61,6 +61,16 @@ _: {
       };
     }
     {
+      action = "<cmd>lua require'dap'.continue()<cr>";
+      key = "<leader>dc";
+      mode = "n";
+      options = {
+        desc = "Sart/Continue";
+        nowait = true;
+        remap = false;
+      };
+    }
+    {
       action = "<cmd>lua require'dap'.disconnect()<cr>";
       key = "<leader>dd";
       mode = "n";
@@ -76,6 +86,26 @@ _: {
       mode = "n";
       options = {
         desc = "Get Session";
+        nowait = true;
+        remap = false;
+      };
+    }
+    {
+      action = "<cmd>lua require'dap'.step_into()<cr>";
+      key = "<leader>di";
+      mode = "n";
+      options = {
+        desc = "Step Into";
+        nowait = true;
+        remap = false;
+      };
+    }
+    {
+      action = "<cmd>lua require'dap'.step_over()<cr>";
+      key = "<leader>do";
+      mode = "n";
+      options = {
+        desc = "Step Over";
         nowait = true;
         remap = false;
       };
