@@ -11,7 +11,6 @@ _: {
       };
       formatting = {
         shfmt.enable = true;
-        alejandra.enable = true;
         opentofu_fmt.enable = true;
         prettier = {
           enable = true;

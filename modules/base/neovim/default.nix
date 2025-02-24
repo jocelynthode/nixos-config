@@ -89,6 +89,10 @@
         taxi-vim
       ];
 
+      extraPackages = with pkgs; [
+        alejandra
+      ];
+
       extraConfigLua = ''
         vim.opt.whichwrap:append("<>[]hl")
         vim.opt.iskeyword:append("-")
