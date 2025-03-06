@@ -10,7 +10,22 @@ _: {
         hadolint.enable = true;
       };
       formatting = {
-        shfmt.enable = true;
+        shfmt = {
+          enable = true;
+          settings = {
+            disabled_filetypes = [
+              "lua"
+            ];
+            extra_args = [
+              "-i"
+              "2"
+              "-ci"
+            ];
+            extra_filetypes = [
+              "toml"
+            ];
+          };
+        };
         opentofu_fmt.enable = true;
         prettier = {
           enable = true;

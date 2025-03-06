@@ -20,7 +20,7 @@
                   name = "ollama",
                   schema = {
                     model = {
-                      default = "qwen2.5-coder:32b",
+                      default = "qwq:32b",
                     },
                   },
                   })
