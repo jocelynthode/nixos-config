@@ -46,14 +46,18 @@
               "https://ns1.fdn.fr/dns-query"
               "https://doh.dns4all.eu/dns-query"
               "https://doh.libredns.gr/dns-query"
+              "https://resolver2.dns.watch/dns-query"
             ];
           };
           # For initially solving DoH/DoT Requests when no system Resolver is available.
           bootstrapDns = {
-            upstream = "https://dns.quad9.net/dns-query";
-            ips = ["9.9.9.9" "149.112.112.112"];
+            upstream = "https://dns.mullvad.net/dns-query";
+            # mullvad + dns4all
+            ips = ["194.242.2.2" "194.0.5.3"];
           };
           blocking = {
+            blockType = "zeroIP";
+            blockTTL = "30m";
             denylists = {
               ads = [
                 "https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt"
@@ -71,11 +75,6 @@
           log = {
             level = "warn";
             privacy = true;
-          };
-          caching = {
-            minTime = "5m";
-            maxTime = "30m";
-            prefetching = true;
           };
         };
       };
