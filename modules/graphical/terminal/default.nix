@@ -36,7 +36,9 @@
           "alt+0" = "goto_tab 10";
         };
         settings = {
-          allow_remote_control = "yes";
+          allow_remote_control = "socket-only";
+          listen_on = "unix:/tmp/kitty";
+          shell_integration = "enabled";
 
           tab_bar_style = "powerline";
           tab_powerline_style = "slanted";
@@ -68,6 +70,7 @@
           mark1_background = "#${config.colorScheme.palette.foreground03}";
           mark2_foreground = "#${config.colorScheme.palette.background}";
           mark2_background = "#${config.colorScheme.palette.purple}";
+          scrollback_pager = "nvim -c 'set ft=man' -";
 
           color0 = "#5C5F77";
           color8 = "#6C6F85";
