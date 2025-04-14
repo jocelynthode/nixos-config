@@ -46,7 +46,7 @@ _: {
         ];
         callback.__raw = ''
           function()
-              require("vim.highlight").on_yank({ higroup = "Visual", timeout = 200 })
+              vim.highlight.on_yank({ higroup = "Visual", timeout = 200 })
           end
         '';
         group = "_general_settings";
