@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
     catppuccin.url = "github:catppuccin/nix";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -48,6 +49,7 @@
     self,
     nixpkgs,
     nixpkgs-stable,
+    nixpkgs-master,
     catppuccin,
     home-manager,
     sops-nix,
@@ -110,6 +112,10 @@
               system = "x86_64-linux";
               config.allowUnfree = true;
             };
+            pkgs-master = import nixpkgs-master {
+              system = "x86_64-linux";
+              config.allowUnfree = true;
+            };
           };
         };
         frametek = {
@@ -123,6 +129,10 @@
           specialArgs = {
             inherit nix-colors spicetify-nix catppuccin nixvim;
             pkgs-stable = import nixpkgs-stable {
+              system = "x86_64-linux";
+              config.allowUnfree = true;
+            };
+            pkgs-master = import nixpkgs-master {
               system = "x86_64-linux";
               config.allowUnfree = true;
             };
