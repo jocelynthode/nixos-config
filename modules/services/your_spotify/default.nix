@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs-stable,
   ...
 }: {
   options.aspects.services.your_spotify.enable = lib.mkOption {
@@ -11,6 +12,7 @@
   config = lib.mkIf config.aspects.services.your_spotify.enable {
     services.your_spotify = {
       enable = true;
+      package = pkgs-stable.your_spotify;
       spotifySecretFile = config.sops.secrets.your_spotify.path;
       enableLocalDB = true;
       settings = {
