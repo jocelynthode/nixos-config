@@ -5,7 +5,7 @@ _: {
       options = {
         theme = "catppuccin";
         globalstatus = true;
-        disabled_filetypes = ["alpha"];
+        disabled_filetypes = ["alpha" "grug-far"];
       };
       extensions = [
         "nvim-tree"

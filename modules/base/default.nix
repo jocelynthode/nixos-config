@@ -37,27 +37,27 @@
 
   config = let
     colorscheme = {
-      slug = "catppuccin-frappe";
-      name = "Catppuccin Frappe";
+      slug = "catppuccin-mocha";
+      name = "Catppuccin Mocha";
       author = "Unknown";
       palette = {
-        background = "#303446";
-        background01 = "#414559";
-        background02 = "#51576d";
-        background03 = "#626880";
-        foreground = "#c6d0f5";
-        foreground01 = "#737994";
-        foreground02 = "#838ba7";
-        foreground03 = "#949cbb";
-        red = "#e78284";
-        orange = "#ef9f76";
-        yellow = "#e5c890";
-        green = "#a6d189";
-        teal = "#81c8be";
-        blue = "#8caaee";
-        purple = "#ca9ee6";
-        brown = "#ea999c";
-        accent = "#f4b8e4";
+        background = "#1e1e2e";
+        background01 = "#313244";
+        background02 = "#45475a";
+        background03 = "#585b70";
+        foreground = "#cdd6f4";
+        foreground01 = "#6c7086";
+        foreground02 = "#7f849c";
+        foreground03 = "#9399b2";
+        red = "#f38ba8";
+        orange = "#fab387";
+        yellow = "#f9e2af";
+        green = "#a6e3a1";
+        teal = "#94e2d5";
+        blue = "#89b4fa";
+        purple = "#cba6f7";
+        brown = "#eba0ac";
+        accent = "#f5c2e7";
       };
     };
   in {
@@ -189,7 +189,7 @@
 
     catppuccin = {
       enable = true;
-      flavor = "frappe";
+      flavor = "mocha";
       accent = "pink";
     };
 
@@ -205,7 +205,7 @@
       earlySetup = true;
       font = "ter-powerline-v24b";
       packages = [
-        pkgs.terminus_font
+        pkgs.test
         pkgs.powerline-fonts
       ];
       useXkbConfig = true;

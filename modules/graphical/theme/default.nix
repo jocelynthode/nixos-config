@@ -42,7 +42,7 @@
       ...
     }: {
       catppuccin = {
-        flavor = "frappe";
+        flavor = "mocha";
         accent = "pink";
       };
 

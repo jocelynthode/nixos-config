@@ -2,9 +2,6 @@ _: {
   programs.nixvim.plugins.which-key = {
     enable = true;
     settings = {
-      disable.ft = [
-        "grug-far"
-      ];
       plugins = {
         spelling = {
           enabled = true;
