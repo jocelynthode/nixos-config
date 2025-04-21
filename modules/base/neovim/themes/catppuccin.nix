@@ -2,10 +2,10 @@ _: {
   programs.nixvim.colorschemes.catppuccin = {
     enable = true;
     settings = {
-      flavour = "latte";
+      flavour = "frappe";
       background = {
         light = "latte";
-        dark = "mocha";
+        dark = "frappe";
       };
       transparent_background = true;
       show_end_of_buffer = false;

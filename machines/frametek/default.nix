@@ -13,7 +13,7 @@
     graphical = {
       enable = true;
       dpi = 120;
-      wallpaper = "lavenders";
+      wallpaper = "water";
       fingerprint.enable = true;
       hyprland.enable = true;
       sway.enable = false;

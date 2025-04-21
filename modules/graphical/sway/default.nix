@@ -39,7 +39,7 @@
         };
       };
       iconTheme = {
-        name = "Papirus-Light";
+        name = "Papirus-Dark";
         package = pkgs.papirus-icon-theme;
       };
       cursorTheme = {

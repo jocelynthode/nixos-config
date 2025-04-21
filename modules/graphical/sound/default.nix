@@ -75,7 +75,7 @@
 
       dconf.settings = {
         "com/github/wwmm/easyeffects" = {
-          use-dark-theme = false;
+          use-dark-theme = true;
         };
       };
     };

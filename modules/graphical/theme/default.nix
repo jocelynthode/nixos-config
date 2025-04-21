@@ -42,7 +42,7 @@
       ...
     }: {
       catppuccin = {
-        flavor = "latte";
+        flavor = "frappe";
         accent = "pink";
       };
 
@@ -61,6 +61,12 @@
           name = osConfig.aspects.base.fonts.regular.family;
           inherit (osConfig.aspects.base.fonts.regular) package;
           inherit (osConfig.aspects.base.fonts.regular) size;
+        };
+      };
+
+      dconf.settings = {
+        "org/gnome/desktop/interface" = {
+          color-scheme = "prefer-dark";
         };
       };
 

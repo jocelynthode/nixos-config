@@ -48,7 +48,7 @@
         splitright = true;
         swapfile = false;
         termguicolors = true;
-        background = "light";
+        background = "dark";
         timeoutlen = 250;
         undofile = true;
         updatetime = 300;

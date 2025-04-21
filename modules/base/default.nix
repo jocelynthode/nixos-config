@@ -37,27 +37,27 @@
 
   config = let
     colorscheme = {
-      slug = "catppuccin-latte";
-      name = "Catppuccin Latte";
+      slug = "catppuccin-frappe";
+      name = "Catppuccin Frappe";
       author = "Unknown";
       palette = {
-        background = "#eff1f5";
-        background01 = "#e6e9ef";
-        background02 = "#ccd0da";
-        background03 = "#bcc0cc";
-        foreground01 = "#acb0be";
-        foreground = "#4c4f69";
-        foreground02 = "#dc8a78";
-        foreground03 = "#7287fd";
-        red = "#d20f39";
-        orange = "#fe640b";
-        yellow = "#df8e1d";
-        green = "#40a02b";
-        teal = "#179299";
-        blue = "#1e66f5";
-        purple = "#8839ef";
-        brown = "#dd7878";
-        accent = "#ea76cb";
+        background = "#303446";
+        background01 = "#414559";
+        background02 = "#51576d";
+        background03 = "#626880";
+        foreground = "#c6d0f5";
+        foreground01 = "#737994";
+        foreground02 = "#838ba7";
+        foreground03 = "#949cbb";
+        red = "#e78284";
+        orange = "#ef9f76";
+        yellow = "#e5c890";
+        green = "#a6d189";
+        teal = "#81c8be";
+        blue = "#8caaee";
+        purple = "#ca9ee6";
+        brown = "#ea999c";
+        accent = "#f4b8e4";
       };
     };
   in {
@@ -189,7 +189,7 @@
 
     catppuccin = {
       enable = true;
-      flavor = "latte";
+      flavor = "frappe";
       accent = "pink";
     };
 

@@ -18,7 +18,7 @@
     graphical = {
       enable = true;
       sound.guitar.enable = true;
-      wallpaper = "lavenders";
+      wallpaper = "water";
       printer.enable = true;
       sway.enable = false;
       hyprland.enable = true;

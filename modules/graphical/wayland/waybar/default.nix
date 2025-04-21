@@ -2,11 +2,8 @@
   pkgs,
   config,
   lib,
-  nix-colors,
   ...
-}: let
-  toRGB = nix-colors.lib.conversions.hexToRGBString ",";
-in {
+}: {
   # TODO: Have bar on one screen and variabilize output
   config = lib.mkIf config.aspects.graphical.wayland.enable {
     home-manager.users.jocelyn = {
@@ -39,6 +36,10 @@ in {
       ''}/bin/waybar-${name}";
       gpg-agent-isUnlocked = "${pkgs.procps}/bin/pgrep 'gpg-agent' &> /dev/null && ${pkgs.gnupg}/bin/gpg-connect-agent 'scd getinfo card_list' /bye | ${pkgs.gnugrep}/bin/grep SERIALNO -q";
     in {
+      catppuccin.waybar = {
+        enable = true;
+        mode = "prependImport";
+      };
       programs.waybar = {
         enable = true;
         systemd = {
@@ -189,9 +190,7 @@ in {
             };
           };
         };
-        style = let
-          inherit (config.colorscheme) palette;
-        in ''
+        style = ''
           * {
             font-family: ${osConfig.aspects.base.fonts.monospace.family}, ${osConfig.aspects.base.fonts.regular.family};
             font-size: 11pt;
@@ -205,40 +204,42 @@ in {
             margin: 8px 8px 0px 8px;
           }
           #workspaces {
-              margin-right: 8px;
-              padding: 5px 10px 5px 10px;
-              border-radius: 0px;
-              transition: none;
-              background: rgba(${toRGB palette.background01},0.7);
+            margin-right: 8px;
+            padding: 5px 10px 5px 10px;
+            border-radius: 0px;
+            transition: none;
+            background: @base;
+            color: @text;
           }
-          #workspaces button#workspaces {
-              margin-right: 8px;
-              border-radius: 0px;
-              transition: none;
-              color: #${palette.foreground};
-              background: rgba(${toRGB palette.background01},0.7);
+          #workspaces button {
+            margin-right: 8px;
+            border-radius: 0px;
+            transition: none;
+            color: @text;
+            background: @base;
           }
 
           #workspaces button.focused,
           #workspaces button.active {
             border-radius: 0px;
-            background-color: #${palette.accent};
-            color: #${palette.background};
+            background-color: @pink;
+            color: @base;
           }
 
           #workspaces button:hover {
-              transition: none;
-              box-shadow: inherit;
-              text-shadow: inherit;
-              border-radius: inherit;
-              color: #${palette.background};
-              background: #${palette.foreground03};
+            transition: none;
+            box-shadow: inherit;
+            text-shadow: inherit;
+            border-radius: inherit;
+            color: @base;
+            background: @lavender;
           }
 
           #cpu, #memory, #disk {
             border-radius: 0px;
             padding: 5px 10px 5px 10px;
-            background: rgba(${toRGB palette.background01},0.7);
+            background: @base;
+            color: @text;
           }
 
           #cpu {
@@ -254,13 +255,15 @@ in {
           #custom-player, #clock {
             border-radius: 0px;
             padding: 5px 10px 5px 10px;
-            background: rgba(${toRGB palette.background01},0.7);
+            background: @base;
+            color: @text;
           }
 
           #network, #bluetooth, #custom-gammastep, #custom-gpg-agent, #gamemode, #pulseaudio, #backlight, #battery, #tray {
             border-radius: 0px;
             padding: 5px 10px 5px 10px;
-            background: rgba(${toRGB palette.background01},0.7);
+            background: @base;
+            color: @text;
           }
           #network {
             border-radius: 0px 0px 0px 0px;
@@ -270,22 +273,22 @@ in {
           }
 
           #gamemode {
-            color: #${palette.red};
+            color: @red;
           }
           #custom-gammastep {
-            color: #${palette.yellow};
+            color: @yellow;
           }
           #battery.full {
-            color: #${palette.blue};
+            color: @blue;
           }
           #battery.charging {
-            color: #${palette.green};
+            color: @green;
           }
           #battery.discharging.warning {
-            color: #${palette.yellow};
+            color: @yellow;
           }
           #battery.discharging.critical {
-            color: #${palette.red};
+            color: @red;
             animation-name: blink;
             animation-duration: 0.5s;
             animation-timing-function: linear;

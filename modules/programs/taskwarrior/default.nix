@@ -19,7 +19,7 @@
       programs.taskwarrior = {
         enable = true;
         package = pkgs.taskwarrior3;
-        colorTheme = "light-256";
+        colorTheme = "dark-256";
         config = {
           context = {
             work = {
