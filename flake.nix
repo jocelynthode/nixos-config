@@ -144,7 +144,17 @@
             hardware.nixosModules.common-pc-laptop-ssd
             hardware.nixosModules.common-cpu-intel
           ];
-          specialArgs = {inherit nix-colors spicetify-nix catppuccin nixvim;};
+          specialArgs = {
+            inherit nix-colors spicetify-nix catppuccin nixvim;
+            pkgs-stable = import nixpkgs-stable {
+              system = "x86_64-linux";
+              config.allowUnfree = true;
+            };
+            pkgs-master = import nixpkgs-master {
+              system = "x86_64-linux";
+              config.allowUnfree = true;
+            };
+          };
         };
         iso = {
           modules = [

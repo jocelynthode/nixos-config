@@ -65,7 +65,7 @@
       useGlobalPkgs = true;
       sharedModules = [
         nix-colors.homeManagerModule
-        catppuccin.homeManagerModules.catppuccin
+        catppuccin.homeModules.catppuccin
       ];
     };
 
