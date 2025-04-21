@@ -205,7 +205,7 @@
       earlySetup = true;
       font = "ter-powerline-v24b";
       packages = [
-        pkgs.test
+        pkgs.terminus_font
         pkgs.powerline-fonts
       ];
       useXkbConfig = true;
