@@ -39,7 +39,10 @@
         };
       };
       iconTheme = {
-        name = "Papirus-Dark";
+        name =
+          if config.aspects.theme == "dark"
+          then "Papirus-Dark"
+          else "Papirus";
         package = pkgs.papirus-icon-theme;
       };
       cursorTheme = {

@@ -21,7 +21,10 @@ in {
       services.dunst = {
         enable = true;
         iconTheme = {
-          name = "Papirus-Dark";
+          name =
+            if config.aspects.theme == "dark"
+            then "Papirus-Dark"
+            else "Papirus";
           package = pkgs.papirus-icon-theme;
           size = "48x48";
         };

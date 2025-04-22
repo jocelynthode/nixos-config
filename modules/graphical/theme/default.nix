@@ -31,7 +31,10 @@
     qt = {
       enable = true;
       platformTheme = "gnome";
-      style = "adwaita";
+      style =
+        if config.aspects.theme == "dark"
+        then "adwaita-dark"
+        else "adwaita";
     };
 
     programs.dconf.enable = true;
@@ -57,14 +60,23 @@
       catppuccin.gtk.icon.enable = true;
       gtk = {
         enable = true;
+        theme = {
+          name =
+            if osConfig.aspects.theme == "dark"
+            then "Adwaita-dark"
+            else "Adwaita";
+        };
         font = {
           name = osConfig.aspects.base.fonts.regular.family;
           inherit (osConfig.aspects.base.fonts.regular) package;
           inherit (osConfig.aspects.base.fonts.regular) size;
         };
+        gtk3.extraConfig = lib.mkIf (osConfig.aspects.theme == "dark") {
+          gtk-application-prefer-dark-theme = true;
+        };
       };
 
-      dconf.settings = {
+      dconf.settings = lib.mkIf (osConfig.aspects.theme == "dark") {
         "org/gnome/desktop/interface" = {
           color-scheme = "prefer-dark";
         };

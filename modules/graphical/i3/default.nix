@@ -30,7 +30,10 @@
             enable = true;
             iconTheme = {
               package = pkgs.papirus-icon-theme;
-              name = "Papirus-Dark";
+              name =
+                if config.aspects.theme == "dark"
+                then "Papirus-Dark"
+                else "Papirus";
             };
             cursorTheme = {
               package = pkgs.adwaita-icon-theme;

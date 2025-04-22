@@ -33,6 +33,11 @@
       default = false;
       example = true;
     };
+
+    theme = lib.mkOption {
+      default = "dark";
+      example = "light";
+    };
   };
 
   config = let
