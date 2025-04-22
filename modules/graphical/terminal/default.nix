@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: {
   options.aspects.graphical.terminal.enable = lib.mkOption {
@@ -19,6 +20,9 @@
         enable = true;
         font.name = osConfig.aspects.base.fonts.monospace.family;
         font.size = osConfig.aspects.base.fonts.monospace.size;
+        actionAliases = {
+          "kitty_scrollback_nvim" = "kitten ${pkgs.vimPlugins.kitty-scrollback-nvim}/python/kitty_scrollback_nvim.py";
+        };
         keybindings = {
           "alt+tab" = "select_tab";
           "alt+1" = "goto_tab 1";
@@ -31,11 +35,14 @@
           "alt+8" = "goto_tab 8";
           "alt+9" = "goto_tab 9";
           "alt+0" = "goto_tab 10";
+          "kitty_mod+h" = "kitty_scrollback_nvim";
+          "kitty_mod+g" = "kitty_scrollback_nvim --config ksb_builtin_last_cmd_output";
         };
         settings = {
           allow_remote_control = "socket-only";
           listen_on = "unix:/tmp/kitty";
           shell_integration = "enabled";
+          scrollback_pager = "kitty_scrollback_nvim";
 
           tab_bar_style = "powerline";
           tab_powerline_style = "slanted";

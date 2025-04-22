@@ -7,7 +7,7 @@ _: {
       hide_numbers = true;
       shade_terminals = true;
       shading_factor = 2;
-      start_in_insert = true;
+      start_in_insert.__raw = "vim.env.KITTY_SCROLLBACK_NVIM ~= 'true'";
       insert_mappings = true;
       persist_size = true;
       direction = "float";

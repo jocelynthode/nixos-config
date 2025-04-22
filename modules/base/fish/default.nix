@@ -29,6 +29,12 @@
       interactiveShellInit =
         ''
           any-nix-shell fish | source
+          bind --mode default \ee kitty_scrollback_edit_command_buffer
+          bind --mode default \ev kitty_scrollback_edit_command_buffer
+          bind --mode visual \ee kitty_scrollback_edit_command_buffer
+          bind --mode visual \ev kitty_scrollback_edit_command_buffer
+          bind --mode insert \ee kitty_scrollback_edit_command_buffer
+          bind --mode insert \ev kitty_scrollback_edit_command_buffer
         ''
         + lib.optionalString osConfig.aspects.work.kubernetes.enable ''set -gx PATH $PATH $HOME/.krew/bin'';
       functions = {
@@ -36,6 +42,13 @@
           body = ''
             fish_vi_key_bindings
             # bind -M insert -m default jk backward-char force-repaint
+          '';
+        };
+        kitty_scrollback_edit_command_buffer = {
+          body = ''
+            set --local --export VISUAL '${pkgs.vimPlugins.kitty-scrollback-nvim}/scripts/edit_command_line.sh'
+            edit_command_buffer
+            commandline \'\'
           '';
         };
       };

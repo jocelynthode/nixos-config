@@ -87,6 +87,7 @@
       extraPlugins = with pkgs.vimPlugins; [
         telescope-dap-nvim
         taxi-vim
+        kitty-scrollback-nvim
       ];
 
       extraPackages = with pkgs; [
@@ -100,6 +101,8 @@
         require('dap').listeners.after.event_initialized['dapui_config'] = require('dapui').open
         require('dap').listeners.before.event_terminated['dapui_config'] = require('dapui').close
         require('dap').listeners.before.event_exited['dapui_config'] = require('dapui').close
+
+        require("kitty-scrollback").setup()
       '';
 
       # use python3_host_prog as python path to use here
