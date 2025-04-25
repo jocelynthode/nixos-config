@@ -2,7 +2,9 @@
   config,
   lib,
   ...
-}: {
+}: let
+  mkAuthProxy = import ../nginx/auth.nix {inherit lib;};
+in {
   options.aspects.services.navidrome.enable = lib.mkOption {
     default = false;
     example = true;
@@ -19,6 +21,10 @@
         ReverseProxyWhitelist = "127.0.0.1/32";
         EnableStarRating = false;
       };
+    };
+
+    services.nginx.virtualHosts."navi.tekila.ovh" = mkAuthProxy {
+      port = 4533;
     };
 
     systemd.services.navidrome.serviceConfig = {

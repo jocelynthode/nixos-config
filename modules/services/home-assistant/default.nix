@@ -3,7 +3,9 @@
   lib,
   pkgs,
   ...
-}: {
+}: let
+  mkAuthProxy = import ../nginx/auth.nix {inherit lib;};
+in {
   options.aspects.services.home-assistant.enable = lib.mkOption {
     default = false;
     example = true;
@@ -23,6 +25,18 @@
         directory = "/var/lib/mosquitto";
       }
     ];
+
+    services.nginx.virtualHosts."hass.tekila.ovh" = mkAuthProxy {
+      port = 8123;
+      extraPaths = {
+        "/" = {
+          extraConfig = ''
+            allow  144.2.64.196/32;
+            deny   all;
+          '';
+        };
+      };
+    };
 
     networking.firewall.allowedTCPPorts = [8080];
 

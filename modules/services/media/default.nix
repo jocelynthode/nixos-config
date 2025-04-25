@@ -2,7 +2,9 @@
   config,
   lib,
   ...
-}: {
+}: let
+  mkAuthProxy = import ../nginx/auth.nix {inherit lib;};
+in {
   options.aspects.services.media.enable = lib.mkOption {
     default = false;
     example = true;
@@ -102,6 +104,27 @@
       sonarr.extraGroups = ["deluge"];
       lidarr.extraGroups = ["deluge"];
       readarr.extraGroups = ["deluge"];
+    };
+
+    services.nginx.virtualHosts = {
+      "sonarr.tekila.ovh" = mkAuthProxy {
+        port = 8989;
+      };
+      "radarr.tekila.ovh" = mkAuthProxy {
+        port = 7878;
+      };
+      "bazarr.tekila.ovh" = mkAuthProxy {
+        port = 6767;
+      };
+      "lidarr.tekila.ovh" = mkAuthProxy {
+        port = 8686;
+      };
+      "prowlarr.tekila.ovh" = mkAuthProxy {
+        port = 9696;
+      };
+      "readarr.tekila.ovh" = mkAuthProxy {
+        port = 8787;
+      };
     };
   };
 }

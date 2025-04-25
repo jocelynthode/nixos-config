@@ -34,6 +34,7 @@
         config.sops.secrets.authentik.path
       ];
     };
+    mkAuthProxy = import ../nginx/auth.nix {inherit lib;};
   in
     lib.mkIf config.aspects.services.authentik.enable {
       aspects.base.persistence.systemPaths = [
@@ -43,6 +44,11 @@
           group = "100000";
         }
       ];
+
+      services.nginx.virtualHosts."auth.tekila.ovh" = mkAuthProxy {
+        port = 9000;
+        protect = false;
+      };
 
       # TODO nixify these steps
       # On first run we need to set a password for the authentik database in postgresql
