@@ -9,26 +9,32 @@
     {
       name = "sonarr";
       port = 8989;
+      delugeAccess = true;
     }
     {
       name = "radarr";
       port = 7878;
+      delugeAccess = true;
     }
     {
       name = "bazarr";
       port = 6767;
+      delugeAccess = true;
     }
     {
       name = "lidarr";
       port = 8686;
+      delugeAccess = true;
     }
     {
       name = "prowlarr";
       port = 9696;
+      delugeAccess = false;
     }
     {
       name = "readarr";
       port = 8787;
+      delugeAccess = true;
     }
   ];
 
@@ -60,13 +66,12 @@
     )
     mediaServices);
 
-  userGroups = lib.listToAttrs (map (
-      service: {
-        inherit (service) name;
-        value = {extraGroups = ["deluge"];};
-      }
-    )
-    mediaServices);
+  userGroups = lib.listToAttrs (map (service: {
+    inherit (service) name;
+    value = lib.mkIf service.delugeAccess {
+      extraGroups = ["deluge"];
+    };
+  }) (lib.filter (service: service.delugeAccess) mediaServices));
 
   nginxVhosts = lib.listToAttrs (map (
       service: {
