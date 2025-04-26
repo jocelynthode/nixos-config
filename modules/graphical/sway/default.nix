@@ -4,17 +4,11 @@
   pkgs,
   ...
 }: {
-  imports = [
-    ../wayland
-  ];
-
   options.aspects.graphical.sway = {
     enable = lib.mkEnableOption "sway";
   };
 
   config = lib.mkIf config.aspects.graphical.sway.enable {
-    aspects.graphical.wayland.enable = true;
-
     programs.xwayland.enable = true;
 
     environment.systemPackages = with pkgs; [

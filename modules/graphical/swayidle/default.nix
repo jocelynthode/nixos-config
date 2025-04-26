@@ -4,7 +4,7 @@
   lib,
   ...
 }: {
-  config = lib.mkIf config.aspects.graphical.wayland.enable {
+  config = lib.mkIf config.aspects.graphical.enable {
     security.pam.services = {swaylock = {};};
     home-manager.users.jocelyn = {
       config,

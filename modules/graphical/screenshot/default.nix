@@ -11,7 +11,12 @@
 
   config = lib.mkIf config.aspects.graphical.screenshot.enable {
     home-manager.users.jocelyn = _: {
-      home.packages = with pkgs; [gnome-screenshot];
+      services.flameshot = {
+        enable = true;
+        package = pkgs.flameshot.override {
+          enableWlrSupport = true;
+        };
+      };
     };
   };
 }

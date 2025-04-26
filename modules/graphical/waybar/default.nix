@@ -5,7 +5,7 @@
   ...
 }: {
   # TODO: Have bar on one screen and variabilize output
-  config = lib.mkIf config.aspects.graphical.wayland.enable {
+  config = lib.mkIf config.aspects.graphical.enable {
     home-manager.users.jocelyn = {
       config,
       osConfig,

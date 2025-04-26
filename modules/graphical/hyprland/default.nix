@@ -4,17 +4,11 @@
   pkgs,
   ...
 }: {
-  imports = [
-    ../wayland
-  ];
-
   options.aspects.graphical.hyprland = {
     enable = lib.mkEnableOption "hyprland";
   };
 
   config = lib.mkIf config.aspects.graphical.hyprland.enable {
-    aspects.graphical.wayland.enable = true;
-
     programs.hyprland = {
       enable = true;
       xwayland = {

@@ -4,7 +4,7 @@
   lib,
   ...
 }: {
-  options.aspects.graphical.wayland.kanshi.settings = lib.mkOption {
+  options.aspects.graphical.kanshi.settings = lib.mkOption {
     type = lib.types.listOf lib.types.attrs;
     default = {};
     description = "services.kanshi.settings setup";
@@ -35,12 +35,12 @@
     '';
   };
 
-  config = lib.mkIf config.aspects.graphical.wayland.enable {
+  config = lib.mkIf config.aspects.graphical.enable {
     home-manager.users.jocelyn = {osConfig, ...}: {
       services.kanshi = {
         enable = true;
         systemdTarget = "graphical-session.target";
-        inherit (osConfig.aspects.graphical.wayland.kanshi) settings;
+        inherit (osConfig.aspects.graphical.kanshi) settings;
       };
     };
   };

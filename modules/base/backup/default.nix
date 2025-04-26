@@ -18,7 +18,6 @@
         "/persist/var/lib/private/esphome/.platformio"
         "/persist/var/lib/private/esphome/.esphome"
         "!/persist/var/lib/radicale"
-        "!/persist/var/lib/taskserver"
         "!/persist/var/lib/acme"
         "!/persist/var/lib/jellyfin"
         "/persist/var/lib/jellyfin/metadata"

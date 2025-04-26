@@ -5,7 +5,6 @@
 }: {
   imports = [
     ./acme
-    ./adguard
     ./atuin
     ./authentik
     ./blocky
@@ -20,7 +19,6 @@
     ./postgresql
     ./radicale
     ./redis
-    ./taskserver
     ./wireguard
     ./your_spotify
   ];
@@ -34,7 +32,6 @@
     aspects = {
       services = {
         acme.enable = lib.mkDefault true;
-        adguard.enable = lib.mkDefault false;
         atuin.enable = lib.mkDefault true;
         authentik.enable = lib.mkDefault true;
         blocky.enable = lib.mkDefault true;
@@ -49,7 +46,6 @@
         postgresql.enable = lib.mkDefault true;
         radicale.enable = lib.mkDefault true;
         redis.enable = lib.mkDefault true;
-        taskserver.enable = lib.mkDefault true;
         wireguard.enable = lib.mkDefault false;
         your_spotify.enable = lib.mkDefault true;
       };

@@ -8,7 +8,7 @@
     ./fingerprint
     ./firefox
     ./hyprland
-    ./i3
+    ./kanshi
     ./mpv
     ./nix-ld
     ./notification
@@ -19,7 +19,8 @@
     ./sway
     ./terminal
     ./theme
-    ./wayland
+    ./waybar
+    ./wofi
     ./xdg
   ];
 
@@ -49,13 +50,12 @@
       graphical = {
         fingerprint.enable = lib.mkDefault false;
         firefox.enable = lib.mkDefault true;
-        i3.enable = lib.mkDefault false;
         hyprland.enable = lib.mkDefault false;
         mpv.enable = lib.mkDefault true;
         nix-ld.enable = lib.mkDefault true;
         notification.enable = lib.mkDefault true;
         printer.enable = lib.mkDefault false;
-        screenshot.enable = lib.mkDefault true;
+        screenshot.enable = lib.mkDefault false;
         rofi.enable = lib.mkDefault true;
         sound.enable = lib.mkDefault true;
         sway.enable = lib.mkDefault false;

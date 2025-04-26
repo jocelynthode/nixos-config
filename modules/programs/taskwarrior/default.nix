@@ -36,43 +36,6 @@
           };
         };
       };
-
-      systemd.user = {
-        services.taskwarrior-sync = {
-          Unit = {
-            Description = "Run task sync periodically";
-            After = [
-              "network-online.target"
-            ];
-            Wants = [
-              "taskwarrior-sync.timer"
-              "timers.target"
-            ];
-          };
-          Service = {
-            Type = "oneshot";
-            ExecStart = "${pkgs.taskwarrior3}/bin/task sync";
-          };
-        };
-        timers.taskwarrior-sync = {
-          Unit = {
-            Description = "Run task sync";
-            After = [
-              "network-online.target"
-            ];
-            Requires = [
-              "taskwarrior-sync.service"
-            ];
-          };
-          Timer = {
-            Unit = "taskwarrior-sync.service";
-            OnCalendar = "*:0/15";
-          };
-          Install = {
-            WantedBy = ["timers.target"];
-          };
-        };
-      };
     };
   };
 }
