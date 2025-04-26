@@ -5,10 +5,7 @@
   ...
 }: {
   options = {
-    aspects.work.slack.enable = lib.mkOption {
-      default = false;
-      example = true;
-    };
+    aspects.work.slack.enable = lib.mkEnableOption "slack";
   };
 
   config = lib.mkIf config.aspects.work.slack.enable {

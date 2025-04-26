@@ -4,10 +4,7 @@
   pkgs,
   ...
 }: {
-  options.aspects.games.mumble.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.games.mumble.enable = lib.mkEnableOption "mumble";
 
   config = lib.mkIf config.aspects.games.mumble.enable {
     aspects.base.persistence.homePaths = [

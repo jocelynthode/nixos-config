@@ -3,10 +3,7 @@
   lib,
   ...
 }: {
-  options.aspects.services.atuin.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.services.atuin.enable = lib.mkEnableOption "atuin";
 
   config = lib.mkIf config.aspects.services.atuin.enable {
     services.postgresql = {

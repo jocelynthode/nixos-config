@@ -4,10 +4,7 @@
   pkgs,
   ...
 }: {
-  options.aspects.services.blocky.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.services.blocky.enable = lib.mkEnableOption "blocky";
 
   config = let
     allowlist =

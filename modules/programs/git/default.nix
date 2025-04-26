@@ -3,10 +3,7 @@
   lib,
   ...
 }: {
-  options.aspects.programs.git.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.programs.git.enable = lib.mkEnableOption "git";
 
   config = lib.mkIf config.aspects.programs.git.enable {
     home-manager.users.jocelyn = _: {

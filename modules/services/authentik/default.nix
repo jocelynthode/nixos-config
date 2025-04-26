@@ -3,10 +3,7 @@
   lib,
   ...
 }: {
-  options.aspects.services.authentik.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.services.authentik.enable = lib.mkEnableOption "authentik";
 
   config = let
     definition = {

@@ -5,10 +5,7 @@
 }: let
   mkAuthProxy = import ../nginx/auth.nix {inherit lib;};
 in {
-  options.aspects.services.navidrome.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.services.navidrome.enable = lib.mkEnableOption "navidrome";
 
   config = lib.mkIf config.aspects.services.navidrome.enable {
     services.navidrome = {

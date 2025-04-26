@@ -3,10 +3,7 @@
   lib,
   ...
 }: {
-  options.aspects.services.calibre-web.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.services.calibre-web.enable = lib.mkEnableOption "calibre-web";
 
   config = lib.mkIf config.aspects.services.calibre-web.enable {
     aspects.base.persistence.systemPaths = [

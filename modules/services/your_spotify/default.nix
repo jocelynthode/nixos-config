@@ -3,10 +3,7 @@
   lib,
   ...
 }: {
-  options.aspects.services.your_spotify.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.services.your_spotify.enable = lib.mkEnableOption "your_spotify";
 
   config = lib.mkIf config.aspects.services.your_spotify.enable {
     services.your_spotify = {

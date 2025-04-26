@@ -5,10 +5,7 @@
   spicetify-nix,
   ...
 }: {
-  options.aspects.programs.spotify.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.programs.spotify.enable = lib.mkEnableOption "spotify";
 
   config = lib.mkIf config.aspects.programs.spotify.enable {
     aspects.base.persistence.homePaths = [

@@ -5,10 +5,7 @@
   ...
 }: {
   options = {
-    aspects.work.taxi.enable = lib.mkOption {
-      default = false;
-      example = true;
-    };
+    aspects.work.taxi.enable = lib.mkEnableOption "taxi";
   };
 
   config = lib.mkIf config.aspects.work.taxi.enable {

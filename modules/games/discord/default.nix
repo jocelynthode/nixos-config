@@ -4,10 +4,7 @@
   pkgs,
   ...
 }: {
-  options.aspects.games.discord.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.games.discord.enable = lib.mkEnableOption "discord";
 
   config = lib.mkIf config.aspects.games.discord.enable {
     aspects.base.persistence.homePaths = [

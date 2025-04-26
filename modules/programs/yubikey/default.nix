@@ -4,10 +4,7 @@
   pkgs,
   ...
 }: {
-  options.aspects.programs.yubikey.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.programs.yubikey.enable = lib.mkEnableOption "yubikey";
 
   config = lib.mkIf config.aspects.programs.yubikey.enable {
     services.udev.packages = with pkgs; [

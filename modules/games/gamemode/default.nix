@@ -4,10 +4,7 @@
   pkgs,
   ...
 }: {
-  options.aspects.games.gamemode.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.games.gamemode.enable = lib.mkEnableOption "gamemode";
 
   config = lib.mkIf config.aspects.games.gamemode.enable {
     programs.gamemode = {

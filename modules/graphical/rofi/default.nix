@@ -5,10 +5,7 @@
   ...
 }: {
   options.aspects.graphical.rofi = {
-    enable = lib.mkOption {
-      default = false;
-      example = true;
-    };
+    enable = lib.mkEnableOption "rofi";
 
     package = lib.mkOption {
       default = pkgs.rofi;

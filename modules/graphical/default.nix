@@ -25,10 +25,7 @@
   ];
 
   options.aspects.graphical = {
-    enable = lib.mkOption {
-      default = false;
-      example = true;
-    };
+    enable = lib.mkEnableOption "graphical";
 
     dpi = lib.mkOption {
       default = 100;

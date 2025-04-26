@@ -3,10 +3,7 @@
   lib,
   ...
 }: {
-  options.aspects.services.acme.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.services.acme.enable = lib.mkEnableOption "acme";
 
   config = lib.mkIf config.aspects.services.acme.enable {
     aspects.base.persistence.systemPaths = [

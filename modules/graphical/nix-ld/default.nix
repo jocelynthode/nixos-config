@@ -4,10 +4,7 @@
   config,
   ...
 }: {
-  options.aspects.graphical.nix-ld.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.graphical.nix-ld.enable = lib.mkEnableOption "nix-ld";
 
   config = lib.mkIf config.aspects.graphical.nix-ld.enable {
     services.envfs.enable = true;

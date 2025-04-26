@@ -4,11 +4,7 @@
   lib,
   ...
 }: {
-  options.aspects.base.virtualisation.enable = lib.mkOption {
-    description = "This machine is a QEMU guest";
-    readOnly = true;
-    type = lib.types.bool;
-  };
+  options.aspects.base.virtualisation.enable = lib.mkEnableOption "virtualisation";
 
   config =
     if !(options.virtualisation ? qemu)

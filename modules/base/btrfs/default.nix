@@ -4,15 +4,9 @@
   ...
 }: {
   options.aspects.base.btrfs = {
-    enable = lib.mkOption {
-      default = false;
-      example = true;
-    };
+    enable = lib.mkEnableOption "btrfs";
 
-    encrypted = lib.mkOption {
-      default = false;
-      example = true;
-    };
+    encrypted = lib.mkEnableOption "encrypted";
   };
 
   config = lib.mkIf config.aspects.base.btrfs.enable {

@@ -12,10 +12,7 @@
     ./rust
   ];
 
-  options.aspects.development.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.development.enable = lib.mkEnableOption "development";
 
   config = lib.mkIf config.aspects.development.enable {
     aspects = {

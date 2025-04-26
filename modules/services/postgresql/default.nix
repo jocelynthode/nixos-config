@@ -3,10 +3,7 @@
   lib,
   ...
 }: {
-  options.aspects.services.postgresql.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.services.postgresql.enable = lib.mkEnableOption "postgresql";
 
   config = lib.mkIf config.aspects.services.postgresql.enable {
     aspects.base.persistence.systemPaths = [

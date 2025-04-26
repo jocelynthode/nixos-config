@@ -4,10 +4,7 @@
   pkgs,
   ...
 }: {
-  options.aspects.development.containers.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.development.containers.enable = lib.mkEnableOption "containers";
 
   config = lib.mkIf config.aspects.development.containers.enable {
     virtualisation = {

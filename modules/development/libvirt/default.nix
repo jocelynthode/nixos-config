@@ -3,10 +3,7 @@
   lib,
   ...
 }: {
-  options.aspects.development.libvirt.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.development.libvirt.enable = lib.mkEnableOption "libvirt";
 
   config = lib.mkIf config.aspects.development.libvirt.enable {
     virtualisation.libvirtd = {

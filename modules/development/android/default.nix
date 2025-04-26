@@ -4,10 +4,7 @@
   pkgs,
   ...
 }: {
-  options.aspects.development.android.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.development.android.enable = lib.mkEnableOption "android";
 
   config = lib.mkIf config.aspects.development.android.enable {
     aspects.base.persistence.homePaths = [

@@ -4,10 +4,7 @@
   pkgs,
   ...
 }: {
-  options.aspects.programs.element.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.programs.element.enable = lib.mkEnableOption "element";
 
   config = lib.mkIf config.aspects.programs.element.enable {
     aspects.base.persistence.homePaths = [

@@ -4,10 +4,7 @@
   pkgs,
   ...
 }: {
-  options.aspects.development.qmk.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.development.qmk.enable = lib.mkEnableOption "qmk";
 
   config = lib.mkIf config.aspects.development.qmk.enable {
     services.udev = {

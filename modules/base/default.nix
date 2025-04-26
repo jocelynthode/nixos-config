@@ -29,10 +29,7 @@
       example = "22.05";
     };
 
-    allowReboot = lib.mkOption {
-      default = false;
-      example = true;
-    };
+    allowReboot = lib.mkEnableOption "allowReboot";
 
     theme = lib.mkOption {
       default = "dark";
@@ -77,6 +74,7 @@
     aspects.base = {
       btrfs.enable = lib.mkDefault true;
       persistence.enable = lib.mkDefault true;
+      nix.enableDirenv = lib.mkDefault true;
       fonts = lib.mkDefault {
         monospace = {
           family = "JetBrainsMono NFM";

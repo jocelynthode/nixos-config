@@ -4,10 +4,7 @@
   ...
 }: {
   options.aspects.base.persistence = {
-    enable = lib.mkOption {
-      default = false;
-      example = true;
-    };
+    enable = lib.mkEnableOption "persistence";
 
     persistPrefix = lib.mkOption {
       default = "/persist";

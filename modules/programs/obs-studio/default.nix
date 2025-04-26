@@ -4,10 +4,7 @@
   pkgs,
   ...
 }: {
-  options.aspects.programs.obs-studio.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.programs.obs-studio.enable = lib.mkEnableOption "obs-studio";
 
   config = lib.mkIf config.aspects.programs.obs-studio.enable {
     aspects.base.persistence.homePaths = [

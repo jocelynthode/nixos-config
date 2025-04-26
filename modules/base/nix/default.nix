@@ -17,10 +17,7 @@
   };
 in {
   options.aspects.base.nix = {
-    enableDirenv = lib.mkOption {
-      default = true;
-      example = false;
-    };
+    enableDirenv = lib.mkEnableOption "enableDirenv";
   };
 
   config = {

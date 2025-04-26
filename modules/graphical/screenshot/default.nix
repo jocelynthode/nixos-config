@@ -4,10 +4,7 @@
   pkgs,
   ...
 }: {
-  options.aspects.graphical.screenshot.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.graphical.screenshot.enable = lib.mkEnableOption "screenshot";
 
   config = lib.mkIf config.aspects.graphical.screenshot.enable {
     home-manager.users.jocelyn = _: {

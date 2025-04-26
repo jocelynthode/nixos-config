@@ -4,10 +4,7 @@
   ...
 }: {
   options = {
-    aspects.work.vpn.enable = lib.mkOption {
-      default = false;
-      example = true;
-    };
+    aspects.work.vpn.enable = lib.mkEnableOption "vpn";
   };
 
   config = lib.mkIf config.aspects.work.vpn.enable {

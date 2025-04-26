@@ -4,10 +4,7 @@
   lib,
   ...
 }: {
-  options.aspects.services.wireguard.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.services.wireguard.enable = lib.mkEnableOption "wireguard";
 
   config = lib.mkIf config.aspects.services.wireguard.enable {
     networking.firewall = {

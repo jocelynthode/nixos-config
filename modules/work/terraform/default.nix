@@ -5,10 +5,7 @@
   ...
 }: {
   options = {
-    aspects.work.terraform.enable = lib.mkOption {
-      default = false;
-      example = true;
-    };
+    aspects.work.terraform.enable = lib.mkEnableOption "terraform";
   };
 
   config = lib.mkIf config.aspects.work.terraform.enable {

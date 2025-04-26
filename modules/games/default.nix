@@ -13,10 +13,7 @@
     ./steam
   ];
 
-  options.aspects.games.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.games.enable = lib.mkEnableOption "games";
 
   config = lib.mkIf config.aspects.games.enable {
     aspects.games = {

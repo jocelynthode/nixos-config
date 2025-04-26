@@ -4,10 +4,7 @@
   pkgs,
   ...
 }: {
-  options.aspects.base.bluetooth.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.base.bluetooth.enable = lib.mkEnableOption "bluetooth";
 
   config = lib.mkIf config.aspects.base.bluetooth.enable {
     aspects.base.persistence.systemPaths = [

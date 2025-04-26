@@ -3,10 +3,7 @@
   lib,
   ...
 }: {
-  options.aspects.programs.yazi.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.programs.yazi.enable = lib.mkEnableOption "yazi";
 
   config = lib.mkIf config.aspects.programs.yazi.enable {
     home-manager.users.jocelyn = _: {

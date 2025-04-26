@@ -3,10 +3,7 @@
   lib,
   ...
 }: {
-  options.aspects.services.deluge.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.services.deluge.enable = lib.mkEnableOption "deluge";
 
   config = lib.mkIf config.aspects.services.deluge.enable {
     aspects.base.persistence.systemPaths = [

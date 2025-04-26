@@ -4,10 +4,7 @@
   pkgs,
   ...
 }: {
-  options.aspects.programs.calibre.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.programs.calibre.enable = lib.mkEnableOption "calibre";
 
   config = lib.mkIf config.aspects.programs.calibre.enable {
     aspects.base.persistence.homePaths = [

@@ -4,10 +4,7 @@
   pkgs,
   ...
 }: {
-  options.aspects.games.ryujinx.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.games.ryujinx.enable = lib.mkEnableOption "ryujinx";
 
   config = lib.mkIf config.aspects.games.ryujinx.enable {
     aspects.base.persistence.homePaths = [

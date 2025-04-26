@@ -3,10 +3,7 @@
   lib,
   ...
 }: {
-  options.aspects.services.radicale.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.services.radicale.enable = lib.mkEnableOption "radicale";
 
   config = lib.mkIf config.aspects.services.radicale.enable {
     aspects.base.persistence.systemPaths = [

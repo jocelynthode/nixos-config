@@ -4,10 +4,7 @@
   pkgs,
   ...
 }: {
-  options.aspects.graphical.terminal.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.graphical.terminal.enable = lib.mkEnableOption "terminal";
 
   config = lib.mkIf config.aspects.graphical.terminal.enable {
     home-manager.users.jocelyn = {osConfig, ...}: {

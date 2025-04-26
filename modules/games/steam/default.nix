@@ -4,10 +4,7 @@
   lib,
   ...
 }: {
-  options.aspects.games.steam.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.games.steam.enable = lib.mkEnableOption "steam";
 
   config = lib.mkIf config.aspects.games.steam.enable {
     aspects.base.persistence.homePaths = [

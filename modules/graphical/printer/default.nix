@@ -4,10 +4,7 @@
   pkgs,
   ...
 }: {
-  options.aspects.graphical.printer.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.graphical.printer.enable = lib.mkEnableOption "printer";
 
   config = lib.mkIf config.aspects.graphical.printer.enable {
     hardware.sane.enable = true;

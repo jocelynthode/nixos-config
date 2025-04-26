@@ -5,10 +5,7 @@
   ...
 }: {
   options = {
-    aspects.work.kubernetes.enable = lib.mkOption {
-      default = false;
-      example = true;
-    };
+    aspects.work.kubernetes.enable = lib.mkEnableOption "kubernetes";
   };
 
   config = lib.mkIf config.aspects.work.kubernetes.enable {

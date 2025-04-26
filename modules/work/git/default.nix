@@ -4,10 +4,7 @@
   ...
 }: {
   options = {
-    aspects.work.git.enable = lib.mkOption {
-      default = false;
-      example = true;
-    };
+    aspects.work.git.enable = lib.mkEnableOption "git";
   };
 
   config = lib.mkIf config.aspects.work.git.enable {

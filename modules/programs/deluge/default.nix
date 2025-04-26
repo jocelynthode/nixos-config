@@ -4,10 +4,7 @@
   pkgs,
   ...
 }: {
-  options.aspects.programs.deluge.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.programs.deluge.enable = lib.mkEnableOption "deluge";
 
   config = lib.mkIf config.aspects.programs.deluge.enable {
     aspects.base.persistence.homePaths = [

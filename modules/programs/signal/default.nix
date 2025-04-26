@@ -4,10 +4,7 @@
   pkgs,
   ...
 }: {
-  options.aspects.programs.signal.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.programs.signal.enable = lib.mkEnableOption "signal";
 
   config = lib.mkIf config.aspects.programs.signal.enable {
     aspects.base.persistence.homePaths = [

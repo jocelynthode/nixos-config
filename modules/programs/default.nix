@@ -23,10 +23,7 @@
     ./yubikey
   ];
 
-  options.aspects.programs.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.programs.enable = lib.mkEnableOption "programs";
 
   config = lib.mkIf config.aspects.programs.enable {
     aspects.programs = {

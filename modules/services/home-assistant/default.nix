@@ -6,10 +6,7 @@
 }: let
   mkAuthProxy = import ../nginx/auth.nix {inherit lib;};
 in {
-  options.aspects.services.home-assistant.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.services.home-assistant.enable = lib.mkEnableOption "home-assistant";
 
   config = lib.mkIf config.aspects.services.home-assistant.enable {
     aspects.base.persistence.systemPaths = [

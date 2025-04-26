@@ -4,10 +4,7 @@
   pkgs,
   ...
 }: {
-  options.aspects.programs.solaar.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.programs.solaar.enable = lib.mkEnableOption "solaar";
 
   config = lib.mkIf config.aspects.programs.solaar.enable {
     hardware.logitech.wireless.enable = true;

@@ -3,10 +3,7 @@
   lib,
   ...
 }: {
-  options.aspects.services.nginx.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.services.nginx.enable = lib.mkEnableOption "nginx";
 
   config = lib.mkIf config.aspects.services.nginx.enable {
     services.nginx = {

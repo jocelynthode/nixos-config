@@ -4,10 +4,7 @@
   pkgs,
   ...
 }: {
-  options.aspects.services.jellyfin.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.services.jellyfin.enable = lib.mkEnableOption "jellyfin";
 
   config = lib.mkIf config.aspects.services.jellyfin.enable {
     aspects.base.persistence.systemPaths = [

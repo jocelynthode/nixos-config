@@ -3,10 +3,7 @@
   lib,
   ...
 }: {
-  options.aspects.programs.gammastep.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.programs.gammastep.enable = lib.mkEnableOption "gammastep";
 
   config = lib.mkIf config.aspects.programs.gammastep.enable {
     services.geoclue2.enable = true;

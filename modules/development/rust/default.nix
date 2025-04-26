@@ -4,10 +4,7 @@
   pkgs,
   ...
 }: {
-  options.aspects.development.rust.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.development.rust.enable = lib.mkEnableOption "rust";
 
   config = lib.mkIf config.aspects.development.rust.enable {
     environment.systemPackages = with pkgs; [

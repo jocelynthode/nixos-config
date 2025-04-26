@@ -3,10 +3,7 @@
   lib,
   ...
 }: {
-  options.aspects.programs.htop.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.programs.htop.enable = lib.mkEnableOption "htop";
 
   config = lib.mkIf config.aspects.programs.htop.enable {
     home-manager.users.jocelyn = {config, ...}: {

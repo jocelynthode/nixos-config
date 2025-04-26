@@ -4,10 +4,7 @@
   pkgs,
   ...
 }: {
-  options.aspects.games.lutris.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.games.lutris.enable = lib.mkEnableOption "lutris";
 
   config = lib.mkIf config.aspects.games.lutris.enable {
     aspects.base.persistence.homePaths = [

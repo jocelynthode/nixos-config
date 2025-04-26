@@ -3,10 +3,7 @@
   lib,
   ...
 }: {
-  options.aspects.base.battery.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.base.battery.enable = lib.mkEnableOption "battery";
 
   config = lib.mkIf config.aspects.base.battery.enable {
     services = {

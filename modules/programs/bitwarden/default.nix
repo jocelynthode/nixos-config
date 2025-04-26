@@ -4,10 +4,7 @@
   pkgs,
   ...
 }: {
-  options.aspects.programs.bitwarden.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.programs.bitwarden.enable = lib.mkEnableOption "bitwarden";
 
   config = lib.mkIf config.aspects.programs.bitwarden.enable {
     aspects.base.persistence.homePaths = [

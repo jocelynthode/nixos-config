@@ -4,10 +4,7 @@
   pkgs,
   ...
 }: {
-  options.aspects.programs.taskwarrior.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.programs.taskwarrior.enable = lib.mkEnableOption "taskwarrior";
 
   config = lib.mkIf config.aspects.programs.taskwarrior.enable {
     aspects.base.persistence.homePaths = [

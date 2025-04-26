@@ -4,10 +4,7 @@
   pkgs,
   ...
 }: {
-  options.aspects.programs.lact.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.programs.lact.enable = lib.mkEnableOption "lact";
 
   config = lib.mkIf config.aspects.programs.lact.enable {
     aspects.base.persistence.systemPaths = [

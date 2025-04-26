@@ -8,10 +8,7 @@
     ./guitar
   ];
 
-  options.aspects.graphical.sound.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.graphical.sound.enable = lib.mkEnableOption "sound";
 
   config = lib.mkIf config.aspects.graphical.sound.enable {
     aspects.base.persistence.homePaths = [

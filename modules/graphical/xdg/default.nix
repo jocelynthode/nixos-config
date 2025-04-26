@@ -4,10 +4,7 @@
   pkgs,
   ...
 }: {
-  options.aspects.graphical.xdg.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.graphical.xdg.enable = lib.mkEnableOption "xdg";
 
   config = lib.mkIf config.aspects.graphical.xdg.enable {
     aspects.base.persistence.homePaths = [

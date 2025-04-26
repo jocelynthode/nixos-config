@@ -3,10 +3,7 @@
   lib,
   ...
 }: {
-  options.aspects.development.ollama.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.development.ollama.enable = lib.mkEnableOption "ollama";
 
   config = lib.mkIf config.aspects.development.ollama.enable {
     # aspects.base.persistence.homePaths = [

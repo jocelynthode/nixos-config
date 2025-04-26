@@ -3,10 +3,7 @@
   lib,
   ...
 }: {
-  options.aspects.services.redis.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.services.redis.enable = lib.mkEnableOption "redis";
 
   config = lib.mkIf config.aspects.services.redis.enable {
     aspects.base.persistence.systemPaths = [

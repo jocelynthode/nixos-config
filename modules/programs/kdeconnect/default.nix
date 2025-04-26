@@ -3,10 +3,7 @@
   lib,
   ...
 }: {
-  options.aspects.programs.kdeconnect.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.programs.kdeconnect.enable = lib.mkEnableOption "kdeconnect";
 
   config = lib.mkIf config.aspects.programs.kdeconnect.enable {
     aspects.base.persistence.homePaths = [

@@ -4,10 +4,7 @@
   lib,
   ...
 }: {
-  options.aspects.services.ddclient.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.services.ddclient.enable = lib.mkEnableOption "ddclient";
 
   config = lib.mkIf config.aspects.services.ddclient.enable {
     services.ddclient = {

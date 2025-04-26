@@ -4,10 +4,7 @@
   pkgs,
   ...
 }: {
-  options.aspects.graphical.theme.enable = lib.mkOption {
-    default = false;
-    example = true;
-  };
+  options.aspects.graphical.theme.enable = lib.mkEnableOption "theme";
 
   config = lib.mkIf config.aspects.graphical.theme.enable {
     fonts = {
