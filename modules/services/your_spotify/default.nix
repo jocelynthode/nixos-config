@@ -7,7 +7,7 @@
 
   config = lib.mkIf config.aspects.services.your_spotify.enable {
     services.your_spotify = {
-      enable = false;
+      enable = true;
       spotifySecretFile = config.sops.secrets.your_spotify.path;
       enableLocalDB = true;
       settings = {
