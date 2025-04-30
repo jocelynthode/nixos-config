@@ -11,8 +11,6 @@
       enable = true;
       shellAliases = {
         cat = "${pkgs.bat}/bin/bat";
-        ls = "${pkgs.lsd}/bin/lsd -l";
-        tree = "${pkgs.lsd}/bin/lsd --tree";
         find = "${pkgs.fd}/bin/fd";
         keti = "${pkgs.kubectl}/bin/kubectl exec -ti";
       };
