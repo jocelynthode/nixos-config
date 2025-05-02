@@ -29,7 +29,7 @@ in {
     services.gpg-agent = {
       enable = true;
       enableFishIntegration = true;
-      pinentryPackage = pinentry.package;
+      pinentry.package = pinentry.package;
       enableSshSupport = true;
       defaultCacheTtlSsh = 3600;
       defaultCacheTtl = 3600;
