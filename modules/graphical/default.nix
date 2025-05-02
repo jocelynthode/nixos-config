@@ -20,6 +20,7 @@
     ./terminal
     ./theme
     ./waybar
+    ./wleave
     ./wofi
     ./xdg
   ];
@@ -68,6 +69,10 @@
     hardware.graphics = {
       enable = true;
     };
+
+    programs.gdk-pixbuf.modulePackages = [
+      pkgs.librsvg
+    ];
 
     home-manager.users.jocelyn = _: {
       home.packages = with pkgs; [

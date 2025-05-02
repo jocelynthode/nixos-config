@@ -15,11 +15,6 @@
 
   config = lib.mkIf config.aspects.graphical.rofi.enable {
     home-manager.users.jocelyn = {osConfig, ...}: {
-      home.packages = with pkgs; [
-        rofi-power-menu
-        rofi-sound-chooser
-      ];
-
       catppuccin.rofi.enable = true;
       programs.rofi = {
         enable = true;
