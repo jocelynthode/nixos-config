@@ -6,8 +6,6 @@
   feathers = pkgs.callPackage ./core/feathers {};
 
   # Personal scripts
-  rofi-pulse = pkgs.callPackage ./core/rofi-pulse {};
-  rofi-ykman = pkgs.callPackage ./core/rofi-ykman {};
   toggle-bluetooth = pkgs.callPackage ./core/toggle-bluetooth {};
   fs-diff = pkgs.callPackage ./core/fs-diff {};
   dunst-notification-sound = pkgs.callPackage ./core/dunst-notification-sound {};

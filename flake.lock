@@ -687,7 +687,8 @@
         "sops-nix": "sops-nix",
         "spicetify-nix": "spicetify-nix",
         "taxi": "taxi",
-        "utils": "utils"
+        "utils": "utils",
+        "wofi-ykman": "wofi-ykman"
       }
     },
     "sops-nix": {
@@ -834,6 +835,29 @@
       "original": {
         "owner": "gytis-ivaskevicius",
         "repo": "flake-utils-plus",
+        "type": "github"
+      }
+    },
+    "wofi-ykman": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1746264831,
+        "narHash": "sha256-5aroPelTOeURa/WXTurJW40ViCHlPc8eJpjDE9tzvC4=",
+        "owner": "jocelynthode",
+        "repo": "wofi-ykman",
+        "rev": "970b1db0078e6c2293166e2ba63c6483236d21ce",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jocelynthode",
+        "repo": "wofi-ykman",
         "type": "github"
       }
     }

@@ -13,7 +13,6 @@
     ./nix-ld
     ./notification
     ./printer
-    ./rofi
     ./screenshot
     ./sound
     ./sway
@@ -54,7 +53,6 @@
         notification.enable = lib.mkDefault true;
         printer.enable = lib.mkDefault false;
         screenshot.enable = lib.mkDefault false;
-        rofi.enable = lib.mkDefault true;
         sound.enable = lib.mkDefault true;
         sway.enable = lib.mkDefault false;
         terminal.enable = lib.mkDefault true;

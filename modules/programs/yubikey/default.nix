@@ -16,7 +16,7 @@
     home-manager.users.jocelyn = _: {
       home.packages = with pkgs; [
         yubikey-manager
-        rofi-ykman
+        wofi-ykman
       ];
     };
   };

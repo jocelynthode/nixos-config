@@ -266,7 +266,7 @@
           bind = [
             "$mod,Return,exec,uwsm app -- ${pkgs.kitty}/bin/kitty"
             "$mod,n,exec,${pkgs.wofi}/bin/wofi -IS drun -W 40% -H 50%"
-            "$mod,a,exec,${pkgs.rofi-ykman}/bin/rofi-ykman"
+            "$mod,a,exec,${pkgs.wofi-ykman}/bin/wofi-ykman"
             "$mod,e,exec,${pkgs.wleave}/bin/wleave"
             ",XF86AudioMute,exec,${pkgs.pulseaudio}/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle"
             ",XF86AudioPlay,exec,${pkgs.playerctl}/bin/playerctl --player spotify play-pause"

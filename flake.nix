@@ -26,6 +26,13 @@
       url = "github:sephii/taxi";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    wofi-ykman = {
+      url = "github:jocelynthode/wofi-ykman";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+      };
+    };
     utils = {
       url = "github:gytis-ivaskevicius/flake-utils-plus";
       inputs.flake-utils.follows = "flake-utils";
@@ -62,6 +69,7 @@
     spicetify-nix,
     nix-index-database,
     nixvim,
+    wofi-ykman,
     ...
   }:
     utils.lib.mkFlake {
@@ -71,6 +79,7 @@
       sharedOverlays = [
         nur.overlays.default
         taxi.overlay
+        wofi-ykman.overlays.default
         (import ./overlay {inherit inputs;})
       ];
       hostDefaults = {
@@ -92,9 +101,7 @@
         with channels.nixpkgs; {
           formatter = alejandra;
           packages = {
-            inherit
-              proton-ge-custom
-              ;
+            inherit proton-ge-custom;
           };
         };
 

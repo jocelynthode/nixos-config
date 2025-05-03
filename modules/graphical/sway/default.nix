@@ -250,7 +250,7 @@
             "${mod}+i" = "layout stacking";
             "${mod}+u" = "layout toggle split";
             "${mod}+n" = "exec ${menu}";
-            "${mod}+a" = "exec ${pkgs.rofi-ykman}/bin/rofi-ykman";
+            "${mod}+a" = "exec ${pkgs.wofi-ykman}/bin/wofi-ykman";
             "${mod}+e" = "exec ${pkgs.wleave}/bin/wleave";
             "${mod}+Shift+a" = "exec ${pkgs.dunst}/bin/dunstctl context";
             "${mod}+Shift+space" = "floating toggle";
