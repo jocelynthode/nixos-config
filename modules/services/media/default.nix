@@ -39,21 +39,20 @@
   ];
 
   persistencePaths =
-    lib.concatMap (
-      service: [
-        {
-          directory = "/var/lib/${service.name}";
-          user = service.name;
-          group = service.name;
-        }
-        {
-          directory = "/var/backup/${service.name}";
-          user = service.name;
-          group = service.name;
-        }
-      ]
-    )
-    mediaServices;
+    lib.concatMap
+    (service: [
+      {
+        directory = "/var/lib/${service.name}";
+        user = service.name;
+        group = service.name;
+      }
+      {
+        directory = "/var/backup/${service.name}";
+        user = service.name;
+        group = service.name;
+      }
+    ])
+    (lib.filter (service: service.delugeAccess) mediaServices);
 
   serviceConfigs = lib.listToAttrs (map (
       service: {
