@@ -31,8 +31,28 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
 
+  nixpkgs.config.packageOverrides = pkgs: {
+    vaapiIntel = pkgs.vaapiIntel.override {enableHybridCodec = true;};
+  };
+
   hardware = {
     enableRedistributableFirmware = true;
+    graphics = {
+      enable = true;
+      extraPackages = with pkgs; [
+        intel-media-driver
+        intel-vaapi-driver # previously vaapiIntel
+        vaapiVdpau
+        libvdpau-va-gl
+        intel-compute-runtime # OpenCL filter support (hardware tonemapping and subtitle burn-in)
+        intel-media-sdk # QSV up to 11th gen
+      ];
+    };
+  };
+
+  environment.variables = {
+    LIBVA_DRIVER_NAME = "i965";
+    LIBVA_DRIVERS_PATH = "${pkgs.intel-vaapi-driver}/lib/dri";
   };
 
   services.logind = {

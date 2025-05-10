@@ -19,6 +19,11 @@
       openFirewall = true;
     };
 
+    users.users.jellyfin = {
+      isSystemUser = true;
+      extraGroups = ["video"];
+    };
+
     environment.systemPackages = [
       pkgs.jellyfin
       pkgs.jellyfin-web
