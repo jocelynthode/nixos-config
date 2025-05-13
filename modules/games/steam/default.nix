@@ -16,50 +16,43 @@
     programs.steam = {
       enable = true;
       package = pkgs.steam.override {
-        extraPkgs = pkgs:
-          with pkgs; [
-            libkrb5
-            keyutils
-          ];
+        extraEnv = {
+          OBS_VKCAPTURE = true;
+        };
       };
-      # package = pkgs.steam.override {
-      #   extraLibraries = p:
-      #     with p; [
-      #     ];
-      # };
       remotePlay.openFirewall = true;
+      protontricks.enable = true;
       gamescopeSession = {
         enable = true;
         args = [
-          "--output-width 2560"
-          "--output-height 1440"
+          "--nested-width 2560"
+          "--nested-height 1440"
           "--nested-refresh 144"
+          "--force-grab-cursor"
+          "--grab"
           "--fullscreen"
         ];
       };
+      extraCompatPackages = with pkgs; [
+        pkgs.proton-ge-custom
+      ];
     };
 
     hardware.xone.enable = true;
 
     programs.gamescope = {
       enable = true;
-      capSysNice = true;
+      # capSysNice = true;
       args = [
-        "-r 144"
+        "--nested-width 2560"
+        "--nested-height 1440"
+        "--nested-refresh 144"
+        "--force-grab-cursor"
+        "--grab"
+        "--fullscreen"
       ];
     };
 
     hardware.steam-hardware.enable = true;
-
-    environment.systemPackages = with pkgs; [
-      protontricks
-      mangohud
-    ];
-
-    home-manager.users.jocelyn = _: {
-      home.sessionVariables = {
-        STEAM_EXTRA_COMPAT_TOOLS_PATHS = "${pkgs.proton-ge-custom}";
-      };
-    };
   };
 }
