@@ -17,9 +17,5 @@
   });
 
   devenv = inputs.devenv.packages.${final.system}.default;
-
-  proton-ge-custom = prev.pkgs.callPackage ../pkgs/core/proton-ge-custom {};
-
-  mm-server-ui = prev.pkgs.callPackage ../pkgs/services/media-homepage {};
 }
 // import ../pkgs {pkgs = final;}

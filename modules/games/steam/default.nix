@@ -33,8 +33,8 @@
           "--fullscreen"
         ];
       };
-      extraCompatPackages = with pkgs; [
-        pkgs.proton-ge-custom
+      extraCompatPackages = [
+        pkgs.proton-ge-bin
       ];
     };
 
