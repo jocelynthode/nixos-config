@@ -17,6 +17,8 @@
       withUWSM = true;
     };
 
+    programs.xwayland.enable = true;
+
     environment.systemPackages = with pkgs; [
       qt5.qtwayland
       qt6.qtwayland

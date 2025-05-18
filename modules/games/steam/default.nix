@@ -18,6 +18,8 @@
       package = pkgs.steam.override {
         extraEnv = {
           OBS_VKCAPTURE = true;
+          XKB_DEFAULT_LAYOUT = config.services.xserver.xkb.layout;
+          XKB_DEFAULT_VARIANT = config.services.xserver.xkb.variant;
         };
       };
       remotePlay.openFirewall = true;
@@ -29,7 +31,6 @@
           "--nested-height 1440"
           "--nested-refresh 144"
           "--force-grab-cursor"
-          "--grab"
           "--fullscreen"
         ];
       };
@@ -48,7 +49,6 @@
         "--nested-height 1440"
         "--nested-refresh 144"
         "--force-grab-cursor"
-        "--grab"
         "--fullscreen"
       ];
     };
