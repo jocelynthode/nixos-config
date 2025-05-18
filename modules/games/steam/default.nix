@@ -29,7 +29,6 @@
         args = [
           "--nested-width 2560"
           "--nested-height 1440"
-          "--nested-refresh 144"
           "--force-grab-cursor"
           "--fullscreen"
         ];
@@ -47,7 +46,6 @@
       args = [
         "--nested-width 2560"
         "--nested-height 1440"
-        "--nested-refresh 144"
         "--force-grab-cursor"
         "--fullscreen"
       ];
