@@ -29,6 +29,7 @@
         kubectl-view-secret
         # kubectl-get-all
         kubectl-neat
+        kubectl-cnpg
         openshift
         krew
       ];
