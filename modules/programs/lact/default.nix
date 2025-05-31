@@ -24,7 +24,10 @@
 
     programs.corectrl = {
       enable = true;
-      gpuOverclock = {
+    };
+
+    hardware.amdgpu = {
+      overdrive = {
         enable = true;
         ppfeaturemask = "0xffffffff";
       };
