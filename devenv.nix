@@ -7,12 +7,13 @@
 
   languages.nix.enable = true;
 
-  pre-commit.hooks = {
+  git-hooks.hooks = {
     actionlint.enable = true;
     alejandra.enable = true;
-    deadnix.enable = true;
+    deadnix = {
+      enable = true;
+      settings.edit = true;
+    };
     statix.enable = true;
   };
-
-  pre-commit.hooks.deadnix.settings.edit = true;
 }
