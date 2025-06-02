@@ -9,7 +9,7 @@
     };
     kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [
-      "resume_offset=533881"
+      # "resume_offset=533881"
       "mitigations=off"
       "video=DP-1:2560x1440@144"
       "video=HDMI-A-1:1920x1080@60"

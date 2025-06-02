@@ -20,12 +20,12 @@
             text = "Lock";
             keybind = "l";
           }
-          {
-            label = "hibernate";
-            action = "systemctl hibernate";
-            text = "Hibernate";
-            keybind = "h";
-          }
+          # {
+          #   label = "hibernate";
+          #   action = "systemctl hibernate";
+          #   text = "Hibernate";
+          #   keybind = "h";
+          # }
           {
             label = "logout";
             action = "loginctl terminate-user $USER";

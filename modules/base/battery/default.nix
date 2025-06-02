@@ -38,8 +38,8 @@
       "/var/lib/upower"
     ];
 
-    systemd.sleep.extraConfig = ''
-      HibernateDelaySec=30min
-    '';
+    # systemd.sleep.extraConfig = ''
+    #   HibernateDelaySec=30min
+    # '';
   };
 }
