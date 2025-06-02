@@ -50,6 +50,10 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    chaotic = {
+      url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -70,6 +74,7 @@
     nix-index-database,
     nixvim,
     wofi-ykman,
+    chaotic,
     ...
   }:
     utils.lib.mkFlake {
@@ -109,6 +114,7 @@
             hardware.nixosModules.common-cpu-amd
             hardware.nixosModules.common-pc-ssd
             hardware.nixosModules.common-gpu-amd
+            chaotic.nixosModules.default
           ];
           specialArgs = {
             inherit nix-colors spicetify-nix catppuccin nixvim;

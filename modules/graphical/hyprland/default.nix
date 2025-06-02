@@ -172,7 +172,7 @@
           settings = {
             general = {
               lock_cmd = "pidof hyprlock || hyprlock -q";
-              # before_sleep_cmd = "loginctl lock-session";
+              before_sleep_cmd = "loginctl lock-session";
               after_sleep_cmd = "hyprctl dispatch dpms on";
               ignore_dbus_inhibit = false;
               ignore_systemd_inhibit = false;
