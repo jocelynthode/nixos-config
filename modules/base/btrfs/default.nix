@@ -19,7 +19,7 @@
     };
 
     boot = {
-      supportedFilesystems = ["ntfs"];
+      supportedFilesystems = ["btrfs"];
       tmp = {
         useTmpfs = true;
         tmpfsSize = "20%";
@@ -38,6 +38,7 @@
       initrd = {
         postDeviceCommands = lib.mkBefore ''
           mkdir -p /mnt
+          btrfs device scan
           mount -o subvol=/ /dev/disk/by-label/${config.networking.hostName} /mnt
           echo "Cleaning subvolume"
           btrfs subvolume list -o /mnt/@ | cut -f9 -d ' ' |
