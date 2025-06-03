@@ -59,56 +59,58 @@
         };
       };
       resumeDevice = "/dev/disk/by-label/${config.networking.hostName}";
-      kernel.sysctl = {
+      kernel.sysctl = lib.optionalAttrs (builtins.length config.swapDevices > 0) {
         "vm.swappiness" = 10;
       };
     };
 
-    fileSystems = {
-      "/" = {
-        device = "/dev/disk/by-label/${config.networking.hostName}";
-        fsType = "btrfs";
-        options = ["defaults" "noatime" "compress=zstd:1" "discard=async" "subvol=@"];
-      };
+    fileSystems =
+      {
+        "/" = {
+          device = "/dev/disk/by-label/${config.networking.hostName}";
+          fsType = "btrfs";
+          options = ["defaults" "noatime" "compress=zstd:1" "discard=async" "subvol=@"];
+        };
 
-      "/var/log" = {
-        device = "/dev/disk/by-label/${config.networking.hostName}";
-        fsType = "btrfs";
-        options = ["defaults" "noatime" "compress=zstd:1" "discard=async" "subvol=@log"];
-        neededForBoot = true;
-      };
+        "/var/log" = {
+          device = "/dev/disk/by-label/${config.networking.hostName}";
+          fsType = "btrfs";
+          options = ["defaults" "noatime" "compress=zstd:1" "discard=async" "subvol=@log"];
+          neededForBoot = true;
+        };
 
-      "/nix" = {
-        device = "/dev/disk/by-label/${config.networking.hostName}";
-        fsType = "btrfs";
-        options = ["defaults" "noatime" "compress=zstd:1" "discard=async" "subvol=@nix"];
-      };
+        "/nix" = {
+          device = "/dev/disk/by-label/${config.networking.hostName}";
+          fsType = "btrfs";
+          options = ["defaults" "noatime" "compress=zstd:1" "discard=async" "subvol=@nix"];
+        };
 
-      "${config.aspects.base.persistence.persistPrefix}" = {
-        device = "/dev/disk/by-label/${config.networking.hostName}";
-        fsType = "btrfs";
-        options = ["defaults" "noatime" "compress=zstd:1" "discard=async" "subvol=@persist"];
-        neededForBoot = true;
-      };
+        "${config.aspects.base.persistence.persistPrefix}" = {
+          device = "/dev/disk/by-label/${config.networking.hostName}";
+          fsType = "btrfs";
+          options = ["defaults" "noatime" "compress=zstd:1" "discard=async" "subvol=@persist"];
+          neededForBoot = true;
+        };
 
-      "${config.aspects.base.persistence.persistPrefix}/.snapshots" = {
-        device = "/dev/disk/by-label/${config.networking.hostName}";
-        fsType = "btrfs";
-        options = ["defaults" "noatime" "compress=zstd:1" "discard=async" "subvol=@snapshots"];
-        neededForBoot = true;
-      };
+        "${config.aspects.base.persistence.persistPrefix}/.snapshots" = {
+          device = "/dev/disk/by-label/${config.networking.hostName}";
+          fsType = "btrfs";
+          options = ["defaults" "noatime" "compress=zstd:1" "discard=async" "subvol=@snapshots"];
+          neededForBoot = true;
+        };
 
-      "/swap" = {
-        device = "/dev/disk/by-label/${config.networking.hostName}";
-        fsType = "btrfs";
-        options = ["defaults" "noatime" "compress=zstd:1" "discard=async" "subvol=@swap"];
+        "/boot/efi" = {
+          device = "/dev/disk/by-label/EFI";
+          fsType = "vfat";
+          options = ["defaults" "noatime"];
+        };
+      }
+      // lib.optionalAttrs (builtins.length config.swapDevices > 0) {
+        "/swap" = {
+          device = "/dev/disk/by-label/${config.networking.hostName}";
+          fsType = "btrfs";
+          options = ["defaults" "noatime" "compress=zstd:1" "discard=async" "subvol=@swap"];
+        };
       };
-
-      "/boot/efi" = {
-        device = "/dev/disk/by-label/EFI";
-        fsType = "vfat";
-        options = ["defaults" "noatime"];
-      };
-    };
   };
 }
