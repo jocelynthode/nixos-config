@@ -248,6 +248,10 @@
             "uwsm app -- spotify"
             "uwsm app -- steam"
           ];
+          ecosystem = {
+            no_update_news = true;
+            no_donation_nag = true;
+          };
           group = {
             "col.border_active" = "$accent";
             "col.border_inactive" = "$base";
@@ -324,13 +328,13 @@
             "workspace 4 silent,class:steamwebhelper"
             "workspace 7 silent,class:Slack"
             "workspace 7 silent,class:vesktop"
-            "workspace 7 silent,class:Mumble"
-            "workspace 7 silent,class:Signal"
-            "workspace 8 silent,title:^(Spotify)$"
+            "workspace 7 silent,class:info.mumble.Mumble"
+            "workspace 10 silent,class:signal"
+            "workspace 8 silent,class:spotify"
             "workspace 9 silent,class:Bitwarden"
-            "opacity 0.85 0.85,title:^(Spotify)$"
+            "opacity 0.85 0.85,class:spotify"
             "opacity 0.85 0.85,class:kitty"
-            "tile,title:^(Spotify)$"
+            "tile,class:spotify"
             "float,title:^(Firefox — Sharing Indicator)$"
             "float,title:^(Proton VPN)$"
             "pin,title:^(Firefox — Sharing Indicator)$"
