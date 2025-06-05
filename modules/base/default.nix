@@ -206,7 +206,7 @@
 
     console = {
       earlySetup = true;
-      font = "ter-powerline-v24b";
+      font = "${pkgs.powerline-fonts}/share/consolefonts/ter-powerline-v32b.psf.gz";
       packages = [
         pkgs.terminus_font
         pkgs.powerline-fonts
