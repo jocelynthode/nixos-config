@@ -52,6 +52,16 @@
             ];
             exec = [
               "${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --primary --mode 2560x1440 --pos 1920x0 --right-of HDMI-A-1"
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor 1 DP-1"
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor 2 DP-1"
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor 3 DP-1"
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor 4 DP-1"
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor 5 DP-1"
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor 6 HDMI-A-1"
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor 7 HDMI-A-1"
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor 8 HDMI-A-1"
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor 9 HDMI-A-1"
+              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor 10 HDMI-A-1"
             ];
           };
         }
