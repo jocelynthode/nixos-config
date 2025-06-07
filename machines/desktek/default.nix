@@ -21,7 +21,21 @@
       wallpaper = "water";
       printer.enable = true;
       sway.enable = false;
-      hyprland.enable = true;
+      hyprland = {
+        enable = true;
+        workspace = [
+          "1,monitor:DP-1,default:true"
+          "2,monitor:DP-1"
+          "3,monitor:DP-1"
+          "4,monitor:DP-1"
+          "5,monitor:DP-1"
+          "6,monitor:HDMI-A-1,default:true"
+          "7,monitor:HDMI-A-1"
+          "8,monitor:HDMI-A-1"
+          "9,monitor:HDMI-A-1"
+          "10,monitor:HDMI-A-1"
+        ];
+      };
       kanshi.settings = [
         {
           profile = {

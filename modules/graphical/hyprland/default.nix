@@ -6,6 +6,22 @@
 }: {
   options.aspects.graphical.hyprland = {
     enable = lib.mkEnableOption "hyprland";
+    workspace = lib.mkOption {
+      default = [];
+      example = [
+        "1,monitor:DP-1,default:true"
+        "2,monitor:DP-1"
+      ];
+    };
+    monitor = lib.mkOption {
+      default = [
+        ",highres,auto,auto"
+      ];
+      example = [
+        ",highres,auto,auto"
+        "eDP-1,highres,auto,1.33333"
+      ];
+    };
   };
 
   config = lib.mkIf config.aspects.graphical.hyprland.enable {
@@ -346,24 +362,7 @@
             "idleinhibit fullscreen, title:^(*)$"
             "idleinhibit fullscreen, fullscreen:1"
           ];
-          workspace = [
-            "1,monitor:DP-1,default:true"
-            "2,monitor:DP-1"
-            "3,monitor:DP-1"
-            "4,monitor:DP-1"
-            "5,monitor:DP-1"
-            "6,monitor:HDMI-A-1,default:true"
-            "7,monitor:HDMI-A-1"
-            "8,monitor:HDMI-A-1"
-            "9,monitor:HDMI-A-1"
-            "10,monitor:HDMI-A-1"
-          ];
-          monitor = [
-            ",highres,auto,auto"
-            "eDP-1,highres,auto,1.33333"
-            "DP-4,highres,0x1956,1.5"
-            "DP-3,highres,0x1440,1.5"
-          ];
+          inherit (osConfig.aspects.graphical.hyprland) workspace monitor;
         };
       };
     };
