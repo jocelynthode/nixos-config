@@ -11,6 +11,7 @@
     ./mumble
     ./ryujinx
     ./steam
+    ./sunshine
   ];
 
   options.aspects.games.enable = lib.mkEnableOption "games";
@@ -24,6 +25,7 @@
       mumble.enable = lib.mkDefault true;
       ryujinx.enable = lib.mkDefault false;
       steam.enable = lib.mkDefault true;
+      sunshine.enable = lib.mkDefault false;
     };
   };
 }
