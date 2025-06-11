@@ -26,7 +26,6 @@
         monitor = [
           "HDMI-A-1,highres,0x0,auto"
           "DP-1,highres,1920x0,auto"
-          "HEADLESS,2560x1600@60,0x0,1"
         ];
         workspace = [
           "1,monitor:DP-1,default:true"

@@ -28,9 +28,10 @@
         enable = true;
         args = [
           "--nested-width 2560"
-          "--nested-height 1440"
+          "--nested-height 1600"
+          "--nested-refresh 60"
           "--force-grab-cursor"
-          "--fullscreen"
+          "--grab"
         ];
       };
       extraCompatPackages = [
@@ -46,8 +47,8 @@
       args = [
         "--nested-width 2560"
         "--nested-height 1440"
+        "--nested-refresh 144"
         "--force-grab-cursor"
-        "--fullscreen"
       ];
     };
 

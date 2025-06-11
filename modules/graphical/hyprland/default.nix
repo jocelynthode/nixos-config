@@ -237,6 +237,11 @@
           cursor = {
             inactive_timeout = 0;
           };
+          # https://github.com/ValveSoftware/gamescope/issues/1825#issuecomment-2883202415
+          debug = {
+            full_cm_proto = true;
+            # disable_logs = false;
+          };
           dwindle = {
             force_split = 2;
             preserve_split = true;
@@ -358,8 +363,8 @@
             "noanim,class:^(xwaylandvideobridge)$"
             "nofocus,class:^(xwaylandvideobridge)$"
             "noinitialfocus,class:^(xwaylandvideobridge)$"
-            "idleinhibit fullscreen, class:^(*)$"
-            "idleinhibit fullscreen, title:^(*)$"
+            "idleinhibit fullscreen, class:^(.*)$"
+            "idleinhibit fullscreen, title:^(.*)$"
             "idleinhibit fullscreen, fullscreen:1"
           ];
           inherit (osConfig.aspects.graphical.hyprland) workspace monitor;

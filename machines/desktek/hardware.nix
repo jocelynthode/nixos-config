@@ -23,9 +23,11 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
   hardware.enableRedistributableFirmware = true;
-  # hardware.amdgpu.amdvlk = true;
+  hardware.amdgpu = {
+    amdvlk.enable = false;
+    opencl.enable = false;
+  };
 
-  hardware.amdgpu.opencl.enable = false;
   chaotic = {
     nyx.cache.enable = true;
     mesa-git.enable = true;
