@@ -29,5 +29,16 @@
       pkgs.jellyfin-web
       pkgs.jellyfin-ffmpeg
     ];
+
+    services.nginx.virtualHosts."stream.tekila.ovh" = {
+      forceSSL = true;
+      enableACME = true;
+      locations = {
+        "/" = {
+          proxyPass = "http://127.0.0.1:8096";
+          proxyWebsockets = true;
+        };
+      };
+    };
   };
 }
