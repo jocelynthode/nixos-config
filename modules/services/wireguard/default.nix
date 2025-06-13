@@ -1,4 +1,5 @@
 {
+  pkgs,
   config,
   lib,
   ...
@@ -49,7 +50,15 @@
           wg0 = {
             ips = ["10.100.0.1/24"];
             listenPort = 51820;
-            # publicekey: SpDNvpxroin151zzOzVhtJBUOfU9X5HnbtypZvJqJCo=
+            postSetup = ''
+              ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.100.0.0/24 -o ${config.networking.nat.externalInterface} -j MASQUERADE
+            '';
+
+            # This undoes the above command
+            postShutdown = ''
+              ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o ${config.networking.nat.externalInterface} -j MASQUERADE
+            '';
+            # publicKey: SpDNvpxroin151zzOzVhtJBUOfU9X5HnbtypZvJqJCo=
             privateKeyFile = config.sops.secrets."wireguard/privateServerKey".path;
             peers = [
               {
