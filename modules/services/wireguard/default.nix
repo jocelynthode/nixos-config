@@ -66,6 +66,11 @@
                 publicKey = "SpDNvpxroin151zzOzVhtJBUOfU9X5HnbtypZvJqJCo=";
                 allowedIPs = ["10.100.0.2/32"];
               }
+              {
+                # Steamdeck
+                publicKey = "AET47zgzMVwu0Zkj7XoHeCAm7N1q+hLRmfa02yzd13c=";
+                allowedIPs = ["10.100.0.3/32"];
+              }
             ];
           };
         };
