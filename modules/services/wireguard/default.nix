@@ -58,12 +58,12 @@
             postShutdown = ''
               ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o ${config.networking.nat.externalInterface} -j MASQUERADE
             '';
-            # publicKey: SpDNvpxroin151zzOzVhtJBUOfU9X5HnbtypZvJqJCo=
+            # publicKey: Eq2xPRHp2sLRDaHR2ARHiMCR5oDWGxHeOrVlxI8LORo=
             privateKeyFile = config.sops.secrets."wireguard/privateServerKey".path;
             peers = [
               {
                 # Phone
-                publicKey = "Tn3W3R6ShdFPgsAGCDU6CQY2/kimfXS8jAItnNjZ7kU=";
+                publicKey = "SpDNvpxroin151zzOzVhtJBUOfU9X5HnbtypZvJqJCo=";
                 allowedIPs = ["10.100.0.2/32"];
               }
             ];
