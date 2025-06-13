@@ -261,11 +261,11 @@
             };
           };
           exec = [
-            "hyprctl switchxkblayout current 1"
+            "${pkgs.hyprland}/bin/hyprctl switchxkblayout current 1"
           ];
           exec-once = [
             "uwsm app -- firefox"
-            "uwsm app -- signal"
+            "uwsm app -- signal-desktop"
             "uwsm app -- spotify"
             "uwsm app -- steam"
           ];
