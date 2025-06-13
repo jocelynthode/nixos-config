@@ -43,7 +43,7 @@
         postgresql.enable = lib.mkDefault true;
         radicale.enable = lib.mkDefault true;
         redis.enable = lib.mkDefault true;
-        wireguard.enable = lib.mkDefault false;
+        wireguard.enable = lib.mkDefault true;
         your_spotify.enable = lib.mkDefault true;
       };
     };
