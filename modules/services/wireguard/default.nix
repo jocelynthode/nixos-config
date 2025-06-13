@@ -52,15 +52,15 @@
           };
           wg1 = {
             ips = ["10.2.0.2/32"];
-            table = "proton";
+            table = "51821";
             privateKeyFile = config.sops.secrets."wireguard/privateProtonKey".path;
             preShutdown = [
-              "${pkgs.iproute2}/bin/ip rule del from 10.2.0.2/32 table proton"
-              "${pkgs.iproute2}/bin/ip rule del to 10.2.0.1/32 table proton"
+              "${pkgs.iproute2}/bin/ip rule del from 10.2.0.2/32 table 51821"
+              "${pkgs.iproute2}/bin/ip rule del to 10.2.0.1/32 table 51821"
             ];
             postSetup = [
-              "${pkgs.iproute2}/bin/ip rule add from 10.2.0.2/32 table proton"
-              "${pkgs.iproute2}/bin/ip rule add to 10.2.0.1/32 table proton"
+              "${pkgs.iproute2}/bin/ip rule add from 10.2.0.2/32 table 51821"
+              "${pkgs.iproute2}/bin/ip rule add to 10.2.0.1/32 table 51821"
             ];
             peers = [
               {
