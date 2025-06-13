@@ -77,9 +77,8 @@
             ];
           };
           wg1 = {
-            address = ["10.2.0.2/32"];
+            ips = ["10.2.0.2/32"];
             table = "proton";
-            dns = ["10.2.0.1"];
             privateKeyFile = config.sops.secrets."wireguard/privateProtonKey".path;
             preShutdown = [
               "${pkgs.iproute2}/bin/ip rule del from 10.2.0.2/32 table proton"
