@@ -6,7 +6,6 @@
   options.aspects.services.wireguard.enable = lib.mkEnableOption "wireguard";
 
   config = lib.mkIf config.aspects.services.wireguard.enable {
-    boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
     # networking.wg-quick.interfaces = {
     #   wg0 = {
     #     address = ["10.2.0.2/32"];
