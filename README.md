@@ -17,19 +17,24 @@ git clone https://github.com/jocelynthode/nixos-config
 cd nixos-config
 ```
 
-5. Run bootstrap.sh
+5. Run disko
 
 ```bash
-nix develop
-# This will wipe the disk and create a bootloader
-./bootstrap.sh [--encrypt-root] --hostname=<hostname> --disk=/dev/to/disk
+disko --mode destroy,format,mount --flake .#<hostname>
 ```
 
 7. Setup new age key if needed
 
+```bash
+# add the results to .sops.yaml
+cat /persist/etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age
+
+```
+
 8. Rekey your secrets
 
 ```bash
+
 sops updatekeys secrets/common/secrets.yaml
 sops updatekeys secrets/servetek/secrets.yaml
 ```
@@ -61,14 +66,6 @@ sudo nixos-rebuild switch --flake github:jocelynthode/nixos-config
 ```bash
 nix develop
 # Then create file
-sops hosts/common/secrets.yaml
-```
-
-## Rekey files after new users and/or host
-
-```bash
-nix develop
-cat /persist/etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age'
 sops hosts/common/secrets.yaml
 ```
 

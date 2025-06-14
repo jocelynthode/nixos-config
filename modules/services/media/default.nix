@@ -46,11 +46,6 @@
         user = service.name;
         group = service.name;
       }
-      {
-        directory = "/var/backup/${service.name}";
-        user = service.name;
-        group = service.name;
-      }
     ])
     (lib.filter (service: service.delugeAccess) mediaServices);
 

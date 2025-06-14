@@ -12,11 +12,6 @@
         user = "postgres";
         group = "postgres";
       }
-      {
-        directory = "/var/backup/postgresql";
-        user = "postgres";
-        group = "postgres";
-      }
     ];
     services.postgresql = {
       enable = true;
@@ -24,7 +19,7 @@
 
     services.postgresqlBackup = {
       enable = true;
-      location = "/var/backup/postgresql";
+      location = "/srv/backup/postgresql";
       startAt = "*-*-* 11:15:00"; # Before restic at 12:00:00
       databases = config.services.postgresql.ensureDatabases;
     };
