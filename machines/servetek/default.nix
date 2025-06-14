@@ -14,7 +14,6 @@
         };
       };
     };
-    development.containers.enable = true;
     programs = {
       htop.enable = true;
       yazi = {

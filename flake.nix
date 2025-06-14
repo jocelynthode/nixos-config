@@ -54,6 +54,10 @@
       url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    authentik-nix = {
+      url = "github:nix-community/authentik-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -75,6 +79,7 @@
     nixvim,
     wofi-ykman,
     chaotic,
+    authentik-nix,
     ...
   }:
     utils.lib.mkFlake {
@@ -96,6 +101,7 @@
           catppuccin.nixosModules.catppuccin
           nix-index-database.nixosModules.nix-index
           nixvim.nixosModules.nixvim
+          authentik-nix.nixosModules.default
           ./modules
         ];
       };
