@@ -19,6 +19,8 @@
       openFirewall = true;
     };
 
+    systemd.services.jellyfin.environment.LIBVA_DRIVER_NAME = "iHD";
+
     users.users.jellyfin = {
       isSystemUser = true;
       extraGroups = ["video"];

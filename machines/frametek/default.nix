@@ -1,5 +1,8 @@
 {pkgs, ...}: {
-  imports = [./hardware.nix];
+  imports = [
+    ./disko.nix
+    ./hardware.nix
+  ];
 
   # Machine-specific module settings
   aspects = {
@@ -7,6 +10,7 @@
     base = {
       battery.enable = true;
       bluetooth.enable = true;
+      fileSystems.btrfs.encrypted = true;
     };
     development.enable = true;
     games.enable = false;

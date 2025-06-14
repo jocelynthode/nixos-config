@@ -3,6 +3,8 @@
     git
     sops
     ssh-to-age
+    disko
+    nixos-anywhere
   ];
 
   languages.nix.enable = true;

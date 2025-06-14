@@ -50,8 +50,8 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    chaotic = {
-      url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    disko = {
+      url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -74,7 +74,7 @@
     nix-index-database,
     nixvim,
     wofi-ykman,
-    chaotic,
+    disko,
     ...
   }:
     utils.lib.mkFlake {
@@ -96,6 +96,7 @@
           catppuccin.nixosModules.catppuccin
           nix-index-database.nixosModules.nix-index
           nixvim.nixosModules.nixvim
+          disko.nixosModules.disko
           ./modules
         ];
       };
@@ -114,7 +115,6 @@
             hardware.nixosModules.common-cpu-amd
             hardware.nixosModules.common-pc-ssd
             hardware.nixosModules.common-gpu-amd
-            chaotic.nixosModules.default
           ];
           specialArgs = {
             inherit nix-colors spicetify-nix catppuccin nixvim;
@@ -151,8 +151,8 @@
         servetek = {
           modules = [
             ./machines/servetek
-            hardware.nixosModules.common-pc-laptop-ssd
             hardware.nixosModules.common-cpu-intel
+            hardware.nixosModules.common-pc-ssd
           ];
           specialArgs = {
             inherit nix-colors spicetify-nix catppuccin nixvim;

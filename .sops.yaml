@@ -1,9 +1,9 @@
 keys:
   # Users
-  - &users:
+  users: &users
     - &jocelyn 00E063D5E30126C1A3DF114E77B3416DE9D092BD
   # Hosts
-  - &hosts:
+  hosts: &hosts
     - &desktek age1cf355lw4hznu9qef2vcejls926fhvmvwjnm8s3a5ghvktvtspd5svp5qg8
     - &frametek age1sgcdrv8mjlt705dteks9ke4jmlq6fqn244hakfcv5zwjmpc7xu5q893kna
     - &servetek age1tk4xmr6ye60naj0zvxjv6l7q9zdhj05z67m98ph4qar6jczslcqqsvhqs4
@@ -17,10 +17,6 @@ creation_rules:
       - *jocelyn
   - path_regex: secrets/common/secrets.ya?ml$
     key_groups:
-    - age:
-      - *desktek
-      - *frametek
-      - *servetek
-      pgp:
-      - *jocelyn
+    - age: *hosts
+      pgp: *users
 

@@ -3,7 +3,7 @@
   aspects = {
     stateVersion = "23.11";
     base = {
-      btrfs.enable = false;
+      fileSystems.enable = false;
       sshd.PermitRootLogin = "yes";
     };
     programs = {
@@ -20,7 +20,6 @@
 
   environment.systemPackages = with pkgs; [
     git
-    neovim
     wget
     curl
     any-nix-shell
@@ -32,5 +31,6 @@
     parted
     gptfdisk
     cryptsetup
+    disko
   ];
 }

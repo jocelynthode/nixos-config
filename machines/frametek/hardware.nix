@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   lib,
   ...
@@ -7,34 +6,13 @@
   boot = {
     initrd = {
       availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
-      # name luks as hostname and label as hostname_crypt
-      # Label btrfs partition as hostname
-      luks = {
-        gpgSupport = true;
-        devices."${config.networking.hostName}" = {
-          gpgCard = {
-            gracePeriod = 10; # needs some time to connect
-            encryptedPass = ./gpg/luks-passphrase.asc;
-            publicKey = ./gpg/public-keys.asc;
-          };
-          bypassWorkqueues = true; # May improve SSD performance
-          device = "/dev/disk/by-label/${config.networking.hostName}_crypt";
-          preLVM = true;
-          allowDiscards = true;
-        };
-      };
+      # systemd.enable = true;
     };
     kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = ["resume_offset=533785" "mitigations=off"];
     kernelModules = ["kvm-intel"];
+    resumeDevice = "/dev/disk/by-label/frametek_crypt";
   };
-
-  swapDevices = [
-    {
-      device = "/swap/swapfile";
-      size = 1024 * 32;
-    }
-  ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";

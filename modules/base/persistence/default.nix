@@ -42,5 +42,7 @@
       directories = config.aspects.base.persistence.systemPaths;
       users.jocelyn.directories = config.aspects.base.persistence.homePaths;
     };
+
+    fileSystems."${config.aspects.base.persistence.persistPrefix}".neededForBoot = true;
   };
 }

@@ -5,7 +5,6 @@
       user = "root";
       paths = [config.aspects.base.persistence.persistPrefix];
       exclude = [
-        "/persist/.snapshots"
         "/persist/var/cache"
         "/persist/var/log"
         "/persist/var/lib/*"
@@ -37,6 +36,7 @@
         "/persist/home/jocelyn/.cache"
         "/persist/home/jocelyn/.wine"
         "/persist/home/jocelyn/.android"
+        "/srv/media"
       ];
       initialize = true;
       passwordFile = config.sops.secrets."restic/password".path;
@@ -57,21 +57,5 @@
   systemd.services.restic-backups-persist = {
     after = ["network-online.target"];
     wants = ["network-online.target"];
-  };
-
-  services.snapper = {
-    configs = {
-      persist = {
-        SUBVOLUME = config.aspects.base.persistence.persistPrefix;
-        ALLOW_USERS = ["jocelyn"];
-        TIMELINE_CREATE = true;
-        TIMELINE_CLEANUP = true;
-        TIMELINE_LIMIT_HOURLY = 10;
-        TIMELINE_LIMIT_DAILY = 3;
-        TIMELINE_LIMIT_WEEKLY = 0;
-        TIMELINE_LIMIT_MONTHLY = 0;
-        TIMELINE_LIMIT_YEARLY = 0;
-      };
-    };
   };
 }

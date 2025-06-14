@@ -1,5 +1,8 @@
 {pkgs, ...}: {
-  imports = [./hardware.nix];
+  imports = [
+    ./disko.nix
+    ./hardware.nix
+  ];
 
   # Machine-specific module settings
   aspects = {

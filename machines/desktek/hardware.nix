@@ -28,11 +28,6 @@
     opencl.enable = false;
   };
 
-  chaotic = {
-    nyx.cache.enable = true;
-    mesa-git.enable = true;
-  };
-
   # TODO Remove after fix https://gitlab.freedesktop.org/drm/amd/-/issues/4178
   systemd.services."systemd-suspend" = {
     serviceConfig = {
