@@ -7,6 +7,7 @@
     base = {
       battery.enable = true;
       bluetooth.enable = true;
+      fileSystems.btrfs.encrypted = true;
     };
     development.enable = true;
     games.enable = false;

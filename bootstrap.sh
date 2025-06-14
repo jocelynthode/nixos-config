@@ -4,8 +4,8 @@
 set -euo pipefail
 
 die() {
-	echo "$*" >&2
-	exit 2
+  echo "$*" >&2
+  exit 2
 } # complain to STDERR and exit with error
 
 needs_arg() { if [ -z "$OPTARG" ]; then die "No arg for --$OPT option"; fi; }
@@ -17,63 +17,63 @@ efi_label="EFI"
 swap=32
 
 if [ $# -eq 0 ]; then
-	echo "Missing options!"
-	echo "(run $0 -h for help)"
-	echo ""
-	exit 0
+  echo "Missing options!"
+  echo "(run $0 -h for help)"
+  echo ""
+  exit 0
 fi
 
 while getopts h:-: OPT; do
-	# support long options: https://stackoverflow.com/a/28466267/519360
-	if [ "$OPT" = "-" ]; then # long option: reformulate OPT and OPTARG
-		OPT="${OPTARG%%=*}"      # extract long option name
-		OPTARG="${OPTARG#$OPT}"  # extract long option argument (may be empty)
-		OPTARG="${OPTARG#=}"     # if long option argument, remove assigning `=`
-	fi
-	case "$OPT" in
-	encrypt-root) encrypt=true ;;
-	hostname)
-		needs_arg
-		hostname="$OPTARG"
-		;;
-	disk)
-		needs_arg
-		drive="$OPTARG"
-		;;
-	swap)
-		needs_arg
-		swap="$OPTARG"
-		;;
-	efi-label)
-		efi_label="$OPTARG"
-		;;
-	*)
-		echo "Usage:"
-		echo "bootstrap.sh -h "
-		echo ""
-		echo "   --encrypt-root       to encrypt root disk"
-		echo "   --hostname=HOSTNAME  to specify the hostname to build"
-		echo "   --disk=DISK_PATH     to specify the disk to use"
-		echo "   --swap=SIZE_IN_GB    to specify the swap size"
-		echo "   --efi-label=LABEL    to specify an optional label. Default: EFI"
-		exit 0
-		;;
-	esac
+  # support long options: https://stackoverflow.com/a/28466267/519360
+  if [ "$OPT" = "-" ]; then # long option: reformulate OPT and OPTARG
+    OPT="${OPTARG%%=*}"     # extract long option name
+    OPTARG="${OPTARG#$OPT}" # extract long option argument (may be empty)
+    OPTARG="${OPTARG#=}"    # if long option argument, remove assigning `=`
+  fi
+  case "$OPT" in
+    encrypt-root) encrypt=true ;;
+    hostname)
+      needs_arg
+      hostname="$OPTARG"
+      ;;
+    disk)
+      needs_arg
+      drive="$OPTARG"
+      ;;
+    swap)
+      needs_arg
+      swap="$OPTARG"
+      ;;
+    efi-label)
+      efi_label="$OPTARG"
+      ;;
+    *)
+      echo "Usage:"
+      echo "bootstrap.sh -h "
+      echo ""
+      echo "   --encrypt-root       to encrypt root disk"
+      echo "   --hostname=HOSTNAME  to specify the hostname to build"
+      echo "   --disk=DISK_PATH     to specify the disk to use"
+      echo "   --swap=SIZE_IN_GB    to specify the swap size"
+      echo "   --efi-label=LABEL    to specify an optional label. Default: EFI"
+      exit 0
+      ;;
+  esac
 done
 shift $((OPTIND - 1)) # remove parsed options and args from $@ list
 
 if [ -z "${drive}" ]; then
-	echo "the drive must be specified"
-	exit 1
+  echo "the drive must be specified"
+  exit 1
 fi
 
 if [ -z "${hostname}" ]; then
-	echo "the hostname must be specified"
-	exit 1
+  echo "the hostname must be specified"
+  exit 1
 fi
 
 if [ -z "${efi_label}" ]; then
-	echo "Setting EFI label to EFI"
+  echo "Setting EFI label to EFI"
   efi_label="EFI"
 fi
 
@@ -100,11 +100,11 @@ sleep 2
 device="/dev/disk/by-partlabel/${hostname}"
 
 if [ -n "${encrypt}" ]; then
-	echo "Creating LUKS partition"
-	cryptsetup luksFormat --verbose --verify-passphrase /dev/disk/by-partlabel/"${hostname}"
-	cryptsetup config /dev/disk/by-partlabel/"${hostname}" --label "${hostname}_crypt"
-	cryptsetup open /dev/disk/by-partlabel/"${hostname}" "${hostname}"
-	device="/dev/mapper/${hostname}"
+  echo "Creating LUKS partition"
+  cryptsetup luksFormat --verbose --verify-passphrase /dev/disk/by-partlabel/"${hostname}"
+  cryptsetup config /dev/disk/by-partlabel/"${hostname}" --label "${hostname}_crypt"
+  cryptsetup open /dev/disk/by-partlabel/"${hostname}" "${hostname}"
+  device="/dev/mapper/${hostname}"
 fi
 
 partprobe "${drive}"
@@ -124,11 +124,12 @@ btrfs subvolume create @blank
 mkdir -p @blank/boot/efi
 mkdir -p @blank/mnt
 mkdir -p @blank/etc
+rm /etc/machine-id
+systemd-machine-id-setup
 cp /etc/machine-id @blank/etc/
 btrfs property set -ts @blank ro true
 btrfs subvolume create @nix
 btrfs subvolume create @persist
-btrfs subvolume create @snapshots
 btrfs subvolume create @log
 btrfs subvolume create @swap
 chattr +C /mnt/@swap
@@ -145,8 +146,6 @@ mkdir -p /mnt/boot/efi
 mount -t btrfs -o subvol=@nix "${device}" /mnt/nix
 mount -t btrfs -o subvol=@persist "${device}" /mnt/persist
 mount -t btrfs -o subvol=@log "${device}" /mnt/var/log
-mkdir -p /mnt/persist/.snapshots
-mount -t btrfs -o subvol=@snapshots "${device}" /mnt/persist/.snapshots
 mount -t btrfs -o subvol=@swap "${device}" /mnt/swap
 mount "/dev/disk/by-partlabel/${efi_label}" /mnt/boot/efi
 

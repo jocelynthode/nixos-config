@@ -11,8 +11,8 @@
     ./backup
     ./battery
     ./bluetooth
-    ./btrfs
     ./cli
+    ./filesystems
     ./fish
     ./fonts
     ./gnupg
@@ -72,9 +72,12 @@
     };
 
     aspects.base = {
-      btrfs.enable = lib.mkDefault true;
       persistence.enable = lib.mkDefault true;
       nix.enableDirenv = lib.mkDefault true;
+      fileSystems = {
+        btrfs.enable = lib.mkDefault true;
+        zfs.enable = lib.mkDefault false;
+      };
       fonts = lib.mkDefault {
         monospace = {
           family = "JetBrainsMono NFM";
