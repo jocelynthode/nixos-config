@@ -14,7 +14,6 @@
         hostId = "007f0100";
       };
     };
-    development.containers.enable = true;
     programs = {
       htop.enable = true;
       yazi = {

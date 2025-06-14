@@ -54,6 +54,10 @@
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    authentik-nix = {
+      url = "github:nix-community/authentik-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -75,6 +79,7 @@
     nixvim,
     wofi-ykman,
     disko,
+    authentik-nix,
     ...
   }:
     utils.lib.mkFlake {
@@ -153,6 +158,7 @@
             ./machines/servetek
             hardware.nixosModules.common-cpu-intel
             hardware.nixosModules.common-pc-ssd
+            authentik-nix.nixosModules.default
           ];
           specialArgs = {
             inherit nix-colors spicetify-nix catppuccin nixvim;
