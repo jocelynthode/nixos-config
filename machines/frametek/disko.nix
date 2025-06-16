@@ -18,6 +18,7 @@
                   type = "filesystem";
                   format = "vfat";
                   mountpoint = "/boot/efi";
+                  mountOptions = ["umask=0077"];
                 };
               };
               "${config.networking.hostName}_crypt" = {
