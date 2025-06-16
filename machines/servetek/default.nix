@@ -5,7 +5,7 @@
   ];
 
   aspects = {
-    stateVersion = "23.11";
+    stateVersion = "25.05";
     allowReboot = true;
     base = {
       bluetooth.enable = false;

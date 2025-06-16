@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   # Machine-specific module settings
   aspects = {
-    stateVersion = "23.11";
+    stateVersion = "25.05";
     base = {
       fileSystems.enable = false;
       sshd.PermitRootLogin = "yes";

@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: {
   options.aspects.services.postgresql.enable = lib.mkEnableOption "postgresql";
@@ -15,6 +16,7 @@
     ];
     services.postgresql = {
       enable = true;
+      package = pkgs.postgresql_15;
     };
 
     services.postgresqlBackup = {
