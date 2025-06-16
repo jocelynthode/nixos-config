@@ -156,15 +156,6 @@
               type = "zfs_fs";
               options.mountpoint = "legacy";
               mountpoint = "/persist";
-              postMountHook = ''
-                mkdir -p /mnt/persist/home
-                mkdir -p /mnt/persist/etc/ssh
-
-                ssh-keygen -q -t rsa -b 4096 -C "${config.networking.hostName}" -N "" -f /mnt/persist/etc/ssh/ssh_host_rsa_key
-                ssh-keygen -t ed25519 -f /mnt/persist/etc/ssh/ssh_host_ed25519_key -N ""
-
-                cat /mnt/persist/etc/ssh/ssh_host_ed25519_key.pub
-              '';
             };
             backup = {
               type = "zfs_fs";

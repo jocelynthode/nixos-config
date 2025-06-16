@@ -55,14 +55,6 @@
                     mkdir -p "$MNTPOINT"/@blank/etc
                     systemd-machine-id-setup --root "$MNTPOINT"/@blank/
                     btrfs property set -ts "$MNTPOINT"/@blank ro true
-
-                    mkdir -p "$MNTPOINT"/@persist/home
-                    mkdir -p "$MNTPOINT"/@persist/etc/ssh
-
-                    ssh-keygen -q -t rsa -b 4096 -C "${config.networking.hostName}" -N "" -f "$MNTPOINT"/@persist/etc/ssh/ssh_host_rsa_key
-                    ssh-keygen -t ed25519 -f "$MNTPOINT"/@persist/etc/ssh/ssh_host_ed25519_key -N ""
-
-                    cat "$MNTPOINT"/@persist/etc/ssh/ssh_host_ed25519_key.pub
                   '';
                   subvolumes = {
                     "@" = {

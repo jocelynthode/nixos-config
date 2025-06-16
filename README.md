@@ -2,54 +2,16 @@
 
 # Install
 
-1. Get the [NixOS](https://channels.nixos.org/nixos-22.05/latest-nixos-minimal-x86_64-linux.iso)
-2. Copy the Installer to a USB Stick:
+1. Boot on the ISO
+2. Get the IP of the server and make sure ssh via root works
+3. Run bootstrap with the correct parameter
 
 ```bash
-sudo cp /path/to/iso /dev/to/disk
+./bootstrap.sh --host <host> --ip <ip>
 ```
 
-3. Boot on the ISO
-4. Clone this repository
-
-```bash
-git clone https://github.com/jocelynthode/nixos-config
-cd nixos-config
-```
-
-5. Run disko
-
-```bash
-disko --mode destroy,format,mount --flake .#<hostname>
-```
-
-7. Setup new age key if needed
-
-```bash
-# add the results to .sops.yaml
-cat /persist/etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age
-
-```
-
-8. Rekey your secrets
-
-```bash
-
-sops updatekeys secrets/common/secrets.yaml
-sops updatekeys secrets/servetek/secrets.yaml
-```
-
-9. Bootstrap system
-
-```bash
-nixos-install --no-root-password --flake ".#<hostname>"
-
-umount -R /mnt
-# if needed
-cryptsetup close <hostname>
-```
-
-10. Reboot
+4. Commit the sops changes
+5. Your vm should be reachable normally now
 
 ## Rebuild
 
@@ -67,6 +29,16 @@ sudo nixos-rebuild switch --flake github:jocelynthode/nixos-config
 nix develop
 # Then create file
 sops hosts/common/secrets.yaml
+```
+
+## Update secrest for new key
+
+```bash
+
+# Add result to .sops.yaml
+ssh-to-age -i /persist/etc/ssh/ssh_host_ed25519_key.pub
+
+sops updatekeys secrets/**/*.yaml
 ```
 
 # Build ISO
