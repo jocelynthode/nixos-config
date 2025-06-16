@@ -18,7 +18,7 @@
                   type = "filesystem";
                   format = "vfat";
                   mountpoint = "/boot/efi";
-                  mountOptions = ["umask=0077"];
+                  mountOptions = ["defaults" "noatime" "umask=0077"];
                 };
               };
               "${config.networking.hostName}_crypt" = {
@@ -26,7 +26,7 @@
                 label = "${config.networking.hostName}_crypt";
                 content = {
                   type = "luks";
-                  name = "${config.networking.hostName}_crypt";
+                  name = "${config.networking.hostName}"; #Because current setup was not done through disko
                   settings = {
                     gpgCard = {
                       gracePeriod = 10; # needs some time to connect
@@ -74,6 +74,7 @@
                       };
                       "@swap" = {
                         mountpoint = "/swap";
+                        mountOptions = ["defaults" "noatime" "compress=zstd:1" "discard=async"];
                         swap = {
                           swapfile = {
                             size = "32G";

@@ -18,7 +18,7 @@
                   type = "filesystem";
                   format = "vfat";
                   mountpoint = "/boot/efi";
-                  mountOptions = ["umask=0077"];
+                  mountOptions = ["defaults" "noatime" "umask=0077"];
                 };
               };
               "${config.networking.hostName}-1" = {
@@ -37,7 +37,7 @@
               "${config.networking.hostName}-2" = {
                 size = "100%";
                 label = "${config.networking.hostName}-2";
-                device = "/dev/disk/by-label/desktek";
+                device = "/dev/disk/by-label/${config.networking.hostName}"; #Because current setup was not done through disko
                 content = {
                   type = "btrfs";
                   extraArgs = [
