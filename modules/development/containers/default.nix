@@ -14,6 +14,12 @@
         dockerCompat = true;
         dockerSocket.enable = true;
         defaultNetwork.settings.dns_enabled = true;
+        autoPrune = {
+          enable = true;
+          flags = [
+            "--filter=until=24h"
+          ];
+        };
       };
       containers = {
         enable = true;
