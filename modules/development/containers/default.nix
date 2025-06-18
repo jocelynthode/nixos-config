@@ -17,6 +17,7 @@
         autoPrune = {
           enable = true;
           flags = [
+            "--all"
             "--filter=until=24h"
           ];
         };
