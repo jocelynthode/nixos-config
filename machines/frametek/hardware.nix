@@ -16,7 +16,19 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
-  hardware.enableRedistributableFirmware = true;
+
+  hardware = {
+    enableRedistributableFirmware = true;
+    intelgpu.vaapiDriver = "intel-media-driver";
+    graphics = {
+      enable = true;
+    };
+  };
+
+  environment.variables = {
+    LIBVA_DRIVER_NAME = "iHD";
+    LIBVA_DRIVERS_PATH = "${pkgs.intel-media-driver}/lib/dri";
+  };
 
   environment.sessionVariables = {
     GDK_SCALE = "2";
