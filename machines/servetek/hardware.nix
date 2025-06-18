@@ -9,6 +9,10 @@
     };
     kernelPackages = pkgs.linuxPackages;
     kernelModules = ["kvm-intel"];
+    extraModprobeConfig = ''
+      # enable in‑kernel block cloning (reflink) support
+      options zfs zfs_bclone_enabled=1
+    '';
   };
 
   networking.wireless.enable = false;
@@ -29,15 +33,4 @@
   };
 
   zramSwap.enable = true;
-
-  fileSystems = {
-    "/srv/media" = {
-      device = "tank/media";
-      fsType = "zfs";
-    };
-    "/srv/backup" = {
-      device = "tank/backup";
-      fsType = "zfs";
-    };
-  };
 }

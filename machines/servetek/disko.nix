@@ -147,7 +147,15 @@
           datasets = {
             media = {
               type = "zfs_fs";
-              mountpoint = null; # "/srv/media"
+              mountpoint = "/srv/media";
+              options = {
+                mountpoint = "legacy";
+                exec = "off";
+              };
+            };
+            downloads = {
+              type = "zfs_fs";
+              mountpoint = "/srv/downloads";
               options = {
                 mountpoint = "legacy";
                 exec = "off";
@@ -164,7 +172,7 @@
                 mountpoint = "legacy";
                 exec = "off";
               };
-              mountpoint = null; # "/srv/backup"
+              mountpoint = "/srv/backup";
             };
             reserved = {
               type = "zfs_fs";

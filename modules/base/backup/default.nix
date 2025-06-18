@@ -37,6 +37,7 @@
         "/persist/home/jocelyn/.wine"
         "/persist/home/jocelyn/.android"
         "/srv/media"
+        "/srv/downloads"
       ];
       initialize = true;
       passwordFile = config.sops.secrets."restic/password".path;

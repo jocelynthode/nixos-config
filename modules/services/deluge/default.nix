@@ -20,7 +20,7 @@
         authFile = config.sops.secrets.deluge.path;
         config = {
           allow_remote = true;
-          download_location = "/var/www/dde/Downloads";
+          download_location = "/srv/downloads";
           listen_interface = "wg1";
           outgoing_interface = "wg1";
           stop_seed_at_ratio = true;
