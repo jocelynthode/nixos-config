@@ -178,7 +178,7 @@
               options = {
                 mountpoint = "legacy";
                 exec = "off";
-                compression = "zstd:3";
+                compression = "zstd-3";
               };
               mountpoint = "/srv/backup";
             };
