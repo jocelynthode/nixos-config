@@ -138,10 +138,12 @@
             autotrim = "on";
           };
           rootFsOptions = {
-            compression = "zstd";
+            compression = "lz4";
             acltype = "posixacl";
             atime = "off";
             xattr = "sa";
+            dnodesize = "auto";
+            normalization = "formD";
             mountpoint = "none";
           };
           datasets = {
@@ -151,6 +153,7 @@
               options = {
                 mountpoint = "legacy";
                 exec = "off";
+                recordsize = "1M";
               };
             };
             downloads = {
@@ -159,11 +162,15 @@
               options = {
                 mountpoint = "legacy";
                 exec = "off";
+                recordsize = "1M";
+                sync = "disabled";
               };
             };
             persist = {
               type = "zfs_fs";
-              options.mountpoint = "legacy";
+              options = {
+                mountpoint = "legacy";
+              };
               mountpoint = "/persist";
             };
             backup = {
@@ -171,13 +178,14 @@
               options = {
                 mountpoint = "legacy";
                 exec = "off";
+                compression = "zstd:3";
               };
               mountpoint = "/srv/backup";
             };
             reserved = {
               type = "zfs_fs";
               options = {
-                refreservation = "16G";
+                refreservation = "3.8T";
               };
             };
           };
