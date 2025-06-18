@@ -34,7 +34,10 @@
           max_upload_speed = 70000;
           max_active_downloading = 30;
           max_active_limit = 250;
-          max_active_seeding = 200;
+          max_active_seeding = 220;
+          max_connections_global = 7500;
+          max_connections_per_second = 20;
+          max_connections_per_torrent = 300;
           enabled_plugins = [
             "Label"
             "AutoRemovePlus" # Manually build https://github.com/tote94/deluge-autoremoveplus and add .egg to /var/lib/deluge/.config/plugins
