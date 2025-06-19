@@ -12,6 +12,7 @@
         "!/persist/var/lib/authentik"
         "!/persist/var/lib/hass"
         "!/persist/var/lib/private"
+        "/persist/var/lib/private/ollama"
         "/persist/var/lib/private/prowlarr"
         "/persist/var/lib/private/navidrome"
         "/persist/var/lib/private/fwupd"
@@ -34,9 +35,18 @@
         "/persist/home/jocelyn/.local/share/containers"
         "/persist/home/jocelyn/.local/share/bottles"
         "/persist/home/jocelyn/.local/lutris"
+        "/persist/home/jocelyn/.local/state"
         "/persist/home/jocelyn/.cache"
         "/persist/home/jocelyn/.wine"
         "/persist/home/jocelyn/.android"
+        "/persist/home/jocelyn/.cargo"
+        "/persist/home/jocelyn/.xlcore"
+        "/persist/home/jocelyn/Astral Ascent"
+        "/persist/home/jocelyn/.config/vesktop"
+        "/persist/home/jocelyn/.config/ArmCord"
+        "/persist/root"
+        "/srv/media"
+        "/srv/downloads"
       ];
       initialize = true;
       passwordFile = config.sops.secrets."restic/password".path;
@@ -57,21 +67,5 @@
   systemd.services.restic-backups-persist = {
     after = ["network-online.target"];
     wants = ["network-online.target"];
-  };
-
-  services.snapper = {
-    configs = {
-      persist = {
-        SUBVOLUME = config.aspects.base.persistence.persistPrefix;
-        ALLOW_USERS = ["jocelyn"];
-        TIMELINE_CREATE = true;
-        TIMELINE_CLEANUP = true;
-        TIMELINE_LIMIT_HOURLY = 10;
-        TIMELINE_LIMIT_DAILY = 3;
-        TIMELINE_LIMIT_WEEKLY = 0;
-        TIMELINE_LIMIT_MONTHLY = 0;
-        TIMELINE_LIMIT_YEARLY = 0;
-      };
-    };
   };
 }
