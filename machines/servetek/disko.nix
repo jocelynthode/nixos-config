@@ -64,68 +64,32 @@
           type = "disk";
           device = "/dev/sda";
           content = {
-            type = "gpt";
-            partitions = {
-              zfs = {
-                size = "100%";
-                label = "hdd1";
-                content = {
-                  type = "zfs";
-                  pool = "tank";
-                };
-              };
-            };
+            type = "zfs";
+            pool = "tank";
           };
         };
         hdd3 = {
           type = "disk";
           device = "/dev/sdb";
           content = {
-            type = "gpt";
-            partitions = {
-              zfs = {
-                size = "100%";
-                label = "hdd3";
-                content = {
-                  type = "zfs";
-                  pool = "tank";
-                };
-              };
-            };
+            type = "zfs";
+            pool = "tank";
           };
         };
         hdd5 = {
           type = "disk";
           device = "/dev/sdc";
           content = {
-            type = "gpt";
-            partitions = {
-              zfs = {
-                size = "100%";
-                label = "hdd5";
-                content = {
-                  type = "zfs";
-                  pool = "tank";
-                };
-              };
-            };
+            type = "zfs";
+            pool = "tank";
           };
         };
         hdd7 = {
           type = "disk";
           device = "/dev/sdd";
           content = {
-            type = "gpt";
-            partitions = {
-              zfs = {
-                size = "100%";
-                label = "hdd7";
-                content = {
-                  type = "zfs";
-                  pool = "tank";
-                };
-              };
-            };
+            type = "zfs";
+            pool = "tank";
           };
         };
       };
@@ -136,6 +100,7 @@
           options = {
             ashift = "12";
             autotrim = "on";
+            autoexpand = "on";
           };
           rootFsOptions = {
             compression = "lz4";
@@ -185,7 +150,7 @@
             reserved = {
               type = "zfs_fs";
               options = {
-                refreservation = "3.8T";
+                refreservation = "3T";
               };
             };
           };
