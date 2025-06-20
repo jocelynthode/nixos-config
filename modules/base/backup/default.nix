@@ -44,8 +44,8 @@
         "/persist/home/jocelyn/.config/vesktop"
         "/persist/home/jocelyn/.config/ArmCord"
         "/persist/root"
-        "/srv/media"
-        "/srv/downloads"
+        "/data"
+        "/scratch"
       ];
       initialize = true;
       passwordFile = config.sops.secrets."restic/password".path;

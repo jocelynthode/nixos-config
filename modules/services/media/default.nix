@@ -9,32 +9,38 @@
     {
       name = "sonarr";
       port = 8989;
-      delugeAccess = true;
+      useSettings = true;
+      createDir = true;
     }
     {
       name = "radarr";
       port = 7878;
-      delugeAccess = true;
+      useSettings = true;
+      createDir = true;
     }
     {
       name = "bazarr";
       port = 6767;
-      delugeAccess = true;
+      useSettings = false;
+      createDir = true;
     }
     {
       name = "lidarr";
       port = 8686;
-      delugeAccess = true;
+      useSettings = true;
+      createDir = true;
     }
     {
       name = "prowlarr";
       port = 9696;
-      delugeAccess = false;
+      useSettings = true;
+      createDir = false;
     }
     {
       name = "readarr";
       port = 8787;
-      delugeAccess = true;
+      useSettings = true;
+      createDir = true;
     }
   ];
 
@@ -47,25 +53,36 @@
         group = service.name;
       }
     ])
-    (lib.filter (service: service.delugeAccess) mediaServices);
+    (lib.filter (service: service.createDir) mediaServices);
 
   serviceConfigs = lib.listToAttrs (map (
       service: {
         inherit (service) name;
-        value = {
-          enable = true;
-          openFirewall = true;
-        };
+        value =
+          {
+            enable = true;
+            openFirewall = true;
+          }
+          // lib.optionalAttrs service.useSettings {
+            settings = {
+              auth = {
+                method = "external";
+              };
+            };
+          };
       }
     )
     mediaServices);
 
   userGroups = lib.listToAttrs (map (service: {
-    inherit (service) name;
-    value = lib.mkIf service.delugeAccess {
-      extraGroups = ["deluge"];
-    };
-  }) (lib.filter (service: service.delugeAccess) mediaServices));
+      inherit (service) name;
+      value = {
+        extraGroups = ["media"];
+      };
+    })
+    (lib.filter (service: service.createDir) mediaServices));
+
+  tmpFiles = map (service: "d /backups/${service.name} 0750 ${service.name} ${service.name} -") (lib.filter (service: service.createDir) mediaServices);
 
   nginxVhosts = lib.listToAttrs (map (
       service: {
@@ -92,6 +109,19 @@ in {
         nginx.virtualHosts = nginxVhosts;
       };
 
-    users.users = userGroups;
+    systemd.tmpfiles.rules =
+      [
+        "d /data/media 0775 deluge media -"
+        "d /data/media/movies 0775 deluge media -"
+        "d /data/media/shows 0775 deluge media -"
+        "d /data/media/music 0775 deluge media -"
+        "d /data/media/books 0775 deluge media -"
+      ]
+      ++ tmpFiles;
+
+    users = {
+      groups.media = {};
+      users = userGroups;
+    };
   };
 }

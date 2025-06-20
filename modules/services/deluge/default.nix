@@ -20,7 +20,12 @@
         authFile = config.sops.secrets.deluge.path;
         config = {
           allow_remote = true;
-          download_location = "/srv/downloads";
+          download_location = "/scratch/torrents";
+          move_completed_path = "/data/torrents";
+          move_completed = true;
+          torrentfiles_location = "/data/torrents";
+          del_copy_torrent_file = true;
+          pre_allocate_storage = true;
           listen_interface = "wg1";
           outgoing_interface = "wg1";
           stop_seed_at_ratio = true;
@@ -51,6 +56,11 @@
         openFirewall = true;
       };
     };
+
+    systemd.tmpfiles.rules = [
+      "d /scratch/torrents 0755 deluge deluge -"
+      "d /data/torrents 0775 deluge media -"
+    ];
 
     sops.secrets.deluge = {
       sopsFile = ../../../secrets/${config.networking.hostName}/secrets.yaml;

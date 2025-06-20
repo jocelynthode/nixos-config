@@ -21,7 +21,7 @@
                 };
               };
               root = {
-                size = "100%";
+                size = "300G";
                 label = "${config.networking.hostName}";
                 content = {
                   type = "btrfs";
@@ -55,6 +55,18 @@
                       mountOptions = ["defaults" "noatime" "compress=zstd:1" "discard=async"];
                     };
                   };
+                };
+              };
+              scratch = {
+                size = "100%";
+                label = "scratch";
+                content = {
+                  type = "filesystem";
+                  format = "xfs";
+                  mountpoint = "/scratch";
+                  mountOptions = [
+                    "defaults"
+                  ];
                 };
               };
             };
@@ -112,23 +124,13 @@
             mountpoint = "none";
           };
           datasets = {
-            media = {
+            data = {
               type = "zfs_fs";
-              mountpoint = "/srv/media";
+              mountpoint = "/data";
               options = {
                 mountpoint = "legacy";
                 exec = "off";
                 recordsize = "1M";
-              };
-            };
-            downloads = {
-              type = "zfs_fs";
-              mountpoint = "/srv/downloads";
-              options = {
-                mountpoint = "legacy";
-                exec = "off";
-                recordsize = "1M";
-                sync = "disabled";
               };
             };
             persist = {
@@ -138,14 +140,14 @@
               };
               mountpoint = "/persist";
             };
-            backup = {
+            backups = {
               type = "zfs_fs";
               options = {
                 mountpoint = "legacy";
                 exec = "off";
                 compression = "zstd-3";
               };
-              mountpoint = "/srv/backup";
+              mountpoint = "/backups";
             };
             reserved = {
               type = "zfs_fs";

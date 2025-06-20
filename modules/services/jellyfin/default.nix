@@ -19,11 +19,15 @@
       openFirewall = true;
     };
 
+    systemd.tmpfiles.rules = [
+      "d /scratch/jellyfin 0755 jellyfin jellyfin -"
+    ];
+
     systemd.services.jellyfin.environment.LIBVA_DRIVER_NAME = "iHD";
 
     users.users.jellyfin = {
       isSystemUser = true;
-      extraGroups = ["video"];
+      extraGroups = ["video" "media"];
     };
 
     environment.systemPackages = [

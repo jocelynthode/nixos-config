@@ -21,7 +21,7 @@
 
     services.postgresqlBackup = {
       enable = true;
-      location = "/srv/backup/postgresql";
+      location = "/backups/postgresql";
       startAt = "*-*-* 11:15:00"; # Before restic at 12:00:00
       databases = config.services.postgresql.ensureDatabases;
     };

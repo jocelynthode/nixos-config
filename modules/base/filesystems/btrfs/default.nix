@@ -11,7 +11,7 @@
 
   config = lib.mkIf (config.aspects.base.fileSystems.enable && config.aspects.base.fileSystems.btrfs.enable) {
     services = {
-      fstrim.enable = false;
+      fstrim.enable = true;
       btrfs.autoScrub = {
         enable = true;
         fileSystems = ["/"]; # Scrub works on filesystem so no need to scrub all subvolumes of same fs
