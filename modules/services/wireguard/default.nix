@@ -75,6 +75,9 @@
       };
     };
 
+    # OpenFirewall for vpn port-mapping
+    networking.firewall.trustedInterfaces = ["wg1"];
+
     sops.secrets = {
       "wireguard/privateServerKey" = {
         sopsFile = ../../../secrets/${config.networking.hostName}/secrets.yaml;
