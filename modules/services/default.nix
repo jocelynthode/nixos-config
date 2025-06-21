@@ -18,6 +18,7 @@
     ./nginx
     ./postgresql
     ./radicale
+    ./recyclarr
     ./redis
     ./wireguard
     ./your_spotify
@@ -42,6 +43,7 @@
         nginx.enable = lib.mkDefault true;
         postgresql.enable = lib.mkDefault true;
         radicale.enable = lib.mkDefault true;
+        recyclarr.enable = lib.mkDefault true;
         redis.enable = lib.mkDefault true;
         wireguard.enable = lib.mkDefault true;
         your_spotify.enable = lib.mkDefault true;
