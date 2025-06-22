@@ -50,7 +50,7 @@
       {
         directory = "/var/lib/${service.name}";
         user = service.name;
-        group = service.name;
+        group = "media";
       }
     ])
     (lib.filter (service: service.createDir) mediaServices);
@@ -69,6 +69,9 @@
                 method = "external";
               };
             };
+          }
+          // lib.optionalAttrs (service.name != "prowlarr") {
+            group = "media";
           };
       }
     )
@@ -91,6 +94,15 @@
       }
     )
     mediaServices);
+  systemdConfigs = lib.listToAttrs (map (service: {
+      inherit (service) name;
+      value = {
+        serviceConfig = {
+          UMask = "0002";
+        };
+      };
+    })
+    (lib.filter (service: service.name != "prowlarr") mediaServices));
 in {
   options.aspects.services.media.enable = lib.mkEnableOption ''
     Enable all media “arr” services.
@@ -109,15 +121,18 @@ in {
         nginx.virtualHosts = nginxVhosts;
       };
 
-    systemd.tmpfiles.rules =
-      [
-        "d /data/media 0775 deluge media -"
-        "d /data/media/movies 0775 deluge media -"
-        "d /data/media/shows 0775 deluge media -"
-        "d /data/media/music 0775 deluge media -"
-        "d /data/media/books 0775 deluge media -"
-      ]
-      ++ tmpFiles;
+    systemd = {
+      services = systemdConfigs;
+      tmpfiles.rules =
+        [
+          "d /data/media 0775 deluge media -"
+          "d /data/media/movies 0775 deluge media -"
+          "d /data/media/shows 0775 deluge media -"
+          "d /data/media/music 0775 deluge media -"
+          "d /data/media/books 0775 deluge media -"
+        ]
+        ++ tmpFiles;
+    };
 
     users = {
       groups.media = {};

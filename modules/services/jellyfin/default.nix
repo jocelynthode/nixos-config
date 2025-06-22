@@ -11,12 +11,24 @@
       {
         directory = "/var/lib/jellyfin";
         user = "jellyfin";
-        group = "jellyfin";
+        group = "media";
+      }
+      {
+        directory = "/var/lib/jellyseer";
+        user = "jellyseerr";
+        group = "jellyseerr";
       }
     ];
-    services.jellyfin = {
-      enable = true;
-      openFirewall = true;
+    services = {
+      jellyfin = {
+        enable = true;
+        openFirewall = true;
+        group = "media";
+      };
+      jellyseerr = {
+        enable = true;
+        openFirewall = false;
+      };
     };
 
     systemd.tmpfiles.rules = [
@@ -36,13 +48,25 @@
       pkgs.jellyfin-ffmpeg
     ];
 
-    services.nginx.virtualHosts."stream.tekila.ovh" = {
-      forceSSL = true;
-      enableACME = true;
-      locations = {
-        "/" = {
-          proxyPass = "http://127.0.0.1:8096";
-          proxyWebsockets = true;
+    services.nginx.virtualHosts = {
+      "request.tekila.ovh" = {
+        forceSSL = true;
+        enableACME = true;
+        locations = {
+          "/" = {
+            proxyPass = "http://127.0.0.1:${toString config.services.jellyseerr.port}";
+            proxyWebsockets = true;
+          };
+        };
+      };
+      "stream.tekila.ovh" = {
+        forceSSL = true;
+        enableACME = true;
+        locations = {
+          "/" = {
+            proxyPass = "http://127.0.0.1:8096";
+            proxyWebsockets = true;
+          };
         };
       };
     };

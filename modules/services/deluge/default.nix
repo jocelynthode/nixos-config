@@ -18,6 +18,7 @@
         enable = true;
         declarative = true;
         openFirewall = true;
+        group = "media";
         authFile = config.sops.secrets.deluge.path;
         config = {
           allow_remote = true;
@@ -61,7 +62,7 @@
 
     systemd = {
       tmpfiles.rules = [
-        "d /scratch/torrents 0755 deluge deluge -"
+        "d /scratch/torrents 0755 deluge media -"
         "d /data/torrents 0775 deluge media -"
       ];
       timers.natpmp = {
