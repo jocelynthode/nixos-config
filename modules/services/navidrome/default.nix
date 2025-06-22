@@ -8,12 +8,21 @@ in {
   options.aspects.services.navidrome.enable = lib.mkEnableOption "navidrome";
 
   config = lib.mkIf config.aspects.services.navidrome.enable {
+    aspects.base.persistence.systemPaths = [
+      {
+        directory = "/var/lib/navidrome";
+        user = "navidrome";
+        group = "media";
+      }
+    ];
+
     services.navidrome = {
       enable = true;
+      group = "media";
       settings = {
         Address = "127.0.0.1";
         Port = 4533;
-        MusicFolder = "/var/www/dde/Media/Music";
+        MusicFolder = "/data/media/music";
         ReverseProxyUserHeader = "X-authentik-username";
         ReverseProxyWhitelist = "127.0.0.1/32";
         EnableStarRating = false;

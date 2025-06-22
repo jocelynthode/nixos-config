@@ -10,15 +10,16 @@
       {
         directory = "/var/lib/calibre-web";
         user = "calibre-web";
-        group = "calibre-web";
+        group = "media";
       }
     ];
 
     services.calibre-web = {
       enable = true;
       openFirewall = true;
+      group = "media";
       options = {
-        calibreLibrary = "/var/www/dde/Media/Ebooks";
+        calibreLibrary = "/data/media/books";
         enableBookUploading = true;
       };
       listen.ip = "0.0.0.0";
