@@ -30,7 +30,8 @@
           pre_allocate_storage = true;
           listen_interface = "wg1";
           outgoing_interface = "wg1";
-          stop_seed_at_ratio = true;
+          stop_seed_at_ratio = false;
+          remove_seed_at_ratio = false;
           random_outgoing_ports = true;
           random_port = false;
           daemon_port = 58846;
