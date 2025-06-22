@@ -12,6 +12,9 @@
       recommendedGzipSettings = true;
       recommendedProxySettings = true;
       recommendedTlsSettings = true;
+      appendHttpConfig = ''
+        access_log syslog:server=unix:/dev/log combined;
+      '';
     };
   };
 }
