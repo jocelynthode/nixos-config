@@ -6,7 +6,7 @@ keys:
   hosts: &hosts
     - &desktek age1cf355lw4hznu9qef2vcejls926fhvmvwjnm8s3a5ghvktvtspd5svp5qg8
     - &frametek age1sgcdrv8mjlt705dteks9ke4jmlq6fqn244hakfcv5zwjmpc7xu5q893kna
-    - &servetek age1tk4xmr6ye60naj0zvxjv6l7q9zdhj05z67m98ph4qar6jczslcqqsvhqs4
+    - &servetek age1zhp9k6f3nu9ljrwd5lgtef7pldwfqfq8l6m8g9v4z23wzejnaemq22sj6k
 
 creation_rules:
   - path_regex: secrets/servetek/secrets.ya?ml$
