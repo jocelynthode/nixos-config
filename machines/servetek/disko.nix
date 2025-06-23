@@ -74,7 +74,7 @@
         };
         hdd1 = {
           type = "disk";
-          device = "/dev/sda";
+          device = "/dev/disk/by-id/ata-WDC_WD80EFPX-68C4ZN0_WD-RD2A957H";
           content = {
             type = "zfs";
             pool = "tank";
@@ -82,7 +82,7 @@
         };
         hdd3 = {
           type = "disk";
-          device = "/dev/sdb";
+          device = "/dev/disk/by-id/ata-WDC_WD80EFPX-68C4ZN0_WD-RD1S9A1H";
           content = {
             type = "zfs";
             pool = "tank";
@@ -90,7 +90,7 @@
         };
         hdd5 = {
           type = "disk";
-          device = "/dev/sdc";
+          device = "/dev/disk/by-id/ata-WDC_WD80EFPX-68C4ZN0_WD-RD2A07SH";
           content = {
             type = "zfs";
             pool = "tank";
@@ -98,7 +98,7 @@
         };
         hdd7 = {
           type = "disk";
-          device = "/dev/sdd";
+          device = "/dev/disk/by-id/ata-WDC_WD80EFPX-68C4ZN0_WD-RD1S9TBH";
           content = {
             type = "zfs";
             pool = "tank";
