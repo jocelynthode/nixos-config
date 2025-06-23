@@ -26,6 +26,7 @@
           move_completed_path = "/data/torrents";
           move_completed = true;
           torrentfiles_location = "/data/torrents";
+          copy_torrent_file = true;
           del_copy_torrent_file = true;
           pre_allocate_storage = true;
           listen_interface = "wg1";
