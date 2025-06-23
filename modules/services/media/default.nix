@@ -85,7 +85,7 @@
     })
     (lib.filter (service: service.createDir) mediaServices));
 
-  tmpFiles = map (service: "d /backups/${service.name} 0750 ${service.name} ${service.name} -") (lib.filter (service: service.createDir) mediaServices);
+  tmpFiles = map (service: "d /backups/${service.name} 0750 ${service.name} media -") (lib.filter (service: service.createDir) mediaServices);
 
   nginxVhosts = lib.listToAttrs (map (
       service: {

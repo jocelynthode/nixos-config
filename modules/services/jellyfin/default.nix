@@ -32,7 +32,7 @@
     };
 
     systemd.tmpfiles.rules = [
-      "d /scratch/jellyfin 0755 jellyfin jellyfin -"
+      "d /scratch/jellyfin 0755 jellyfin media -"
     ];
 
     systemd.services.jellyfin.environment.LIBVA_DRIVER_NAME = "iHD";
