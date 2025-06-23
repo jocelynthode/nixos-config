@@ -71,7 +71,7 @@
                 template = "sonarr-v4-custom-formats-anime";
               }
               {
-                template = "sonarr-v4-quality-profile-web-2160p-alternative.yml";
+                template = "sonarr-v4-quality-profile-web-2160p-alternative";
               }
               {
                 template = "sonarr-v4-custom-formats-web-2160p";
