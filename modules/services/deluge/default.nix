@@ -103,7 +103,6 @@
     sops.secrets.deluge = {
       sopsFile = ../../../secrets/${config.networking.hostName}/secrets.yaml;
       owner = "deluge";
-      group = "deluge";
       restartUnits = ["deluged.service" "delugeweb.service"];
     };
   };
