@@ -49,6 +49,13 @@
                 template = "radarr-custom-formats-uhd-remux-web-french-multi-vo";
               }
             ];
+            media_naming = {
+              folder = "default";
+              movie = {
+                rename = true;
+                standard = "default";
+              };
+            };
           };
         };
         sonarr = {
@@ -83,6 +90,16 @@
                 template = "sonarr-v4-custom-formats-bluray-web-2160p-french-multi-vo";
               }
             ];
+            media_naming = {
+              series = "default";
+              season = "default";
+              episodes = {
+                rename = true;
+                standard = "default";
+                daily = "default";
+                anime = "default";
+              };
+            };
           };
         };
       };
