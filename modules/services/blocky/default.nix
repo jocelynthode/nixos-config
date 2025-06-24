@@ -26,6 +26,11 @@
           allowedTCPPorts = [53 853];
           allowedUDPPorts = [53];
         };
+        # Prevent things from not resolving prior to blocky start
+        networkmanager.insertNameservers = [
+          "94.140.14.140"
+          "76.76.2.0"
+        ];
       };
 
       services.nginx = {

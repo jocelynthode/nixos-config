@@ -28,6 +28,10 @@
     graphics = {
       enable = true;
     };
+    bluetooth = {
+      enable = false;
+      powerOnBoot = false;
+    };
   };
 
   environment.variables = {

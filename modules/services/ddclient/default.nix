@@ -12,6 +12,7 @@
       ssl = true;
       username = "tekila.ovh-ident";
       domains = ["dyn.tekila.ovh"];
+      usev6 = "";
       passwordFile = config.sops.secrets.ddclient.path;
     };
 
