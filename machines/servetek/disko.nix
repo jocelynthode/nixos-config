@@ -54,6 +54,10 @@
                       mountpoint = "/nix";
                       mountOptions = ["defaults" "noatime" "compress=zstd:1" "discard=async"];
                     };
+                    "@persist" = {
+                      mountpoint = "/persist";
+                      mountOptions = ["defaults" "noatime" "compress=zstd:1" "discard=async"];
+                    };
                   };
                 };
               };
@@ -132,13 +136,6 @@
                 exec = "off";
                 recordsize = "1M";
               };
-            };
-            persist = {
-              type = "zfs_fs";
-              options = {
-                mountpoint = "legacy";
-              };
-              mountpoint = "/persist";
             };
             backups = {
               type = "zfs_fs";
