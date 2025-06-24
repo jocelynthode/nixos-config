@@ -8,8 +8,7 @@
   config = lib.mkIf config.aspects.services.ddclient.enable {
     services.ddclient = {
       enable = true;
-      server = "www.ovh.com";
-      ssl = true;
+      protocol = "ovh";
       username = "tekila.ovh-ident";
       domains = ["dyn.tekila.ovh"];
       usev6 = "";
