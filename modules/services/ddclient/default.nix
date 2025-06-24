@@ -1,5 +1,4 @@
 {
-  pkgs,
   config,
   lib,
   ...
@@ -13,7 +12,6 @@
       ssl = true;
       username = "tekila.ovh-ident";
       domains = ["dyn.tekila.ovh"];
-      usev4 = "cmd, cmd='${pkgs.curl}/bin/curl -q ifconfig.io'";
       passwordFile = config.sops.secrets.ddclient.path;
     };
 
