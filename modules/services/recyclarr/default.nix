@@ -89,6 +89,18 @@
               {
                 template = "sonarr-v4-custom-formats-bluray-web-2160p-french-multi-vo";
               }
+              {
+                template = "sonarr-v4-quality-profile-web-1080p";
+              }
+              {
+                template = "sonarr-v4-custom-formats-web-1080p";
+              }
+              {
+                template = "sonarr-v4-quality-profile-bluray-web-1080p-french-multi-vo";
+              }
+              {
+                template = "sonarr-v4-custom-formats-bluray-web-1080p-french-multi-vo";
+              }
             ];
             media_naming = {
               series = "default";
