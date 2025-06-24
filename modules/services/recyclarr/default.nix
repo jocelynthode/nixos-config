@@ -48,6 +48,18 @@
               {
                 template = "radarr-custom-formats-uhd-remux-web-french-multi-vo";
               }
+              {
+                template = "radarr-quality-profile-hd-bluray-web-french-multi-vo";
+              }
+              {
+                template = "radarr-custom-formats-hd-bluray-web-french-multi-vo";
+              }
+              {
+                template = "radarr-quality-profile-remux-web-1080p";
+              }
+              {
+                template = "radarr-custom-formats-remux-web-1080p";
+              }
             ];
             media_naming = {
               folder = "default";
