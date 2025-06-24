@@ -13,11 +13,6 @@
         user = "jellyfin";
         group = "media";
       }
-      {
-        directory = "/var/lib/jellyseer";
-        user = "jellyseerr";
-        group = "jellyseerr";
-      }
     ];
     services = {
       jellyfin = {
