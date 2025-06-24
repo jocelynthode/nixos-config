@@ -13,6 +13,9 @@
       # enable in‑kernel block cloning (reflink) support
       options zfs zfs_bclone_enabled=1
     '';
+    kernel.sysctl = {
+      "fs.inotify.max_user_instances" = 256;
+    };
   };
 
   networking.wireless.enable = false;
