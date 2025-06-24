@@ -52,7 +52,7 @@
           };
         };
         sonarr = {
-          radarr_main = {
+          sonarr_main = {
             api_key = {
               _secret = config.sops.secrets.sonarrApiKey.path;
             };
