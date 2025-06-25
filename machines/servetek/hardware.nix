@@ -35,6 +35,9 @@
     sensor = {
       hddtemp = {
         enable = true;
+        extraArgs = [
+          "--listen=127.0.0.1"
+        ];
         drives = [
           "/dev/disk/by-id/ata-WDC_WD80EFPX-68C4ZN0_WD-RD2A957H"
           "/dev/disk/by-id/ata-WDC_WD80EFPX-68C4ZN0_WD-RD1S9A1H"
