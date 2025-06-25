@@ -111,7 +111,10 @@ in {
       home-assistant = {
         enable = true;
         openFirewall = true;
-        package = pkgs.home-assistant.override {extraPackages = ps: [ps.psycopg2];};
+        extraPackages = python3Packages:
+          with python3Packages; [
+            psycopg2
+          ];
         extraComponents = [
           "airvisual"
           "brother"
@@ -154,6 +157,12 @@ in {
           auth_header = {
             username_header = "X-authentik-username";
           };
+          sensor = [
+            {
+              platform = "hddtemp";
+              disks = config.hardware.sensor.hddtemp.drives;
+            }
+          ];
         };
       };
     };

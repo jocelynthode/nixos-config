@@ -32,6 +32,20 @@
       enable = false;
       powerOnBoot = false;
     };
+    sensor = {
+      hddtemp = {
+        enable = true;
+        drives = [
+          "/dev/disk/by-id/ata-WDC_WD80EFPX-68C4ZN0_WD-RD2A957H"
+          "/dev/disk/by-id/ata-WDC_WD80EFPX-68C4ZN0_WD-RD1S9A1H"
+          "/dev/disk/by-id/ata-WDC_WD80EFPX-68C4ZN0_WD-RD2A07SH"
+          "/dev/disk/by-id/ata-WDC_WD80EFPX-68C4ZN0_WD-RD1S9TBH"
+        ];
+        dbEntries = [
+          "\"WDC WD80EFPX-68C4ZN0\" 194 C \"WDC WD80EFPX-68C4ZN0\""
+        ];
+      };
+    };
   };
 
   environment.variables = {
