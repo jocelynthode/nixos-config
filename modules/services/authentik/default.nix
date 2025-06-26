@@ -72,13 +72,13 @@
       };
 
       systemd.services.podman-authentik-server = {
-        after = ["network-online.target"];
-        wants = ["network-online.target"];
+        after = ["network-online.target" "blocky.service"];
+        wants = ["network-online.target" "blocky.service"];
       };
 
       systemd.services.podman-authentik-worker = {
-        after = ["network-online.target"];
-        wants = ["network-online.target"];
+        after = ["network-online.target" "blocky.service"];
+        wants = ["network-online.target" "blocky.service"];
       };
 
       users = {
