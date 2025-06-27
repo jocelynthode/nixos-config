@@ -62,10 +62,10 @@
               }
             ];
             media_naming = {
-              folder = "default";
+              folder = "jellyfin";
               movie = {
                 rename = true;
-                standard = "default";
+                standard = "jellyfin";
               };
             };
           };
@@ -114,8 +114,25 @@
                 template = "sonarr-v4-custom-formats-bluray-web-1080p-french-multi-vo";
               }
             ];
+            # custom_formats = [
+            #   {
+            #     trash_ids = [
+            #       "7ba05c6e0e14e793538174c679126996"
+            #     ];
+            #     assign_scores_to = [
+            #       {
+            #         name = "FR-MULTi-VO-WEB-1080p";
+            #         score = 1000;
+            #       }
+            #       {
+            #         name = "FR-MULTi-VO-WEB-2160p";
+            #         score = 1000;
+            #       }
+            #     ];
+            #   }
+            # ];
             media_naming = {
-              series = "default";
+              series = "jellyfin";
               season = "default";
               episodes = {
                 rename = true;
