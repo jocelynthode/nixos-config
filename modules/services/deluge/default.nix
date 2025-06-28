@@ -70,7 +70,8 @@
       timers.natpmp = {
         enable = true;
         description = "Renew NAT-PMP port forwarding for Deluge";
-        after = ["network.target" "deluged.service"];
+        after = ["network-online.target" "deluged.service"];
+        wants = ["network-online.target" "deluged.service"];
         wantedBy = ["timers.target"];
 
         timerConfig = {
@@ -90,6 +91,7 @@
           enable = true;
           description = "Map Deluge TCP/UDP via NAT-PMP";
           after = ["network-online.target" "deluged.service"];
+          wants = ["network-online.target" "deluged.service"];
 
           serviceConfig = {
             Type = "oneshot";
