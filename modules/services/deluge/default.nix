@@ -82,7 +82,7 @@
         };
       };
       services = {
-        services.deluged = {
+        deluged = {
           after = ["network-online.target" "blocky.service"];
           wants = ["network-online.target" "blocky.service"];
         };
