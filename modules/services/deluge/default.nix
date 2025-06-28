@@ -81,21 +81,27 @@
           FixedRandomDelay = false;
         };
       };
-      services.natpmp = {
-        enable = true;
-        description = "Map Deluge TCP/UDP via NAT-PMP";
-        after = ["network.target" "deluged.service"];
+      services = {
+        services.deluged = {
+          after = ["network-online.target" "blocky.service"];
+          wants = ["network-online.target" "blocky.service"];
+        };
+        natpmp = {
+          enable = true;
+          description = "Map Deluge TCP/UDP via NAT-PMP";
+          after = ["network-online.target" "deluged.service"];
 
-        serviceConfig = {
-          Type = "oneshot";
-          ExecStart = pkgs.writers.writeBash "natpmp-deluge-sync" {
-            makeWrapperArgs = [
-              "--prefix"
-              "PATH"
-              ":"
-              "${lib.makeBinPath [pkgs.curl pkgs.libnatpmp]}"
-            ];
-          } (builtins.readFile ./natpmp-sync.sh);
+          serviceConfig = {
+            Type = "oneshot";
+            ExecStart = pkgs.writers.writeBash "natpmp-deluge-sync" {
+              makeWrapperArgs = [
+                "--prefix"
+                "PATH"
+                ":"
+                "${lib.makeBinPath [pkgs.curl pkgs.libnatpmp]}"
+              ];
+            } (builtins.readFile ./natpmp-sync.sh);
+          };
         };
       };
     };
