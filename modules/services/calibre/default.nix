@@ -19,7 +19,7 @@
       openFirewall = true;
       group = "media";
       options = {
-        calibreLibrary = "/data/media/books";
+        calibreLibrary = "/var/lib/calibre-web";
         enableBookUploading = true;
       };
       listen.ip = "0.0.0.0";
