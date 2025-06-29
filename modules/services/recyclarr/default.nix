@@ -49,10 +49,22 @@
                 template = "radarr-custom-formats-uhd-remux-web-french-multi-vo";
               }
               {
+                template = "radarr-quality-profile-uhd-bluray-web-french-multi-vo";
+              }
+              {
+                template = "radarr-custom-formats-uhd-bluray-web-french-multi-vo";
+              }
+              {
                 template = "radarr-quality-profile-hd-bluray-web-french-multi-vo";
               }
               {
                 template = "radarr-custom-formats-hd-bluray-web-french-multi-vo";
+              }
+              {
+                template = "radarr-quality-profile-hd-remux-web-french-multi-vo";
+              }
+              {
+                template = "radarr-custom-formats-hd-remux-web-french-multi-vo";
               }
               {
                 template = "radarr-quality-profile-remux-web-1080p";
