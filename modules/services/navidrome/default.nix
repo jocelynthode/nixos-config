@@ -29,7 +29,7 @@ in {
       };
     };
 
-    services.nginx.virtualHosts."navi.tekila.ovh" = mkAuthProxy {
+    services.nginx.virtualHosts."music.tekila.ovh" = mkAuthProxy {
       port = 4533;
     };
 
