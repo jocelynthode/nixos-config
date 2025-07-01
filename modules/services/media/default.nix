@@ -36,6 +36,12 @@
       useSettings = true;
       createDir = false;
     }
+    {
+      name = "readarr";
+      port = 8787;
+      useSettings = true;
+      createDir = true;
+    }
   ];
 
   persistencePaths =
@@ -102,7 +108,7 @@ in {
     Enable all media “arr” services.
 
     When true, automatically sets up Sonarr, Radarr, Bazarr,
-    Lidarr, Prowlarr with persistence paths, firewall
+    Lidarr, Prowlarr and Readarr with persistence paths, firewall
     rules, Deluge group access, and authenticated nginx proxies.
   '';
 
