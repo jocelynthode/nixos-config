@@ -6,6 +6,7 @@
   imports = [
     ./acme
     ./atuin
+    ./audiobookshelf
     ./authentik
     ./blocky
     ./calibre
@@ -31,6 +32,7 @@
       services = {
         acme.enable = lib.mkDefault true;
         atuin.enable = lib.mkDefault true;
+        audiobookshelf.enable = lib.mkDefault true;
         authentik.enable = lib.mkDefault true;
         blocky.enable = lib.mkDefault true;
         calibre-web.enable = lib.mkDefault true;
