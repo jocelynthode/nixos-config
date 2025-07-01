@@ -37,6 +37,7 @@
       createDir = false;
     }
     {
+      # TODO deprecated
       name = "readarr";
       port = 8787;
       useSettings = true;
