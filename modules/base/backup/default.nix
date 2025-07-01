@@ -26,6 +26,7 @@
         "!/persist/var/lib/deluge"
         "!/persist/var/lib/navidrome"
         "!/persist/var/lib/calibre-web"
+        "!/persist/var/lib/audiobookshelf/config"
         "/persist/home/jocelyn/.gnupg"
         "/persist/home/jocelyn/go"
         "/persist/home/jocelyn/Downloads"

@@ -124,7 +124,6 @@ in {
           "d /data/media/shows 0775 deluge media -"
           "d /data/media/music 0775 deluge media -"
           "d /data/media/books 0775 deluge media -"
-          "d /data/media/audiobooks 0775 deluge media -"
         ]
         ++ tmpFiles;
     };

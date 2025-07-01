@@ -32,5 +32,12 @@
         };
       };
     };
+
+    systemd = {
+      tmpfiles.rules = [
+        "d /data/media/audiobooks 0775 deluge media -"
+        "d /backups/audiobookshelf 0750 audiobookshelf media -"
+      ];
+    };
   };
 }
