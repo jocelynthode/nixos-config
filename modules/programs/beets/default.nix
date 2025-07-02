@@ -20,18 +20,38 @@
         };
         settings = {
           directory = "/data/media/music";
-          plugins = ["fish" "chroma" "fetchart" "embedart" "lyrics"];
+          plugins = ["fish" "chroma" "fetchart" "embedart" "lyrics" "replaygain" "ftintitle" "lastgenre" "scrub" "the"];
           import = {
             write = true;
             hardlink = true;
+          };
+          paths = {
+            default = "%the{$albumartist}/$album%aunique{} ($year)/$track - $title";
+            singleton = "_Singles/%the{$artist}/$title";
+            "albumtype:soundrack" = "_Soundtracks/$album%aunique{} ($year)/$track - %the{$artist} - $title";
+            comp = "_Compilations/$album%aunique{} ($year)/$track - %the{$artist} - $title";
           };
           group_albums = true;
           ui = {
             color = true;
           };
-          # replaygain = {
-          #   backend = "ffmpeg";
-          # };
+          replaygain = {
+            backend = "ffmpeg";
+          };
+          lastgenre = {
+            source = "track";
+          };
+          embedart = {
+            maxwidth = 500;
+          };
+          fetchart = {
+            art_filename = "discart.jpg";
+            quality = 85;
+            minwidth = 500;
+            maxwidth = 500;
+            enforce_ratio = true;
+            cover_format = "JPEG";
+          };
         };
       };
     };

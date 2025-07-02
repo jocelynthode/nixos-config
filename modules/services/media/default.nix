@@ -137,7 +137,11 @@ in {
 
     users = {
       groups.media = {};
-      users = userGroups;
+      users =
+        {
+          jocelyn.extraGroups = ["media"];
+        }
+        // userGroups;
     };
   };
 }
