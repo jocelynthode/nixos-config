@@ -20,7 +20,7 @@
         };
         settings = {
           directory = "/data/media/music";
-          plugins = ["fish" "chroma" "fetchart" "embedart" "lyrics" "replaygain" "ftintitle" "lastgenre" "scrub" "the"];
+          plugins = ["audible" "fish" "chroma" "fetchart" "embedart" "replaygain" "ftintitle" "lastgenre" "scrub" "the"];
           import = {
             write = true;
             hardlink = true;
