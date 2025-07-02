@@ -150,7 +150,6 @@
                 rename = true;
                 standard = "default";
                 daily = "default";
-                anime = "default";
               };
             };
           };
