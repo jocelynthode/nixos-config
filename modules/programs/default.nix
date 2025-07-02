@@ -4,6 +4,7 @@
   ...
 }: {
   imports = [
+    ./beets
     ./bitwarden
     ./calibre
     ./deluge
@@ -27,6 +28,7 @@
 
   config = lib.mkIf config.aspects.programs.enable {
     aspects.programs = {
+      beets.enable = lib.mkDefault false;
       bitwarden.enable = lib.mkDefault true;
       calibre.enable = lib.mkDefault true;
       deluge.enable = lib.mkDefault true;
