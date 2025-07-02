@@ -20,7 +20,7 @@
         };
         settings = {
           directory = "/data/media/music";
-          plugins = ["beatport" "fish" "chroma" "fetchart" "embedart" "lyrics"];
+          plugins = ["fish" "chroma" "fetchart" "embedart" "lyrics"];
           import = {
             write = true;
             hardlink = true;
