@@ -49,6 +49,9 @@
           embedart = {
             maxwidth = 500;
           };
+          lyrics = {
+            auto = false;
+          };
           fetchart = {
             art_filename = "discart.jpg";
             quality = 85;
