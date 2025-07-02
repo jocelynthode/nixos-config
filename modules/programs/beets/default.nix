@@ -7,6 +7,10 @@
   options.aspects.programs.beets.enable = lib.mkEnableOption "beets";
 
   config = lib.mkIf config.aspects.programs.beets.enable {
+    aspects.base.persistence.homePaths = [
+      ".config/beets"
+    ];
+
     home-manager.users.jocelyn = _: {
       programs.beets = {
         enable = true;
