@@ -8,7 +8,7 @@
 
   config = lib.mkIf config.aspects.programs.beets.enable {
     aspects.base.persistence.homePaths = [
-      ".config/beets"
+      ".local/share/beets"
     ];
 
     home-manager.users.jocelyn = _: {
@@ -24,6 +24,7 @@
         };
         settings = {
           directory = "/data/media/music";
+          library = "/home/jocelyn/.local/share/beets/library.db";
           plugins = ["audible" "fish" "chroma" "fetchart" "embedart" "replaygain" "ftintitle" "lastgenre" "scrub" "the"];
           import = {
             write = true;
