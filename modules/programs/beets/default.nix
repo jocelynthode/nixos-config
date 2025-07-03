@@ -25,13 +25,13 @@
         settings = {
           directory = "/data/media/music";
           library = "/home/jocelyn/.local/share/beets/library.db";
-          plugins = ["audible" "fish" "chroma" "fetchart" "embedart" "replaygain" "lyrics" "ftintitle" "lastgenre" "scrub" "the"];
+          plugins = ["audible" "albumtypes" "fish" "chroma" "fetchart" "embedart" "replaygain" "lyrics" "ftintitle" "lastgenre" "scrub" "the"];
           import = {
             write = true;
             hardlink = true;
           };
           paths = {
-            default = "%the{$albumartist}/$album ($year)/$track - $title";
+            default = "%the{$albumartist}/$album$atypes ($year)/$track - $title";
             singleton = "_Singles/%the{$artist}/$title";
             "albumtype:soundrack" = "_Soundtracks/$album ($year)/$track - %the{$artist} - $title";
             comp = "_Compilations/$album%aunique{} ($year)/$track - %the{$artist} - $title";
