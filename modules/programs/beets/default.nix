@@ -31,7 +31,7 @@
             hardlink = true;
           };
           paths = {
-            default = "%the{$albumartist}/$album%if{$atypes, [$atypes]} ($year)/$track - $title";
+            default = "%the{$albumartist}/$album%if{$atypes, ' ' + $atypes} ($year)/$track - $title";
             "albumtype:soundtrack" = "_Soundtracks/$album ($year)/$track - %the{$artist} - $title";
             "albumtype:compilation" = "_Compilations/$album%aunique{} ($year)/$track - %the{$artist} - $title";
             comp = "_Compilations/$album%aunique{} ($year)/$track - %the{$artist} - $title";
