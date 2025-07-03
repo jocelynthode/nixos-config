@@ -25,7 +25,7 @@
         settings = {
           directory = "/data/media/music";
           library = "/home/jocelyn/.local/share/beets/library.db";
-          plugins = ["audible" "beatport" "albumtypes" "fish" "chroma" "fetchart" "embedart" "replaygain" "lyrics" "ftintitle" "lastgenre" "scrub" "the"];
+          plugins = ["albumtypes" "duplicates" "fish" "chroma" "fetchart" "embedart" "musicbrainz" "replaygain" "lyrics" "ftintitle" "lastgenre" "scrub" "the"];
           import = {
             write = true;
             hardlink = true;
@@ -50,7 +50,7 @@
             maxwidth = 500;
           };
           lyrics = {
-            auto = false;
+            auto = true;
           };
           fetchart = {
             art_filename = "discart.jpg";
@@ -59,6 +59,12 @@
             maxwidth = 500;
             enforce_ratio = true;
             cover_format = "JPEG";
+          };
+          musicbrainz = {
+            external_ids = {
+              bandcamp = true;
+              deezer = true;
+            };
           };
         };
       };
