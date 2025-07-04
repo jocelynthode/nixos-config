@@ -52,7 +52,7 @@
             maxwidth = 500;
           };
           lyrics = {
-            auto = true;
+            auto = false;
           };
           fetchart = {
             art_filename = "cover.jpg";
