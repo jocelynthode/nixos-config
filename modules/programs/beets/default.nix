@@ -40,6 +40,7 @@
           ui = {
             color = true;
           };
+          languages = ["fr" "en"];
           replaygain = {
             backend = "ffmpeg";
           };
