@@ -32,6 +32,7 @@
           };
           paths = {
             default = "%the{$albumartist}/$album%if{$atypes, $atypes} ($year)/$track - $title";
+            singleton = "%the{$albumartist}/$album%if{$atypes, $atypes} ($year)/$track - $title";
             "albumtype:soundtrack" = "_Soundtracks/$album ($year)/$track - %the{$artist} - $title";
             "albumtype:compilation" = "_Compilations/$album%aunique{} ($year)/$track - %the{$artist} - $title";
             comp = "_Compilations/$album%aunique{} ($year)/$track - %the{$artist} - $title";
@@ -60,6 +61,12 @@
             maxwidth = 500;
             enforce_ratio = true;
             cover_format = "JPEG";
+          };
+          match = {
+            preferred = {
+              countries = ["XW" "FR" "US"];
+              media = ["Digital Media|File" "CD"];
+            };
           };
           musicbrainz = {
             external_ids = {
