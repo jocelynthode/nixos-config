@@ -25,7 +25,7 @@
         settings = {
           directory = "/data/media/music";
           library = "/home/jocelyn/.local/share/beets/library.db";
-          plugins = ["albumtypes" "duplicates" "fish" "chroma" "fetchart" "embedart" "musicbrainz" "replaygain" "lyrics" "ftintitle" "lastgenre" "scrub" "the"];
+          plugins = ["albumtypes" "duplicates" "fish" "chroma" "fetchart" "embedart" "replaygain" "lyrics" "ftintitle" "lastgenre" "scrub" "the"];
           import = {
             write = true;
             hardlink = true;
@@ -54,7 +54,7 @@
             auto = true;
           };
           fetchart = {
-            art_filename = "discart.jpg";
+            art_filename = "cover.jpg";
             quality = 85;
             minwidth = 500;
             maxwidth = 500;
