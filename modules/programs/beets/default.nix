@@ -34,7 +34,6 @@
             "embedart"
             "fetchart"
             "fish"
-            "ftintitle"
             "lastgenre"
             "lyrics"
             "mbsync"
@@ -45,7 +44,7 @@
           ];
           import = {
             write = true;
-            move = true;
+            hardlink = true;
             languages = ["fr" "en"];
           };
           paths = {
