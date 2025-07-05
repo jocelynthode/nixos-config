@@ -71,15 +71,11 @@
           musicbrainz = {
             external_ids = {
               bandcamp = true;
-              spotify = true;
               deezer = true;
             };
           };
-          spotify = {
-            source_weight = 0.0;
-          };
           deezer = {
-            source_weight = 0.0;
+            source_weight = 0.1;
           };
         };
       };
