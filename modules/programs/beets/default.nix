@@ -25,10 +25,12 @@
         settings = {
           directory = "/data/media/music";
           library = "/home/jocelyn/.local/share/beets/library.db";
-          plugins = ["albumtypes" "duplicates" "fish" "chroma" "fetchart" "embedart" "replaygain" "lyrics" "ftintitle" "lastgenre" "scrub" "the"];
+          plugins = ["albumtypes" "autobpm" "duplicates" "fish" "chroma" "fetchart" "embedart" "replaygain" "lyrics" "ftintitle" "lastgenre" "scrub" "spotify" "deezer" "the"];
           import = {
             write = true;
             hardlink = true;
+            languages = ["fr" "en"];
+            group_albums = true;
           };
           paths = {
             default = "%the{$albumartist}/$album%if{$atypes, $atypes} ($year)/$track - $title";
@@ -37,11 +39,9 @@
             "albumtype:compilation" = "_Compilations/$album%aunique{} ($year)/$track - %the{$artist} - $title";
             comp = "_Compilations/$album%aunique{} ($year)/$track - %the{$artist} - $title";
           };
-          group_albums = true;
           ui = {
             color = true;
           };
-          languages = ["fr" "en"];
           replaygain = {
             backend = "ffmpeg";
           };
@@ -71,8 +71,15 @@
           musicbrainz = {
             external_ids = {
               bandcamp = true;
+              spotify = true;
               deezer = true;
             };
+          };
+          spotify = {
+            source_weight = 0.0;
+          };
+          deezer = {
+            source_weight = 0.0;
           };
         };
       };
