@@ -36,7 +36,7 @@
           random_outgoing_ports = true;
           random_port = false;
           daemon_port = 58846;
-          # listen_ports = [53394 53394];
+          listen_ports = [53394 53394];
           upnp = false;
           natpmp = false;
           max_download_speed = 90000;
