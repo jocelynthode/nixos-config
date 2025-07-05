@@ -9,6 +9,7 @@
     ./calibre
     ./deluge
     ./element
+    ./feishin
     ./gammastep
     ./git
     ./htop
@@ -33,6 +34,7 @@
       calibre.enable = lib.mkDefault true;
       deluge.enable = lib.mkDefault true;
       element.enable = lib.mkDefault true;
+      feishin.enable = lib.mkDefault true;
       gammastep.enable = lib.mkDefault true;
       git.enable = lib.mkDefault true;
       htop.enable = lib.mkDefault true;
