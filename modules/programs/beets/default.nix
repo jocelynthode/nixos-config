@@ -25,7 +25,24 @@
         settings = {
           directory = "/data/media/music";
           library = "/home/jocelyn/.local/share/beets/library.db";
-          plugins = ["albumtypes" "autobpm" "duplicates" "fish" "chroma" "fetchart" "embedart" "replaygain" "lyrics" "ftintitle" "lastgenre" "scrub" "spotify" "deezer" "the"];
+          plugins = [
+            "albumtypes"
+            "autobpm"
+            "chroma"
+            "deezer"
+            "duplicates"
+            "embedart"
+            "fetchart"
+            "fish"
+            "ftintitle"
+            "lastgenre"
+            "lyrics"
+            "mbsync"
+            "replaygain"
+            "scrub"
+            "spotify"
+            "the"
+          ];
           import = {
             write = true;
             hardlink = true;
