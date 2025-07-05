@@ -45,7 +45,7 @@
           ];
           import = {
             write = true;
-            hardlink = true;
+            move = true;
             languages = ["fr" "en"];
           };
           paths = {
