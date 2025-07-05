@@ -47,7 +47,6 @@
             write = true;
             hardlink = true;
             languages = ["fr" "en"];
-            group_albums = true;
           };
           paths = {
             default = "%the{$albumartist}/$album%if{$atypes, $atypes} ($year)/$track - $title";
