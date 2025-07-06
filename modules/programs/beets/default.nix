@@ -62,6 +62,9 @@
           };
           lastgenre = {
             source = "track";
+            force = true;
+            keep_existing = true;
+            count = 3;
           };
           embedart = {
             maxwidth = 500;
