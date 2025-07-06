@@ -25,7 +25,8 @@ in {
         MusicFolder = "/data/media/music";
         ReverseProxyUserHeader = "X-authentik-username";
         ReverseProxyWhitelist = "127.0.0.1/32";
-        EnableStarRating = false;
+        EnableStarRating = true;
+        EnableSharing = true;
       };
     };
 
