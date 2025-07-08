@@ -266,7 +266,7 @@
           exec-once = [
             "uwsm app -- firefox"
             "uwsm app -- signal-desktop"
-            "uwsm app -- spotify"
+            "uwsm app -- feishin"
             "uwsm app -- steam"
           ];
           ecosystem = {
@@ -352,8 +352,10 @@
             "workspace 7 silent,class:info.mumble.Mumble"
             "workspace 10 silent,class:signal"
             "workspace 8 silent,class:spotify"
+            "workspace 8 silent,class:feishin"
             "workspace 9 silent,class:Bitwarden"
             "opacity 0.85 0.85,class:spotify"
+            "opacity 0.85 0.85,class:feishin"
             "opacity 0.85 0.85,class:kitty"
             "tile,class:spotify"
             "float,title:^(Firefox — Sharing Indicator)$"
