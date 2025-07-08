@@ -44,6 +44,7 @@
                 videospeed
                 tridactyl
                 sidebery
+                youtube-no-translation
               ];
             };
             userChrome = ''
