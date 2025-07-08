@@ -811,11 +811,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1751889855,
-        "narHash": "sha256-F5mMfXVf5HRDw0U2+io0eEXluoBVWIm/9jCJmqLCLSU=",
+        "lastModified": 1751956834,
+        "narHash": "sha256-v1Jh2oef4MLpiS+Q/EgSPCER6xqCSYBs/qfms+87S6A=",
         "owner": "jocelynthode",
         "repo": "taxi",
-        "rev": "ccd3a4260be6d768508dda612685d234ae40dcd6",
+        "rev": "48ae7478ef4973c8e9d9b5d5a795fb66dbdedd12",
         "type": "github"
       },
       "original": {
