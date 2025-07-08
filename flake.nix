@@ -23,7 +23,7 @@
     hardware.url = "github:nixos/nixos-hardware";
     impermanence.url = "github:nix-community/impermanence";
     taxi = {
-      url = "github:sephii/taxi";
+      url = "github:jocelynthode/taxi/update-zebra-build-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     wofi-ykman = {
@@ -83,7 +83,7 @@
       channelsConfig.allowUnfree = true;
       sharedOverlays = [
         nur.overlays.default
-        taxi.overlay
+        taxi.overlays.default
         wofi-ykman.overlays.default
         (import ./overlay {inherit inputs;})
       ];
