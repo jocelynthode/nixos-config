@@ -98,12 +98,12 @@
       autoUpgrade = {
         enable = true;
         flake = "github:jocelynthode/nixos-config";
-        dates = "Sat *-*-* 00:00:00";
+        dates = "Sat *-*-* 03:00:00";
         randomizedDelaySec = "10min";
         inherit (config.aspects) allowReboot;
         rebootWindow = {
-          lower = "00:00";
-          upper = "06:00";
+          lower = "03:00";
+          upper = "05:00";
         };
       };
     };
