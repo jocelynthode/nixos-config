@@ -66,6 +66,7 @@ in
         experimental-features = nix-command flakes
         keep-outputs = true
         keep-derivations = true
+        !include ${config.sops.secrets.nixAccessTokens.path}
       '';
     };
 

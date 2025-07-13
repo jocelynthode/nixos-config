@@ -160,6 +160,10 @@
           "users/jocelyn/password" = {
             neededForUsers = true;
           };
+          "nixAccessTokens" = {
+            mode = "0440";
+            group = "wheel";
+          };
         };
       };
 
