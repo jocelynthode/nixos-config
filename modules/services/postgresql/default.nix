@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options.aspects.services.postgresql.enable = lib.mkEnableOption "postgresql";
 
   config = lib.mkIf config.aspects.services.postgresql.enable {

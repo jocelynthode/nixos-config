@@ -1,4 +1,5 @@
-{config, ...}: {
+{ config, ... }:
+{
   disko = {
     enableConfig = true;
     devices = {
@@ -18,7 +19,11 @@
                   type = "filesystem";
                   format = "vfat";
                   mountpoint = "/boot/efi";
-                  mountOptions = ["defaults" "noatime" "umask=0077"];
+                  mountOptions = [
+                    "defaults"
+                    "noatime"
+                    "umask=0077"
+                  ];
                 };
               };
               "${config.networking.hostName}-1" = {
@@ -37,7 +42,7 @@
               "${config.networking.hostName}-2" = {
                 size = "100%";
                 label = "${config.networking.hostName}-2";
-                device = "/dev/disk/by-label/${config.networking.hostName}"; #Because current setup was not done through disko
+                device = "/dev/disk/by-label/${config.networking.hostName}"; # Because current setup was not done through disko
                 content = {
                   type = "btrfs";
                   extraArgs = [
@@ -60,20 +65,40 @@
                   subvolumes = {
                     "@" = {
                       mountpoint = "/";
-                      mountOptions = ["defaults" "noatime" "compress=zstd:1" "discard=async"];
+                      mountOptions = [
+                        "defaults"
+                        "noatime"
+                        "compress=zstd:1"
+                        "discard=async"
+                      ];
                     };
-                    "@blank" = {};
+                    "@blank" = { };
                     "@log" = {
                       mountpoint = "/var/log";
-                      mountOptions = ["defaults" "noatime" "compress=zstd:1" "discard=async"];
+                      mountOptions = [
+                        "defaults"
+                        "noatime"
+                        "compress=zstd:1"
+                        "discard=async"
+                      ];
                     };
                     "@nix" = {
                       mountpoint = "/nix";
-                      mountOptions = ["defaults" "noatime" "compress=zstd:1" "discard=async"];
+                      mountOptions = [
+                        "defaults"
+                        "noatime"
+                        "compress=zstd:1"
+                        "discard=async"
+                      ];
                     };
                     "@persist" = {
                       mountpoint = "/persist";
-                      mountOptions = ["defaults" "noatime" "compress=zstd:1" "discard=async"];
+                      mountOptions = [
+                        "defaults"
+                        "noatime"
+                        "compress=zstd:1"
+                        "discard=async"
+                      ];
                     };
                   };
                 };

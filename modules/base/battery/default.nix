@@ -2,7 +2,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   options.aspects.base.battery.enable = lib.mkEnableOption "battery";
 
   config = lib.mkIf config.aspects.base.battery.enable {

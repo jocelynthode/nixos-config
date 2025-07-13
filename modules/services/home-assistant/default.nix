@@ -3,9 +3,11 @@
   lib,
   pkgs,
   ...
-}: let
-  mkAuthProxy = import ../nginx/auth.nix {inherit lib;};
-in {
+}:
+let
+  mkAuthProxy = import ../nginx/auth.nix { inherit lib; };
+in
+{
   options.aspects.services.home-assistant.enable = lib.mkEnableOption "home-assistant";
 
   config = lib.mkIf config.aspects.services.home-assistant.enable {
@@ -35,7 +37,7 @@ in {
       };
     };
 
-    networking.firewall.allowedTCPPorts = [8080];
+    networking.firewall.allowedTCPPorts = [ 8080 ];
 
     services = {
       esphome = {
@@ -48,7 +50,7 @@ in {
         listeners = [
           {
             address = "127.0.0.1";
-            acl = ["topic readwrite #"];
+            acl = [ "topic readwrite #" ];
             settings = {
               allow_anonymous = false;
             };
@@ -111,8 +113,8 @@ in {
       home-assistant = {
         enable = true;
         openFirewall = true;
-        extraPackages = python3Packages:
-          with python3Packages; [
+        extraPackages =
+          python3Packages: with python3Packages; [
             psycopg2
           ];
         extraComponents = [
@@ -144,8 +146,8 @@ in {
             purge_keep_days = 30;
           };
           # https://www.home-assistant.io/integrations/default_config/
-          default_config = {};
-          api = {};
+          default_config = { };
+          api = { };
           "automation ui" = "!include automations.yaml";
           http = {
             use_x_forwarded_for = true;
@@ -171,25 +173,25 @@ in {
       "mqtt/hass" = {
         sopsFile = ../../../secrets/${config.networking.hostName}/secrets.yaml;
         owner = "mosquitto";
-        restartUnits = ["mosquitto.service"];
+        restartUnits = [ "mosquitto.service" ];
       };
       "mqtt/zigbee2mqtt" = {
         sopsFile = ../../../secrets/${config.networking.hostName}/secrets.yaml;
         owner = "mosquitto";
-        restartUnits = ["mosquitto.service"];
+        restartUnits = [ "mosquitto.service" ];
       };
       zigbee2mqtt = {
         sopsFile = ../../../secrets/${config.networking.hostName}/secrets.yaml;
         path = "/var/lib/zigbee2mqtt/secret.yaml";
         owner = "${config.systemd.services.zigbee2mqtt.serviceConfig.User}";
         group = "${config.systemd.services.zigbee2mqtt.serviceConfig.Group}";
-        restartUnits = ["zigbee2mqtt.service"];
+        restartUnits = [ "zigbee2mqtt.service" ];
       };
       home-assistant = {
         sopsFile = ../../../secrets/${config.networking.hostName}/secrets.yaml;
         owner = "hass";
         path = "/var/lib/hass/secrets.yaml";
-        restartUnits = ["home-assistant.service"];
+        restartUnits = [ "home-assistant.service" ];
       };
     };
   };

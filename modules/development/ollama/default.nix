@@ -2,7 +2,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   options.aspects.development.ollama.enable = lib.mkEnableOption "ollama";
 
   config = lib.mkIf config.aspects.development.ollama.enable {

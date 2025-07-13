@@ -3,7 +3,8 @@
   lib,
   config,
   ...
-}: {
+}:
+{
   options.aspects.graphical.sound.guitar.enable = lib.mkEnableOption "guitar";
 
   config = lib.mkIf config.aspects.graphical.sound.guitar.enable {

@@ -2,7 +2,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   options.aspects.base.fileSystems.zfs = {
     enable = lib.mkEnableOption "zfs";
 
@@ -14,22 +15,24 @@
     };
   };
 
-  config = lib.mkIf (config.aspects.base.fileSystems.enable && config.aspects.base.fileSystems.zfs.enable) {
-    boot = {
-      supportedFilesystems = ["zfs"];
-      initrd = {
-        supportedFilesystems = ["zfs"];
-      };
-      zfs = {
-        forceImportRoot = false;
-      };
-    };
+  config =
+    lib.mkIf (config.aspects.base.fileSystems.enable && config.aspects.base.fileSystems.zfs.enable)
+      {
+        boot = {
+          supportedFilesystems = [ "zfs" ];
+          initrd = {
+            supportedFilesystems = [ "zfs" ];
+          };
+          zfs = {
+            forceImportRoot = false;
+          };
+        };
 
-    services.zfs = {
-      trim.enable = true;
-      autoScrub.enable = true;
-    };
+        services.zfs = {
+          trim.enable = true;
+          autoScrub.enable = true;
+        };
 
-    networking.hostId = config.aspects.base.fileSystems.zfs.hostId;
-  };
+        networking.hostId = config.aspects.base.fileSystems.zfs.hostId;
+      };
 }

@@ -1,11 +1,10 @@
-{inputs, ...}: final: prev:
+{ inputs, ... }:
+final: prev:
 {
-  vimPlugins =
-    prev.vimPlugins
-    // {
-      taxi-vim = prev.pkgs.callPackage ../pkgs/vimPlugins/taxi-vim {};
-      nvim-dap-repl-highlights = prev.pkgs.callPackage ../pkgs/vimPlugins/nvim-dap-repl-highlights {};
-    };
+  vimPlugins = prev.vimPlugins // {
+    taxi-vim = prev.pkgs.callPackage ../pkgs/vimPlugins/taxi-vim { };
+    nvim-dap-repl-highlights = prev.pkgs.callPackage ../pkgs/vimPlugins/nvim-dap-repl-highlights { };
+  };
 
   slack = prev.slack.overrideAttrs (previousAttrs: {
     installPhase =
@@ -18,4 +17,4 @@
 
   devenv = inputs.devenv.packages.${final.system}.default;
 }
-// import ../pkgs {pkgs = final;}
+// import ../pkgs { pkgs = final; }

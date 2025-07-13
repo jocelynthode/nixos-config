@@ -2,37 +2,41 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   options.aspects.services.authentik.enable = lib.mkEnableOption "authentik";
 
-  config = let
-    definition = {
-      cmd,
-      dependsOn ? [],
-      volumes,
-    }: {
-      inherit cmd volumes dependsOn;
-      image = "ghcr.io/goauthentik/server:2025.6.1";
-      user = "100000:100000"; # authentik:authentik
-      extraOptions = [
-        "--network=host"
-        "--pull=always"
-      ];
-      environment = {
-        AUTHENTIK_REDIS__HOST = "127.0.0.1";
-        AUTHENTIK_REDIS__PORT = "6379";
-        AUTHENTIK_REDIS__DB = "0";
-        AUTHENTIK_POSTGRESQL__HOST = "127.0.0.1";
-        AUTHENTIK_POSTGRESQL__USER = "authentik";
-        AUTHENTIK_POSTGRESQL__NAME = "authentik";
-        # AUTHENTIK_COOKIE_DOMAIN = ".tekila.ovh";
-      };
-      environmentFiles = [
-        config.sops.secrets.authentik.path
-      ];
-    };
-    mkAuthProxy = import ../nginx/auth.nix {inherit lib;};
-  in
+  config =
+    let
+      definition =
+        {
+          cmd,
+          dependsOn ? [ ],
+          volumes,
+        }:
+        {
+          inherit cmd volumes dependsOn;
+          image = "ghcr.io/goauthentik/server:2025.6.1";
+          user = "100000:100000"; # authentik:authentik
+          extraOptions = [
+            "--network=host"
+            "--pull=always"
+          ];
+          environment = {
+            AUTHENTIK_REDIS__HOST = "127.0.0.1";
+            AUTHENTIK_REDIS__PORT = "6379";
+            AUTHENTIK_REDIS__DB = "0";
+            AUTHENTIK_POSTGRESQL__HOST = "127.0.0.1";
+            AUTHENTIK_POSTGRESQL__USER = "authentik";
+            AUTHENTIK_POSTGRESQL__NAME = "authentik";
+            # AUTHENTIK_COOKIE_DOMAIN = ".tekila.ovh";
+          };
+          environmentFiles = [
+            config.sops.secrets.authentik.path
+          ];
+        };
+      mkAuthProxy = import ../nginx/auth.nix { inherit lib; };
+    in
     lib.mkIf config.aspects.services.authentik.enable {
       aspects.base.persistence.systemPaths = [
         {
@@ -52,14 +56,14 @@
       # The various volumes must also be created and be owned by authentik:authentik
       virtualisation.oci-containers.containers = {
         authentik-server = definition {
-          cmd = ["server"];
+          cmd = [ "server" ];
           volumes = [
             "/var/lib/authentik/media:/media"
             "/var/lib/authentik/templates:/templates"
           ];
         };
         authentik-worker = definition {
-          cmd = ["worker"];
+          cmd = [ "worker" ];
           dependsOn = [
             "authentik-server"
           ];
@@ -72,13 +76,25 @@
       };
 
       systemd.services.podman-authentik-server = {
-        after = ["network-online.target" "blocky.service"];
-        wants = ["network-online.target" "blocky.service"];
+        after = [
+          "network-online.target"
+          "blocky.service"
+        ];
+        wants = [
+          "network-online.target"
+          "blocky.service"
+        ];
       };
 
       systemd.services.podman-authentik-worker = {
-        after = ["network-online.target" "blocky.service"];
-        wants = ["network-online.target" "blocky.service"];
+        after = [
+          "network-online.target"
+          "blocky.service"
+        ];
+        wants = [
+          "network-online.target"
+          "blocky.service"
+        ];
       };
 
       users = {

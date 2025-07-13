@@ -3,16 +3,19 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   pinentry =
-    if config.aspects.graphical.enable
-    then {
-      package = pkgs.pinentry-gnome3;
-    }
-    else {
-      package = pkgs.pinentry-curses;
-    };
-in {
+    if config.aspects.graphical.enable then
+      {
+        package = pkgs.pinentry-gnome3;
+      }
+    else
+      {
+        package = pkgs.pinentry-curses;
+      };
+in
+{
   environment.systemPackages = with pkgs; [
     gnupg
   ];
@@ -23,7 +26,7 @@ in {
       mode = "0700";
     }
   ];
-  services.dbus.packages = lib.optionals config.aspects.graphical.enable [pkgs.gcr];
+  services.dbus.packages = lib.optionals config.aspects.graphical.enable [ pkgs.gcr ];
 
   home-manager.users.jocelyn = _: {
     services.gpg-agent = {
@@ -35,7 +38,7 @@ in {
       defaultCacheTtl = 3600;
       maxCacheTtl = 7200;
       maxCacheTtlSsh = 7200;
-      sshKeys = ["8A147B30F448F560783CFDD9982AA1BB30017286"];
+      sshKeys = [ "8A147B30F448F560783CFDD9982AA1BB30017286" ];
       enableExtraSocket = true;
     };
 

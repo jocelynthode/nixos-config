@@ -1,4 +1,5 @@
-{config, ...}: {
+{ config, ... }:
+{
   disko = {
     enableConfig = true;
     devices = {
@@ -18,7 +19,11 @@
                   type = "filesystem";
                   format = "vfat";
                   mountpoint = "/boot/efi";
-                  mountOptions = ["defaults" "noatime" "umask=0077"];
+                  mountOptions = [
+                    "defaults"
+                    "noatime"
+                    "umask=0077"
+                  ];
                 };
               };
               "${config.networking.hostName}_crypt" = {
@@ -26,7 +31,7 @@
                 label = "${config.networking.hostName}_crypt";
                 content = {
                   type = "luks";
-                  name = "${config.networking.hostName}"; #Because current setup was not done through disko
+                  name = "${config.networking.hostName}"; # Because current setup was not done through disko
                   settings = {
                     gpgCard = {
                       gracePeriod = 10; # needs some time to connect
@@ -57,28 +62,56 @@
                     subvolumes = {
                       "@" = {
                         mountpoint = "/";
-                        mountOptions = ["defaults" "noatime" "compress=zstd:1" "discard=async"];
+                        mountOptions = [
+                          "defaults"
+                          "noatime"
+                          "compress=zstd:1"
+                          "discard=async"
+                        ];
                       };
-                      "@blank" = {};
+                      "@blank" = { };
                       "@log" = {
                         mountpoint = "/var/log";
-                        mountOptions = ["defaults" "noatime" "compress=zstd:1" "discard=async"];
+                        mountOptions = [
+                          "defaults"
+                          "noatime"
+                          "compress=zstd:1"
+                          "discard=async"
+                        ];
                       };
                       "@nix" = {
                         mountpoint = "/nix";
-                        mountOptions = ["defaults" "noatime" "compress=zstd:1" "discard=async"];
+                        mountOptions = [
+                          "defaults"
+                          "noatime"
+                          "compress=zstd:1"
+                          "discard=async"
+                        ];
                       };
                       "@persist" = {
                         mountpoint = "/persist";
-                        mountOptions = ["defaults" "noatime" "compress=zstd:1" "discard=async"];
+                        mountOptions = [
+                          "defaults"
+                          "noatime"
+                          "compress=zstd:1"
+                          "discard=async"
+                        ];
                       };
                       "@swap" = {
                         mountpoint = "/swap";
-                        mountOptions = ["defaults" "noatime" "compress=zstd:1" "discard=async"];
+                        mountOptions = [
+                          "defaults"
+                          "noatime"
+                          "compress=zstd:1"
+                          "discard=async"
+                        ];
                         swap = {
                           swapfile = {
                             size = "32G";
-                            options = ["defaults" "noatime"];
+                            options = [
+                              "defaults"
+                              "noatime"
+                            ];
                           };
                         };
                       };

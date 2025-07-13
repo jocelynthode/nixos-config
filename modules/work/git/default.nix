@@ -2,7 +2,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   options = {
     aspects.work.git.enable = lib.mkEnableOption "git";
   };

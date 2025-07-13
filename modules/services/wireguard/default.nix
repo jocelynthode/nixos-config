@@ -3,7 +3,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   options.aspects.services.wireguard.enable = lib.mkEnableOption "wireguard";
 
   config = lib.mkIf config.aspects.services.wireguard.enable {
@@ -11,7 +12,7 @@
       nat = {
         enable = true;
         externalInterface = "enp0s25";
-        internalInterfaces = ["wg0"];
+        internalInterfaces = [ "wg0" ];
       };
 
       firewall = {
@@ -24,7 +25,7 @@
         enable = true;
         interfaces = {
           wg0 = {
-            ips = ["10.100.0.1/24"];
+            ips = [ "10.100.0.1/24" ];
             listenPort = 51820;
 
             # Setup if VPN is to be used to access Internet
@@ -41,17 +42,17 @@
               {
                 # Phone
                 publicKey = "SpDNvpxroin151zzOzVhtJBUOfU9X5HnbtypZvJqJCo=";
-                allowedIPs = ["10.100.0.2/32"];
+                allowedIPs = [ "10.100.0.2/32" ];
               }
               {
                 # Steamdeck
                 publicKey = "AET47zgzMVwu0Zkj7XoHeCAm7N1q+hLRmfa02yzd13c=";
-                allowedIPs = ["10.100.0.3/32"];
+                allowedIPs = [ "10.100.0.3/32" ];
               }
             ];
           };
           wg1 = {
-            ips = ["10.2.0.2/32"];
+            ips = [ "10.2.0.2/32" ];
             table = "51821";
             privateKeyFile = config.sops.secrets."wireguard/privateProtonKey".path;
             preShutdown = [
@@ -65,7 +66,7 @@
             peers = [
               {
                 publicKey = "2k23lMcRa7U2sT5mlXQ/vVCIt1ltESheiVZMBAahLSQ=";
-                allowedIPs = ["0.0.0.0/0"];
+                allowedIPs = [ "0.0.0.0/0" ];
                 endpoint = "79.127.184.129:51820";
                 persistentKeepalive = 25;
               }
@@ -76,7 +77,7 @@
     };
 
     # OpenFirewall for vpn port-mapping
-    networking.firewall.trustedInterfaces = ["wg1"];
+    networking.firewall.trustedInterfaces = [ "wg1" ];
 
     sops.secrets = {
       "wireguard/privateServerKey" = {

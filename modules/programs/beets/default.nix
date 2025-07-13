@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options.aspects.programs.beets.enable = lib.mkEnableOption "beets";
 
   config = lib.mkIf config.aspects.programs.beets.enable {
@@ -18,7 +19,7 @@
           pluginOverrides = {
             audible = {
               enable = true;
-              propagatedBuildInputs = with pkgs.beetsPackages; [audible];
+              propagatedBuildInputs = with pkgs.beetsPackages; [ audible ];
             };
           };
         };
@@ -45,7 +46,10 @@
           import = {
             write = true;
             hardlink = true;
-            languages = ["fr" "en"];
+            languages = [
+              "fr"
+              "en"
+            ];
           };
           paths = {
             default = "%the{$albumartist}/$album%if{$atypes, $atypes} ($year)/$track - $title";
@@ -82,8 +86,15 @@
           };
           match = {
             preferred = {
-              countries = ["XW" "FR" "US"];
-              media = ["Digital Media|File" "CD"];
+              countries = [
+                "XW"
+                "FR"
+                "US"
+              ];
+              media = [
+                "Digital Media|File"
+                "CD"
+              ];
             };
           };
           musicbrainz = {

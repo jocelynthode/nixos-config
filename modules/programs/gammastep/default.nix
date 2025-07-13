@@ -2,7 +2,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   options.aspects.programs.gammastep.enable = lib.mkEnableOption "gammastep";
 
   config = lib.mkIf config.aspects.programs.gammastep.enable {

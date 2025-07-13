@@ -2,7 +2,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   options = {
     aspects.work.vpn.enable = lib.mkEnableOption "vpn";
   };

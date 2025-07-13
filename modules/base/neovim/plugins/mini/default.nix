@@ -2,11 +2,11 @@ _: {
   programs.nixvim.plugins.mini = {
     enable = true;
     modules = {
-      ai = {};
-      bufremove = {};
-      cursorword = {};
-      diff = {};
-      extra = {};
+      ai = { };
+      bufremove = { };
+      cursorword = { };
+      diff = { };
+      extra = { };
       hipatterns = {
         highlighters = {
           fixme = {
@@ -51,8 +51,8 @@ _: {
           reindent_linewise = true;
         };
       };
-      pairs = {};
-      surround = {};
+      pairs = { };
+      surround = { };
       starter = {
         evaluate_single = true;
         header = ''
@@ -68,7 +68,7 @@ _: {
           "__unkeyed-2.buildtin_actions".__raw = "require('mini.starter').sections.builtin_actions()";
         };
       };
-      trailspace = {};
+      trailspace = { };
     };
   };
 }

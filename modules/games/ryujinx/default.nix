@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options.aspects.games.ryujinx.enable = lib.mkEnableOption "ryujinx";
 
   config = lib.mkIf config.aspects.games.ryujinx.enable {
@@ -12,7 +13,7 @@
     ];
 
     home-manager.users.jocelyn = _: {
-      home.packages = with pkgs; [ryujinx];
+      home.packages = with pkgs; [ ryujinx ];
     };
   };
 }

@@ -5,7 +5,9 @@ _: {
       scope = {
         enabled = false;
       };
-      indent = {char = "▎";};
+      indent = {
+        char = "▎";
+      };
     };
   };
 }

@@ -3,7 +3,8 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   base = _config: osConfig: {
     catppuccin.fish.enable = true;
     catppuccin.starship.enable = true;
@@ -66,7 +67,8 @@
       ];
     };
   };
-in {
+in
+{
   programs.fish = {
     enable = true;
     vendor = {
@@ -168,14 +170,18 @@ in {
     ];
   };
 
-  home-manager.users.jocelyn = {
-    config,
-    osConfig,
-    ...
-  }: (base config osConfig);
-  home-manager.users.root = {
-    config,
-    osConfig,
-    ...
-  }: (base config osConfig);
+  home-manager.users.jocelyn =
+    {
+      config,
+      osConfig,
+      ...
+    }:
+    (base config osConfig);
+  home-manager.users.root =
+    {
+      config,
+      osConfig,
+      ...
+    }:
+    (base config osConfig);
 }

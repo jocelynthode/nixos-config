@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options.aspects.programs.signal.enable = lib.mkEnableOption "signal";
 
   config = lib.mkIf config.aspects.programs.signal.enable {
@@ -14,7 +15,7 @@
       }
     ];
     home-manager.users.jocelyn = _: {
-      home.packages = [pkgs.signal-desktop];
+      home.packages = [ pkgs.signal-desktop ];
     };
   };
 }

@@ -2,7 +2,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   config = lib.mkIf config.aspects.development.ollama.enable {
     programs.nixvim.plugins.codecompanion = {
       enable = true;

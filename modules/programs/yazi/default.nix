@@ -2,7 +2,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   options.aspects.programs.yazi.enable = lib.mkEnableOption "yazi";
 
   config = lib.mkIf config.aspects.programs.yazi.enable {
@@ -12,14 +13,14 @@
         enable = true;
         enableFishIntegration = true;
         /*
-           keymap = {
-          manager.prepend_keymap = [
-            {
-              run = ''shell 'dragon -x -i -T "$1"' --confirm"'';
-              on = ["<C-d>"];
-            }
-          ];
-        };
+             keymap = {
+            manager.prepend_keymap = [
+              {
+                run = ''shell 'dragon -x -i -T "$1"' --confirm"'';
+                on = ["<C-d>"];
+              }
+            ];
+          };
         */
         settings = {
           manager = {
@@ -43,7 +44,7 @@
               "inode/directory"
             ];
             terminal = false;
-            categories = ["ConsoleOnly"];
+            categories = [ "ConsoleOnly" ];
           };
         };
       };

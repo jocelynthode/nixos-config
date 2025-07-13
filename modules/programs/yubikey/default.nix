@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options.aspects.programs.yubikey.enable = lib.mkEnableOption "yubikey";
 
   config = lib.mkIf config.aspects.programs.yubikey.enable {

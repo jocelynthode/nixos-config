@@ -2,8 +2,9 @@
   config,
   lib,
   ...
-}: let
-  mkAuthProxy = import ../nginx/auth.nix {inherit lib;};
+}:
+let
+  mkAuthProxy = import ../nginx/auth.nix { inherit lib; };
 
   mediaServices = [
     {
@@ -45,66 +46,66 @@
     }
   ];
 
-  persistencePaths =
-    lib.concatMap
-    (service: [
-      {
-        directory = "/var/lib/${service.name}";
-        user = service.name;
-        group = "media";
-      }
-    ])
-    (lib.filter (service: service.createDir) mediaServices);
+  persistencePaths = lib.concatMap (service: [
+    {
+      directory = "/var/lib/${service.name}";
+      user = service.name;
+      group = "media";
+    }
+  ]) (lib.filter (service: service.createDir) mediaServices);
 
-  serviceConfigs = lib.listToAttrs (map (
-      service: {
-        inherit (service) name;
-        value =
-          {
-            enable = true;
-            openFirewall = true;
-          }
-          // lib.optionalAttrs service.useSettings {
-            settings = {
-              auth = {
-                method = "external";
-              };
+  serviceConfigs = lib.listToAttrs (
+    map (service: {
+      inherit (service) name;
+      value =
+        {
+          enable = true;
+          openFirewall = true;
+        }
+        // lib.optionalAttrs service.useSettings {
+          settings = {
+            auth = {
+              method = "external";
             };
-          }
-          // lib.optionalAttrs (service.name != "prowlarr") {
-            group = "media";
           };
-      }
-    )
-    mediaServices);
+        }
+        // lib.optionalAttrs (service.name != "prowlarr") {
+          group = "media";
+        };
+    }) mediaServices
+  );
 
-  userGroups = lib.listToAttrs (map (service: {
+  userGroups = lib.listToAttrs (
+    map (service: {
       inherit (service) name;
       value = {
-        extraGroups = ["media"];
+        extraGroups = [ "media" ];
       };
-    })
-    (lib.filter (service: service.createDir) mediaServices));
+    }) (lib.filter (service: service.createDir) mediaServices)
+  );
 
-  tmpFiles = map (service: "d /backups/${service.name} 0750 ${service.name} media -") (lib.filter (service: service.createDir) mediaServices);
+  tmpFiles = map (service: "d /backups/${service.name} 0750 ${service.name} media -") (
+    lib.filter (service: service.createDir) mediaServices
+  );
 
-  nginxVhosts = lib.listToAttrs (map (
-      service: {
-        name = "${service.name}.tekila.ovh";
-        value = mkAuthProxy {inherit (service) port;};
-      }
-    )
-    mediaServices);
-  systemdConfigs = lib.listToAttrs (map (service: {
+  nginxVhosts = lib.listToAttrs (
+    map (service: {
+      name = "${service.name}.tekila.ovh";
+      value = mkAuthProxy { inherit (service) port; };
+    }) mediaServices
+  );
+  systemdConfigs = lib.listToAttrs (
+    map (service: {
       inherit (service) name;
       value = {
         serviceConfig = {
           UMask = "0002";
         };
       };
-    })
-    (lib.filter (service: service.name != "prowlarr") mediaServices));
-in {
+    }) (lib.filter (service: service.name != "prowlarr") mediaServices)
+  );
+in
+{
   options.aspects.services.media.enable = lib.mkEnableOption ''
     Enable all media “arr” services.
 
@@ -116,32 +117,26 @@ in {
   config = lib.mkIf config.aspects.services.media.enable {
     aspects.base.persistence.systemPaths = persistencePaths;
 
-    services =
-      serviceConfigs
-      // {
-        nginx.virtualHosts = nginxVhosts;
-      };
+    services = serviceConfigs // {
+      nginx.virtualHosts = nginxVhosts;
+    };
 
     systemd = {
       services = systemdConfigs;
-      tmpfiles.rules =
-        [
-          "d /data/media 0775 deluge media -"
-          "d /data/media/movies 0775 deluge media -"
-          "d /data/media/shows 0775 deluge media -"
-          "d /data/media/music 0775 deluge media -"
-          "d /data/media/books 0775 deluge media -"
-        ]
-        ++ tmpFiles;
+      tmpfiles.rules = [
+        "d /data/media 0775 deluge media -"
+        "d /data/media/movies 0775 deluge media -"
+        "d /data/media/shows 0775 deluge media -"
+        "d /data/media/music 0775 deluge media -"
+        "d /data/media/books 0775 deluge media -"
+      ] ++ tmpFiles;
     };
 
     users = {
-      groups.media = {};
-      users =
-        {
-          jocelyn.extraGroups = ["media"];
-        }
-        // userGroups;
+      groups.media = { };
+      users = {
+        jocelyn.extraGroups = [ "media" ];
+      } // userGroups;
     };
   };
 }

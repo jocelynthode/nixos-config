@@ -3,7 +3,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   aspects.base.persistence.systemPaths = [
     "/etc/NetworkManager/system-connections"
   ];
@@ -35,9 +36,13 @@
     };
   };
 
-  users.users.jocelyn.extraGroups = lib.mkIf config.networking.networkmanager.enable ["networkmanager"];
+  users.users.jocelyn.extraGroups = lib.mkIf config.networking.networkmanager.enable [
+    "networkmanager"
+  ];
 
-  home-manager.users.jocelyn = {pkgs, ...}: {
-    home.packages = with pkgs; lib.mkIf config.aspects.graphical.enable [networkmanagerapplet];
-  };
+  home-manager.users.jocelyn =
+    { pkgs, ... }:
+    {
+      home.packages = with pkgs; lib.mkIf config.aspects.graphical.enable [ networkmanagerapplet ];
+    };
 }

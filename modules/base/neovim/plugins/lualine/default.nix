@@ -5,14 +5,17 @@ _: {
       options = {
         theme = "catppuccin";
         globalstatus = true;
-        disabled_filetypes = ["alpha" "grug-far"];
+        disabled_filetypes = [
+          "alpha"
+          "grug-far"
+        ];
       };
       extensions = [
         "nvim-tree"
         "toggleterm"
       ];
       sections = {
-        lualine_a = ["mode"];
+        lualine_a = [ "mode" ];
         lualine_b = [
           "branch"
           "diff"
@@ -52,16 +55,16 @@ _: {
           "fileformat"
           "filetype"
         ];
-        lualine_y = ["progress"];
-        lualine_z = ["location"];
+        lualine_y = [ "progress" ];
+        lualine_z = [ "location" ];
       };
       inactive_sections = {
-        lualine_a = [];
-        lualine_b = [];
-        lualine_c = ["filename"];
-        lualine_x = ["location"];
-        lualine_y = [];
-        lualine_z = [];
+        lualine_a = [ ];
+        lualine_b = [ ];
+        lualine_c = [ "filename" ];
+        lualine_x = [ "location" ];
+        lualine_y = [ ];
+        lualine_z = [ ];
       };
     };
   };

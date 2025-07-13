@@ -3,10 +3,11 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   options.aspects.graphical.kanshi.settings = lib.mkOption {
     type = lib.types.listOf lib.types.attrs;
-    default = {};
+    default = { };
     description = "services.kanshi.settings setup";
     example = ''
       [
@@ -36,12 +37,14 @@
   };
 
   config = lib.mkIf config.aspects.graphical.enable {
-    home-manager.users.jocelyn = {osConfig, ...}: {
-      services.kanshi = {
-        enable = true;
-        systemdTarget = "graphical-session.target";
-        inherit (osConfig.aspects.graphical.kanshi) settings;
+    home-manager.users.jocelyn =
+      { osConfig, ... }:
+      {
+        services.kanshi = {
+          enable = true;
+          systemdTarget = "graphical-session.target";
+          inherit (osConfig.aspects.graphical.kanshi) settings;
+        };
       };
-    };
   };
 }

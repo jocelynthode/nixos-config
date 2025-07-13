@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ./core
     ./plugins
@@ -32,7 +33,10 @@
         backup = false;
         clipboard = "unnamedplus";
         cmdheight = 2;
-        completeopt = ["menuone" "noselect"];
+        completeopt = [
+          "menuone"
+          "noselect"
+        ];
         conceallevel = 0;
         fileencoding = "utf-8";
         foldenable = false;
@@ -91,7 +95,7 @@
       ];
 
       extraPackages = with pkgs; [
-        alejandra
+        nixfmt-rfc-style
       ];
 
       extraConfigLua = ''
@@ -106,8 +110,8 @@
       '';
 
       # use python3_host_prog as python path to use here
-      extraPython3Packages = ps:
-        with ps; [
+      extraPython3Packages =
+        ps: with ps; [
           debugpy
           setuptools
         ];

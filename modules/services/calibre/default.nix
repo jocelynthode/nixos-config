@@ -2,7 +2,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   options.aspects.services.calibre-web.enable = lib.mkEnableOption "calibre-web";
 
   config = lib.mkIf config.aspects.services.calibre-web.enable {

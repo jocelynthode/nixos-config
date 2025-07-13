@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options.aspects.programs.bitwarden.enable = lib.mkEnableOption "bitwarden";
 
   config = lib.mkIf config.aspects.programs.bitwarden.enable {
@@ -14,7 +15,7 @@
       }
     ];
     home-manager.users.jocelyn = _: {
-      home.packages = [pkgs.bitwarden];
+      home.packages = [ pkgs.bitwarden ];
     };
   };
 }

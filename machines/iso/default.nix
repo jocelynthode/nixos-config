@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # Machine-specific module settings
   aspects = {
     stateVersion = "25.05";

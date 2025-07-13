@@ -42,7 +42,7 @@ _: {
           nil_ls = {
             enable = true;
             settings = {
-              formatting.command = ["alejandra"];
+              formatting.command = [ "nixfmt" ];
             };
           };
           jsonls = {
@@ -50,18 +50,18 @@ _: {
           };
           helm_ls = {
             enable = true;
-            filetypes = ["helm"];
+            filetypes = [ "helm" ];
           };
           yamlls = {
             enable = true;
-            filetypes = ["yaml"];
+            filetypes = [ "yaml" ];
           };
           lua_ls = {
             enable = true;
             settings = {
               Lua = {
                 diagnostics = {
-                  globals = ["vim"];
+                  globals = [ "vim" ];
                 };
                 workspace = {
                   library.__raw = ''
@@ -92,7 +92,10 @@ _: {
         finder = {
           default = "def+ref+imp";
           keys = {
-            toggleOrOpen = ["o" "l"];
+            toggleOrOpen = [
+              "o"
+              "l"
+            ];
           };
         };
       };

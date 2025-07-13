@@ -2,7 +2,8 @@
   pkgs,
   config,
   ...
-}: let
+}:
+let
   base = {
     home.packages = with pkgs; [
       cachix
@@ -35,7 +36,7 @@
       };
       zoxide = {
         enable = true;
-        options = ["--cmd cd"];
+        options = [ "--cmd cd" ];
       };
       atuin = {
         enable = true;
@@ -50,7 +51,8 @@
       };
     };
   };
-in {
+in
+{
   sops.secrets."atuin/key" = {
     sopsFile = ../../../secrets/common/secrets.yaml;
     owner = "jocelyn";

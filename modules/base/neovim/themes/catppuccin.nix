@@ -15,7 +15,7 @@ _: {
         shade = "dark";
         percentage = 0.15;
       };
-      color_overrides = {};
+      color_overrides = { };
       custom_highlights.__raw = ''
         function(colors)
           return {

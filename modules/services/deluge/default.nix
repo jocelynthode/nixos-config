@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options.aspects.services.deluge.enable = lib.mkEnableOption "deluge";
 
   config = lib.mkIf config.aspects.services.deluge.enable {
@@ -11,7 +12,7 @@
       "/var/lib/deluge"
     ];
 
-    networking.firewall.allowedTCPPorts = [58846];
+    networking.firewall.allowedTCPPorts = [ 58846 ];
 
     services = {
       deluge = {
@@ -36,7 +37,10 @@
           random_outgoing_ports = true;
           random_port = false;
           daemon_port = 58846;
-          listen_ports = [53394 53394];
+          listen_ports = [
+            53394
+            53394
+          ];
           upnp = false;
           natpmp = false;
           max_download_speed = 90000;
@@ -70,9 +74,15 @@
       timers.natpmp = {
         enable = true;
         description = "Renew NAT-PMP port forwarding for Deluge";
-        after = ["network-online.target" "deluged.service"];
-        wants = ["network-online.target" "deluged.service"];
-        wantedBy = ["timers.target"];
+        after = [
+          "network-online.target"
+          "deluged.service"
+        ];
+        wants = [
+          "network-online.target"
+          "deluged.service"
+        ];
+        wantedBy = [ "timers.target" ];
 
         timerConfig = {
           OnBootSec = "45s";
@@ -84,14 +94,26 @@
       };
       services = {
         deluged = {
-          after = ["network-online.target" "blocky.service"];
-          wants = ["network-online.target" "blocky.service"];
+          after = [
+            "network-online.target"
+            "blocky.service"
+          ];
+          wants = [
+            "network-online.target"
+            "blocky.service"
+          ];
         };
         natpmp = {
           enable = true;
           description = "Map Deluge TCP/UDP via NAT-PMP";
-          after = ["network-online.target" "deluged.service"];
-          wants = ["network-online.target" "deluged.service"];
+          after = [
+            "network-online.target"
+            "deluged.service"
+          ];
+          wants = [
+            "network-online.target"
+            "deluged.service"
+          ];
 
           serviceConfig = {
             Type = "oneshot";
@@ -100,7 +122,10 @@
                 "--prefix"
                 "PATH"
                 ":"
-                "${lib.makeBinPath [pkgs.curl pkgs.libnatpmp]}"
+                "${lib.makeBinPath [
+                  pkgs.curl
+                  pkgs.libnatpmp
+                ]}"
               ];
             } (builtins.readFile ./natpmp-sync.sh);
           };
@@ -111,7 +136,10 @@
     sops.secrets.deluge = {
       sopsFile = ../../../secrets/${config.networking.hostName}/secrets.yaml;
       owner = "deluge";
-      restartUnits = ["deluged.service" "delugeweb.service"];
+      restartUnits = [
+        "deluged.service"
+        "delugeweb.service"
+      ];
     };
   };
 }

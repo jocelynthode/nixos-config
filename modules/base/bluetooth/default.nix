@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options.aspects.base.bluetooth.enable = lib.mkEnableOption "bluetooth";
 
   config = lib.mkIf config.aspects.base.bluetooth.enable {

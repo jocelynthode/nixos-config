@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   packages = with pkgs; [
     git
     sops
@@ -11,7 +12,7 @@
 
   git-hooks.hooks = {
     actionlint.enable = true;
-    alejandra.enable = true;
+    nixfmt-rfc-style.enable = true;
     deadnix = {
       enable = true;
       settings.edit = true;

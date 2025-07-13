@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options.aspects.games.discord.enable = lib.mkEnableOption "discord";
 
   config = lib.mkIf config.aspects.games.discord.enable {
@@ -12,7 +13,7 @@
     ];
 
     home-manager.users.jocelyn = _: {
-      home.packages = with pkgs; [vesktop];
+      home.packages = with pkgs; [ vesktop ];
     };
   };
 }

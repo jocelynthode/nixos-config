@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options.aspects.development.containers.enable = lib.mkEnableOption "containers";
 
   config = lib.mkIf config.aspects.development.containers.enable {
@@ -24,7 +25,7 @@
       };
       containers = {
         enable = true;
-        containersConf.cniPlugins = with pkgs; [cni-plugins];
+        containersConf.cniPlugins = with pkgs; [ cni-plugins ];
       };
     };
 

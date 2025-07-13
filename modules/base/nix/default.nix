@@ -4,7 +4,8 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   baseDirenv = {
     programs.direnv = {
       enable = true;
@@ -15,7 +16,8 @@
     programs.command-not-found.enable = false;
     programs.nix-index-database.comma.enable = true;
   };
-in {
+in
+{
   options.aspects.base.nix = {
     enableDirenv = lib.mkEnableOption "enableDirenv";
   };
@@ -53,7 +55,10 @@ in {
           "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
         ];
 
-        trusted-users = ["root" "@wheel"];
+        trusted-users = [
+          "root"
+          "@wheel"
+        ];
         auto-optimise-store = true;
       };
       package = pkgs.nixStable;
@@ -65,11 +70,10 @@ in {
     };
 
     home-manager = {
-      sharedModules = [inputs.nix-index-database.hmModules.nix-index];
-      users.jocelyn = _:
-        lib.recursiveUpdate
-        (lib.optionalAttrs config.aspects.base.nix.enableDirenv baseDirenv)
-        baseNixIndex;
+      sharedModules = [ inputs.nix-index-database.hmModules.nix-index ];
+      users.jocelyn =
+        _:
+        lib.recursiveUpdate (lib.optionalAttrs config.aspects.base.nix.enableDirenv baseDirenv) baseNixIndex;
       users.root = _: baseNixIndex;
     };
   };

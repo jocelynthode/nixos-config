@@ -56,27 +56,28 @@
     };
   };
 
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    nixpkgs-stable,
-    nixpkgs-master,
-    catppuccin,
-    home-manager,
-    sops-nix,
-    nur,
-    nix-colors,
-    hardware,
-    impermanence,
-    taxi,
-    utils,
-    spicetify-nix,
-    nix-index-database,
-    nixvim,
-    wofi-ykman,
-    disko,
-    ...
-  }:
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      nixpkgs-stable,
+      nixpkgs-master,
+      catppuccin,
+      home-manager,
+      sops-nix,
+      nur,
+      nix-colors,
+      hardware,
+      impermanence,
+      taxi,
+      utils,
+      spicetify-nix,
+      nix-index-database,
+      nixvim,
+      wofi-ykman,
+      disko,
+      ...
+    }:
     utils.lib.mkFlake {
       inherit self inputs;
 
@@ -85,11 +86,11 @@
         nur.overlays.default
         taxi.overlays.default
         wofi-ykman.overlays.default
-        (import ./overlay {inherit inputs;})
+        (import ./overlay { inherit inputs; })
       ];
       hostDefaults = {
         modules = [
-          {nix.generateRegistryFromInputs = true;}
+          { nix.generateRegistryFromInputs = true; }
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
           impermanence.nixosModules.impermanence
@@ -103,9 +104,9 @@
 
       channels.nixpkgs.input = nixpkgs;
 
-      outputsBuilder = channels:
-        with channels.nixpkgs; {
-          formatter = alejandra;
+      outputsBuilder =
+        channels: with channels.nixpkgs; {
+          formatter = nixfmt-tree;
         };
 
       hosts = {
@@ -117,7 +118,12 @@
             hardware.nixosModules.common-gpu-amd
           ];
           specialArgs = {
-            inherit nix-colors spicetify-nix catppuccin nixvim;
+            inherit
+              nix-colors
+              spicetify-nix
+              catppuccin
+              nixvim
+              ;
             pkgs-stable = import nixpkgs-stable {
               system = "x86_64-linux";
               config.allowUnfree = true;
@@ -137,7 +143,12 @@
             hardware.nixosModules.framework-11th-gen-intel
           ];
           specialArgs = {
-            inherit nix-colors spicetify-nix catppuccin nixvim;
+            inherit
+              nix-colors
+              spicetify-nix
+              catppuccin
+              nixvim
+              ;
             pkgs-stable = import nixpkgs-stable {
               system = "x86_64-linux";
               config.allowUnfree = true;
@@ -155,7 +166,12 @@
             hardware.nixosModules.common-pc-ssd
           ];
           specialArgs = {
-            inherit nix-colors spicetify-nix catppuccin nixvim;
+            inherit
+              nix-colors
+              spicetify-nix
+              catppuccin
+              nixvim
+              ;
             pkgs-stable = import nixpkgs-stable {
               system = "x86_64-linux";
               config.allowUnfree = true;
@@ -172,7 +188,14 @@
             "${nixpkgs}/nixos/modules/installer/cd-dvd/channel.nix"
             ./machines/iso
           ];
-          specialArgs = {inherit nix-colors spicetify-nix catppuccin nixvim;};
+          specialArgs = {
+            inherit
+              nix-colors
+              spicetify-nix
+              catppuccin
+              nixvim
+              ;
+          };
         };
       };
     };

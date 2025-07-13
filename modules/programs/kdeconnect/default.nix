@@ -2,7 +2,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   options.aspects.programs.kdeconnect.enable = lib.mkEnableOption "kdeconnect";
 
   config = lib.mkIf config.aspects.programs.kdeconnect.enable {

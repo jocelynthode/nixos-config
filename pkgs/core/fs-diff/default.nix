@@ -1,9 +1,12 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 pkgs.writeShellApplication {
   name = "fs-diff";
   checkPhase = "";
 
-  runtimeInputs = with pkgs; [coreutils btrfs-progs];
+  runtimeInputs = with pkgs; [
+    coreutils
+    btrfs-progs
+  ];
 
   text = ''
     OLD_TRANSID=''$(sudo btrfs subvolume find-new /mnt/@blank 9999999)

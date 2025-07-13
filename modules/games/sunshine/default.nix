@@ -2,7 +2,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   options.aspects.games.sunshine.enable = lib.mkEnableOption "sunshine";
 
   config = lib.mkIf config.aspects.games.sunshine.enable {

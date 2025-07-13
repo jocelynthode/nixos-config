@@ -14,7 +14,10 @@ _: {
         end
       '';
       key = "<leader>sr";
-      mode = ["n" "v"];
+      mode = [
+        "n"
+        "v"
+      ];
       options = {
         desc = "Search and Replace";
         nowait = true;

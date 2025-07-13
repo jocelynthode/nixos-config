@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options.aspects.programs.lact.enable = lib.mkEnableOption "lact";
 
   config = lib.mkIf config.aspects.programs.lact.enable {
@@ -16,7 +17,7 @@
       lact
     ];
     systemd = {
-      services.lactd.wantedBy = ["multi-user.target"];
+      services.lactd.wantedBy = [ "multi-user.target" ];
       packages = with pkgs; [
         lact
       ];

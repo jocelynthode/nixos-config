@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options = {
     aspects.work.terraform.enable = lib.mkEnableOption "terraform";
   };

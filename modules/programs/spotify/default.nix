@@ -4,7 +4,8 @@
   pkgs,
   spicetify-nix,
   ...
-}: {
+}:
+{
   options.aspects.programs.spotify.enable = lib.mkEnableOption "spotify";
 
   config = lib.mkIf config.aspects.programs.spotify.enable {
@@ -12,9 +13,9 @@
       ".config/spotify"
     ];
 
-    home-manager.sharedModules = [spicetify-nix.homeManagerModules.default];
+    home-manager.sharedModules = [ spicetify-nix.homeManagerModules.default ];
     home-manager.users.jocelyn = _: {
-      home.packages = [pkgs.playerctl];
+      home.packages = [ pkgs.playerctl ];
       services.playerctld = {
         enable = true;
       };

@@ -2,9 +2,11 @@
   config,
   lib,
   ...
-}: let
-  mkAuthProxy = import ../nginx/auth.nix {inherit lib;};
-in {
+}:
+let
+  mkAuthProxy = import ../nginx/auth.nix { inherit lib; };
+in
+{
   options.aspects.services.navidrome.enable = lib.mkEnableOption "navidrome";
 
   config = lib.mkIf config.aspects.services.navidrome.enable {
@@ -42,7 +44,7 @@ in {
     sops.secrets.navidrome = {
       sopsFile = ../../../secrets/${config.networking.hostName}/secrets.yaml;
       mode = "0644";
-      restartUnits = ["navidrome.service"];
+      restartUnits = [ "navidrome.service" ];
     };
   };
 }

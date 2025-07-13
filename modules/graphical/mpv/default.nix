@@ -3,7 +3,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   options.aspects.graphical.mpv.enable = lib.mkEnableOption "mpv";
 
   config = lib.mkIf config.aspects.graphical.mpv.enable {

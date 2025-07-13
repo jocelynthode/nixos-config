@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options = {
     aspects.work.kubernetes.enable = lib.mkEnableOption "kubernetes";
   };

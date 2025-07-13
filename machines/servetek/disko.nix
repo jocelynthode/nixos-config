@@ -1,4 +1,5 @@
-{config, ...}: {
+{ config, ... }:
+{
   disko = {
     enableConfig = true;
     devices = {
@@ -17,7 +18,7 @@
                   type = "filesystem";
                   format = "vfat";
                   mountpoint = "/boot/efi";
-                  mountOptions = ["umask=0077"];
+                  mountOptions = [ "umask=0077" ];
                 };
               };
               root = {
@@ -43,20 +44,40 @@
                   subvolumes = {
                     "@" = {
                       mountpoint = "/";
-                      mountOptions = ["defaults" "noatime" "compress=zstd:1" "discard=async"];
+                      mountOptions = [
+                        "defaults"
+                        "noatime"
+                        "compress=zstd:1"
+                        "discard=async"
+                      ];
                     };
-                    "@blank" = {};
+                    "@blank" = { };
                     "@log" = {
                       mountpoint = "/var/log";
-                      mountOptions = ["defaults" "noatime" "compress=zstd:1" "discard=async"];
+                      mountOptions = [
+                        "defaults"
+                        "noatime"
+                        "compress=zstd:1"
+                        "discard=async"
+                      ];
                     };
                     "@nix" = {
                       mountpoint = "/nix";
-                      mountOptions = ["defaults" "noatime" "compress=zstd:1" "discard=async"];
+                      mountOptions = [
+                        "defaults"
+                        "noatime"
+                        "compress=zstd:1"
+                        "discard=async"
+                      ];
                     };
                     "@persist" = {
                       mountpoint = "/persist";
-                      mountOptions = ["defaults" "noatime" "compress=zstd:1" "discard=async"];
+                      mountOptions = [
+                        "defaults"
+                        "noatime"
+                        "compress=zstd:1"
+                        "discard=async"
+                      ];
                     };
                   };
                 };

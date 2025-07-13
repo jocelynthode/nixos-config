@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options.aspects.games.lutris.enable = lib.mkEnableOption "lutris";
 
   config = lib.mkIf config.aspects.games.lutris.enable {
@@ -14,7 +15,7 @@
     ];
 
     home-manager.users.jocelyn = _: {
-      home.packages = with pkgs; [lutris];
+      home.packages = with pkgs; [ lutris ];
     };
   };
 }

@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options.aspects.graphical.screenshot.enable = lib.mkEnableOption "screenshot";
 
   config = lib.mkIf config.aspects.graphical.screenshot.enable {

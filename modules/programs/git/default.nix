@@ -2,7 +2,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   options.aspects.programs.git.enable = lib.mkEnableOption "git";
 
   config = lib.mkIf config.aspects.programs.git.enable {

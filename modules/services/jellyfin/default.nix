@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options.aspects.services.jellyfin.enable = lib.mkEnableOption "jellyfin";
 
   config = lib.mkIf config.aspects.services.jellyfin.enable {
@@ -34,7 +35,10 @@
 
     users.users.jellyfin = {
       isSystemUser = true;
-      extraGroups = ["video" "media"];
+      extraGroups = [
+        "video"
+        "media"
+      ];
     };
 
     environment.systemPackages = [

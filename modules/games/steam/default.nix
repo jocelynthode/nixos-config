@@ -3,7 +3,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   options.aspects.games.steam.enable = lib.mkEnableOption "steam";
 
   config = lib.mkIf config.aspects.games.steam.enable {

@@ -3,28 +3,29 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options.aspects.services.blocky.enable = lib.mkEnableOption "blocky";
 
-  config = let
-    allowlist =
-      pkgs.writeText "whitelist.txt"
-      ''
+  config =
+    let
+      allowlist = pkgs.writeText "whitelist.txt" ''
         s.youtube.com
       '';
-    denylist =
-      pkgs.writeText "blacklist.txt"
-      ''
+      denylist = pkgs.writeText "blacklist.txt" ''
         # Remove Microsoft VSCode tunnel access
         /^(.+[_.-])?tunnels\.api\.visualstudio\.com/
         /^(.+[_.-])?devtunnels\.ms/
       '';
-  in
+    in
     lib.mkIf config.aspects.services.blocky.enable {
       networking = {
         firewall = {
-          allowedTCPPorts = [53 853];
-          allowedUDPPorts = [53];
+          allowedTCPPorts = [
+            53
+            853
+          ];
+          allowedUDPPorts = [ 53 ];
         };
         # Prevent things from not resolving prior to blocky start
         networkmanager.insertNameservers = [
@@ -38,7 +39,9 @@
           onlySSL = true;
           enableACME = true;
           locations = {
-            "/dns-query" = {proxyPass = "https://127.0.0.1:4443/dns-query";};
+            "/dns-query" = {
+              proxyPass = "https://127.0.0.1:4443/dns-query";
+            };
           };
         };
         streamConfig = ''
@@ -76,7 +79,10 @@
           bootstrapDns = {
             upstream = "https://dns.mullvad.net/dns-query";
             # mullvad + dns4all
-            ips = ["194.242.2.2" "194.0.5.3"];
+            ips = [
+              "194.242.2.2"
+              "194.0.5.3"
+            ];
           };
           blocking = {
             blockType = "zeroIP";
@@ -89,10 +95,10 @@
               ];
             };
             allowlists = {
-              ads = ["${allowlist}"];
+              ads = [ "${allowlist}" ];
             };
             clientGroupsBlock = {
-              default = ["ads"];
+              default = [ "ads" ];
             };
           };
           log = {

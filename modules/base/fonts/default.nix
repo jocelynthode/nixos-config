@@ -2,7 +2,8 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   mkFontOption = kind: {
     family = lib.mkOption {
       type = lib.types.str;
@@ -24,9 +25,13 @@
     };
   };
   base = {
-    home.packages = [config.aspects.base.fonts.monospace.package config.aspects.base.fonts.regular.package];
+    home.packages = [
+      config.aspects.base.fonts.monospace.package
+      config.aspects.base.fonts.regular.package
+    ];
   };
-in {
+in
+{
   options.aspects.base.fonts = {
     monospace = mkFontOption "monospace";
     regular = mkFontOption "regular";

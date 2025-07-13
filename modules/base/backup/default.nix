@@ -1,9 +1,10 @@
-{config, ...}: {
+{ config, ... }:
+{
   services.restic.backups = {
     persist = {
       repositoryFile = config.sops.secrets."restic/repository".path;
       user = "root";
-      paths = [config.aspects.base.persistence.persistPrefix];
+      paths = [ config.aspects.base.persistence.persistPrefix ];
       exclude = [
         "/persist/var/cache"
         "/persist/var/log"
@@ -70,7 +71,7 @@
   };
 
   systemd.services.restic-backups-persist = {
-    after = ["network-online.target"];
-    wants = ["network-online.target"];
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
   };
 }

@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options.aspects.graphical.firefox = {
     enable = lib.mkEnableOption "firefox";
   };
@@ -27,7 +28,7 @@
         ];
         profiles = {
           jocelyn = {
-            bookmarks = {};
+            bookmarks = { };
             extensions = {
               packages = with pkgs.nur.repos.rycee.firefox-addons; [
                 betterttv

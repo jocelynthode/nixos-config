@@ -15,7 +15,7 @@ vimUtils.buildVimPlugin {
     hash = "sha256-PEMZxBBhL546bT2RKiW8uAtN85Yw0diEx5a32BSl5As=";
   };
 
-  passthru.updateScript = unstableGitUpdater {};
+  passthru.updateScript = unstableGitUpdater { };
 
   meta = {
     description = "Add syntax highlighting to the nvim-dap REPL";

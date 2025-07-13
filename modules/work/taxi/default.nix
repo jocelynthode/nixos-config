@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options = {
     aspects.work.taxi.enable = lib.mkEnableOption "taxi";
   };
@@ -12,10 +13,9 @@
     home-manager.users.jocelyn = _: {
       home.packages = with pkgs; [
         (taxi-cli.withPlugins (
-          plugins:
-            with plugins; [
-              zebra
-            ]
+          plugins: with plugins; [
+            zebra
+          ]
         ))
       ];
     };

@@ -2,7 +2,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   options.aspects.services.recyclarr.enable = lib.mkEnableOption "recyclarr";
 
   config = lib.mkIf config.aspects.services.recyclarr.enable {

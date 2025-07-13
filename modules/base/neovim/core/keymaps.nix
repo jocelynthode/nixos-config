@@ -1,8 +1,10 @@
-_: let
+_:
+let
   options = {
     silent = true;
   };
-in {
+in
+{
   programs.nixvim.keymaps = [
     {
       action = "<Nop>";

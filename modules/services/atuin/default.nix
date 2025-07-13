@@ -2,7 +2,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   options.aspects.services.atuin.enable = lib.mkEnableOption "atuin";
 
   config = lib.mkIf config.aspects.services.atuin.enable {
@@ -29,7 +30,9 @@
         onlySSL = true;
         enableACME = true;
         locations = {
-          "/" = {proxyPass = "http://127.0.0.1:8888/";};
+          "/" = {
+            proxyPass = "http://127.0.0.1:8888/";
+          };
         };
       };
     };

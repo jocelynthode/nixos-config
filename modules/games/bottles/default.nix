@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options.aspects.games.bottles.enable = lib.mkEnableOption "bottles";
 
   config = lib.mkIf config.aspects.games.bottles.enable {
@@ -12,7 +13,7 @@
     ];
 
     home-manager.users.jocelyn = _: {
-      home.packages = with pkgs; [bottles];
+      home.packages = with pkgs; [ bottles ];
     };
   };
 }

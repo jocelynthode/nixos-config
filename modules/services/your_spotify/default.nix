@@ -2,7 +2,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   options.aspects.services.your_spotify.enable = lib.mkEnableOption "your_spotify";
 
   config = lib.mkIf config.aspects.services.your_spotify.enable {
@@ -21,7 +22,7 @@
     sops.secrets.your_spotify = {
       sopsFile = ../../../secrets/${config.networking.hostName}/secrets.yaml;
       mode = "0644";
-      restartUnits = ["your_spotify.service"];
+      restartUnits = [ "your_spotify.service" ];
     };
 
     aspects.base.persistence.systemPaths = [
