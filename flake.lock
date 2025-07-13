@@ -811,16 +811,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1751956834,
-        "narHash": "sha256-v1Jh2oef4MLpiS+Q/EgSPCER6xqCSYBs/qfms+87S6A=",
-        "owner": "jocelynthode",
+        "lastModified": 1752402001,
+        "narHash": "sha256-kfR6XIjOGgk5PRNwvu5i4t9KPsLuOso3atjWfXV5OXQ=",
+        "owner": "sephii",
         "repo": "taxi",
-        "rev": "48ae7478ef4973c8e9d9b5d5a795fb66dbdedd12",
+        "rev": "29b50a3171f07ab285c1f4685b81725790f19ac4",
         "type": "github"
       },
       "original": {
-        "owner": "jocelynthode",
-        "ref": "update-zebra-build-nix",
+        "owner": "sephii",
         "repo": "taxi",
         "type": "github"
       }
