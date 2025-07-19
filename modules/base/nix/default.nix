@@ -71,7 +71,7 @@ in
     };
 
     home-manager = {
-      sharedModules = [ inputs.nix-index-database.hmModules.nix-index ];
+      sharedModules = [ inputs.nix-index-database.homeModules.nix-index ];
       users.jocelyn =
         _:
         lib.recursiveUpdate (lib.optionalAttrs config.aspects.base.nix.enableDirenv baseDirenv) baseNixIndex;
