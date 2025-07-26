@@ -350,6 +350,7 @@
             windowrulev2 = [
               "workspace 4 silent,class:steam"
               "workspace 4 silent,class:steamwebhelper"
+              "workspace 4 silent,class:gamescope"
               "workspace 7 silent,class:Slack"
               "workspace 7 silent,class:vesktop"
               "workspace 7 silent,class:info.mumble.Mumble"

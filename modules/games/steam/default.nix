@@ -33,6 +33,7 @@
           "--nested-refresh 60"
           "--force-grab-cursor"
           "--grab"
+          "--fullscreen"
         ];
       };
       extraCompatPackages = [
