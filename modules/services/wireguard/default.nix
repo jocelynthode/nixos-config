@@ -11,7 +11,7 @@
     networking = {
       nat = {
         enable = true;
-        externalInterface = "enp0s25";
+        externalInterface = "enp2s0";
         internalInterfaces = [ "wg0" ];
       };
 
