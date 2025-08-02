@@ -62,6 +62,7 @@
                 "DP-4"
                 "DP-3"
                 "eDP-1"
+                "SUNSHINE"
               ];
               modules-left = [
                 "hyprland/workspaces"

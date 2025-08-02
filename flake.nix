@@ -54,6 +54,11 @@
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    authentik-nix = {
+      url = "github:nix-community/authentik-nix/version/2025.6.4";
+      inputs.nixpkgs.follows = "nixpkgs";
+
+    };
   };
 
   outputs =
@@ -76,6 +81,7 @@
       nixvim,
       wofi-ykman,
       disko,
+      authentik-nix,
       ...
     }:
     utils.lib.mkFlake {
@@ -98,6 +104,7 @@
           nix-index-database.nixosModules.nix-index
           nixvim.nixosModules.nixvim
           disko.nixosModules.disko
+          authentik-nix.nixosModules.default
           ./modules
         ];
       };

@@ -15,8 +15,8 @@
       }
     ];
 
-    services.redis.servers."" = {
-      enable = true;
-    };
+    # services.redis.servers."" = {
+    #   enable = true;
+    # };
   };
 }
