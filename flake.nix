@@ -56,8 +56,6 @@
     };
     authentik-nix = {
       url = "github:nix-community/authentik-nix/version/2025.6.4";
-      inputs.nixpkgs.follows = "nixpkgs";
-
     };
   };
 
