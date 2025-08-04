@@ -9,7 +9,6 @@
         "/persist/var/cache"
         "/persist/var/log"
         "/persist/var/lib/*"
-        "!/persist/var/lib/authentik"
         "!/persist/var/lib/hass"
         "!/persist/var/lib/private"
         "/persist/var/lib/private/ollama"

@@ -11,14 +11,6 @@
       mkAuthProxy = import ../nginx/auth.nix { inherit lib; };
     in
     lib.mkIf config.aspects.services.authentik.enable {
-      aspects.base.persistence.systemPaths = [
-        {
-          directory = "/var/lib/authentik";
-          user = "authentik";
-          group = "authentik";
-        }
-      ];
-
       services.nginx.virtualHosts."auth.tekila.ovh" = mkAuthProxy {
         port = 9000;
         protect = false;
