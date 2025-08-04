@@ -17,7 +17,7 @@
     boot = {
       tmp = {
         useTmpfs = true;
-        tmpfsSize = "20%";
+        tmpfsSize = "40%";
       };
       loader = {
         efi = {
