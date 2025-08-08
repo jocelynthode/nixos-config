@@ -101,7 +101,7 @@ _: {
       };
       lspkind = {
         enable = true;
-        cmp.enable = true;
+        cmp.enable = false;
       };
       lsp-format.enable = true;
     };
