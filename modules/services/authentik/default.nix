@@ -30,8 +30,8 @@
 
       sops.secrets.authentik = {
         sopsFile = ../../../secrets/${config.networking.hostName}/secrets.yaml;
-        owner = "authentik";
-        group = "authentik";
+        mode = "0644";
+        restartUnits = [ "authentik.service" ];
       };
     };
 }

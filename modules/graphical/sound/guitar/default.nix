@@ -14,7 +14,7 @@
 
     home-manager.users.jocelyn = _: {
       home.packages = with pkgs; [
-        tonelib-zoom
+        #tonelib-zoom
         audacity
       ];
       #
