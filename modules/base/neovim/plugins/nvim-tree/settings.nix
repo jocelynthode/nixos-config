@@ -20,15 +20,15 @@ _: {
           open = false;
         };
       };
-      disableNetrw = true;
-      hijackNetrw = false;
-      hijackCursor = true;
-      syncRootWithCwd = true;
-      updateFocusedFile = {
+      disable_netrw = true;
+      hijack_netrw = false;
+      hijack_cursor = true;
+      sync_root_with_cwd = true;
+      update_focused_file = {
         enable = true;
-        updateRoot = false;
+        update_root = false;
       };
-      onAttach.__raw = ''
+      on_attach.__raw = ''
         function(bufnr)
           local api = require('nvim-tree.api')
 
@@ -103,8 +103,8 @@ _: {
       view = {
         float = {
           enable = true;
-          quitOnFocusLoss = false;
-          openWinConfig.__raw = ''
+          quit_on_focus_loss = false;
+          open_win_config.__raw = ''
             function()
               local screen_w = vim.opt.columns:get()
               local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
@@ -135,20 +135,20 @@ _: {
         enable = true;
       };
       actions = {
-        openFile = {
-          resizeWindow = true;
-          quitOnOpen = true;
+        open_file = {
+          resize_window = true;
+          quit_on_open = true;
         };
       };
       trash = {
         cmd = "trash";
       };
       renderer = {
-        rootFolderLabel = false;
-        highlightGit = true;
-        highlightOpenedFiles = "icon";
-        addTrailing = false;
-        indentMarkers = {
+        root_folder_label = false;
+        highlight_git = true;
+        highlight_opened_files = "icon";
+        add_trailing = false;
+        indent_markers = {
           enable = false;
         };
         icons = {
@@ -156,7 +156,7 @@ _: {
             folder = true;
             file = true;
             git = true;
-            folderArrow = true;
+            folder_arrow = true;
           };
           glyphs = {
             default = "";
@@ -174,14 +174,14 @@ _: {
               default = "";
               open = "";
               empty = "";
-              emptyOpen = "";
+              empty_open = "";
               symlink = "";
-              symlinkOpen = "";
-              arrowOpen = "";
-              arrowClosed = "";
+              symlink_open = "";
+              arrow_open = "";
+              arrow_closed = "";
             };
           };
-          webdevColors = true;
+          webdev_colors = true;
         };
       };
       ui = {
