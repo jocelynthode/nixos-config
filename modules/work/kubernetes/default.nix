@@ -34,6 +34,11 @@
         openshift
         krew
       ];
+
+      programs.kubecolor = {
+        enable = true;
+        enableAlias = true;
+      };
     };
   };
 }
