@@ -83,19 +83,21 @@ _: {
       };
       lspsaga = {
         enable = true;
-        lightbulb = {
-          virtualText = false;
-        };
-        ui = {
-          kind.__raw = ''require("catppuccin.groups.integrations.lsp_saga").custom_kind()'';
-        };
-        finder = {
-          default = "def+ref+imp";
-          keys = {
-            toggleOrOpen = [
-              "o"
-              "l"
-            ];
+        settings = {
+          lightbulb = {
+            virtual_text = false;
+          };
+          ui = {
+            kind.__raw = ''require("catppuccin.groups.integrations.lsp_saga").custom_kind()'';
+          };
+          finder = {
+            default = "def+ref+imp";
+            keys = {
+              toggle_or_open = [
+                "o"
+                "l"
+              ];
+            };
           };
         };
       };

@@ -271,7 +271,7 @@
               "uwsm app -- signal-desktop"
               "uwsm app -- feishin"
             ]
-            ++ lib.optional osConfig.aspects.games.steam.enable [ "uwsm app -- steam" ];
+            ++ lib.optional osConfig.aspects.games.steam.enable "uwsm app -- steam";
             ecosystem = {
               no_update_news = true;
               no_donation_nag = true;
