@@ -30,6 +30,7 @@
 
     aspects.base.persistence.homePaths = [
       "Liip"
+      "poto"
     ];
   };
 }

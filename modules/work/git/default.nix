@@ -19,6 +19,14 @@
             };
           };
         }
+        {
+          condition = "gitdir:~/poto/";
+          contents = {
+            user = {
+              email = "jocelyn.thode@poto.ch";
+            };
+          };
+        }
       ];
     };
   };
