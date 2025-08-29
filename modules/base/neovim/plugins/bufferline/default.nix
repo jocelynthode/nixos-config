@@ -5,7 +5,7 @@ _: {
       options = {
         separator_style = "thin";
       };
-      highlights.__raw = ''require("catppuccin.groups.integrations.bufferline").get()'';
+      highlights.__raw = ''require("catppuccin.groups.integrations.bufferline").get_theme()'';
     };
   };
 }
