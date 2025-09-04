@@ -54,6 +54,12 @@ _: {
           };
           yamlls = {
             enable = true;
+            settings = {
+              format = {
+                enable = false;
+                singleQuote = true;
+              };
+            };
             filetypes = [ "yaml" ];
           };
           lua_ls = {
