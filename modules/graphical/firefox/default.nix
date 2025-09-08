@@ -13,7 +13,7 @@
     aspects.base.persistence.homePaths = [
       ".mozilla/firefox"
       ".cache/mozilla"
-      ".congig/tridactyl"
+      ".config/tridactyl"
     ];
 
     home-manager.users.jocelyn = _: {
