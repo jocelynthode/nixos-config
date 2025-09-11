@@ -24,13 +24,13 @@
       };
       thermald.enable = true;
       logind = {
-        lidSwitch = "suspend";
-        extraConfig = ''
-          IdleAction=suspend
-          IdleActionSec=15min
-          HandlePowerKey=suspend
-          HandlePowerKeyLongPress=poweroff
-        '';
+        settings.Login = {
+          HandleLidSwitch = "suspend";
+          IdleAction = "suspend";
+          IdleActionSec = "15min";
+          HandlePowerKey = "suspend";
+          HandlePowerKeyLongPress = "poweroff";
+        };
       };
     };
     powerManagement.powertop.enable = true;
