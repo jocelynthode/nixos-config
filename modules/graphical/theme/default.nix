@@ -65,12 +65,12 @@
             inherit (osConfig.aspects.base.fonts.regular) package;
             inherit (osConfig.aspects.base.fonts.regular) size;
           };
-          gtk3.extraConfig = lib.mkIf (osConfig.aspects.theme == "dark") {
-            gtk-application-prefer-dark-theme = true;
-          };
-          gtk4.extraConfig = lib.mkIf (osConfig.aspects.theme == "dark") {
-            gtk-application-prefer-dark-theme = true;
-          };
+          # gtk3.extraConfig = lib.mkIf (osConfig.aspects.theme == "dark") {
+          #   gtk-application-prefer-dark-theme = true;
+          # };
+          # gtk4.extraConfig = lib.mkIf (osConfig.aspects.theme == "dark") {
+          #   gtk-application-prefer-dark-theme = true;
+          # };
         };
 
         dconf.settings = lib.mkIf (osConfig.aspects.theme == "dark") {

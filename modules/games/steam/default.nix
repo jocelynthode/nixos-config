@@ -12,6 +12,7 @@
       ".steam"
       ".local/share/Steam"
       "Astral Ascent"
+      ".config/unity3d"
     ];
 
     programs.steam = {
