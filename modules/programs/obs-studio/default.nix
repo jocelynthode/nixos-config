@@ -36,6 +36,7 @@
           wlrobs
           obs-vkcapture
           obs-composite-blur
+          obs-livesplit-one
         ];
       };
     };
