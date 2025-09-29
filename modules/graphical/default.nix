@@ -17,6 +17,7 @@
     ./screenshot
     ./sound
     ./sway
+    ./swayidle
     ./terminal
     ./theme
     ./waybar
