@@ -32,7 +32,6 @@
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
   hardware.enableRedistributableFirmware = true;
   hardware.amdgpu = {
-    amdvlk.enable = false;
     opencl.enable = false;
   };
 
