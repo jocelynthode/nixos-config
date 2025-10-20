@@ -62,6 +62,10 @@ let
           name = "autopair";
           inherit (pkgs.fishPlugins.autopair-fish) src;
         }
+        {
+          name = "bass";
+          inherit (pkgs.fishPlugins.bass) src;
+        }
       ];
     };
   };
