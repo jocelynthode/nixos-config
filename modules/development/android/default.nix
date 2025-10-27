@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 {
@@ -14,8 +13,5 @@
 
     programs.adb.enable = true;
     users.users.jocelyn.extraGroups = [ "adbusers" ];
-    services.udev.packages = with pkgs; [
-      android-udev-rules
-    ];
   };
 }
