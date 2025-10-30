@@ -15,7 +15,7 @@
       }
     ];
     home-manager.users.jocelyn = _: {
-      home.packages = [ pkgs.bitwarden ];
+      home.packages = [ pkgs.bitwarden-desktop ];
     };
   };
 }
