@@ -15,11 +15,11 @@
     home-manager.users.jocelyn = _: {
       programs.beets = {
         enable = true;
-        package = pkgs.beets.override {
+        package = pkgs.python3.pkgs.beets.override {
           pluginOverrides = {
             audible = {
               enable = true;
-              propagatedBuildInputs = with pkgs.beetsPackages; [ audible ];
+              propagatedBuildInputs = [ pkgs.python3.pkgs.beets-audible ];
             };
           };
         };
