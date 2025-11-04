@@ -23,8 +23,7 @@
     hardware.url = "github:nixos/nixos-hardware";
     impermanence.url = "github:nix-community/impermanence";
     taxi = {
-      url = "github:sephii/taxi";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:jocelynthode/taxi/remove-tests";
     };
     wofi-ykman = {
       url = "github:jocelynthode/wofi-ykman";
@@ -130,11 +129,11 @@
               nixvim
               ;
             pkgs-stable = import nixpkgs-stable {
-              system = "x86_64-linux";
+              stdenv.hostPlatform.system = "x86_64-linux";
               config.allowUnfree = true;
             };
             pkgs-master = import nixpkgs-master {
-              system = "x86_64-linux";
+              stdenv.hostPlatform.system = "x86_64-linux";
               config.allowUnfree = true;
             };
           };
@@ -155,11 +154,11 @@
               nixvim
               ;
             pkgs-stable = import nixpkgs-stable {
-              system = "x86_64-linux";
+              stdenv.hostPlatform.system = "x86_64-linux";
               config.allowUnfree = true;
             };
             pkgs-master = import nixpkgs-master {
-              system = "x86_64-linux";
+              stdenv.hostPlatform.system = "x86_64-linux";
               config.allowUnfree = true;
             };
           };
@@ -178,11 +177,11 @@
               nixvim
               ;
             pkgs-stable = import nixpkgs-stable {
-              system = "x86_64-linux";
+              stdenv.hostPlatform.system = "x86_64-linux";
               config.allowUnfree = true;
             };
             pkgs-master = import nixpkgs-master {
-              system = "x86_64-linux";
+              stdenv.hostPlatform.system = "x86_64-linux";
               config.allowUnfree = true;
             };
           };

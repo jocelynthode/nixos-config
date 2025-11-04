@@ -7,14 +7,12 @@ final: prev:
   };
 
   slack = prev.slack.overrideAttrs (previousAttrs: {
-    installPhase =
-      previousAttrs.installPhase
-      + ''
-        sed -i'.backup' -e 's/,"WebRTCPipeWireCapturer"/,"LebRTCPipeWireCapturer"/' $out/lib/slack/resources/app.asar
+    installPhase = previousAttrs.installPhase + ''
+      sed -i'.backup' -e 's/,"WebRTCPipeWireCapturer"/,"LebRTCPipeWireCapturer"/' $out/lib/slack/resources/app.asar
 
-      '';
+    '';
   });
 
-  devenv = inputs.devenv.packages.${final.system}.default;
+  devenv = inputs.devenv.packages.${final.stdenv.hostPlatform.system}.default;
 }
 // import ../pkgs { pkgs = final; }

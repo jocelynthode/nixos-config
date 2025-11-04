@@ -9,7 +9,6 @@ let
       cachix
       fd
       ripgrep
-      delta
       rsync
       unzip
     ];
