@@ -132,9 +132,6 @@ in
           "utility_meter"
           "mqtt"
         ];
-        customComponents = with pkgs.home-assistant-custom-components; [
-          auth-header
-        ];
         customLovelaceModules = with pkgs.home-assistant-custom-lovelace-modules; [
           mini-graph-card
           mushroom
@@ -154,9 +151,6 @@ in
               "127.0.0.1"
               "::1"
             ];
-          };
-          auth_header = {
-            username_header = "X-authentik-username";
           };
           sensor = [
             {
