@@ -193,8 +193,8 @@
       };
 
       nixpkgs.config.permittedInsecurePackages = [
-        "electron-27.3.11"
-        "jitsi-meet-1.0.8043"
+        "electron-36.9.5"
+        "jitsi-meet-1.0.8792"
         "aspnetcore-runtime-6.0.36"
         "aspnetcore-runtime-wrapped-6.0.36"
         "dotnet-sdk-6.0.428"
