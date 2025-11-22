@@ -38,17 +38,19 @@ let
             add_header       Set-Cookie $auth_cookie;
 
             # forward authenticated headers
-            auth_request_set $authentik_username $upstream_http_x_authentik_username;
-            auth_request_set $authentik_groups   $upstream_http_x_authentik_groups;
-            auth_request_set $authentik_email    $upstream_http_x_authentik_email;
-            auth_request_set $authentik_name     $upstream_http_x_authentik_name;
-            auth_request_set $authentik_uid      $upstream_http_x_authentik_uid;
+            auth_request_set $authentik_username     $upstream_http_x_authentik_username;
+            auth_request_set $authentik_groups       $upstream_http_x_authentik_groups;
+            auth_request_set $authentik_entitlements $upstream_http_x_authentik_entitlements;
+            auth_request_set $authentik_email        $upstream_http_x_authentik_email;
+            auth_request_set $authentik_name         $upstream_http_x_authentik_name;
+            auth_request_set $authentik_uid          $upstream_http_x_authentik_uid;
 
-            proxy_set_header X-authentik-username $authentik_username;
-            proxy_set_header X-authentik-groups   $authentik_groups;
-            proxy_set_header X-authentik-email    $authentik_email;
-            proxy_set_header X-authentik-name     $authentik_name;
-            proxy_set_header X-authentik-uid      $authentik_uid;
+            proxy_set_header X-authentik-username     $authentik_username;
+            proxy_set_header X-authentik-groups       $authentik_groups;
+            proxy_set_header X-authentik-entitlements $authentik_entitlements;
+            proxy_set_header X-authentik-email        $authentik_email;
+            proxy_set_header X-authentik-name         $authentik_name;
+            proxy_set_header X-authentik-uid          $authentik_uid;
 
             proxy_send_timeout 600s;
             proxy_read_timeout 600s;
