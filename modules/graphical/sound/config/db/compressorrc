@@ -1,0 +1,6 @@
+[sie][Compressor#0]
+attack=2
+outputGain=21.2
+releaseThreshold=-40
+sidechainMode=1
+threshold=-25

@@ -71,6 +71,11 @@
         recursive = true;
       };
 
+      xdg.dataFile."easyeffects" = {
+        source = ./data;
+        recursive = true;
+      };
+
       dconf.settings = {
         "com/github/wwmm/easyeffects" = {
           use-dark-theme = true;
