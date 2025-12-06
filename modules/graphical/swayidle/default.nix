@@ -19,16 +19,10 @@
               "hyprland-session.target"
             else
               "sway-session.target";
-          events = [
-            {
-              event = "before-sleep";
-              command = "loginctl lock-session";
-            }
-            {
-              event = "lock";
-              command = "loginctl lock-session";
-            }
-          ];
+          events = {
+            "before-sleep" = "loginctl lock-session";
+            "lock" = "loginctl lock-session";
+          };
           timeouts = [
             {
               timeout = 600;
