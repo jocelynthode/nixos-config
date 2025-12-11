@@ -2,7 +2,6 @@ _: {
   imports = [
     ./blink-cmp
     ./bufferline
-    ./codecompanion
     ./dap
     ./flash
     ./gitsigns

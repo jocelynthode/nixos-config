@@ -11,7 +11,7 @@ _: {
       spec = [
         {
           __unkeyed-1 = "<leader>a";
-          group = "CodeCompanion";
+          group = "OpenCode";
           icon = " ";
         }
         {

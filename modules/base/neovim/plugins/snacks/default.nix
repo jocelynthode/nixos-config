@@ -8,6 +8,15 @@ _: {
       statuscolumn.enabled = false;
       words.enabled = false;
       terminal.enabled = true;
+
+      picker.select.layout = {
+        preset = "select";
+        layout = {
+          width = 0.4;
+          height = 0.3;
+          max_width = 80;
+        };
+      };
     };
   };
 }
