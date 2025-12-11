@@ -14,6 +14,7 @@ _: {
     ./noice
     ./none-ls
     ./nvim-tree
+    ./opencode
     ./render-mardown
     ./snacks
     ./telescope

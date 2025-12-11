@@ -30,6 +30,7 @@
       };
 
       opts = {
+        autoread = true;
         backup = false;
         clipboard = "unnamedplus";
         cmdheight = 2;

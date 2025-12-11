@@ -9,6 +9,7 @@
     ./containers
     ./libvirt
     ./ollama
+    ./opencode
     ./qmk
     ./rust
   ];
@@ -22,6 +23,7 @@
         containers.enable = lib.mkDefault true;
         libvirt.enable = lib.mkDefault true;
         ollama.enable = lib.mkDefault false;
+        opencode.enable = lib.mkDefault false;
         qmk.enable = lib.mkDefault true;
         rust.enable = lib.mkDefault true;
       };
