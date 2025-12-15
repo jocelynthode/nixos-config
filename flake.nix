@@ -80,6 +80,44 @@
       authentik-nix,
       ...
     }:
+    let
+      sharedSpecialArgs = {
+        inherit
+          nix-colors
+          spicetify-nix
+          catppuccin
+          nixvim
+          ;
+      };
+      mkPinnedPkgs = system: {
+        pkgs-stable = import nixpkgs-stable {
+          stdenv.hostPlatform.system = system;
+          config.allowUnfree = true;
+        };
+        pkgs-master = import nixpkgs-master {
+          stdenv.hostPlatform.system = system;
+          config.allowUnfree = true;
+        };
+      };
+      mkHostSpecialArgs = system: sharedSpecialArgs // mkPinnedPkgs system;
+      hardwareProfiles = {
+        amdDesktop = [
+          hardware.nixosModules.common-cpu-amd
+          hardware.nixosModules.common-pc-ssd
+          hardware.nixosModules.common-gpu-amd
+        ];
+        intelLaptop = [
+          hardware.nixosModules.common-cpu-intel
+          hardware.nixosModules.common-pc-laptop
+          hardware.nixosModules.common-pc-laptop-ssd
+          hardware.nixosModules.framework-11th-gen-intel
+        ];
+        intelServer = [
+          hardware.nixosModules.common-cpu-intel
+          hardware.nixosModules.common-pc-ssd
+        ];
+      };
+    in
     utils.lib.mkFlake {
       inherit self inputs;
 
@@ -103,87 +141,55 @@
           authentik-nix.nixosModules.default
           ./modules
         ];
+        specialArgs = sharedSpecialArgs;
       };
 
-      channels.nixpkgs.input = nixpkgs;
+      channels = {
+        nixpkgs.input = nixpkgs;
+        stable.input = nixpkgs-stable;
+        master.input = nixpkgs-master;
+      };
 
       outputsBuilder =
-        channels: with channels.nixpkgs; {
-          formatter = nixfmt-tree;
+        channels:
+        let
+          pkgs = channels.nixpkgs;
+        in
+        {
+          formatter = pkgs.nixfmt-tree;
+          devShells.default = pkgs.mkShell {
+            name = "nixos-config";
+            packages = with pkgs; [
+              git
+              nixfmt-rfc-style
+              statix
+              deadnix
+              actionlint
+            ];
+          };
         };
 
       hosts = {
         desktek = {
           modules = [
             ./machines/desktek
-            hardware.nixosModules.common-cpu-amd
-            hardware.nixosModules.common-pc-ssd
-            hardware.nixosModules.common-gpu-amd
-          ];
-          specialArgs = {
-            inherit
-              nix-colors
-              spicetify-nix
-              catppuccin
-              nixvim
-              ;
-            pkgs-stable = import nixpkgs-stable {
-              stdenv.hostPlatform.system = "x86_64-linux";
-              config.allowUnfree = true;
-            };
-            pkgs-master = import nixpkgs-master {
-              stdenv.hostPlatform.system = "x86_64-linux";
-              config.allowUnfree = true;
-            };
-          };
+          ]
+          ++ hardwareProfiles.amdDesktop;
+          specialArgs = mkHostSpecialArgs "x86_64-linux";
         };
         frametek = {
           modules = [
             ./machines/frametek
-            hardware.nixosModules.common-cpu-intel
-            hardware.nixosModules.common-pc-laptop
-            hardware.nixosModules.common-pc-laptop-ssd
-            hardware.nixosModules.framework-11th-gen-intel
-          ];
-          specialArgs = {
-            inherit
-              nix-colors
-              spicetify-nix
-              catppuccin
-              nixvim
-              ;
-            pkgs-stable = import nixpkgs-stable {
-              stdenv.hostPlatform.system = "x86_64-linux";
-              config.allowUnfree = true;
-            };
-            pkgs-master = import nixpkgs-master {
-              stdenv.hostPlatform.system = "x86_64-linux";
-              config.allowUnfree = true;
-            };
-          };
+          ]
+          ++ hardwareProfiles.intelLaptop;
+          specialArgs = mkHostSpecialArgs "x86_64-linux";
         };
         servetek = {
           modules = [
             ./machines/servetek
-            hardware.nixosModules.common-cpu-intel
-            hardware.nixosModules.common-pc-ssd
-          ];
-          specialArgs = {
-            inherit
-              nix-colors
-              spicetify-nix
-              catppuccin
-              nixvim
-              ;
-            pkgs-stable = import nixpkgs-stable {
-              stdenv.hostPlatform.system = "x86_64-linux";
-              config.allowUnfree = true;
-            };
-            pkgs-master = import nixpkgs-master {
-              stdenv.hostPlatform.system = "x86_64-linux";
-              config.allowUnfree = true;
-            };
-          };
+          ]
+          ++ hardwareProfiles.intelServer;
+          specialArgs = mkHostSpecialArgs "x86_64-linux";
         };
         iso = {
           modules = [
@@ -191,14 +197,6 @@
             "${nixpkgs}/nixos/modules/installer/cd-dvd/channel.nix"
             ./machines/iso
           ];
-          specialArgs = {
-            inherit
-              nix-colors
-              spicetify-nix
-              catppuccin
-              nixvim
-              ;
-          };
         };
       };
     };
