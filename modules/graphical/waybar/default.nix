@@ -108,7 +108,7 @@
               };
               pulseaudio = {
                 format = "{format_source} {icon} {volume}%";
-                on-click-right = "${pkgs.pavucontrol}/bin/pavucontrol";
+                on-click-right = "${pkgs.pwvucontrol}/bin/pwvucontrol";
                 format-source = " {volume}%";
                 format-source-muted = "<span color=\"#${config.colorScheme.palette.red}\"></span> 0%";
                 format-muted = "<span color=\"#${config.colorScheme.palette.red}\"></span>   0%";

@@ -53,13 +53,41 @@
               },
             })
           '')
+          (pkgs.writeTextDir "share/wireplumber/main.lua.d/90-rename-sinks.lua" ''
+            local rename_rules = {
+              {
+                match = "alsa_output.pci-0000_03_00.1.hdmi-stereo",
+                label = "Speakers",
+              },
+              {
+                match = "alsa_output.usb-Generic_USB_Audio-00.HiFi__Speaker__sink",
+                label = "Headphones",
+              },
+            }
+
+            for _, rule in ipairs(rename_rules) do
+              log:info("wireplumber: renaming " .. rule.match .. " to " .. rule.label)
+              table.insert(alsa_monitor.rules, {
+                matches = {
+                  {
+                    { "node.name", "matches", rule.match },
+                  },
+                },
+                apply_properties = {
+                  ["node.description"] = rule.label,
+                  ["node.nick"] = rule.label,
+                  ["device.description"] = rule.label,
+                },
+              })
+            end
+          '')
         ];
       };
     };
 
     home-manager.users.jocelyn = _: {
       home.packages = with pkgs; [
-        pavucontrol
+        pwvucontrol
       ];
 
       services.easyeffects = {
