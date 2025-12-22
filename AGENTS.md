@@ -175,7 +175,13 @@ Before committing, you **MUST** run these checks from the repository root to ens
 
 The CI pipeline runs `nix flake check`. Your changes **MUST NOT** break the flake check.
 
-## 8. Commit Message Style
+## 8. Applying Configuration
+
+- Use `nh` instead of `nixos-rebuild` for applying configuration.
+- When suggesting rebuild commands, prefer `nh os switch -a '.'` over `nixos-rebuild switch --flake`.
+ 
+## 9. Commit Message Style
+
 
 Commit messages MUST follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
 
