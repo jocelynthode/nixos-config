@@ -38,6 +38,17 @@ in
       };
     };
 
+    nixpkgs.overlays = [
+      (_final: prev: {
+        inherit (prev.lixPackageSets.stable)
+          nixpkgs-review
+          nix-eval-jobs
+          nix-fast-build
+          colmena
+          ;
+      })
+    ];
+
     nix = {
       settings = {
         substituters = [
@@ -61,7 +72,7 @@ in
         ];
         auto-optimise-store = true;
       };
-      package = pkgs.nixVersions.stable;
+      package = pkgs.lixPackageSets.stable.lix;
       extraOptions = ''
         experimental-features = nix-command flakes
         keep-outputs = true
