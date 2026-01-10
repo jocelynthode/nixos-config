@@ -177,12 +177,16 @@
             settings = {
               ipc = "on";
               splash = false;
-              splash_offset = 2.0;
+              splash_offset = 2;
               preload = [
                 "${pkgs.wallpapers.${osConfig.aspects.graphical.wallpaper}}"
               ];
               wallpaper = [
-                ",${pkgs.wallpapers.${osConfig.aspects.graphical.wallpaper}}"
+                {
+                  monitor = "";
+                  path = "${pkgs.wallpapers.${osConfig.aspects.graphical.wallpaper}}";
+                  fit_mode = "cover";
+                }
               ];
             };
           };

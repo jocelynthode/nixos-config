@@ -161,7 +161,7 @@
             name = "nixos-config";
             packages = with pkgs; [
               git
-              nixfmt-rfc-style
+              nixfmt
               statix
               deadnix
               actionlint

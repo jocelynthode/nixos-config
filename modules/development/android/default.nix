@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 {
@@ -11,7 +12,9 @@
       ".android"
     ];
 
-    programs.adb.enable = true;
+    environment.systemPackages = with pkgs; [
+      android-tools
+    ];
     users.users.jocelyn.extraGroups = [ "adbusers" ];
   };
 }
