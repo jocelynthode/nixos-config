@@ -43,4 +43,6 @@
   };
 
   services.system76-scheduler.enable = true;
+  # services.tailscale.enable = true;
+  # TODO persists /var/lib/tailscale
 }

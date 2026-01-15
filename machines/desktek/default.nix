@@ -26,6 +26,7 @@
       wallpaper = "water";
       printer.enable = true;
       sway.enable = false;
+      niri.enable = false;
       hyprland = {
         enable = true;
         monitor = [

@@ -39,10 +39,4 @@
   users.users.jocelyn.extraGroups = lib.mkIf config.networking.networkmanager.enable [
     "networkmanager"
   ];
-
-  home-manager.users.jocelyn =
-    { pkgs, ... }:
-    {
-      home.packages = with pkgs; lib.mkIf config.aspects.graphical.enable [ networkmanagerapplet ];
-    };
 }

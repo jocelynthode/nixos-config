@@ -161,14 +161,6 @@
           hypridle.Unit.After = [
             "graphical-session.target"
           ];
-          waybar.Unit = {
-            PartOf = [
-              "graphical-session.target"
-            ];
-            After = [
-              "graphical-session.target"
-            ];
-          };
         };
 
         services = {
@@ -300,11 +292,13 @@
             "$mod" = "SUPER";
             bind = [
               "$mod,Return,exec,uwsm app -- ${pkgs.kitty}/bin/kitty"
-              "$mod,n,exec,${pkgs.wofi}/bin/wofi -IS drun -W 40% -H 50%"
+              "$mod,n,exec,noctalia-shell ipc call launcher toggle"
               "$mod,a,exec,${pkgs.wofi-ykman}/bin/wofi-ykman"
-              "$mod,e,exec,${pkgs.wleave}/bin/wleave"
-              ",XF86AudioMute,exec,${pkgs.pulseaudio}/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle"
-              ",XF86AudioPlay,exec,${pkgs.playerctl}/bin/playerctl --player spotify play-pause"
+              "$mod,e,exec,noctalia-shell ipc call sessionMenu toggle"
+              ",XF86AudioMute,exec,noctalia-shell ipc call volume muteInput"
+              ",XF86AudioPlay,exec,noctalia-shell ipc call media playPause"
+              ",XF86MonBrightnessUp,exec,noctalia-shell ipc call brightness increase"
+              ",XF86MonBrightnessDown,exec,noctalia-shell ipc call brightness decrease"
               ",Print,exec,${pkgs.hyprshot}/bin/hyprshot --clipboard-only -m region"
               "ALT,Print,exec,${pkgs.hyprshot}/bin/hyprshot --clipboard-only -m active"
               "$mod, t, togglefloating"
@@ -341,8 +335,8 @@
               "$mod,space,exec,hyprctl switchxkblayout current next"
             ];
             binde = [
-              ",XF86AudioRaiseVolume,exec,${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%"
-              ",XF86AudioLowerVolume,exec,${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%"
+              ",XF86AudioRaiseVolume,exec,noctalia-shell ipc call volume increase"
+              ",XF86AudioLowerVolume,exec,noctalia-shell ipc call volume decrease"
             ];
             blurls = "wofi";
             windowrule = [

@@ -21,6 +21,10 @@
     nur.url = "github:nix-community/NUR";
     nix-colors.url = "github:misterio77/nix-colors";
     hardware.url = "github:nixos/nixos-hardware";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     impermanence.url = "github:nix-community/impermanence";
     taxi = {
       url = "github:jocelynthode/taxi/remove-tests";
@@ -48,6 +52,11 @@
     nixvim = {
       url = "github:nix-community/nixvim";
     };
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # TODO add stylix https://github.com/nix-community/stylix
     disko = {
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -76,8 +85,10 @@
       nix-index-database,
       nixvim,
       wofi-ykman,
+      niri,
       disko,
       authentik-nix,
+      noctalia,
       ...
     }:
     let
@@ -87,6 +98,7 @@
           spicetify-nix
           catppuccin
           nixvim
+          noctalia
           ;
       };
       mkPinnedPkgs = system: {
@@ -126,6 +138,7 @@
         nur.overlays.default
         taxi.overlays.default
         wofi-ykman.overlays.default
+        niri.overlays.niri
         (import ./overlay { inherit inputs; })
       ];
       hostDefaults = {
@@ -137,6 +150,7 @@
           catppuccin.nixosModules.catppuccin
           nix-index-database.nixosModules.nix-index
           nixvim.nixosModules.nixvim
+          niri.nixosModules.niri
           disko.nixosModules.disko
           authentik-nix.nixosModules.default
           ./modules
