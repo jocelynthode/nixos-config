@@ -15,9 +15,6 @@
           TERMINAL = "kitty";
         };
 
-        # Stylix themes kitty on all graphical hosts.
-        catppuccin.kitty.enable = false;
-
         programs.kitty = {
           enable = true;
           font.name = osConfig.aspects.base.fonts.monospace.family;
