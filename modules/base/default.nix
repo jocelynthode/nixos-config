@@ -3,7 +3,6 @@
   options,
   lib,
   pkgs,
-  nix-colors,
   catppuccin,
   ...
 }:
@@ -38,38 +37,11 @@
     };
   };
 
-  config =
-    let
-      colorscheme = {
-        slug = "catppuccin-mocha";
-        name = "Catppuccin Mocha";
-        author = "Unknown";
-        palette = {
-          background = "#1e1e2e";
-          background01 = "#313244";
-          background02 = "#45475a";
-          background03 = "#585b70";
-          foreground = "#cdd6f4";
-          foreground01 = "#6c7086";
-          foreground02 = "#7f849c";
-          foreground03 = "#9399b2";
-          red = "#f38ba8";
-          orange = "#fab387";
-          yellow = "#f9e2af";
-          green = "#a6e3a1";
-          teal = "#94e2d5";
-          blue = "#89b4fa";
-          purple = "#cba6f7";
-          brown = "#eba0ac";
-          accent = "#f5c2e7";
-        };
-      };
-    in
+  config = lib.mkMerge [
     {
       home-manager = {
         useGlobalPkgs = true;
         sharedModules = [
-          nix-colors.homeManagerModule
           catppuccin.homeModules.catppuccin
         ];
       };
@@ -116,12 +88,11 @@
           home.stateVersion = config.aspects.stateVersion;
           systemd.user.sessionVariables = config.home-manager.users.jocelyn.home.sessionVariables;
           systemd.user.startServices = "sd-switch";
-          colorScheme = colorscheme;
+
         };
         root = _: {
           home.stateVersion = config.aspects.stateVersion;
           systemd.user.startServices = "sd-switch";
-          colorScheme = colorscheme;
         };
       };
 
@@ -270,5 +241,13 @@
           };
         };
       };
-    };
+    }
+    (lib.optionalAttrs false {
+      # Derive the global aspects.theme dark/light
+      # from Stylix polarity when Stylix is enabled.
+      # Disabled to avoid recursion; aspects.theme now
+      # uses its default or machine overrides.
+      aspects.theme = if (config.stylix.polarity or "either") == "light" then "light" else "dark";
+    })
+  ];
 }

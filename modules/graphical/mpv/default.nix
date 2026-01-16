@@ -13,6 +13,8 @@
     ];
 
     home-manager.users.jocelyn = _: {
+      stylix.targets.mpv.colors.enable = false;
+
       programs.mpv = {
         enable = true;
         scripts = with pkgs.mpvScripts; [

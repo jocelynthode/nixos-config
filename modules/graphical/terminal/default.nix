@@ -15,11 +15,13 @@
           TERMINAL = "kitty";
         };
 
-        catppuccin.kitty.enable = true;
+        # Stylix themes kitty on all graphical hosts.
+        catppuccin.kitty.enable = false;
+
         programs.kitty = {
           enable = true;
           font.name = osConfig.aspects.base.fonts.monospace.family;
-          font.size = osConfig.aspects.base.fonts.monospace.size;
+          font.size = lib.mkDefault osConfig.aspects.base.fonts.monospace.size;
           actionAliases = {
             "kitty_scrollback_nvim" =
               "kitten ${pkgs.vimPlugins.kitty-scrollback-nvim}/python/kitty_scrollback_nvim.py";

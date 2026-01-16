@@ -60,7 +60,6 @@
 
     home-manager.users.jocelyn =
       {
-        config,
         osConfig,
         ...
       }:
@@ -78,6 +77,7 @@
           let
             mod = "Mod4";
             alt = "Mod1";
+            c = osConfig.lib.stylix.colors.withHashtag;
           in
           {
             enable = true;
@@ -147,41 +147,41 @@
               };
               colors = {
                 focused = {
-                  border = "#${config.colorScheme.palette.accent}";
-                  background = "#${config.colorScheme.palette.background01}";
-                  text = "#${config.colorScheme.palette.foreground}";
-                  indicator = "#${config.colorScheme.palette.accent}";
-                  childBorder = "#${config.colorScheme.palette.accent}";
+                  border = c.base0E;
+                  background = c.base01;
+                  text = c.base05;
+                  indicator = c.base0E;
+                  childBorder = c.base0E;
                 };
                 focusedInactive = {
-                  border = "#${config.colorScheme.palette.background01}";
-                  background = "#${config.colorScheme.palette.background01}";
-                  text = "#${config.colorScheme.palette.foreground}";
-                  indicator = "#${config.colorScheme.palette.background01}";
-                  childBorder = "#${config.colorScheme.palette.background01}";
+                  border = c.base01;
+                  background = c.base01;
+                  text = c.base05;
+                  indicator = c.base01;
+                  childBorder = c.base01;
                 };
                 unfocused = {
-                  border = "#${config.colorScheme.palette.background02}";
-                  background = "#${config.colorScheme.palette.background}";
-                  text = "#${config.colorScheme.palette.foreground}";
-                  indicator = "#${config.colorScheme.palette.background02}";
-                  childBorder = "#${config.colorScheme.palette.background02}";
+                  border = c.base02;
+                  background = c.base00;
+                  text = c.base05;
+                  indicator = c.base02;
+                  childBorder = c.base02;
                 };
                 urgent = {
-                  border = "#${config.colorScheme.palette.red}";
-                  background = "#${config.colorScheme.palette.red}";
-                  text = "#${config.colorScheme.palette.foreground}";
-                  indicator = "#${config.colorScheme.palette.red}";
-                  childBorder = "#${config.colorScheme.palette.red}";
+                  border = c.base08;
+                  background = c.base08;
+                  text = c.base05;
+                  indicator = c.base08;
+                  childBorder = c.base08;
                 };
                 placeholder = {
-                  border = "#${config.colorScheme.palette.background}";
-                  background = "#${config.colorScheme.palette.background}";
-                  text = "#${config.colorScheme.palette.foreground}";
-                  indicator = "#${config.colorScheme.palette.background}";
-                  childBorder = "#${config.colorScheme.palette.background}";
+                  border = c.base00;
+                  background = c.base00;
+                  text = c.base05;
+                  indicator = c.base00;
+                  childBorder = c.base00;
                 };
-                background = "#${config.colorScheme.palette.foreground03}";
+                background = c.base07;
               };
               workspaceOutputAssign = [
                 {

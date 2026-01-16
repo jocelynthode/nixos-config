@@ -22,6 +22,12 @@ in
     home-manager.users.jocelyn =
       { osConfig, ... }:
       {
+        home.file.".cache/noctalia/wallpapers.json" = {
+          text = builtins.toJSON { defaultWallpaper = osConfig.stylix.image; };
+        };
+
+        stylix.targets.noctalia-shell.enable = false;
+
         programs.noctalia-shell = {
           enable = true;
           systemd.enable = true;
@@ -58,7 +64,7 @@ in
 
             bar = {
               backgroundOpacity = 0.7;
-              capsuleOpacity = 1;
+              capsuleOpacity = 0.7;
               density = "default";
               exclusive = true;
               floating = true;
@@ -285,20 +291,7 @@ in
             };
 
             dock = {
-              animationSpeed = 1;
-              backgroundOpacity = 1;
-              colorizeIcons = false;
-              deadOpacity = 0.6;
-              displayMode = "auto_hide";
               enabled = false;
-              floatingRatio = 1;
-              inactiveIndicators = false;
-              monitors = [ ];
-              onlySameOutput = true;
-              pinnedApps = [ ];
-              pinnedStatic = false;
-              position = "bottom";
-              size = 1;
             };
 
             general = {
@@ -372,7 +365,7 @@ in
             };
 
             notifications = {
-              backgroundOpacity = 1;
+              backgroundOpacity = 1.0;
               criticalUrgencyDuration = 15;
               enableKeyboardLayoutToast = true;
               enabled = true;

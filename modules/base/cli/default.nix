@@ -14,8 +14,8 @@ let
     ];
 
     catppuccin = {
-      bat.enable = true;
-      fzf.enable = true;
+      bat.enable = false;
+      fzf.enable = false;
       lsd.enable = true;
       atuin.enable = true;
     };

@@ -21,8 +21,6 @@
       };
       programs.spicetify = {
         enable = true;
-        theme = spicetify-nix.legacyPackages.${pkgs.system}.themes.catppuccin;
-        colorScheme = "mocha";
       };
     };
   };

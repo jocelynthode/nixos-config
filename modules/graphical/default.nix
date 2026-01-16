@@ -23,6 +23,7 @@
     ./xdg
     ./niri
     ./noctalia-shell
+    ./stylix
   ];
 
   options.aspects.graphical = {
@@ -65,6 +66,7 @@
         theme.enable = lib.mkDefault true;
         xdg.enable = lib.mkDefault true;
         noctalia-shell.enable = lib.mkDefault true;
+        stylix.enable = lib.mkDefault true;
       };
     };
 

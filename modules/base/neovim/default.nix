@@ -69,7 +69,7 @@
         wrap = false;
         scrolloff = 8;
         sidescrolloff = 8;
-        guifont = "JetBrainsMono NFM:h11";
+        # guifont = "JetBrainsMono NFM:h11";
         laststatus = 3;
         inccommand = "split";
         synmaxcol = 250;
@@ -116,6 +116,11 @@
           debugpy
           setuptools
         ];
+    };
+
+    home-manager.users.jocelyn = _: {
+      stylix.targets.nixvim.enable = false;
+      stylix.targets.neovim.enable = false;
     };
   };
 }

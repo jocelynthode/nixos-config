@@ -66,7 +66,10 @@
     };
 
     home-manager.users.jocelyn =
-      { osConfig, ... }:
+      {
+        osConfig,
+        ...
+      }:
       {
         home.packages = with pkgs; [
           imv
@@ -76,82 +79,6 @@
           wl-clipboard
           ydotool
         ];
-
-        programs.hyprlock = {
-          enable = true;
-          settings = {
-            general = {
-              disable_loading_bar = true;
-              grace = 5;
-              hide_cursor = true;
-              no_fade_in = false;
-            };
-            background = [
-              {
-                path = "${pkgs.wallpapers.${osConfig.aspects.graphical.wallpaper}}";
-                blur_passes = 0;
-                color = "$base";
-              }
-            ];
-
-            label = [
-              {
-                monitor = "";
-                text = "Layout: $LAYOUT";
-                color = "$text";
-                font_size = 25;
-                font_family = osConfig.aspects.base.fonts.monospace.family;
-                position = "30, -30";
-                halign = "left";
-                valign = "top";
-              }
-              {
-                monitor = "";
-                text = "$TIME";
-                color = "$text";
-                font_size = 90;
-                font_family = osConfig.aspects.base.fonts.monospace.family;
-                position = "-30, 0";
-                halign = "right";
-                valign = "top";
-              }
-              {
-                monitor = "";
-                text = "cmd[update:43200000] date +\"%A, %d %B %Y\"";
-                color = "$text";
-                font_size = 25;
-                font_family = osConfig.aspects.base.fonts.monospace.family;
-                position = "-30, -150";
-                halign = "right";
-                valign = "top";
-              }
-            ];
-
-            input-field = [
-              {
-                monitor = "";
-                size = "300, 60";
-                outline_thickness = 4;
-                dots_size = 0.2;
-                dots_spacing = 0.2;
-                dots_center = true;
-                outer_color = "$accent";
-                inner_color = "$surface0";
-                font_color = "$text";
-                fade_on_empty = false;
-                placeholder_text = "<span foreground=\"##$textAlpha\"><i>󰌾 Logged in as </i><span foreground=\"##$accentAlpha\">$USER</span></span>";
-                hide_input = false;
-                check_color = "$accent";
-                fail_color = "$red";
-                fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
-                capslock_color = "$yellow";
-                position = "0, -47";
-                halign = "center";
-                valign = "center";
-              }
-            ];
-          };
-        };
 
         # Fix services for uwsm
         systemd.user.services = {
@@ -164,24 +91,6 @@
         };
 
         services = {
-          hyprpaper = {
-            enable = true;
-            settings = {
-              ipc = "on";
-              splash = false;
-              splash_offset = 2;
-              preload = [
-                "${pkgs.wallpapers.${osConfig.aspects.graphical.wallpaper}}"
-              ];
-              wallpaper = [
-                {
-                  monitor = "";
-                  path = "${pkgs.wallpapers.${osConfig.aspects.graphical.wallpaper}}";
-                  fit_mode = "cover";
-                }
-              ];
-            };
-          };
           hypridle = {
             enable = true;
             settings = {
@@ -212,35 +121,22 @@
           };
         };
 
-        catppuccin = {
-          hyprland.enable = true;
-          hyprlock.enable = true;
-        };
         wayland.windowManager.hyprland = {
           enable = true;
-          xwayland = {
-            enable = true;
-          };
-          systemd = {
-            enable = false;
-          };
+          xwayland.enable = true;
+          systemd.enable = false;
           settings = {
             general = {
               gaps_in = 5;
               gaps_out = 5;
               border_size = 3;
               layout = "dwindle";
-              "col.active_border" = "$accent";
-              "col.inactive_border" = "$base";
+              "col.active_border" = lib.mkForce "rgb(${osConfig.lib.stylix.colors.base0E})";
             };
-            cursor = {
-              inactive_timeout = 0;
-            };
+
+            cursor.inactive_timeout = 0;
             # https://github.com/ValveSoftware/gamescope/issues/1825#issuecomment-2883202415
-            debug = {
-              full_cm_proto = true;
-              # disable_logs = false;
-            };
+            debug.full_cm_proto = true;
             dwindle = {
               force_split = 2;
               preserve_split = true;
@@ -255,9 +151,7 @@
                 size = 6;
                 passes = 3;
               };
-              shadow = {
-                enabled = false;
-              };
+              shadow.enabled = false;
             };
             exec = [
               "${pkgs.hyprland}/bin/hyprctl switchxkblayout current 1"
@@ -273,11 +167,8 @@
               no_donation_nag = true;
             };
             group = {
-              "col.border_active" = "$accent";
-              "col.border_inactive" = "$base";
               groupbar = {
                 gradients = true;
-                text_color = "$text";
               };
             };
             misc = {

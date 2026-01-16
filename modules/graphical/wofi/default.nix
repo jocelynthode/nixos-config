@@ -2,20 +2,18 @@
   pkgs,
   lib,
   config,
-  nix-colors,
   ...
 }:
-let
-  toRGB = nix-colors.lib.conversions.hexToRGBString ",";
-in
 {
   config = lib.mkIf config.aspects.graphical.enable {
     home-manager.users.jocelyn =
       {
-        config,
         osConfig,
         ...
       }:
+      let
+        inherit (osConfig.lib.stylix) colors;
+      in
       {
         home.packages = with pkgs; [
           wofi
@@ -23,11 +21,11 @@ in
 
         xdg.configFile."wofi/style.css" = {
           text = ''
-            @define-color accent #${config.colorScheme.palette.accent};
-            @define-color txt #${config.colorScheme.palette.foreground};
-            @define-color bg rgba(${toRGB config.colorScheme.palette.background},0.9);
-            @define-color bg-solid #${config.colorScheme.palette.background};
-            @define-color bg2 rgba(${toRGB config.colorScheme.palette.background03},0.9);
+            @define-color accent ${colors.withHashtag.base0E};
+            @define-color txt ${colors.withHashtag.base05};
+            @define-color bg-solid ${colors.withHashtag.base00};
+            @define-color bg rgba(${colors.base00-rgb-r}, ${colors.base00-rgb-g}, ${colors.base00-rgb-b}, 0.9);
+            @define-color bg2 rgba(${colors.base03-rgb-r}, ${colors.base03-rgb-g}, ${colors.base03-rgb-b}, 0.9);
 
             * {
                 font-family: ${osConfig.aspects.base.fonts.regular.family};

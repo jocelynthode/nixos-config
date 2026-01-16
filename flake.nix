@@ -19,7 +19,7 @@
     };
 
     nur.url = "github:nix-community/NUR";
-    nix-colors.url = "github:misterio77/nix-colors";
+
     hardware.url = "github:nixos/nixos-hardware";
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
@@ -56,7 +56,10 @@
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # TODO add stylix https://github.com/nix-community/stylix
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     disko = {
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -76,7 +79,6 @@
       home-manager,
       sops-nix,
       nur,
-      nix-colors,
       hardware,
       impermanence,
       taxi,
@@ -86,6 +88,7 @@
       nixvim,
       wofi-ykman,
       niri,
+      stylix,
       disko,
       authentik-nix,
       noctalia,
@@ -94,7 +97,6 @@
     let
       sharedSpecialArgs = {
         inherit
-          nix-colors
           spicetify-nix
           catppuccin
           nixvim
@@ -147,6 +149,7 @@
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
           impermanence.nixosModules.impermanence
+          stylix.nixosModules.stylix
           catppuccin.nixosModules.catppuccin
           nix-index-database.nixosModules.nix-index
           nixvim.nixosModules.nixvim

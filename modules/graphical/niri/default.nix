@@ -77,6 +77,7 @@ in
               ];
             in
             {
+              prefer-no-csd = "";
               workspaces = {
                 "01" = {
                   open-on-output = "DP-1";
