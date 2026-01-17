@@ -7,7 +7,7 @@
   config = {
     stylix = {
       enable = true;
-      autoEnable = true;
+      autoEnable = config.aspects.graphical.enable;
       base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
 
       polarity = "dark";
