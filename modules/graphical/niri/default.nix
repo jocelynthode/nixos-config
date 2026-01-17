@@ -245,18 +245,18 @@ in
                     }
                   ];
                   focus-ring = {
-                    active.color = config.lib.stylix.colors.withHashtag.base08;
+                    active.color = "#ff2200";
                     inactive.color = config.lib.stylix.colors.withHashtag.base09;
                   };
                   border = {
                     inactive.color = config.lib.stylix.colors.withHashtag.base09;
-                    active.color = config.lib.stylix.colors.withHashtag.base08;
+                    active.color = "#ff2200";
                   };
                   shadow = {
-                    color = config.lib.stylix.colors.withHashtag.base08;
+                    color = "#ff2200";
                   };
                   tab-indicator = {
-                    active.color = config.lib.stylix.colors.withHashtag.base08;
+                    active.color = "#ff2200";
                     inactive.color = config.lib.stylix.colors.withHashtag.base09;
                   };
                 }
