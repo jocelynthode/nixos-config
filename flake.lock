@@ -1420,11 +1420,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1746264831,
-        "narHash": "sha256-5aroPelTOeURa/WXTurJW40ViCHlPc8eJpjDE9tzvC4=",
+        "lastModified": 1768694097,
+        "narHash": "sha256-XYs+g81MfbLm2vAJjkUByhqyedYArDNflOE0kvBnOaw=",
         "owner": "jocelynthode",
         "repo": "wofi-ykman",
-        "rev": "970b1db0078e6c2293166e2ba63c6483236d21ce",
+        "rev": "1737724c9f37e73ffb3ad47a1e70ec53527beedf",
         "type": "github"
       },
       "original": {

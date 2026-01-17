@@ -223,6 +223,7 @@ in
                     { app-id = "signal"; }
                   ];
                   open-on-workspace = "messenger";
+                  block-out-from = "screencast";
                   open-maximized = true;
                 }
                 {
@@ -348,7 +349,6 @@ in
                   "app"
                   "--"
                   (lib.getExe pkgs.wofi-ykman)
-                  "wofi-ykman"
                 ];
 
                 "Mod+e".action.spawn = noctaliaIpc ++ [
