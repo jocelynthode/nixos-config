@@ -1,21 +1,12 @@
 {
   config,
-  lib,
   pkgs,
   ...
 }:
-let
-  cfg = config.aspects.graphical.stylix;
-in
 {
-  options.aspects.graphical.stylix = {
-    enable = lib.mkEnableOption "Stylix theming framework";
-  };
-
-  config = lib.mkIf cfg.enable {
+  config = {
     stylix = {
       enable = true;
-
       autoEnable = true;
       base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
 
@@ -39,7 +30,7 @@ in
 
       opacity = {
         desktop = 0.7;
-        terminal = 0.85;
+        terminal = 0.90;
       };
 
       targets = {

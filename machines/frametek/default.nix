@@ -18,7 +18,7 @@
     graphical = {
       enable = true;
       dpi = 120;
-      wallpaper = "water";
+      wallpaper = "japan-spring";
       fingerprint.enable = true;
       hyprland = {
         enable = true;

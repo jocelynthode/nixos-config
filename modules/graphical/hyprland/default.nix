@@ -55,11 +55,11 @@
       enable = true;
       settings = {
         initial_session = {
-          command = "${pkgs.uwsm}/bin/uwsm start hyprland-uwsm.desktop";
+          command = "${lib.getExe config.programs.uwsm.package} start -D Hyprland -- hyprland-uwsm.desktop";
           user = "jocelyn";
         };
         default_session = {
-          command = "${pkgs.uwsm}/bin/uwsm start hyprland-uwsm.desktop";
+          command = "${lib.getExe config.programs.uwsm.package} start -D Hyprland -- hyprland-uwsm.desktop";
           user = "jocelyn";
         };
       };
@@ -79,47 +79,6 @@
           wl-clipboard
           ydotool
         ];
-
-        # Fix services for uwsm
-        systemd.user.services = {
-          hyprpaper.Unit.After = [
-            "graphical-session.target"
-          ];
-          hypridle.Unit.After = [
-            "graphical-session.target"
-          ];
-        };
-
-        services = {
-          hypridle = {
-            enable = true;
-            settings = {
-              general = {
-                lock_cmd = "pidof hyprlock || hyprlock -q";
-                before_sleep_cmd = "loginctl lock-session";
-                after_sleep_cmd = "hyprctl dispatch dpms on";
-                ignore_dbus_inhibit = false;
-                ignore_systemd_inhibit = false;
-              };
-
-              listener = [
-                {
-                  timeout = 600;
-                  on-timeout = "hyprlock";
-                }
-                {
-                  timeout = 610;
-                  command = "${pkgs.pulseaudio}/bin/pactl set-source-mute @DEFAULT_SOURCE@ yes";
-                }
-                {
-                  timeout = 700;
-                  on-timeout = "hyprctl dispatch dpms off";
-                  on-resume = "hyprctl dispatch dpms on";
-                }
-              ];
-            };
-          };
-        };
 
         wayland.windowManager.hyprland = {
           enable = true;

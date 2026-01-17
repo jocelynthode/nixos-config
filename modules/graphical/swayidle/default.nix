@@ -14,34 +14,34 @@
       {
         services.swayidle = {
           enable = true;
-          systemdTarget =
-            if osConfig.aspects.graphical.hyprland.enable then
-              "hyprland-session.target"
-            else
-              "sway-session.target";
+          systemdTarget = "graphical-session.target";
           events = {
-            "before-sleep" = "loginctl lock-session";
-            "lock" = "loginctl lock-session";
+            "before-sleep" = "noctalia-shell ipc call lockScreen lock";
+            "lock" = "noctalia-shell ipc call lockScreen lock";
           };
           timeouts = [
             {
               timeout = 600;
-              command = "loginctl lock-session";
+              command = "noctalia-shell ipc call lockScreen lock";
             }
             {
               timeout = 610;
-              command = "${pkgs.pulseaudio}/bin/pactl set-source-mute @DEFAULT_SOURCE@ yes";
+              command = "noctalia-shell ipc call volume muteInput";
             }
             {
-              timeout = 660;
+              timeout = 700;
               command =
                 if osConfig.aspects.graphical.hyprland.enable then
                   "hyprctl dispatch dpms off"
+                else if osConfig.aspects.graphical.niri.enable then
+                  "niri msg action power-off-monitors"
                 else
                   "${pkgs.sway}/bin/swaymsg \"output * dpms off\"";
               resumeCommand =
                 if osConfig.aspects.graphical.hyprland.enable then
                   "hyprctl dispatch dpms on"
+                else if osConfig.aspects.graphical.niri.enable then
+                  "niri msg action power-on-monitors"
                 else
                   "${pkgs.sway}/bin/swaymsg \"output * dpms on\"";
             }

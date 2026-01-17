@@ -110,17 +110,17 @@ in
 
                 left = [
                   {
-                    characterCount = 2;
+                    characterCount = 5;
                     colorizeIcons = false;
-                    enableScrollWheel = true;
+                    enableScrollWheel = false;
                     followFocusedScreen = true;
                     groupedBorderOpacity = 1;
                     hideUnoccupied = true;
                     iconScale = 0.8;
                     id = "Workspace";
-                    labelMode = "index";
+                    labelMode = "none";
                     showApplications = false;
-                    showLabelsOnlyWhenOccupied = true;
+                    showLabelsOnlyWhenOccupied = false;
                     unfocusedIconsOpacity = 1;
                   }
                   {

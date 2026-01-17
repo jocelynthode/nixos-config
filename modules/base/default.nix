@@ -21,6 +21,7 @@
     ./neovim
     ./persistence
     ./sshd
+    ./stylix
     ./virtualisation
   ];
 

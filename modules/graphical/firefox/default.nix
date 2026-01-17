@@ -20,6 +20,8 @@
         source = ./tridactyl;
       };
 
+      stylix.targets.firefox.profileNames = [ "jocelyn" ];
+
       programs.firefox = {
         enable = true;
         nativeMessagingHosts = [

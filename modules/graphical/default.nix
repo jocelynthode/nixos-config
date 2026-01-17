@@ -23,7 +23,6 @@
     ./xdg
     ./niri
     ./noctalia-shell
-    ./stylix
   ];
 
   options.aspects.graphical = {
@@ -36,7 +35,7 @@
 
     wallpaper = lib.mkOption {
       type = lib.types.str;
-      default = "";
+      default = "japan-spring";
       description = ''
         Wallpaper name
       '';
@@ -66,7 +65,6 @@
         theme.enable = lib.mkDefault true;
         xdg.enable = lib.mkDefault true;
         noctalia-shell.enable = lib.mkDefault true;
-        stylix.enable = lib.mkDefault true;
       };
     };
 

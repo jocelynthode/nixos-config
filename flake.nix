@@ -101,6 +101,7 @@
           catppuccin
           nixvim
           noctalia
+          stylix
           ;
       };
       mkPinnedPkgs = system: {

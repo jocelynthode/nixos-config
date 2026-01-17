@@ -34,6 +34,12 @@
             "wlr"
           ];
         };
+        niri = {
+          default = [
+            "gnome"
+            "gtk"
+          ];
+        };
         hyprland = {
           default = [
             "hyprland"
@@ -44,6 +50,7 @@
       wlr.enable = config.aspects.graphical.sway.enable;
       extraPortals = with pkgs; [
         xdg-desktop-portal-gtk
+        xdg-desktop-portal-gnome
       ];
     };
 

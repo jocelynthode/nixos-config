@@ -23,12 +23,12 @@
     graphical = {
       enable = true;
       sound.guitar.enable = true;
-      wallpaper = "water";
+      wallpaper = "japan-spring";
       printer.enable = true;
       sway.enable = false;
-      niri.enable = false;
+      niri.enable = true;
       hyprland = {
-        enable = true;
+        enable = false;
         monitor = [
           "HDMI-A-1,highres,0x0,auto"
           "DP-1,highres,1920x0,auto"
