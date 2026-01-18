@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   imports = [
     ./disko.nix
@@ -20,8 +20,49 @@
       dpi = 120;
       wallpaper = "japan-spring";
       fingerprint.enable = true;
-      hyprland = {
+      niri = {
         enable = true;
+        workspaces = {
+          "01" = {
+            name = "browser";
+            open-on-output = "DP-4";
+          };
+          "02" = {
+            name = "terminal";
+            open-on-output = "DP-4";
+          };
+          "03" = {
+            name = "mail";
+            open-on-output = "DP-4";
+          };
+          "04" = {
+            name = "game";
+            open-on-output = "DP-4";
+          };
+          "05" = {
+            name = "extra";
+            open-on-output = "DP-4";
+          };
+          "06" = {
+            name = "secondary";
+            open-on-output = "eDP-1";
+          };
+          "07" = {
+            name = "chat";
+            open-on-output = "eDP-1";
+          };
+          "08" = {
+            name = "music";
+            open-on-output = "eDP-1";
+          };
+          "09" = {
+            name = "messenger";
+            open-on-output = "eDP-1";
+          };
+        };
+      };
+      hyprland = {
+        enable = false;
         workspace = [
           "1,monitor:DP-4,default:true"
           "2,monitor:DP-4"
@@ -69,16 +110,15 @@
               }
             ];
             exec = [
-              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor 1 DP-4"
-              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor 2 DP-4"
-              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor 3 DP-4"
-              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor 4 DP-4"
-              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor 5 DP-4"
-              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor 6 eDP-1"
-              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor 7 eDP-1"
-              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor 8 eDP-1"
-              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor 9 eDP-1"
-              "${pkgs.hyprland}/bin/hyprctl dispatch moveworkspacetomonitor 10 eDP-1"
+              "niri msg action move-workspace-to-monitor --reference browser DP-4"
+              "niri msg action move-workspace-to-monitor --reference terminal DP-4"
+              "niri msg action move-workspace-to-monitor --reference mail DP-4"
+              "niri msg action move-workspace-to-monitor --reference game DP-4"
+              "niri msg action move-workspace-to-monitor --reference extra DP-4"
+              "niri msg action move-workspace-to-monitor --reference secondary eDP-1"
+              "niri msg action move-workspace-to-monitor --reference chat eDP-1"
+              "niri msg action move-workspace-to-monitor --reference music eDP-1"
+              "niri msg action move-workspace-to-monitor --reference messenger eDP-1"
             ];
           };
         }

@@ -26,6 +26,11 @@ in
           text = builtins.toJSON { defaultWallpaper = osConfig.stylix.image; };
         };
 
+        xdg.configFile."noctalia/sounds" = {
+          source = ./sounds;
+          recursive = true;
+        };
+
         stylix.targets.noctalia-shell.enable = false;
 
         programs.noctalia-shell = {
@@ -68,7 +73,7 @@ in
               density = "default";
               exclusive = true;
               floating = true;
-              marginHorizontal = 4;
+              marginHorizontal = 12;
               marginVertical = 4;
               monitors = [ "DP-1" ];
               outerCorners = true;
@@ -383,13 +388,13 @@ in
               };
 
               sounds = {
-                criticalSoundFile = "";
-                enabled = false;
+                criticalSoundFile = "/home/jocelyn/.config/noctalia/sounds/link.wav";
+                enabled = true;
                 excludedApps = "discord,firefox,chrome,chromium,edge";
-                lowSoundFile = "";
-                normalSoundFile = "";
+                lowSoundFile = "/home/jocelyn/.config/noctalia/sounds/link.wav";
+                normalSoundFile = "/home/jocelyn/.config/noctalia/sounds/link.wav";
                 separateSounds = false;
-                volume = 0.5;
+                volume = 0.9;
               };
             };
 
