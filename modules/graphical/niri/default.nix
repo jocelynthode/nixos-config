@@ -162,7 +162,7 @@ in
                     matches = [
                       { namespace = ".*notifications.*"; }
                     ];
-                    block-out-from = "screencast";
+                    block-out-from = "screen-capture";
                   }
                 ];
                 window-rules = [
@@ -197,7 +197,7 @@ in
                       { app-id = "signal"; }
                     ];
                     open-on-workspace = "messenger";
-                    block-out-from = "screencast";
+                    block-out-from = "screen-capture";
                     open-maximized = true;
                   }
                   {
