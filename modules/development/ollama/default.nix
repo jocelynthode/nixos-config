@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 {
@@ -12,8 +13,11 @@
     # ];
     services.ollama = {
       enable = true;
-      acceleration = "rocm";
+      package = pkgs.ollama-rocm;
       rocmOverrideGfx = "11.0.0";
+      environmentVariables = {
+        OLLAMA_CONTEXT_LENGTH = "32768";
+      };
     };
   };
 }
