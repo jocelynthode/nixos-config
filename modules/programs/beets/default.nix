@@ -38,6 +38,7 @@
             "lastgenre"
             "lyrics"
             "mbsync"
+            "musicbrainz"
             "replaygain"
             "scrub"
             "spotify"
