@@ -46,6 +46,12 @@ let
           keymap_mode = "auto";
           search_mode = "fuzzy";
           key_path = config.sops.secrets."atuin/key".path;
+          sync = {
+            records = true;
+          };
+          dotfiles = {
+            enabled = false;
+          };
         };
       };
     };
