@@ -161,6 +161,8 @@
           gnumake
           gettext
           devenv
+          procps
+          lsof
         ];
       };
 
