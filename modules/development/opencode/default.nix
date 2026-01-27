@@ -15,12 +15,15 @@
     };
 
     home-manager.users.jocelyn = _: {
+
+      stylix.targets.opencode.enable = false;
       programs.opencode = {
         enable = true;
         settings = {
           model = "openai/gpt-5.1-codex";
           small_model = "openai/gpt-5-mini";
           default_agent = "devops-orchestrator";
+          theme = "catppuccin";
           provider = {
           }
           // lib.optionalAttrs config.aspects.development.ollama.enable {
