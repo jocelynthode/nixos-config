@@ -65,8 +65,8 @@ _: {
           };
           list = {
             selection = {
-              preselect.__raw = ''function(ctx) return ctx.mode ~= 'cmdline' end'';
-              auto_insert.__raw = ''function(ctx) return ctx.mode ~= 'cmdline' end'';
+              preselect.__raw = "function(ctx) return ctx.mode ~= 'cmdline' end";
+              auto_insert.__raw = "function(ctx) return ctx.mode ~= 'cmdline' end";
             };
           };
         };

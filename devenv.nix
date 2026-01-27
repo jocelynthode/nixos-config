@@ -12,7 +12,7 @@
 
   git-hooks.hooks = {
     actionlint.enable = true;
-    nixfmt-rfc-style.enable = true;
+    nixfmt.enable = true;
     deadnix = {
       enable = true;
       settings.edit = true;

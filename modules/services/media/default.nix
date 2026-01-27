@@ -57,21 +57,20 @@ let
   serviceConfigs = lib.listToAttrs (
     map (service: {
       inherit (service) name;
-      value =
-        {
-          enable = true;
-          openFirewall = true;
-        }
-        // lib.optionalAttrs service.useSettings {
-          settings = {
-            auth = {
-              method = "external";
-            };
+      value = {
+        enable = true;
+        openFirewall = true;
+      }
+      // lib.optionalAttrs service.useSettings {
+        settings = {
+          auth = {
+            method = "external";
           };
-        }
-        // lib.optionalAttrs (service.name != "prowlarr") {
-          group = "media";
         };
+      }
+      // lib.optionalAttrs (service.name != "prowlarr") {
+        group = "media";
+      };
     }) mediaServices
   );
 
@@ -129,14 +128,16 @@ in
         "d /data/media/shows 0775 deluge media -"
         "d /data/media/music 0775 deluge media -"
         "d /data/media/books 0775 deluge media -"
-      ] ++ tmpFiles;
+      ]
+      ++ tmpFiles;
     };
 
     users = {
       groups.media = { };
       users = {
         jocelyn.extraGroups = [ "media" ];
-      } // userGroups;
+      }
+      // userGroups;
     };
   };
 }
