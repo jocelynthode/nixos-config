@@ -27,22 +27,23 @@ _: {
                   ellipsis = false;
                   text.__raw = ''
                     function(ctx)
-                      local lspkind = require("lspkind")
                       local icon = ctx.kind_icon
                       if vim.tbl_contains({ "Path" }, ctx.source_name) then
-                          local dev_icon, _ = require("nvim-web-devicons").get_icon(ctx.label)
-                          if dev_icon then
-                              icon = dev_icon
-                          end
+                        local dev_icon, _ = require("nvim-web-devicons").get_icon(ctx.label)
+                        if dev_icon then
+                          icon = dev_icon
+                        end
                       else
-                          icon = require("lspkind").symbolic(ctx.kind, {
-                              mode = "symbol",
-                          })
+                        local lspkind = require("lspkind")
+                        if lspkind and lspkind.symbol_map then
+                          icon = lspkind.symbol_map[ctx.kind] or icon
+                        end
                       end
 
                       return icon .. ctx.icon_gap
                     end
                   '';
+
                   highlight.__raw = ''
                     function(ctx)
                       local hl = "BlinkCmpKind" .. ctx.kind
