@@ -20,6 +20,7 @@
         settings = {
           model = "openai/gpt-5.1-codex";
           small_model = "openai/gpt-5-mini";
+          default_agent = "devops-orchestrator";
           provider = {
           }
           // lib.optionalAttrs config.aspects.development.ollama.enable {
@@ -44,7 +45,7 @@
             grep = "allow";
             glob = "allow";
             list = "allow";
-            skill = "ask";
+            skill = "allow";
             bash = "ask";
             webfetch = "ask";
             todowrite = "allow";
