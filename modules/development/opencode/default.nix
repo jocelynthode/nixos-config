@@ -40,6 +40,11 @@
               };
             };
           };
+          lsp = {
+            yaml-ls = {
+              disabled = true;
+            };
+          };
           permission = {
             edit = "ask";
             write = "ask";
