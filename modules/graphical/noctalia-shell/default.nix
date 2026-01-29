@@ -75,7 +75,10 @@ in
               floating = true;
               marginHorizontal = 12;
               marginVertical = 4;
-              monitors = [ "DP-1" ];
+              monitors = [
+                "eDP-1"
+                "DP-1"
+              ];
               outerCorners = true;
               position = "top";
               showCapsule = false;
@@ -376,7 +379,10 @@ in
               enabled = true;
               location = "top_right";
               lowUrgencyDuration = 3;
-              monitors = [ "DP-1" ];
+              monitors = [
+                "eDP-1"
+                "DP-1"
+              ];
               normalUrgencyDuration = 8;
               overlayLayer = true;
               respectExpireTimeout = false;
@@ -409,7 +415,10 @@ in
                 null
               ];
               location = "top_right";
-              monitors = [ "DP-1" ];
+              monitors = [
+                "eDP-1"
+                "DP-1"
+              ];
               overlayLayer = true;
             };
 

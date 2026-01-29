@@ -13,7 +13,10 @@
       bluetooth.enable = true;
       fileSystems.btrfs.encrypted = true;
     };
-    development.enable = true;
+    development = {
+      enable = true;
+      opencode.enable = true;
+    };
     games.enable = false;
     graphical = {
       enable = true;
