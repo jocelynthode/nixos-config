@@ -45,5 +45,6 @@
     };
 
     fileSystems."${config.aspects.base.persistence.persistPrefix}".neededForBoot = true;
+    fileSystems."/var/log".neededForBoot = true;
   };
 }

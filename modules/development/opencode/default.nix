@@ -20,7 +20,7 @@
       programs.opencode = {
         enable = true;
         settings = {
-          model = "openai/gpt-5.1-codex";
+          model = "openai/gpt-5.2-codex";
           small_model = "openai/gpt-5-mini";
           default_agent = "devops-orchestrator";
           theme = "catppuccin";
