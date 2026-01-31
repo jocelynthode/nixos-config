@@ -15,6 +15,7 @@ in
   config = lib.mkIf cfg.enable {
     aspects.base.persistence.homePaths = [
       ".config/noctalia"
+      ".cache/noctalia"
     ];
 
     home-manager.sharedModules = [ noctalia.homeModules.default ];

@@ -35,13 +35,6 @@
     opencl.enable = false;
   };
 
-  # TODO Remove after fix https://gitlab.freedesktop.org/drm/amd/-/issues/4178
-  systemd.services."systemd-suspend" = {
-    serviceConfig = {
-      Environment = ''"SYSTEMD_SLEEP_FREEZE_USER_SESSIONS=false"'';
-    };
-  };
-
   services.system76-scheduler.enable = true;
   # services.tailscale.enable = true;
   # TODO persists /var/lib/tailscale

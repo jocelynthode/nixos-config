@@ -95,6 +95,11 @@ in
               in
               {
                 prefer-no-csd = true;
+
+                hotkey-overlay = {
+                  skip-at-startup = true;
+                  hide-not-bound = true;
+                };
                 inherit (osConfig.aspects.graphical.niri) workspaces;
                 spawn-at-startup = [
                   {
