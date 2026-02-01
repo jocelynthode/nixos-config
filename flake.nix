@@ -153,7 +153,7 @@
           impermanence.nixosModules.impermanence
           stylix.nixosModules.stylix
           catppuccin.nixosModules.catppuccin
-          nix-index-database.nixosModules.nix-index
+          nix-index-database.nixosModules.default
           nixvim.nixosModules.nixvim
           niri.nixosModules.niri
           disko.nixosModules.disko

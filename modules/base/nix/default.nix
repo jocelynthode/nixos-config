@@ -1,5 +1,4 @@
 {
-  inputs,
   config,
   lib,
   pkgs,
@@ -11,10 +10,6 @@ let
       enable = true;
       nix-direnv.enable = true;
     };
-  };
-  baseNixIndex = {
-    programs.command-not-found.enable = false;
-    programs.nix-index-database.comma.enable = true;
   };
 in
 {
@@ -81,12 +76,6 @@ in
       '';
     };
 
-    home-manager = {
-      sharedModules = [ inputs.nix-index-database.homeModules.nix-index ];
-      users.jocelyn =
-        _:
-        lib.recursiveUpdate (lib.optionalAttrs config.aspects.base.nix.enableDirenv baseDirenv) baseNixIndex;
-      users.root = _: baseNixIndex;
-    };
+    home-manager.users.jocelyn = _: lib.optionalAttrs config.aspects.base.nix.enableDirenv baseDirenv;
   };
 }
