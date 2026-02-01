@@ -173,6 +173,13 @@ in
                 window-rules = [
                   {
                     matches = [
+                      { app-id = "^xdg-desktop-portal-gtk$"; }
+                      { app-id = "^xdg-desktop-portal-gnome$"; }
+                    ];
+                    open-floating = true;
+                  }
+                  {
+                    matches = [
                       {
                         app-id = "kitty";
                         at-startup = true;
