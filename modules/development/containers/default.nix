@@ -25,12 +25,10 @@
       };
       containers = {
         enable = true;
-        containersConf.cniPlugins = with pkgs; [ cni-plugins ];
       };
     };
 
     environment.systemPackages = with pkgs; [
-      podman-compose
       docker-compose
     ];
 
