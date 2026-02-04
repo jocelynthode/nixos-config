@@ -66,12 +66,15 @@ in
           "@wheel"
         ];
         auto-optimise-store = true;
+        experimental-features = [
+          "nix-command"
+          "flakes"
+        ];
+        keep-outputs = true;
+        keep-derivations = true;
       };
       package = pkgs.lixPackageSets.stable.lix;
       extraOptions = ''
-        experimental-features = nix-command flakes
-        keep-outputs = true
-        keep-derivations = true
         !include ${config.sops.secrets.nixAccessTokens.path}
       '';
     };
