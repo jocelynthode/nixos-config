@@ -45,6 +45,11 @@ _: {
           icon = "󰌌 ";
         }
         {
+          __unkeyed-1 = "<leader>m";
+          group = "Markdown";
+          icon = " ";
+        }
+        {
           __unkeyed-1 = "<leader>s";
           group = "Search";
           icon = " ";

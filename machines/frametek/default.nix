@@ -28,23 +28,23 @@
         workspaces = {
           "01" = {
             name = "browser";
-            open-on-output = "DP-4";
+            open-on-output = "DP-3";
           };
           "02" = {
             name = "terminal";
-            open-on-output = "DP-4";
+            open-on-output = "DP-3";
           };
           "03" = {
             name = "mail";
-            open-on-output = "DP-4";
+            open-on-output = "DP-3";
           };
           "04" = {
             name = "game";
-            open-on-output = "DP-4";
+            open-on-output = "DP-3";
           };
           "05" = {
             name = "extra";
-            open-on-output = "DP-4";
+            open-on-output = "DP-3";
           };
           "06" = {
             name = "secondary";
@@ -107,17 +107,17 @@
                 scale = 1.566667;
               }
               {
-                criteria = "DP-4";
+                criteria = "DP-3";
                 position = "0,1504";
-                scale = 1.5;
+                scale = 1.175;
               }
             ];
             exec = [
-              "niri msg action move-workspace-to-monitor --reference browser DP-4"
-              "niri msg action move-workspace-to-monitor --reference terminal DP-4"
-              "niri msg action move-workspace-to-monitor --reference mail DP-4"
-              "niri msg action move-workspace-to-monitor --reference game DP-4"
-              "niri msg action move-workspace-to-monitor --reference extra DP-4"
+              "niri msg action move-workspace-to-monitor --reference browser DP-3"
+              "niri msg action move-workspace-to-monitor --reference terminal DP-3"
+              "niri msg action move-workspace-to-monitor --reference mail DP-3"
+              "niri msg action move-workspace-to-monitor --reference game DP-3"
+              "niri msg action move-workspace-to-monitor --reference extra DP-3"
               "niri msg action move-workspace-to-monitor --reference secondary eDP-1"
               "niri msg action move-workspace-to-monitor --reference chat eDP-1"
               "niri msg action move-workspace-to-monitor --reference music eDP-1"
