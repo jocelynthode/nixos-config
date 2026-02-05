@@ -79,6 +79,7 @@ in
               monitors = [
                 "eDP-1"
                 "DP-1"
+                "DP-3"
               ];
               outerCorners = true;
               position = "top";
@@ -383,6 +384,7 @@ in
               monitors = [
                 "eDP-1"
                 "DP-1"
+                "DP-3"
               ];
               normalUrgencyDuration = 8;
               overlayLayer = true;
@@ -419,6 +421,7 @@ in
               monitors = [
                 "eDP-1"
                 "DP-1"
+                "DP-3"
               ];
               overlayLayer = true;
             };
