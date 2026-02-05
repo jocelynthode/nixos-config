@@ -159,6 +159,8 @@
           moreutils
           ldns
           gnumake
+          just
+          jq
           gettext
           devenv
           procps
