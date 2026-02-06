@@ -18,6 +18,7 @@
     ./lact
     ./logseq
     ./obs-studio
+    ./thunderbird
     ./yazi
     ./signal
     ./solaar
@@ -43,6 +44,7 @@
       lact.enable = lib.mkDefault false;
       logseq.enable = lib.mkDefault false;
       obs-studio.enable = lib.mkDefault false;
+      thunderbird.enable = lib.mkDefault true;
       yazi.enable = lib.mkDefault true;
       signal.enable = lib.mkDefault true;
       solaar.enable = lib.mkDefault false;
