@@ -112,7 +112,11 @@ in
                       "firefox"
                     ];
                   }
-
+                  {
+                    argv = uwsmApp ++ [
+                      "thunderbird"
+                    ];
+                  }
                   {
                     argv = uwsmApp ++ [
                       "feishin"
@@ -196,6 +200,13 @@ in
                       }
                     ];
                     open-on-workspace = "browser";
+                  }
+                  {
+                    matches = [
+                      { app-id = "thunderbird"; }
+                    ];
+                    open-on-workspace = "mail";
+                    open-maximized = true;
                   }
                   {
                     matches = [

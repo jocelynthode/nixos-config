@@ -18,6 +18,10 @@
     home-manager.users.jocelyn =
       { pkgs, ... }:
       {
+        catppuccin.thunderbird = {
+          enable = true;
+          profile = "jocelyn";
+        };
         programs.thunderbird = {
           enable = true;
           profiles = {
