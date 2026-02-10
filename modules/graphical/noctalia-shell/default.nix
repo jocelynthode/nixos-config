@@ -186,7 +186,8 @@ in
                     id = "NightLight";
                   }
                   {
-                    displayMode = "alwaysShow";
+                    displayMode = "graphic";
+                    deviceNativePath = "__default__";
                     hideIfNotDetected = true;
                     id = "Battery";
                     showNoctaliaPerformance = false;
@@ -352,7 +353,7 @@ in
               use12hourFormat = false;
               useFahrenheit = false;
               weatherEnabled = true;
-              weatherShowEffects = true;
+              weatherShowEffects = false;
             };
 
             network = {
