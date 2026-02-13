@@ -28,7 +28,7 @@
       '';
     };
     services.udev.extraRules = ''
-      ACTION=="add", SUBSYSTEM=="block", ENV{ID_FS_LABEL}=="RPI-RP2", TAG+="systemd", ENV{SYSTEMD_WANTS}="rp2040-udisks-mount@%k.service"
+      ACTION=="add", SUBSYSTEM=="block", ENV{ID_FS_LABEL}=="RPI-RP2", TAG+="systemd", ENV{SYSTEMD_WANTS}="rp2040-udisks-mount@%E{ID_FS_LABEL}.service"
     '';
     systemd.services."rp2040-udisks-mount@" = {
       description = "Mount RP2040 UF2 volume via udisks";
@@ -37,7 +37,7 @@
       serviceConfig = {
         User = "jocelyn";
         Type = "oneshot";
-        ExecStart = "${pkgs.udisks}/bin/udisksctl mount --no-user-interaction -b /dev/%I";
+        ExecStart = "${pkgs.udisks}/bin/udisksctl mount --no-user-interaction -b /dev/disk/by-label/%i";
       };
     };
     aspects.base.persistence.homePaths = [
