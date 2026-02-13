@@ -35,6 +35,8 @@ in
         };
       };
 
+      security.pam.services.greetd.enableGnomeKeyring = true;
+
       programs.niri.enable = true;
 
       environment.systemPackages = with pkgs; [
@@ -55,13 +57,9 @@ in
       services.greetd = {
         enable = true;
         settings = {
-          initial_session = {
-            command = "${lib.getExe config.programs.uwsm.package} start -D niri -- niri-uwsm.desktop";
-            user = "jocelyn";
-          };
           default_session = {
-            command = "${lib.getExe config.programs.uwsm.package} start -D niri -- niri-uwsm.desktop";
-            user = "jocelyn";
+            command = "${lib.getExe pkgs.tuigreet} --time --remember --cmd '${lib.getExe config.programs.uwsm.package} start -D niri -- niri-uwsm.desktop'";
+            user = "greeter";
           };
         };
       };

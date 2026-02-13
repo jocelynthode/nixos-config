@@ -75,6 +75,15 @@
       enable = true;
     };
 
+    aspects.base.persistence.systemPaths = [
+      {
+        directory = "/var/cache/tuigreet";
+        user = "greeter";
+        group = "greeter";
+        mode = "0755";
+      }
+    ];
+
     programs.gdk-pixbuf.modulePackages = [
       pkgs.librsvg
     ];

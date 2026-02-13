@@ -44,12 +44,14 @@
     };
 
     # TODO Fix keymap in console
+    security.pam.services.greetd.enableGnomeKeyring = true;
+
     services.greetd = {
       enable = true;
       settings = {
-        initial_session = {
-          command = "${pkgs.sway}/bin/sway";
-          user = "jocelyn";
+        default_session = {
+          command = "${lib.getExe pkgs.tuigreet} --time --remember --cmd '${lib.getExe pkgs.sway}'";
+          user = "greeter";
         };
       };
     };

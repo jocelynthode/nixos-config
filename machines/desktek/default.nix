@@ -101,7 +101,7 @@
               }
             ];
             exec = [
-              "${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --primary --mode 2560x1440 --pos 1920x0 --right-of HDMI-A-1"
+              "${pkgs.xrandr}/bin/xrandr --output DP-1 --primary --mode 2560x1440 --pos 1920x0 --right-of HDMI-A-1"
               "niri msg action move-workspace-to-monitor --reference browser DP-1"
               "niri msg action move-workspace-to-monitor --reference terminal DP-1"
               "niri msg action move-workspace-to-monitor --reference mail DP-1"
