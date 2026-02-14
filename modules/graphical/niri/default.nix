@@ -369,6 +369,16 @@ in
                     "decrease"
                   ];
 
+                  "XF86AudioPrev".action.spawn = noctaliaIpc ++ [
+                    "media"
+                    "previous"
+                  ];
+
+                  "XF86AudioNext".action.spawn = noctaliaIpc ++ [
+                    "media"
+                    "next"
+                  ];
+
                   "XF86MonBrightnessUp".action.spawn = noctaliaIpc ++ [
                     "brightness"
                     "increase"
