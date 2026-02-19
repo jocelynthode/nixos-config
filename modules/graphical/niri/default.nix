@@ -224,6 +224,7 @@ in
                   {
                     matches = [
                       { app-id = "vesktop"; }
+                      { app-id = "Slack"; }
                     ];
                     open-on-workspace = "chat";
                     open-maximized = true;
