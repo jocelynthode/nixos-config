@@ -7,6 +7,7 @@
   imports = [
     ./git
     ./kubernetes
+    ./openstack
     ./slack
     ./taxi
     ./terraform
@@ -21,6 +22,7 @@
       work = {
         git.enable = lib.mkDefault true;
         kubernetes.enable = lib.mkDefault true;
+        openstack.enable = lib.mkDefault true;
         slack.enable = lib.mkDefault true;
         taxi.enable = lib.mkDefault true;
         terraform.enable = lib.mkDefault true;
