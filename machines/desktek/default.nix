@@ -13,7 +13,7 @@
     };
     development = {
       enable = true;
-      ollama.enable = true;
+      ollama.enable = false;
       opencode.enable = true;
     };
     games = {

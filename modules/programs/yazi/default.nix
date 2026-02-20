@@ -10,6 +10,8 @@
     home-manager.users.jocelyn = _: {
       programs.yazi = {
         enable = true;
+        # Because stateVersion lower than 26.05
+        shellWrapperName = "y";
         enableFishIntegration = true;
         /*
              keymap = {

@@ -22,6 +22,8 @@
         networkmanager-openvpn
       ];
     };
+    firewall.enable = true;
+    nftables.enable = true;
     wireguard.enable = true;
   };
 
