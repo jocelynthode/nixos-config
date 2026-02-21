@@ -22,9 +22,9 @@
         openId = {
           server_hostname = "https://budget.tekila.ovh";
           discoveryURL = "https://auth.tekila.ovh/application/o/actual/.well-known/openid-configuration";
-          # ok because used with utils.genJqSecretsReplacementSnippet
-          client_id._secret = "$CREDENTIALS_DIRECTORY/client_id";
-          client_secret._secret = "$CREDENTIALS_DIRECTORY/client_secret";
+          # Cant use $CREDENTIALS_DIRECTORY because utils.genJqSecretsReplacementSnippet use singlequotes for this service
+          client_id._secret = "/run/credentials/actual.service/client_id";
+          client_secret._secret = "/run/credentials/actual.service/client_secret";
           authMethod = "openid";
         };
       };
