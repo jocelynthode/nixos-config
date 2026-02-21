@@ -98,7 +98,8 @@ let
       inherit (service) name;
       value = {
         serviceConfig = {
-          UMask = "0002";
+          # Keep group-write access for shared media workflows.
+          UMask = lib.mkForce "0002";
         };
       };
     }) (lib.filter (service: service.name != "prowlarr") mediaServices)

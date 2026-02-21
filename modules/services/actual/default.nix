@@ -11,7 +11,7 @@
       enable = true;
       openFirewall = false;
       settings = {
-        hostname = "::";
+        hostname = "127.0.0.1";
         port = 5006;
         loginMethod = "openid";
         allowedLoginMethods = [
@@ -30,7 +30,7 @@
       };
     };
 
-    systemd.services.alertmanager.serviceConfig.LoadCredential = [
+    systemd.services.actual.serviceConfig.LoadCredential = [
       "client_id:${config.sops.secrets."actual/client_id".path}"
       "client_secret:${config.sops.secrets."actual/client_secret".path}"
     ];
@@ -52,7 +52,7 @@
         enableACME = true;
         locations = {
           "/" = {
-            proxyPass = "http://127.0.0.1:${toString config.services.actual.port}";
+            proxyPass = "http://127.0.0.1:${toString config.services.actual.settings.port}";
             proxyWebsockets = true;
           };
         };
