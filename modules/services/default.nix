@@ -6,6 +6,7 @@
 {
   imports = [
     ./acme
+    ./actual
     ./atuin
     ./audiobookshelf
     ./authentik
@@ -32,6 +33,7 @@
     aspects = {
       services = {
         acme.enable = lib.mkDefault true;
+        actual.enable = lib.mkDefault true;
         atuin.enable = lib.mkDefault true;
         audiobookshelf.enable = lib.mkDefault true;
         authentik.enable = lib.mkDefault true;
