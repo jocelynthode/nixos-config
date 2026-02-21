@@ -11,6 +11,7 @@
         "/persist/var/lib/*"
         "!/persist/var/lib/hass"
         "!/persist/var/lib/private"
+        "/persist/var/lib/private/actual"
         "/persist/var/lib/private/ollama"
         "/persist/var/lib/private/prowlarr"
         "/persist/var/lib/private/navidrome"
