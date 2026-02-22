@@ -225,6 +225,7 @@ in
                     matches = [
                       { app-id = "vesktop"; }
                       { app-id = "Slack"; }
+                      { app-id = "info.mumble.Mumble"; }
                     ];
                     open-on-workspace = "chat";
                     open-maximized = true;
