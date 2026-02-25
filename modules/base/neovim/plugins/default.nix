@@ -20,5 +20,6 @@ _: {
     ./toggleterm
     ./treesitter
     ./which-key
+    ./yaml-schema-detect
   ];
 }

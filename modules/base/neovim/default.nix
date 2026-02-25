@@ -40,6 +40,7 @@
         ];
         conceallevel = 0;
         fileencoding = "utf-8";
+        fixeol = true;
         foldenable = false;
         hlsearch = true;
         ignorecase = true;
