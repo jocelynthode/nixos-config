@@ -37,6 +37,9 @@ let
         enable = true;
         options = [ "--cmd cd" ];
       };
+      tealdeer = {
+        enable = true;
+      };
       atuin = {
         enable = true;
         settings = {
@@ -66,6 +69,7 @@ in
   aspects.base.persistence.homePaths = [
     ".local/share/atuin"
     ".local/share/zoxide"
+    ".cache/tealdeer"
   ];
   home-manager.users.jocelyn = _: base;
   home-manager.users.root = _: base;
