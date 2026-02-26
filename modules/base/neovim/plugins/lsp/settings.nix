@@ -56,8 +56,8 @@ _: {
             enable = true;
             settings = {
               format = {
-                enable = false;
-                singleQuote = true;
+                enable = true;
+                singleQuote = false;
               };
             };
             filetypes = [ "yaml" ];
