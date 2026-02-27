@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 {
@@ -12,7 +11,7 @@
       ".config/calibre"
     ];
     home-manager.users.jocelyn = _: {
-      home.packages = [ pkgs.calibre ];
+      # home.packages = [ pkgs.calibre ];
     };
   };
 }

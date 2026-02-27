@@ -37,7 +37,11 @@ in
 
       security.pam.services.greetd.enableGnomeKeyring = true;
 
-      programs.niri.enable = true;
+      niri-flake.cache.enable = false;
+      programs.niri = {
+        enable = true;
+        package = pkgs.niri;
+      };
 
       environment.systemPackages = with pkgs; [
         qt5.qtwayland

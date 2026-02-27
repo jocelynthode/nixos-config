@@ -142,7 +142,7 @@
         nur.overlays.default
         taxi.overlays.default
         wofi-ykman.overlays.default
-        niri.overlays.niri
+        # niri.overlays.niri
         (import ./overlay { inherit inputs; })
       ];
       hostDefaults = {

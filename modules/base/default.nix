@@ -22,6 +22,7 @@
     ./persistence
     ./sshd
     ./stylix
+    ./sudo
     ./virtualisation
   ];
 
