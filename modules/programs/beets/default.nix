@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  pkgs,
+  pkgs-stable,
   ...
 }:
 {
@@ -15,14 +15,7 @@
     home-manager.users.jocelyn = _: {
       programs.beets = {
         enable = true;
-        package = pkgs.python3.pkgs.beets.override {
-          pluginOverrides = {
-            audible = {
-              enable = true;
-              propagatedBuildInputs = [ pkgs.python3.pkgs.beets-audible ];
-            };
-          };
-        };
+        package = pkgs-stable.beets;
         settings = {
           directory = "/data/media/music";
           library = "/home/jocelyn/.local/share/beets/library.db";

@@ -37,7 +37,7 @@
       };
     };
     utils = {
-      url = "github:gytis-ivaskevicius/flake-utils-plus";
+      url = "github:gytis-ivaskevicius/flake-utils-plus/v1.5.1";
       inputs.flake-utils.follows = "flake-utils";
     };
     flake-utils.url = "github:numtide/flake-utils";
@@ -105,17 +105,13 @@
           stylix
           ;
       };
-      mkPinnedPkgs = system: {
-        pkgs-stable = import nixpkgs-stable {
-          stdenv.hostPlatform.system = system;
-          config.allowUnfree = true;
+      mkHostSpecialArgs =
+        system:
+        sharedSpecialArgs
+        // {
+          pkgs-stable = self.pkgs.${system}.stable;
+          pkgs-master = self.pkgs.${system}.master;
         };
-        pkgs-master = import nixpkgs-master {
-          stdenv.hostPlatform.system = system;
-          config.allowUnfree = true;
-        };
-      };
-      mkHostSpecialArgs = system: sharedSpecialArgs // mkPinnedPkgs system;
       hardwareProfiles = {
         amdDesktop = [
           hardware.nixosModules.common-cpu-amd
@@ -136,6 +132,10 @@
     in
     utils.lib.mkFlake {
       inherit self inputs;
+
+      supportedSystems = [
+        "x86_64-linux"
+      ];
 
       channelsConfig.allowUnfree = true;
       sharedOverlays = [

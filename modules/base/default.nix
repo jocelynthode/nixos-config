@@ -168,6 +168,10 @@
         ];
       };
 
+      systemd.tmpfiles.rules = [
+        "z /var/cache 0755 root root - -"
+      ];
+
       nixpkgs.config.permittedInsecurePackages = [
         "electron-36.9.5"
         "jitsi-meet-1.0.8792"
