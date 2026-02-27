@@ -7,10 +7,6 @@ let
   base = {
     home.packages = with pkgs; [
       cachix
-      fd
-      ripgrep
-      rsync
-      unzip
     ];
 
     catppuccin = {
@@ -23,6 +19,7 @@ let
       bat = {
         enable = true;
       };
+      fd.enable = true;
       fzf = {
         enable = true;
       };
@@ -33,6 +30,7 @@ let
           symlink-arrow = "⇒";
         };
       };
+      ripgrep.enable = true;
       zoxide = {
         enable = true;
         options = [ "--cmd cd" ];
@@ -40,6 +38,7 @@ let
       tealdeer = {
         enable = true;
       };
+      jq.enable = true;
       atuin = {
         enable = true;
         settings = {

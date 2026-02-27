@@ -89,12 +89,10 @@
         jocelyn = _: {
           home.stateVersion = config.aspects.stateVersion;
           systemd.user.sessionVariables = config.home-manager.users.jocelyn.home.sessionVariables;
-          systemd.user.startServices = "sd-switch";
 
         };
         root = _: {
           home.stateVersion = config.aspects.stateVersion;
-          systemd.user.startServices = "sd-switch";
         };
       };
 
@@ -161,11 +159,12 @@
           ldns
           gnumake
           just
-          jq
           gettext
           devenv
           procps
           lsof
+          rsync
+          unzip
         ];
       };
 
