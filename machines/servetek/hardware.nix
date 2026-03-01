@@ -26,6 +26,7 @@
     };
   };
 
+  networking.hostName = "servetek";
   networking.wireless.enable = lib.mkForce false;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
