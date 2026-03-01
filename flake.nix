@@ -189,6 +189,7 @@
         };
 
       hosts = {
+        # experiment with disabling some import to speedup build
         desktek = {
           modules = [
             ./machines/desktek

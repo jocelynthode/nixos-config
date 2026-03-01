@@ -1,4 +1,5 @@
-_: {
+{ config, ... }:
+{
   programs.nixvim = {
     diagnostic.settings = {
       virtual_text = true;
@@ -39,11 +40,21 @@ _: {
           ruff.enable = true;
           terraformls.enable = true;
           vimls.enable = true;
-          nil_ls = {
+          nixd = {
             enable = true;
-            settings = {
-              formatting.command = [ "nixfmt" ];
-            };
+            settings =
+              let
+                flake = ''(builtins.getFlake "${config.nix.registry.self.to.path}")'';
+              in
+              {
+                nixpkgs.expr = "import ${flake}.inputs.nixpkgs { }";
+                formatting.command = [ "nixfmt" ];
+                options = rec {
+                  nixos.expr = "${flake}.nixosConfigurations.${config.networking.hostName}.options";
+                  home-manager.expr = "${nixos.expr}.home-manager.users.type.getSubOptions [ ]";
+                  nixvim.expr = "${nixos.expr}.programs.nixvim.type.getSubOptions [ ]";
+                };
+              };
           };
           jsonls = {
             enable = true;
