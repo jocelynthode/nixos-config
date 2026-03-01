@@ -33,7 +33,8 @@ let
         bind --mode insert \ee kitty_scrollback_edit_command_buffer
         bind --mode insert \ev kitty_scrollback_edit_command_buffer
       ''
-      + lib.optionalString osConfig.aspects.work.kubernetes.enable "set -gx PATH $PATH $HOME/.krew/bin";
+      + lib.optionalString (osConfig.aspects.work.kubernetes.enable or false
+      ) "set -gx PATH $PATH $HOME/.krew/bin";
       functions = {
         fish_user_key_bindings = {
           body = ''

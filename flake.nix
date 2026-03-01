@@ -98,12 +98,17 @@
     let
       sharedSpecialArgs = {
         inherit
+          authentik-nix
           spicetify-nix
           catppuccin
+          impermanence
+          nix-index-database
           nixvim
+          niri
           noctalia
           stylix
           ;
+        hostRole = "desktop";
       };
       mkHostSpecialArgs =
         system:
@@ -148,16 +153,10 @@
       hostDefaults = {
         modules = [
           { nix.generateRegistryFromInputs = true; }
-          sops-nix.nixosModules.sops
-          home-manager.nixosModules.home-manager
-          impermanence.nixosModules.impermanence
-          stylix.nixosModules.stylix
           catppuccin.nixosModules.catppuccin
-          nix-index-database.nixosModules.default
-          nixvim.nixosModules.nixvim
-          niri.nixosModules.niri
           disko.nixosModules.disko
-          authentik-nix.nixosModules.default
+          home-manager.nixosModules.home-manager
+          sops-nix.nixosModules.sops
           ./modules
         ];
         specialArgs = sharedSpecialArgs;
@@ -209,7 +208,9 @@
             ./machines/servetek
           ]
           ++ hardwareProfiles.intelServer;
-          specialArgs = mkHostSpecialArgs "x86_64-linux";
+          specialArgs = mkHostSpecialArgs "x86_64-linux" // {
+            hostRole = "server";
+          };
         };
         iso = {
           modules = [

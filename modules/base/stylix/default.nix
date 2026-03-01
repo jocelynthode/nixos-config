@@ -1,13 +1,19 @@
 {
   config,
+  lib,
   pkgs,
+  stylix,
   ...
 }:
 {
-  config = {
+  imports = [
+    stylix.nixosModules.stylix
+  ];
+
+  config = lib.mkIf (config.aspects.graphical.enable or false) {
     stylix = {
       enable = true;
-      autoEnable = config.aspects.graphical.enable;
+      autoEnable = true;
       base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
 
       polarity = "dark";

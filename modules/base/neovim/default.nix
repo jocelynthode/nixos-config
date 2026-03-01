@@ -1,6 +1,11 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  nixvim,
+  ...
+}:
 {
   imports = [
+    nixvim.nixosModules.nixvim
     ./core
     ./plugins
     ./themes

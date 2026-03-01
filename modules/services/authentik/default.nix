@@ -1,9 +1,14 @@
 {
+  authentik-nix,
   config,
   lib,
   ...
 }:
 {
+  imports = [
+    authentik-nix.nixosModules.default
+  ];
+
   options.aspects.services.authentik.enable = lib.mkEnableOption "authentik";
 
   config =

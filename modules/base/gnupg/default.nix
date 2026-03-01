@@ -6,7 +6,7 @@
 }:
 let
   pinentry =
-    if config.aspects.graphical.enable then
+    if (config.aspects.graphical.enable or false) then
       {
         package = pkgs.pinentry-gnome3;
       }
@@ -26,7 +26,7 @@ in
       mode = "0700";
     }
   ];
-  services.dbus.packages = lib.optionals config.aspects.graphical.enable [ pkgs.gcr ];
+  services.dbus.packages = lib.optionals (config.aspects.graphical.enable or false) [ pkgs.gcr ];
 
   home-manager.users.jocelyn = _: {
     services.gpg-agent = {

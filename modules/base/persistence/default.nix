@@ -1,9 +1,14 @@
 {
   config,
+  impermanence,
   lib,
   ...
 }:
 {
+  imports = [
+    impermanence.nixosModules.impermanence
+  ];
+
   options.aspects.base.persistence = {
     enable = lib.mkEnableOption "persistence";
 

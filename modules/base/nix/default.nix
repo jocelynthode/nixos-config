@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  nix-index-database,
   pkgs,
   ...
 }:
@@ -13,6 +14,10 @@ let
   };
 in
 {
+  imports = [
+    nix-index-database.nixosModules.default
+  ];
+
   options.aspects.base.nix = {
     enableDirenv = lib.mkEnableOption "enableDirenv";
   };

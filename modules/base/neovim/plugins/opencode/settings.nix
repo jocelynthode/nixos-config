@@ -4,7 +4,7 @@
   ...
 }:
 {
-  config = lib.mkIf config.aspects.development.opencode.enable {
+  config = lib.mkIf (config.aspects.development.opencode.enable or false) {
     programs.nixvim = {
       dependencies.opencode.enable = true;
       plugins.opencode = {

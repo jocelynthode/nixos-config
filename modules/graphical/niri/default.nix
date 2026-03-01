@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  niri,
   pkgs,
   ...
 }:
@@ -8,6 +9,10 @@ let
   cfg = config.aspects.graphical.niri;
 in
 {
+  imports = [
+    niri.nixosModules.niri
+  ];
+
   options.aspects.graphical.niri = {
     enable = lib.mkEnableOption "niri";
     workspaces = lib.mkOption {

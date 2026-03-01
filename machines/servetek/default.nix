@@ -15,7 +15,6 @@
         hostId = "007f0100";
       };
     };
-    development.containers.enable = true;
     programs = {
       beets.enable = true;
       htop.enable = true;
