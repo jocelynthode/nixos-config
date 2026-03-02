@@ -4,7 +4,7 @@
   ...
 }:
 let
-  mkAuthProxy = import ../nginx/auth.nix { inherit lib; };
+  mkAuthProxy = import ../nginx/_auth.nix { inherit lib; };
 in
 {
   options.aspects.services.navidrome.enable = lib.mkEnableOption "navidrome";

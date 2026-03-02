@@ -1,262 +1,251 @@
+{ inputs, ... }:
 {
-  config,
-  options,
-  lib,
-  pkgs,
-  catppuccin,
-  ...
-}:
-{
-  imports = [
-    ./backup
-    ./battery
-    ./bluetooth
-    ./cli
-    ./filesystems
-    ./fish
-    ./fonts
-    ./gnupg
-    ./network
-    ./nix
-    ./neovim
-    ./persistence
-    ./sshd
-    ./stylix
-    ./sudo
-    ./virtualisation
-  ];
-
-  options.aspects = {
-    stateVersion = lib.mkOption {
-      example = "22.05";
-    };
-
-    allowReboot = lib.mkEnableOption "allowReboot";
-
-    theme = lib.mkOption {
-      default = "dark";
-      example = "light";
-    };
-  };
-
-  config = lib.mkMerge [
+  flake.nixosModules.baseModule =
     {
-      home-manager = {
-        useGlobalPkgs = true;
-        sharedModules = [
-          catppuccin.homeModules.catppuccin
-        ];
-      };
-
-      aspects.base = {
-        persistence.enable = lib.mkDefault true;
-        nix.enableDirenv = lib.mkDefault true;
-        fileSystems = {
-          enable = lib.mkDefault true;
-          btrfs.enable = lib.mkDefault true;
-          zfs.enable = lib.mkDefault false;
-        };
-        fonts = lib.mkDefault {
-          monospace = {
-            family = "JetBrainsMono NFM";
-            package = pkgs.nerd-fonts.jetbrains-mono;
-            size = 11;
-          };
-          regular = {
-            family = "NotoSans Nerd Font";
-            package = pkgs.nerd-fonts.noto;
-            size = 11;
-          };
-        };
-      };
-
-      system = {
-        inherit (config.aspects) stateVersion;
-        autoUpgrade = {
-          enable = true;
-          flake = "github:jocelynthode/nixos-config";
-          dates = "Sat *-*-* 03:00:00";
-          randomizedDelaySec = "10min";
-          inherit (config.aspects) allowReboot;
-          rebootWindow = {
-            lower = "03:00";
-            upper = "05:00";
-          };
-        };
-      };
-
-      home-manager.users = {
-        jocelyn = _: {
-          home.stateVersion = config.aspects.stateVersion;
-          systemd.user.sessionVariables = config.home-manager.users.jocelyn.home.sessionVariables;
-
-        };
-        root = _: {
-          home.stateVersion = config.aspects.stateVersion;
-        };
-      };
-
-      aspects.base.persistence = {
-        homePaths = [
-          {
-            directory = ".ssh";
-            mode = "0700";
-          }
-          ".local/share/keyrings"
-        ];
-        systemPaths = [
-          "/var/lib/systemd"
-          "/var/lib/nixos"
-          {
-            directory = "/var/lib/private"; # Used when services use DynamicUser and StateDirectory
-            mode = "0700";
-          }
-          {
-            directory = "/var/cache/private"; # Used when services use DynamicUser and CacheDirectory
-            mode = "0700";
-          }
-          {
-            directory = "/var/log/private"; # Used when services use DynamicUser and LogDirectory
-            mode = "0700";
-          }
-        ];
-      };
-
-      sops = {
-        defaultSopsFile = ../../secrets/common/secrets.yaml;
-        secrets = {
-          "restic/env" = { };
-          "restic/password" = { };
-          "restic/repository" = { };
-          "users/jocelyn/password" = {
-            neededForUsers = true;
-          };
-          "nixAccessTokens" = {
-            mode = "0440";
-            group = "wheel";
-          };
-        };
-      };
-
-      environment = {
-        enableAllTerminfo = true;
-        variables = {
-          TERMINAL = "kitty";
-          EDITOR = "nvim";
-          VISUAL = "nvim";
-          PAGER = "bat";
-          OPENER = "xdg-open";
-        };
-        systemPackages = with pkgs; [
-          git
-          killall
-          wget
-          curl
-          python3
-          any-nix-shell
-          fs-diff
-          moreutils
-          ldns
-          gnumake
-          just
-          gettext
-          devenv
-          procps
-          lsof
-          rsync
-          unzip
-        ];
-      };
-
-      systemd.tmpfiles.rules = [
-        "z /var/cache 0755 root root - -"
+      config,
+      options,
+      lib,
+      pkgs,
+      catppuccin,
+      ...
+    }:
+    {
+      imports = [
+        (inputs.import-tree.match "^/[^/]+/default\\.nix$" ./.)
       ];
 
-      nixpkgs.config.permittedInsecurePackages = [
-        "electron-36.9.5"
-        "jitsi-meet-1.0.8792"
-        "aspnetcore-runtime-6.0.36"
-        "aspnetcore-runtime-wrapped-6.0.36"
-        "dotnet-sdk-6.0.428"
-        "dotnet-sdk-wrapped-6.0.428"
-        "libsoup-2.74.3"
+      options.aspects = {
+        stateVersion = lib.mkOption {
+          example = "22.05";
+        };
+
+        allowReboot = lib.mkEnableOption "allowReboot";
+
+        theme = lib.mkOption {
+          default = "dark";
+          example = "light";
+        };
+      };
+
+      config = lib.mkMerge [
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            sharedModules = [
+              catppuccin.homeModules.catppuccin
+            ];
+          };
+
+          aspects.base = {
+            persistence.enable = lib.mkDefault true;
+            nix.enableDirenv = lib.mkDefault true;
+            fileSystems = {
+              enable = lib.mkDefault true;
+              btrfs.enable = lib.mkDefault true;
+              zfs.enable = lib.mkDefault false;
+            };
+            fonts = lib.mkDefault {
+              monospace = {
+                family = "JetBrainsMono NFM";
+                package = pkgs.nerd-fonts.jetbrains-mono;
+                size = 11;
+              };
+              regular = {
+                family = "NotoSans Nerd Font";
+                package = pkgs.nerd-fonts.noto;
+                size = 11;
+              };
+            };
+          };
+
+          system = {
+            inherit (config.aspects) stateVersion;
+            autoUpgrade = {
+              enable = true;
+              flake = "github:jocelynthode/nixos-config";
+              dates = "Sat *-*-* 03:00:00";
+              randomizedDelaySec = "10min";
+              inherit (config.aspects) allowReboot;
+              rebootWindow = {
+                lower = "03:00";
+                upper = "05:00";
+              };
+            };
+          };
+
+          home-manager.users = {
+            jocelyn = _: {
+              home.stateVersion = config.aspects.stateVersion;
+              systemd.user.sessionVariables = config.home-manager.users.jocelyn.home.sessionVariables;
+
+            };
+            root = _: {
+              home.stateVersion = config.aspects.stateVersion;
+            };
+          };
+
+          aspects.base.persistence = {
+            homePaths = [
+              {
+                directory = ".ssh";
+                mode = "0700";
+              }
+              ".local/share/keyrings"
+            ];
+            systemPaths = [
+              "/var/lib/systemd"
+              "/var/lib/nixos"
+              {
+                directory = "/var/lib/private"; # Used when services use DynamicUser and StateDirectory
+                mode = "0700";
+              }
+              {
+                directory = "/var/cache/private"; # Used when services use DynamicUser and CacheDirectory
+                mode = "0700";
+              }
+              {
+                directory = "/var/log/private"; # Used when services use DynamicUser and LogDirectory
+                mode = "0700";
+              }
+            ];
+          };
+
+          sops = {
+            defaultSopsFile = ../../secrets/common/secrets.yaml;
+            secrets = {
+              "restic/env" = { };
+              "restic/password" = { };
+              "restic/repository" = { };
+              "users/jocelyn/password" = {
+                neededForUsers = true;
+              };
+              "nixAccessTokens" = {
+                mode = "0440";
+                group = "wheel";
+              };
+            };
+          };
+
+          environment = {
+            enableAllTerminfo = true;
+            variables = {
+              TERMINAL = "kitty";
+              EDITOR = "nvim";
+              VISUAL = "nvim";
+              PAGER = "bat";
+              OPENER = "xdg-open";
+            };
+            systemPackages = with pkgs; [
+              git
+              killall
+              wget
+              curl
+              python3
+              any-nix-shell
+              fs-diff
+              moreutils
+              ldns
+              gnumake
+              just
+              gettext
+              devenv
+              procps
+              lsof
+              rsync
+              unzip
+            ];
+          };
+
+          systemd.tmpfiles.rules = [
+            "z /var/cache 0755 root root - -"
+          ];
+
+          nixpkgs.config.permittedInsecurePackages = [
+            "electron-36.9.5"
+            "jitsi-meet-1.0.8792"
+            "aspnetcore-runtime-6.0.36"
+            "aspnetcore-runtime-wrapped-6.0.36"
+            "dotnet-sdk-6.0.428"
+            "dotnet-sdk-wrapped-6.0.428"
+            "libsoup-2.74.3"
+          ];
+
+          catppuccin = {
+            enable = true;
+            flavor = "mocha";
+            accent = "pink";
+          };
+
+          services.xserver = {
+            xkb = {
+              layout = "fr";
+              variant = "ergol";
+            };
+            exportConfiguration = true;
+          };
+
+          console = {
+            earlySetup = true;
+            font = "${pkgs.powerline-fonts}/share/consolefonts/ter-powerline-v32b.psf.gz";
+            packages = [
+              pkgs.terminus_font
+              pkgs.powerline-fonts
+            ];
+            useXkbConfig = true;
+          };
+
+          i18n = {
+            defaultLocale = "en_US.UTF-8";
+            extraLocaleSettings = {
+              LC_TIME = "fr_CH.UTF-8";
+              LC_MONETARY = "fr_CH.UTF-8";
+              LC_MEASUREMENT = "fr_CH.UTF-8";
+              LC_COLLATE = "fr_CH.UTF-8";
+            };
+          };
+          time.timeZone = "Europe/Zurich";
+          services.fwupd = {
+            enable = true;
+            extraRemotes = [
+              "lvfs-testing"
+            ];
+            # daemonSettings.DisabledPlugins = [
+            #   "upower"
+            # ];
+          };
+
+          users = {
+            mutableUsers = false;
+            users = {
+              jocelyn = {
+                isNormalUser = true;
+                shell = pkgs.fish;
+                hashedPasswordFile =
+                  if !(options.virtualisation ? qemu) then
+                    config.sops.secrets."users/jocelyn/password".path
+                  else
+                    null;
+                extraGroups = [
+                  "wheel"
+                ];
+                openssh.authorizedKeys.keys = [
+                  "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDt+7HTCLF1Q658UrgvVb4a47Jp3aJt8mBY4dWltoHXUqXFkgfU7Y1zoDyEtylXRaqqSi4sWwW2WDT6wmzSx5DPf7y8sj9gSSpCSMoDOXlO2ylZdWdShpgXRJ4DZ0zlM0oWk5iNb+OdWLRluu7K1IYJZe5wMl8+fDsdXLg29xep8CwpjYAFtgPREImS5r5whMHLsUHQ19u0p3cGN2tvh9SW9otCL2rcCWz2KV09/VKWCzc6x5eVnsZtvw9VSmBrpnlt/DgXTqgCeg3L6smRSlyslQzswxhEesMpp+JJRdSD2wcWDZGoVsR9Yhbk9tOOZ3s79k5w2XVTqzYQnLagAS2YkSgS1+0+Wi4G+lqZ8ypEo0hzSpI4HcNxlRXGSAykkvp+TqkAsoOXd/0PauB6N24TBpfi2VDF/EDWSviyhJwD2KU8mLqXya57HwheDX/e35TNpYUwavN1Nf4FXZ/VdN+13mlAbQSkDQRa+bn/HeZGRZTwXmV0Vl0BAS0m8wWNJ223HJTiEVLuJuPMS9xLSvredULISh/9hXW7Ma86bVHA69lK7To8EFZGLZhXb5QH4sJeekPMdsuuioitHb5a0TploRzBrFCqmBM7N85uyBt4gXjMkYpf/kGtGiOAV4k8n9mFDyoCl1MvnP3JlUzRhMJ41Rz4tgCPHZ7s3Hq9lkU3Vw== openpgp:0x0D3B55DC"
+                ];
+                uid = 1000;
+              };
+              root = {
+                home = "/root";
+              };
+            };
+          };
+        }
+        (lib.optionalAttrs false {
+          # Derive the global aspects.theme dark/light
+          # from Stylix polarity when Stylix is enabled.
+          # Disabled to avoid recursion; aspects.theme now
+          # uses its default or machine overrides.
+          aspects.theme = if (config.stylix.polarity or "either") == "light" then "light" else "dark";
+        })
       ];
-
-      catppuccin = {
-        enable = true;
-        flavor = "mocha";
-        accent = "pink";
-      };
-
-      services.xserver = {
-        xkb = {
-          layout = "fr";
-          variant = "ergol";
-        };
-        exportConfiguration = true;
-      };
-
-      console = {
-        earlySetup = true;
-        font = "${pkgs.powerline-fonts}/share/consolefonts/ter-powerline-v32b.psf.gz";
-        packages = [
-          pkgs.terminus_font
-          pkgs.powerline-fonts
-        ];
-        useXkbConfig = true;
-      };
-
-      i18n = {
-        defaultLocale = "en_US.UTF-8";
-        extraLocaleSettings = {
-          LC_TIME = "fr_CH.UTF-8";
-          LC_MONETARY = "fr_CH.UTF-8";
-          LC_MEASUREMENT = "fr_CH.UTF-8";
-          LC_COLLATE = "fr_CH.UTF-8";
-        };
-      };
-      time.timeZone = "Europe/Zurich";
-      services.fwupd = {
-        enable = true;
-        extraRemotes = [
-          "lvfs-testing"
-        ];
-        # daemonSettings.DisabledPlugins = [
-        #   "upower"
-        # ];
-      };
-
-      users = {
-        mutableUsers = false;
-        users = {
-          jocelyn = {
-            isNormalUser = true;
-            shell = pkgs.fish;
-            hashedPasswordFile =
-              if !(options.virtualisation ? qemu) then
-                config.sops.secrets."users/jocelyn/password".path
-              else
-                null;
-            extraGroups = [
-              "wheel"
-            ];
-            openssh.authorizedKeys.keys = [
-              "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDt+7HTCLF1Q658UrgvVb4a47Jp3aJt8mBY4dWltoHXUqXFkgfU7Y1zoDyEtylXRaqqSi4sWwW2WDT6wmzSx5DPf7y8sj9gSSpCSMoDOXlO2ylZdWdShpgXRJ4DZ0zlM0oWk5iNb+OdWLRluu7K1IYJZe5wMl8+fDsdXLg29xep8CwpjYAFtgPREImS5r5whMHLsUHQ19u0p3cGN2tvh9SW9otCL2rcCWz2KV09/VKWCzc6x5eVnsZtvw9VSmBrpnlt/DgXTqgCeg3L6smRSlyslQzswxhEesMpp+JJRdSD2wcWDZGoVsR9Yhbk9tOOZ3s79k5w2XVTqzYQnLagAS2YkSgS1+0+Wi4G+lqZ8ypEo0hzSpI4HcNxlRXGSAykkvp+TqkAsoOXd/0PauB6N24TBpfi2VDF/EDWSviyhJwD2KU8mLqXya57HwheDX/e35TNpYUwavN1Nf4FXZ/VdN+13mlAbQSkDQRa+bn/HeZGRZTwXmV0Vl0BAS0m8wWNJ223HJTiEVLuJuPMS9xLSvredULISh/9hXW7Ma86bVHA69lK7To8EFZGLZhXb5QH4sJeekPMdsuuioitHb5a0TploRzBrFCqmBM7N85uyBt4gXjMkYpf/kGtGiOAV4k8n9mFDyoCl1MvnP3JlUzRhMJ41Rz4tgCPHZ7s3Hq9lkU3Vw== openpgp:0x0D3B55DC"
-            ];
-            uid = 1000;
-          };
-          root = {
-            home = "/root";
-          };
-        };
-      };
-    }
-    (lib.optionalAttrs false {
-      # Derive the global aspects.theme dark/light
-      # from Stylix polarity when Stylix is enabled.
-      # Disabled to avoid recursion; aspects.theme now
-      # uses its default or machine overrides.
-      aspects.theme = if (config.stylix.polarity or "either") == "light" then "light" else "dark";
-    })
-  ];
+    };
 }

@@ -45,7 +45,7 @@ let
           body = ''
             set --local --export VISUAL '${pkgs.vimPlugins.kitty-scrollback-nvim}/scripts/edit_command_line.sh'
             edit_command_buffer
-            commandline \'\'
+            commandline ""
           '';
         };
       };
@@ -137,7 +137,7 @@ in
       };
       nix_shell = {
         symbol = " ";
-        format = "[$symbol$name \\($state\\)]($style) ";
+        format = "[$symbol$name \($state\)]($style) ";
       };
       nodejs = {
         format = "[$symbol($version )]($style) ";

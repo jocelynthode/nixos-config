@@ -13,7 +13,7 @@
 
   config =
     let
-      mkAuthProxy = import ../nginx/auth.nix { inherit lib; };
+      mkAuthProxy = import ../nginx/_auth.nix { inherit lib; };
     in
     lib.mkIf config.aspects.services.authentik.enable {
       services.nginx.virtualHosts."auth.tekila.ovh" = mkAuthProxy {

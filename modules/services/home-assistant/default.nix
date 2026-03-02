@@ -5,7 +5,7 @@
   ...
 }:
 let
-  mkAuthProxy = import ../nginx/auth.nix { inherit lib; };
+  mkAuthProxy = import ../nginx/_auth.nix { inherit lib; };
 in
 {
   options.aspects.services.home-assistant.enable = lib.mkEnableOption "home-assistant";
