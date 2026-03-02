@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: 'Install Nix'
-        uses: cachix/install-nix-action@v25
+        uses: cachix/install-nix-action@v31
       - name: 'Check NixOS Flake'
         run: nix flake check
       - name: 'Build Iso'

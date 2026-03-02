@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: cachix/install-nix-action@v25
+      - uses: cachix/install-nix-action@v31
       - run: nix flake update
       - uses: stefanzweifel/git-auto-commit-action@v4.16.0
         with:
