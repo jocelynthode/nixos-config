@@ -2,6 +2,10 @@
   description = "NixOS configuration";
 
   inputs = {
+    devenv-root = {
+      url = "file+file:///dev/null";
+      flake = false;
+    };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
@@ -80,6 +84,7 @@
         imports = [
           (inputs.import-tree ./parts)
           (inputs.import-tree.match "^/[^/]+/default\\.nix$" ./modules)
+          inputs.devenv.flakeModule
         ];
 
         systems = [
@@ -87,20 +92,12 @@
         ];
 
         perSystem =
-          { pkgs, ... }:
+          {
+            pkgs,
+            ...
+          }:
           {
             formatter = pkgs.nixfmt-tree;
-
-            devShells.default = pkgs.mkShell {
-              name = "nixos-config";
-              packages = with pkgs; [
-                git
-                nixfmt-tree
-                statix
-                deadnix
-                actionlint
-              ];
-            };
           };
 
       }
