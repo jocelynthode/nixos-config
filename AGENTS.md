@@ -21,8 +21,8 @@ References:
 - https://github.com/hercules-ci/flake-parts
 - https://github.com/mightyiam/dendritic
 
-- **Entry points:** `flake.nix` imports `./parts` and only `modules/<category>/default.nix` via `import-tree.match`.
-- **Category modules:** `modules/<category>/default.nix` are flake-parts modules exporting `flake.nixosModules.<category>Module` (note `baseModule`).
+- **Entry points:** `default.nix` is the classic entrypoint, with `classic/` providing npins wiring and host configs.
+- **Category modules:** `modules/<category>/default.nix` are flake-parts modules exporting `flake.nixosModules.<category>Module` (note `baseModule`), reused by the classic entrypoint.
 - **Leaf modules:** `modules/<category>/<feature>/default.nix` are plain NixOS modules (not flake-parts modules).
 - **Discovery:** Each category module uses `inputs.import-tree.match "^/[^/]+/default\.nix$" ./.` to import all leaf modules directly.
 
@@ -156,7 +156,7 @@ self: super: {
 
 ## 7. Code Style & Formatting
 
-- **Formatter:** The single source of truth for formatting is `nixfmt-tree`. Run `nix fmt` before committing.
+- **Formatter:** The single source of truth for formatting is `nixfmt-tree`. Run `nixfmt-tree` before committing.
 - **Indentation:** Use two-space indentation.
 - **Braces:** Keep opening braces on the same line as the preceding identifier.
 - **Lists and Attrsets:** For multi-line lists or attribute sets, place one element per line. Function arguments should be one per line if there are more than two.
@@ -170,14 +170,14 @@ Before committing, you **MUST** run these checks from the repository root to ens
 2. **Run Linters:**
    - `statix check .`
    - `deadnix --edit`
-3. **Check the Flake:** `nix flake check`
+3. **Build the configs:** `nix build -f . nixosConfigurations.<host>.config.system.build.toplevel`
 
-The CI pipeline runs `nix flake check`. Your changes **MUST NOT** break the flake check.
+The CI pipeline builds the pinned configurations. Your changes **MUST NOT** break the builds.
 
 ## 9. Applying Configuration
 
 - Use `nh` instead of `nixos-rebuild` for applying configuration.
-- When suggesting rebuild commands, prefer `nh os switch -a '.'` over `nixos-rebuild switch --flake`.
+- When suggesting rebuild commands, prefer `nixos-rebuild switch -I nixos-config=./classic/hosts/<host>.nix` (with `NIX_PATH` pointing to pinned `npins` nixpkgs).
 
 ## 10. Commit Message Style
 

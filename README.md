@@ -18,7 +18,14 @@
 To rebuild after changes have made it to the repo use:
 
 ```bash
-sudo nixos-rebuild switch --flake github:jocelynthode/nixos-config
+sudo NIX_PATH="nixpkgs=$(nix eval --raw --impure --expr '(import ./npins {}).nixpkgs.outPath')" \
+  nixos-rebuild switch -I nixos-config=./classic/hosts/<host>.nix
+```
+
+To update pinned inputs:
+
+```bash
+npins update
 ```
 
 # Secrets
@@ -26,7 +33,7 @@ sudo nixos-rebuild switch --flake github:jocelynthode/nixos-config
 ## Add new secrets
 
 ```bash
-nix develop
+nix-shell
 # Then create file
 sops hosts/common/secrets.yaml
 ```
@@ -46,7 +53,7 @@ sops updatekeys secrets/**/*.yaml
 To Build the custom iso run the following commands:
 
 ```bash
-nix build .#nixosConfigurations.iso.config.system.build.isoImage
+nix build -f . nixosConfigurations.iso.config.system.build.isoImage
 dd if=result/iso/*.iso of=/dev/sdX status=progress
 sync
 

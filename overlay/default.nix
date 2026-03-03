@@ -1,5 +1,4 @@
-{ inputs, ... }:
-final: prev:
+_: final: prev:
 {
   vimPlugins = prev.vimPlugins // {
     taxi-vim = prev.pkgs.callPackage ../pkgs/vimPlugins/taxi-vim { };
@@ -12,7 +11,5 @@ final: prev:
 
     '';
   });
-
-  devenv = inputs.devenv.packages.${final.stdenv.hostPlatform.system}.default;
 }
 // import ../pkgs { pkgs = final; }

@@ -56,4 +56,7 @@ sops updatekeys ./secrets/**/*.yaml
 
 # git commit -am'Update sops keys' && git push
 
-nixos-anywhere --extra-files "$temp" --flake ".#${host}" --target-host "root@${ip}" --ssh-port "$port"
+disko_script=$(nix build -f . "nixosConfigurations.${host}.config.system.build.diskoScript" --no-link --print-out-paths)
+nixos_system=$(nix build -f . "nixosConfigurations.${host}.config.system.build.toplevel" --no-link --print-out-paths)
+
+nixos-anywhere --extra-files "$temp" --store-paths "$disko_script" "$nixos_system" --target-host "root@${ip}" --ssh-port "$port"

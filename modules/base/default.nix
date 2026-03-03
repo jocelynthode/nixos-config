@@ -62,7 +62,13 @@
             inherit (config.aspects) stateVersion;
             autoUpgrade = {
               enable = true;
-              flake = "github:jocelynthode/nixos-config";
+              operation = "switch";
+              flags = [
+                "-I"
+                "nixpkgs=${inputs.nixpkgs}"
+                "-I"
+                "nixos-config=${toString ../../.}"
+              ];
               dates = "Sat *-*-* 03:00:00";
               randomizedDelaySec = "10min";
               inherit (config.aspects) allowReboot;
@@ -148,7 +154,6 @@
               gnumake
               just
               gettext
-              devenv
               procps
               lsof
               rsync

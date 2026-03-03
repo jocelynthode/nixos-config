@@ -44,13 +44,14 @@
             enable = true;
             settings =
               let
-                flake = ''(builtins.getFlake "${config.nix.registry.self.to.path}")'';
+                nixpkgsPath = "<nixpkgs>";
+                nixosConfigPath = "<nixos-config>";
               in
               {
-                nixpkgs.expr = "import ${flake}.inputs.nixpkgs { }";
+                nixpkgs.expr = "import ${nixpkgsPath} { }";
                 formatting.command = [ "nixfmt" ];
                 options = rec {
-                  nixos.expr = "${flake}.nixosConfigurations.${config.networking.hostName}.options";
+                  nixos.expr = "(import ${nixosConfigPath} {}).nixosConfigurations.${config.networking.hostName}.options";
                   home-manager.expr = "${nixos.expr}.home-manager.users.type.getSubOptions [ ]";
                   nixvim.expr = "${nixos.expr}.programs.nixvim.type.getSubOptions [ ]";
                 };

@@ -117,5 +117,5 @@ Before committing any changes to the Neovim configuration, you **MUST** run the 
 
 1.  **Format Code:** `nix fmt`
 2.  **Run Linters:** `statix check .` and `deadnix --edit` (if relevant to Nixvim configuration).
-3.  **Check the Flake:** `nix flake check`
+3.  **Build the config:** `nix build -f . nixosConfigurations.<host>.config.system.build.toplevel`
 4.  **Test Neovim (Manual/Local Build):** After building your NixOS configuration, manually open Neovim to verify that the changes have taken effect as expected and that no errors or unexpected behavior occur.
