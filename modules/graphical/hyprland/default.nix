@@ -57,7 +57,7 @@
       enable = true;
       settings = {
         default_session = {
-          command = "${lib.getExe pkgs.tuigreet} --time --remember --cmd '${lib.getExe config.programs.uwsm.package} start -D Hyprland -- hyprland-uwsm.desktop'";
+          command = "${lib.getExe pkgs.tuigreet} --time --asterisks --remember --cmd '${lib.getExe config.programs.uwsm.package} start -D Hyprland -- hyprland-uwsm.desktop'";
           user = "greeter";
         };
       };

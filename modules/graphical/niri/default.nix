@@ -67,7 +67,7 @@ in
         enable = true;
         settings = {
           default_session = {
-            command = "${lib.getExe pkgs.tuigreet} --time --remember --cmd '${lib.getExe config.programs.uwsm.package} start -D niri -- niri-uwsm.desktop'";
+            command = "${lib.getExe pkgs.tuigreet} --time --asterisks --remember --cmd '${lib.getExe config.programs.uwsm.package} start -D niri -- niri-uwsm.desktop'";
             user = "greeter";
           };
         };

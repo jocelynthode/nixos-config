@@ -50,7 +50,7 @@
       enable = true;
       settings = {
         default_session = {
-          command = "${lib.getExe pkgs.tuigreet} --time --remember --cmd '${lib.getExe pkgs.sway}'";
+          command = "${lib.getExe pkgs.tuigreet} --time --asterisks --remember --cmd '${lib.getExe pkgs.sway}'";
           user = "greeter";
         };
       };
