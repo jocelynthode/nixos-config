@@ -40,6 +40,35 @@
               };
             };
           };
+          mcp = {
+            github = {
+              enabled = true;
+              oauth = false;
+              type = "remote";
+              url = "https://api.githubcopilot.com/mcp/";
+              headers = {
+                Authorization = "Bearer {file:${config.sops.secrets.github.path}}";
+              };
+            };
+          };
+          tools = {
+            "github_*" = false;
+            github_get_file_contents = true;
+            github_list_issues = true;
+            github_issue_read = true;
+            github_list_pull_requests = true;
+            github_pull_request_read = true;
+            github_list_commits = true;
+            github_get_commit = true;
+            github_list_branches = true;
+            github_list_tags = true;
+            github_list_releases = true;
+            github_get_latest_release = true;
+            github_get_release_by_tag = true;
+            github_get_label = true;
+            github_list_issue_types = true;
+            github_get_me = true;
+          };
           lsp = {
             yaml-ls = {
               disabled = true;
@@ -66,5 +95,12 @@
         };
       };
     };
+
+    sops.secrets.github = {
+      sopsFile = ../../../secrets/head/secrets.yaml;
+      owner = config.users.users.jocelyn.name;
+      inherit (config.users.users.jocelyn) group;
+    };
   };
+
 }

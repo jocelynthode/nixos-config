@@ -11,12 +11,17 @@ keys:
 creation_rules:
   - path_regex: secrets/servetek/secrets.ya?ml$
     key_groups:
-    - age:
-      - *servetek
-      pgp:
-      - *jocelyn
+      - age:
+          - *servetek
+        pgp:
+          - *jocelyn
+  - path_regex: secrets/head/secrets.ya?ml$
+    key_groups:
+      - age:
+          - *desktek
+          - *frametek
+        pgp: *users
   - path_regex: secrets/common/secrets.ya?ml$
     key_groups:
-    - age: *hosts
-      pgp: *users
-
+      - age: *hosts
+        pgp: *users
