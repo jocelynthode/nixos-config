@@ -1,14 +1,37 @@
 {
   pkgs ? null,
+  vimPlugins ? null,
 }:
-{
-  # My wallpaper collection
-  wallpapers = pkgs.callPackage ./core/wallpapers { };
+let
+  mapAttrsMaybe =
+    f: attrs:
+    let
+      names = builtins.attrNames attrs;
+      mapped = builtins.filter (x: x != null) (map (name: f name attrs.${name}) names);
+    in
+    builtins.listToAttrs mapped;
 
-  # Packages with an actual source
-  feathers = pkgs.callPackage ./core/feathers { };
+  forAllPackages =
+    dir:
+    if builtins.pathExists dir then
+      mapAttrsMaybe (
+        name: type:
+        if type == "directory" && builtins.pathExists "${dir}/${name}/default.nix" then
+          {
+            inherit name;
+            value = pkgs.callPackage "${dir}/${name}" { };
+          }
+        else
+          null
+      ) (builtins.readDir dir)
+    else
+      { };
 
-  # Personal scripts
-  toggle-bluetooth = pkgs.callPackage ./core/toggle-bluetooth { };
-  fs-diff = pkgs.callPackage ./core/fs-diff { };
+  corePackages = forAllPackages ./core;
+  vimPluginPackages = forAllPackages ./vimPlugins;
+  vimPluginsBase = if vimPlugins == null then { } else vimPlugins;
+in
+corePackages
+// {
+  vimPlugins = vimPluginsBase // vimPluginPackages;
 }

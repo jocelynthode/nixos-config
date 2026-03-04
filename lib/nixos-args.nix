@@ -1,25 +1,8 @@
 { inputs }:
-let
-  sharedSpecialArgs = {
-    inherit (inputs)
-      authentik-nix
-      spicetify-nix
-      catppuccin
-      impermanence
-      nix-index-database
-      nixvim
-      niri
-      noctalia
-      stylix
-      ;
-  };
-in
 {
-  inherit sharedSpecialArgs;
-
   mkHostSpecialArgs =
     system:
-    sharedSpecialArgs
+    inputs
     // {
       pkgs-stable = import inputs.nixpkgs-stable {
         inherit system;

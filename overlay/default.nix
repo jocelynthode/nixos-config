@@ -1,18 +1,6 @@
-{ inputs, ... }:
-final: prev:
-{
-  vimPlugins = prev.vimPlugins // {
-    taxi-vim = prev.pkgs.callPackage ../pkgs/vimPlugins/taxi-vim { };
-    nvim-dap-repl-highlights = prev.pkgs.callPackage ../pkgs/vimPlugins/nvim-dap-repl-highlights { };
-  };
-
-  slack = prev.slack.overrideAttrs (previousAttrs: {
-    installPhase = previousAttrs.installPhase + ''
-      sed -i'.backup' -e 's/,"WebRTCPipeWireCapturer"/,"LebRTCPipeWireCapturer"/' $out/lib/slack/resources/app.asar
-
-    '';
-  });
-
-  devenv = inputs.devenv.packages.${final.stdenv.hostPlatform.system}.default;
+_: final: prev:
+{ }
+// import ../pkgs {
+  pkgs = final;
+  inherit (prev) vimPlugins;
 }
-// import ../pkgs { pkgs = final; }
