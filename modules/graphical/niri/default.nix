@@ -330,6 +330,16 @@ in
                   "Mod+Shift+Ctrl+minus".action.switch-preset-window-height = [ ];
                   "Mod+k".action.set-dynamic-cast-window = [ ];
                   "Mod+Shift+k".action.set-dynamic-cast-monitor = [ ];
+                  "MouseForward" = {
+                    repeat = false;
+                    action = {
+                      spawn = noctaliaIpc ++ [
+                        "volume"
+                        "muteInput"
+                      ];
+
+                    };
+                  };
 
                   "Print".action.screenshot = [
                     {
