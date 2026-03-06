@@ -1,7 +1,24 @@
 {
   "nodes": {
+    "authentik-go": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1772621013,
+        "narHash": "sha256-5FgK7Ovwg19RJ7zcjVZRhrus85KNotRBWD6i8IloxZI=",
+        "owner": "goauthentik",
+        "repo": "client-go",
+        "rev": "840924fe52c4cf469deabb87d99fa01acbf77b37",
+        "type": "github"
+      },
+      "original": {
+        "owner": "goauthentik",
+        "repo": "client-go",
+        "type": "github"
+      }
+    },
     "authentik-nix": {
       "inputs": {
+        "authentik-go": "authentik-go",
         "authentik-src": "authentik-src",
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",
@@ -14,16 +31,16 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1769248094,
-        "narHash": "sha256-9eiLAIUI3rsjqdY32+jQdKB+0VI6Jks0uf0s/UVMVJI=",
+        "lastModified": 1772301515,
+        "narHash": "sha256-UtYD1gQSMqCiFYpAoLcjvNh/LuypRWsgnqv7axH5ruw=",
         "owner": "nix-community",
         "repo": "authentik-nix",
-        "rev": "1cab906a5cb342a4890ea9e4fe3993c6d438689b",
+        "rev": "cb09279e746ffe0f76f6fe1a5c9605c79e4ff12c",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
-        "ref": "version/2025.12.1",
+        "ref": "version/2026.2",
         "repo": "authentik-nix",
         "type": "github"
       }
@@ -31,16 +48,16 @@
     "authentik-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1768596569,
-        "narHash": "sha256-HDTbQB/sMhYh2b95dQwzF8OgrwLWdl4hVmx6wtDcgE8=",
-        "owner": "ma27",
+        "lastModified": 1771963976,
+        "narHash": "sha256-pVQ34cZYX3hlk6hF1aZ/n32xMqTF4Jmp0G0VGDU7iXc=",
+        "owner": "goauthentik",
         "repo": "authentik",
-        "rev": "72ad5fe320f2201fc2a37372d4c9cb46377a58e5",
+        "rev": "8af491630b70ff6bd089753e21bef511bfb3f557",
         "type": "github"
       },
       "original": {
-        "owner": "ma27",
-        "ref": "2025.12.1-dependency-fix",
+        "owner": "goauthentik",
+        "ref": "version/2026.2.0",
         "repo": "authentik",
         "type": "github"
       }
