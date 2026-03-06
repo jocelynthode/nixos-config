@@ -207,6 +207,7 @@ in
                       }
                     ];
                     open-on-workspace = "browser";
+                    open-maximized = true;
                   }
                   {
                     matches = [
