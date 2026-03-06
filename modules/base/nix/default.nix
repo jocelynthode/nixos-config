@@ -71,7 +71,6 @@ in
         ];
 
         trusted-users = [
-          "root"
           "@wheel"
         ];
         auto-optimise-store = true;
