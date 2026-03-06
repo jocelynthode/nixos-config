@@ -51,6 +51,10 @@ in
 
     nix = {
       settings = {
+        max-jobs = "auto";
+        cores = 0;
+        http-connections = 50;
+        max-substitution-jobs = 20;
         substituters = [
           "https://cache.nixos.org"
           "https://nix-community.cachix.org"
