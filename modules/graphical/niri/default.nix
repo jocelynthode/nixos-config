@@ -103,6 +103,11 @@ in
               {
                 prefer-no-csd = true;
 
+                debug = {
+                  # Allows notification actions and window activation from Noctalia.
+                  honor-xdg-activation-with-invalid-serial = true;
+                };
+
                 hotkey-overlay = {
                   skip-at-startup = true;
                   hide-not-bound = true;

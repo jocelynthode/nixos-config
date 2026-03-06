@@ -11,9 +11,9 @@
         enable = true;
         settings = {
           # port = 39555;
-          provider = {
-            enabled = "snacks";
-          };
+          # provider = {
+          #   enabled = "snacks";
+          # };
         };
       };
     };
