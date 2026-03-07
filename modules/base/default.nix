@@ -133,6 +133,7 @@
               EDITOR = "nvim";
               VISUAL = "nvim";
               PAGER = "bat";
+              BAT_PAGER = "less -RFK";
               OPENER = "xdg-open";
             };
             systemPackages = with pkgs; [

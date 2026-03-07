@@ -32,6 +32,7 @@ let
         bind --mode visual \ev kitty_scrollback_edit_command_buffer
         bind --mode insert \ee kitty_scrollback_edit_command_buffer
         bind --mode insert \ev kitty_scrollback_edit_command_buffer
+        # catppuccin_tide mocha lean
       ''
       + lib.optionalString (osConfig.aspects.work.kubernetes.enable or false
       ) "set -gx PATH $PATH $HOME/.krew/bin";
@@ -50,7 +51,6 @@ let
         };
       };
       plugins = [
-        # { name = "tide"; inherit (pkgs.fishPlugins.tide) src; }
         {
           name = "fzf-fish";
           inherit (pkgs.fishPlugins.fzf-fish) src;
@@ -67,6 +67,10 @@ let
           name = "bass";
           inherit (pkgs.fishPlugins.bass) src;
         }
+        # {
+        #   name = "tide";
+        #   inherit (pkgs.fishPlugins.tide) src;
+        # }
       ];
     };
   };
