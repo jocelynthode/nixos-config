@@ -213,7 +213,8 @@
               "idle_inhibit fullscreen, match:title ^(.*)$"
               "idle_inhibit fullscreen, match:fullscreen true"
             ];
-            inherit (osConfig.aspects.graphical.hyprland) workspace monitor;
+            workspace = osConfig.aspects.graphical.hyprland.workspace;
+            monitor = osConfig.aspects.graphical.hyprland.monitor;
           };
         };
       };

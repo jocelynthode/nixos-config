@@ -12,7 +12,7 @@
         ...
       }:
       let
-        inherit (osConfig.lib.stylix) colors;
+        colors = osConfig.lib.stylix.colors;
       in
       {
         home.packages = with pkgs; [

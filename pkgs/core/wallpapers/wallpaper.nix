@@ -7,7 +7,7 @@
 stdenv.mkDerivation rec {
   name = "wallpaper-${wallpaper.name}";
   src = fetchurl {
-    inherit (wallpaper) sha256;
+    sha256 = wallpaper.sha256;
     url = "https://kdrive.infomaniak.com/2/app/323582/share/${wallpaper.id}/files/${wallpaper.file}/download";
   };
   dontUnpack = true;

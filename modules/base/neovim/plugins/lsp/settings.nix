@@ -1,4 +1,3 @@
-{ config, ... }:
 {
   programs.nixvim = {
     diagnostic.settings = {
@@ -44,15 +43,15 @@
             enable = true;
             settings =
               let
-                flake = ''(builtins.getFlake "${config.nix.registry.self.to.path}")'';
+                nixosOptions = "(import <nixpkgs/nixos> { configuration = { }; }).options";
               in
               {
-                nixpkgs.expr = "import ${flake}.inputs.nixpkgs { }";
+                nixpkgs.expr = "import <nixpkgs> { }";
                 formatting.command = [ "nixfmt" ];
-                options = rec {
-                  nixos.expr = "${flake}.nixosConfigurations.${config.networking.hostName}.options";
-                  home-manager.expr = "${nixos.expr}.home-manager.users.type.getSubOptions [ ]";
-                  nixvim.expr = "${nixos.expr}.programs.nixvim.type.getSubOptions [ ]";
+                options = {
+                  nixos.expr = nixosOptions;
+                  home-manager.expr = "${nixosOptions}.home-manager.users.type.getSubOptions [ ]";
+                  nixvim.expr = "${nixosOptions}.programs.nixvim.type.getSubOptions [ ]";
                 };
               };
           };

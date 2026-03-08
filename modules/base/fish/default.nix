@@ -53,19 +53,19 @@ let
       plugins = [
         {
           name = "fzf-fish";
-          inherit (pkgs.fishPlugins.fzf-fish) src;
+          src = pkgs.fishPlugins.fzf-fish.src;
         }
         {
           name = "colored-man-pages";
-          inherit (pkgs.fishPlugins.colored-man-pages) src;
+          src = pkgs.fishPlugins.colored-man-pages.src;
         }
         {
           name = "autopair";
-          inherit (pkgs.fishPlugins.autopair-fish) src;
+          src = pkgs.fishPlugins.autopair-fish.src;
         }
         {
           name = "bass";
-          inherit (pkgs.fishPlugins.bass) src;
+          src = pkgs.fishPlugins.bass.src;
         }
         # {
         #   name = "tide";

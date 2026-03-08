@@ -112,7 +112,7 @@ in
                   skip-at-startup = true;
                   hide-not-bound = true;
                 };
-                inherit (osConfig.aspects.graphical.niri) workspaces;
+                workspaces = osConfig.aspects.graphical.niri.workspaces;
                 spawn-at-startup = [
                   {
                     argv = uwsmApp ++ [

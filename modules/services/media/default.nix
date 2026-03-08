@@ -56,7 +56,7 @@ let
 
   serviceConfigs = lib.listToAttrs (
     map (service: {
-      inherit (service) name;
+      name = service.name;
       value = {
         enable = true;
         openFirewall = true;
@@ -76,7 +76,7 @@ let
 
   userGroups = lib.listToAttrs (
     map (service: {
-      inherit (service) name;
+      name = service.name;
       value = {
         extraGroups = [ "media" ];
       };
@@ -90,12 +90,12 @@ let
   nginxVhosts = lib.listToAttrs (
     map (service: {
       name = "${service.name}.tekila.ovh";
-      value = mkAuthProxy { inherit (service) port; };
+      value = mkAuthProxy { port = service.port; };
     }) mediaServices
   );
   systemdConfigs = lib.listToAttrs (
     map (service: {
-      inherit (service) name;
+      name = service.name;
       value = {
         serviceConfig = {
           # Keep group-write access for shared media workflows.

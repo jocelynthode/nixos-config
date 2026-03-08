@@ -20,12 +20,12 @@
 
       fonts = {
         monospace = {
-          inherit (config.aspects.base.fonts.monospace) package;
+          package = config.aspects.base.fonts.monospace.package;
           name = config.aspects.base.fonts.monospace.family;
         };
 
         sansSerif = {
-          inherit (config.aspects.base.fonts.regular) package;
+          package = config.aspects.base.fonts.regular.package;
           name = config.aspects.base.fonts.regular.family;
         };
 

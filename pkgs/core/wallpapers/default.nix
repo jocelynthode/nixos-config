@@ -4,7 +4,7 @@
 { pkgs }:
 builtins.listToAttrs (
   builtins.map (wallpaper: {
-    inherit (wallpaper) name;
+    name = wallpaper.name;
     value = pkgs.callPackage ./wallpaper.nix { inherit wallpaper; };
   }) (import ./list.nix)
 )

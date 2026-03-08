@@ -99,7 +99,7 @@
     sops.secrets.github = {
       sopsFile = ../../../secrets/head/secrets.yaml;
       owner = config.users.users.jocelyn.name;
-      inherit (config.users.users.jocelyn) group;
+      group = config.users.users.jocelyn.group;
     };
   };
 

@@ -15,7 +15,7 @@ let
 in
 {
   imports = [
-    nix-index-database.nixosModules.default
+    (import (nix-index-database + "/nixos-module.nix"))
   ];
 
   options.aspects.base.nix = {
@@ -40,12 +40,10 @@ in
 
     nixpkgs.overlays = [
       (_final: prev: {
-        inherit (prev.lixPackageSets.stable)
-          nixpkgs-review
-          nix-eval-jobs
-          nix-fast-build
-          colmena
-          ;
+        nixpkgs-review = prev.lixPackageSets.stable.nixpkgs-review;
+        nix-eval-jobs = prev.lixPackageSets.stable.nix-eval-jobs;
+        nix-fast-build = prev.lixPackageSets.stable.nix-fast-build;
+        colmena = prev.lixPackageSets.stable.colmena;
       })
     ];
 
@@ -76,7 +74,6 @@ in
         auto-optimise-store = true;
         experimental-features = [
           "nix-command"
-          "flakes"
         ];
         keep-outputs = true;
         keep-derivations = true;

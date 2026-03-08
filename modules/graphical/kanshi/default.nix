@@ -43,7 +43,7 @@
         services.kanshi = {
           enable = true;
           systemdTarget = "graphical-session.target";
-          inherit (osConfig.aspects.graphical.kanshi) settings;
+          settings = osConfig.aspects.graphical.kanshi.settings;
         };
       };
   };

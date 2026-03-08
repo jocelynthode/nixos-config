@@ -6,7 +6,7 @@
 }:
 {
   imports = [
-    impermanence.nixosModules.impermanence
+    (import (impermanence + "/nixos.nix"))
   ];
 
   options.aspects.base.persistence = {

@@ -12,10 +12,8 @@ jobs:
       - uses: actions/checkout@v6
       - name: "Install Nix"
         uses: cachix/install-nix-action@v31
-      - name: "Check NixOS Flake"
-        run: nix flake check
       - name: "Build Iso"
-        run: nix build '.#nixosConfigurations.iso.config.system.build.isoImage'
+        run: nix-build -A nixosConfigurations.iso.config.system.build.isoImage
       - name: Release ISO
         uses: softprops/action-gh-release@v2
         with:

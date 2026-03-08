@@ -13,7 +13,7 @@
     services.openssh = {
       enable = true;
       settings = {
-        inherit (config.aspects.base.sshd) PermitRootLogin;
+        PermitRootLogin = config.aspects.base.sshd.PermitRootLogin;
         PasswordAuthentication = false;
       };
       extraConfig = ''
