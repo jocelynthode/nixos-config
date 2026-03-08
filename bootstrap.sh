@@ -7,30 +7,30 @@ port="22"
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
-    --host)
-      host="$2"
-      shift 2
-      ;;
-    --ip)
-      ip="$2"
-      shift 2
-      ;;
-    --port)
-      port="$2"
-      shift 2
-      ;;
-    --help)
-      echo "Usage: $0 --host <hostname> --ip <ip-address> [--port <port>]"
-      exit 0
-      ;;
-    *)
-      echo "Unknown option: $1" >&2
-      exit 1
-      ;;
+  --host)
+    host="$2"
+    shift 2
+    ;;
+  --ip)
+    ip="$2"
+    shift 2
+    ;;
+  --port)
+    port="$2"
+    shift 2
+    ;;
+  --help)
+    echo "Usage: $0 --host <hostname> --ip <ip-address> [--port <port>]"
+    exit 0
+    ;;
+  *)
+    echo "Unknown option: $1" >&2
+    exit 1
+    ;;
   esac
 done
 
-if [[ -z "$host" || -z "$ip" ]]; then
+if [[ -z $host || -z $ip ]]; then
   echo "Error: --host and --ip are required" >&2
   echo "Usage: $0 --host <hostname> --ip <ip-address> [--port <port>]" >&2
   exit 1

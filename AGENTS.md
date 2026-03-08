@@ -18,6 +18,7 @@ You are an expert NixOS System Administrator and Prompt Engineer. Your task is t
 This repository follows a category-first, dendritic layout.
 
 References:
+
 - https://github.com/hercules-ci/flake-parts
 - https://github.com/mightyiam/dendritic
 

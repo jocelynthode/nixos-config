@@ -4,17 +4,17 @@ on:
   workflow_dispatch:
   push:
     tags:
-      - '*'
+      - "*"
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - name: 'Install Nix'
+      - name: "Install Nix"
         uses: cachix/install-nix-action@v31
-      - name: 'Check NixOS Flake'
+      - name: "Check NixOS Flake"
         run: nix flake check
-      - name: 'Build Iso'
+      - name: "Build Iso"
         run: nix build '.#nixosConfigurations.iso.config.system.build.isoImage'
       - name: Release ISO
         uses: softprops/action-gh-release@v2

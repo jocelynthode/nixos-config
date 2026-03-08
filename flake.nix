@@ -123,6 +123,15 @@
         flake-parts.follows = "flake-parts";
       };
     };
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    git-hooks-nix = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -130,27 +139,63 @@
       flake-parts,
       ...
     }:
-    flake-parts.lib.mkFlake { inherit inputs; } (
-      { ... }:
-      {
-        imports = [
-          (inputs.import-tree ./parts)
-          (inputs.import-tree.match "^/[^/]+/default\\.nix$" ./modules)
-        ];
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [
+        (inputs.import-tree ./parts)
+        (inputs.import-tree.match "^/[^/]+/default\\.nix$" ./modules)
+        inputs.treefmt-nix.flakeModule
+        inputs.git-hooks-nix.flakeModule
+      ];
 
-        systems = [
-          "x86_64-linux"
-        ];
+      systems = [
+        "x86_64-linux"
+      ];
 
-        perSystem =
-          {
-            pkgs,
-            ...
-          }:
-          {
-            formatter = pkgs.nixfmt-tree;
+      perSystem =
+        { config, pkgs, ... }:
+        {
+          treefmt = {
+            projectRootFile = "flake.nix";
+            programs = {
+              nixfmt.enable = true;
+              deadnix.enable = true;
+              statix.enable = true;
+              prettier.enable = true;
+              shfmt.enable = true;
+            };
+            settings = {
+              formatter = {
+                prettier.excludes = [ "secrets/**" ];
+              };
+            };
           };
+          pre-commit = {
+            settings = {
+              package = pkgs.prek;
+              hooks = {
+                actionlint.enable = true;
+                treefmt = {
+                  enable = true;
+                  # Done automatically by git-hooks.nix flake-parts module
+                  # package = config.treefmt.build.wrapper;
+                };
+                statix.enable = true;
+              };
+            };
+          };
+          devShells.default = pkgs.mkShell {
+            nativeBuildInputs = [
+              pkgs.git
+              pkgs.sops
+              pkgs.ssh-to-age
+              pkgs.disko
+              pkgs.nixos-anywhere
+              config.treefmt.build.wrapper
+            ];
 
-      }
-    );
+            shellHook = config.pre-commit.installationScript;
+          };
+        };
+
+    };
 }

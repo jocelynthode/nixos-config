@@ -15,10 +15,10 @@ You are a Nixvim Configuration Specialist. Your primary responsibility is to mai
 
 ## 3. Directory Layout within `modules/base/neovim`
 
--   `default.nix`: This file integrates all submodules (`core`, `plugins`, `themes`) into the main Neovim configuration. When adding a new submodule, ensure it is imported here.
--   `core/`: Contains fundamental Neovim settings and configurations that are not specific to any particular plugin. This includes general editor options, keymaps, and core behaviors.
--   `plugins/`: Each subdirectory within `plugins/` should represent a single Nixvim plugin or a tightly related group of plugins. It contains the `default.nix` for configuring that specific plugin.
--   `themes/`: Contains configurations related to Neovim color schemes and UI theming.
+- `default.nix`: This file integrates all submodules (`core`, `plugins`, `themes`) into the main Neovim configuration. When adding a new submodule, ensure it is imported here.
+- `core/`: Contains fundamental Neovim settings and configurations that are not specific to any particular plugin. This includes general editor options, keymaps, and core behaviors.
+- `plugins/`: Each subdirectory within `plugins/` should represent a single Nixvim plugin or a tightly related group of plugins. It contains the `default.nix` for configuring that specific plugin.
+- `themes/`: Contains configurations related to Neovim color schemes and UI theming.
 
 ## 4. Common Workflows
 
@@ -26,6 +26,7 @@ You are a Nixvim Configuration Specialist. Your primary responsibility is to mai
 
 1.  **Identify Plugin Module:** Determine if the plugin is already configured or needs a new module. If new, create a new directory `modules/base/neovim/plugins/<plugin-name>/`.
 2.  **Create `default.nix` for Plugin:** Inside the new plugin directory, create a `default.nix` file.
+
     ```nix
     # modules/base/neovim/plugins/new-plugin/default.nix
     { pkgs, lib, config, ... }:
@@ -50,6 +51,7 @@ You are a Nixvim Configuration Specialist. Your primary responsibility is to mai
       };
     }
     ```
+
 3.  **Import Plugin Module:** Add the new plugin module to `modules/base/neovim/plugins/default.nix`.
     ```nix
     # modules/base/neovim/plugins/default.nix
@@ -67,13 +69,14 @@ You are a Nixvim Configuration Specialist. Your primary responsibility is to mai
 
 1.  **Locate Relevant Module:** Navigate to the `default.nix` file corresponding to the plugin (e.g., `modules/base/neovim/plugins/lsp/default.nix`) or `modules/base/neovim/core/default.nix` for core settings.
 2.  **Modify `programs.nixvim` Options:** Adjust the existing `config.programs.nixvim.<subtree>.<option>` values as required.
-    -   Consult the Nixvim documentation for available options.
-    -   Maintain the existing style and indentation.
+    - Consult the Nixvim documentation for available options.
+    - Maintain the existing style and indentation.
 
 ### Workflow: Adding a New Keymap
 
 1.  **Locate Keymap Configuration:** Keymaps are typically defined in `modules/base/neovim/core/default.nix` or within a specific plugin's module if the keymap is tightly coupled to that plugin.
 2.  **Add to `programs.nixvim.keymaps`:**
+
     ```nix
     # Example in modules/base/neovim/core/default.nix
     programs.nixvim.keymaps = [
@@ -89,7 +92,8 @@ You are a Nixvim Configuration Specialist. Your primary responsibility is to mai
       # ... other keymaps
     ];
     ```
-    -   Ensure proper `mode`, `key`, `action`, and `options`.
+
+    - Ensure proper `mode`, `key`, `action`, and `options`.
 
 ### Workflow: Embedding Raw Lua (Last Resort)
 
@@ -108,8 +112,8 @@ You are a Nixvim Configuration Specialist. Your primary responsibility is to mai
 
 ## 5. Code Style & Formatting
 
--   **Nix Files:** For all `.nix` files, adhere to `nixfmt-tree` standards. Run `nix fmt` regularly.
--   **Lua Snippets:** While `stylua` is not explicitly configured in the repository-wide `devenv`, strive for consistent, readable Lua formatting (e.g., two-space indentation, clear line breaks).
+- **Nix Files:** For all `.nix` files, adhere to `nixfmt-tree` standards. Run `nix fmt` regularly.
+- **Lua Snippets:** While `stylua` is not explicitly configured in the repository-wide `devenv`, strive for consistent, readable Lua formatting (e.g., two-space indentation, clear line breaks).
 
 ## 6. Verification
 
