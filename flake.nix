@@ -171,7 +171,6 @@
                   # Done automatically by git-hooks.nix flake-parts module
                   # package = config.treefmt.build.wrapper;
                 };
-                statix.enable = true;
               };
             };
           };

@@ -20,17 +20,17 @@
 
       fonts = {
         monospace = {
-          inherit (config.aspects.base.fonts.monospace) package;
           name = config.aspects.base.fonts.monospace.family;
+          inherit (config.aspects.base.fonts.monospace) package;
         };
 
         sansSerif = {
-          inherit (config.aspects.base.fonts.regular) package;
           name = config.aspects.base.fonts.regular.family;
+          inherit (config.aspects.base.fonts.regular) package;
         };
 
         sizes = {
-          terminal = 12;
+          terminal = 14;
         };
       };
 
