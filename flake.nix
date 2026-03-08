@@ -71,14 +71,6 @@
     };
     import-tree.url = "github:vic/import-tree";
 
-    devenv = {
-      url = "github:cachix/devenv/latest";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-compat.follows = "flake-compat";
-        flake-parts.follows = "flake-parts";
-      };
-    };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs = {
