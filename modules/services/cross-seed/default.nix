@@ -14,6 +14,7 @@
       settings = {
         linkDirs = [ "/data/cross-seeds" ];
         matchMode = "partial";
+        linkType = "reflink";
         duplicateCategories = true;
         outputDir = null;
         maxDataDepth = 3;
