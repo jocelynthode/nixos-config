@@ -23,6 +23,7 @@
             authentik.enable = lib.mkDefault true;
             blocky.enable = lib.mkDefault true;
             calibre-web.enable = lib.mkDefault true;
+            cross-seed.enable = lib.mkDefault true;
             ddclient.enable = lib.mkDefault true;
             deluge.enable = lib.mkDefault true;
             home-assistant.enable = lib.mkDefault true;
