@@ -72,7 +72,6 @@
               "https://ns1.fdn.fr/dns-query"
               "https://doh.dns4all.eu/dns-query"
               "https://doh.libredns.gr/dns-query"
-              "https://resolver2.dns.watch/dns-query"
             ];
           };
           # For initially solving DoH/DoT Requests when no system Resolver is available.
