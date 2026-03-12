@@ -20,8 +20,8 @@
       programs.opencode = {
         enable = true;
         settings = {
-          model = "openai/gpt-5.2-codex";
-          small_model = "openai/gpt-5-mini";
+          model = "openai/gpt-5.3-codex";
+          small_model = "openai/gpt-5.3-codex-spark";
           default_agent = "devops-orchestrator";
           theme = "catppuccin";
           provider = {
