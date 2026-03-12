@@ -97,7 +97,7 @@
       };
       extraPlugins = with pkgs.vimPlugins; [
         telescope-dap-nvim
-        taxi-vim
+        taxi-nvim
         kitty-scrollback-nvim
       ];
 

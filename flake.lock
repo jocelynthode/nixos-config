@@ -917,16 +917,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1762249632,
-        "narHash": "sha256-M6OmfNeOJwj63ocfCiV7hR5umMnKCc7w5N5qvbpYYfY=",
-        "owner": "jocelynthode",
+        "lastModified": 1764542018,
+        "narHash": "sha256-rbPVRY7HAUX3FmIFHizq9MCuvgNAZfDPyW9319U+VnE=",
+        "owner": "sephii",
         "repo": "taxi",
-        "rev": "d4e763dd277db0f8c28d920bf7fcc82f044beacb",
+        "rev": "d0713281ffbee264a61d3a181cb780a6c630b15d",
         "type": "github"
       },
       "original": {
-        "owner": "jocelynthode",
-        "ref": "remove-tests",
+        "owner": "sephii",
         "repo": "taxi",
         "type": "github"
       }

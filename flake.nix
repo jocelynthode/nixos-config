@@ -50,7 +50,7 @@
       };
     };
     taxi = {
-      url = "github:jocelynthode/taxi/remove-tests";
+      url = "github:sephii/taxi";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-compat.follows = "flake-compat";

@@ -27,6 +27,9 @@ _: {
                   ellipsis = false;
                   text.__raw = ''
                     function(ctx)
+                      if ctx.source_name == "taxi" then
+                        return " " .. ctx.icon_gap
+                      end
                       local icon = ctx.kind_icon
                       if vim.tbl_contains({ "Path" }, ctx.source_name) then
                         local dev_icon, _ = require("nvim-web-devicons").get_icon(ctx.label)
@@ -93,10 +96,20 @@ _: {
             "buffer"
             "render-markdown"
           ];
+          per_filetype = {
+            taxi = [
+              "taxi"
+              "buffer"
+            ];
+          };
           providers = {
             render-markdown = {
               name = "render-markdown";
               module = "blink.compat.source";
+            };
+            taxi = {
+              name = "taxi";
+              module = "taxi.blink";
             };
           };
         };
