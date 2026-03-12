@@ -99,7 +99,6 @@ _: {
           per_filetype = {
             taxi = [
               "taxi"
-              "buffer"
             ];
           };
           providers = {
