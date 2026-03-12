@@ -22,6 +22,11 @@
       settingsFile = config.sops.secrets.crossSeed.path;
     };
 
+    systemd.services.cross-seed.serviceConfig = {
+      # 0002 allows the group to write to files created by cross-seed
+      UMask = "0002";
+    };
+
     sops.secrets.crossSeed = {
       sopsFile = ../../../secrets/${config.networking.hostName}/secrets.yaml;
       owner = "cross-seed";
