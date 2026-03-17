@@ -80,6 +80,7 @@ in
                 "eDP-1"
                 "DP-1"
                 "DP-3"
+                "DP-4"
               ];
               outerCorners = true;
               position = "top";
@@ -386,6 +387,7 @@ in
                 "eDP-1"
                 "DP-1"
                 "DP-3"
+                "DP-4"
               ];
               normalUrgencyDuration = 8;
               overlayLayer = true;
@@ -423,6 +425,7 @@ in
                 "eDP-1"
                 "DP-1"
                 "DP-3"
+                "DP-4"
               ];
               overlayLayer = true;
             };

@@ -106,17 +106,17 @@ _: {
                 scale = 1.566667;
               }
               {
-                criteria = "DP-3";
+                criteria = "DP-4";
                 position = "0,1504";
-                scale = 1.175;
+                scale = 1.5;
               }
             ];
             exec = [
-              "niri msg action move-workspace-to-monitor --reference browser DP-3"
-              "niri msg action move-workspace-to-monitor --reference terminal DP-3"
-              "niri msg action move-workspace-to-monitor --reference mail DP-3"
-              "niri msg action move-workspace-to-monitor --reference game DP-3"
-              "niri msg action move-workspace-to-monitor --reference extra DP-3"
+              "niri msg action move-workspace-to-monitor --reference browser DP-4"
+              "niri msg action move-workspace-to-monitor --reference terminal DP-4"
+              "niri msg action move-workspace-to-monitor --reference mail DP-4"
+              "niri msg action move-workspace-to-monitor --reference game DP-4"
+              "niri msg action move-workspace-to-monitor --reference extra DP-4"
               "niri msg action move-workspace-to-monitor --reference secondary eDP-1"
               "niri msg action move-workspace-to-monitor --reference chat eDP-1"
               "niri msg action move-workspace-to-monitor --reference music eDP-1"
