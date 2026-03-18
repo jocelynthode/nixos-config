@@ -10,8 +10,8 @@ vimUtils.buildVimPlugin {
   src = fetchFromGitHub {
     owner = "jocelynthode";
     repo = "taxi.nvim";
-    rev = "d407389c6ca145b20ae313c75b42797d249c2a6c";
-    hash = "sha256-k/ZpFFeopdD7mE7beXrPYacIrMptCsbTW1yGzw6pT1E=";
+    rev = "0d69e8bfcfd91f0f410a341205dde67bfb139ada";
+    hash = "sha256-5vLViwGGyYX/+nYc4WmqfuYOdv/ZPYFIZ2jW9ShUZ5Y=";
   };
   passthru.updateScript = unstableGitUpdater { };
   meta.homepage = "https://github.com/jocelynthode/taxi.nvim";
