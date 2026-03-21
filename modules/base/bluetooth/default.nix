@@ -23,7 +23,7 @@
 
     environment.systemPackages = with pkgs; [
       bluez
-      blueberry
+      blueman
     ];
   };
 }
