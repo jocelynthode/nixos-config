@@ -25,5 +25,10 @@
       };
       listen.ip = "0.0.0.0";
     };
+
+    # TODO fix when https://github.com/NixOS/nixpkgs/issues/503147 implemented
+    systemd.services.calibre-web.serviceConfig.ReadWritePaths = [
+      "/data/media/books"
+    ];
   };
 }
