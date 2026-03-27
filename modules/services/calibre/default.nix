@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs-stable,
   ...
 }:
 {
@@ -17,6 +18,7 @@
 
     services.calibre-web = {
       enable = true;
+      package = pkgs-stable.calibre-web;
       openFirewall = true;
       group = "media";
       options = {
