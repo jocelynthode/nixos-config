@@ -45,6 +45,7 @@
             mpv.enable = lib.mkDefault true;
             nix-ld.enable = lib.mkDefault true;
             printer.enable = lib.mkDefault false;
+            protonvpn.enable = lib.mkDefault true;
             screenshot.enable = lib.mkDefault false;
             sound.enable = lib.mkDefault true;
             sway.enable = lib.mkDefault false;

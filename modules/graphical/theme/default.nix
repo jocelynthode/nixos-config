@@ -44,6 +44,7 @@
 
         gtk = {
           enable = true;
+          gtk4.theme = null;
         };
 
         dconf.settings = lib.mkIf (osConfig.aspects.theme == "dark") {
