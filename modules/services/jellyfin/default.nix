@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  pkgs,
+  pkgs-master,
   ...
 }:
 {
@@ -18,6 +18,8 @@
     services = {
       jellyfin = {
         enable = true;
+        # Remove master when https://nixpk.gs/pr-tracker.html?pr=505528
+        package = pkgs-master.jellyfin;
         openFirewall = true;
         group = "media";
       };
@@ -42,9 +44,9 @@
     };
 
     environment.systemPackages = [
-      pkgs.jellyfin
-      pkgs.jellyfin-web
-      pkgs.jellyfin-ffmpeg
+      pkgs-master.jellyfin
+      pkgs-master.jellyfin-web
+      pkgs-master.jellyfin-ffmpeg
     ];
 
     services.nginx.virtualHosts = {
