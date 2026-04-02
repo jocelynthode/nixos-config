@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  pkgs-master,
+  pkgs,
   ...
 }:
 {
@@ -18,16 +18,19 @@
     services = {
       jellyfin = {
         enable = true;
-        # Remove master when https://nixpk.gs/pr-tracker.html?pr=505528
-        package = pkgs-master.jellyfin;
         openFirewall = true;
         group = "media";
       };
-      jellyseerr = {
+      seerr = {
         enable = true;
         openFirewall = false;
+        configDir = "/var/lib/seerr";
       };
     };
+
+    # Keep StateDirectory aligned with services.seerr.configDir parent while
+    # system.stateVersion is still < 26.05.
+    systemd.services.seerr.serviceConfig.StateDirectory = lib.mkForce "seerr";
 
     systemd.tmpfiles.rules = [
       "d /scratch/jellyfin 0755 jellyfin media -"
@@ -44,9 +47,9 @@
     };
 
     environment.systemPackages = [
-      pkgs-master.jellyfin
-      pkgs-master.jellyfin-web
-      pkgs-master.jellyfin-ffmpeg
+      pkgs.jellyfin
+      pkgs.jellyfin-web
+      pkgs.jellyfin-ffmpeg
     ];
 
     services.nginx.virtualHosts = {
@@ -55,7 +58,7 @@
         enableACME = true;
         locations = {
           "/" = {
-            proxyPass = "http://127.0.0.1:${toString config.services.jellyseerr.port}";
+            proxyPass = "http://127.0.0.1:${toString config.services.seerr.port}";
             proxyWebsockets = true;
           };
         };

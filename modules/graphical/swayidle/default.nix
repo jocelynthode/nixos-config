@@ -15,7 +15,7 @@
       {
         services.swayidle = {
           enable = true;
-          systemdTarget = "graphical-session.target";
+          systemdTargets = [ "graphical-session.target" ];
           events = {
             "before-sleep" = "${lib.getExe config.programs.noctalia-shell.package} ipc call lockScreen lock";
             "lock" = "${lib.getExe config.programs.noctalia-shell.package} ipc call lockScreen lock";

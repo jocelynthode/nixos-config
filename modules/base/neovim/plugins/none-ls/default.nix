@@ -27,7 +27,7 @@ _: {
           };
         };
         opentofu_fmt.enable = true;
-        prettier = {
+        prettierd = {
           enable = true;
           settings = {
             filetypes = [

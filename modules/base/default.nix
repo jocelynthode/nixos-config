@@ -33,6 +33,9 @@
             useGlobalPkgs = true;
             sharedModules = [
               catppuccin.homeModules.catppuccin
+              {
+                gtk.gtk4.theme = lib.mkDefault null;
+              }
             ];
           };
 
