@@ -2,127 +2,130 @@ _: {
   programs.nixvim = {
     keymaps = [
       {
-        action = "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>";
-        key = "<leader>lS";
-        mode = "n";
-        options = {
-          desc = "Workspace Symbols";
-        };
+        action.__raw = "vim.lsp.buf.code_action";
+        key = "<leader>ca";
+        mode = [
+          "n"
+          "x"
+        ];
+        options.desc = "Code Action";
       }
       {
-        action = "<cmd>Lspsaga code_action<cr>";
-        key = "<leader>la";
+        action.__raw = ''
+          function()
+            require("conform").format({ async = true, lsp_format = "fallback" })
+          end
+        '';
+        key = "<leader>cf";
         mode = "n";
-        options = {
-          desc = "Code Action";
-        };
+        options.desc = "Format";
       }
       {
-        action = "<cmd>Lspsaga show_buf_diagnostics<cr>";
-        key = "<leader>ld";
+        action = "<cmd>checkhealth vim.lsp<cr>";
+        key = "<leader>cl";
         mode = "n";
-        options = {
-          desc = "Document Diagnostics";
-        };
+        options.desc = "Info";
       }
       {
-        action = "<cmd>lua vim.lsp.buf.format { async = true }<cr>";
-        key = "<leader>lf";
+        action.__raw = "vim.diagnostic.open_float";
+        key = "<leader>cd";
         mode = "n";
-        options = {
-          desc = "Format";
-        };
+        options.desc = "Line Diagnostics";
       }
       {
-        action = "<cmd>LspInfo<cr>";
-        key = "<leader>li";
+        action.__raw = "vim.lsp.buf.rename";
+        key = "<leader>cr";
         mode = "n";
-        options = {
-          desc = "Info";
-        };
-      }
-      {
-        action = "<cmd>Lspsaga diagnostic_jump_next<cr>";
-        key = "<leader>lj";
-        mode = "n";
-        options = {
-          desc = "Next Diagnostic";
-        };
-      }
-      {
-        action = "<cmd>Lspsaga diagnostic_jump_prev<cr>";
-        key = "<leader>lk";
-        mode = "n";
-        options = {
-          desc = "Prev Diagnostic";
-        };
-      }
-      {
-        action = "<cmd>Lspsaga rename ++project<cr>";
-        key = "<leader>lr";
-        mode = "n";
-        options = {
-          desc = "Rename";
-        };
+        options.desc = "Rename";
       }
       {
         action = "<cmd>Telescope lsp_document_symbols<cr>";
-        key = "<leader>ls";
+        key = "<leader>ss";
         mode = "n";
-        options = {
-          desc = "Document Symbols";
-        };
+        options.desc = "Document Symbols";
       }
       {
-        action = "<cmd>Lspsaga show_workspace_diagnostics<cr>";
-        key = "<leader>lw";
+        action = "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>";
+        key = "<leader>sS";
         mode = "n";
-        options = {
-          desc = "Workspace Diagnostics";
-        };
+        options.desc = "Workspace Symbols";
+      }
+      {
+        action.__raw = ''
+          function()
+            vim.diagnostic.jump({ count = -1, float = true })
+          end
+        '';
+        key = "[d";
+        mode = "n";
+        options.desc = "Prev Diagnostic";
+      }
+      {
+        action.__raw = ''
+          function()
+            vim.diagnostic.jump({ count = 1, float = true })
+          end
+        '';
+        key = "]d";
+        mode = "n";
+        options.desc = "Next Diagnostic";
+      }
+      {
+        action.__raw = ''
+          function()
+            vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR, float = true })
+          end
+        '';
+        key = "[e";
+        mode = "n";
+        options.desc = "Prev Error";
+      }
+      {
+        action.__raw = ''
+          function()
+            vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR, float = true })
+          end
+        '';
+        key = "]e";
+        mode = "n";
+        options.desc = "Next Error";
       }
     ];
+
     keymapsOnEvents = {
       LspAttach = [
         {
-          action = "<cmd>Lspsaga finder<CR>";
-          key = "gh";
+          action.__raw = "vim.lsp.buf.declaration";
+          key = "gD";
         }
         {
-          action = "<cmd>Lspsaga finder def<CR>";
+          action.__raw = "vim.lsp.buf.definition";
           key = "gd";
         }
         {
-          action = "<cmd>Lspsaga finder ref<CR>";
+          action.__raw = "vim.lsp.buf.references";
           key = "gr";
         }
         {
-          action = "<cmd>Lspsaga hover_doc<CR>";
+          action.__raw = "vim.lsp.buf.implementation";
+          key = "gI";
+        }
+        {
+          action.__raw = "vim.lsp.buf.type_definition";
+          key = "gy";
+        }
+        {
+          action.__raw = "vim.lsp.buf.hover";
           key = "K";
         }
         {
           action.__raw = "vim.lsp.buf.signature_help";
+          key = "gK";
+        }
+        {
+          action.__raw = "vim.lsp.buf.signature_help";
           key = "<C-k>";
-        }
-        {
-          action = "<cmd>Lspsaga peek_type_definition<CR>";
-          key = "gy";
-        }
-        {
-          action.__raw = ''
-            function()
-              require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
-            end
-          '';
-          key = "[E";
-        }
-        {
-          action.__raw = ''
-            function()
-              require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
-            end
-          '';
-          key = "]E";
+          mode = "i";
         }
       ];
     };

@@ -17,7 +17,7 @@
           "__rawKey__vim.diagnostic.severity.HINT" = "DiagnosticSignHint";
         };
       };
-      update_in_insert = true;
+      update_in_insert = false;
       underline = true;
       severity_sort = true;
       float = {
@@ -58,6 +58,12 @@
           };
           jsonls = {
             enable = true;
+            settings = {
+              json = {
+                format.enable = true;
+                validate.enable = true;
+              };
+            };
           };
           helm_ls = {
             enable = true;
@@ -80,7 +86,14 @@
                 diagnostics = {
                   globals = [ "vim" ];
                 };
+                hint = {
+                  enable = true;
+                  paramName = "Disable";
+                  paramType = true;
+                };
+                completion.callSnippet = "Replace";
                 workspace = {
+                  checkThirdParty = false;
                   library.__raw = ''
                     {
                       [vim.fn.expand("$VIMRUNTIME/lua")] = true;
@@ -98,31 +111,10 @@
         json.enable = true;
         yaml.enable = true;
       };
-      lspsaga = {
-        enable = true;
-        settings = {
-          lightbulb = {
-            virtual_text = false;
-          };
-          ui = {
-            kind.__raw = ''require("catppuccin.groups.integrations.lsp_saga").custom_kind()'';
-          };
-          finder = {
-            default = "def+ref+imp";
-            keys = {
-              toggle_or_open = [
-                "o"
-                "l"
-              ];
-            };
-          };
-        };
-      };
       lspkind = {
         enable = true;
         cmp.enable = false;
       };
-      lsp-format.enable = true;
     };
   };
 }

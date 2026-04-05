@@ -4,7 +4,6 @@ _: {
     modules = {
       ai = { };
       bufremove = { };
-      cursorword = { };
       diff = { };
       extra = { };
       hipatterns = {
@@ -27,12 +26,6 @@ _: {
           };
 
           hex_color.__raw = "require('mini.hipatterns').gen_highlighter.hex_color()";
-        };
-      };
-      indentscope = {
-        symbol = "▎";
-        draw = {
-          animation.__raw = "require('mini.indentscope').gen_animation.none()";
         };
       };
       move = {

@@ -15,6 +15,11 @@ _: {
           icon = " ";
         }
         {
+          __unkeyed-1 = "<leader>c";
+          group = "Code";
+          icon = "󰘦 ";
+        }
+        {
           __unkeyed-1 = "<leader>d";
           group = "Debug";
           icon = " ";
@@ -35,14 +40,14 @@ _: {
           icon = " ";
         }
         {
+          __unkeyed-1 = "<leader>f";
+          group = "File";
+          icon = "󰈞 ";
+        }
+        {
           __unkeyed-1 = "<leader>g";
           group = "Git";
           icon = " ";
-        }
-        {
-          __unkeyed-1 = "<leader>l";
-          group = "LSP";
-          icon = "󰌌 ";
         }
         {
           __unkeyed-1 = "<leader>m";
@@ -53,6 +58,16 @@ _: {
           __unkeyed-1 = "<leader>s";
           group = "Search";
           icon = " ";
+        }
+        {
+          __unkeyed-1 = "<leader>u";
+          group = "UI";
+          icon = "󰙵 ";
+        }
+        {
+          __unkeyed-1 = "<leader>x";
+          group = "Diagnostics";
+          icon = " ";
         }
         {
           __unkeyed-1 = "<leader>t";

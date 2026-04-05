@@ -11,8 +11,7 @@ _: {
         ];
       };
       extensions = [
-        "nvim-tree"
-        "toggleterm"
+        "neo-tree"
       ];
       sections = {
         lualine_a = [ "mode" ];
@@ -53,7 +52,8 @@ _: {
             __unkeyed-1.__raw = ''
               function(msg)
                 msg = msg or "Inactive"
-                local buf_clients = vim.lsp.get_clients()
+                local bufnr = vim.api.nvim_get_current_buf()
+                local buf_clients = vim.lsp.get_clients({ bufnr = bufnr })
                 if next(buf_clients) == nil then
                   if type(msg) == "boolean" or #msg == 0 then
                     return "Inactive"
@@ -63,9 +63,7 @@ _: {
                 local buf_client_names = {}
 
                 for _, client in pairs(buf_clients) do
-                  if client.name ~= "none-ls" then
-                    table.insert(buf_client_names, client.name)
-                  end
+                  table.insert(buf_client_names, client.name)
                 end
 
                 return " " .. table.concat(buf_client_names, ", ")

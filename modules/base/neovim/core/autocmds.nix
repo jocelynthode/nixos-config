@@ -34,6 +34,7 @@ _: {
           "qf"
           "help"
           "man"
+          "checkhealth"
           "lspinfo"
         ];
         command = "nnoremap <silent> <buffer> q :close<CR>";

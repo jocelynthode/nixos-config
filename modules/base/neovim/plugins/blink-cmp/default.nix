@@ -8,7 +8,7 @@ _: {
       settings = {
         appearance = {
           nerd_font_variant = "mono";
-          use_nvim_cmp_as_default = true;
+          use_nvim_cmp_as_default = false;
         };
         completion = {
           accept = {
@@ -22,6 +22,7 @@ _: {
           menu = {
             # auto_show.__raw = ''function(ctx) return ctx.mode ~= 'cmdline' end'';
             draw = {
+              treesitter = [ "lsp" ];
               components = {
                 kind_icon = {
                   ellipsis = false;
@@ -66,12 +67,33 @@ _: {
           };
           documentation = {
             auto_show = true;
+            auto_show_delay_ms = 200;
+          };
+          ghost_text = {
+            enabled = true;
           };
           list = {
             selection = {
               preselect.__raw = "function(ctx) return ctx.mode ~= 'cmdline' end";
               auto_insert.__raw = "function(ctx) return ctx.mode ~= 'cmdline' end";
             };
+          };
+        };
+        cmdline = {
+          enabled = true;
+          keymap = {
+            preset = "cmdline";
+            "<Right>" = false;
+            "<Left>" = false;
+          };
+          completion = {
+            list.selection.preselect = false;
+            menu.auto_show.__raw = ''
+              function()
+                return vim.fn.getcmdtype() == ":"
+              end
+            '';
+            ghost_text.enabled = true;
           };
         };
         keymap = {
@@ -97,6 +119,13 @@ _: {
             "render-markdown"
           ];
           per_filetype = {
+            lua = [
+              "lazydev"
+              "lsp"
+              "path"
+              "snippets"
+              "buffer"
+            ];
             taxi = [
               "taxi"
             ];
@@ -105,6 +134,11 @@ _: {
             render-markdown = {
               name = "render-markdown";
               module = "blink.compat.source";
+            };
+            lazydev = {
+              name = "LazyDev";
+              module = "lazydev.integrations.blink";
+              score_offset = 100;
             };
             taxi = {
               name = "taxi";

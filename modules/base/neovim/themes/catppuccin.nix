@@ -22,7 +22,7 @@ _: {
             CursorLineNr = { fg = colors.pink },
             CursorLine = { bg = colors.none },
 
-            CmpItemAbbrDeprecated = { bg = colors.none, strikethrough = true, fg = colors.overay1 },
+            CmpItemAbbrDeprecated = { bg = colors.none, strikethrough = true, fg = colors.overlay1 },
             CmpItemAbbrMatch = { bg = colors.none, fg = colors.text },
             CmpItemAbbrMatchFuzzy = { link = 'CmpItemAbbrMatch' },
             CmpItemKindVariable = { bg = colors.none, fg = colors.pink },
@@ -48,17 +48,10 @@ _: {
         fzf = true;
         gitsigns = true;
         grug_far = true;
-        indent_blankline = {
-          enabled = true;
-          colored_indent_levels = false;
-        };
-        lsp_saga = true;
         mini = {
           enabled = true;
         };
         noice = true;
-        notify = true;
-        nvimtree = true;
         rainbow_delimiters = true;
         render_markdown = true;
         telescope = true;

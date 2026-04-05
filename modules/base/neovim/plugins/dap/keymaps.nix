@@ -55,7 +55,7 @@ _: {
       key = "<leader>dx";
       mode = "n";
       options = {
-        desc = "Terminate";
+        desc = "Debug Selection";
         nowait = true;
         remap = false;
       };
@@ -111,11 +111,11 @@ _: {
       };
     }
     {
-      action = "<cmd>lua require'dap'.pause().toggle()<cr>";
-      key = "<leader>dp";
+      action = "<cmd>lua require'dap'.pause()<cr>";
+      key = "<leader>dP";
       mode = "n";
       options = {
-        desc = "Toggle Pause";
+        desc = "Pause";
         nowait = true;
         remap = false;
       };

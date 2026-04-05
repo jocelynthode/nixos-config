@@ -3,7 +3,13 @@ _: {
     {
       event = "FileType";
       pattern = "helm";
-      command = "LspRestart";
+      callback.__raw = ''
+        function()
+          vim.schedule(function()
+            vim.lsp.enable("helm_ls")
+          end)
+        end
+      '';
     }
   ];
 }

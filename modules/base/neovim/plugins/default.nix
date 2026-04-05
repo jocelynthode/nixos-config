@@ -2,22 +2,24 @@ _: {
   imports = [
     ./blink-cmp
     ./bufferline
+    ./conform
     ./dap
     ./flash
     ./gitsigns
     ./grug-far
-    ./indent-blankline
+    ./lazydev
+    ./lint
     ./lsp
     ./lualine
     ./mini
+    ./neo-tree
     ./noice
-    ./none-ls
-    ./nvim-tree
     ./opencode
     ./render-mardown
     ./snacks
     ./telescope
-    ./toggleterm
+    ./todo-comments
+    ./trouble
     ./treesitter
     ./which-key
     ./yaml-schema-detect

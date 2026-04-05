@@ -38,15 +38,15 @@
         autoread = true;
         backup = false;
         clipboard = "unnamedplus";
-        cmdheight = 2;
+        cmdheight = 0;
         completeopt = [
           "menuone"
           "noselect"
         ];
-        conceallevel = 0;
+        conceallevel = 2;
         fileencoding = "utf-8";
         fixeol = true;
-        foldenable = false;
+        foldenable = true;
         hlsearch = true;
         ignorecase = true;
         mouse = "a";
@@ -62,7 +62,7 @@
         background = "dark";
         timeoutlen = 250;
         undofile = true;
-        updatetime = 300;
+        updatetime = 200;
         writebackup = false;
         expandtab = true;
         shiftwidth = 2;
@@ -77,7 +77,7 @@
         sidescrolloff = 8;
         # guifont = "JetBrainsMono NFM:h11";
         laststatus = 3;
-        inccommand = "split";
+        inccommand = "nosplit";
         synmaxcol = 250;
       };
 
@@ -87,7 +87,6 @@
         lazygit.enable = true;
         luasnip.enable = true;
         friendly-snippets.enable = true;
-        notify.enable = true;
         nui.enable = true;
         helm.enable = true;
         crates.enable = true;
