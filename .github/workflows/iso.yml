@@ -17,6 +17,6 @@ jobs:
       - name: "Build Iso"
         run: nix build '.#nixosConfigurations.iso.config.system.build.isoImage'
       - name: Release ISO
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           files: result/iso/*
