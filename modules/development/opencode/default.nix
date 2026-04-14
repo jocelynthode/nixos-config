@@ -19,11 +19,13 @@
       stylix.targets.opencode.enable = false;
       programs.opencode = {
         enable = true;
+        tui = {
+          theme = "catppuccin";
+        };
         settings = {
           model = "openai/gpt-5.3-codex";
           small_model = "openai/gpt-5.3-codex-spark";
           default_agent = "devops-orchestrator";
-          theme = "catppuccin";
           provider = {
           }
           // lib.optionalAttrs config.aspects.development.ollama.enable {
