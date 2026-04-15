@@ -30,13 +30,13 @@
 
     # Keep StateDirectory aligned with services.seerr.configDir parent while
     # system.stateVersion is still < 26.05.
-    systemd.services.seerr.serviceConfig.StateDirectory = lib.mkForce "seerr";
-
-    systemd.tmpfiles.rules = [
-      "d /scratch/jellyfin 0755 jellyfin media -"
-    ];
-
-    systemd.services.jellyfin.environment.LIBVA_DRIVER_NAME = "iHD";
+    systemd = {
+      services.seerr.serviceConfig.StateDirectory = lib.mkForce "seerr";
+      tmpfiles.rules = [
+        "d /scratch/jellyfin 0755 jellyfin media -"
+      ];
+      services.jellyfin.environment.LIBVA_DRIVER_NAME = "iHD";
+    };
 
     users.users.jellyfin = {
       isSystemUser = true;
