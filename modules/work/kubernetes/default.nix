@@ -33,6 +33,7 @@
         kubectl-cnpg
         openshift
         krew
+        velero
       ];
 
       programs.kubecolor = {
