@@ -17,6 +17,7 @@
         aspects = {
           development = {
             android.enable = lib.mkDefault true;
+            claude.enable = lib.mkDefault true;
             containers.enable = lib.mkDefault true;
             libvirt.enable = lib.mkDefault true;
             ollama.enable = lib.mkDefault false;
