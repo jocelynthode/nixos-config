@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 {
@@ -24,25 +25,33 @@
         boot = {
           supportedFilesystems = [ "btrfs" ];
           initrd = {
-            postDeviceCommands = lib.mkIf config.aspects.base.persistence.enable (
-              lib.mkBefore ''
+            systemd.extraBin = lib.mkIf config.aspects.base.persistence.enable {
+              "btrfs" = "${pkgs.btrfs-progs}/bin/btrfs";
+              "cut" = "${pkgs.coreutils}/bin/cut";
+            };
+            systemd.services.restore-root = lib.mkIf config.aspects.base.persistence.enable {
+              description = "Rollback BTRFS root subvolume to a pristine state";
+              wantedBy = [ "initrd.target" ];
+              before = [ "sysroot.mount" ];
+              requires = [ "initrd-root-device.target" ];
+              after = [ "initrd-root-device.target" ];
+              unitConfig.DefaultDependencies = "no";
+              serviceConfig.Type = "oneshot";
+              script = ''
                 mkdir -p /mnt
                 btrfs device scan
-                mount -o subvol=/ /dev/disk/by-label/${config.networking.hostName} /mnt
+                mount -t btrfs -o subvol=/ /dev/disk/by-label/${config.networking.hostName} /mnt
+                trap 'umount /mnt' EXIT
                 echo "Cleaning subvolume"
-                btrfs subvolume list -o /mnt/@ | cut -f9 -d ' ' |
+                btrfs subvolume list -o /mnt/@ | cut -f9- -d ' ' |
                 while read subvolume; do
                   btrfs subvolume delete "/mnt/$subvolume"
                 done && btrfs subvolume delete /mnt/@
                 echo "Restoring blank subvolume"
                 btrfs subvolume snapshot /mnt/@blank /mnt/@
-                umount /mnt
-              ''
-            );
-            supportedFilesystems = [ "btrfs" ];
-            luks = lib.mkIf config.aspects.base.fileSystems.btrfs.encrypted {
-              gpgSupport = true;
+              '';
             };
+            supportedFilesystems = [ "btrfs" ];
           };
         };
       };

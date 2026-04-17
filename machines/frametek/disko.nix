@@ -33,14 +33,9 @@
                   type = "luks";
                   name = "${config.networking.hostName}"; # Because current setup was not done through disko
                   settings = {
-                    gpgCard = {
-                      gracePeriod = 10; # needs some time to connect
-                      encryptedPass = ./gpg/luks-passphrase.asc;
-                      publicKey = ./gpg/public-keys.asc;
-                    };
+                    crypttabExtraOpts = [ "fido2-device=auto" "token-timeout=10" ];
                     bypassWorkqueues = true; # May improve SSD performance
                     device = "/dev/disk/by-label/${config.networking.hostName}_crypt";
-                    preLVM = true;
                     allowDiscards = true;
                   };
                   content = {

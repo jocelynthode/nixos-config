@@ -14,7 +14,6 @@
         "usbhid"
         "sd_mod"
       ];
-      # systemd.enable = true;
     };
     kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [

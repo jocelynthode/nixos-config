@@ -13,6 +13,24 @@
 4. Commit the sops changes
 5. Your vm should be reachable normally now
 
+## FIDO2 LUKS enrollment (encrypted hosts)
+
+After first boot on a host with FIDO2 LUKS encryption (e.g. `frametek`), enroll
+your YubiKeys into the LUKS header. Repeat for each key (plug in one at a time):
+
+```bash
+sudo systemd-cryptenroll --fido2-device=auto /dev/disk/by-label/<host>_crypt
+```
+
+Also enroll a recovery passphrase and store it securely (e.g. Bitwarden):
+
+```bash
+sudo systemd-cryptenroll --password /dev/disk/by-label/<host>_crypt
+```
+
+At boot, plug in either YubiKey and touch it when it flashes. If no key is
+present, it falls back to the recovery passphrase prompt.
+
 ## Rebuild
 
 To rebuild after changes have made it to the repo use:

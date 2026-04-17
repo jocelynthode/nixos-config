@@ -57,3 +57,19 @@ sops updatekeys ./secrets/**/*.yaml
 # git commit -am'Update sops keys' && git push
 
 nixos-anywhere --extra-files "$temp" --flake ".#${host}" --target-host "root@${ip}" --ssh-port "$port"
+
+echo ""
+echo "=========================================================="
+echo " Post-install: FIDO2 LUKS enrollment (if applicable)"
+echo "=========================================================="
+echo " If the host uses FIDO2 LUKS encryption, enroll your"
+echo " YubiKeys after first boot:"
+echo ""
+echo "   For each YubiKey (plug in one at a time):"
+echo "   sudo systemd-cryptenroll --fido2-device=auto \\"
+echo "     /dev/disk/by-label/${host}_crypt"
+echo ""
+echo " Also enroll a recovery passphrase:"
+echo "   sudo systemd-cryptenroll --password \\"
+echo "     /dev/disk/by-label/${host}_crypt"
+echo "=========================================================="
