@@ -39,6 +39,7 @@
         aspects = {
           graphical = {
             fingerprint.enable = lib.mkDefault false;
+            plymouth.enable = lib.mkDefault true;
             firefox.enable = lib.mkDefault true;
             hyprland.enable = lib.mkDefault false;
             niri.enable = lib.mkDefault false;
