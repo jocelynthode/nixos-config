@@ -14,6 +14,7 @@
         "usbhid"
         "sd_mod"
       ];
+      kernelModules = [ "amdgpu" ];
     };
     kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [

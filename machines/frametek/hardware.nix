@@ -14,6 +14,7 @@
         "usbhid"
         "sd_mod"
       ];
+      kernelModules = [ "i915" ];
     };
     kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [
