@@ -19,7 +19,7 @@ After first boot on a host with FIDO2 LUKS encryption (e.g. `frametek`), enroll
 your YubiKeys into the LUKS header. Repeat for each key (plug in one at a time):
 
 ```bash
-sudo systemd-cryptenroll --fido2-device=auto /dev/disk/by-label/<host>_crypt
+sudo systemd-cryptenroll --fido2-device=auto --fido2-with-client-pin=yes /dev/disk/by-label/<host>_crypt
 ```
 
 Also enroll a recovery passphrase and store it securely (e.g. Bitwarden):
