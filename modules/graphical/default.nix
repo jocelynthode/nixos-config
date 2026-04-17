@@ -59,14 +59,26 @@
 
         programs.nm-applet.enable = false;
         services.gnome.gnome-keyring.enable = true;
+        security.pam.services.greetd.enableGnomeKeyring = true;
 
         hardware.graphics = {
           enable = true;
         };
 
+        services.greetd = {
+          enable = true;
+          settings.default_session = {
+            user = lib.mkDefault "greeter";
+            environment = {
+              XKB_DEFAULT_LAYOUT = config.services.xserver.xkb.layout;
+              XKB_DEFAULT_VARIANT = config.services.xserver.xkb.variant;
+            };
+          };
+        };
+
         aspects.base.persistence.systemPaths = [
           {
-            directory = "/var/cache/tuigreet";
+            directory = "/var/lib/regreet";
             user = "greeter";
             group = "greeter";
             mode = "0755";

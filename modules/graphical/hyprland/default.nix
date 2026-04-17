@@ -51,15 +51,10 @@
       _JAVA_AWT_WM_NONREPARENTING = "1";
     };
 
-    security.pam.services.greetd.enableGnomeKeyring = true;
-
-    services.greetd = {
-      enable = true;
-      settings = {
-        default_session = {
-          command = "${lib.getExe pkgs.tuigreet} --time --asterisks --remember --cmd '${lib.getExe config.programs.uwsm.package} start -D Hyprland -- hyprland-uwsm.desktop'";
-          user = "greeter";
-        };
+    services.greetd.settings = {
+      default_session = {
+        command = "${lib.getExe pkgs.tuigreet} --time --asterisks --remember --cmd '${lib.getExe config.programs.uwsm.package} start -D Hyprland -- hyprland-uwsm.desktop'";
+        user = "greeter";
       };
     };
 

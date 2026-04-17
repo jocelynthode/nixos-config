@@ -40,8 +40,6 @@ in
         };
       };
 
-      security.pam.services.greetd.enableGnomeKeyring = true;
-
       niri-flake.cache.enable = false;
       programs.niri = {
         enable = true;
@@ -61,17 +59,11 @@ in
         LIBSEAT_BACKEND = "logind";
         NIXOS_OZONE_WL = "1";
         _JAVA_AWT_WM_NONREPARENTING = "1";
+        XKB_DEFAULT_LAYOUT = config.services.xserver.xkb.layout;
+        XKB_DEFAULT_VARIANT = config.services.xserver.xkb.variant;
       };
 
-      services.greetd = {
-        enable = true;
-        settings = {
-          default_session = {
-            command = "${lib.getExe pkgs.tuigreet} --time --asterisks --remember --cmd '${lib.getExe config.programs.uwsm.package} start -D niri -- niri-uwsm.desktop'";
-            user = "greeter";
-          };
-        };
-      };
+      programs.regreet.enable = true;
 
       home-manager.users.jocelyn =
         {
