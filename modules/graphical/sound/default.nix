@@ -26,34 +26,65 @@
       jack.enable = true;
       wireplumber = {
         enable = true;
-        configPackages = [
-          (pkgs.writeTextDir "share/wireplumber/bluetooth.lua.d/51-bluez-config.lua" ''
-            bluez_monitor.properties = {
-              ["bluez5.enable-sbc-xq"] = true,
-              ["bluez5.enable-msbc"] = true,
-              ["bluez5.enable-hw-volume"] = true,
-              ["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]",
-              ["bluez5.codecs"] = "[ sbc sbc_xq aac ldac aptx aptx_hd ]"
-            }
-          '')
-          (pkgs.writeTextDir "share/wireplumber/main.lua.d/51-disable-suspension.lua" ''
-            table.insert (alsa_monitor.rules, {
-              matches = {
-                {
-                  -- Matches all sources.
-                  { "node.name", "matches", "alsa_input.*" },
-                },
-                {
-                  -- Matches all sinks.
-                  { "node.name", "matches", "alsa_output.*" },
-                },
-              },
-              apply_properties = {
-                ["session.suspend-timeout-seconds"] = 0,  -- 0 disables suspend
-              },
-            })
-          '')
-        ];
+        extraConfig = {
+          "10-bluez-opts" = {
+            "monitor.bluez.properties" = {
+              "bluez5.enable-sbc-xq" = true;
+              "bluez5.enable-msbc" = true;
+              "bluez5.enable-hw-volume" = true;
+              # Use PipeWire's native HFP backend for proper mSBC/wideband codec negotiation
+              "bluez5.hfphsp-backend" = "native";
+              # Only override roles that differ from WirePlumber defaults.
+              # a2dp_sink lets the computer receive A2DP audio from the phone (BT speaker role).
+              # hfp_ag/hsp_ag (phone gateway roles) are intentionally omitted.
+              "bluez5.roles" = [
+                "hsp_hs"
+                "hfp_hf"
+                "a2dp_sink"
+                "a2dp_source"
+              ];
+              # Do NOT set bluez5.codecs: listing codecs restricts negotiation to only those
+              # listed. enable-sbc-xq and enable-msbc above are sufficient to enable the
+              # non-default codecs; everything else (AAC, LDAC, aptX, aptX HD) is on by default.
+            };
+          };
+          # Auto-connect A2DP sink + HFP when phone pairs, and allow BT source nodes
+          # to auto-link to the default audio output (needed for phone media audio playback)
+          "12-bluez-rules" = {
+            "monitor.bluez.rules" = [
+              {
+                matches = [ { "device.name" = "~bluez_card.*"; } ];
+                apply_properties = {
+                  # Automatically connect A2DP sink (phone→computer audio) and HFP HF (calls)
+                  "bluez5.auto-connect" = [
+                    "a2dp_sink"
+                    "hfp_hf"
+                  ];
+                };
+              }
+              {
+                matches = [ { "node.name" = "~bluez_input.*"; } ];
+                apply_properties = {
+                  # Allow WirePlumber to route incoming BT audio to the default output
+                  "node.autoconnect" = true;
+                };
+              }
+            ];
+          };
+          "11-no-suspend" = {
+            "monitor.alsa.rules" = [
+              {
+                matches = [
+                  { "node.name" = "~alsa_input.*"; }
+                  { "node.name" = "~alsa_output.*"; }
+                ];
+                apply_properties = {
+                  "session.suspend-timeout-seconds" = 0;
+                };
+              }
+            ];
+          };
+        };
       };
     };
 
