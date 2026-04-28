@@ -24,7 +24,6 @@
           PartOf = [ "graphical-session.target" ];
           Requires = [
             "tray.target"
-            "noctalia-shell.service"
           ];
         };
         Service = {

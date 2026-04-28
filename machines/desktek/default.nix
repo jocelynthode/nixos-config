@@ -28,6 +28,21 @@
       sway.enable = false;
       niri = {
         enable = true;
+        outputs = {
+          "DP-1" = {
+            variable-refresh-rate = true;
+            position = {
+              x = 1920;
+              y = 0;
+            };
+          };
+          "HDMI-A-1" = {
+            position = {
+              x = 0;
+              y = 0;
+            };
+          };
+        };
         workspaces = {
           "01" = {
             name = "browser";

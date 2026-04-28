@@ -24,6 +24,10 @@ in
         };
       };
     };
+    outputs = lib.mkOption {
+      default = { };
+      description = "Per-output niri settings (e.g. variable-refresh-rate).";
+    };
   };
 
   config = lib.mkIf cfg.enable (
@@ -104,7 +108,7 @@ in
                   skip-at-startup = true;
                   hide-not-bound = true;
                 };
-                inherit (osConfig.aspects.graphical.niri) workspaces;
+                inherit (osConfig.aspects.graphical.niri) workspaces outputs;
                 spawn-at-startup = [
                   {
                     argv = [ "noctalia-shell" ];
