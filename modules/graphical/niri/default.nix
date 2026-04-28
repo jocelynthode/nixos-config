@@ -107,6 +107,9 @@ in
                 inherit (osConfig.aspects.graphical.niri) workspaces;
                 spawn-at-startup = [
                   {
+                    argv = [ "noctalia-shell" ];
+                  }
+                  {
                     argv = uwsmApp ++ [
                       "kitty"
                     ];
