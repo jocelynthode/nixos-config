@@ -48,29 +48,6 @@
               # non-default codecs; everything else (AAC, LDAC, aptX, aptX HD) is on by default.
             };
           };
-          # Auto-connect A2DP sink + HFP when phone pairs, and allow BT source nodes
-          # to auto-link to the default audio output (needed for phone media audio playback)
-          "12-bluez-rules" = {
-            "monitor.bluez.rules" = [
-              {
-                matches = [ { "device.name" = "~bluez_card.*"; } ];
-                apply_properties = {
-                  # Automatically connect A2DP sink (phone→computer audio) and HFP HF (calls)
-                  "bluez5.auto-connect" = [
-                    "a2dp_sink"
-                    "hfp_hf"
-                  ];
-                };
-              }
-              {
-                matches = [ { "node.name" = "~bluez_input.*"; } ];
-                apply_properties = {
-                  # Allow WirePlumber to route incoming BT audio to the default output
-                  "node.autoconnect" = true;
-                };
-              }
-            ];
-          };
           "11-no-suspend" = {
             "monitor.alsa.rules" = [
               {
