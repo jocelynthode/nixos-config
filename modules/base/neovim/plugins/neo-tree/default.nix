@@ -15,6 +15,12 @@ _: {
         "qf"
       ];
       filesystem = {
+        filtered_items = {
+          visible = true;
+          hide_dotfiles = true;
+          hide_gitignored = true;
+          hide_ignored = true;
+        };
         bind_to_cwd = false;
         follow_current_file.enabled = true;
         use_libuv_file_watcher = true;
