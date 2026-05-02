@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  pkgs,
+  pkgs-stable,
   ...
 }:
 {
@@ -13,7 +13,7 @@
     ];
 
     home-manager.users.jocelyn = _: {
-      home.packages = with pkgs; [ bottles ];
+      home.packages = with pkgs-stable; [ bottles ];
     };
   };
 }

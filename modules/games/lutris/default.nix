@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  pkgs,
+  pkgs-stable,
   ...
 }:
 {
@@ -15,7 +15,7 @@
     ];
 
     home-manager.users.jocelyn = _: {
-      home.packages = with pkgs; [ lutris ];
+      home.packages = with pkgs-stable; [ lutris ];
     };
   };
 }
