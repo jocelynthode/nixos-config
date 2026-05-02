@@ -48,6 +48,7 @@ in
             };
 
             bar = {
+              floating = true;
               backgroundOpacity = 0.7; # default: 0.93
               capsuleOpacity = 0.7; # default: 1
               marginHorizontal = 12; # default: 4
@@ -261,13 +262,36 @@ in
             sessionMenu = {
               largeButtonsLayout = "grid"; # default: "single-row"
               powerOptions = [
-                { action = "lock"; }
-                { action = "suspend"; }
-                { action = "hibernate"; }
-                { action = "reboot"; }
-                { action = "logout"; }
-                { action = "shutdown"; }
-                # default also includes rebootToUefi
+                {
+                  action = "lock";
+                  enabled = true;
+                  keybind = "1";
+                }
+                {
+                  action = "suspend";
+                  enabled = true;
+                  keybind = "2";
+                }
+                {
+                  action = "hibernate";
+                  enabled = true;
+                  keybind = "3";
+                }
+                {
+                  action = "reboot";
+                  enabled = true;
+                  keybind = "4";
+                }
+                {
+                  action = "logout";
+                  enabled = true;
+                  keybind = "5";
+                }
+                {
+                  action = "shutdown";
+                  enabled = true;
+                  keybind = "6";
+                }
               ];
             };
 
