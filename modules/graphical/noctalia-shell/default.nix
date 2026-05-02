@@ -48,7 +48,7 @@ in
             };
 
             bar = {
-              floating = true;
+              barType = "floating";
               backgroundOpacity = 0.7; # default: 0.93
               capsuleOpacity = 0.7; # default: 1
               marginHorizontal = 12; # default: 4
