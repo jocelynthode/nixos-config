@@ -39,6 +39,8 @@ in
 
     networking.firewall.allowedTCPPorts = [ 8080 ];
 
+    catppuccin.home-assistant.enable = false;
+
     services = {
       esphome = {
         enable = true;
