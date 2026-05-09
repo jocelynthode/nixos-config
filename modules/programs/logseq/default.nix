@@ -14,6 +14,7 @@
 
     aspects.base.persistence.homePaths = [
       ".local/share/logseq"
+      ".config/Logseq/"
     ];
   };
 }
