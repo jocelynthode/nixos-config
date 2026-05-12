@@ -75,6 +75,7 @@
               format = {
                 enable = true;
                 singleQuote = false;
+                printWidth = 9999;
               };
             };
             filetypes = [ "yaml" ];
