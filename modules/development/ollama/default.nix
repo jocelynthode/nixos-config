@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  pkgs,
+  pkgs-stable,
   ...
 }:
 {
@@ -13,7 +13,7 @@
     # ];
     services.ollama = {
       enable = true;
-      package = pkgs.ollama-rocm;
+      package = pkgs-stable.ollama-rocm;
       rocmOverrideGfx = "11.0.0";
       environmentVariables = {
         OLLAMA_CONTEXT_LENGTH = "32768";
