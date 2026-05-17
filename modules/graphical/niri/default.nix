@@ -146,6 +146,12 @@ in
                 };
                 input = {
                   focus-follows-mouse.enable = true;
+                  keyboard = {
+                    xkb = {
+                      layout = "fr,us";
+                      variant = "ergo-l,";
+                    };
+                  };
                 };
                 gestures = {
                   hot-corners.enable = false;

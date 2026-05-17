@@ -15,9 +15,8 @@
         directory = ".kube";
         mode = "0700";
       }
-      {
-        directory = ".krew";
-      }
+      ".krew"
+      ".config/helm"
     ];
 
     home-manager.users.jocelyn = {
