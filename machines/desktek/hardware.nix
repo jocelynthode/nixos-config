@@ -21,8 +21,7 @@
       # "resume_offset=533881"
       "mitigations=off" # disable CPU security mitigations for performance
       "preempt=full" # full kernel preemption for lower input latency
-      "video=DP-1:2560x1440@144"
-      "video=HDMI-A-1:1920x1080@60"
+      "amdgpu.sg_display=0" # prevent GPU hang/red screen on DPMS resume when HDMI monitor is physically off
     ];
     kernelModules = [ "kvm-amd" ];
     kernel.sysctl = {
