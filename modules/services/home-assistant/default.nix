@@ -23,6 +23,11 @@ in
       {
         directory = "/var/lib/mosquitto";
       }
+      {
+        directory = "/var/lib/esphome";
+        user = "esphome";
+        group = "esphome";
+      }
     ];
 
     services.nginx.virtualHosts."hass.tekila.ovh" = mkAuthProxy {
