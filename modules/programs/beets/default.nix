@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  pkgs-stable,
+  pkgs,
   ...
 }:
 {
@@ -15,7 +15,7 @@
     home-manager.users.jocelyn = _: {
       programs.beets = {
         enable = true;
-        package = pkgs-stable.beets;
+        package = pkgs.beets;
         settings = {
           directory = "/data/media/music";
           library = "/home/jocelyn/.local/share/beets/library.db";
