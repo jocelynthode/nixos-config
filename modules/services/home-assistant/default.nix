@@ -88,6 +88,7 @@ in
             log_namespaced_levels = {
               "z2m:mqtt" = "warning";
             };
+            last_seen = "ISO_8601_local";
           };
           availability = {
             enabled = true;
