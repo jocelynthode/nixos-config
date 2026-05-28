@@ -89,6 +89,15 @@ in
               "z2m:mqtt" = "warning";
             };
           };
+          availability = {
+            enabled = true;
+            active = {
+              timeout = 10;
+            };
+            passive = {
+              timeout = 1500;
+            };
+          };
           device_options = {
             retain = true;
           };
