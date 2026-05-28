@@ -108,7 +108,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     authentik-nix = {
-      url = "github:nix-community/authentik-nix/version/2026.2.1";
+      url = "github:nix-community/authentik-nix/version/2026.2.3";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-compat.follows = "flake-compat";
