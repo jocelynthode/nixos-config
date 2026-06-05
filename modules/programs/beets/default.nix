@@ -98,7 +98,7 @@
             };
           };
           deezer = {
-            source_weight = 0.1;
+            data_source_mismatch_penalty = 0.1;
           };
         };
       };
