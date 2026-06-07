@@ -38,13 +38,14 @@
       }:
       {
         catppuccin = {
+          enable = true;
+          autoEnable = false;
           flavor = "mocha";
           accent = "pink";
         };
 
         gtk = {
           enable = true;
-          gtk4.theme = null;
         };
 
         dconf.settings = lib.mkIf (osConfig.aspects.theme == "dark") {

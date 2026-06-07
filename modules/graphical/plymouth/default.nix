@@ -8,6 +8,7 @@
 
   config = lib.mkIf config.aspects.graphical.plymouth.enable {
     stylix.targets.plymouth.enable = false;
+    catppuccin.plymouth.enable = true;
 
     boot = {
       plymouth.enable = true;

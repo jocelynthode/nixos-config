@@ -165,6 +165,7 @@
           ];
 
           nixpkgs.config.permittedInsecurePackages = [
+            "electron-39.8.10"
             "electron-36.9.5"
             "jitsi-meet-1.0.8792"
             "aspnetcore-runtime-6.0.36"
@@ -176,6 +177,7 @@
 
           catppuccin = {
             enable = true;
+            autoEnable = false;
             flavor = "mocha";
             accent = "pink";
           };

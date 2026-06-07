@@ -1,5 +1,6 @@
 {
   config,
+  # helix-notes,
   lib,
   pkgs,
   ...
@@ -10,6 +11,7 @@
   config = lib.mkIf config.aspects.programs.logseq.enable {
     environment.systemPackages = with pkgs; [
       logseq
+      # (helix-notes.packages.${pkgs.stdenv.hostPlatform.system}.default)
     ];
 
     aspects.base.persistence.homePaths = [
