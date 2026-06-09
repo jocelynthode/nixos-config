@@ -27,23 +27,23 @@ _: {
         workspaces = {
           "01" = {
             name = "browser";
-            open-on-output = "DP-3";
+            open-on-output = "DP-1";
           };
           "02" = {
             name = "terminal";
-            open-on-output = "DP-3";
+            open-on-output = "DP-1";
           };
           "03" = {
             name = "mail";
-            open-on-output = "DP-3";
+            open-on-output = "DP-1";
           };
           "04" = {
             name = "game";
-            open-on-output = "DP-3";
+            open-on-output = "DP-1";
           };
           "05" = {
             name = "extra";
-            open-on-output = "DP-3";
+            open-on-output = "DP-1";
           };
           "06" = {
             name = "secondary";
@@ -66,11 +66,11 @@ _: {
       hyprland = {
         enable = false;
         workspace = [
-          "1,monitor:DP-4,default:true"
-          "2,monitor:DP-4"
-          "3,monitor:DP-4"
-          "4,monitor:DP-4"
-          "5,monitor:DP-4"
+          "1,monitor:DP-1,default:true"
+          "2,monitor:DP-1"
+          "3,monitor:DP-1"
+          "4,monitor:DP-1"
+          "5,monitor:DP-1"
           "6,monitor:eDP-1,default:true"
           "7,monitor:eDP-1"
           "8,monitor:eDP-1"
@@ -79,7 +79,7 @@ _: {
         ];
         monitor = [
           ",highres,auto,1.175"
-          "DP-4,highres,auto,1.5"
+          "DP-1,highres,auto,1.5"
         ];
       };
       sway.enable = false;
@@ -106,17 +106,17 @@ _: {
                 scale = 1.566667;
               }
               {
-                criteria = "DP-4";
+                criteria = "DP-1";
                 position = "0,1504";
                 scale = 1.5;
               }
             ];
             exec = [
-              "niri msg action move-workspace-to-monitor --reference browser DP-4"
-              "niri msg action move-workspace-to-monitor --reference terminal DP-4"
-              "niri msg action move-workspace-to-monitor --reference mail DP-4"
-              "niri msg action move-workspace-to-monitor --reference game DP-4"
-              "niri msg action move-workspace-to-monitor --reference extra DP-4"
+              "niri msg action move-workspace-to-monitor --reference browser DP-1"
+              "niri msg action move-workspace-to-monitor --reference terminal DP-1"
+              "niri msg action move-workspace-to-monitor --reference mail DP-1"
+              "niri msg action move-workspace-to-monitor --reference game DP-1"
+              "niri msg action move-workspace-to-monitor --reference extra DP-1"
               "niri msg action move-workspace-to-monitor --reference secondary eDP-1"
               "niri msg action move-workspace-to-monitor --reference chat eDP-1"
               "niri msg action move-workspace-to-monitor --reference music eDP-1"
