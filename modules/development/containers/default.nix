@@ -45,6 +45,9 @@
     };
 
     users.users.jocelyn = {
+      extraGroups = [
+        "podman"
+      ];
       subUidRanges = [
         {
           startUid = 100000;
