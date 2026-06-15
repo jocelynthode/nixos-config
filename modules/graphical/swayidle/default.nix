@@ -17,17 +17,17 @@
           enable = true;
           systemdTargets = [ "graphical-session.target" ];
           events = {
-            "before-sleep" = "${lib.getExe config.programs.noctalia-shell.package} ipc call lockScreen lock";
-            "lock" = "${lib.getExe config.programs.noctalia-shell.package} ipc call lockScreen lock";
+            "before-sleep" = "${lib.getExe config.programs.noctalia.package} ipc call lockScreen lock";
+            "lock" = "${lib.getExe config.programs.noctalia.package} ipc call lockScreen lock";
           };
           timeouts = [
             {
               timeout = 600;
-              command = "${lib.getExe config.programs.noctalia-shell.package} ipc call lockScreen lock";
+              command = "${lib.getExe config.programs.noctalia.package} ipc call lockScreen lock";
             }
             {
               timeout = 610;
-              command = "${lib.getExe config.programs.noctalia-shell.package} ipc call volume muteInput";
+              command = "${lib.getExe config.programs.noctalia.package} ipc call volume muteInput";
             }
             {
               timeout = 700;

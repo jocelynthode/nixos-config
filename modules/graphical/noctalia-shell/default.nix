@@ -34,7 +34,7 @@ in
 
         stylix.targets.noctalia-shell.enable = false;
 
-        programs.noctalia-shell = {
+        programs.noctalia = {
           enable = true;
 
           settings = {
@@ -245,12 +245,6 @@ in
             };
 
             osd = {
-              enabledTypes = [
-                0
-                1
-                2
-                null
-              ]; # default: [0, 1, 2]
               monitors = [
                 "eDP-1"
                 "DP-1"
