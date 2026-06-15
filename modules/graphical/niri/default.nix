@@ -3,6 +3,7 @@
   lib,
   niri,
   pkgs,
+  pkgs-stable,
   ...
 }:
 let
@@ -67,7 +68,11 @@ in
         XKB_DEFAULT_VARIANT = config.services.xserver.xkb.variant;
       };
 
-      programs.regreet.enable = true;
+      programs.regreet = {
+        enable = true;
+        # TODO cleanup when fixed https://github.com/rharish101/ReGreet/issues/165
+        package = pkgs-stable.regreet;
+      };
 
       home-manager.users.jocelyn =
         {
@@ -85,10 +90,9 @@ in
           programs.niri = {
             settings =
               let
-                noctaliaIpc = [
-                  "noctalia-shell"
-                  "ipc"
-                  "call"
+                noctaliaMsg = [
+                  "noctalia"
+                  "msg"
                 ];
                 uwsmApp = [
                   "uwsm"
@@ -111,7 +115,7 @@ in
                 inherit (osConfig.aspects.graphical.niri) workspaces outputs;
                 spawn-at-startup = [
                   {
-                    argv = [ "noctalia-shell" ];
+                    argv = [ "noctalia" ];
                   }
                   {
                     argv = uwsmApp ++ [
@@ -288,9 +292,9 @@ in
                     (lib.getExe pkgs.kitty)
                   ];
 
-                  "Mod+n".action.spawn = noctaliaIpc ++ [
+                  "Mod+n".action.spawn = noctaliaMsg ++ [
+                    "panel-toggle"
                     "launcher"
-                    "toggle"
                   ];
 
                   "Mod+q".action.focus-workspace = "browser";
@@ -344,7 +348,7 @@ in
                   # "MouseForward" = {
                   #   repeat = false;
                   #   action = {
-                  #     spawn = noctaliaIpc ++ [
+                  #     spawn = noctaliaMsg ++ [
                   #       "volume"
                   #       "muteInput"
                   #     ];
@@ -376,49 +380,46 @@ in
                     (lib.getExe pkgs.wofi-ykman)
                   ];
 
-                  "Mod+e".action.spawn = noctaliaIpc ++ [
-                    "sessionMenu"
+                  "Mod+e".action.spawn = noctaliaMsg ++ [
+                    "panel-toggle"
+                    "session"
+                  ];
+
+                  "XF86AudioMute".action.spawn = noctaliaMsg ++ [
+                    "mic-mute"
+                  ];
+
+                  "XF86AudioPlay".action.spawn = noctaliaMsg ++ [
+                    "media"
                     "toggle"
                   ];
 
-                  "XF86AudioMute".action.spawn = noctaliaIpc ++ [
-                    "volume"
-                    "muteInput"
+                  "XF86AudioRaiseVolume".action.spawn = noctaliaMsg ++ [
+                    "volume-up"
                   ];
 
-                  "XF86AudioPlay".action.spawn = noctaliaIpc ++ [
-                    "media"
-                    "playPause"
+                  "XF86AudioLowerVolume".action.spawn = noctaliaMsg ++ [
+                    "volume-down"
                   ];
 
-                  "XF86AudioRaiseVolume".action.spawn = noctaliaIpc ++ [
-                    "volume"
-                    "increase"
-                  ];
-
-                  "XF86AudioLowerVolume".action.spawn = noctaliaIpc ++ [
-                    "volume"
-                    "decrease"
-                  ];
-
-                  "XF86AudioPrev".action.spawn = noctaliaIpc ++ [
+                  "XF86AudioPrev".action.spawn = noctaliaMsg ++ [
                     "media"
                     "previous"
                   ];
 
-                  "XF86AudioNext".action.spawn = noctaliaIpc ++ [
+                  "XF86AudioNext".action.spawn = noctaliaMsg ++ [
                     "media"
                     "next"
                   ];
 
-                  "XF86MonBrightnessUp".action.spawn = noctaliaIpc ++ [
-                    "brightness"
-                    "increase"
+                  "XF86MonBrightnessUp".action.spawn = noctaliaMsg ++ [
+                    "brightness-up"
+                    "all"
                   ];
 
-                  "XF86MonBrightnessDown".action.spawn = noctaliaIpc ++ [
-                    "brightness"
-                    "decrease"
+                  "XF86MonBrightnessDown".action.spawn = noctaliaMsg ++ [
+                    "brightness-down"
+                    "all"
                   ];
 
                 };

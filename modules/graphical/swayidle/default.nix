@@ -17,17 +17,17 @@
           enable = true;
           systemdTargets = [ "graphical-session.target" ];
           events = {
-            "before-sleep" = "${lib.getExe config.programs.noctalia.package} ipc call lockScreen lock";
-            "lock" = "${lib.getExe config.programs.noctalia.package} ipc call lockScreen lock";
+            "before-sleep" = "${lib.getExe config.programs.noctalia.package} msg session lock";
+            "lock" = "${lib.getExe config.programs.noctalia.package} msg session lock";
           };
           timeouts = [
             {
               timeout = 600;
-              command = "${lib.getExe config.programs.noctalia.package} ipc call lockScreen lock";
+              command = "${lib.getExe config.programs.noctalia.package} msg session lock";
             }
             {
               timeout = 610;
-              command = "${lib.getExe config.programs.noctalia.package} ipc call volume muteInput";
+              command = "${lib.getExe config.programs.noctalia.package} msg mic-mute";
             }
             {
               timeout = 700;
@@ -35,14 +35,14 @@
                 if osConfig.aspects.graphical.hyprland.enable then
                   "hyprctl dispatch dpms off"
                 else if osConfig.aspects.graphical.niri.enable then
-                  "${lib.getExe config.programs.niri.package} msg action power-off-monitors"
+                  "${lib.getExe config.programs.niri.package} msg dpms-off"
                 else
                   "${pkgs.sway}/bin/swaymsg \"output * dpms off\"";
               resumeCommand =
                 if osConfig.aspects.graphical.hyprland.enable then
                   "hyprctl dispatch dpms on"
                 else if osConfig.aspects.graphical.niri.enable then
-                  "${lib.getExe config.programs.niri.package} msg action power-on-monitors"
+                  "${lib.getExe config.programs.niri.package} msg dpms-on"
                 else
                   "${pkgs.sway}/bin/swaymsg \"output * dpms on\"";
             }

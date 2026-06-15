@@ -135,13 +135,13 @@
             "$mod" = "SUPER";
             bind = [
               "$mod,Return,exec,uwsm app -- ${pkgs.kitty}/bin/kitty"
-              "$mod,n,exec,noctalia-shell ipc call launcher toggle"
+              "$mod,n,exec,noctalia ipc call launcher toggle"
               "$mod,a,exec,${pkgs.wofi-ykman}/bin/wofi-ykman"
-              "$mod,e,exec,noctalia-shell ipc call sessionMenu toggle"
-              ",XF86AudioMute,exec,noctalia-shell ipc call volume muteInput"
-              ",XF86AudioPlay,exec,noctalia-shell ipc call media playPause"
-              ",XF86MonBrightnessUp,exec,noctalia-shell ipc call brightness increase"
-              ",XF86MonBrightnessDown,exec,noctalia-shell ipc call brightness decrease"
+              "$mod,e,exec,noctalia ipc call sessionMenu toggle"
+              ",XF86AudioMute,exec,noctalia ipc call volume muteInput"
+              ",XF86AudioPlay,exec,noctalia ipc call media playPause"
+              ",XF86MonBrightnessUp,exec,noctalia ipc call brightness increase"
+              ",XF86MonBrightnessDown,exec,noctalia ipc call brightness decrease"
               ",Print,exec,${pkgs.hyprshot}/bin/hyprshot --clipboard-only -m region"
               "ALT,Print,exec,${pkgs.hyprshot}/bin/hyprshot --clipboard-only -m active"
               "$mod, t, togglefloating"
@@ -178,8 +178,8 @@
               "$mod,space,exec,hyprctl switchxkblayout current next"
             ];
             binde = [
-              ",XF86AudioRaiseVolume,exec,noctalia-shell ipc call volume increase"
-              ",XF86AudioLowerVolume,exec,noctalia-shell ipc call volume decrease"
+              ",XF86AudioRaiseVolume,exec,noctalia ipc call volume increase"
+              ",XF86AudioLowerVolume,exec,noctalia ipc call volume decrease"
             ];
             blurls = "wofi";
             windowrule = [

@@ -53,7 +53,7 @@
             terminal.enable = lib.mkDefault true;
             theme.enable = lib.mkDefault true;
             xdg.enable = lib.mkDefault true;
-            noctalia-shell.enable = lib.mkDefault true;
+            noctalia.enable = lib.mkDefault true;
           };
         };
 
