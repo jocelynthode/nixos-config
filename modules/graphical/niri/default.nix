@@ -114,9 +114,9 @@ in
                 };
                 inherit (osConfig.aspects.graphical.niri) workspaces outputs;
                 spawn-at-startup = [
-                  {
-                    argv = [ "noctalia" ];
-                  }
+                  # {
+                  #   argv = [ "noctalia" ];
+                  # }
                   {
                     argv = uwsmApp ++ [
                       "kitty"
@@ -213,6 +213,16 @@ in
                     open-on-workspace = "terminal";
                     open-maximized = true;
                   }
+                  # {
+                  #   matches = [
+                  #     {
+                  #       app-id = "kitty";
+                  #     }
+                  #   ];
+                  #   background-effect = {
+                  #     blur = true;
+                  #   };
+                  # }
                   {
                     matches = [
                       {
@@ -236,6 +246,9 @@ in
                     ];
                     open-on-workspace = "music";
                     open-maximized = true;
+                    # background-effect = {
+                    #   blur = true;
+                    # };
                   }
                   {
                     matches = [

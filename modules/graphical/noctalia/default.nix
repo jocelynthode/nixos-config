@@ -23,7 +23,7 @@ in
     home-manager.sharedModules = [ noctalia.homeModules.default ];
 
     home-manager.users.jocelyn =
-      { osConfig, ... }:
+      { osConfig, config, ... }:
       {
         home.file.".cache/noctalia/wallpapers.json" = {
           text = builtins.toJSON { defaultWallpaper = osConfig.stylix.image; };
@@ -38,6 +38,9 @@ in
 
         programs.noctalia = {
           enable = true;
+          systemd = {
+            enable = true;
+          };
 
           settings = {
             audio = {
@@ -46,7 +49,7 @@ in
 
             bar = {
               widgets = {
-                background_opacity = 0.65;
+                background_opacity = 0.60;
                 center = [
                   "media"
                   "date"
@@ -84,6 +87,10 @@ in
               address = "Fribourg, Switzerland";
             };
 
+            nightlight = {
+              enabled = true;
+            };
+
             osd = {
               position = "top_right";
             };
@@ -91,6 +98,9 @@ in
             shell = {
               font_family = osConfig.aspects.base.fonts.regular.family;
               settings_show_advanced = true;
+              polkit_agent = true;
+              launch_apps_as_systemd_services = config.programs.noctalia.systemd.enable;
+              clipboard_enabled = false;
 
               animation = {
                 speed = 1.50;
@@ -122,6 +132,9 @@ in
             };
 
             widget = {
+              workspaces = {
+                display = "none";
+              };
               Disk = {
                 stat = "disk_pct";
                 type = "sysmon";
