@@ -26,6 +26,7 @@ let
       '';
       interactiveShellInit = ''
         any-nix-shell fish | source
+        devenv hook fish | source
         bind --mode default \ee kitty_scrollback_edit_command_buffer
         bind --mode default \ev kitty_scrollback_edit_command_buffer
         bind --mode visual \ee kitty_scrollback_edit_command_buffer
