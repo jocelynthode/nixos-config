@@ -33,6 +33,7 @@
         openshift
         krew
         velero
+        stern
       ];
 
       programs.kubecolor = {
