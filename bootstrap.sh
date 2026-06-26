@@ -66,10 +66,10 @@ echo " If the host uses FIDO2 LUKS encryption, enroll your"
 echo " YubiKeys after first boot:"
 echo ""
 echo "   For each YubiKey (plug in one at a time):"
-echo "   sudo systemd-cryptenroll --fido2-device=auto --fido2-with-client-pin=yes \\"
+echo '   sudo systemd-cryptenroll --fido2-device=auto --fido2-with-client-pin=yes \'
 echo "     /dev/disk/by-label/${host}_crypt"
 echo ""
 echo " Also enroll a recovery passphrase:"
-echo "   sudo systemd-cryptenroll --password \\"
+echo '   sudo systemd-cryptenroll --password \'
 echo "     /dev/disk/by-label/${host}_crypt"
 echo "=========================================================="

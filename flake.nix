@@ -39,8 +39,7 @@
       url = "github:nixos/nixos-hardware";
     };
     noctalia = {
-      url = "github:noctalia-dev/noctalia";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:noctalia-dev/noctalia/cachix";
     };
     impermanence = {
       url = "github:nix-community/impermanence";

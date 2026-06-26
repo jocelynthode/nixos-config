@@ -33,7 +33,10 @@
                   type = "luks";
                   name = "${config.networking.hostName}"; # Because current setup was not done through disko
                   settings = {
-                    crypttabExtraOpts = [ "fido2-device=auto" "token-timeout=10" ];
+                    crypttabExtraOpts = [
+                      "fido2-device=auto"
+                      "token-timeout=10"
+                    ];
                     bypassWorkqueues = true; # May improve SSD performance
                     device = "/dev/disk/by-label/${config.networking.hostName}_crypt";
                     allowDiscards = true;

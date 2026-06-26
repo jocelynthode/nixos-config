@@ -1,0 +1,26 @@
+name: Cachix
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        host:
+          - desktek
+          - frametek
+          - servetek
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: cachix/install-nix-action@v31
+      - uses: cachix/cachix-action@v15
+        with:
+          name: tekila
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+      - name: Build ${{ matrix.host }}
+        run: nix build '.#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel'
