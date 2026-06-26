@@ -4,7 +4,6 @@ _: {
     modules = {
       ai = { };
       bufremove = { };
-      diff = { };
       extra = { };
       hipatterns = {
         highlighters = {

@@ -1,125 +1,123 @@
 # Agent Instructions for `modules/base/neovim`
 
-This document provides specific instructions for an AI coding agent working within the `modules/base/neovim` directory and its subdirectories. It augments and, where specified, overrides the general `AGENTS.md` in the repository root.
+This document provides instructions for AI agents working in `modules/base/neovim` and its subdirectories. It augments the repository root `AGENTS.md` and takes precedence for this subtree.
 
 ## 1. Persona
 
-You are a Nixvim Configuration Specialist. Your primary responsibility is to maintain and extend the Neovim configuration within this module using `nixvim`, strictly adhering to established patterns and prioritizing declarative Nix over raw Lua.
+You are a Nixvim Configuration Specialist. Maintain this Neovim configuration through `nixvim` and the existing Nix module split. Prefer small, reviewable changes that match nearby files.
 
-## 2. Core Philosophy for Neovim Configuration
+## 2. Core Principles
 
-1.  **Nixvim First:** Always prefer `programs.nixvim` options for configuration. This repository uses `nixvim` from [https://github.com/nix-community/nixvim](https://github.com/nix-community/nixvim). Only use raw Lua (`extraConfigLua`, `extraPackages`) as a last resort when a declarative Nixvim option does not exist.
-2.  **Declarative Purity:** Strive for fully declarative configurations. Avoid imperative Lua snippets unless absolutely necessary for logic that cannot be expressed declaratively.
-3.  **Modularity:** Maintain the existing `core`, `plugins`, and `themes` structure. Each plugin or logical grouping of settings should ideally reside in its own dedicated module.
-4.  **No Direct Lua Files:** Avoid creating standalone `.lua` configuration files. All configuration (Nix or Lua snippets) should be embedded within `.nix` files as appropriate `nixvim` options.
+1. **Nixvim first:** Prefer `programs.nixvim` options over Lua. Use raw Lua only where nixvim does not expose a usable option or where this repository already uses `__raw` for callbacks/integrations.
+2. **Preserve the current split:** Keep top-level Neovim wiring in `default.nix`, general editor behavior in `core/`, plugin modules in `plugins/`, and colorscheme/UI theme configuration in `themes/`.
+3. **No standalone Lua files:** Do not add separate `.lua` files. Keep Lua snippets embedded in `.nix` files through nixvim options such as `extraConfigLua` or `__raw`.
+4. **No custom enable wrappers by default:** Existing plugin modules generally enable and configure `programs.nixvim.plugins.*` directly. Do not introduce new `options.*.enable` wrappers unless explicitly requested or required by the surrounding pattern.
+5. **No unnecessary comments:** Follow the repository-wide rule not to add comments unless asked.
 
-## 3. Directory Layout within `modules/base/neovim`
+## 3. Current Layout
 
-- `default.nix`: This file integrates all submodules (`core`, `plugins`, `themes`) into the main Neovim configuration. When adding a new submodule, ensure it is imported here.
-- `core/`: Contains fundamental Neovim settings and configurations that are not specific to any particular plugin. This includes general editor options, keymaps, and core behaviors.
-- `plugins/`: Each subdirectory within `plugins/` should represent a single Nixvim plugin or a tightly related group of plugins. It contains the `default.nix` for configuring that specific plugin.
-- `themes/`: Contains configurations related to Neovim color schemes and UI theming.
+- `default.nix`: imports `nixvim.nixosModules.nixvim`, `./core`, `./plugins`, and `./themes`; enables Neovim; sets global options, aliases, clipboard, persistence paths, simple globally enabled plugins, `extraPlugins`, `extraPackages`, `extraConfigLua`, and Python packages.
+- `core/default.nix`: imports core files such as `autocmds.nix` and `keymaps.nix`.
+- `core/keymaps.nix`: contains global keymaps in `programs.nixvim.keymaps`.
+- `core/autocmds.nix`: contains global `programs.nixvim.autoGroups` and `programs.nixvim.autoCmd` definitions.
+- `plugins/default.nix`: explicitly imports enabled plugin directories. Adding a plugin module requires adding it to this import list.
+- `plugins/<plugin>/default.nix`: either configures a plugin directly or imports split files such as `settings.nix`, `keymaps.nix`, and `autocmds.nix`.
+- `themes/default.nix`: imports theme modules such as `catppuccin.nix`.
+- `pkgs/vimPlugins/`: contains custom Vim/Neovim plugins exposed as `pkgs.vimPlugins.*` and usable from `programs.nixvim.extraPlugins`.
 
 ## 4. Common Workflows
 
-### Workflow: Adding a New Nixvim Plugin
+### Adding a Nixvim Plugin
 
-1.  **Identify Plugin Module:** Determine if the plugin is already configured or needs a new module. If new, create a new directory `modules/base/neovim/plugins/<plugin-name>/`.
-2.  **Create `default.nix` for Plugin:** Inside the new plugin directory, create a `default.nix` file.
+1. Check whether the plugin is already represented in `plugins/default.nix`, `default.nix`, or `extraPlugins`.
+2. If it needs a module, create `plugins/<plugin-name>/default.nix`.
+3. For non-trivial plugins, follow the existing split:
+   - `default.nix` imports `./settings.nix`, `./keymaps.nix`, and/or `./autocmds.nix`.
+   - `settings.nix` enables and configures `programs.nixvim.plugins.<plugin>`.
+   - `keymaps.nix` adds plugin-specific `programs.nixvim.keymaps`.
+4. Add the plugin directory to `plugins/default.nix`.
+5. If the plugin is not provided by nixvim, package it under `pkgs/vimPlugins/<name>/default.nix` and reference it via `pkgs.vimPlugins.<name>` in `extraPlugins`.
 
-    ```nix
-    # modules/base/neovim/plugins/new-plugin/default.nix
-    { pkgs, lib, config, ... }:
-    let
-      cfg = config.programs.nixvim.plugins.new-plugin;
-    in
+Preferred split-module shape:
+
+```nix
+_: {
+  imports = [
+    ./keymaps.nix
+    ./settings.nix
+  ];
+}
+```
+
+Preferred settings shape:
+
+```nix
+_: {
+  programs.nixvim.plugins.example = {
+    enable = true;
+    settings = { };
+  };
+}
+```
+
+### Adding or Changing Keymaps
+
+- Put global keymaps in `core/keymaps.nix`.
+- Put plugin-specific keymaps in `plugins/<plugin>/keymaps.nix`.
+- Match the existing attribute order: `action`, `key`, `mode`, then `options`.
+- For leader mappings, include useful `desc`, `nowait = true`, and `remap = false` when consistent with neighboring mappings.
+
+Example:
+
+```nix
+_: {
+  programs.nixvim.keymaps = [
     {
-      options.programs.nixvim.plugins.new-plugin = {
-        enable = lib.mkEnableOption "Enable new-plugin";
-        # Add any specific options for this plugin if needed
-      };
-
-      config = lib.mkIf cfg.enable {
-        programs.nixvim.plugins.new-plugin = {
-          enable = true;
-          # Other plugin-specific configuration options
-          # For example:
-          # settings = { ... };
-          # keymaps = [ ... ];
-          # package = pkgs.nixvim-plugins.new-plugin; # if not in standard nixvim-plugins
-        };
+      action = "<cmd>Example command<cr>";
+      key = "<leader>e";
+      mode = "n";
+      options = {
+        desc = "Example";
+        nowait = true;
+        remap = false;
       };
     }
-    ```
+  ];
+}
+```
 
-3.  **Import Plugin Module:** Add the new plugin module to `modules/base/neovim/plugins/default.nix`.
-    ```nix
-    # modules/base/neovim/plugins/default.nix
-    { ... }:
-    {
-      imports = [
-        ./new-plugin # Add this line
-        # ... existing plugins
-      ];
-    }
-    ```
-4.  **Enable the Plugin:** Enable the plugin by adding `programs.nixvim.plugins.new-plugin.enable = true;` to `modules/base/neovim/default.nix` or a more specific machine configuration if it's not a global enable.
+### Adding Autocommands
 
-### Workflow: Configuring an Existing Plugin or Core Setting
+- Put global autocommands in `core/autocmds.nix`.
+- Put plugin-specific autocommands in `plugins/<plugin>/autocmds.nix`.
+- Define or reuse `programs.nixvim.autoGroups` when grouping related commands.
+- Use declarative `command` where possible; use `callback.__raw` only when needed.
 
-1.  **Locate Relevant Module:** Navigate to the `default.nix` file corresponding to the plugin (e.g., `modules/base/neovim/plugins/lsp/default.nix`) or `modules/base/neovim/core/default.nix` for core settings.
-2.  **Modify `programs.nixvim` Options:** Adjust the existing `config.programs.nixvim.<subtree>.<option>` values as required.
-    - Consult the Nixvim documentation for available options.
-    - Maintain the existing style and indentation.
+### Editing Themes
 
-### Workflow: Adding a New Keymap
+- Keep colorscheme configuration in `themes/`.
+- Update `themes/default.nix` only when adding a new theme module.
+- Keep plugin integrations near the theme that owns them.
 
-1.  **Locate Keymap Configuration:** Keymaps are typically defined in `modules/base/neovim/core/default.nix` or within a specific plugin's module if the keymap is tightly coupled to that plugin.
-2.  **Add to `programs.nixvim.keymaps`:**
+### Editing Root Neovim Defaults
 
-    ```nix
-    # Example in modules/base/neovim/core/default.nix
-    programs.nixvim.keymaps = [
-      {
-        mode = "n";
-        key = "<leader>ff";
-        action = "<cmd>Telescope find_files<cr>";
-        options = {
-          silent = true;
-          desc = "Find files";
-        };
-      }
-      # ... other keymaps
-    ];
-    ```
+Only edit `modules/base/neovim/default.nix` for configuration that is truly global to Neovim itself, such as aliases, global `opts`, clipboard, persistence paths, root-level `extraPlugins`, `extraPackages`, or `extraConfigLua`.
 
-    - Ensure proper `mode`, `key`, `action`, and `options`.
+## 5. Style
 
-### Workflow: Embedding Raw Lua (Last Resort)
-
-1.  **Justify Usage:** Raw Lua should only be used when an equivalent declarative Nixvim option is genuinely unavailable. Document the reason for using Lua in a comment.
-2.  **Use `extraConfigLua`:** Place Lua snippets within the `programs.nixvim.extraConfigLua` option in the relevant module.
-    ```nix
-    programs.nixvim.extraConfigLua = ''
-      -- Custom Lua configuration for X
-      vim.g.some_global_setting = 123
-      require("my-module").setup({
-        -- ... Lua table config
-      })
-    '';
-    ```
-3.  **Minimize Lua:** Keep Lua snippets as small and focused as possible.
-
-## 5. Code Style & Formatting
-
-- **Nix Files:** For all `.nix` files, adhere to `nixfmt-tree` standards. Run `nix fmt` regularly.
-- **Lua Snippets:** While `stylua` is not explicitly configured in the repository-wide `devenv`, strive for consistent, readable Lua formatting (e.g., two-space indentation, clear line breaks).
+- Use two-space indentation and `nixfmt-tree` formatting.
+- Use `_: { ... }` for modules that do not need arguments, matching the current files.
+- Keep lists one item per line when multi-line.
+- Prefer kebab-case directory names matching plugin names used in the repository.
+- Do not add standalone documentation files or comments unless explicitly requested.
 
 ## 6. Verification
 
-Before committing any changes to the Neovim configuration, you **MUST** run the following checks from the repository root:
+For Neovim changes, run checks from the repository root when practical:
 
-1.  **Format Code:** `nix fmt`
-2.  **Run Linters:** `statix check .` and `deadnix --edit` (if relevant to Nixvim configuration).
-3.  **Check the Flake:** `nix flake check`
-4.  **Test Neovim (Manual/Local Build):** After building your NixOS configuration, manually open Neovim to verify that the changes have taken effect as expected and that no errors or unexpected behavior occur.
+1. `nix fmt`
+2. `statix check .`
+3. `deadnix --edit`
+4. `nix flake check`
+
+If changes affect runtime behavior, also build/apply the relevant host configuration and manually start Neovim to check for startup errors.
