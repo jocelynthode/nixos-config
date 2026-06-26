@@ -1,24 +1,7 @@
 {
   "nodes": {
-    "authentik-go": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1771856219,
-        "narHash": "sha256-zTEmvxe+BpfWYvAl675PnhXCH4jV4GUTFb1MrQ1Eyno=",
-        "owner": "goauthentik",
-        "repo": "client-go",
-        "rev": "4c1444ee54d945fbcc5ae107b4f191ca0352023d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "goauthentik",
-        "repo": "client-go",
-        "type": "github"
-      }
-    },
     "authentik-nix": {
       "inputs": {
-        "authentik-go": "authentik-go",
         "authentik-src": "authentik-src",
         "flake-compat": [
           "flake-compat"
@@ -37,16 +20,16 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1778768653,
-        "narHash": "sha256-cPvRrhNhKk88iCaZYahNOYciCbnRONfMtwGiuW7axKQ=",
+        "lastModified": 1781273728,
+        "narHash": "sha256-s/Hhlh8Ec568pZPim1bCx+8Um+ae51DGuf/QECmIo6M=",
         "owner": "nix-community",
         "repo": "authentik-nix",
-        "rev": "646a0fdaca63006b306578f8decfa7c5762a39f4",
+        "rev": "c670bf44d94f23d6a1c97f20512f08d7afa97c94",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
-        "ref": "version/2026.2.3",
+        "ref": "version/2026.5.3",
         "repo": "authentik-nix",
         "type": "github"
       }
@@ -54,16 +37,16 @@
     "authentik-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1778615640,
-        "narHash": "sha256-tTBGwajdtEPuk36va5HgnnqR8sTuSwIt/c48bIinRlA=",
+        "lastModified": 1781116246,
+        "narHash": "sha256-nmAX8nwZpdDcFAPvC9hAEp0x43RnFtGLUTAm7NcvNZo=",
         "owner": "goauthentik",
         "repo": "authentik",
-        "rev": "095e2897d52397962d153be2d689cedcdb71906c",
+        "rev": "b94d1f11124cad80523c46936636124cdfa8907c",
         "type": "github"
       },
       "original": {
         "owner": "goauthentik",
-        "ref": "version/2026.2.3",
+        "ref": "version/2026.5.3",
         "repo": "authentik",
         "type": "github"
       }

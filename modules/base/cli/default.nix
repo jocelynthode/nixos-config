@@ -10,6 +10,8 @@ let
     ];
 
     catppuccin = {
+      enable = true;
+      autoEnable = false;
       bat.enable = false;
       fzf.enable = false;
       lsd.enable = true;

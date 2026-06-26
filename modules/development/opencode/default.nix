@@ -23,9 +23,8 @@
           theme = "catppuccin";
         };
         settings = {
-          model = "openai/gpt-5.3-codex";
-          small_model = "openai/gpt-5.3-codex-spark";
-          default_agent = "devops-orchestrator";
+          model = "openrouter/deepseek/deepseek-v4-flash";
+          small_model = "opencode/deepseek-v4-flash-free";
           provider = {
           }
           // lib.optionalAttrs config.aspects.development.ollama.enable {
