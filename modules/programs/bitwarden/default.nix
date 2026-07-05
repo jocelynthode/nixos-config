@@ -13,9 +13,21 @@
         directory = ".config/Bitwarden";
         mode = "0700";
       }
+      {
+        directory = ".config/rbw";
+        mode = "0700";
+      }
     ];
     home-manager.users.jocelyn = _: {
       home.packages = [ pkgs.bitwarden-desktop ];
+
+      programs.rbw = {
+        enable = true;
+        settings = {
+          email = "jocelyn@thode.email";
+          pinentry = pkgs.pinentry-gnome3;
+        };
+      };
     };
   };
 }

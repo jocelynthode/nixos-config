@@ -2,7 +2,6 @@
   config,
   lib,
   noctalia,
-  pkgs,
   ...
 }:
 let
@@ -124,19 +123,19 @@ in
               };
             };
 
-            theme = {
-              community_palette = "Catppuccin Lavender";
-              source = "community";
-            };
+            # theme = {
+            #   community_palette = "Catppuccin Lavender";
+            #   source = "community";
+            # };
 
-            wallpaper = {
-              default = {
-                path = pkgs.wallpapers.${osConfig.aspects.graphical.wallpaper};
-              };
-              last = {
-                path = pkgs.wallpapers.${osConfig.aspects.graphical.wallpaper};
-              };
-            };
+            # wallpaper = {
+            #   default = {
+            #     path = pkgs.wallpapers.${osConfig.aspects.graphical.wallpaper};
+            #   };
+            #   last = {
+            #     path = pkgs.wallpapers.${osConfig.aspects.graphical.wallpaper};
+            #   };
+            # };
 
             widget = {
               workspaces = {

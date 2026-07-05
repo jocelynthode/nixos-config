@@ -24,6 +24,7 @@ let
       fd.enable = true;
       fzf = {
         enable = true;
+        historyWidget.fish.command = "";
       };
       lsd = {
         enable = true;
