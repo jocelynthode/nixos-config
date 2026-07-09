@@ -80,6 +80,7 @@
                 "privacy.trackingprotection.enabled" = true;
                 "dom.security.https_only_mode" = true;
                 "dom.private-attribution.submission.enabled" = false;
+                "dom.webgpu.enabled" = true;
                 "browser.search.region" = "CH";
                 "media.eme.enabled" = true;
                 "media.getusermedia.aec_enabled" = false;
