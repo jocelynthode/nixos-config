@@ -15,7 +15,7 @@ let
       };
       shellAbbrs = {
         k = "kubectl";
-        t = "terraform";
+        t = "tofu";
         n = "nvim";
         gst = "git status";
         asr = "atuin scripts run";

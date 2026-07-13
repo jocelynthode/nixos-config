@@ -38,7 +38,7 @@
           dockerls.enable = true;
           basedpyright.enable = true;
           ruff.enable = true;
-          terraformls.enable = true;
+          tofu_ls.enable = true;
           vimls.enable = true;
           nixd = {
             enable = true;
