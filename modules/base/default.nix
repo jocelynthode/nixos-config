@@ -83,7 +83,10 @@
 
             };
             root = _: {
-              home.stateVersion = config.aspects.stateVersion;
+              home = {
+                stateVersion = config.aspects.stateVersion;
+                pointerCursor.enable = true;
+              };
             };
           };
 
