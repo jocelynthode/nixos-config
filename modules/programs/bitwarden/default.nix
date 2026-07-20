@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  pkgs-stable,
   ...
 }:
 {
@@ -20,7 +19,7 @@
       }
     ];
     home-manager.users.jocelyn = _: {
-      home.packages = [ pkgs-stable.bitwarden-desktop ];
+      # home.packages = [ pkgs-stable.bitwarden-desktop ];
 
       programs.rbw = {
         enable = true;

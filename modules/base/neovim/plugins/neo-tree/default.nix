@@ -62,22 +62,22 @@ _: {
             "pyproject.toml",
             "Makefile"
           }) or vim.uv.cwd()
-          require("neo-tree.command").execute({ toggle = true, dir = root })
+          require("neo-tree.command").execute({ toggle = true, dir = vim.uv.cwd() })
         end
       '';
       key = "<leader>e";
       mode = "n";
-      options.desc = "Explorer (Root Dir)";
+      options.desc = "Explorer (cwd)";
     }
     {
       action.__raw = ''
         function()
-          require("neo-tree.command").execute({ toggle = true, dir = vim.uv.cwd() })
+          require("neo-tree.command").execute({ toggle = true, dir = root })
         end
       '';
       key = "<leader>E";
       mode = "n";
-      options.desc = "Explorer (cwd)";
+      options.desc = "Explorer (Root Dir)";
     }
   ];
 }
