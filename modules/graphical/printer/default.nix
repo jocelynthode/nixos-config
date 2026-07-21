@@ -25,6 +25,11 @@
       system-config-printer
     ];
 
+    aspects.base.persistence.systemPaths = [
+      "/var/lib/cups"
+      "/var/cache/cups"
+    ];
+
     users.users.jocelyn.extraGroups = [ "scanner" ];
 
     home-manager.users.jocelyn = _: {

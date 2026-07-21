@@ -101,6 +101,22 @@
             systemPaths = [
               "/var/lib/systemd"
               "/var/lib/nixos"
+
+              {
+                directory = "/var/lib/fwupd";
+                user = "fwupd-refresh";
+                group = "fwupd-refresh";
+              }
+              {
+                directory = "/var/cache/fwupd";
+                user = "fwupd-refresh";
+                group = "fwupd-refresh";
+              }
+              {
+                directory = "/var/cache/man";
+                user = "mandb";
+                group = "mandb";
+              }
               {
                 directory = "/var/lib/private"; # Used when services use DynamicUser and StateDirectory
                 mode = "0700";

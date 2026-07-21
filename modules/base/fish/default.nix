@@ -172,6 +172,7 @@ in
     homePaths = [
       ".config/fish"
       ".local/share/fish"
+      ".cache/fish"
     ];
     systemPaths = [
       "/root/.config/fish"
