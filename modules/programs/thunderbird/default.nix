@@ -27,7 +27,17 @@
           profiles = {
             jocelyn = {
               isDefault = true;
+              settings = {
+                "mail.shell.checkDefaultMail" = false;
+              };
             };
+          };
+        };
+        xdg.mimeApps = {
+          enable = true;
+          defaultApplications = {
+            "x-scheme-handler/mailto" = [ "thunderbird.desktop" ];
+            "message/rfc822" = [ "thunderbird.desktop" ];
           };
         };
         services.protonmail-bridge = {
