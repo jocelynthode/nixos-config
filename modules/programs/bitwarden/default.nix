@@ -18,9 +18,12 @@
         mode = "0700";
       }
     ];
-    home-manager.users.jocelyn = _: {
-      home.packages = [ pkgs.bitwarden-desktop ];
 
+    environment.systemPackages = with pkgs; [
+      bitwarden-desktop
+    ];
+
+    home-manager.users.jocelyn = _: {
       programs.rbw = {
         enable = true;
         settings = {

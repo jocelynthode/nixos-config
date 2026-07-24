@@ -142,6 +142,11 @@ in
                       "signal-desktop"
                     ];
                   }
+                  {
+                    argv = uwsmApp ++ [
+                      "bitwarden"
+                    ];
+                  }
                 ]
                 ++ lib.optional config.aspects.games.steam.enable {
                   argv = uwsmApp ++ [
@@ -229,6 +234,7 @@ in
                         app-id = "firefox";
                         at-startup = true;
                       }
+                      { app-id = "Bitwarden"; }
                     ];
                     open-on-workspace = "browser";
                     open-maximized = true;
@@ -263,6 +269,7 @@ in
                       { app-id = "vesktop"; }
                       { app-id = "slack"; }
                       { app-id = "info.mumble.Mumble"; }
+                      { app-id = "element"; }
                     ];
                     open-on-workspace = "chat";
                     open-maximized = true;
