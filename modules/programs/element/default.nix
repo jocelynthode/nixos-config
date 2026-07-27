@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  pkgs,
+  pkgs-master,
   ...
 }:
 {
@@ -12,7 +12,7 @@
       ".config/Element"
     ];
     home-manager.users.jocelyn = _: {
-      home.packages = [ pkgs.element-desktop ];
+      home.packages = [ pkgs-master.element-desktop ];
     };
   };
 }
