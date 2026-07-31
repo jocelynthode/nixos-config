@@ -108,8 +108,15 @@ in
     };
 
     networking.firewall = lib.mkIf cfg.openFirewall {
-      allowedTCPPorts = [ 8088 ];
-      allowedUDPPorts = [ 8088 ];
+      allowedTCPPorts = [
+        8088 # HTTP interface
+        9090 # JSON-RPC
+      ];
+      allowedUDPPorts = [
+        1900 # UPnP / SSDP Discovery
+        3702 # WS-Discovery
+        9777 # Event server
+      ];
     };
 
     services.pulseaudio.enable = false;
