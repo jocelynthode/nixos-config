@@ -18,7 +18,6 @@
     aspects.base.persistence.homePaths = [
       ".steam"
       ".local/share/Steam"
-      "Astral Ascent"
       ".config/unity3d"
     ];
 
