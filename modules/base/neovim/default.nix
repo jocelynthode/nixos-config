@@ -115,7 +115,7 @@
 
         require("kitty-scrollback").setup()
 
-        # TODO: remove this on 2026-08-12 — fixed in neovim nightly
+        -- TODO: remove this on 2026-08-12 — fixed in neovim nightly
         vim.treesitter.query.set_query("diff", "highlights",
           "(hunk) @diff.delta\n" ..
           "(plus) @diff.plus\n" ..
