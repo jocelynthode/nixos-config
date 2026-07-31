@@ -28,6 +28,7 @@
             deluge.enable = lib.mkDefault true;
             home-assistant.enable = lib.mkDefault true;
             jellyfin.enable = lib.mkDefault true;
+            kodi.enable = lib.mkDefault true;
             media.enable = lib.mkDefault true;
             navidrome.enable = lib.mkDefault true;
             nginx.enable = lib.mkDefault true;
