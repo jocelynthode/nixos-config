@@ -10,7 +10,10 @@
   };
 
   config = lib.mkIf config.aspects.work.kubernetes.enable {
-    aspects.base.backup.excludePaths = [ "/home/jocelyn/.kube/cache" ];
+    aspects.base.backup.excludePaths = [
+      "/home/jocelyn/.kube/cache"
+      "/home/jocelyn/.krew"
+    ];
 
     aspects.base.persistence.homePaths = [
       {

@@ -8,6 +8,8 @@
   options.aspects.graphical.protonvpn.enable = lib.mkEnableOption "protonvpn";
 
   config = lib.mkIf config.aspects.graphical.printer.enable {
+    aspects.base.backup.excludePaths = [ "/home/jocelyn/.config/Proton" ];
+
     aspects.base.persistence.homePaths = [
       ".config/Proton"
     ];
