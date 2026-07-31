@@ -114,6 +114,13 @@
         require('dap').listeners.before.event_exited['dapui_config'] = require('dapui').close
 
         require("kitty-scrollback").setup()
+
+        # TODO: remove this on 2026-08-12 — fixed in neovim nightly
+        vim.treesitter.query.set_query("diff", "highlights",
+          "(hunk) @diff.delta\n" ..
+          "(plus) @diff.plus\n" ..
+          "(minus) @diff.minus\n"
+        );
       '';
 
       # use python3_host_prog as python path to use here
