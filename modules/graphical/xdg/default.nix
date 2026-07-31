@@ -8,6 +8,16 @@
   options.aspects.graphical.xdg.enable = lib.mkEnableOption "xdg";
 
   config = lib.mkIf config.aspects.graphical.xdg.enable {
+    aspects.base.backup.excludePaths = [
+      "/home/jocelyn/go"
+      "/home/jocelyn/Downloads"
+      "/home/jocelyn/Documents"
+      "/home/jocelyn/Pictures"
+      "/home/jocelyn/Music"
+      "/home/jocelyn/Programs"
+      "/home/jocelyn/Projects"
+    ];
+
     aspects.base.persistence.homePaths = [
       "Documents"
       "Downloads"

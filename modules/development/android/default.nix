@@ -8,6 +8,8 @@
   options.aspects.development.android.enable = lib.mkEnableOption "android";
 
   config = lib.mkIf config.aspects.development.android.enable {
+    aspects.base.backup.excludePaths = [ "/home/jocelyn/.android" ];
+
     aspects.base.persistence.homePaths = [
       ".android"
     ];

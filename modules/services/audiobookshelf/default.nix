@@ -7,6 +7,8 @@
   options.aspects.services.audiobookshelf.enable = lib.mkEnableOption "audiobookshelf";
 
   config = lib.mkIf config.aspects.services.audiobookshelf.enable {
+    aspects.base.backup.includePaths = [ "/var/lib/audiobookshelf/config" ];
+
     aspects.base.persistence.systemPaths = [
       {
         directory = "/var/lib/audiobookshelf";

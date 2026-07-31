@@ -7,6 +7,8 @@
   options.aspects.services.actual.enable = lib.mkEnableOption "actual";
 
   config = lib.mkIf config.aspects.services.actual.enable {
+    aspects.base.backup.excludePaths = [ "/var/lib/private/actual" ];
+
     services.actual = {
       enable = true;
       openFirewall = false;

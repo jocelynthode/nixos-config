@@ -239,6 +239,8 @@
             # ];
           };
 
+          aspects.base.backup.excludePaths = [ "/var/lib/private/fwupd" ];
+
           users = {
             mutableUsers = false;
             users = {

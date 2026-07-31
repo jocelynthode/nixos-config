@@ -115,6 +115,8 @@ in
   '';
 
   config = lib.mkIf config.aspects.services.media.enable {
+    aspects.base.backup.excludePaths = [ "/var/lib/private/prowlarr" ];
+
     aspects.base.persistence.systemPaths = persistencePaths;
 
     services = serviceConfigs // {

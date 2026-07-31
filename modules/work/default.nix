@@ -28,6 +28,11 @@
           };
         };
 
+        aspects.base.backup.excludePaths = [
+          "/home/jocelyn/Liip"
+          "/home/jocelyn/poto"
+        ];
+
         aspects.base.persistence.homePaths = [
           "Liip"
           "poto"

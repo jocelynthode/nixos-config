@@ -8,6 +8,11 @@
   options.aspects.games.steam.enable = lib.mkEnableOption "steam";
 
   config = lib.mkIf config.aspects.games.steam.enable {
+    aspects.base.backup.excludePaths = [
+      "/home/jocelyn/.local/share/Steam"
+      "/home/jocelyn/Astral Ascent"
+    ];
+
     aspects.base.persistence.homePaths = [
       ".steam"
       ".local/share/Steam"

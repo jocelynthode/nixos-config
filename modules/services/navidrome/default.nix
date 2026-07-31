@@ -10,6 +10,11 @@ in
   options.aspects.services.navidrome.enable = lib.mkEnableOption "navidrome";
 
   config = lib.mkIf config.aspects.services.navidrome.enable {
+    aspects.base.backup = {
+      includePaths = [ "/var/lib/navidrome" ];
+      excludePaths = [ "/var/lib/private/navidrome" ];
+    };
+
     aspects.base.persistence.systemPaths = [
       {
         directory = "/var/lib/navidrome";

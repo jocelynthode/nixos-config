@@ -9,6 +9,8 @@
 
   config = lib.mkIf config.aspects.development.containers.enable {
 
+    aspects.base.backup.excludePaths = [ "/home/jocelyn/.local/share/containers" ];
+
     environment.systemPackages = with pkgs; [
       docker-compose
     ];

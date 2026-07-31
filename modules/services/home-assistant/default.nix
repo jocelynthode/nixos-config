@@ -11,6 +11,18 @@ in
   options.aspects.services.home-assistant.enable = lib.mkEnableOption "home-assistant";
 
   config = lib.mkIf config.aspects.services.home-assistant.enable {
+    aspects.base.backup = {
+      includePaths = [
+        "/var/lib/hass"
+        "/var/lib/zigbee2mqtt"
+        "/var/lib/mosquitto"
+      ];
+      excludePaths = [
+        "/var/lib/private/esphome/.platformio"
+        "/var/lib/private/esphome/.esphome"
+      ];
+    };
+
     aspects.base.persistence.systemPaths = [
       {
         directory = "/var/lib/hass";

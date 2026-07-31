@@ -1,78 +1,64 @@
-{ config, ... }:
+{ config, lib, ... }:
+let
+  inherit (lib) types mkOption;
+in
 {
-  services.restic.backups = {
-    persist = {
-      repositoryFile = config.sops.secrets."restic/repository".path;
-      user = "root";
-      paths = [ config.aspects.base.persistence.persistPrefix ];
-      exclude = [
-        "/persist/var/cache"
-        "/persist/var/log"
-        "/persist/var/lib/*"
-        "!/persist/var/lib/hass"
-        "!/persist/var/lib/private"
-        "/persist/var/lib/private/actual"
-        "/persist/var/lib/private/ollama"
-        "/persist/var/lib/private/prowlarr"
-        "/persist/var/lib/private/navidrome"
-        "/persist/var/lib/private/fwupd"
-        "/persist/var/lib/private/esphome/.platformio"
-        "/persist/var/lib/private/esphome/.esphome"
-        "!/persist/var/lib/radicale"
-        "!/persist/var/lib/acme"
-        "!/persist/var/lib/jellyfin"
-        "/persist/var/lib/jellyfin/metadata"
-        "!/persist/var/lib/kodi"
-        "!/persist/var/lib/zigbee2mqtt"
-        "!/persist/var/lib/mosquitto"
-        "!/persist/var/lib/deluge"
-        "!/persist/var/lib/navidrome"
-        "!/persist/var/lib/calibre-web"
-        "!/persist/var/lib/audiobookshelf/config"
-        "/persist/home/jocelyn/.gnupg"
-        "/persist/home/jocelyn/go"
-        "/persist/home/jocelyn/Downloads"
-        "/persist/home/jocelyn/Liip"
-        "/persist/home/jocelyn/Pictures"
-        "/persist/home/jocelyn/Documents"
-        "/persist/home/jocelyn/Music"
-        "/persist/home/jocelyn/Programs"
-        "/persist/home/jocelyn/Projects/ai"
-        "/persist/home/jocelyn/.local/share/Steam"
-        "/persist/home/jocelyn/.local/share/containers"
-        "/persist/home/jocelyn/.local/share/bottles"
-        "/persist/home/jocelyn/.local/lutris"
-        "/persist/home/jocelyn/.local/state"
-        "/persist/home/jocelyn/.cache"
-        "/persist/home/jocelyn/.wine"
-        "/persist/home/jocelyn/.android"
-        "/persist/home/jocelyn/.cargo"
-        "/persist/home/jocelyn/.xlcore"
-        "/persist/home/jocelyn/Astral Ascent"
-        "/persist/home/jocelyn/.config/vesktop"
-        "/persist/home/jocelyn/.config/ArmCord"
-        "/persist/root"
-        "/data"
-        "/scratch"
-      ];
-      initialize = true;
-      passwordFile = config.sops.secrets."restic/password".path;
-      timerConfig = {
-        OnCalendar = "*-*-* 12:00:00";
-        Persistent = true;
-        RandomizedDelaySec = "600";
-      };
-      pruneOpts = [
-        "--keep-daily 7"
-        "--keep-weekly 4"
-        "--keep-monthly 3"
-      ];
-      environmentFile = config.sops.secrets."restic/env".path;
+  options.aspects.base.backup = {
+    includePaths = mkOption {
+      type = types.listOf types.str;
+      default = [ ];
+      description = "Paths (relative to the persist prefix) to include in backups.";
+    };
+
+    excludePaths = mkOption {
+      type = types.listOf types.str;
+      default = [ ];
+      description = "Paths (relative to the persist prefix) to exclude from backups.";
     };
   };
 
-  systemd.services.restic-backups-persist = {
-    after = [ "network-online.target" ];
-    wants = [ "network-online.target" ];
-  };
+  config =
+    let
+      prefix = config.aspects.base.persistence.persistPrefix;
+    in
+    {
+      services.restic.backups = {
+        persist = {
+          repositoryFile = config.sops.secrets."restic/repository".path;
+          user = "root";
+          paths = [ prefix ];
+          exclude = [
+            "${prefix}/var/cache"
+            "${prefix}/var/log"
+            "${prefix}/var/lib/*"
+            "!${prefix}/var/lib/private"
+          ]
+          ++ (map (p: "!${prefix}${p}") config.aspects.base.backup.includePaths)
+          ++ (map (p: "${prefix}${p}") config.aspects.base.backup.excludePaths)
+          ++ [
+            "${prefix}/home/jocelyn/.local/state"
+            "${prefix}/home/jocelyn/.cache"
+            "${prefix}/root"
+          ];
+          initialize = true;
+          passwordFile = config.sops.secrets."restic/password".path;
+          timerConfig = {
+            OnCalendar = "*-*-* 12:00:00";
+            Persistent = true;
+            RandomizedDelaySec = "600";
+          };
+          pruneOpts = [
+            "--keep-daily 7"
+            "--keep-weekly 4"
+            "--keep-monthly 3"
+          ];
+          environmentFile = config.sops.secrets."restic/env".path;
+        };
+      };
+
+      systemd.services.restic-backups-persist = {
+        after = [ "network-online.target" ];
+        wants = [ "network-online.target" ];
+      };
+    };
 }

@@ -8,6 +8,8 @@
   options.aspects.games.discord.enable = lib.mkEnableOption "discord";
 
   config = lib.mkIf config.aspects.games.discord.enable {
+    aspects.base.backup.excludePaths = [ "/home/jocelyn/.config/vesktop" ];
+
     aspects.base.persistence.homePaths = [
       ".config/vesktop"
     ];

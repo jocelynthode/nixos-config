@@ -8,6 +8,8 @@
   options.aspects.development.ollama.enable = lib.mkEnableOption "ollama";
 
   config = lib.mkIf config.aspects.development.ollama.enable {
+    aspects.base.backup.excludePaths = [ "/var/lib/private/ollama" ];
+
     # aspects.base.persistence.homePaths = [
     #   ".android"
     # ];

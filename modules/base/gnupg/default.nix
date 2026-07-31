@@ -20,6 +20,8 @@ in
     gnupg
   ];
 
+  aspects.base.backup.excludePaths = [ "/home/jocelyn/.gnupg" ];
+
   aspects.base.persistence.homePaths = [
     {
       directory = ".gnupg";

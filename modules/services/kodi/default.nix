@@ -62,6 +62,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    aspects.base.backup.includePaths = [ "/var/lib/kodi" ];
+
     aspects.base.persistence.systemPaths = [
       {
         directory = "/var/lib/kodi";

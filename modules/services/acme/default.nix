@@ -7,6 +7,8 @@
   options.aspects.services.acme.enable = lib.mkEnableOption "acme";
 
   config = lib.mkIf config.aspects.services.acme.enable {
+    aspects.base.backup.includePaths = [ "/var/lib/acme" ];
+
     aspects.base.persistence.systemPaths = [
       "/var/lib/acme"
     ];

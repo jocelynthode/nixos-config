@@ -8,6 +8,8 @@
   options.aspects.services.calibre-web.enable = lib.mkEnableOption "calibre-web";
 
   config = lib.mkIf config.aspects.services.calibre-web.enable {
+    aspects.base.backup.includePaths = [ "/var/lib/calibre-web" ];
+
     aspects.base.persistence.systemPaths = [
       {
         directory = "/var/lib/calibre-web";

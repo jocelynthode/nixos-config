@@ -8,6 +8,11 @@
   options.aspects.services.jellyfin.enable = lib.mkEnableOption "jellyfin";
 
   config = lib.mkIf config.aspects.services.jellyfin.enable {
+    aspects.base.backup = {
+      includePaths = [ "/var/lib/jellyfin" ];
+      excludePaths = [ "/var/lib/jellyfin/metadata" ];
+    };
+
     aspects.base.persistence.systemPaths = [
       {
         directory = "/var/lib/jellyfin";

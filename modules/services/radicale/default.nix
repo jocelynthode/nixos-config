@@ -7,6 +7,8 @@
   options.aspects.services.radicale.enable = lib.mkEnableOption "radicale";
 
   config = lib.mkIf config.aspects.services.radicale.enable {
+    aspects.base.backup.includePaths = [ "/var/lib/radicale/collections" ];
+
     aspects.base.persistence.systemPaths = [
       "/var/lib/radicale/collections"
     ];
