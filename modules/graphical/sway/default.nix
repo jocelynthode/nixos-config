@@ -26,7 +26,7 @@
       NIXOS_OZONE_WL = "1";
     };
 
-    programs.regreet = {
+    services.displayManager.regreet = {
       enable = true;
       settings = {
         background = {

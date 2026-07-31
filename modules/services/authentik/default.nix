@@ -21,8 +21,6 @@
         protect = false;
       };
 
-      # TODO nixify these steps
-      # On first run we need to set a password for the authentik database in postgresql
       services.authentik = {
         enable = true;
         environmentFile = config.sops.secrets.authentik.path;

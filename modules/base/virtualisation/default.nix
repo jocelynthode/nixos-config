@@ -8,7 +8,7 @@
   options.aspects.base.virtualisation.enable = lib.mkEnableOption "virtualisation";
 
   config =
-    if !(options.virtualisation ? qemu) then
+    if !(options.virtualisation ? qemu) || !(options.virtualisation.qemu ? options) then
       { }
     else
       {

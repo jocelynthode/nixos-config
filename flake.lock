@@ -10,7 +10,6 @@
           "flake-parts"
         ],
         "flake-utils": "flake-utils",
-        "napalm": "napalm",
         "nixpkgs": [
           "nixpkgs"
         ],
@@ -20,16 +19,16 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1781273728,
-        "narHash": "sha256-s/Hhlh8Ec568pZPim1bCx+8Um+ae51DGuf/QECmIo6M=",
+        "lastModified": 1784899305,
+        "narHash": "sha256-JdDo5+hOPLpwxS3XRfpotjR99jsB02U3BK/XJTZOhFc=",
         "owner": "nix-community",
         "repo": "authentik-nix",
-        "rev": "c670bf44d94f23d6a1c97f20512f08d7afa97c94",
+        "rev": "572314712559bca245437e70c733ff83fc6cb5db",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
-        "ref": "version/2026.5.3",
+        "ref": "version/2026.5.6",
         "repo": "authentik-nix",
         "type": "github"
       }
@@ -37,16 +36,16 @@
     "authentik-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1781116246,
-        "narHash": "sha256-nmAX8nwZpdDcFAPvC9hAEp0x43RnFtGLUTAm7NcvNZo=",
+        "lastModified": 1784731584,
+        "narHash": "sha256-/HdXzjjvuSW7zjbCNJKm3Fj8gvIwfrDf8mOYev0yuIg=",
         "owner": "goauthentik",
         "repo": "authentik",
-        "rev": "b94d1f11124cad80523c46936636124cdfa8907c",
+        "rev": "0c67ea476be6319f1b2a41cb0f5ed128af37b99b",
         "type": "github"
       },
       "original": {
         "owner": "goauthentik",
-        "ref": "version/2026.5.3",
+        "ref": "version/2026.5.6",
         "repo": "authentik",
         "type": "github"
       }
@@ -397,32 +396,6 @@
       "original": {
         "owner": "vic",
         "repo": "import-tree",
-        "type": "github"
-      }
-    },
-    "napalm": {
-      "inputs": {
-        "flake-utils": [
-          "authentik-nix",
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "authentik-nix",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1725806412,
-        "narHash": "sha256-lGZjkjds0p924QEhm/r0BhAxbHBJE1xMOldB/HmQH04=",
-        "owner": "willibutz",
-        "repo": "napalm",
-        "rev": "b492440d9e64ae20736d3bec5c7715ffcbde83f5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "willibutz",
-        "ref": "avoid-foldl-stack-overflow",
-        "repo": "napalm",
         "type": "github"
       }
     },

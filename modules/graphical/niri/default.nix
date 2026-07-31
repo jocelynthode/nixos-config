@@ -3,7 +3,6 @@
   lib,
   niri,
   pkgs,
-  pkgs-stable,
   ...
 }:
 let
@@ -68,10 +67,8 @@ in
         XKB_DEFAULT_VARIANT = config.services.xserver.xkb.variant;
       };
 
-      programs.regreet = {
+      services.displayManager.regreet = {
         enable = true;
-        # TODO cleanup when fixed https://github.com/rharish101/ReGreet/issues/165
-        package = pkgs-stable.regreet;
       };
 
       home-manager.users.jocelyn =

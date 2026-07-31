@@ -50,6 +50,4 @@
     package = pkgs.ananicy-cpp;
     rulesProvider = pkgs.ananicy-rules-cachyos;
   };
-  # services.tailscale.enable = true;
-  # TODO persists /var/lib/tailscale
 }
