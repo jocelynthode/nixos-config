@@ -2,15 +2,49 @@
   config,
   lib,
   pkgs,
+  pkgs-stable,
   ...
 }:
 let
   cfg = config.aspects.services.kodi;
+  kodi-gbm =
+    let
+      base = pkgs-stable.kodi-gbm.override {
+        inherit (pkgs-stable) ffmpeg;
+        x11Support = false;
+      };
+    in
+    base.overrideAttrs (old: {
+      version = "22.0b1";
+      kodiReleaseName = "Piers";
+      src = pkgs.fetchFromGitHub {
+        owner = "xbmc";
+        repo = "xbmc";
+        rev = "22.0b1-Piers";
+        hash = "sha256-WTnFExkD07WOJ0u1uZWkpC8pzG0D7ZpdE1lfonzdCFY=";
+      };
+      patches = [ ];
+      nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [
+        pkgs-stable.libsysprof-capture
+        pkgs-stable.sysprof.dev
+        pkgs-stable.pcre2.dev
+        pkgs-stable.nlohmann_json
+      ];
+      buildInputs = (old.buildInputs or [ ]) ++ [
+        pkgs-stable.crossguid
+        pkgs-stable.exiv2
+      ];
+      cmakeFlags = (old.cmakeFlags or [ ]) ++ [
+        "-DLIBXSLT_LIBRARY=${lib.getLib pkgs-stable.libxslt}/lib/libxslt.so"
+        "-DLIBXSLT_INCLUDE_DIR=${lib.getDev pkgs-stable.libxslt}/include"
+      ];
+    });
+
   kodiPkg =
     if cfg.plugins == [ ] then
-      pkgs.kodi-gbm
+      kodi-gbm
     else
-      pkgs.kodi-gbm.withPackages (kodiPkgs: with kodiPkgs; cfg.plugins);
+      kodi-gbm.withPackages (kodiPkgs: with kodiPkgs; cfg.plugins);
 in
 {
   options.aspects.services.kodi = {
