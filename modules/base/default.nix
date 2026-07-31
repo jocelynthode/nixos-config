@@ -246,7 +246,7 @@
                 isNormalUser = true;
                 shell = pkgs.fish;
                 hashedPasswordFile =
-                  if !(options.virtualisation ? qemu) then
+                  if !(options.virtualisation ? qemu) || !(options.virtualisation.qemu ? options) then
                     config.sops.secrets."users/jocelyn/password".path
                   else
                     null;
