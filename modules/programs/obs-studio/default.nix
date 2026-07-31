@@ -8,6 +8,8 @@
   options.aspects.programs.obs-studio.enable = lib.mkEnableOption "obs-studio";
 
   config = lib.mkIf config.aspects.programs.obs-studio.enable {
+    aspects.base.backup.excludePaths = [ "/home/jocelyn/.config/obs-studio" ];
+
     aspects.base.persistence.homePaths = [
       ".config/obs-studio"
     ];

@@ -10,6 +10,8 @@
   };
 
   config = lib.mkIf config.aspects.work.taxi.enable {
+    aspects.base.backup.excludePaths = [ "/home/jocelyn/.local/share/nvim" ];
+
     home-manager.users.jocelyn = _: {
       home.packages = with pkgs; [
         (taxi-cli.withPlugins (

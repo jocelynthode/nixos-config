@@ -10,7 +10,9 @@
   config = lib.mkIf config.aspects.games.steam.enable {
     aspects.base.backup.excludePaths = [
       "/home/jocelyn/.local/share/Steam"
+      "/home/jocelyn/.steam"
       "/home/jocelyn/Astral Ascent"
+      "/home/jocelyn/.config/unity3d"
     ];
 
     aspects.base.persistence.homePaths = [

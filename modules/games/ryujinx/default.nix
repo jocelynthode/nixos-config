@@ -8,6 +8,8 @@
   options.aspects.games.ryujinx.enable = lib.mkEnableOption "ryujinx";
 
   config = lib.mkIf config.aspects.games.ryujinx.enable {
+    aspects.base.backup.excludePaths = [ "/home/jocelyn/.config/Ryujinx" ];
+
     aspects.base.persistence.homePaths = [
       ".config/Ryujinx"
     ];

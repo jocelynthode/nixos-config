@@ -68,6 +68,8 @@ in
     owner = "jocelyn";
     group = "users";
   };
+  aspects.base.backup.excludePaths = [ "/home/jocelyn/.local/share/atuin" ];
+
   aspects.base.persistence.homePaths = [
     ".local/share/atuin"
     ".local/share/zoxide"

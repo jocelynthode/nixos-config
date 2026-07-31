@@ -7,6 +7,8 @@
   options.aspects.programs.thunderbird.enable = lib.mkEnableOption "thunderbird";
 
   config = lib.mkIf config.aspects.programs.thunderbird.enable {
+    aspects.base.backup.excludePaths = [ "/home/jocelyn/.local/share/protonmail" ];
+
     aspects.base.persistence.homePaths = [
       ".thunderbird"
       ".cache/thunderbird"

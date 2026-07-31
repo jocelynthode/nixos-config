@@ -8,6 +8,8 @@
   options.aspects.programs.bitwarden.enable = lib.mkEnableOption "bitwarden";
 
   config = lib.mkIf config.aspects.programs.bitwarden.enable {
+    aspects.base.backup.excludePaths = [ "/home/jocelyn/.config/Bitwarden" ];
+
     aspects.base.persistence.homePaths = [
       {
         directory = ".config/Bitwarden";

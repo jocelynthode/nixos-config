@@ -8,6 +8,8 @@
   options.aspects.programs.element.enable = lib.mkEnableOption "element";
 
   config = lib.mkIf config.aspects.programs.element.enable {
+    aspects.base.backup.excludePaths = [ "/home/jocelyn/.config/Element" ];
+
     aspects.base.persistence.homePaths = [
       ".config/Element"
     ];

@@ -8,6 +8,8 @@
   options.aspects.programs.deluge.enable = lib.mkEnableOption "deluge";
 
   config = lib.mkIf config.aspects.programs.deluge.enable {
+    aspects.base.backup.excludePaths = [ "/home/jocelyn/.config/deluge" ];
+
     aspects.base.persistence.homePaths = [
       ".config/deluge"
     ];

@@ -10,6 +10,8 @@
   };
 
   config = lib.mkIf config.aspects.work.slack.enable {
+    aspects.base.backup.excludePaths = [ "/home/jocelyn/.config/Slack" ];
+
     home-manager.users.jocelyn = _: {
       home.packages = [ pkgs.slack ];
     };

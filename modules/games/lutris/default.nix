@@ -9,7 +9,9 @@
 
   config = lib.mkIf config.aspects.games.lutris.enable {
     aspects.base.backup.excludePaths = [
+      "/home/jocelyn/.config/lutris"
       "/home/jocelyn/.local/lutris"
+      "/home/jocelyn/.local/share/lutris"
       "/home/jocelyn/.wine"
     ];
 

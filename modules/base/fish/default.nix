@@ -168,6 +168,8 @@ in
     };
   };
 
+  aspects.base.backup.excludePaths = [ "/home/jocelyn/.local/share/fish" ];
+
   aspects.base.persistence = {
     homePaths = [
       ".config/fish"

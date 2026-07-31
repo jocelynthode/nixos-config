@@ -23,6 +23,8 @@ in
   };
 
   config = {
+    aspects.base.backup.excludePaths = lib.optional config.aspects.base.nix.enableDirenv "/home/jocelyn/.local/share/direnv";
+
     aspects.base.persistence = {
       homePaths = lib.optional config.aspects.base.nix.enableDirenv ".local/share/direnv";
       systemPaths = lib.optional config.aspects.base.nix.enableDirenv "/root/.local/share/direnv";

@@ -8,6 +8,11 @@
   options.aspects.development.opencode.enable = lib.mkEnableOption "opencode";
 
   config = lib.mkIf config.aspects.development.opencode.enable {
+    aspects.base.backup.excludePaths = [
+      "/home/jocelyn/.local/share/opencode"
+      "/home/jocelyn/.config/opencode"
+    ];
+
     aspects.base.persistence = {
       homePaths = [
         ".config/opencode"

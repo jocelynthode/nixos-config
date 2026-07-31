@@ -16,6 +16,7 @@
       "/home/jocelyn/Music"
       "/home/jocelyn/Programs"
       "/home/jocelyn/Projects"
+      "/home/jocelyn/Videos"
     ];
 
     aspects.base.persistence.homePaths = [

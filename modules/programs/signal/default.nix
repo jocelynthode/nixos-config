@@ -8,6 +8,8 @@
   options.aspects.programs.signal.enable = lib.mkEnableOption "signal";
 
   config = lib.mkIf config.aspects.programs.signal.enable {
+    aspects.base.backup.excludePaths = [ "/home/jocelyn/.config/Signal" ];
+
     aspects.base.persistence.homePaths = [
       {
         directory = ".config/Signal";
