@@ -22,6 +22,7 @@
         "!/persist/var/lib/acme"
         "!/persist/var/lib/jellyfin"
         "/persist/var/lib/jellyfin/metadata"
+        "!/persist/var/lib/kodi"
         "!/persist/var/lib/zigbee2mqtt"
         "!/persist/var/lib/mosquitto"
         "!/persist/var/lib/deluge"
