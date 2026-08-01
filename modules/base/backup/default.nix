@@ -45,7 +45,7 @@ in
           timerConfig = {
             OnCalendar = "*-*-* 12:00:00";
             Persistent = true;
-            RandomizedDelaySec = "600";
+            RandomizedDelaySec = "1800";
           };
           pruneOpts = [
             "--keep-daily 7"
