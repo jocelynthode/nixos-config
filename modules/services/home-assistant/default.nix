@@ -161,6 +161,9 @@ in
           "utility_meter"
           "mqtt"
         ];
+        customComponents = with pkgs.home-assistant-custom-components; [
+          browser-mod
+        ];
         customLovelaceModules = with pkgs.home-assistant-custom-lovelace-modules; [
           mini-graph-card
           mushroom
