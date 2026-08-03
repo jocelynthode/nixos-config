@@ -97,7 +97,7 @@
       };
       extraPlugins = with pkgs.vimPlugins; [
         telescope-dap-nvim
-        taxi-nvim
+        # taxi-nvim
         kitty-scrollback-nvim
       ];
 
@@ -109,18 +109,11 @@
         vim.opt.whichwrap:append("<>[]hl")
         vim.opt.iskeyword:append("-")
 
-        require('dap').listeners.after.event_initialized['dapui_config'] = require('dapui').open
-        require('dap').listeners.before.event_terminated['dapui_config'] = require('dapui').close
-        require('dap').listeners.before.event_exited['dapui_config'] = require('dapui').close
+        require("dap").listeners.after.event_initialized["dapui_config"] = require("dapui").open
+        require("dap").listeners.before.event_terminated["dapui_config"] = require("dapui").close
+        require("dap").listeners.before.event_exited["dapui_config"] = require("dapui").close
 
         require("kitty-scrollback").setup()
-
-        -- TODO: remove this on 2026-08-12 — fixed in neovim nightly
-        vim.treesitter.query.set_query("diff", "highlights",
-          "(hunk) @diff.delta\n" ..
-          "(plus) @diff.plus\n" ..
-          "(minus) @diff.minus\n"
-        );
       '';
 
       # use python3_host_prog as python path to use here

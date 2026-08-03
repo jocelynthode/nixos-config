@@ -18,7 +18,7 @@ _: {
           "text"
           "markdown"
           "gitcommit"
-          "taxi"
+          # "taxi"
         ];
         callback.__raw = ''
           function()

@@ -12,7 +12,6 @@ let
       nixpkgs.config.allowUnfree = true;
       nixpkgs.overlays = [
         inputs.nur.overlays.default
-        inputs.taxi.overlays.default
         inputs.wofi-ykman.overlays.default
         inputs.self.overlays.default
       ];

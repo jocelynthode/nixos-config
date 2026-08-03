@@ -22,7 +22,7 @@
             openstack.enable = lib.mkDefault true;
             slack.enable = lib.mkDefault true;
             tailscale.enable = lib.mkDefault true;
-            taxi.enable = lib.mkDefault true;
+            taxi.enable = lib.mkDefault false;
             terraform.enable = lib.mkDefault true;
             vpn.enable = lib.mkDefault true;
           };

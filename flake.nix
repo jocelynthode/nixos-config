@@ -48,14 +48,6 @@
         home-manager.follows = "home-manager";
       };
     };
-    taxi = {
-      url = "github:sephii/taxi";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-compat.follows = "flake-compat";
-        flake-utils.follows = "flake-utils";
-      };
-    };
     wofi-ykman = {
       url = "github:jocelynthode/wofi-ykman";
       inputs = {

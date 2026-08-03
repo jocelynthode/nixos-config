@@ -27,27 +27,27 @@ _: {
           }
         ];
         lualine_x = [
-          {
-            __unkeyed-1.__raw = ''
-              function()
-                local ok, taxi = pcall(require, "taxi")
-                if not ok then
-                  return ""
-                end
-
-                if taxi.is_balance_inflight() or taxi.is_alias_update_inflight() then
-                  return "Taxi running"
-                end
-
-                return ""
-              end
-            '';
-            cond.__raw = ''
-              function()
-                return vim.bo.filetype == "taxi"
-              end
-            '';
-          }
+          # {
+          #   __unkeyed-1.__raw = ''
+          #     function()
+          #       local ok, taxi = pcall(require, "taxi")
+          #       if not ok then
+          #         return ""
+          #       end
+          #
+          #       if taxi.is_balance_inflight() or taxi.is_alias_update_inflight() then
+          #         return "Taxi running"
+          #       end
+          #
+          #       return ""
+          #     end
+          #   '';
+          #   cond.__raw = ''
+          #     function()
+          #       return vim.bo.filetype == "taxi"
+          #     end
+          #   '';
+          # }
           {
             __unkeyed-1.__raw = ''
               function(msg)

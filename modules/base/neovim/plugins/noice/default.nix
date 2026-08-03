@@ -11,6 +11,19 @@ _: {
       routes = [
         {
           filter = {
+            event = "lua_error";
+          };
+          view = "mini";
+        }
+        {
+          filter = {
+            event = "msg_show";
+            min_level = "error";
+          };
+          view = "mini";
+        }
+        {
+          filter = {
             event = "msg_show";
             any = [
               { find = "%d+L; %d+B"; }
