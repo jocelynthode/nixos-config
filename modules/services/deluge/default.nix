@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  pkgs-stable,
   ...
 }:
 {
@@ -20,16 +19,6 @@
     services = {
       deluge = {
         enable = true;
-        package = pkgs-stable.deluge-2_x;
-
-        # # TODO https://github.com/NixOS/nixpkgs/issues/540545
-        # package = pkgs.deluge-2_x.override {
-        #   python3Packages = pkgs.python3Packages.overrideScope (
-        #     final: prev: {
-        #       setuptools = prev.setuptools_80;
-        #     }
-        #   );
-        # };
         declarative = true;
         openFirewall = true;
         group = "media";
