@@ -43,7 +43,6 @@
             #   };
             # };
             gitlab-liip = {
-              enabled = false;
               url = "https://gitlab.liip.ch/api/v4/mcp";
             };
             gitlab-poto = {
