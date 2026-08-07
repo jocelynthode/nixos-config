@@ -57,8 +57,6 @@
         services.xsettingsd = {
           enable = true;
         };
-
-        home.pointerCursor.enable = true;
       };
   };
 }

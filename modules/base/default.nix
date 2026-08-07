@@ -85,7 +85,6 @@
             root = _: {
               home = {
                 stateVersion = config.aspects.stateVersion;
-                pointerCursor.enable = false;
               };
             };
           };
