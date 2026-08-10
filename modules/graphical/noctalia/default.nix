@@ -118,7 +118,8 @@ in
 
               panel = {
                 open_near_click_control_center = true;
-                session_placement = "centered";
+                session_placement = "floating";
+                session_position = "auto";
                 transparency_mode = "soft";
               };
             };
@@ -139,7 +140,7 @@ in
 
             widget = {
               workspaces = {
-                display = "none";
+                show_labels = false;
               };
               Disk = {
                 stat = "disk_pct";
@@ -167,10 +168,12 @@ in
                 title_scroll = "always";
               };
               network_rx = {
-                display = "text";
+                type = "sysmon";
+                stat = "net_rx";
               };
               network_tx = {
-                display = "text";
+                type = "sysmon";
+                stat = "net_tx";
               };
             };
           };
