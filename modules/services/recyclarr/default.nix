@@ -26,7 +26,7 @@
             base_url = "http://localhost:${toString config.services.radarr.settings.server.port}";
             delete_old_custom_formats = true;
             quality_definition = {
-              type = "movies";
+              type = "movie";
               preferred_ratio = 0.7;
             };
             quality_profiles = [
@@ -71,7 +71,7 @@
               folder = "jellyfin-imdb";
               movie = {
                 rename = true;
-                standard = "jellyfin-imdb";
+                standard = "standard";
               };
             };
           };
