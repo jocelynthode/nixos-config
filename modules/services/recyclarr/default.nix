@@ -68,10 +68,10 @@
             ];
 
             media_naming = {
-              folder = "jellyfin";
+              folder = "jellyfin-imdb";
               movie = {
                 rename = true;
-                standard = "jellyfin";
+                standard = "jellyfin-imdb";
               };
             };
           };
@@ -115,7 +115,7 @@
               }
             ];
             media_naming = {
-              series = "jellyfin";
+              series = "jellyfin-tvdb";
               season = "default";
               episodes = {
                 rename = true;
