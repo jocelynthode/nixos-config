@@ -106,7 +106,7 @@ _: {
                 scale = 1.566667;
               }
               {
-                criteria = "DP-1";
+                criteria = "DP-3";
                 position = "0,1504";
                 scale = 1.5;
               }
