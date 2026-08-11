@@ -25,55 +25,48 @@
             };
             base_url = "http://localhost:${toString config.services.radarr.settings.server.port}";
             delete_old_custom_formats = true;
-            replace_existing_custom_formats = true;
             quality_definition = {
               type = "movies";
               preferred_ratio = 0.7;
             };
-            include = [
+            quality_profiles = [
+              # Existing: Remux-1080p - Anime
               {
-                template = "radarr-quality-profile-anime";
+                name = "Remux-1080p - Anime";
+                trash_id = "722b624f9af1e492284c4bc842153a38";
               }
+              # Existing: Remux + WEB 1080p
               {
-                template = "radarr-custom-formats-anime";
+                name = "Remux + WEB 1080p";
+                trash_id = "9ca12ea80aa55ef916e3751f4b874151";
               }
+              # Existing: Remux + WEB 2160p
               {
-                template = "radarr-quality-profile-remux-web-2160p";
+                name = "Remux + WEB 2160p";
+                trash_id = "fd161a61e3ab826d3a22d53f935696dd";
               }
+              # Existing: FR-MULTi-VO-HD
               {
-                template = "radarr-custom-formats-remux-web-2160p";
+                name = "FR-MULTi-VO-HD";
+                trash_id = "2572ce3ea4eef1c19d59e0e20ed1cea7";
               }
+              # Existing: FR-MULTi-VO-UHD
               {
-                template = "radarr-quality-profile-uhd-remux-web-french-multi-vo";
+                name = "FR-MULTi-VO-UHD";
+                trash_id = "92ead7022d13a7858d54e328e6a2f8f9";
               }
+              # Existing: FR-REMUX-MULTi-VO-HD
               {
-                template = "radarr-custom-formats-uhd-remux-web-french-multi-vo";
+                name = "FR-REMUX-MULTi-VO-HD";
+                trash_id = "c6460a102b312200c095a2d0982e0461";
               }
+              # Existing: FR-REMUX-MULTi-VO-UHD
               {
-                template = "radarr-quality-profile-uhd-bluray-web-french-multi-vo";
-              }
-              {
-                template = "radarr-custom-formats-uhd-bluray-web-french-multi-vo";
-              }
-              {
-                template = "radarr-quality-profile-hd-bluray-web-french-multi-vo";
-              }
-              {
-                template = "radarr-custom-formats-hd-bluray-web-french-multi-vo";
-              }
-              {
-                template = "radarr-quality-profile-hd-remux-web-french-multi-vo";
-              }
-              {
-                template = "radarr-custom-formats-hd-remux-web-french-multi-vo";
-              }
-              {
-                template = "radarr-quality-profile-remux-web-1080p";
-              }
-              {
-                template = "radarr-custom-formats-remux-web-1080p";
+                name = "FR-REMUX-MULTi-VO-UHD";
+                trash_id = "1fef28c8c919f31cd86283b1baf527d4";
               }
             ];
+
             media_naming = {
               folder = "jellyfin";
               movie = {
@@ -90,60 +83,37 @@
             };
             base_url = "http://localhost:${toString config.services.sonarr.settings.server.port}";
             delete_old_custom_formats = true;
-            replace_existing_custom_formats = true;
             quality_definition = {
               type = "series";
               preferred_ratio = 0.7;
             };
-            include = [
+            quality_profiles = [
+              # Existing: Remux-1080p - Anime
               {
-                template = "sonarr-v4-quality-profile-anime";
+                name = "Remux-1080p - Anime";
+                trash_id = "20e0fc959f1f1704bed501f23bdae76f";
               }
+              # Existing: WEB-1080p
               {
-                template = "sonarr-v4-custom-formats-anime";
+                name = "WEB-1080p";
+                trash_id = "72dae194fc92bf828f32cde7744e51a1";
               }
+              # Existing: WEB-2160p
               {
-                template = "sonarr-v4-quality-profile-web-2160p-alternative";
+                name = "WEB-2160p";
+                trash_id = "dfa5eaae7894077ad6449169b6eb03e0";
               }
+              # Existing: FR-MULTi-VO-WEB-1080p
               {
-                template = "sonarr-v4-custom-formats-web-2160p";
+                name = "FR-MULTi-VO-WEB-1080p";
+                trash_id = "4c48f506c1116a3a57ae33f12346bd15";
               }
+              # Existing: FR-MULTi-VO-WEB-2160p
               {
-                template = "sonarr-v4-quality-profile-bluray-web-2160p-french-multi-vo";
-              }
-              {
-                template = "sonarr-v4-custom-formats-bluray-web-2160p-french-multi-vo";
-              }
-              {
-                template = "sonarr-v4-quality-profile-web-1080p";
-              }
-              {
-                template = "sonarr-v4-custom-formats-web-1080p";
-              }
-              {
-                template = "sonarr-v4-quality-profile-bluray-web-1080p-french-multi-vo";
-              }
-              {
-                template = "sonarr-v4-custom-formats-bluray-web-1080p-french-multi-vo";
+                name = "FR-MULTi-VO-WEB-2160p";
+                trash_id = "6fa7364373e8f06206871d9c20a4fb3e";
               }
             ];
-            # custom_formats = [
-            #   {
-            #     trash_ids = [
-            #       "7ba05c6e0e14e793538174c679126996"
-            #     ];
-            #     assign_scores_to = [
-            #       {
-            #         name = "FR-MULTi-VO-WEB-1080p";
-            #         score = 1000;
-            #       }
-            #       {
-            #         name = "FR-MULTi-VO-WEB-2160p";
-            #         score = 1000;
-            #       }
-            #     ];
-            #   }
-            # ];
             media_naming = {
               series = "jellyfin";
               season = "default";
