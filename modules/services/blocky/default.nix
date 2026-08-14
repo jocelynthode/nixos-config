@@ -9,13 +9,35 @@
 
   config =
     let
-      allowlist = pkgs.writeText "whitelist.txt" ''
+      allowlist = pkgs.writeText "allowlist.txt" ''
         s.youtube.com
       '';
-      denylist = pkgs.writeText "blacklist.txt" ''
+      denylist = pkgs.writeText "denylist.txt" ''
         # Remove Microsoft VSCode tunnel access
         /^(.+[_.-])?tunnels\.api\.visualstudio\.com/
         /^(.+[_.-])?devtunnels\.ms/
+
+        # LG
+        /(^|\.)ibs\.lgappstv\.com/
+        /(^|\.)lgsmartad\.com/
+        /(^|\.)smartshare\.lgtvsdp\.com/
+        /(^|\.)rdx2\.lgtvsdp\.com/
+        /^[a-rt-z][a-z]{10,14}$/
+        /(^|\.)lgtvcommon\.com/
+
+        # Samsung
+        /(^|\.)giraffic\.com$/
+        /(^|\.)internetat\.tv$/
+        /(^|\.)pavv\.co\.kr$/
+        /(^|\.)samsungcloudsolution\.net$/
+        /(^|\.)samsungelectronics\.com$/
+        /(^|\.)samsungrm\.net$/
+
+        # Vizio
+        /(\.|^)tvinteractive\.tv$/
+
+        # Other
+        /^api\..*\.hismarttv\.com$/
       '';
     in
     lib.mkIf config.aspects.services.blocky.enable {
@@ -90,6 +112,7 @@
               ads = [
                 "https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt"
                 "https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&mimetype=plaintext&useip=0.0.0.0"
+                "https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt"
                 "${denylist}"
               ];
             };
