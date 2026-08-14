@@ -33,6 +33,7 @@
       };
     };
 
+    systemd.services.jellyfin.
     # Keep StateDirectory aligned with services.seerr.configDir parent while
     # system.stateVersion is still < 26.05.
     systemd = {
@@ -40,7 +41,13 @@
       tmpfiles.rules = [
         "d /scratch/jellyfin 0755 jellyfin media -"
       ];
-      services.jellyfin.environment.LIBVA_DRIVER_NAME = "iHD";
+      services.jellyfin = {
+        environment.LIBVA_DRIVER_NAME = "iHD";
+        serviceConfig = {
+          # 0027 allows the group to read and traverse file/folders
+          UMask = "0027";
+        };
+      };
     };
 
     users.users.jellyfin = {
