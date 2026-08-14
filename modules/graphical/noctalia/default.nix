@@ -124,26 +124,12 @@ in
               };
             };
 
-            # theme = {
-            #   community_palette = "Catppuccin Lavender";
-            #   source = "community";
-            # };
-
-            # wallpaper = {
-            #   default = {
-            #     path = pkgs.wallpapers.${osConfig.aspects.graphical.wallpaper};
-            #   };
-            #   last = {
-            #     path = pkgs.wallpapers.${osConfig.aspects.graphical.wallpaper};
-            #   };
-            # };
-
             widget = {
               workspaces = {
                 show_labels = false;
               };
               Disk = {
-                stat = "disk_pct";
+                stat = "disk_free";
                 type = "sysmon";
               };
               Memory = {
@@ -170,10 +156,14 @@ in
               network_rx = {
                 type = "sysmon";
                 stat = "net_rx";
+                show_value = true;
+                visualization = "none";
               };
               network_tx = {
                 type = "sysmon";
                 stat = "net_tx";
+                show_value = true;
+                visualization = "none";
               };
             };
           };

@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-stable,
   lib,
   ...
 }:
@@ -47,7 +48,8 @@
   # process priority rules from CachyOS, tuned for gaming workloads
   services.ananicy = {
     enable = true;
-    package = pkgs.ananicy-cpp;
+    # TODO Revert to unstable
+    package = pkgs-stable.ananicy-cpp;
     rulesProvider = pkgs.ananicy-rules-cachyos;
   };
 }

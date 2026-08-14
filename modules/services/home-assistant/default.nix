@@ -54,7 +54,10 @@ in
       };
     };
 
-    networking.firewall.allowedTCPPorts = [ 8080 ];
+    networking.firewall.allowedTCPPorts = [
+      8080
+      8123
+    ];
 
     catppuccin.home-assistant.enable = false;
 
@@ -140,7 +143,6 @@ in
       };
       home-assistant = {
         enable = true;
-        openFirewall = true;
         extraPackages =
           python3Packages: with python3Packages; [
             psycopg2

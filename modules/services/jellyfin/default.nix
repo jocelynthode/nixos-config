@@ -33,7 +33,6 @@
       };
     };
 
-    systemd.services.jellyfin.
     # Keep StateDirectory aligned with services.seerr.configDir parent while
     # system.stateVersion is still < 26.05.
     systemd = {
@@ -45,7 +44,7 @@
         environment.LIBVA_DRIVER_NAME = "iHD";
         serviceConfig = {
           # 0027 allows the group to read and traverse file/folders
-          UMask = "0027";
+          UMask = lib.mkForce "0027";
         };
       };
     };
