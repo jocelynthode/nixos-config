@@ -48,6 +48,9 @@
             gitlab-poto = {
               url = "https://sources.poto.ch/api/v4/mcp";
             };
+            opentofu = {
+              url = "https://mcp.opentofu.org/mcp";
+            };
           };
         };
         opencode = {
