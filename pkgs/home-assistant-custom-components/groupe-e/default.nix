@@ -12,8 +12,8 @@ buildHomeAssistantComponent {
   src = fetchFromGitHub {
     owner = "jocelynthode";
     repo = "hscs-groupe-e";
-    rev = "1b938a1b490fa49a8b126dd309e8bb2be0708455";
-    hash = "sha256-MaW0tw6WkraAAk/ZReLqkFxzNR6PF4whUrjKgssAqUc=";
+    rev = "c8a21f6dc06b39291e72147058ce7bcc46ebd80b";
+    hash = "sha256-mDc2kNM9KM28S/Rnc+GhvEMZElNlArub2pUO1mz7a3Y=";
   };
 
   dependencies = with python3Packages; [ aiohttp ];
