@@ -10,8 +10,9 @@
   config = lib.mkIf config.aspects.programs.solaar.enable {
     hardware.logitech.wireless = {
       enable = true;
-      enableGraphical = true;
     };
+
+    programs.solaar.enable = true;
 
     home-manager.users.jocelyn = _: {
       systemd.user.services.solaar = {
