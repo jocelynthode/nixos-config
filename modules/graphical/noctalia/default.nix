@@ -31,10 +31,6 @@ in
     home-manager.users.jocelyn =
       { osConfig, config, ... }:
       {
-        home.file.".cache/noctalia/wallpapers.json" = {
-          text = builtins.toJSON { defaultWallpaper = osConfig.stylix.image; };
-        };
-
         xdg.configFile."noctalia/sounds" = {
           source = ./sounds;
           recursive = true;
