@@ -165,6 +165,7 @@ in
         ];
         customComponents = with pkgs.home-assistant-custom-components; [
           browser-mod
+          groupe-e
         ];
         customLovelaceModules = with pkgs.home-assistant-custom-lovelace-modules; [
           mini-graph-card

@@ -1,8 +1,11 @@
 {
   pkgs ? null,
   vimPlugins ? null,
-}:
+  ...
+}@args:
 let
+  homeAssistantCustomComponents = args."home-assistant-custom-components" or null;
+
   mapAttrsMaybe =
     f: attrs:
     let
@@ -30,8 +33,12 @@ let
   corePackages = forAllPackages ./core;
   vimPluginPackages = forAllPackages ./vimPlugins;
   vimPluginsBase = if vimPlugins == null then { } else vimPlugins;
+  haCustomComponentPackages = forAllPackages ./home-assistant-custom-components;
+  haCustomComponentsBase =
+    if homeAssistantCustomComponents == null then { } else homeAssistantCustomComponents;
 in
 corePackages
 // {
   vimPlugins = vimPluginsBase // vimPluginPackages;
+  home-assistant-custom-components = haCustomComponentsBase // haCustomComponentPackages;
 }
