@@ -186,6 +186,12 @@ in
               disks = config.hardware.sensor.hddtemp.drives;
             }
           ];
+          # TODO remove
+          logger = {
+            logs = {
+              "custom_components.groupe_e" = "DEBUG";
+            };
+          };
         };
       };
     };
