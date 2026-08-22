@@ -13,6 +13,8 @@
     home-manager.users.jocelyn = _: {
       home.packages = with pkgs; [
         opentofu
+        tflint
+        tofu-ls
       ];
     };
   };

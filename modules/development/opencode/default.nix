@@ -29,9 +29,12 @@
           servers = {
             github = {
               url = "https://api.githubcopilot.com/mcp/";
-              headers = {
-                Authorization = "Bearer {file:${config.sops.secrets.github.path}}";
-              };
+              auth = "bearer";
+              # "!command" runs at connect time; stdout becomes the token
+              bearerToken = "!cat ${config.sops.secrets.github.path}";
+              # headers = {
+              #   Authorization = "Bearer {file:${config.sops.secrets.github.path}}";
+              # };
             };
             # grafana-poto = {
             #   enabled = true;
@@ -42,9 +45,9 @@
             #     GRAFANA_SERVICE_ACCOUNT_TOKEN.file = config.sops.secrets.grafana.path;
             #   };
             # };
-            gitlab-liip = {
-              url = "https://gitlab.liip.ch/api/v4/mcp";
-            };
+            # gitlab-liip = {
+            #   url = "https://gitlab.liip.ch/api/v4/mcp";
+            # };
             gitlab-poto = {
               url = "https://sources.poto.ch/api/v4/mcp";
             };
