@@ -42,7 +42,7 @@
         # Infrastructure
         yaml-language-server
         yamllint
-        nil
+        nixd
 
         # Shell
         bash-language-server
