@@ -17,12 +17,16 @@
         aspects = {
           development = {
             android.enable = lib.mkDefault true;
-            claude.enable = lib.mkDefault false;
             containers.enable = lib.mkDefault true;
             libvirt.enable = lib.mkDefault true;
-            ollama.enable = lib.mkDefault false;
-            opencode.enable = lib.mkDefault false;
-            pi.enable = lib.mkDefault false;
+            ai = {
+              mcp.enable = lib.mkDefault true;
+              nono.enable = lib.mkDefault true;
+              claude.enable = lib.mkDefault false;
+              ollama.enable = lib.mkDefault false;
+              opencode.enable = lib.mkDefault false;
+              pi.enable = lib.mkDefault true;
+            };
             qmk.enable = lib.mkDefault true;
             rust.enable = lib.mkDefault true;
           };

@@ -22,6 +22,7 @@
           element.enable = lib.mkDefault true;
           feishin.enable = lib.mkDefault true;
           gammastep.enable = lib.mkDefault true;
+          gh.enable = lib.mkDefault true;
           git.enable = lib.mkDefault true;
           htop.enable = lib.mkDefault true;
           kdeconnect.enable = lib.mkDefault true;

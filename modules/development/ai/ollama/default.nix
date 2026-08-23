@@ -5,9 +5,9 @@
   ...
 }:
 {
-  options.aspects.development.ollama.enable = lib.mkEnableOption "ollama";
+  options.aspects.development.ai.ollama.enable = lib.mkEnableOption "ollama";
 
-  config = lib.mkIf config.aspects.development.ollama.enable {
+  config = lib.mkIf config.aspects.development.ai.ollama.enable {
     aspects.base.backup.excludePaths = [ "/var/lib/private/ollama" ];
 
     # aspects.base.persistence.homePaths = [

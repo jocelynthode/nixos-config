@@ -14,8 +14,10 @@ _: {
     };
     development = {
       enable = true;
-      opencode.enable = true;
-      pi.enable = true;
+      ai = {
+        opencode.enable = true;
+        pi.enable = true;
+      };
     };
     games.enable = false;
     graphical = {

@@ -12,6 +12,7 @@ let
       shellAliases = {
         cat = "${pkgs.bat}/bin/bat";
         keti = "${pkgs.kubectl}/bin/kubectl exec -ti";
+        pino = "nono run --profile pi --allow-cwd -- pi";
       };
       shellAbbrs = {
         k = "kubectl";

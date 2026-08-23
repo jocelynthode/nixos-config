@@ -13,9 +13,11 @@
     };
     development = {
       enable = true;
-      ollama.enable = true;
-      opencode.enable = true;
-      pi.enable = true;
+      ai = {
+        ollama.enable = true;
+        opencode.enable = true;
+        pi.enable = true;
+      };
     };
     games = {
       enable = true;

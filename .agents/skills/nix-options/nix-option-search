@@ -1,0 +1,184 @@
+#!/usr/bin/env python3
+"""Version-aware Nix option search for this repository.
+
+Usage:
+  nix-option-search <nixos|home-manager|nixvim> <query> [options]
+
+Options:
+  --host <name>   NixOS host to derive option data from (default: desktek)
+  --json          Machine-readable output
+  --limit <n>     Max results (default 12)
+
+Sources (all pinned to this repository's flake.lock):
+  nixos         evaluated options of <host>      (system.build.manual.optionsJSON)
+  home-manager  HM options JSON of <host> user   (manual.json.enable)
+  nixvim        options-json package of the nixvim rev pinned in flake.lock
+"""
+
+import json
+import subprocess
+import sys
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parents[3]  # .agents/skills/nix-options -> repo root
+CACHE = Path.home() / ".cache" / "nix-option-search"
+DEFAULT_HOST = "desktek"
+
+
+def die(msg):
+    print(f"error: {msg}", file=sys.stderr)
+    sys.exit(1)
+
+
+def run(cmd):
+    r = subprocess.run(cmd, capture_output=True, text=True, cwd=REPO)
+    if r.returncode != 0:
+        die(f"command failed: {' '.join(cmd)}\n{r.stderr.strip()[:500]}")
+    return r.stdout.strip()
+
+
+def lock_rev(node):
+    meta = json.loads(run(["nix", "flake", "metadata", "--json", "--no-write-lock-file", str(REPO)]))
+    locked = meta["locks"]["nodes"].get(node, {}).get("locked", {})
+    return locked.get("rev") or locked.get("ref") or "unknown"
+
+
+def resolve_db(source, host):
+    """Return (json_path, version_label). Cached per source+revision."""
+    CACHE.mkdir(parents=True, exist_ok=True)
+
+    if source == "nixos":
+        out = run([
+            "nix", "build", "--no-link", "--print-out-paths",
+            f".#nixosConfigurations.{host}.config.system.build.manual.optionsJSON",
+        ])
+        pkg = Path(out.strip().splitlines()[-1])
+        src = pkg / "share/doc/nixos/options.json"
+        rev = run(["nix", "flake", "metadata", "--json", "--no-write-lock-file", str(REPO)])
+        version = json.loads(rev)["locks"]["nodes"]["nixpkgs_2"]["locked"].get("rev", "unknown")
+        return src, f"nixpkgs {version[:12]}", None
+
+    if source == "home-manager":
+        pkgs = json.loads(run([
+            "nix", "eval", "--json",
+            f".#nixosConfigurations.{host}.config.home-manager.users.jocelyn.home.packages",
+        ]))
+        candidates = [p for p in pkgs if p.rstrip("/").endswith("-options.json")]
+        if not candidates:
+            die("no HM options.json found — is manual.json.enable set? (see modules/development/ai/pi)")
+        src = Path(candidates[0]) / "share/doc/home-manager/options.json"
+        rev_node = lock_rev("home-manager")
+        return src, f"home-manager {rev_node[:12]}", None
+
+    if source == "nixvim":
+        rev = lock_rev("nixvim")
+        key = CACHE / f"nixvim-{rev}"
+        json_path = key / "share/doc/nixos/options.json"
+        if json_path.is_file():
+            return json_path, f"nixvim {rev[:12]}", None
+        out = run([
+            "nix", "build", "--accept-flake-config", "--no-link", "--print-out-paths",
+            f"github:nix-community/nixvim/{rev}#packages.x86_64-linux.options-json",
+        ])
+        pkg = Path(out.strip().splitlines()[-1])
+        try:
+            key.symlink_to(pkg)
+        except OSError:
+            pass
+        return json_path, f"nixvim {rev[:12]}", None
+
+    die(f"unknown source '{source}' (use: nixos | home-manager | nixvim)")
+
+
+def fmt_default(v):
+    if isinstance(v, dict) and "text" in v:
+        return v["text"]
+    return json.dumps(v) if not isinstance(v, str) else v
+
+
+def search(db, query, limit):
+    q = query.lower()
+    terms = q.split()
+    exact, prefix, substr, text = [], [], [], []
+    for name, opt in db.items():
+        nl = name.lower()
+        score_hit = False
+        if nl == q:
+            exact.append(name)
+            score_hit = True
+        elif nl.startswith(q) or nl.replace(".", " ").startswith(q):
+            prefix.append(name)
+            score_hit = True
+        elif all(t in nl for t in terms):
+            substr.append(name)
+            score_hit = True
+        elif any(t in opt.get("description", "").lower() for t in terms):
+            text.append(name)
+            score_hit = True
+        if score_hit and len(exact) + len(prefix) + len(substr) + len(text) >= limit * 4:
+            break
+    ranked = (exact + prefix + substr + text)[:limit]
+    return ranked
+
+
+def main():
+    args = sys.argv[1:]
+    as_json = "--json" in args
+    args = [a for a in args if a != "--json"]
+    limit = 12
+    if "--limit" in args:
+        i = args.index("--limit")
+        limit = int(args[i + 1])
+        del args[i : i + 2]
+    if "--host" in args:
+        i = args.index("--host")
+        host = args[i + 1]
+        del args[i : i + 2]
+    else:
+        host = DEFAULT_HOST
+
+    if len(args) < 2:
+        die(__doc__)
+    source, query = args[0], args[1]
+
+    path, version, _ = resolve_db(source, host)
+    if not path.is_file():
+        # symlink target may be relative to cache dir
+        alt = CACHE / Path(path).parent.name
+        die(f"option database missing at {path} (cache: {CACHE})")
+
+    db = json.load(open(path))
+    ranked = search(db, query, limit)
+
+    header = f"Source: {source}\nVersion: {version}"
+    if not ranked:
+        print(header)
+        print(f'No matching {source} options found for "{query}". Try a broader term.')
+        sys.exit(1)
+
+    if as_json:
+        print(json.dumps({"source": source, "version": version,
+                          "results": [{"name": n, **db[n]} for n in ranked]}, indent=1))
+        return
+
+    print(header)
+    print()
+    for name in ranked:
+        opt = db[name]
+        print(name)
+        if "type" in opt:
+            t = opt["type"]
+            print(f"  Type: {t.get('description', t) if isinstance(t, dict) else t}")
+        if "default" in opt:
+            print(f"  Default: {fmt_default(opt['default'])[:120]}")
+        desc = opt.get("description", "").split("\n\n")[0]
+        print(f"  Description: {desc[:200]}")
+        decls = opt.get("declarations", [])
+        if decls:
+            first = decls[0]
+            print(f"  Declared by: {first.get('name', first) if isinstance(first, dict) else first}")
+        print()
+
+
+if __name__ == "__main__":
+    main()
