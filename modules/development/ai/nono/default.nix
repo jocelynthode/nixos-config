@@ -11,6 +11,7 @@
     aspects.base.persistence = {
       homePaths = [
         ".config/nono"
+        ".local/state/nono"
       ];
     };
 
