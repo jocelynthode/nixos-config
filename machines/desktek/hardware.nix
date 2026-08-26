@@ -27,7 +27,6 @@
     kernelModules = [ "kvm-amd" ];
     kernel.sysctl = {
       "vm.max_map_count" = 2147483642; # required by some 32-bit games and Wine
-      "vm.swappiness" = 10; # strongly prefer RAM over swap
     };
   };
 
@@ -52,4 +51,6 @@
     package = pkgs-stable.ananicy-cpp;
     rulesProvider = pkgs.ananicy-rules-cachyos;
   };
+
+  zramSwap.enable = true;
 }

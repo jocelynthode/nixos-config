@@ -49,6 +49,7 @@
         fish-lsp
 
         # Go
+        go
         gopls
 
         # Python
