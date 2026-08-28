@@ -37,13 +37,6 @@ let
       useSettings = true;
       createDir = false;
     }
-    {
-      # TODO deprecated
-      name = "readarr";
-      port = 8787;
-      useSettings = true;
-      createDir = true;
-    }
   ];
 
   persistencePaths = lib.concatMap (service: [

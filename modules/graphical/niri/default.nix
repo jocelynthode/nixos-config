@@ -3,7 +3,6 @@
   lib,
   niri,
   pkgs,
-  pkgs-stable,
   ...
 }:
 let
@@ -80,8 +79,7 @@ in
         {
           home.packages = [
             pkgs.imv
-            # TODO use unstable after https://nixpk.gs/pr-tracker.html?pr=552268
-            pkgs-stable.waypipe
+            pkgs.waypipe
             pkgs.wl-clipboard
             pkgs.ydotool
           ];

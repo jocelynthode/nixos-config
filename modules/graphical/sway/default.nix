@@ -43,8 +43,6 @@
       };
     };
 
-    # TODO Fix keymap in console
-
     services.greetd.settings = {
       default_session = {
         command = "${lib.getExe pkgs.tuigreet} --time --asterisks --remember --cmd '${lib.getExe pkgs.sway}'";

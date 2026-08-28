@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  pkgs,
+  pkgs-master,
   ...
 }:
 {
@@ -16,7 +16,8 @@
     };
 
     home-manager.users.jocelyn = _: {
-      home.packages = with pkgs; [
+      # TODO use pkgs after https://nixpk.gs/pr-tracker.html?pr=556028
+      home.packages = with pkgs-master; [
         nono
       ];
     };
