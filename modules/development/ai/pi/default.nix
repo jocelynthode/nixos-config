@@ -38,6 +38,8 @@
 
       home.packages = with pkgs; [
         pi-coding-agent
+        nodejs
+        bun
 
         # Infrastructure
         yaml-language-server
