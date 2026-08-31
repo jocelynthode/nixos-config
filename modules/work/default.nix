@@ -17,6 +17,7 @@
         aspects = {
           development.enable = true;
           work = {
+            exoscale.enable = lib.mkDefault true;
             git.enable = lib.mkDefault true;
             kubernetes.enable = lib.mkDefault true;
             openstack.enable = lib.mkDefault true;

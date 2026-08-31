@@ -6,17 +6,17 @@
 }:
 {
   options = {
-    aspects.work.openstack.enable = lib.mkEnableOption "openstack";
+    aspects.work.exoscale.enable = lib.mkEnableOption "exoscale";
   };
 
   config = lib.mkIf config.aspects.work.openstack.enable {
     aspects.base.persistence.homePaths = [
-      ".config/openstack"
+      ".config/exoscale"
     ];
 
     home-manager.users.jocelyn = _: {
       home.packages = with pkgs; [
-        openstackclient
+        exoscale-cli
       ];
     };
   };
