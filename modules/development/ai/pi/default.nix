@@ -10,6 +10,7 @@
   config = lib.mkIf config.aspects.development.ai.pi.enable {
     aspects.base.backup.excludePaths = [
       "/home/jocelyn/.config/pi-hashline-edit-pro"
+      "/home/jocelyn/.config/pi"
     ];
 
     aspects.base.persistence = {
@@ -17,6 +18,7 @@
         ".pi"
         ".agents"
         ".config/pi-hashline-edit-pro"
+        ".config/pi"
       ];
     };
 
