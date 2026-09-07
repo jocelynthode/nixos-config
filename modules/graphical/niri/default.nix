@@ -155,7 +155,8 @@ in
                   keyboard = {
                     xkb = {
                       layout = "fr,us";
-                      variant = "ergo-l,";
+                      variant = "ergol,";
+                      options = "grp:alt_shift_toggle";
                     };
                   };
                 };
@@ -355,7 +356,10 @@ in
                   "Mod+r".action.fullscreen-window = [ ];
                   "Mod+Shift+r".action.maximize-column = [ ];
                   "Mod+t".action.toggle-window-floating = [ ];
-                  "Mod+space".action.toggle-overview = [ ];
+                  # "Mod+space".action.toggle-overview = [ ];
+                  "Mod+space".action = {
+                    switch-layout = "next";
+                  };
                   "Mod+x".action.close-window = [ ];
                   "Mod+minus".action.expand-column-to-available-width = [ ];
                   "Mod+Shift+minus".action.switch-preset-column-width = [ ];
