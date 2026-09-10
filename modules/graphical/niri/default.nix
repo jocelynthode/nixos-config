@@ -156,7 +156,6 @@ in
                     xkb = {
                       layout = "fr,us";
                       variant = "ergol,";
-                      options = "grp:alt_shift_toggle";
                     };
                   };
                 };
