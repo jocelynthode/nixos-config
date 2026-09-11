@@ -28,7 +28,7 @@ in
       mode = "0700";
     }
   ];
-  services.dbus.packages = lib.optionals (config.aspects.graphical.enable or false) [ pkgs.gcr ];
+  services.dbus.packages = lib.optionals (config.aspects.graphical.enable or false) [ pkgs.gcr_4 ];
 
   home-manager.users.jocelyn = _: {
     services.gpg-agent = {
