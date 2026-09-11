@@ -7,44 +7,82 @@
 }:
 let
   cfg = config.aspects.services.kodi;
+
   kodi-gbm =
     let
       base = pkgs-stable.kodi-gbm.override {
         inherit (pkgs-stable) ffmpeg;
         x11Support = false;
       };
+
+      libdvdcss-src = pkgs.fetchurl {
+        url = "https://mirrors.kodi.tv/build-deps/sources/libdvdcss-1.5.0.tar.bz2";
+        hash = "sha256-8gSp2KyKhBQJXVVjc+Wvm5W7fMcr8UZ9k2pIyWHoxHQ=";
+      };
+
+      libdvdread-src = pkgs.fetchurl {
+        url = "https://mirrors.kodi.tv/build-deps/sources/libdvdread-7.0.1.tar.bz2";
+        hash = "sha256-tp902c7qHtFztXneupn2acLLQvP9BtfSOzP/IiqmN2M=";
+      };
+
+      libdvdnav-src = pkgs.fetchurl {
+        url = "https://mirrors.kodi.tv/build-deps/sources/libdvdnav-7.0.0.tar.bz2";
+        hash = "sha256-E2PN+vbpLAtXRXkpm1SA9YZ/symJRRRooo8/QC7Eh4c=";
+      };
     in
     base.overrideAttrs (old: {
-      version = "22.0b1";
+      version = "22.0b2";
       kodiReleaseName = "Piers";
+
       src = pkgs.fetchFromGitHub {
         owner = "xbmc";
         repo = "xbmc";
-        rev = "22.0b1-Piers";
-        hash = "sha256-WTnFExkD07WOJ0u1uZWkpC8pzG0D7ZpdE1lfonzdCFY=";
+        rev = "22.0b2-Piers";
+        hash = "sha256-vB0P2ly6GKBOZ42SXP1JUMpQrBrgjLZ3wxGITPnpK6E=";
       };
+
       patches = [ ];
+
+      libdvdcss = libdvdcss-src;
+      libdvdread = libdvdread-src;
+      libdvdnav = libdvdnav-src;
+
       nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [
         pkgs-stable.libsysprof-capture
         pkgs-stable.sysprof.dev
         pkgs-stable.pcre2.dev
         pkgs-stable.nlohmann_json
+        pkgs-stable.meson
+        pkgs-stable.ninja
       ];
+
       buildInputs = (old.buildInputs or [ ]) ++ [
         pkgs-stable.crossguid
         pkgs-stable.exiv2
       ];
-      cmakeFlags = (old.cmakeFlags or [ ]) ++ [
+
+      # 22.x builds the DVD libraries from source with ExternalProject and reads
+      # the tarball location from <MODULE>_URL (uppercase). 21.x used the
+      # lowercase libdvdcss_URL-style variables, so drop those from the
+      # inherited 21.3 flags to avoid unused-variable warnings.
+      cmakeFlags = lib.filter (f: !(lib.hasPrefix "-Dlibdvd" f)) (old.cmakeFlags or [ ]) ++ [
+        "-DLIBDVDCSS_URL=${libdvdcss-src}"
+        "-DLIBDVDREAD_URL=${libdvdread-src}"
+        "-DLIBDVDNAV_URL=${libdvdnav-src}"
         "-DLIBXSLT_LIBRARY=${lib.getLib pkgs-stable.libxslt}/lib/libxslt.so"
         "-DLIBXSLT_INCLUDE_DIR=${lib.getDev pkgs-stable.libxslt}/include"
       ];
+
+      # Adding ninja to nativeBuildInputs switches the cmake hook to the Ninja
+      # generator, so the inherited 21.3 checkPhase (which shells out to make)
+      # has to be adapted.
+      checkPhase =
+        lib.replaceString "make -j $NIX_BUILD_CORES kodi-test"
+          "${lib.getExe pkgs-stable.ninja} -j $NIX_BUILD_CORES kodi-test"
+          old.checkPhase;
     });
 
-  kodiPkg =
-    if cfg.plugins == [ ] then
-      kodi-gbm
-    else
-      kodi-gbm.withPackages (kodiPkgs: with kodiPkgs; cfg.plugins);
+  kodiPkg = if cfg.plugins == [ ] then kodi-gbm else kodi-gbm.withPackages (_: cfg.plugins);
 in
 {
   options.aspects.services.kodi = {

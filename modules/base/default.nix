@@ -175,6 +175,7 @@
               lsof
               rsync
               unzip
+              file
             ];
           };
 
