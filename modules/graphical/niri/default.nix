@@ -7,6 +7,31 @@
 }:
 let
   cfg = config.aspects.graphical.niri;
+
+  # v0.8.2 (the version in nixpkgs) closes override-redirect popups instantly,
+  # which breaks Steam context menus. Fixed upstream after the release, so build
+  # from the commit that fixes it until a new version is tagged.
+  # https://github.com/Supreeeme/xwayland-satellite/issues/503
+  xwaylandSatelliteSrc = pkgs.fetchFromGitHub {
+    owner = "Supreeeme";
+    repo = "xwayland-satellite";
+    rev = "add2795134593faafce60e404a0a75df68e9ee0c";
+    hash = "sha256-0TxfMgqW0/BLD4M942c5DCKYrtPvzsPJwvdcco4LQUM=";
+  };
+
+  xwaylandSatellite = pkgs.xwayland-satellite.overrideAttrs (_: {
+    version = "0.8.2-unstable-2026-09-09";
+    src = xwaylandSatelliteSrc;
+    # buildRustPackage takes `cargoHash` from its own argument set instead of
+    # `finalAttrs`, so `overrideAttrs` cannot change it: hash the vendored
+    # crates (Cargo.lock changed upstream too) and set `cargoDeps` instead.
+    cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
+      pname = "xwayland-satellite";
+      version = "0.8.2-unstable-2026-09-09";
+      src = xwaylandSatelliteSrc;
+      hash = "sha256-s1gl9eR6Mt2QLrhfcowstPFjzwE/lz4PJhJzWYHoIHg=";
+    };
+  });
 in
 {
   imports = [
@@ -53,7 +78,7 @@ in
       environment.systemPackages = with pkgs; [
         qt5.qtwayland
         qt6.qtwayland
-        xwayland-satellite
+        xwaylandSatellite
       ];
 
       environment.sessionVariables = {

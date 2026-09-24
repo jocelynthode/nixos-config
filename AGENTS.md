@@ -24,6 +24,35 @@ Features are toggled through the `options.aspects.<category>.<feature>.enable` a
 - Module files use the import-tree pattern (`import-tree.match "^/[^/]+/default\.nix$"`), which auto-imports **only one directory level**. Deeper nesting requires explicit `imports` in the parent `default.nix` (see `modules/development/ai/default.nix`).
 - Do not guess Nix option names: verify options exist for this repository's pinned versions via the `nix-options` skill before using them.
 
+## Rust packages
+
+`buildRustPackage` takes its vendor hash from the argument set it was called with, **not** from `finalAttrs`, so `overrideAttrs { cargoHash = ...; }` is silently ignored and the build dies on a vendor hash mismatch. Override the vendored crates with `cargoDeps` instead:
+
+```nix
+let
+  fooSrc = pkgs.fetchFromGitHub {
+    owner = "Upstream";
+    repo = "foo";
+    rev = "<full commit hash>";
+    hash = "sha256-...";
+  };
+in
+pkgs.foo.overrideAttrs (_: {
+  version = "1.2.3-unstable-2026-01-01";
+  src = fooSrc;
+  cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
+    pname = "foo";
+    version = "1.2.3-unstable-2026-01-01";
+    src = fooSrc;
+    hash = "sha256-..."; # lib.fakeHash, build once, copy the reported hash
+  };
+});
+```
+
+- Always override `version` and `src` together, and repeat both verbatim in `fetchCargoVendor` so the vendor derivation matches the sources.
+- `Cargo.lock` changes between revisions, so recompute the vendor hash rather than reusing nixpkgs' `cargoHash`.
+- Worked example: `modules/graphical/niri/default.nix` (xwayland-satellite).
+
 ## Impermanence
 
 Root is ephemeral. Persist state from the module that needs it via `aspects.base.persistence.homePaths` / `systemPaths` — do not edit `modules/base/persistence/default.nix` casually.
