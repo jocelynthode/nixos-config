@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  spicetify-nix,
   ...
 }:
 {
@@ -15,13 +14,10 @@
       ".config/spotify"
     ];
 
-    home-manager.sharedModules = [ spicetify-nix.homeManagerModules.default ];
+    home-manager.sharedModules = [ ];
     home-manager.users.jocelyn = _: {
       home.packages = [ pkgs.playerctl ];
       services.playerctld = {
-        enable = true;
-      };
-      programs.spicetify = {
         enable = true;
       };
     };
