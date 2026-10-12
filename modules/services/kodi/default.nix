@@ -29,16 +29,29 @@ let
         url = "https://mirrors.kodi.tv/build-deps/sources/libdvdnav-7.0.0.tar.bz2";
         hash = "sha256-E2PN+vbpLAtXRXkpm1SA9YZ/symJRRRooo8/QC7Eh4c=";
       };
+
+      # Kodi rc1 needs SWIG >= 4.5.0 for its Python bindings, newer than the
+      # swig in nixpkgs-stable.  Upstream nixpkgs is moving to 4.5.x in
+      # NixOS/nixpkgs#554403; pin the release kodi's binding tests target.
+      swig = pkgs-stable.swig.overrideAttrs (_: {
+        version = "4.5.0";
+        src = pkgs.fetchFromGitHub {
+          owner = "swig";
+          repo = "swig";
+          rev = "v4.5.0";
+          hash = "sha256-NXN3Zx66PNpYNuFVCalHymb/GW0cUi5drjIXNOVMgb8=";
+        };
+      });
     in
     base.overrideAttrs (old: {
-      version = "22.0b2";
+      version = "22.0rc1";
       kodiReleaseName = "Piers";
 
       src = pkgs.fetchFromGitHub {
         owner = "xbmc";
         repo = "xbmc";
-        rev = "22.0b2-Piers";
-        hash = "sha256-vB0P2ly6GKBOZ42SXP1JUMpQrBrgjLZ3wxGITPnpK6E=";
+        rev = "22.0rc1-Piers";
+        hash = "sha256-zIQdK3Rj+TLSopJ1R10kEDlHkrgHa36HFN4VszSUJLM=";
       };
 
       patches = [ ];
@@ -64,14 +77,20 @@ let
       # 22.x builds the DVD libraries from source with ExternalProject and reads
       # the tarball location from <MODULE>_URL (uppercase). 21.x used the
       # lowercase libdvdcss_URL-style variables, so drop those from the
-      # inherited 21.3 flags to avoid unused-variable warnings.
-      cmakeFlags = lib.filter (f: !(lib.hasPrefix "-Dlibdvd" f)) (old.cmakeFlags or [ ]) ++ [
-        "-DLIBDVDCSS_URL=${libdvdcss-src}"
-        "-DLIBDVDREAD_URL=${libdvdread-src}"
-        "-DLIBDVDNAV_URL=${libdvdnav-src}"
-        "-DLIBXSLT_LIBRARY=${lib.getLib pkgs-stable.libxslt}/lib/libxslt.so"
-        "-DLIBXSLT_INCLUDE_DIR=${lib.getDev pkgs-stable.libxslt}/include"
-      ];
+      # inherited 21.3 flags to avoid unused-variable warnings.  The inherited
+      # SWIG path is dropped too; see the 4.5.0 build above.
+      cmakeFlags =
+        lib.filter (f: !(lib.hasPrefix "-Dlibdvd" f) && !(lib.hasPrefix "-DSWIG_EXECUTABLE" f)) (
+          old.cmakeFlags or [ ]
+        )
+        ++ [
+          "-DLIBDVDCSS_URL=${libdvdcss-src}"
+          "-DLIBDVDREAD_URL=${libdvdread-src}"
+          "-DLIBDVDNAV_URL=${libdvdnav-src}"
+          "-DSWIG_EXECUTABLE=${lib.getExe swig}"
+          "-DLIBXSLT_LIBRARY=${lib.getLib pkgs-stable.libxslt}/lib/libxslt.so"
+          "-DLIBXSLT_INCLUDE_DIR=${lib.getDev pkgs-stable.libxslt}/include"
+        ];
 
       # Adding ninja to nativeBuildInputs switches the cmake hook to the Ninja
       # generator, so the inherited 21.3 checkPhase (which shells out to make)
