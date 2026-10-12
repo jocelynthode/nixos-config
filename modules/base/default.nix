@@ -148,7 +148,8 @@
           };
 
           environment = {
-            enableAllTerminfo = true;
+            # TODO reenable after https://github.com/NixOS/nixpkgs/pull/569719 in unstable
+            # enableAllTerminfo = true;
             variables = {
               TERMINAL = "kitty";
               EDITOR = "nvim";
@@ -176,6 +177,8 @@
               rsync
               unzip
               file
+              # While enableAllTerminfo is broken
+              kitty.terminfo
             ];
           };
 
