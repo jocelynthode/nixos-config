@@ -23,6 +23,7 @@
               mcp.enable = lib.mkDefault true;
               nono.enable = lib.mkDefault true;
               claude.enable = lib.mkDefault false;
+              gemini.enable = lib.mkDefault true;
               ollama.enable = lib.mkDefault false;
               opencode.enable = lib.mkDefault false;
               pi.enable = lib.mkDefault true;

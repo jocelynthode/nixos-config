@@ -2,7 +2,7 @@
   config,
   lib,
   nix-index-database,
-  pkgs,
+  pkgs-master,
   ...
 }:
 let
@@ -80,7 +80,8 @@ in
         keep-outputs = true;
         keep-derivations = true;
       };
-      package = pkgs.lixPackageSets.stable.lix;
+      # TODO switch back to pkgs
+      package = pkgs-master.lixPackageSets.stable.lix;
       extraOptions = ''
         !include ${config.sops.secrets.nixAccessTokens.path}
       '';

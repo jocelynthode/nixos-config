@@ -1,6 +1,7 @@
 {
   imports = [
     ./claude
+    ./gemini
     ./mcp
     ./nono
     ./ollama
