@@ -2,16 +2,21 @@
   config,
   lib,
   pkgs,
-  pkgs-stable,
   ...
 }:
 let
   cfg = config.aspects.services.kodi;
 
+  # Kodi must be built from this flake's `pkgs`, not `pkgs-stable`: kodi-gbm
+  # dlopens the system graphics stack (/run/opengl-driver: mesa/gbm backend,
+  # libgallium and the VAAPI driver). A pkgs-stable build links glibc 2.42,
+  # while those drivers are built against the unstable glibc, so
+  # gbm_create_device() fails with ENOENT and kodi exits with
+  # "unable to init windowing system" before any GUI appears.
   kodi-gbm =
     let
-      base = pkgs-stable.kodi-gbm.override {
-        inherit (pkgs-stable) ffmpeg;
+      base = pkgs.kodi-gbm.override {
+        inherit (pkgs) ffmpeg;
         x11Support = false;
       };
 
@@ -31,9 +36,9 @@ let
       };
 
       # Kodi rc1 needs SWIG >= 4.5.0 for its Python bindings, newer than the
-      # swig in nixpkgs-stable.  Upstream nixpkgs is moving to 4.5.x in
+      # swig in this nixpkgs.  Upstream nixpkgs is moving to 4.5.x in
       # NixOS/nixpkgs#554403; pin the release kodi's binding tests target.
-      swig = pkgs-stable.swig.overrideAttrs (_: {
+      swig = pkgs.swig.overrideAttrs (_: {
         version = "4.5.0";
         src = pkgs.fetchFromGitHub {
           owner = "swig";
@@ -61,17 +66,17 @@ let
       libdvdnav = libdvdnav-src;
 
       nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [
-        pkgs-stable.libsysprof-capture
-        pkgs-stable.sysprof.dev
-        pkgs-stable.pcre2.dev
-        pkgs-stable.nlohmann_json
-        pkgs-stable.meson
-        pkgs-stable.ninja
+        pkgs.libsysprof-capture
+        pkgs.sysprof.dev
+        pkgs.pcre2.dev
+        pkgs.nlohmann_json
+        pkgs.meson
+        pkgs.ninja
       ];
 
       buildInputs = (old.buildInputs or [ ]) ++ [
-        pkgs-stable.crossguid
-        pkgs-stable.exiv2
+        pkgs.crossguid
+        pkgs.exiv2
       ];
 
       # 22.x builds the DVD libraries from source with ExternalProject and reads
@@ -88,8 +93,8 @@ let
           "-DLIBDVDREAD_URL=${libdvdread-src}"
           "-DLIBDVDNAV_URL=${libdvdnav-src}"
           "-DSWIG_EXECUTABLE=${lib.getExe swig}"
-          "-DLIBXSLT_LIBRARY=${lib.getLib pkgs-stable.libxslt}/lib/libxslt.so"
-          "-DLIBXSLT_INCLUDE_DIR=${lib.getDev pkgs-stable.libxslt}/include"
+          "-DLIBXSLT_LIBRARY=${lib.getLib pkgs.libxslt}/lib/libxslt.so"
+          "-DLIBXSLT_INCLUDE_DIR=${lib.getDev pkgs.libxslt}/include"
         ];
 
       # Adding ninja to nativeBuildInputs switches the cmake hook to the Ninja
@@ -97,7 +102,7 @@ let
       # has to be adapted.
       checkPhase =
         lib.replaceString "make -j $NIX_BUILD_CORES kodi-test"
-          "${lib.getExe pkgs-stable.ninja} -j $NIX_BUILD_CORES kodi-test"
+          "${lib.getExe pkgs.ninja} -j $NIX_BUILD_CORES kodi-test"
           old.checkPhase;
     });
 
@@ -146,8 +151,8 @@ in
 
     users.groups.kodi = { };
 
-    services.getty.autologinUser = "kodi";
-
+    # greetd owns tty1 for the kodi session (it Conflicts with
+    # getty@tty1.service), so there is deliberately no getty autologin.
     services.greetd = {
       enable = true;
       settings = {
@@ -159,11 +164,6 @@ in
           command = "${pkgs.greetd}/bin/agreety --cmd ${pkgs.bash}/bin/bash";
         };
       };
-    };
-
-    programs.sway = {
-      enable = true;
-      xwayland.enable = false;
     };
 
     networking.firewall = lib.mkIf cfg.openFirewall {
