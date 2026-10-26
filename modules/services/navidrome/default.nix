@@ -34,6 +34,8 @@ in
         ReverseProxyWhitelist = "127.0.0.1/32";
         EnableStarRating = true;
         EnableSharing = true;
+        # TODO Remove once https://github.com/NixOS/nixpkgs/pull/578132
+        "Plugins.Enabled" = false;
       };
     };
 
