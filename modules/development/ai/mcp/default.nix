@@ -23,9 +23,9 @@
             #     GRAFANA_SERVICE_ACCOUNT_TOKEN.file = config.sops.secrets.grafana.path;
             #   };
             # };
-            # gitlab-liip = {
-            #   url = "https://gitlab.liip.ch/api/v4/mcp";
-            # };
+            gitlab-liip = {
+              url = "https://gitlab.liip.ch/api/v4/mcp";
+            };
             gitlab-poto = {
               url = "https://sources.poto.ch/api/v4/mcp";
             };
