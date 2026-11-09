@@ -15,7 +15,7 @@ _: {
     development = {
       enable = true;
       ai = {
-        opencode.enable = true;
+        opencode.enable = false;
         pi.enable = true;
       };
     };

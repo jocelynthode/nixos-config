@@ -59,5 +59,10 @@
 
       image = pkgs.wallpapers.${config.aspects.graphical.wallpaper};
     };
+    # The rofi target still writes programs.rofi.font, deprecated in Home
+    # Manager in favour of programs.rofi.settings.font. Nothing here uses rofi.
+    home-manager.sharedModules = lib.singleton {
+      stylix.targets.rofi.enable = lib.mkDefault false;
+    };
   };
 }

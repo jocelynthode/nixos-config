@@ -15,7 +15,7 @@
       enable = true;
       ai = {
         ollama.enable = true;
-        opencode.enable = true;
+        opencode.enable = false;
         pi.enable = true;
       };
     };
