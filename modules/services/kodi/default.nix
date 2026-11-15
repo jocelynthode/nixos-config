@@ -35,7 +35,7 @@ let
         hash = "sha256-E2PN+vbpLAtXRXkpm1SA9YZ/symJRRRooo8/QC7Eh4c=";
       };
 
-      # Kodi rc1 needs SWIG >= 4.5.0 for its Python bindings, newer than the
+      # Kodi 22.x needs SWIG >= 4.5.0 for its Python bindings, newer than the
       # swig in this nixpkgs.  Upstream nixpkgs is moving to 4.5.x in
       # NixOS/nixpkgs#554403; pin the release kodi's binding tests target.
       swig = pkgs.swig.overrideAttrs (_: {
@@ -49,14 +49,14 @@ let
       });
     in
     base.overrideAttrs (old: {
-      version = "22.0rc1";
+      version = "22.0rc2";
       kodiReleaseName = "Piers";
 
       src = pkgs.fetchFromGitHub {
         owner = "xbmc";
         repo = "xbmc";
-        rev = "22.0rc1-Piers";
-        hash = "sha256-zIQdK3Rj+TLSopJ1R10kEDlHkrgHa36HFN4VszSUJLM=";
+        rev = "22.0rc2-Piers";
+        hash = "sha256-Y5oJ7QMp6n2y4IxtTxgWO1Zgmcd+1B+4mNtRPODPwkk=";
       };
 
       patches = [ ];

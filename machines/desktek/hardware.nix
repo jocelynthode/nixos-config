@@ -38,9 +38,9 @@
   };
 
   # latency-criticality aware scheduler, tuned for 3D V-Cache topology
-  services.scx = {
+  services.scx-loader = {
     enable = true;
-    scheduler = "scx_lavd";
+    config.default_sched = "scx_lavd";
   };
 
   # process priority rules from CachyOS, tuned for gaming workloads
