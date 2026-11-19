@@ -50,6 +50,7 @@
 
     services.nginx.virtualHosts = {
       "budget.tekila.ovh" = {
+        http2 = false; # CVE-2026-123007
         forceSSL = true;
         enableACME = true;
         locations = {

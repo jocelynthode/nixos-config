@@ -27,6 +27,7 @@
         database.uri = "postgresql:///atuin?host=/run/postgresql";
       };
       nginx.virtualHosts."atuin.tekila.ovh" = {
+        http2 = false; # CVE-2026-123007
         onlySSL = true;
         enableACME = true;
         locations = {

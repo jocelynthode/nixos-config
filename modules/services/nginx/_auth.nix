@@ -66,6 +66,7 @@ let
 in
 {
   forceSSL = true;
+  http2 = false; # CVE-2026-123007, remove once nginx >= 1.30.7 is pinned
   enableACME = true;
   locations = lib.recursiveUpdate defaultLocations extraPaths;
 }

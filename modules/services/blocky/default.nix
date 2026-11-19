@@ -58,6 +58,7 @@
 
       services.nginx = {
         virtualHosts."dns.tekila.ovh" = {
+          http2 = false; # CVE-2026-123007
           onlySSL = true;
           enableACME = true;
           locations = {

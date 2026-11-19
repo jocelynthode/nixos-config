@@ -65,6 +65,7 @@
 
     services.nginx.virtualHosts = {
       "request.tekila.ovh" = {
+        http2 = false; # CVE-2026-123007
         forceSSL = true;
         enableACME = true;
         locations = {
@@ -75,6 +76,7 @@
         };
       };
       "stream.tekila.ovh" = {
+        http2 = false; # CVE-2026-123007
         forceSSL = true;
         enableACME = true;
         locations = {

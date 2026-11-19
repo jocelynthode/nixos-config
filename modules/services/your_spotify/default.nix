@@ -34,6 +34,7 @@
     ];
 
     services.nginx.virtualHosts."spotify.tekila.ovh" = {
+      http2 = false; # CVE-2026-123007
       forceSSL = true;
       enableACME = true;
       extraConfig = ''
